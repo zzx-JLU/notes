@@ -1,4 +1,3 @@
-[TOC]
 # 1 一个实例：Employee类
 
 ```java
