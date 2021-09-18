@@ -1,4 +1,3 @@
-[TOC]
 # 1 CSS介绍
 
  1. CSS 全称为层叠样式表（Cascading Style Sheets），又叫级联样式表，简称样式表。
