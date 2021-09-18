@@ -1,4 +1,3 @@
-[toc]
 # 1 Java程序范例：Hello World
 
 ```java
