@@ -1,4 +1,3 @@
-[TOC]
 # 1 声明数组列表
 `ArrayList`类是一个有类型参数的泛型类，它类似于数组，但在添加或删除元素时可以自动调整数组容量。`ArrayList`类在`java.util.ArrayList`包中。
 
