@@ -1,4 +1,3 @@
-[TOC]
 # 1 断言的概念
 断言机制允许在测试期间向代码中插入一些检查，而在生产代码中会自动删除这些检查。使用`assert`关键字实现断言，这个关键字有两种形式：`assert condition;`和`assert condition : expression;`
 
