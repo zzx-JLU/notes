@@ -83,6 +83,8 @@ chrome:
   - [6.7 高阶函数](#67-高阶函数)
   - [6.8 匿名函数](#68-匿名函数)
   - [6.9 闭包](#69-闭包)
+  - [6.10 装饰器](#610-装饰器)
+- [7 面向对象](#7-面向对象)
 
 <!-- /code_chunk_output -->
 
@@ -1259,6 +1261,7 @@ def 函数名([形参1, 形参2, ... , 形参n]):
 def fn(a, b, c=20):
     print(a, b, c)
 
+
 fn(1, 2, 3)  # 1 2 3
 fn(1, 2)  # 1 2 20
 ```
@@ -1276,6 +1279,7 @@ fn(1, 2)  # 1 2 20
 def fn(a, b, c):
     print(a, b, c)
 
+
 # 位置参数
 fn(1, 2, 3)  # 1 2 3
 
@@ -1289,6 +1293,7 @@ fn(b=1, c=2, a=3)  # 3 1 2
 def fn(a, b=10, c=20):
     print(a, b, c)
 
+
 fn(1, c=2, b=3)  # 1 3 2
 fn(a=1, 2, c=3)  # SyntaxError: positional argument follows keyword argument
 fn(1, a=2)  # TypeError: fn() got multiple values for argument 'a'
@@ -1301,6 +1306,7 @@ fn(1, a=2)  # TypeError: fn() got multiple values for argument 'a'
 ```python
 def fn(*a):
     print(a, type(a))
+
 
 fn()  # () <class 'tuple'>
 fn(1, 2, 3)  # (1, 2, 3) <class 'tuple'>
@@ -1316,6 +1322,7 @@ fn(1, 2, 3)  # (1, 2, 3) <class 'tuple'>
 def fn(a, b, *c):
     print(a, b, c)
 
+
 fn(1, 2, 3, 4, 5)  # 1 2 (3, 4, 5)
 ```
 
@@ -1324,6 +1331,7 @@ fn(1, 2, 3, 4, 5)  # 1 2 (3, 4, 5)
 ```python
 def fn(a, *b, c):
     print(a, b, c)
+
 
 fn(1, 2, 3, 4, c=5)  # 1 (2, 3, 4) 5
 ```
@@ -1344,6 +1352,7 @@ fn(1, 2, c=3)  # 1 2 3
 def fn(**a):
     print(a, type(a))
 
+
 fn(a=0, b=1, c=2, d=3)  # {'a': 0, 'b': 1, 'c': 2, 'd': 3} <class 'dict'>
 ```
 
@@ -1354,6 +1363,7 @@ fn(a=0, b=1, c=2, d=3)  # {'a': 0, 'b': 1, 'c': 2, 'd': 3} <class 'dict'>
 ```python
 def fn(b, **c):
     print(b, c)
+
 
 fn(a=0, b=1, c=2, d=3)  # 1 {'a': 0, 'c': 2, 'd': 3}
 ```
@@ -1366,6 +1376,7 @@ fn(a=0, b=1, c=2, d=3)  # 1 {'a': 0, 'c': 2, 'd': 3}
 def fn(a, b, c, d):
     print(a, b, c, d)
 
+
 t = (2, 3)
 fn(1, *t, 4)  # 1 2 3 4
 ```
@@ -1375,6 +1386,7 @@ fn(1, *t, 4)  # 1 2 3 4
 ```python
 def fn(a, b, c):
     print(a, b, c)
+
 
 d = {'a': 1, 'b': 2, 'c': 3}
 fn(**d)  # 1 2 3
@@ -1431,6 +1443,7 @@ def fn(a, b, c):
     '''
     return
 
+
 help(fn)
 ```
 
@@ -1454,6 +1467,7 @@ def fn(a: int, b: str, c: bool):
     '''
     return
 
+
 help(fn)
 ```
 
@@ -1470,6 +1484,7 @@ def fn(a: int, b: str, c: bool) -> int:
     文档字符串
     '''
     return 10
+
 
 help(fn)
 ```
@@ -1504,6 +1519,7 @@ def fn():
     a = 20
     print(f'函数内部：a={a}')
 
+
 print(f'函数外部：a={a}')  # 函数外部：a=10
 fn()                      # 函数内部：a=20
 print(f'函数外部：a={a}')  # 函数外部：a=20
@@ -1524,6 +1540,7 @@ print(type(scope))  # <class 'dict'>
 def fn():
     a = 10
     print(locals())
+
 
 fn()  # {'a': 10}
 ```
@@ -1552,6 +1569,7 @@ scope = locals()
 def fn():
     global_scope = globals()
     print(scope == global_scope)
+
 
 fn()  # True
 ```
@@ -1693,6 +1711,7 @@ def outer():
 
     return inner  # 外层函数将内层函数返回
 
+
 fn = outer()
 print(fn)  # <function outer.<locals>.inner at 0x000001C1CA7303A0>
 fn()  # 10
@@ -1701,3 +1720,88 @@ fn()  # 10
 正常情况下，在外部作用域中无法访问内部作用域中的变量。但是内层函数可以访问外层函数中的变量，只要将内层函数返回，就可以在外层函数的外部使用内层函数来访问外层函数中的局部变量。
 
 可以将私有数据藏在闭包中，这些数据只能通过返回的内层函数来访问，其他方式访问不到，可以保证数据安全。
+
+## 6.10 装饰器
+
+装饰器可以在不修改函数的情况下对函数进行扩展。
+
+装饰器是一种高阶函数，参数为要扩展的函数，在装饰器内部创建一个新的函数实现扩展功能，并返回这个新的函数。例如：
+
+```python
+def begin_end(fn):
+    '''
+    装饰器，在函数调用前打印 "开始执行"，函数调用后打印 "执行结束"
+    '''
+
+    def new_fn(*args, **kwargs):
+        '''
+        装饰后的新函数
+        args: 接收所有位置参数
+        kwargs: 接收所有关键字参数
+        '''
+        print("开始执行")
+        result = fn(*args, **kwargs)
+        print("执行结束")
+        return result
+
+    return new_fn  # 返回装饰后的新函数
+
+
+def add(a, b):
+    return a + b
+
+
+f = begin_end(add)  # 对 add() 函数进行装饰，返回装饰后的函数
+r = f(111, 222)  # 调用装饰后的函数
+print(r)
+```
+
+```text
+```
+
+在定义函数时，可以使用`@`指定装饰器，用指定的装饰器来扩展函数。可以为函数指定多个装饰器，此时将按照从内到外的顺序进行装饰。
+
+```python
+def begin_end(fn):
+    '''
+    装饰器，在函数调用前打印 "开始执行"，函数调用后打印 "执行结束"
+    '''
+
+    def new_fn(*args, **kwargs):
+        print("开始执行")
+        result = fn(*args, **kwargs)
+        print("执行结束")
+        return result
+
+    return new_fn
+
+
+def decorator(fn):
+    '''
+    装饰器，在函数调用前后打印分割线
+    '''
+
+    def new_fn(*args, **kwargs):
+        print('------------------')
+        result = fn(*args, **kwargs)
+        print('------------------')
+        return result
+
+    return new_fn
+
+
+@decorator
+@begin_end
+def say_hello():
+    print(hello)
+
+
+say_hello()
+```
+
+```text
+```
+
+# 7 面向对象
+
+Python 是一种面向对象的编程语言。
