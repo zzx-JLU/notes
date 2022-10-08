@@ -85,6 +85,7 @@ chrome:
   - [6.9 闭包](#69-闭包)
   - [6.10 装饰器](#610-装饰器)
 - [7 面向对象](#7-面向对象)
+  - [7.1 类](#71-类)
 
 <!-- /code_chunk_output -->
 
@@ -1805,3 +1806,68 @@ say_hello()
 # 7 面向对象
 
 Python 是一种面向对象的编程语言。
+
+## 7.1 类
+
+`int()`、`float()`、`bool()`、`str()`、`list()`实际上都是类，可以用来创建相应类型的对象。例如：
+
+```python
+a = int(10)  # 创建 int 类的实例
+b = str('hello')  # 创建 str 类的实例
+```
+
+使用`class`关键字定义类，语法：
+
+```python
+class 类名:
+    代码块
+```
+
+类名使用大驼峰命名法。
+
+创建类对象：`类名()`。例如：
+
+```python
+class MyClass:
+    pass
+
+
+print(MyClass)  # <class '__main__.MyClass'>
+
+obj = MyClass()  # 创建 MyClass 类的对象
+print(obj)  # <__main__.MyClass object at 0x0000016BB5C43D30>
+print(type(obj))  # <class '__main__.MyClass'>
+```
+
+`isinstance()`函数用来检查一个对象是否是指定类的实例。例如：
+
+```python
+a = int(10)
+print(isinstance(a, int))  # True
+print(isinstance(a, str))  # False
+```
+
+类也是对象，类就是一个用来创建对象的对象。例如：
+
+```python
+class MyClass:
+    pass
+
+
+print(id(MyClass))  # 1947031180304
+print(type(MyClass))  # <class 'type'>
+```
+
+类是`type`类的对象，定义类就是创建了一个`type`类的对象。
+
+可以向对象中添加变量，对象中的变量称为属性。对象的属性通过`对象.属性名`来访问。例如：
+
+```python
+class MyClass:
+    pass
+
+
+obj = MyClass()
+obj.name = '小明'
+print(obj.name)  # 小明
+```
