@@ -1,4 +1,56 @@
-[toc]
+---
+title: jQuery
+chrome:
+    format: "A4"
+    headerTemplate: '<div></div>'
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;"> 
+    <span class=pageNumber></span> / <span class=totalPages></span></div>'
+    displayHeaderFooter: true
+    margin:
+        top: '40px'
+        bottom: '80px'
+        left: '60px'
+        right: '60px'
+---
+
+<h1>jQuery</h1>
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [1 jQuery简介](#1-jquery简介)
+- [2 jQuery核心函数](#2-jquery核心函数)
+- [3 jQuery对象](#3-jquery对象)
+  - [3.1 什么是jQuery对象](#31-什么是jquery对象)
+  - [3.2 jQuery对象的本质](#32-jquery对象的本质)
+  - [3.3 jQuery对象与DOM对象的区别](#33-jquery对象与dom对象的区别)
+  - [3.4 jQuery对象与DOM对象的相互转换](#34-jquery对象与dom对象的相互转换)
+- [4 jQuery选择器](#4-jquery选择器)
+  - [4.1 基本选择器](#41-基本选择器)
+  - [4.2 层级选择器](#42-层级选择器)
+  - [4.3 过滤选择器](#43-过滤选择器)
+    - [4.3.1 基本过滤器](#431-基本过滤器)
+    - [4.3.2 内容过滤器](#432-内容过滤器)
+    - [4.3.3 属性过滤器](#433-属性过滤器)
+    - [4.3.4 表单过滤器](#434-表单过滤器)
+    - [4.3.5 表单对象属性过滤器](#435-表单对象属性过滤器)
+    - [4.3.6 可见性过滤器](#436-可见性过滤器)
+- [5 jQuery元素筛选函数](#5-jquery元素筛选函数)
+- [6 jQuery的属性操作](#6-jquery的属性操作)
+  - [6.1 HTML属性](#61-html属性)
+  - [6.2 任意属性](#62-任意属性)
+- [7 DOM的增删改](#7-dom的增删改)
+- [8 CSS样式操作](#8-css样式操作)
+- [9 jQuery动画操作](#9-jquery动画操作)
+- [10 jQuery事件操作](#10-jquery事件操作)
+  - [10.1 文档加载事件](#101-文档加载事件)
+  - [10.2 常用的事件](#102-常用的事件)
+  - [10.3 事件处理](#103-事件处理)
+  - [10.4 事件的冒泡](#104-事件的冒泡)
+  - [10.5 事件对象](#105-事件对象)
+
+<!-- /code_chunk_output -->
 
 # 1 jQuery简介
 
@@ -21,7 +73,7 @@ jQuery 是一个 JavaScript 代码库，它的核心思想是 “write less, do 
     <script type="text/javascript" src="jquery-1.7.2.js"></script>
     <script type="text/javascript">
         // 页面加载完成后执行该函数
-    	$(function(){
+        $(function(){
             // 用选择器查找按钮元素对象
             // jQuery 对象的名字习惯上以 $ 打头
             var $btn = $("#btn");
@@ -139,59 +191,32 @@ jQuery 对象转换为 DOM 对象：`jQueryObject[index]`。
 # 5 jQuery元素筛选函数
 
 1. `eq(index)`：获取索引为 n 的元素。
-
 2. `first()`：获取第一个元素。
-
 3. `last()`：获取最后一个元素。
-
 4. `filter(expr|obj|ele|fn)`：筛选出与指定表达式匹配的元素集合。其参数可以为：
-
    （1）`expr`：选择器字符串。
-
    （2）`obj`：jQuery 对象。
-
    （3）`ele`：DOM 元素对象。
-
    （4）`fn`：回调函数。它接收一个参数`index`，表示元素在 jQuery 集合中的索引。回调函数中的`this`表示当前的 DOM 元素。
-
 5. `is(expr|obj|ele|fn)`：判断元素集合中是否包含与指定表达式匹配的元素。如果有则返回`true`；如果没有元素符合，或者表达式无效，都返回`false`。
-
 6. `has(expr|ele)`：保留包含特定后代的元素，去掉那些不含有指定后代的元素。
-
 7. `not(expr|ele|fn)`：删除与指定表达式匹配的元素。
-
 8. `children([expr])`：取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合。可以通过可选的表达式来过滤所匹配的子元素。
-
 9. `find(expr|obj|ele)`：搜索所有与指定表达式匹配的元素。这个函数可以用于查找正在处理的元素的后代元素。
-
 10. `next([expr])`：取得一个包含匹配的元素集合中每一个元素的下一个相邻兄弟元素的元素集合。
-
 11. `nextAll([expr])`：查找当前元素之后所有的兄弟元素。可以用表达式过滤。
-
 12. `nextUntil([exp|ele][,fil])`：查找当前元素之后所有的兄弟元素，直到遇到匹配的那个元素为止。如果没有选择器匹配到，或者没有提供参数，那么跟在后面的所有兄弟元素都会被选中，这种情况下与没有参数的`nextAll()`效果一样。
-
 13. `parent([expr])`：取得一个包含着所有匹配元素的父元素的元素集合。可以用可选的表达式筛选。
-
 14. `prev([expr])`：取得一个包含匹配的元素集合中每一个元素的上一个相邻兄弟元素的元素集合。可以用可选的表达式进行筛选。
-
 15. `prevAll([expr])`：查找当前元素之前所有的兄弟元素。
-
 16. `prevUntil([expr|ele][,fil])`：查找当前元素之前所有的兄弟元素，直到遇到匹配的那个元素为止。如果没有选择器匹配到，或者没有提供参数，那么前面的所有兄弟元素都会被选中，这种情况下与没有参数的`prevAll()`效果一样。
-
 17. `siblings([expr])`：取得一个包含匹配的元素集合中每一个元素的所有同辈元素的元素集合。可以用可选的表达式进行筛选。
-
 18. `add(expr|ele|html|obj[,con])`：把与表达式匹配的元素添加到 jQuery 对象中。这个函数可以用于连接分别与两个表达式匹配的元素结果集。
-
     参数：
-
     （1）`expr`：选择器字符串。
-
     （2）`ele`：DOM 元素对象。
-
     （3）`html`：HTML 字符串。
-
     （4）`obj`：jQuery 对象。
-
     （5）`con`：可选。待查找的 DOM 元素集、文档或 jQuery 对象。
 
 # 6 jQuery的属性操作
@@ -210,7 +235,7 @@ jQuery 对象转换为 DOM 对象：`jQueryObject[index]`。
 <head>
     <script src="jquery-1.7.2.js"></script>
     <script>
-    	$(function(){
+        $(function(){
             // 单选按钮
             $(":radio").val(["radio2"]);
             // 多选按钮
@@ -262,13 +287,9 @@ jQuery 对象转换为 DOM 对象：`jQueryObject[index]`。
 参数：
 
 1. `name`：属性名称。用于获取指定属性的值。
-
-2. `pro`：“键/值对” 对象。用于设置多个属性的值。
-
+2. `pro`：“键/值对”对象。用于设置多个属性的值。
    注意：键的引号可以省略。但如果属性名为`class`，引号不能省略，因为`class`是 JavaScript 关键字。
-
 3. `key, val`：属性名称、属性值。用于设置单个属性的值。
-
 4. `key, fn`：属性名称、回调函数。回调函数可以有 2 个参数，第一个参数为当前元素的索引值，第二个参数为原先的属性值。回调函数的返回值为要设置的属性值。如果回调函数没有返回值或返回值为`undefined`，则不修改属性值，利用这一特性可以在满足某些条件时才选择性地设置属性值。
 
 示例：
@@ -303,15 +324,13 @@ var abc = $("div").attr("abc"); // 获取 div 的 abc 属性值
 
 对于布尔属性，如`checked`、`selected`、`disabled`、`readonly`、`required`等，使用`prop()`函数将返回`true`或`false`，而`attr()`函数则不会。因此操作布尔属性时适合用`prop()`函数，操作其他属性时使用`attr()`函数。
 
-------
-
 练习：全选、全不选、反选。
 
 ```html
 <head>
     <script src="jquery-1.7.2.js"></script>
     <script>
-    	$(function(){
+        $(function(){
             // 全选按钮
             $("#checkedAllBtn").click(function(){
                 // 将所有复选框设置为选中
@@ -489,4 +508,3 @@ $("div").bind("click mouseover", function(event){
     }
 });
 ```
-

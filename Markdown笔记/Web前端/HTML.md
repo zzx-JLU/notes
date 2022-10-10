@@ -1,5 +1,61 @@
-[TOC]
+---
+title: HTML
+chrome:
+    format: "A4"
+    headerTemplate: '<div></div>'
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;"> 
+    <span class=pageNumber></span> / <span class=totalPages></span></div>'
+    displayHeaderFooter: true
+    margin:
+        top: '40px'
+        bottom: '80px'
+        left: '60px'
+        right: '60px'
+---
+
+<h1>HTML</h1>
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [1 HTML简介](#1-html简介)
+  - [1.1 基本概念](#11-基本概念)
+  - [1.2 基本结构](#12-基本结构)
+    - [1.2.1 DOCTYPE](#121-doctype)
+    - [1.2.2 head标签](#122-head标签)
+- [2 HTML基本内容](#2-html基本内容)
+  - [2.1 标题](#21-标题)
+  - [2.2 段落](#22-段落)
+  - [2.3 换行](#23-换行)
+  - [2.4 水平线](#24-水平线)
+  - [2.5 图片](#25-图片)
+  - [2.6 超链接](#26-超链接)
+  - [2.7 文本格式化标签](#27-文本格式化标签)
+  - [2.8 无序列表](#28-无序列表)
+  - [2.9 有序列表](#29-有序列表)
+  - [2.10 自定义列表](#210-自定义列表)
+  - [2.11 表格](#211-表格)
+  - [2.12 实体字符](#212-实体字符)
+  - [2.13 表单](#213-表单)
+    - [2.13.1 表单标签](#2131-表单标签)
+    - [2.13.2 表单域](#2132-表单域)
+    - [2.13.3 表单按钮](#2133-表单按钮)
+    - [2.13.4 表单元素的属性](#2134-表单元素的属性)
+    - [2.13.5 HTML5新增的表单元素](#2135-html5新增的表单元素)
+    - [2.13.6 HTML5新增的表单元素属性](#2136-html5新增的表单元素属性)
+  - [2.14 布局标签](#214-布局标签)
+  - [2.15 HTML5新增标签](#215-html5新增标签)
+    - [2.15.1 语义化布局标签](#2151-语义化布局标签)
+    - [2.15.2 视频](#2152-视频)
+    - [2.15.3 音频](#2153-音频)
+    - [2.15.4 资源](#2154-资源)
+
+<!-- /code_chunk_output -->
+
+
 # 1 HTML简介
+
 ## 1.1 基本概念
 
  1. HTML 全称为超文本标记语言（Hyper Text Markup Language），是一种用来描述网页的语言。HTML 不是一种编程语言，而是一种**标记语言**，它使用一套标记标签来描述网页。
@@ -24,12 +80,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<mata charset="UTF-8"/>
-	<title></title>
+    <mata charset="UTF-8"/>
+    <title></title>
 </head>
 <body></body>
 </html>
 ```
+
 `<!DOCTYPE html>`：文档类型声明。
 
 `<html></html>`：HTML文档的所有内容写在`html`标签之间。
@@ -39,10 +96,13 @@
 `<body></body>`：网页的主体内容。
 
 ### 1.2.1 DOCTYPE
+
 `<!DOCTYPE html>`：文档类型声明，不是HTML 标签，作用是让浏览器按照当前标准解析代码。
 
 HTML5 的文档类型声明：`<!DOCTYPE html>`。
+
 ### 1.2.2 head标签
+
 `head`标签中可以包含的标签如下所示。
 
  1. `<title></title>`标签：设置网页标题。
@@ -54,19 +114,27 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 `href`属性：设置要引入的内容的路径。
 
 # 2 HTML基本内容
+
 ## 2.1 标题
+
 标题标签：`<h1></h1>`、`<h2></h2>`、`<h3></h3>`、`<h4></h4>`、`<h5></h5>`、`<h6></h6>`
 
 `h1`字号最大，从`h1`往`h6`逐级递减。默认水平居左、加粗。
 
 `align`属性：设置元素内容的水平对齐方式，取值可以为`left`、`center`、`rignt`。
+
 ## 2.2 段落
+
 段落标签：`<p></p>`
 
 `align`属性：设置元素内容的水平对齐方式，默认值为`left`。
+
 ## 2.3 换行
+
 换行标签：`<br/>`
+
 ## 2.4 水平线
+
 水平线标签：`<hr/>`
 
 `hr`标签的属性：
@@ -76,8 +144,8 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
  3. `size`：设置水平线的垂直高度
  4. `align`：设置水平线的水平对齐方式，默认值为`center`
 
-
 ## 2.5 图片
+
 图片标签：`<img/>`
 
 `img`标签的属性：
@@ -89,7 +157,9 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
  5. `height`：设置图片高度
 
 当`width`和`height`只设置其中一个时，另一个属性等比例变化。
+
 ## 2.6 超链接
+
 超链接标签：`<a></a>`
 
 `a`标签中的内容是超链接在网页中显示的内容，可以是文字、图片等。
@@ -103,21 +173,27 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 `href`属性值为`#`时叫做空链接，表示跳转到页面顶部。
 
 锚点用于跳转到页面中的特定位置。锚点有以下两种类型。
+
  1. 从`a`标签跳转到`a`标签
+
 在要跳转到的`a`标签设置`name`属性值。在要点击的超链接处，在`href`属性中加入`#+name值`。例如：
 
 ```html
 <a href="#here">点击</a>
 <a href="" name="here">跳转到我</a>
 ```
+
  2. 从`a`标签跳转到块级元素
+
 在要跳转到的块级元素设置`id`属性值。在要点击的超链接处，在`href`属性中加入`#+id值`。例如：
 
 ```html
 <a href="#here">点击</a>
 <p id="here">跳转到我</p>
 ```
+
 ## 2.7 文本格式化标签
+
 `<b></b>`：**粗体**
 `<i></i>`：*斜体*
 `<u></u>`：<u>下划线</u>
@@ -131,6 +207,7 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 `<del></del>`、`<s></s>`：<s>删除线</s>
 
 ## 2.8 无序列表
+
 无序列表标签：`<ul></ul>`
 列表项标签：`<li></li>`
 
@@ -138,9 +215,9 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 
 ```html
 <ul>
-	<li>第一行</li>
-	<li>第二行</li>
-	<li>第三行</li>
+    <li>第一行</li>
+    <li>第二行</li>
+    <li>第三行</li>
 </ul>
 ```
 
@@ -152,17 +229,19 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 
 ```html
 <ul>
-	<li>
-		中国
-		<ul>
-			<li>北京</li>
-			<li>天津</li>
-		</ul>
-	</li>
-	<li>美国</li>
+    <li>
+        中国
+        <ul>
+            <li>北京</li>
+            <li>天津</li>
+        </ul>
+    </li>
+    <li>美国</li>
 </ul>
 ```
+
 ## 2.9 有序列表
+
 有序列表标签：`<ol></ol>`
 
 有序列表与无序列表类似，只是显示在页面上时，项目符号为数字。
@@ -174,6 +253,7 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
  3. `reversed`：取值为`reversed`时表示倒序，不设置此属性时默认为正序。当属性名和属性值相同时，属性值可以省略。
 
 ## 2.10 自定义列表
+
 自定义列表标签：`<dl></dl>`
 主题标签：`<dt></dt>`
 描述标签：`<dd></dd>`
@@ -182,14 +262,16 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 
 ```html
 <dl>
-	<dt>主题一</dt>
-	<dd>1.1</dd>
-	<dd>1.2</dd>
-	<dt>主题二</dt>
-	<dd>2.1</dd>
+    <dt>主题一</dt>
+    <dd>1.1</dd>
+    <dd>1.2</dd>
+    <dt>主题二</dt>
+    <dd>2.1</dd>
 </dl>
 ```
+
 ## 2.11 表格
+
 表格标签：`<table></table>`
 行标签：`<tr></tr>`
 单元格标签：`<td></td>`
@@ -203,25 +285,26 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 
 ```html
 <table>
-	<caption>标题</caption>
-	<thead>
-		<tr>
-			<td></td>
-			<td></td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-		</tr>
-	</tbody>
+    <caption>标题</caption>
+    <thead>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
 </table>
 ```
+
 `table`标签的属性：
 
  1. `border`：设置外边框宽度
@@ -254,6 +337,7 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
  8. `rowspan`：垂直合并单元格，取值为合并单元格的数量（设置单元格跨越的行数）
 
 ## 2.12 实体字符
+
 一些特殊符号不能识别，可以用实体字符替代。
 
 空格：`&nbsp;`
@@ -261,6 +345,7 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 右尖括号：`&gt;`
 
 ## 2.13 表单
+
 表单用于用户填写信息，使网页具有交互性。一般将表单设计在 HTML 文档中，当用户填写完信息后做提交操作，将表单的内容从浏览器传送到服务器上，经过服务器上的处理程序处理后，再将用户所需信息传送回浏览器上。
 
 一个完整的表单包含三个基本组成部分：表单标签、表单域、表单按钮。其中表单域和表单按钮统称为表单元素。
@@ -268,6 +353,7 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 ![表单](https://img-blog.csdnimg.cn/bcf75a6e84fd436cbcc20d9ee4a66cd9.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ4ODE0MjA1,size_16,color_FFFFFF,t_70#pic_center)
 
 ### 2.13.1 表单标签
+
 表单标签：`<form></form>`
 
 `form`标签不能相互嵌套，一个页面可以有多个`form`标签。
@@ -281,6 +367,7 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 `get`只能提交少量数据（2KB），`post`理论上没有限制。
 
 ### 2.13.2 表单域
+
 表单域是`form`标签中用来收集用户输入的每一项。表单域有不同的类型，对应不同的用户数据。
 
 表单域有以下几种：
@@ -301,20 +388,22 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 <input type="radio" id="woman" name="sex" value="female"/>
 <label for="woman">女</label>
 ```
+
  6. 下拉列表：`<select></select>`，`size`属性表示列表框的高度占几个列表项。
 `<option></option>`表示列表中的一项，`value`属性表示当前值，`selected="selected"`属性值设置该项默认选中。
 `<optgroup></optgroup>`标签为`option`标签分组，`label`属性设置组名。
 
 ```html
 <select>
-	<optgroup label="河北">
-		<option value="sjz">石家庄</option>
-	</optgroup>
-	<optgroup label="北京">
-		<option value="cy">朝阳</option>
-	</optgroup>
+    <optgroup label="河北">
+        <option value="sjz">石家庄</option>
+    </optgroup>
+    <optgroup label="北京">
+        <option value="cy">朝阳</option>
+    </optgroup>
 </select>
 ```
+
  7. 多行文本框：`<textarea></textarea>`
 `rows`属性表示行数，`cols`属性表示列数。
  8. 文件框：`<input type="file"/>`
@@ -323,6 +412,7 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 隐藏域不会显示在页面上，但是其中的数据可以正常提交给服务器。
 
 ### 2.13.3 表单按钮
+
 表单按钮用来将表单中的所有信息提交到服务器。
 
 表单按钮有以下几种：
@@ -333,6 +423,7 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
  4. 图片提交按钮： `<input type="image" src=""/>`或`<button><img src=""/></button>`
 
 `input`标签是单标签，按钮上显示的文字由`value`属性指定。`button`标签是双标签，按钮上显示的内容放在`button`标签中，可以是文字、图片等。
+
 ### 2.13.4 表单元素的属性
 
  1. `type`：设置表单元素的类型
@@ -367,12 +458,17 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
  6. `maxlength`：最大长度
 
 ## 2.14 布局标签
+
 `<div></div>`、`<span></span>`表示无语义的容器，用于页面布局。
 
 `<div></div>`是块级元素，`<span></span>`是行内元素。
+
 ## 2.15 HTML5新增标签
+
 注意：IE 8 及以下不支持 HTML5。
+
 ### 2.15.1 语义化布局标签
+
 在 HTML5 之前，通常采用 DIV+CSS 的布局方式。由于`div`标签是无语义的，使得文档结构不清晰，而且不利于搜索引擎爬虫对页面的爬取。为了解决上述缺点，HTML5 新增了很多语义化布局标签。
 
 `<header></header>`：头部
@@ -383,7 +479,9 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 `<footer></footer>`：页脚
 
 这些标签都是块级元素。
+
 ### 2.15.2 视频
+
 视频标签（行内标签）：`<video></video>`
 
 标签中的内容是提示信息，当浏览器不支持视频时，显示标签中的内容。
@@ -403,6 +501,7 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
  9. `preload`：如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用`autoplay`属性，则忽略`preload`属性。
 
 ### 2.15.3 音频
+
 音频标签：`<audio></audio>`
 
 标签中的内容是提示信息，当浏览器不支持音频时，显示标签中的内容。
@@ -416,6 +515,7 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
  5. `muted`：静音。
 
 ### 2.15.4 资源
+
 资源标签：`<source src=""/>`
 
 `source`标签为媒介元素（如`video`和`audio`标签）定义媒介资源。`source`标签允许程序员规定可替换的视频/音频文件，供浏览器根据它对媒体类型或者解编码器的支持进行选择。
@@ -424,9 +524,9 @@ HTML5 的文档类型声明：`<!DOCTYPE html>`。
 
 ```html
 <video controls>
-	<source src="video1.mp4"/>
-	<source src="video1.ogg"/>
-	<source src="video1.webM"/>
-	您的浏览器不支持视频，请升级
+    <source src="video1.mp4"/>
+    <source src="video1.ogg"/>
+    <source src="video1.webM"/>
+    您的浏览器不支持视频，请升级
 </video>
 ```

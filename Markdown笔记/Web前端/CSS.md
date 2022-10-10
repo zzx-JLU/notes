@@ -1,4 +1,93 @@
-[TOC]
+---
+title: CSS
+chrome:
+    format: "A4"
+    headerTemplate: '<div></div>'
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;"> 
+    <span class=pageNumber></span> / <span class=totalPages></span></div>'
+    displayHeaderFooter: true
+    margin:
+        top: '40px'
+        bottom: '80px'
+        left: '60px'
+        right: '60px'
+---
+
+<h1>CSS</h1>
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [1 CSS介绍](#1-css介绍)
+- [2 CSS的引入方式](#2-css的引入方式)
+  - [2.1 内联样式（行内样式）](#21-内联样式行内样式)
+  - [2.2 内部样式](#22-内部样式)
+  - [2.3 外部样式](#23-外部样式)
+  - [2.4 导入式](#24-导入式)
+  - [2.5 引入方式的优先级](#25-引入方式的优先级)
+- [3 选择器](#3-选择器)
+  - [3.1 基础选择器](#31-基础选择器)
+    - [3.1.1 全局选择器](#311-全局选择器)
+    - [3.1.2 元素选择器](#312-元素选择器)
+    - [3.1.3 类选择器](#313-类选择器)
+    - [3.1.4 ID选择器](#314-id选择器)
+    - [3.1.5 合并选择器](#315-合并选择器)
+    - [3.1.6 交集选择器](#316-交集选择器)
+    - [3.1.7 选择器的优先级](#317-选择器的优先级)
+  - [3.2 关系选择器](#32-关系选择器)
+    - [3.2.1 后代选择器](#321-后代选择器)
+    - [3.2.2 子代选择器](#322-子代选择器)
+    - [3.2.3 相邻兄弟选择器](#323-相邻兄弟选择器)
+    - [3.2.4 通用兄弟选择器](#324-通用兄弟选择器)
+  - [3.3 伪类选择器](#33-伪类选择器)
+    - [3.3.1 常用伪类选择器](#331-常用伪类选择器)
+    - [3.3.2 CSS3新增伪类选择器](#332-css3新增伪类选择器)
+  - [3.4 伪对象选择器](#34-伪对象选择器)
+- [4 CSS属性](#4-css属性)
+  - [4.1 字体属性](#41-字体属性)
+  - [4.2 文本属性](#42-文本属性)
+  - [4.3 列表属性](#43-列表属性)
+  - [4.4 表格属性](#44-表格属性)
+  - [4.5 背景属性](#45-背景属性)
+  - [4.6 内容溢出](#46-内容溢出)
+    - [4.6.1 overflow](#461-overflow)
+    - [4.6.2 white-space](#462-white-space)
+    - [4.6.3 text-overflow](#463-text-overflow)
+  - [4.7 浮动](#47-浮动)
+  - [4.8 定位](#48-定位)
+  - [4.9 其他属性](#49-其他属性)
+    - [4.9.1 行高](#491-行高)
+    - [4.9.2 透明度](#492-透明度)
+    - [4.9.3 字符间距](#493-字符间距)
+    - [4.9.4 display](#494-display)
+    - [4.9.5 鼠标光标](#495-鼠标光标)
+  - [4.10 CSS3新增属性](#410-css3新增属性)
+    - [4.10.1 圆角](#4101-圆角)
+    - [4.10.2 阴影](#4102-阴影)
+    - [4.10.3 背景渐变](#4103-背景渐变)
+    - [4.10.4 转换](#4104-转换)
+    - [4.10.5 过渡](#4105-过渡)
+    - [4.10.6 动画](#4106-动画)
+    - [4.10.7 字体图标](#4107-字体图标)
+- [5 盒模型](#5-盒模型)
+  - [5.1 标准盒模型](#51-标准盒模型)
+    - [5.1.1 content](#511-content)
+    - [5.1.2 border](#512-border)
+    - [5.1.3 padding](#513-padding)
+    - [5.1.4 margin](#514-margin)
+  - [5.2 怪异盒模型](#52-怪异盒模型)
+  - [5.3 弹性盒模型](#53-弹性盒模型)
+- [6 兼容性问题](#6-兼容性问题)
+  - [6.1 css hack](#61-css-hack)
+    - [6.1.1 条件注释法](#611-条件注释法)
+    - [6.1.2 属性前缀和后缀](#612-属性前缀和后缀)
+  - [6.2 厂商前缀](#62-厂商前缀)
+- [7 响应式布局](#7-响应式布局)
+- [8 雪碧图](#8-雪碧图)
+
+<!-- /code_chunk_output -->
+
 # 1 CSS介绍
 
  1. CSS 全称为层叠样式表（Cascading Style Sheets），又叫级联样式表，简称样式表。
@@ -12,38 +101,49 @@
 （2）层叠性：一个元素可以设置多个样式。当样式冲突时，优先级高的样式生效；优先级相同时，写在后面的样式生效。
 
 # 2 CSS的引入方式
+
 ## 2.1 内联样式（行内样式）
+
 在 HTML 标签内使用`style`属性，属性值是 CSS 代码，该样式只对当前元素生效。例如：
 
 ```html
 <p style="background: orange; font-size: 24px;">内容</p>
 ```
+
 特点：缺乏整体性和规划性，不利于维护，维护成本高。
+
 ## 2.2 内部样式
+
 当单个 HTML 文档需要特殊的样式时，就应该使用内部样式表。在 HTML 文档中使用`style`标签，在`style`标签中写 CSS 代码，该样式只对当前页面生效。`style`标签通常写在`head`标签中，例如：
 
 ```html
 <head>
-	<style>
-		h1 {background: red;}
-	</style>
+    <style>
+        h1 {background: red;}
+    </style>
 </head>
 ```
+
 特点：单个页面内的 CSS 代码具有统一性和规划性，便于维护，但是在多个页面之间容易混乱。
+
 ## 2.3 外部样式
+
 在`head`标签中使用`link`标签引入 CSS 文件。`rel="stylesheet"`属性值表示引入的是样式表，`href`属性指定 CSS 文件的路径。例如：
 
 ```html
 <head>
-	<link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="" />
 </head>
 ```
+
 特点：实现了内容与表现的完全分离，提高了代码的可重用性和可维护性。
+
 ## 2.4 导入式
+
 ```html
 <style>
-	@import "CSS文件路径";
-	@import url("CSS文件路径");
+    @import "CSS文件路径";
+    @import url("CSS文件路径");
 </style>
 ```
 
@@ -56,30 +156,42 @@
  5. IE5 以下不支持`@import`，而`link`没有兼容性问题。
 
 由于以上原因，一般不使用导入式。
+
 ## 2.5 引入方式的优先级
+
 行内样式 > 内部样式 = 外部样式
 
 内部样式和外部样式优先级相同，写在后面的生效。
+
 # 3 选择器
+
 选择器的作用：选中某些元素，为它们添加样式。
 
 选择器的语法：`选择器{属性:属性值;}`
+
 ## 3.1 基础选择器
+
 ### 3.1.1 全局选择器
+
 选择页面中的所有元素，优先级最低，不推荐使用。语法：`*{}`。
+
 ### 3.1.2 元素选择器
+
 HTML标签名+大括号，选择页面上所有同种类型的标签，描述它们的“共性”。语法：`标签名{}`。
+
 ### 3.1.3 类选择器
+
 在 HTML 标签中使用`class`属性定义类名，在 CSS 中使用`.类名`选择相应类名的所有标签。例如：
 
 ```html
 <h2 class="oneclass"></h2>
 <style>
-	.oneclass {
-		/* 属性:属性值; */
-	}
+    .oneclass {
+        /* 属性:属性值; */
+    }
 </style>
 ```
+
 `class`属性的特点：
 
  1. 同一类名可以被多种标签使用。
@@ -89,34 +201,44 @@ HTML标签名+大括号，选择页面上所有同种类型的标签，描述它
 ```html
 <h3 class="classone classtwo"></h3>
 ```
+
 ### 3.1.4 ID选择器
+
 在 HTML 标签中使用`id`属性定义 ID，在 CSS 中使用`#ID`选择相应 ID 的标签。例如：
 
 ```html
 <h2 id="title"></h2>
 <style>
-	#title {
-		/* 属性:属性值; */
-	}
+    #title {
+        /* 属性:属性值; */
+    }
 </style>
 ```
+
 在 HTML 页面中不能出现相同的 ID，ID 具有唯一性。
+
 ### 3.1.5 合并选择器
+
 为多个选择器设置公共样式，多个选择器之间用逗号隔开。
+
 ```css
 选择器1,选择器2,...,选择器n {
-	/* 公共样式 */
+    /* 公共样式 */
 }
 ```
+
 ### 3.1.6 交集选择器
+
 `标签名.类名{}`，选择指定标签中具有指定类名的元素。
+
 ```css
 标签名.类名 {
-	/* 属性:属性值; */
+    /* 属性:属性值; */
 }
 ```
 
 ### 3.1.7 选择器的优先级
+
 行内样式 > ID选择器 > 类选择器 > 元素选择器 > 全局选择器（范围越小，优先级越高）
 
 选择器的优先级还可以通过权重计算：
@@ -128,41 +250,52 @@ HTML标签名+大括号，选择页面上所有同种类型的标签，描述它
 | 元素选择器 | 1 |
 
 多个选择器组合使用时（如合并选择器），其权重等于各个选择器权重之和。
+
 ## 3.2 关系选择器
+
 ### 3.2.1 后代选择器
+
 选择所有被 E 元素包含的 F 元素。父元素和后代元素之间用空格隔开，语法如下：
 
 ```css
 E F {
-	/* 属性:属性值; */
+    /* 属性:属性值; */
 }
 ```
 ### 3.2.2 子代选择器
+
 选择 E 元素的直接子元素 F，对更深层的子元素不起作用。父元素和子元素之间用`>`隔开，语法如下：
 
 ```css
 E>F {
-	/* 属性:属性值; */
+    /* 属性:属性值; */
 }
 ```
+
 ### 3.2.3 相邻兄弟选择器
+
 选择紧跟在 E 元素后面的 F 元素，相邻元素之间用`+`连接。语法如下：
 
 ```css
 E+F {
-	/* 属性:属性值; */
+    /* 属性:属性值; */
 }
 ```
+
 ### 3.2.4 通用兄弟选择器
+
 选择 E 元素之后的所有兄弟元素 F，两种元素之间用`~`连接。语法如下：
 
 ```css
 E~F {
-	/* 属性:属性值; */
+    /* 属性:属性值; */
 }
 ```
+
 ## 3.3 伪类选择器
+
 同一个标签，根据其不同的状态有不同的样式，就叫做“伪类”。伪类用冒号`:`表示。
+
 ### 3.3.1 常用伪类选择器
 
  1. `:link`：设置超链接点击之前的样式（只适用于`a`标签）
@@ -193,6 +326,7 @@ E~F {
  14. `::selection`：选择被光标选中的元素部分。
 
 ## 3.4 伪对象选择器
+
 伪对象也叫伪元素。伪对象用双冒号`::`表示，只写一个冒号也能被解析。
 
 伪类用于定义元素状态；而伪对象则是改变文档结构，在结构外另加一个没有实际存在的元素（伪元素）。
@@ -206,31 +340,33 @@ E~F {
 
 ```html
 <style>
-	/* 1.插入文字 */
-	.box::before{
-		content: "插入文字";
-	}
+    /* 1.插入文字 */
+    .box::before{
+        content: "插入文字";
+    }
 
-	/* 2.插入图片 */
-	.box::after{
-		content: url("");
-	}
+    /* 2.插入图片 */
+    .box::after{
+        content: url("");
+    }
 
-	/* 3.自定义内容 */
-	.box::before{
-		content: ""; /* 默认为行内元素 */
-		display: block; /* 转换为块级元素 */
-		/* 设置其他属性 */
-	}
+    /* 3.自定义内容 */
+    .box::before{
+        content: ""; /* 默认为行内元素 */
+        display: block; /* 转换为块级元素 */
+        /* 设置其他属性 */
+    }
 </style>
 
 <div class="box">内容</div>
 ```
 
 # 4 CSS属性
+
 ## 4.1 字体属性
+
 |属性| 描述 | 取值 |
-|:--:|:--:|:--|
+|:--:|:--:|--|
 | `color`| 文字颜色 | 颜色值 |
 | `font-size` | 文字大小 | 像素数，单位为`px`。<br>普通文字的默认大小为16px。 |
 | `font-weight` | 文字的粗细 | `normal`：标准字符<br>`bold`：粗体<br>`bolder`：更粗的字符<br>`lighter`：更细的字符<br>也可以取100到900之间的数字，其中400等同于`normal`，700等同于`bold`。 |
@@ -246,34 +382,38 @@ E~F {
  4. `rgba()`。在`rgb()`的基础上增加第四个参数，表示透明度，取值为 0-1 之间的数字，0 表示完全透明，1 表示不透明。
 
 字体属性具有继承性，如果元素没有设置样式，就会继承父元素的样式。
+
 ## 4.2 文本属性
+
 |属性| 描述 | 取值 |
-|:--:|:--:|:--|
+|:--:|:--:|--|
 | `text-align` | 文本的水平对齐方式 | `left`：默认值。左对齐<br>`right`：右对齐<br>`center`：水平居中 |
 | `text-decoration` | 文本的修饰 | `none`：没有修饰线<br>`underline`：下划线<br>`overline`：上划线<br>`line-through`：删除线 |
 | `text-transform` | 英文大小写 | `none`：默认样式<br>`capitalize`：每个单词以大写字母开头<br>`uppercase`：全部大写<br>`lowercase`：全部小写 |
 | `text-indent` | 文本首行缩进 | 像素数。正值表示向右缩进，负值表示向左缩进。 |
 
 文本属性具有继承性。
+
 ## 4.3 列表属性
+
 |属性| 描述 | 取值 |
-|:--:|:--:|:--|
+|:--:|:--:|--|
 | `list-style-type` | 列表项标记的类型 | `none`：无标记<br>`disc`：实心圆<br>`circle`：空心圆<br>`square`：实心方块<br>`decimal`：数字<br>`decimal-leading-zero`：0开头的数字（如01、02等）<br>`lower-roman`：小写罗马数字<br>`upper-roman`：大写罗马数字<br>`lower-alpha`：小写英文字母<br>`upper-alpha`：大写英文字母<br>`lower-greek`：小写希腊字母<br>`lower-latin`：小写拉丁字母<br>`upper-latin`：大写拉丁字母 |
 | `list-style-image` | 将列表项标记设置为图像 | `list-style-image:url("");` |
 | `list-style-position` | 列表项标记相对于内容的位置 | `inside`：列表项标记放在文本以内，且环绕文本根据标记对齐<br>`outside`：列表项标记放在文本以外，且环绕文本不根据标记对齐 |
 
 可以使用`list-style`属性同时设置以上三个属性，多个值用空格隔开，不区分先后顺序。
+
 ## 4.4 表格属性
+
 |属性| 描述 | 取值 |
-|:--:|:--:|:--|
+|:--:|:--:|--|
 | `width` | 表格的宽度 | 像素数 |
 | `height` | 表格的高度 | 像素数 |
 | `border-spacing` | 单元格之间的距离 | 像素数 |
 | `border-collapse` | 边框折叠 | `collapse`：边框折叠 |
 | `text-align` | 单元格内容的水平对齐方式 | `left`：默认值。左对齐<br>`right`：右对齐<br>`center`：水平居中 |
 | `vertical-align` | 单元格内容的垂直对齐方式 | `top`：垂直居上<br>`middle`：垂直居中<br>`bottom`：垂直居下<br>只能对`tr`和`td`标签设置，对`table`标签无效。 |
-
-
 
 ## 4.5 背景属性
 
@@ -286,16 +426,18 @@ E~F {
 |   `background-repeat`   |     设置背景图片如何铺排填充     | `repeat`：默认值。平铺<br/>`no-repeat`：不平铺<br/>`repeat-x`：水平平铺<br/>`repeat-y`：垂直平铺<br/>必须先设置`background-image`属性。 |
 |    `background-size`    |           背景图片大小           | 取值由两个值组成，第一个表示宽度，第二个表示高度，两个值之间用空格隔开。也可以只设置宽度，图片按比例缩放。<br/>`cover`：覆盖整个背景区域，但背景图可能显示不全<br/>`contain`：背景图显示完整，但可能无法覆盖整个背景区域<br/>必须先设置`background-image`属性。 |
 
-
-
 可以使用`background`简写属性设置以上属性，多个值用空格隔开，不区分先后顺序。没有设置的属性取默认值。
 
 当背景图片的大小和位置取值为像素数或百分数时，一般不使用简写属性。
 
 当简写属性与单个属性同时出现时，单个属性写在简写属性下面，避免被覆盖。
+
 ## 4.6 内容溢出
+
 ### 4.6.1 overflow
+
 `overflow`属性指定如果内容溢出一个元素的框会发生什么。
+
 |取值| 描述 |
 |:--:|:--:|
 | `visible` | 默认值。内容不会被修剪，溢出内容会呈现在元素框之外 |
@@ -305,9 +447,11 @@ E~F {
 | `inherit` | 从父元素继承`overflow`属性的值 |
 
 ### 4.6.2 white-space
+
 `white-space`属性定义元素内空白的处理方式。空白包括空格、换行符（回车）、制表符。
+
 |取值| 描述 |
-|:--:|:--|
+|:--:|--|
 | `normal` | 默认值。忽略多余的空白，多个空白连在一起时看做一个空白。<br>不影响自动换行，一行文字放不下时自动换行。 |
 | `nowrap` | 忽略多余的空白，多个空白连在一起时看做一个空白。<br>文本不会自动换行，只有遇到`br`标签才换行。 |
 | `pre` | 保留空白，有几个空白就显示几个。文本不会自动换行，只有遇到`br`标签才换行。 |
@@ -316,7 +460,9 @@ E~F {
 | `inherit` | 继承父元素的`white-space`属性值 |
 
 ### 4.6.3 text-overflow
+
 `text-overflow`规定文本溢出时发生什么。
+
 |取值| 描述 |
 |:--:|:--:|
 | `clip` | 修剪文本 |
@@ -333,7 +479,9 @@ overflow: hidden;
 /* 设置文字溢出时的表现 */
 text-overflow: ellipsis;
 ```
+
 ## 4.7 浮动
+
 浮动的作用：布局，使块级元素水平显示。
 
 浮动的原理：
@@ -355,9 +503,11 @@ text-overflow: ellipsis;
  5. 伪对象法：用伪对象选择器写空`div`。
 
 ## 4.8 定位
+
 `position`属性指定了元素的定位类型。
+
 |取值| 描述 | 应用场景 |
-|:--:|:--|:--|
+|:--:|:--|--|
 | `static` | 默认值。没有定位，元素出现在正常的流中，忽略`left`、`right`、`top`、`bottom`、`z-index`属性。 ||
 | `relative` | 相对定位，相对于其正常位置进行定位，定位后原位置保留。<br>元素的位置通过`left`、`right`、`top`、`bottom`属性进行设置。 | 1、配合`absolute`使用。<br>2、元素小范围移动。 |
 | `absolute` | 绝对定位，相对于`static`以外的第一个父元素进行定位，原位置不保留。<br>如果父元素没有定位，则逐级往上找，最后相对于body定位。<br>元素的位置通过`left`、`right`、`top`、`bottom`属性进行设置。 | 形成独立的一层 |
@@ -367,27 +517,36 @@ text-overflow: ellipsis;
 `left`和`right`属性同时出现时，`left`优先；`top`和`bottom`属性同时出现时，`top`优先。
 
 `z-index`属性设置堆叠顺序，配合元素定位使用。在元素定位过程中，可能出现元素重叠（比如`relative`、`absolute`、`fixed`），此时需要设置元素的堆叠顺序。`z-index`属性的默认值为`auto`，表示与父元素相同。取值为数字，取值越大，层级越高，可以取负值。默认情况下，当两个元素同时定位时，写在后面的元素层级较高。
+
 ## 4.9 其他属性
+
 ### 4.9.1 行高
+
 `line-height`属性设置文字的行高。取值可以是像素数或数字，当取值为数字时，行高=数字×字体大小。
 
 要想设置单行文字垂直居中，可以设置`line-height`属性等于容器的高度。例如：
 
 ```css
 .box {
-	height: 50px;
-	line-height: 50px;
+    height: 50px;
+    line-height: 50px;
 }
 ```
+
 ### 4.9.2 透明度
+
 `opacity`属性设置元素的透明度。取值为 0-1 之间的数字，0 表示完全透明，1 表示不透明。当取值为 0-1 之间的小数时，小数点之前的 0 可以省略。
 
 ### 4.9.3 字符间距
+
 `letter-spacing`属性设置字符间距。取值为像素数，可正可负。
+
 ### 4.9.4 display
+
 `display`属性设置元素生成的框的类型。
+
 |取值| 描述                                                         |
-|:--:|:--|
+|:--:|--|
 | `none` | 此元素不显示，原位置不保留 |
 | `block` | 此元素显示为块级元素，元素前后带有换行符 |
 | `inline` | 此元素显示为行内元素，元素前后没有换行符 |
@@ -408,8 +567,11 @@ text-overflow: ellipsis;
 块级元素：`div`、`p`、`h1`-`h6`、`hr`、`body`、`html`、`ul`、`ol`、`li`、`dl`、`dt`、`dd`、`form`、`header`、`nav`、`footer`、`aside`、`article`、`section`等。
 
 行内元素：`span`、`img`、`a`、`i`、`b`、`u`、`s`、`del`、`sup`、`sub`、`em`、`strong`、`input`、`button`、`textarea`、`video`等。
+
 ### 4.9.5 鼠标光标
+
 `cursor`属性设置鼠标指针放在元素上时光标的形状。
+
 |取值| 描述 |
 |:--:|:--:|
 | `default` | 默认样式 |
@@ -430,13 +592,17 @@ text-overflow: ellipsis;
 | `w-resize` | 指示矩形框的边缘可以向左（西）移动 |
 
 ## 4.10 CSS3新增属性
-### 4.10.1 圆角 
+
+### 4.10.1 圆角
+
 `border-radius`属性设置圆角，取值为像素数或百分数，取值越大弧度越大。
 
 `border-radius`属性可以设置 1-4 个值：取 1 个值表示四个角；取 2 个值，第 1 个表示左上角、右下角，第 2 个表示右上角、左下角；取 3 个值，第 1 个表示左上角，第 2 个表示右上角、左下角，第 3 个表示右下角；取 4 个值，从左到右依次表示左上角、右上角、右下角、左下角。
 
 画圆：宽度和高度相等，设置`border-radius: 50%;`。
+
 ### 4.10.2 阴影
+
 `box-shadow`属性向框添加阴影，`text-shadow`属性向文字添加阴影。
 
 语法：
@@ -456,6 +622,7 @@ text-shadow: h-shadow v-shadow blur color;
 | position | 可选。设置阴影位置，取值`outset`表示外部阴影，`inset`表示内部阴影。默认值为`outset`。 |
 
 ### 4.10.3 背景渐变
+
 CSS3 定义了两种类型的渐变：
 
  1. 线性渐变：沿直线方向渐变。
@@ -479,23 +646,26 @@ CSS3 定义了两种类型的渐变：
  3. 颜色：至少有 2 个，可以有多个。
 
 ### 4.10.4 转换
+
 转换的效果是改变元素的形状、大小和位置。
 
 `transform`属性对元素施加 2D 或 3D 转换。
 
 |属性值| 效果 | 语法 |
-|:--:|:--:|:--|
+|:--:|:--:|--|
 | `translate()` | 位移 | `transform: translate(x, y);`（2D位移，只有一个参数时表示水平位移）<br>`transform: translateX(x);`（水平位移）<br>`transform: translateY(y);`（垂直位移）<br>`transform: translate3D(x, y, z);`（3D位移）<br>`transform: translateZ(z);`（z轴位移）<br>参数取值为像素数或百分数，可正可负。 |
 | `rotate()` | 旋转 | `transform: rotate(r);`（绕中心点旋转）<br>`transform: rotateX(x);`（绕X轴旋转）<br>`transform: rotateY(y);`（绕Y轴旋转）<br>参数取值为角度，取正值时顺时针旋转，取负值时逆时针旋转。<br>注意：元素旋转时，坐标轴也会旋转。当位移和旋转同时使用时，推荐先位移后旋转。 |
 | `scale()` | 缩放 | `transform: scale(x, y);`（只有一个参数时，另一个方向等比例缩放）<br>`transform: scaleX(x);`（水平缩放）<br>`transform: scaleY(y);`（垂直缩放）<br>`transform: scale3D(x, y, z);`（3D缩放）<br>`transform: scaleZ(z);`（z轴缩放）<br>参数取值为数字，0-1表示缩小，大于1表示放大，默认值为1。 |
 | `skew()` | 倾斜 | `transform: skew(x, y);`（只有一个参数时表示水平倾斜）<br>`transform: skewX(x);`（水平倾斜）<br>`transform: skewY(y);`（垂直倾斜）<br>参数取值为角度，单位为`deg`。 |
 
 ### 4.10.5 过渡
+
 过渡是从一种样式逐渐改变为另一种样式的效果。过渡必须有触发事件，如鼠标悬停、鼠标点击等。
 
 `transition`属性设置过渡，它是一个复合属性，包括`transition-property`、`transition-duration`、`transition-timing-function`、`transition-delay`四个子属性，通过这四个子属性的配合来完成一个完整的过渡效果。
+
 |属性| 描述 | 语法                                                         |
-|:--:|:--:|:--|
+|:--:|:--:|--|
 | `transition-property` | 参与过渡的属性 | `transition-property: 属性1, 属性2, ...;`<br>必需。取值`all`表示所有属性。<br>可以过渡的属性：取值为数值（如宽度），取值为颜色（如背景颜色），转换（`transform`），阴影（`box-shadow`、`text-shadow`）。 |
 | `transition-duration` | 持续时间 | `transition-duration: 时间1, 时间2, ...;`<br>必需。默认值为`0s`或`0ms`。每个属性对应一个时间。 |
 | `transition-timing-function` | 速度变化类型 | 可选。<br>`ease`：默认值。先加速后减速<br>`ease-in`：加速<br>`ease-out`：减速<br>`ease-in-out`：先加速后减速<br>`linear`：匀速<br> |
@@ -504,7 +674,9 @@ CSS3 定义了两种类型的渐变：
 一般在`transition`简写属性中同时设置这四个子属性。
 
 一般将过渡写在元素中，这样可以在鼠标悬停和移开时都产生过渡效果。
+
 ### 4.10.6 动画
+
 动画是使元素从一种样式逐渐改变为另一种样式的效果。与过渡不同，动画可以改变任意数量的样式，可以控制动画的执行次数，可以没有触发事件。
 
 使用`@keyframes`定义动画，在`@keyframes`后面指定动画名称，如下所示：
@@ -514,24 +686,27 @@ CSS3 定义了两种类型的渐变：
 
 }
 ```
+
 在`@keyframes`的大括号中，使用`0%`或`from`定义开始状态，`100%`或`to`定义结束状态，二者之间可以用百分数定义中间状态。例如：
 
 ```css
 @keyframes name {
-	0% {
+    0% {
 
-	}
-	50% {
-	
-	}
-	100% {
+    }
+    50% {
+    
+    }
+    100% {
 
-	}
+    }
 }
 ```
+
 动画定义完成后，可以在需要的地方调用动画。使用`animation`属性调用动画，这是一个复合属性，有若干子属性，通过这些子属性的配合完成完整的动画。
+
 |属性| 描述 | 语法                                                         |
-|:--:|:--:|:--|
+|:--:|:--:|--|
 | `animation-name` | 动画名称 | 必需。指定要调用的动画的名称。 |
 | `animation-duration` | 持续时间 | 必需。类似于`transition-duration`。 |
 | `animation-timing-function` | 速度变化类型 | 可选。类似于`transition-timing-function`。 |
@@ -542,6 +717,7 @@ CSS3 定义了两种类型的渐变：
 | `animation-play-state` | 动画播放状态 | 可选。`running`表示播放，`paused`表示暂停。<br>一般不简写，配合触发事件使用。 |
 
 ### 4.10.7 字体图标
+
 字体图标本质上是文字，其样式可以使用字体属性来修改。
 
 [阿里巴巴矢量图标库](https://www.iconfont.cn/)提供了大量字体图标，可以根据需要下载使用。
@@ -555,13 +731,17 @@ CSS3 定义了两种类型的渐变：
  5. 根据`demo_index.html`文件中的提示，在代码中使用 Unicode 编码引入图标。
 
 # 5 盒模型
+
 ## 5.1 标准盒模型
+
 所有 HTML 元素都可以看做盒子，标准盒模型如下图所示：
 
 ![标准盒模型](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/CSS/标准盒模型.47w0mvit9i80.png)
 
 盒模型包括四部分：content（内容）、padding（填充）、border（边框）、margin（外边距）。
+
 ### 5.1.1 content
+
 content 的属性有：
 
  1. `width`：元素的宽度
@@ -572,6 +752,7 @@ content 的属性有：
  6. `max-height`：最大宽度
 
 ### 5.1.2 border
+
 border 的属性有：
 
  1. `border-style`：边框的样式。必需属性。
@@ -590,20 +771,20 @@ border 的属性有：
 <style>
 /* 向下的三角形 */
 .box1 {
-	width: 0;
-	height: 0;
-	border-top: solid 10px red;
-	border-left: solid 10px transparent;
-	border-right: solid i0px transparent;
+    width: 0;
+    height: 0;
+    border-top: solid 10px red;
+    border-left: solid 10px transparent;
+    border-right: solid i0px transparent;
 }
 
 /* 向右的梯形 */
 .box2 {
-	width: 0;
-	height: 10px;
-	border-left: solid 10px green;
-	border-top: solid 10px transparent;
-	border-bottom: solid 10px transparent;
+    width: 0;
+    height: 10px;
+    border-left: solid 10px green;
+    border-top: solid 10px transparent;
+    border-bottom: solid 10px transparent;
 }
 </style>
 
@@ -612,12 +793,15 @@ border 的属性有：
 ```
 
 ### 5.1.3 padding
+
 `padding`属性可以设置 1-4 个值：取 1 个值表示四周；取 2 个值，从左到右分别表示上下、左右；取 3 个值，从左到右分别表示上、左右、下；取 4 个值，从左到右分别表示上、右、下、左。
 
 除此之外，还可以分别设置 4 个方向的内边距：`padding-top`、`padding-bottom`、`padding-left`、`padding-right`。
 
 `padding`属性不能取负值或`auto`。
+
 ### 5.1.4 margin
+
 `margin`属性可以设置 1-4 个值：取 1 个值表示四周；取 2 个值，从左到右分别表示上下、左右；取 3 个值，从左到右分别表示上、左右、下；取 4 个值，从左到右分别表示上、右、下、左。
 
 除此之外，还可以分别设置 4 个方向的外边距：`margin-top`、`margin-bottom`、`margin-left`、`margin-right`。
@@ -641,6 +825,7 @@ border 的属性有：
 实际高度=`height`+`padding-top`+`padding-bottom`+`border-top`+`border-bottom`+`margin-top`+`margin-bottom`
 
 ## 5.2 怪异盒模型
+
 怪异盒模型也包括 content、padding、border、margin 四部分。与标准盒模型不同的是，怪异盒模型中 content 部分包含了 padding 和 border。也就是说，`width`属性不是 content 的宽度，而是 content、padding、border 宽度的总和，`height`属性是 content、padding、border 高度的总和。
 
 ![怪异盒模型](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/CSS/怪异盒模型.4iars2598260.png)
@@ -649,7 +834,9 @@ border 的属性有：
 怪异盒模型元素的实际高度=`height`+`margin-top`+`margin-bottom`
 
 `box-sizing`属性用于设置盒模型的类型。`content-box`表示标准盒模型，`border-box`表示怪异盒模型。默认值为`content-box`。
+
 ## 5.3 弹性盒模型
+
 弹性盒模型是 CSS3 新增的布局模式。弹性盒模型是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。引入弹性盒模型的目的是提供一种更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间。
 
 弹性盒由弹性容器和弹性子元素组成。
@@ -663,28 +850,36 @@ border 的属性有：
 弹性容器外和弹性子元素内是正常渲染的，弹性盒只定义了弹性子元素如何在弹性容器内布局。
 
 父元素上的属性：
+
 |属性| 描述 | 取值 |
-|:--:|:--:|:--|
+|:--:|:--:|--|
 | `display` | 设置元素框的类型 | 取值为`flex`时开启弹性盒模型 |
 | `flex-direction` | 设置子元素排列方向 | `row`：默认值。子元素水平排列<br>`column`：子元素垂直排列<br>`row-reverse`：子元素水平倒序排列<br>`column-reverse`：子元素垂直倒序排列<br> |
 | `justify-content` | 子元素在主轴方向的对齐方式 | `flex-start`：默认值。位于主轴起点<br>`flex-end`：位于主轴终点<br>`center`：居中<br>`space-around`：在子元素四周分配父元素剩余的空间，两端的距离是中间的一半<br>`space-between`：在子元素中间分配父元素剩余的空间 |
 | `align-items` | 子元素在侧轴方向的对齐方式 | `flex-start`：默认值。位于侧轴起点<br>`flex-end`：位于侧轴终点<br>`center`：居中 |
 
 子元素上的属性：
+
 |属性| 描述 | 取值 |
 |:--:|:--:|:--:|
 | `flex-grow` | 子元素分配父元素剩余空间的比例 | 数字 |
+
 # 6 兼容性问题
+
 ## 6.1 css hack
+
 css hack 解决 IE 低版本的兼容性问题。
+
 ### 6.1.1 条件注释法
+
 语法：
 
 ```html
 <!--[if 条件]>
-	HTML代码
+    HTML代码
 <![endif]-->
 ```
+
 在 HTML 文档中加入上述结构，满足条件时中间的内容生效，不满足条件则不生效。
 |条件| 描述 |
 |:--:|:--:|
@@ -695,10 +890,13 @@ css hack 解决 IE 低版本的兼容性问题。
 | `lte IE 版本号` | 小于等于给定的 IE 版本号 |
 
 ### 6.1.2 属性前缀和后缀
+
 前缀：`+`、`-`、`*`、`#`、`_`
 
 后缀：`\0`、`\9`、`\9\0`、`!important`
+
 ## 6.2 厂商前缀
+
 厂商前缀解决浏览器对 CSS3 新特性的支持问题。
 |浏览器| 厂商前缀 | 内核 |
 |:--:|:--:|:--:|
@@ -709,7 +907,9 @@ css hack 解决 IE 低版本的兼容性问题。
 | Opera | `-o-` | blink |
 
 在 CSS3 新增内容之前加厂商前缀，获得对特定浏览器的支持。
+
 # 7 响应式布局
+
 响应式布局（responsive design），意在实现不同屏幕分辨率的终端上浏览网页的不同展示方式。通过响应式布局能使网站在手机和平板电脑上有更好的浏览阅读体验。
 
 优点：
@@ -725,9 +925,11 @@ css hack 解决 IE 低版本的兼容性问题。
 响应式布局的设计步骤：
 
  1. 设置`meta`标签：
+
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 ```
+
 这样设置的作用是：使用设备的宽度作为视图宽度，并禁止初始的缩放，以兼容移动设备。
 
  2. 使用媒体查询或 bootstrap 框架实现响应式布局。
@@ -744,6 +946,7 @@ css hack 解决 IE 低版本的兼容性问题。
 /* pc端 */
 @media screen and (min-width:992px) {}
 ```
+
 外部引入语法：在`link`标签中指定引入的 CSS 文件所对应的终端。
 
 ```html
@@ -754,7 +957,9 @@ css hack 解决 IE 低版本的兼容性问题。
 <!-- pc端 -->
 <link rel="stylessheet" href="" media="screen and (min-width:992px)" />
 ```
+
 # 8 雪碧图
+
 CSS Sprite 又称 CSS 精灵、CSS 雪碧图，是一种网页图片应用处理方式。它允许你将一个页面涉及的所有零星图片都包含到一张大图中，这样当访问该页面时，由多次请求变为一次请求。
 
 雪碧图的优点：

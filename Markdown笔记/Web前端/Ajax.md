@@ -1,4 +1,31 @@
-[toc]
+---
+title: Ajax
+chrome:
+    format: "A4"
+    headerTemplate: '<div></div>'
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;"> 
+    <span class=pageNumber></span> / <span class=totalPages></span></div>'
+    displayHeaderFooter: true
+    margin:
+        top: '40px'
+        bottom: '80px'
+        left: '60px'
+        right: '60px'
+---
+
+<h1>Ajax</h1>
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [1 Ajax介绍](#1-ajax介绍)
+  - [1.1 Ajax简介](#11-ajax简介)
+  - [1.2 XML简介](#12-xml简介)
+  - [1.3 HTTP协议简介](#13-http协议简介)
+- [2 原生Ajax请求](#2-原生ajax请求)
+
+<!-- /code_chunk_output -->
 
 # 1 Ajax介绍
 
@@ -53,7 +80,7 @@ HTTP 协议全称为 Hypertext Transport Protocol（超文本传输协议），�
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>title</title>
         <script>
-        	// 发起 Ajax 请求，访问 AjaxServlet 中的 javaScriptAjax 方法
+            // 发起 Ajax 请求，访问 AjaxServlet 中的 javaScriptAjax 方法
             function ajaxRequest()
             {
                 // 1.创建 XMLHttpRequest 对象
@@ -85,4 +112,3 @@ HTTP 协议全称为 Hypertext Transport Protocol（超文本传输协议），�
     </body>
 </html>
 ```
-

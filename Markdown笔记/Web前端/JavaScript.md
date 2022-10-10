@@ -1,6 +1,178 @@
-[TOC]
+---
+title: JavaScript
+chrome:
+    format: "A4"
+    headerTemplate: '<div></div>'
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;"> 
+    <span class=pageNumber></span> / <span class=totalPages></span></div>'
+    displayHeaderFooter: true
+    margin:
+        top: '40px'
+        bottom: '80px'
+        left: '60px'
+        right: '60px'
+---
+
+<h1>JavaScript</h1>
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [1 JavaScript简介](#1-javascript简介)
+- [2 引入JavaScript的方式](#2-引入javascript的方式)
+- [3 JavaScript输出方式](#3-javascript输出方式)
+  - [3.1 输出到控制台](#31-输出到控制台)
+  - [3.2 输出到HTML页面](#32-输出到html页面)
+  - [3.3 弹出框](#33-弹出框)
+- [4 JavaScript语法](#4-javascript语法)
+- [5 标识符](#5-标识符)
+- [6 变量](#6-变量)
+- [7 常量](#7-常量)
+- [8 注释](#8-注释)
+- [9 数据类型](#9-数据类型)
+  - [9.1 `number`类型](#91-number类型)
+  - [9.2 `string`类型](#92-string类型)
+  - [9.3 `boolean`类型](#93-boolean类型)
+  - [9.4 `undefined`类型](#94-undefined类型)
+  - [9.5 `null`类型](#95-null类型)
+  - [9.6 引用数据类型](#96-引用数据类型)
+- [10 运算符](#10-运算符)
+  - [10.1 算数运算符](#101-算数运算符)
+  - [10.2 关系运算符](#102-关系运算符)
+  - [10.3 逻辑运算符](#103-逻辑运算符)
+  - [10.4 赋值运算符](#104-赋值运算符)
+  - [10.5 位运算符](#105-位运算符)
+  - [10.6 条件运算符](#106-条件运算符)
+  - [10.7 运算符优先级](#107-运算符优先级)
+- [11 数据类型转换](#11-数据类型转换)
+  - [11.1 隐式类型转换](#111-隐式类型转换)
+  - [11.2 强制类型转换](#112-强制类型转换)
+    - [11.2.1 `string`类型转换为`number`类型](#1121-string类型转换为number类型)
+    - [11.2.2 `Number`方法](#1122-number方法)
+    - [11.2.3 `String`方法](#1123-string方法)
+    - [11.2.4 `Boolean`方法](#1124-boolean方法)
+- [12 流程控制](#12-流程控制)
+  - [12.1 分支](#121-分支)
+    - [12.1.1 `if`：单分支结构](#1211-if单分支结构)
+    - [12.1.2 `if-else`：双分支结构](#1212-if-else双分支结构)
+    - [12.1.3 `if-else if`：多分支结构](#1213-if-else-if多分支结构)
+    - [12.1.4 `switch-case`：多分支结构](#1214-switch-case多分支结构)
+  - [12.2 循环](#122-循环)
+    - [12.2.1 `for`循环](#1221-for循环)
+    - [12.2.2 `while`循环](#1222-while循环)
+    - [12.2.3 `do-while`循环](#1223-do-while循环)
+    - [12.2.4 `break`关键字](#1224-break关键字)
+    - [12.2.5 `continue`关键字](#1225-continue关键字)
+- [13 函数](#13-函数)
+  - [13.1 函数的概念](#131-函数的概念)
+  - [13.2 函数的声明](#132-函数的声明)
+  - [13.3 函数的调用](#133-函数的调用)
+  - [13.4 函数的参数](#134-函数的参数)
+  - [13.5 函数的返回值](#135-函数的返回值)
+  - [13.6 深入理解函数调用](#136-深入理解函数调用)
+  - [13.7 局部变量与全局变量](#137-局部变量与全局变量)
+  - [13.8 函数的执行符](#138-函数的执行符)
+  - [13.9 回调函数](#139-回调函数)
+  - [13.10 匿名自执行函数](#1310-匿名自执行函数)
+  - [13.11 局部函数](#1311-局部函数)
+  - [13.12 函数的属性](#1312-函数的属性)
+    - [13.12.1 `name`](#13121-name)
+    - [13.12.2 `length`](#13122-length)
+    - [13.12.3 `arguments`](#13123-arguments)
+  - [13.13 函数的方法](#1313-函数的方法)
+    - [13.13.1 `toString`方法](#13131-tostring方法)
+    - [13.13.2 `call`方法](#13132-call方法)
+    - [13.13.3 `apply`方法](#13133-apply方法)
+    - [13.13.4 `bind`方法](#13134-bind方法)
+  - [13.14 函数的递归调用](#1314-函数的递归调用)
+- [14 数组](#14-数组)
+  - [14.1 数组的概念](#141-数组的概念)
+  - [14.2 数组的定义](#142-数组的定义)
+  - [14.3 数组的`length`属性](#143-数组的length属性)
+  - [14.4 `in`操作符](#144-in操作符)
+  - [14.5 数组元素的操作](#145-数组元素的操作)
+  - [14.6 数组的遍历](#146-数组的遍历)
+  - [14.7 数组的函数](#147-数组的函数)
+    - [14.7.1 `push`、`pop`函数](#1471-push-pop函数)
+    - [14.7.2 `shift`、`unshift`函数](#1472-shift-unshift函数)
+    - [14.7.3 `join`函数](#1473-join函数)
+    - [14.7.4 `indexOf`、`lastIndexOf`函数](#1474-indexof-lastindexof函数)
+    - [14.7.5 `slice`函数](#1475-slice函数)
+    - [14.7.6 `splice`函数](#1476-splice函数)
+    - [14.7.7 `reverse`函数](#1477-reverse函数)
+    - [14.7.8 `sort`函数](#1478-sort函数)
+    - [14.7.9 `map`函数](#1479-map函数)
+    - [14.7.10 `filter`函数](#14710-filter函数)
+    - [14.7.11 `find`、`findIndex`函数](#14711-find-findindex函数)
+    - [14.7.12 `some`、`every`函数](#14712-some-every函数)
+    - [14.7.13 `includes`函数](#14713-includes函数)
+    - [14.7.14 `concat`函数](#14714-concat函数)
+    - [14.7.15 `Array.isArray`静态函数](#14715-arrayisarray静态函数)
+  - [14.8 引用传递](#148-引用传递)
+  - [14.9 多维数组](#149-多维数组)
+- [15 对象](#15-对象)
+  - [15.1 对象的定义](#151-对象的定义)
+  - [15.2 访问对象](#152-访问对象)
+  - [15.3 对对象的操作](#153-对对象的操作)
+  - [15.4 `this`关键字](#154-this关键字)
+  - [15.5 对象的遍历](#155-对象的遍历)
+  - [15.6 JavaScript的内置对象](#156-javascript的内置对象)
+    - [15.6.1 `Object`对象](#1561-object对象)
+    - [15.6.2 `Number`对象](#1562-number对象)
+    - [15.6.3 `Boolean`对象](#1563-boolean对象)
+    - [15.6.4 `Math`对象](#1564-math对象)
+    - [15.6.5 `Date`对象](#1565-date对象)
+    - [15.6.6 `String`对象](#1566-string对象)
+    - [15.6.7 `Global`对象](#1567-global对象)
+  - [15.7 类数组对象](#157-类数组对象)
+  - [15.8 正则表达式](#158-正则表达式)
+    - [15.8.1 正则表达式简介](#1581-正则表达式简介)
+    - [15.8.2 创建正则表达式对象](#1582-创建正则表达式对象)
+    - [15.8.3 正则表达式语法](#1583-正则表达式语法)
+    - [15.8.4 支持正则表达式的`String`对象的方法](#1584-支持正则表达式的string对象的方法)
+- [16 DOM](#16-dom)
+  - [16.1 DOM介绍](#161-dom介绍)
+  - [16.2 元素节点](#162-元素节点)
+  - [16.3 属性节点](#163-属性节点)
+  - [16.4 节点对象之间的关系](#164-节点对象之间的关系)
+  - [16.5 元素节点之间的关系](#165-元素节点之间的关系)
+  - [16.6 DOM的增、删、改操作](#166-dom的增-删-改操作)
+  - [16.7 `document`对象的属性](#167-document对象的属性)
+  - [16.8 操作样式](#168-操作样式)
+    - [16.8.1 通过`style`属性获得和修改行内样式](#1681-通过style属性获得和修改行内样式)
+    - [16.8.2 获得内部样式和外部样式](#1682-获得内部样式和外部样式)
+    - [16.8.3 其他样式相关的属性](#1683-其他样式相关的属性)
+  - [16.9 事件](#169-事件)
+    - [16.9.1 事件简介](#1691-事件简介)
+    - [16.9.2 页面加载事件](#1692-页面加载事件)
+    - [16.9.3 事件对象](#1693-事件对象)
+    - [16.9.4 事件的冒泡](#1694-事件的冒泡)
+    - [16.9.5 事件的委派](#1695-事件的委派)
+    - [16.9.6 事件的绑定](#1696-事件的绑定)
+    - [16.9.7 事件的传播](#1697-事件的传播)
+    - [16.9.8 滚轮事件](#1698-滚轮事件)
+    - [16.9.9 键盘事件](#1699-键盘事件)
+    - [16.9.10 练习1：div跟随鼠标移动](#16910-练习1div跟随鼠标移动)
+    - [16.9.11 练习2：拖拽](#16911-练习2拖拽)
+- [17 BOM](#17-bom)
+  - [17.1 BOM简介](#171-bom简介)
+  - [17.2 `Navigator`](#172-navigator)
+  - [17.3 `History`](#173-history)
+  - [17.4 `Location`](#174-location)
+  - [17.5 定时器](#175-定时器)
+    - [17.5.1 定时调用](#1751-定时调用)
+    - [17.5.2 延时调用](#1752-延时调用)
+    - [17.5.3 定时器的应用：元素动画效果](#1753-定时器的应用元素动画效果)
+- [18 应用实例](#18-应用实例)
+  - [18.1 轮播图](#181-轮播图)
+  - [18.2 `class`属性的操作](#182-class属性的操作)
+  - [18.3 二级菜单](#183-二级菜单)
+
+<!-- /code_chunk_output -->
 
 # 1 JavaScript简介
+
 JavaScript 是一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言。
 
 脚本语言：解释执行。
@@ -24,6 +196,7 @@ JavaScript 的组成部分：
  3. BOM：浏览器对象模型，规定了操作浏览器的语法。
 
 # 2 引入JavaScript的方式
+
 JavaScript 程序要引入到 HTML 页面中，运行页面的时候，这个页面上的 JavaScript 也一起运行。
 
 JavaScript 有两种常见的引入方式：
@@ -32,40 +205,49 @@ JavaScript 有两种常见的引入方式：
 
 ```html
 <head>
-	<script src="myScript.js"></script>
+    <script src="myScript.js"></script>
 </head>
 ```
+
  2. 内部引入：在`<script></script>`标签中写 JavaScript 代码。可以写在任意位置，一个页面可以有任意数量的`script`标签。推荐写在`</body>`之前。例如：
 
 ```html
 <body>
-	<!-- HTML 文档 -->
-	<script>
-		// JavaScript 代码
-	</script>
+    <!-- HTML 文档 -->
+    <script>
+        // JavaScript 代码
+    </script>
 </body>
 ```
+
 外部引入和内部引入不能共用同一个`script`标签。当共用时，外部引入生效，内部引入不生效。
 
 `script`标签有一个`type`属性，用于指定引入脚本的类型。JavaScript 脚本的`type`属性值为`text/javascript`，引入 JavaScript 时此属性可以省略。
+
 # 3 JavaScript输出方式
+
 ## 3.1 输出到控制台
 
 ```javascript
 console.log(); // 在括号中写输出的内容
 ```
+
 每次调用输出一行。可以有多个参数，多个参数之间用逗号隔开，同一条语句中的多个参数输出在同一行。
 
 此语句不解析 HTML 标签。
+
 ## 3.2 输出到HTML页面
 
 ```javascript
 document.write(); // 在括号中写输出的内容
 ```
+
 此语句中的内容输出到当前`script`标签后面。
 
 此语句可以解析 HTML 标签。
+
 ## 3.3 弹出框
+
 警告框：`alert()`函数。显示带有一段信息和一个确认按钮的警告框，信息内容由参数指定。
 
 动态输入框：`prompt()`函数。弹出框内有一个输入框，将用户输入的内容作为返回值返回，返回类型为字符串。第一个参数是提示信息，第二个参数是输入框中的默认值，默认值可以省略。
@@ -79,6 +261,7 @@ document.write(); // 在括号中写输出的内容
  3. JavaScript 不识别多余的空格。
 
 # 5 标识符
+
 标识符的命名规则：
 
  1. 标识符必须由字母、数字、下划线`_`、美元符号`$`组成。
@@ -94,6 +277,7 @@ document.write(); // 在括号中写输出的内容
  4. 不建议名字太长。
 
 # 6 变量
+
 值可以改变的量称为变量。变量的作用是存储数据。
 
 使用`var`关键字声明变量，并指定变量的名称。例如：
@@ -101,6 +285,7 @@ document.write(); // 在括号中写输出的内容
 ```javascript
 var a;
 ```
+
 声明变量后可以给变量赋值，使用`=`将右侧的值赋给左侧的变量。例如：
 
 ```javascript
@@ -113,11 +298,13 @@ a = 100;
 ```javascript
 var a = 100;
 ```
+
 一条语句可以声明多个变量，多个变量之间用逗号隔开。例如：
 
 ```javascript
 var a = 100, b, c;
 ```
+
 声明变量但不赋值时，变量的值为`undefined`。
 
 变量必须先声明后使用，未声明的变量不能使用，使用未声明的变量会报错。
@@ -130,12 +317,15 @@ var a = 100, b, c;
 console.log(x); // x 为 undefined
 var x = 10; // x 为 10
 ```
+
 上述代码相当于：
+
 ```javascript
 var x; // 变量声明提升到所在作用域的最前面
 console.log(x);
 x = 10; // 变量赋值不提升
 ```
+
 也可以使用`let`关键词声明变量。`let`与`var`的区别如下：
 
 1. `var`声明的变量只有全局变量和局部变量，没有块级作用域变量；`let`声明的变量有全局变量和局部变量，还有块级作用域变量。
@@ -151,6 +341,7 @@ var num = 10; // 数值型字面量
 var name = '李白'; // 字符串字面量
 var bool = true; // boolean 字面量
 ```
+
 用`const`关键字声明常量。定义的常量只能访问、不能修改，因此需要在声明的同时初始化。
 
 常量的命名规范：所有字母全部大写，多个单词用下划线分割。例如：
@@ -158,28 +349,35 @@ var bool = true; // boolean 字面量
 ```javascript
 const MAX_AGE = 60;
 ```
+
 常量不能修改，修改常量会报错。
 
 常量没有声明提升，因此调用不能写在声明之前。
+
 # 8 注释
+
 单行注释：
 
 ```javascript
 // 单行注释
 ```
+
 多行注释：
 
 ```javascript
 /* 多行注释 */
 ```
+
 文档注释：
 
 ```javascript
 /**
- *	文档注释
+ *  文档注释
  */
 ```
+
 # 9 数据类型
+
 JavaScript 的数据类型分为基本类型和引用类型。
 
 基本类型：
@@ -201,6 +399,7 @@ console.log(typeof 3);
 ```
 
 ## 9.1 `number`类型
+
 JavaScript 中所有数字都是`number`类型，不区分整型、浮点型。
 
 `number`类型特殊值：
@@ -210,6 +409,7 @@ JavaScript 中所有数字都是`number`类型，不区分整型、浮点型。
  3. `-Infinity`：负无穷。分母为 0，分子为负数时，结果为`-Infinity`。
 
 ## 9.2 `string`类型
+
 由引号包含的任意内容都是`string`类型。引号可以是单引号，也可以是双引号，但要成对出现。
 
 字符串之间可以相互嵌套，单引号内可以包含双引号，双引号内可以包含单引号。但是单引号内不能包含单引号，双引号内不能包含双引号。例如：
@@ -218,7 +418,9 @@ JavaScript 中所有数字都是`number`类型，不区分整型、浮点型。
 var str1 = "hello 'world'!";
 var str2 = 'hello "world"!';
 ```
+
 如果想在单引号内使用单引号，可以使用转义字符。转义字符由`\`引导，代表一个特定的字符。常见的转义字符如下所示：
+
 | 转义字符 |           含义            |
 | :------: | :-----------------------: |
 |   `\'`   |          单引号           |
@@ -229,13 +431,17 @@ var str2 = 'hello "world"!';
 |   `\b`   |           退格            |
 
 ## 9.3 `boolean`类型
+
 `boolean`类型只有`true`、`false`两个值。`true`表示真，可以转换为数字 1；`false`表示假，可以转换为数字 0。
 
 ## 9.4 `undefined`类型
+
 变量已声明但没有赋值时，其类型为`undefined`，其值也是`undefined`。
 
 `undefined`类型值与任何`number`类型值做计算，结果为`NaN`。
+
 ## 9.5 `null`类型
+
 `null`类型只有一个值`null`，表示引用类型变量没有指向任何一个对象。
 
 `null`类型使用`typeof`返回`"object"`。
@@ -243,6 +449,7 @@ var str2 = 'hello "world"!';
 `null`做计算时转换为 0。
 
 ## 9.6 引用数据类型
+
 引用数据类型只有`object`一种，`object`类型又可以细分：
 
  1. `array`：数组类型。
@@ -250,10 +457,13 @@ var str2 = 'hello "world"!';
  3. `object`：对象类型。
 
 `array`类型使用`typeof`返回`"object"`，`function`类型使用`typeof`返回`"function"`。
+
 # 10 运算符
+
 ## 10.1 算数运算符
+
 | 运算符 | 描述 | 操作数                                                       |
-| :----: | :--: | :----------------------------------------------------------- |
+| :----: | :--: | ----------------------------------------------------------- |
 |  `+`   | 加法 | 只有一个操作数时，表示正号。<br>两个操作数都是`number`类型时，表示加号。操作数中有`NaN`时，返回值为`NaN`。<br>操作数中有`string`类型时，将两个操作数都转换成`string`类型，进行字符串拼接，返回值为`string`类型。<br>操作数中有`boolean`类型时，`true`转换成数字1，`false`转换成数字0。<br>操作数中有`undefined`类型时，返回值为`NaN`。<br>操作数中有`null`类型时，`null`类型值转换成数字0。<br>操作数中有数组或对象时，将两个操作数都转换成`string`类型，进行字符串拼接。 |
 |  `-`   | 减法 | 只有一个操作数时，表示负号。<br>两个操作数都是`number`类型时，表示减号。操作数中有`NaN`时，返回值为`NaN`。<br>操作数中有`string`类型时，将`string`类型值转换成`number`类型，做减法。如果字符串不能转换成数字，返回值为`NaN`。<br>操作数中有`boolean`类型时，`true`转换成数字1，`false`转换成数字0。<br>操作数中有`undefined`类型时，返回值为`NaN`。<br>操作数中有`null`类型时，`null`类型值转换成数字0。<br>操作数中有数组时，将数组转换为`number`类型进行计算。数组中只有一个元素时正常运算；数组中有多个元素时，返回值为`NaN`。<br>操作数中有对象时，返回值为`NaN`。 |
 |  `*`   | 乘法 | 二元运算符<br>两个操作数都是`number`类型时，表示乘号。操作数中有`NaN`时，返回值为`NaN`。<br>操作数中有`string`类型时，将`string`类型值转换成`number`类型，做乘法。如果字符串不能转换成数字，返回值为`NaN`。<br>操作数中有`boolean`类型时，`true`转换成数字1，`false`转换成数字0。<br>操作数中有`undefined`类型时，返回值为`NaN`。<br>操作数中有`null`类型时，`null`类型值转换成数字0。<br>操作数中有数组时，将数组转换为`number`类型进行计算。数组中只有一个元素时正常运算；数组中有多个元素时，返回值为`NaN`。<br>操作数中有对象时，返回值为`NaN`。 |
@@ -263,6 +473,7 @@ var str2 = 'hello "world"!';
 |  `--`  | 自减 | 一元运算符，可以在操作数前面，也可以在操作数后面。<br>无论在操作数前面还是后面，都会将操作数减1。<br>放在操作数前面时，先减1后返回，返回的是减1后的值。<br>放在操作数后面时，先返回后减1，返回的是减1前的值。 |
 
 ## 10.2 关系运算符
+
 关系运算符比较两个值，返回`boolean`值，`true`表示满足比较条件，`false`表示不满足比较条件。
 | 运算符 |              描述              |
 | :----: | :----------------------------: |
@@ -281,14 +492,15 @@ var str2 = 'hello "world"!';
 
 特殊值的比较：
 
- - `null == undefined`返回值为`true`，`null === undefined`返回值为`false`。
- - `null == 0`与`undefined == 0`返回值为`false`。
- - `false == 0`、`false == ''`、`'' == 0`返回值为`true`。
- - `NaN`与任何值做比较都返回`false`。`NaN == NaN`也返回`false`。
-
+- `null == undefined`返回值为`true`，`null === undefined`返回值为`false`。
+- `null == 0`与`undefined == 0`返回值为`false`。
+- `false == 0`、`false == ''`、`'' == 0`返回值为`true`。
+- `NaN`与任何值做比较都返回`false`。`NaN == NaN`也返回`false`。
 
 ## 10.3 逻辑运算符
+
 逻辑运算符的操作数是`boolean`类型值，返回值是`boolean`类型。
+
 | 运算符 |  描述  |
 | :----: | :----: |
 |  `&&`  | 逻辑与 |
@@ -318,22 +530,29 @@ var str2 = 'hello "world"!';
 /* 第一个表达式为 true，逻辑与运算返回第二个值 */
 console.log('ok' && null); // null
 console.log(1 && undefined); // undefined
+
 /* 第一个表达式为 false，逻辑与运算返回第一个值 */
 console.log(0 && 6); // 0
 console.log(null && 6); // null
+
 /* 第一个表达式为 true，逻辑或运算返回第一个值 */
 console.log('false' || 6); // 'false'
+
 /* 第一个表达式为 false，逻辑或运算返回第二个值 */
 console.log(undefined || 6); // 6
 console.log(NaN || 6);  // 6
 ```
 
 ## 10.4 赋值运算符
+
 赋值运算符有：`=`、`+=`、`-=`、`*=`、`/=`、`%=`、`&=`、`|=`、`^=`、`>>=`。
+
 ## 10.5 位运算符
+
 位运算符直接对底层的二进制数操作，效率较高。
 
 位运算只能操作整数。如果对小数操作，先将小数转换为整数，再做操作。位运算具有取整的功能。
+
 | 运算符 |                     描述                     |
 | :----: | :------------------------------------------: |
 |  `&`   |                    按位与                    |
@@ -350,6 +569,7 @@ console.log(NaN || 6);  // 6
 var num = 3.2;
 console.log(~~num); // 3
 ```
+
 按位异或可以用于交换两个变量的值。例如：
 
 ```javascript
@@ -361,6 +581,7 @@ num1 = num1 ^ num2;
 ```
 
 ## 10.6 条件运算符
+
 语法：`布尔值 : 表达式1 ? 表达式2;`
 
 当布尔值为`true`时，执行表达式1并返回其值；当布尔值为`false`时，执行表达式2并返回其值。
@@ -377,7 +598,9 @@ var ran3 = parseInt(Math.random() * (MAX - MIN + 1) + MIN);
 // 计算这三个随机数中的最大值
 var max = ran1 > ran2 ? (ran1 > ran3 ? ran1 : ran3) : (ran2 > ran3 ? ran2 : ran3);
 ```
+
 ## 10.7 运算符优先级
+
 | 优先级 | 运算符                                                       | 说明                                                         |           结合性           |
 | :----: | ------------------------------------------------------------ | ------------------------------------------------------------ | :------------------------: |
 |   1    | `[]`、`.`、`()`                                              | 数组索引、字段访问、函数调用、表达式分组                     |          从左向右          |
@@ -406,7 +629,9 @@ var max = ran1 > ran2 ? (ran1 > ran3 ? ran1 : ran3) : (ran2 > ran3 ? ran2 : ran3
  6. 逻辑与的优先级大于逻辑或。
 
 # 11 数据类型转换
+
 ## 11.1 隐式类型转换
+
 转换为`number`类型：`-`、`*`、`/`、`%`运算符的操作数中，非`number`类型会隐式转换成`number`类型。
 
 转换为`string`类型：`+`运算符遇到字符串，进行字符串拼接。
@@ -507,7 +732,7 @@ String({name:Alice}); // '[object Object]'
 ```javascript
 if (条件)
 {
-	// 代码
+    // 代码
 }
 ```
 
@@ -621,7 +846,7 @@ for (初始化循环变量;循环条件;改变循环变量)
 ```javascript
 while (条件)
 {
-	// 循环体
+    // 循环体
 }
 ```
 
@@ -2370,22 +2595,22 @@ DOM 的全称为**文档对象模型**（Document Object Model）。整个 HTML 
 </div>
 
 <script>
-	var div = document.querySelector("div");
+    var div = document.querySelector("div");
     
     // 获得 innerHTML
     console.log(div.innerHTML); /*
-    							 * content
-     							 * <span>内容</span>
-    							 */
+                                 * content
+                                  * <span>内容</span>
+                                 */
     console.log(typeof div.innerHTML); // string
     
     // 修改 innerHTML
     div.innerHTML = "hello world"; // 覆盖原有内容
     div.innerHTML += "<span>你好</span>"; // 在原有内容的基础上追加内容
     console.log(div.innerHTML); /*
-    							 * hello world
-    							 * <span>你好</span>
-    							 */
+                                 * hello world
+                                 * <span>你好</span>
+                                 */
     
     // 获得 innerText
     console.log(div.innerText); // hello world
@@ -2405,7 +2630,7 @@ DOM 的全称为**文档对象模型**（Document Object Model）。整个 HTML 
 <div id="box" title="div1">content</div>
 
 <script>
-	var div = document.querySelector("div");
+    var div = document.querySelector("div");
     
     // 1. attributes 属性
     var attributes = div.attributes;
@@ -2433,7 +2658,7 @@ DOM 的全称为**文档对象模型**（Document Object Model）。整个 HTML 
 <div id="box" title="div1">content</div>
 
 <script>
-	var div = document.querySelector("div");
+    var div = document.querySelector("div");
     
     // 1. getAttribute(attr)
     console.log(div.getAttribute("id")); // box
@@ -2472,7 +2697,7 @@ DOM 的全称为**文档对象模型**（Document Object Model）。整个 HTML 
 <input type="radio" name="gender">女
 
 <script>
-	var div = document.querySelector("div");
+    var div = document.querySelector("div");
     var gender = document.getElementsByName("gender");
     
     // 1. class 属性
@@ -2514,9 +2739,9 @@ DOM 的全称为**文档对象模型**（Document Object Model）。整个 HTML 
 <script>
     var parent = document.querySelector("ul");
     
-	// 1. childNodes
+    // 1. childNodes
     console.log(parent.childNodes); // NodeList(13)，包括换行符和注释
-    								// 在 IE 8 及以下版本中，不会将换行符当成文本节点
+                                    // 在 IE 8 及以下版本中，不会将换行符当成文本节点
     
     // 2. firstChild
     console.log(parent.firstChild); // 换行符
@@ -2560,7 +2785,7 @@ DOM 的全称为**文档对象模型**（Document Object Model）。整个 HTML 
 <script>
     var parent = document.querySelector("ul");
     
-	// 1. children
+    // 1. children
     console.log(parent.children); // HTMLCollection(5)，只包括 li 标签
     
     // 2. firstElementChild
@@ -2629,7 +2854,7 @@ DOM 的全称为**文档对象模型**（Document Object Model）。整个 HTML 
 
 <script>
     // 获取元素对象
-	var div = document.querySelector("div");
+    var div = document.querySelector("div");
     
     // 通过 style.样式属性 设置行内样式
     div.style.width = "200px";
@@ -2677,7 +2902,7 @@ DOM 的全称为**文档对象模型**（Document Object Model）。整个 HTML 
 <div></div>
 
 <script>
-	var div = document.querySelector("div");
+    var div = document.querySelector("div");
     
     // 1. 元素对象.currentStyle.样式名
     console.log(div.currentStyle.width); // 200px
@@ -2749,7 +2974,7 @@ function getStyle(element, style)
 ```html
 <button id="btn">按钮</button>
 <script>
-	var btn = document.getElementById("btn");
+    var btn = document.getElementById("btn");
     // 为按钮绑定单击响应函数
     btn.onclick = function() {
         alert('hello world');
@@ -2787,7 +3012,7 @@ HTML 页面的加载方式是从上到下逐句加载，读到一行就加载一
 <head>
     <script>
         // 为 window 对象绑定 onload 事件响应函数
-    	window.onload = function() {
+        window.onload = function() {
             // 获取 id 为 btn 的按钮
             var btn = document.getElementById("btn");
             // 为按钮绑定单击响应函数
@@ -2865,7 +3090,6 @@ div.onmousemove = function(event) {
 };
 ```
 
-
 ### 16.9.4 事件的冒泡
 
 当元素的事件被触发时，其祖先元素的相同事件也会被触发，这种现象叫做事件的冒泡（bubble）。例如：
@@ -2885,7 +3109,7 @@ div.onmousemove = function(event) {
     </style>
     
     <script type="text/javascript">
-    	window.onload = function() {
+        window.onload = function() {
             var s1 = document.getElementById("s1");
             s1.onclick = function() {
                 alert("我是span");
@@ -2921,7 +3145,7 @@ div.onmousemove = function(event) {
 ```html
 <head>
     <script type="text/javascript">
-    	window.onload = function() {
+        window.onload = function() {
             // 为每个超链接绑定一个单击响应函数
             var allA = document.getElementByTagName("a");
             for (var i = 0; i < allA.length; i++)
@@ -2966,16 +3190,16 @@ div.onmousemove = function(event) {
 ```html
 <head>
     <script type="text/javascript">
-    	window.onload = function() {
+        window.onload = function() {
             // 为所有超链接的共同父元素绑定一个单击响应函数            
             var u1 = document.getElementById("u1");
             u1.onclick = function(event) {
-    			// 如果触发事件的对象是期望的元素则执行，否则不执行
-    			if (event.target.className == "link")
-    			{
-        			alert("我是ul的单击响应函数");
-    			}
-			};
+                // 如果触发事件的对象是期望的元素则执行，否则不执行
+                if (event.target.className == "link")
+                {
+                    alert("我是ul的单击响应函数");
+                }
+            };
             
             // 点击按钮后添加超链接
             var btn01 = document.getElementById("btn01");
@@ -3150,7 +3374,7 @@ input.onkeydown = function(event) {
         </style>
         
         <script type="text/javascript">
-        	window.onload = function() {
+            window.onload = function() {
                 var box1 = document.getElementById("box1");
                 // 为整个页面绑定鼠标移动事件
                 document.onmousemove = function(event) {
@@ -3168,9 +3392,9 @@ input.onkeydown = function(event) {
                      * 此处需要解决兼容性问题
                      */
                     var scrollTop = document.body.scrollTop ||
-                        			document.documentElement.scrollTop;
+                                    document.documentElement.scrollTop;
                     var scrollLeft = document.body.scrollLeft ||
-                        			 document.documentElement.scrollLeft;
+                                     document.documentElement.scrollLeft;
                     
                     // 设置 div 的偏移量
                     /*
@@ -3194,7 +3418,6 @@ input.onkeydown = function(event) {
 要点：
 
 1. 鼠标移动事件要绑定到`document`上。
-
 2. 整个页面和可见区域的坐标系并不一致。通过`clientX`和`clientY`获取到的鼠标位置是相对于可见区域的，而 div 的偏移量是相对于整个页面的。计算 div 的偏移量时，需要考虑可见区域的滚动距离，如下图所示。
 
 <div align="center">
@@ -3221,7 +3444,7 @@ function drag(obj)
 {
     // 当鼠标在 obj 上按下时，开始拖拽
     obj.onmousedown = function(event) {
-    	event = event || window.event;
+        event = event || window.event;
         
         // 设置 obj 捕获所有鼠标按下相关事件
         // 用于在 IE 8 及以下版本中取消打开搜索引擎的默认行为
@@ -3235,16 +3458,16 @@ function drag(obj)
         // 为 document 绑定鼠标移动事件
         // 当鼠标移动时，obj 跟随鼠标移动
         document.onmousemove = function(event) {
-        	event = event || window.event;
+            event = event || window.event;
             // 获取鼠标位置
             // 修正坐标，使得鼠标与 box1 的相对位置保持不变
             var left = event.clientX - offsetX;
             var top = event.clientY - offsetY;
             // 获取滚动条的滚动距离
             var scrollTop = document.body.scrollTop ||
-                        	document.documentElement.scrollTop;
+                            document.documentElement.scrollTop;
             var scrollLeft = document.body.scrollLeft ||
-                        	 document.documentElement.scrollLeft;
+                             document.documentElement.scrollLeft;
             // 修改 obj 的位置
             obj.style.left = left + scrollLeft + "px";
             obj.style.top = top + scrollTop + "px";
@@ -3253,7 +3476,7 @@ function drag(obj)
         // 为 document 绑定鼠标松开事件
         // 当鼠标松开时，obj 固定在当前位置
         document.onmouseup = function() {
-        	// 取消 document 的 onmousemove 事件
+            // 取消 document 的 onmousemove 事件
             document.onmousemove = null;
             // 取消 document 的 onmouseup 事件
             document.onmouseup = null;
@@ -3271,8 +3494,8 @@ function drag(obj)
 
 1. 鼠标松开事件要绑定到`document`上，否则会使得当鼠标在其他元素内部松开时，被拖拽元素无法固定。
 2. 当鼠标松开时，拖拽过程就结束了，此时要将鼠标移动事件和鼠标松开事件取消。
-2. 鼠标移动和鼠标松开事件的响应函数要写在鼠标按下事件响应函数的内部。
-3. 为了使鼠标与被拖拽元素的相对位置保持不变，需要计算鼠标点击位置相对于被拖拽元素的偏移量，如下图所示。水平方向上，`offsetX = clientX - div.offsetLeft`，则 div 的偏移量为`div.style.left = scrollLeft + clientX - offsetX`。垂直方向同理。
+3. 鼠标移动和鼠标松开事件的响应函数要写在鼠标按下事件响应函数的内部。
+4. 为了使鼠标与被拖拽元素的相对位置保持不变，需要计算鼠标点击位置相对于被拖拽元素的偏移量，如下图所示。水平方向上，`offsetX = clientX - div.offsetLeft`，则 div 的偏移量为`div.style.left = scrollLeft + clientX - offsetX`。垂直方向同理。
 
 <div align="Center">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/JavaScript/鼠标与div的相对位置.78obp7whv6k0.png">
@@ -3321,15 +3544,15 @@ BOM 提供了一组对象，用来完成对浏览器的操作。BOM 对象有：
 
 ```javascript
 if (/firefox/i.test(navigator.userAgent))
-{	// 火狐浏览器的 userAgent 中包含 "Firefox"
+{   // 火狐浏览器的 userAgent 中包含 "Firefox"
     alert("火狐");
 }
 else if (/chrome/i.test(navigator.userAgent))
-{	// Chrome 的 userAgent 中包含 "Chrome"
+{   // Chrome 的 userAgent 中包含 "Chrome"
     alert("Chrome")
 }
 else if (/msie/i.test(navigator.userAgent))
-{	// IE 11 以下版本的 userAgent 中包含 "MSIE"
+{   // IE 11 以下版本的 userAgent 中包含 "MSIE"
     alert("IE")
 }
 ```
@@ -3582,7 +3805,7 @@ function movie(obj, attr, target, speed, callback)
         </style>
         
         <script type="text/javascript">
-        	window.onload = function() {
+            window.onload = function() {
                 // 获取页面中所有的 img 标签
                 var imgArr = document.getElementByTagName("img");
                 // 设置 imgList 的宽度
@@ -3754,7 +3977,7 @@ function hasClassName(obj, className)
 function addClassName(obj, className)
 {
     if (!hasClassName(obj, className))
-    {	// 当 obj 中没有此 class 属性值时才添加
+    {   // 当 obj 中没有此 class 属性值时才添加
         obj.className += " " + className;
     }
 }
@@ -3780,11 +4003,11 @@ function removeClassName(obj, className)
 function toggleClassName(obj, className)
 {
     if (hasClassName(obj, className))
-    {	// 有该属性值，则删除
+    {   // 有该属性值，则删除
         removeClassName(obj, className);
     }
     else
-    {	// 没有该属性值，则添加
+    {   // 没有该属性值，则添加
         addClassName(obj, className);
     }
 }
@@ -3804,7 +4027,7 @@ function toggleClassName(obj, className)
         </style>
 
         <script type="text/javascript">
-        	window.onload = function() {
+            window.onload = function() {
                 /*
                  * 当菜单 div 具有 collapsed 类名时，处于折叠状态
                  * 当菜单 div 没有 collapsed 类名时，处于展开状态
@@ -3899,4 +4122,3 @@ function toggleClassName(obj, className)
     </body>
 </html>
 ```
-
