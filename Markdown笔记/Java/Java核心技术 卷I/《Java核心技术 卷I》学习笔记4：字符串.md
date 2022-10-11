@@ -1,40 +1,145 @@
-[TOC]
+---
+chrome:
+    format: "A4"
+    headerTemplate: '<div></div>'
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;">
+    <span class=pageNumber></span> / <span class=totalPages></span></div>'
+    displayHeaderFooter: true
+    margin:
+        top: '40px'
+        bottom: '80px'
+        left: '60px'
+        right: '60px'
+---
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [1 Java字符串](#1-java字符串)
+- [2 `String` API](#2-string-api)
+- [3 子串](#3-子串)
+- [4 拼接](#4-拼接)
+- [5 不可变字符串](#5-不可变字符串)
+- [6 检测字符串是否相等](#6-检测字符串是否相等)
+- [7 空串与Null串](#7-空串与null串)
+- [8 字符串长度](#8-字符串长度)
+- [9 字符串遍历](#9-字符串遍历)
+- [10 StringBuilder类](#10-stringbuilder类)
+
+<!-- /code_chunk_output -->
+
 # 1 Java字符串
-Java字符串就是Unicode字符序列。Java没有内置的字符串类型，而是在标准Java类库中提供了一个预定义类`String`。每个用双引号括起来的字符串都是`String`类的一个实例。例如：
+
+Java 字符串就是 Unicode 字符序列。Java 没有内置的字符串类型，而是在标准 Java 类库中提供了一个预定义类`String`。每个用双引号括起来的字符串都是`String`类的一个实例。例如：
 
 ```java
 String e = ""; // 空串
 String greeting = "Hello";
 ```
 
-类似于C和C++，Java字符串中的代码单元和码点从0开始计数。
-# 2 String API
+Java 字符串中的代码单元和码点从 0 开始计数。
+
+# 2 `String` API
+
 下面介绍`String`类中常用的方法。
 
 ```java
 /* java.lang.String */
-char charAt(int index)
-    // 返回给定位置的代码单元
-int codePointAt(int index)
-    // 返回从给定位置开始的码点
-int offsetByCodePoints(int startIndex, int cpCount)
-    // 返回从 startIndex 码点开始，cpCount 个码点之后的码点索引
-int CompareTo(String other)
-    // 按照字典序，若字符串位于 other 之前，返回一个负数；若位于 other 之后，返回一个正数；若相等，返回0
-IntStream codePoints()
-    // Java 8引入。将字符串的码点作为一个流返回。可以调用 toArray 方法将它们放在一个数组中
-String(int[] codePoints, int offset, int count)
-    // 用数组中从 offset 开始的 count 个码点构造一个字符串
-boolean empty()
-    // 若字符串为空串，返回 true
-boolean blank()
-    // Java 11引入。若字符串由空格组成，返回 true
-boolean equals(Object other)
-    // 若字符串与 other 相等，返回 true，否则返回 false
-boolean equalsIgnoreCase(String other)
-    // 若字符串与 other 相等（忽略大小写），返回 true
-boolean startsWith(String prefix)
-    // 若字符串以 prefix 开头，返回 true
+
+/**
+ * 用 codePoints 数组中从 offset 开始的 count 个码点构造一个字符串
+ * @param codePoints 码点数组
+ * @param offset 数组的起始索引
+ * @param count 码点数量
+ * @since 1.5
+ */
+public String(int[] codePoints, int offset, int count)
+
+/**
+ * 返回给定位置的代码单元
+ * @param index 代码单元的索引
+ * @return 给定索引处的代码单元
+ * @exception IndexOutOfBoundsException index 越界时抛出异常
+ */
+public char charAt(int index)
+
+/**
+ * 返回从给定位置开始的码点
+ * @param index 代码单元的索引
+ * @return 如果给定索引处的代码单元是辅助字符的第一个代码单元，
+ *         并且下一个代码单元是辅助字符的第二个代码单元，则返回辅助字符的码点；
+ *         否则，返回给定索引处的代码单元
+ * @throws IndexOutOfBoundsException index 越界时抛出异常
+ * @since 1.5
+ */
+public int codePointAt(int index)
+
+/**
+ * 返回从 startIndex 码点开始，cpCount 个码点之后的码点索引
+ * @param startIndex 起始码点的索引
+ * @param cpCount 偏移量（按码点的数量计算）
+ * @return 从 startIndex 偏移 cpCount 后，找到的码点的索引
+ * @throws IndexOutOfBoundsException startIndex 或 startIndex + cpCount 越界时，抛出异常
+ * @since 1.5
+ */
+public int offsetByCodePoints(int startIndex, int cpCount)
+
+/**
+ * 按照字典序比较字符串
+ * @param other 待比较的字符串
+ * @return 如果当前字符串位于 other 之前，则返回一个负数；
+ *         如果当前字符串位于 other 之后，则返回一个正数；
+ *         如果当前字符串与 other 相等，则返回 0。
+ *         对两个字符串从前向后逐位比较，如果第一个不相同字符的索引为 k，则返回
+ *             this.charAt(k) - other.charAt(k)
+ *         如果没有不相同字符，但二者长度不同，则返回
+ *             this.length() - other.length()
+ */
+public int compareTo(String other)
+
+/**
+ * 将字符串的码点作为一个流返回
+ * @return 一个 IntStream 对象，包含字符串中的码点
+ * @since 9
+ */
+public IntStream codePoints()
+
+/**
+ * 判断字符串是否为空串
+ * @return 如果字符串为空串，则返回 true，否则返回 false
+ * @since 1.6
+ */
+public boolean isEmpty()
+
+/**
+ * @return 如果字符串为空串或者只包含空格，则返回 true，否则返回 false
+ * @since 11
+ */
+public boolean isBlank()
+
+/**
+ * 判断当前字符串与给定的对象是否相等
+ * @param other 待比较的对象
+ * @return 如果 other 是字符串，并且与当前字符串相等，则返回 true，否则返回 false
+ */
+public boolean equals(Object other)
+
+/**
+ * 判断当前字符串与给定的字符串是否相等，忽略大小写
+ * @param anotherString 待比较的字符串
+ * @return 如果 anotherString 与当前字符串相等（忽略大小写），则返回 true，否则返回 false
+ */
+public boolean equalsIgnoreCase(String anotherString)
+
+/**
+ * 判断当前字符串是否以给定的字符串开头
+ * @param prefix 待判断的前缀
+ * @return 如果 prefix 是当前字符串的前缀，则返回 true，否则返回 false。
+ *         如果 prefix 为空字符串，或者与当前字符串相等，也返回 true
+ */
+public boolean startsWith(String prefix)
+
 boolean endsWith(String suffix)
     // 若字符串以 suffix 结尾，返回 true
 int indexOf(String str)
