@@ -110,7 +110,7 @@ public class Calendar
 {
     public static void main(String[] args)
     {
-        LocalDate date = LocateDate.now(); // 构造一个对象，并用当前日期初始化
+        LocalDate date = LocalDate.now(); // 构造一个对象，并用当前日期初始化
         int month = date.getMonthValue(); // 得到当前月份
         int today = date.getDayOfMonth(); // 得到当前日期
 
