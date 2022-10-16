@@ -3,14 +3,14 @@ title: Web Service
 chrome:
     format: "A4"
     headerTemplate: '<div></div>'
-    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;"> 
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 10px; font-size: 8pt;"> 
     <span class=pageNumber></span> / <span class=totalPages></span></div>'
     displayHeaderFooter: true
     margin:
-        top: '80px'
-        bottom: '80px'
-        left: '60px'
-        right: '60px'
+        top: '40px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
 ---
 
 <h1>Web Service</h1>
@@ -170,7 +170,7 @@ JAX-WS 用于建立 Big Web Service，使用 SOAP 协议。JAX-WS 自动处理�
 
 ## 3.2 建立Big Web Service
 
-1. 在 Eclipse 中建立一个 “dynamic web project”（动态 Web 工程）。在本例中，工程名为 BigWS_Hello。
+1. 在 Eclipse 中建立一个“dynamic web project”（动态 Web 工程）。在本例中，工程名为 BigWS_Hello。
 2. 建立 Web 服务类。例如：
 
 ```java{.line-numbers}
@@ -187,7 +187,7 @@ public class HelloWS
 
 3. 发布该类为 Web Service。
    （1）在 Web 服务类上点击右键，在弹出的菜单中选择 Web Services -> Create Web Service。
-   （2）在弹出的对话框中 Web Service Type 选择 “bottom up Java bean Web Service”，Service Implementation 选择上面编写的 Java 类（如`HelloWS`），并选中 “publish the Web Service”, 点击 next 。
+   （2）在弹出的对话框中 Web Service Type 选择“bottom up Java bean Web Service”，Service Implementation 选择上面编写的 Java 类（如`HelloWS`），并选中“publish the Web Service”, 点击 next 。
    （3）在弹出的界面中选择供访问的方法（如`sayHelloW`），点击 next。
 4. 查看运行结果：在网址 http://localhost:8080/BigWS_Hello/services 查看已经建立的 Web Service。
 
@@ -197,9 +197,9 @@ public class HelloWS
 
 以 SE 环境中使用 Web Service 为例，在 SE 环境中创建客户端的步骤为：
 
-1. 在 Eclipse 中创建一个 “Java Project”（普通 Java 工程）。
-2. 在工程中创建一个 “Web Service Client”。
-3. 在弹出来的对话框中找到 Service definition，填写服务端的 URL 地址。最后点击 “finish” 会自动导入需要的包和生成代码文件。对于上述`HelloWS`类，生成的代码文件有 HelloWS.java、HelloWSProxy.java、HelloWSService.java、HelloWSServiceLocator.java、HelloWSSoapBindingStub.java。
+1. 在 Eclipse 中创建一个“Java Project”（普通 Java 工程）。
+2. 在工程中创建一个“Web Service Client”。
+3. 在弹出来的对话框中找到 Service definition，填写服务端的 URL 地址。最后点击“finish” 会自动导入需要的包和生成代码文件。对于上述`HelloWS`类，生成的代码文件有 HelloWS.java、HelloWSProxy.java、HelloWSService.java、HelloWSServiceLocator.java、HelloWSSoapBindingStub.java。
 4. 编写客户端类。例如：
 
 ```java{.line-numbers}
@@ -226,15 +226,15 @@ public class WSClient
 
 ## 4.1 JAX-RS简述
 
-REST 的全称为 Representational State Transfer，翻译为 “表现层状态转化”。它不是一种框架，也不是一种规范，而是一种网络应用程序的设计风格和开发方式，用来降低开发的复杂性，提高系统的可伸缩性。
+REST 的全称为 Representational State Transfer，翻译为“表现层状态转化”。它不是一种框架，也不是一种规范，而是一种网络应用程序的设计风格和开发方式，用来降低开发的复杂性，提高系统的可伸缩性。
 
 所谓 RESTful 资源指的是网络上的一个实体，或者说是网络上的一个具体信息。可以用一个 URI 指向它，每种资源对应一个特定的 URI。要获取这个资源，访问它的 URI 就可以，因此 URI 就成了每一个资源的地址或独一无二的识别符。
 
 在基于 REST 的系统中，对资源的管理、定位或者其他操作，URI 是不变的。
 
-资源是一种信息实体，它可以有多种外在表现形式。我们把资源具体呈现出来的形式，叫做它的 “表现层”。URI 只代表资源的实体，不代表它的形式。
+资源是一种信息实体，它可以有多种外在表现形式。我们把资源具体呈现出来的形式，叫做它的“表现层”。URI 只代表资源的实体，不代表它的形式。
 
-访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，势必涉及到数据和状态的变化。HTTP 协议是一个无状态协议，这意味着所有的状态都保存在服务器端。因此，如果客户端想要操作服务器，必须通过某种手段，让服务器端发生 “状态转化”（State Transfer）。而这种转化是建立在表现层之上的，所以就是 “表现层状态转化”。
+访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，势必涉及到数据和状态的变化。HTTP 协议是一个无状态协议，这意味着所有的状态都保存在服务器端。因此，如果客户端想要操作服务器，必须通过某种手段，让服务器端发生“状态转化”（State Transfer）。而这种转化是建立在表现层之上的，所以就是“表现层状态转化”。
 
 REST 的设计原则：
 
@@ -258,7 +258,7 @@ JAX-RS的标注有：
 
 ## 4.2 创建RESTful Web Service
 
-1. 在 Eclipse 中创建一个 “dynamic web project”（动态 Web 工程）。在本例中，工程名为 RESTWS_Hello。
+1. 在 Eclipse 中创建一个“dynamic web project”（动态 Web 工程）。在本例中，工程名为 RESTWS_Hello。
 2. 创建 Web 服务类。例如：
 
 ```java{.line-numbers}
@@ -311,7 +311,8 @@ public class MyRESTApplication extends Application
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          id="WebApp_ID" version="3.0">
     <display-name>RESTWS_Hello</display-name>
     <context-param>

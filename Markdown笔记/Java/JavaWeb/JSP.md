@@ -3,14 +3,14 @@ title: EJB
 chrome:
     format: "A4"
     headerTemplate: '<div></div>'
-    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin:  10px 10px 20px; font-size: 8pt;"> 
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin:  10px 10px 10px; font-size: 8pt;"> 
     <span class=pageNumber></span> / <span class=totalPages></span></div>'
     displayHeaderFooter: true
     margin:
         top: '40px'
-        bottom: '80px'
-        left: '60px'
-        right: '60px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
 ---
 
 <h1>JSP</h1>
@@ -131,7 +131,7 @@ JSP 的工作过程如图 2.1 所示。
 <div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/JSP/图2.1-JSP的工作过程.2j1l5fyd8rk0.png">
     <br>
-    图2.1 JSP的工作过程
+    图 2.1&nbsp;&nbsp;&nbsp;&nbsp;JSP 的工作过程
 </div>
 
 JSP 与 Servlet 一样，是在服务器端执行的程序。
@@ -184,7 +184,7 @@ JSP 程序块以`<%`为起始，以`%>`为结束，在期间允许插入任何�
 
 `<%...%>`可以出现在 JSP 页面的任何地方，可以出现任意多次。每个`<%...%>`中可以包含多条 Java 语句，每条语句必须使用`;`号结尾。每个`<%...%>`中的代码可以是不完整的，但是一个 JSP 页面中所有`<%...%>`中的语句组合在一起必须是完整的。
 
-在 JSP 页面被转换成 Servlet 时，`<%...%>`中的代码被默认放到生成出的 Servlet 的`service`方法中。
+在 JSP 页面被转换成 Servlet 时，`<%...%>`中的代码被默认放到生成出的 Servlet 的`service()`方法中。
 
 ## 3.3 JSP表达式
 
@@ -194,7 +194,7 @@ JSP 表达式的语法格式为：`<%= Java变量或表达式 %>`。
 
 JSP 表达式以`<%=`开头，以`%>`结尾，中间是符合 Java 语言语法的变量或者表达式，此处的变量或者表达式中包含的变量必须是已声明的。结尾不能有`;`号。变量或表达式的值会被转换成字符串，并按照先后顺序依次将结果输出到页面上 JSP 表达式所在的位置。
 
-在 JSP 页面被转换成 Servlet 时，`<%= ... %>`中的代码转换为`print`方法的参数加入到 Servlet 类中。
+在 JSP 页面被转换成 Servlet 时，`<%= ... %>`中的代码转换为`print()`方法的参数加入到 Servlet 类中。
 
 ## 3.4 JSP指令
 
@@ -228,15 +228,13 @@ JSP 指令的名称和属性名称都是大小写敏感的。指令名的所有�
 %>
 ```
 
-`page`指令的常用属性如表 3.1 所示。
-
-<div align="center">表3.1 page指令的常用属性</div>
+`page`指令的常用属性如下表所示。
 
 |      属性      |    取值    | 描述                                                         |
 | :------------: | :--------: | ------------------------------------------------------------ |
-|   `language`   |   `java`   | 该JSP程序块中使用的语言，默认为 Java                         |
-|    `import`    | 包名\|类名 | 引入该JSP页面中需要用到的包和类等。<br />`import`是`page`指令中唯一可以出现多次的属性。 |
-| `contentType`  |  文档类型  | 指定 JSP 页面的 MIME 类型和字符编码。常见的 MIME 类型包括：<br />1. `text/plain`：纯文本文件<br />2. `text/html`：纯文本的HTML页面<br />3. `image/jpeg`：JPG 图片<br />4. `image/gif`：GIF 图片<br />5. `application/msword`：Word 文档<br />6. `application/x-msexel`：Excel 文档<br />字符编码的默认值为 ISO-8859-1，可以通过`charset`修改字符编码。 |
+|   `language`   |   `java`   | 该 JSP 程序块中使用的语言，默认为 Java                         |
+|    `import`    | 包名\|类名 | 引入该 JSP 页面中需要用到的包和类等。<br />`import`是`page`指令中唯一可以出现多次的属性。 |
+| `contentType`  |  文档类型  | 指定 JSP 页面的 MIME 类型和字符编码。常见的 MIME 类型包括：<br />1. `text/plain`：纯文本文件<br />2. `text/html`：纯文本的 HTML 页面<br />3. `image/jpeg`：JPG 图片<br />4. `image/gif`：GIF 图片<br />5. `application/msword`：Word 文档<br />6. `application/x-msexel`：Excel 文档<br />字符编码的默认值为 ISO-8859-1，可以通过`charset`修改字符编码。 |
 | `pageEncoding` |   字符集   | 指定该 JSP 页面使用的字符编码。默认为 ISO-8859-1。           |
 
 `page`指令示例：
@@ -363,7 +361,7 @@ JSP 2.0 规范中定义了 20 个标准的动作元素，可以分为五大类�
 <jsp:forward page="path" />
 
 <!-- 第二种 -->
-<jsp:forward page="path" > 
+<jsp:forward page="path" >
     <jsp:param name="paramName" value="paramValue" />
 </jsp:forward>
 ```
@@ -403,7 +401,7 @@ JSP 2.0 规范中定义了 20 个标准的动作元素，可以分为五大类�
 
 ### 3.5.5 `jsp:setProperty`动作
 
-该动作用来设置Bean中的属性值。其语法为：`<jsp:setProperty name="beanName" prop_expr />`
+该动作用来设置 Bean 中的属性值。其语法为：`<jsp:setProperty name="beanName" prop_expr />`
 
 其中`prop_expr`有以下几种可能的情形：
 
@@ -418,7 +416,7 @@ JSP 2.0 规范中定义了 20 个标准的动作元素，可以分为五大类�
 
 有一个特殊用法：如果`property`的值是`"*"`，表示所有名字和 Bean 属性名字匹配的请求参数都将被传递给相应的属性 set 方法。
 
-`value`属性是可选的，该属性用来指定 Bean 属性的值。字符串数据会在目标类中通过标准的`valueOf`方法自动转换成数字、`boolean`、`Boolean`、`byte`、`Byte`、`char`、`Character`。例如，`boolean`和`Boolean`类型的属性值（比如`"true"`）通过`Boolean.valueOf`转换，`int`和`Integer`类型的属性值（比如`"42"`）通过`Integer.valueOf`转换。
+`value`属性是可选的，该属性用来指定 Bean 属性的值。字符串数据会在目标类中通过标准的`valueOf()`方法自动转换成数字、`boolean`、`Boolean`、`byte`、`Byte`、`char`、`Character`。例如，`boolean`和`Boolean`类型的属性值（比如`"true"`）通过`Boolean.valueOf()`转换，`int`和`Integer`类型的属性值（比如`"42"`）通过`Integer.valueOf()`转换。
 
 `param`也是可选的，它指定用哪个请求参数作为 Bean 属性的值。如果当前请求没有参数，则什么事情也不做，系统不会把`null`传递给 Bean 属性的 set 方法。因此，你可以让 Bean 自己提供默认属性值，只有当请求参数明确指定了新值时才修改默认属性值。
 
@@ -466,7 +464,7 @@ JSP 2.0 规范中定义了 20 个标准的动作元素，可以分为五大类�
 
 该动作用来执行一个 applet 或 Bean，如果需要的话还要下载一个 Java 插件用于执行它。 其语法如下：
 
-```html
+```text
 <jsp:plugin>
     type="bean | applet" 
     code="classFileName" 
@@ -487,7 +485,7 @@ JSP 2.0 规范中定义了 20 个标准的动作元素，可以分为五大类�
 
 ## 3.6 JSP注释
 
-在JSP页面中可以包含三种类型的注释：HTML 注释、JSP 代码注释和 Java 代码注释。
+在 JSP 页面中可以包含三种类型的注释：HTML 注释、JSP 代码注释和 Java 代码注释。
 
 ### 3.6.1 HTML注释
 
@@ -526,15 +524,15 @@ Java 代码注释出现在 JSP 页面的 Java 代码段中，也就是`<%`与`%>
 
 |        方法        |                说明                |
 | :----------------: | :--------------------------------: |
-| `print`或`println` |              输出数据              |
-|     `newLine`      |            输出换行字符            |
-|      `flush`       |           输出缓冲区数据           |
-|      `close`       |             关闭输出流             |
-|      `clear`       | 清除缓冲区中数据，但不输出到客户端 |
-|   `clearBuffer`    |  清除缓冲区中数据，并输出到客户端  |
-|  `getBufferSize`   |           获得缓冲区大小           |
-|   `getRemaining`   |    获得缓冲区中没有被占用的空间    |
-|   `isAutoFlush`    |           是否为自动输出           |
+| `print()`或`println()` |              输出数据              |
+|     `newLine()`      |            输出换行字符            |
+|      `flush()`       |           输出缓冲区数据           |
+|      `close()`       |             关闭输出流             |
+|      `clear()`       | 清除缓冲区中数据，但不输出到客户端 |
+|   `clearBuffer()`    |  清除缓冲区中数据，并输出到客户端  |
+|  `getBufferSize()`   |           获得缓冲区大小           |
+|   `getRemaining()`   |    获得缓冲区中没有被占用的空间    |
+|   `isAutoFlush()`    |           是否为自动输出           |
 
 ## 4.2 `request`对象
 
@@ -544,31 +542,31 @@ Java 代码注释出现在 JSP 页面的 Java 代码段中，也就是`<%`与`%>
 
 |          方法          |                     说明                     |
 | :--------------------: | :------------------------------------------: |
-|     `isUserInRole`     |      判断认证后的用户是否属于某一成员组      |
-|     `getAttribute`     | 获取指定属性的值，如该属性不存在则返回`null` |
-|  `getAttributeNames`   |             获取所有属性名的集合             |
-|      `getCookies`      |             获取所有 Cookie 对象             |
-| `getCharacterEncoding` |              获取请求的字符编码              |
-|   `getContentLength`   |    返回请求正文的长度，如不确定则返回 -1     |
-|      `getHeader`       |             获取执行名字的报头值             |
-|      `getHeaders`      |  获取指定名字报头的所有值，以枚举的形式返回  |
-|    `getHeaderNames`    |     获取所有报头的名字，以枚举的形式返回     |
-|    `getInputStream`    |       返回请求输入流，获取请求中的数据       |
-|      `getMethod`       |      获取客户端向服务器端传送数据的方法      |
-|     `getParameter`     |             获取指定名字的参数值             |
-|  `getParameterNames`   |     获取所有参数的名字，以枚举的形式返回     |
-|  `getParameterValues`  |           获取指定名字参数的所有值           |
-|     `getProtocol`      |    获取客户端向服务器端传送数据的协议名称    |
-|    `getQueryString`    |  获取以 GET 方法向服务器端传送的查询字符串   |
-|    `getRequestURI`     |        获取发出请求字符串的客户端地址        |
-|    `getRemoteAddr`     |             获取客户端的 IP 地址             |
-|    `getRemoteHost`     |               获取客户端的名字               |
-|      `getSession`      |             获取和请求相关的会话             |
-|    `getServerName`     |               获取服务器的名字               |
-|    `getServerPath`     |           获取客户端请求文件的路径           |
-|    `getServerPort`     |              获取服务器的端口号              |
-|   `removeAttribute`    |             删除请求中的一个属性             |
-|     `setAttribute`     |             设置执行名字的参数值             |
+|     `isUserInRole()`     |      判断认证后的用户是否属于某一成员组      |
+|     `getAttribute()`     | 获取指定属性的值，如该属性不存在则返回`null` |
+|  `getAttributeNames()`   |             获取所有属性名的集合             |
+|      `getCookies()`      |             获取所有`Cookie`对象             |
+| `getCharacterEncoding()` |              获取请求的字符编码              |
+|   `getContentLength()`   |    返回请求正文的长度，如不确定则返回 -1     |
+|      `getHeader()`       |             获取执行名字的报头值             |
+|      `getHeaders()`      |  获取指定名字报头的所有值，以枚举的形式返回  |
+|    `getHeaderNames()`    |     获取所有报头的名字，以枚举的形式返回     |
+|    `getInputStream()`    |       返回请求输入流，获取请求中的数据       |
+|      `getMethod()`       |      获取客户端向服务器端传送数据的方法      |
+|     `getParameter()`     |             获取指定名字的参数值             |
+|  `getParameterNames()`   |     获取所有参数的名字，以枚举的形式返回     |
+|  `getParameterValues()`  |           获取指定名字参数的所有值           |
+|     `getProtocol()`      |    获取客户端向服务器端传送数据的协议名称    |
+|    `getQueryString()`    |  获取以 GET 方法向服务器端传送的查询字符串   |
+|    `getRequestURI()`     |        获取发出请求字符串的客户端地址        |
+|    `getRemoteAddr()`     |             获取客户端的 IP 地址             |
+|    `getRemoteHost()`     |               获取客户端的名字               |
+|      `getSession()`      |             获取和请求相关的会话             |
+|    `getServerName()`     |               获取服务器的名字               |
+|    `getServerPath()`     |           获取客户端请求文件的路径           |
+|    `getServerPort()`     |              获取服务器的端口号              |
+|   `removeAttribute()`    |             删除请求中的一个属性             |
+|     `setAttribute()`     |             设置执行名字的参数值             |
 
 ## 4.3 `response`对象
 
@@ -578,17 +576,17 @@ Java 代码注释出现在 JSP 页面的 Java 代码段中，也就是`<%`与`%>
 
 |       方法        |                  说明                  |
 | :---------------: | :------------------------------------: |
-|    `addCookie`    |          添加一个 Cookie 对象          |
-|    `addHeader`    |      添加 HTTP 文件指定名字头信息      |
-| `containsHeader`  | 判断指定名字的 HTTP 文件头信息是否存在 |
-|    `encodeURL`    |        使用 sessionid 封装 URL         |
-|   `flushBuffer`   |    强制把当前缓冲区内容发送到客户端    |
-|  `getBufferSize`  |             返回缓冲区大小             |
-| `getOutputStream` |        返回到客户端的输出流对象        |
-|    `sendError`    |          向客户端发送错误信息          |
-|  `sendRedirect`   |     把响应发送到另一个位置进行处理     |
-| `setContentType`  |          设置响应的 MIME 类型          |
-|    `setHeader`    |     设置指定名字的 HTTP 文件头信息     |
+|    `addCookie()`    |          添加一个`Cookie`对象          |
+|    `addHeader()`    |      添加 HTTP 文件指定名字头信息      |
+| `containsHeader()`  | 判断指定名字的 HTTP 文件头信息是否存在 |
+|    `encodeURL()`    |        使用 sessionid 封装 URL         |
+|   `flushBuffer()`   |    强制把当前缓冲区内容发送到客户端    |
+|  `getBufferSize()`  |             返回缓冲区大小             |
+| `getOutputStream()` |        返回到客户端的输出流对象        |
+|    `sendError()`    |          向客户端发送错误信息          |
+|  `sendRedirect()`   |     把响应发送到另一个位置进行处理     |
+| `setContentType()`  |          设置响应的 MIME 类型          |
+|    `setHeader()`    |     设置指定名字的 HTTP 文件头信息     |
 
 ## 4.4 `session`对象
 
@@ -604,16 +602,16 @@ Java 代码注释出现在 JSP 页面的 Java 代码段中，也就是`<%`与`%>
 
 |          方法名          |                    说明                     |
 | :----------------------: | :-----------------------------------------: |
-|      `getAttribute`      |             获取指定名字的属性              |
-|   `getAttributeNames`    |  获取`session`中全部属性名字，返回一个枚举  |
-|    `getCreationTime`     |           返回`session`的创建时间           |
-|         `getId`          |               获取会话标识符                |
-|  `getLastAccessedTime`   |           返回最后发送请求的时间            |
-| `getMaxInactiveInterval` | 返回`session`对象的生存时间，单位千分之一秒 |
-|       `invalidate`       |              销毁`session`对象              |
-|         `isNew`          |    该`session`对象是否是这次请求新产生的    |
-|    `removeAttribute`     |             删除指定名字的属性              |
-|      `setAttribute`      |            设定指定名字的属性值             |
+|      `getAttribute()`      |             获取指定名字的属性              |
+|   `getAttributeNames()`    |  获取`session`中全部属性名字，返回一个枚举  |
+|    `getCreationTime()`     |           返回`session`的创建时间           |
+|         `getId()`          |               获取会话标识符                |
+|  `getLastAccessedTime()`   |           返回最后发送请求的时间            |
+| `getMaxInactiveInterval()` | 返回`session`对象的生存时间，单位千分之一秒 |
+|       `invalidate()`       |              销毁`session`对象              |
+|         `isNew()`          |    该`session`对象是否是这次请求新产生的    |
+|    `removeAttribute()`     |             删除指定名字的属性              |
+|      `setAttribute()`      |            设定指定名字的属性值             |
 
 ## 4.5 `pageContext`对象
 
@@ -623,17 +621,17 @@ Java 代码注释出现在 JSP 页面的 Java 代码段中，也就是`<%`与`%>
 
 |       方法名        |                  说明                  |
 | :-----------------: | :------------------------------------: |
-|      `forward`      |    重定向到另一页面或 Servlet 组件     |
-|   `getAttribute`    |      获取某范围中指定名字的属性值      |
-|   `findAttribute`   |        按范围搜索指定名字的属性        |
-|  `removeAttribute`  |       删除某范围中指定名字的属性       |
-|   `setAttribute`    |      设定某范围中指定名字的属性值      |
-|   `getException`    |            返回当前异常对象            |
-|    `getRequest`     |            返回当前请求对象            |
-|    `getResponse`    |            返回当前响应对象            |
-| `getServletConfig`  |   返回当前页面的`ServletConfig`对象    |
-| `getServletContext` | 返回所有页面共享的`ServletContext`对象 |
-|    `getSession`     |         返回当前页面的会话对象         |
+|      `forward()`      |    重定向到另一页面或 Servlet 组件     |
+|   `getAttribute()`    |      获取某范围中指定名字的属性值      |
+|   `findAttribute()`   |        按范围搜索指定名字的属性        |
+|  `removeAttribute()`  |       删除某范围中指定名字的属性       |
+|   `setAttribute()`    |      设定某范围中指定名字的属性值      |
+|   `getException()`    |            返回当前异常对象            |
+|    `getRequest()`     |            返回当前请求对象            |
+|    `getResponse()`    |            返回当前响应对象            |
+| `getServletConfig()`  |   返回当前页面的`ServletConfig`对象    |
+| `getServletContext()` | 返回所有页面共享的`ServletContext`对象 |
+|    `getSession()`     |         返回当前页面的会话对象         |
 
 ## 4.6 `application`对象
 
@@ -645,11 +643,11 @@ Java 代码注释出现在 JSP 页面的 Java 代码段中，也就是`<%`与`%>
 
 |       方法名        |                    说明                    |
 | :-----------------: | :----------------------------------------: |
-|   `getAttribute`    |       获取应用对象中指定名字的属性值       |
-| `getAttributeNames` | 获取应用对象中所有属性的名字，返回一个枚举 |
-| `getInitParameter`  |     返回应用对象中指定名字的初始参数值     |
-|  `getServletInfo`   |     返回 Servlet 编译器中当前版本信息      |
-|   `setAttribute`    |       设置应用对象中指定名字的属性值       |
+|   `getAttribute()`    |       获取应用对象中指定名字的属性值       |
+| `getAttributeNames()` | 获取应用对象中所有属性的名字，返回一个枚举 |
+| `getInitParameter()`  |     返回应用对象中指定名字的初始参数值     |
+|  `getServletInfo()`   |     返回 Servlet 编译器中当前版本信息      |
+|   `setAttribute()`    |       设置应用对象中指定名字的属性值       |
 
 ## 4.7 `config`对象
 
@@ -661,10 +659,10 @@ Java 代码注释出现在 JSP 页面的 Java 代码段中，也就是`<%`与`%>
 
 |         方法名          |                    说明                     |
 | :---------------------: | :-----------------------------------------: |
-|   `getServletContext`   |       返回所执行的 Servlet 的环境对象       |
-|    `getServletName`     |         返回所执行的 Servlet 的名字         |
-|   `getInitParameter`    |          返回指定名字的初始参数值           |
-| `getInitParameterNames` | 返回该 JSP 中所有的初始参数名，返回一个枚举 |
+|   `getServletContext()`   |       返回所执行的 Servlet 的环境对象       |
+|    `getServletName()`     |         返回所执行的 Servlet 的名字         |
+|   `getInitParameter()`    |          返回指定名字的初始参数值           |
+| `getInitParameterNames()` | 返回该 JSP 中所有的初始参数名，返回一个枚举 |
 
 ## 4.8 `page`对象
 
@@ -723,7 +721,7 @@ public class SimpleBean
         return info;
     }
 
-    //布尔类型的setXxx()方法
+    //布尔类型的 setXxx() 方法
     public void setInfo(boolean info)
     {
         this.info = info;
@@ -733,7 +731,7 @@ public class SimpleBean
 
 在 JSP 中可以使用`<jsp:useBean>`、`<jsp:setProperty>`、`<jsp:getProperty>`这三个动作来完成对 Java Bean 的调用。
 
-`<jsp:useBean>`动作用来将一个 Java Bean 的实例引入到 JSP 中，并且使得这个实例具有一定生存范围，在这个范围内还具有一个唯一的 id。这样 JSP 通过 id 来识别 Java Bean，并通过`id.method`类似的语句来调用 Java Bean 中的公共方法。 在执行过程中，`<jsp:useBean>`首先会尝试寻找已经存在的具有相同`id`和`scope`值的 JavaBean 实例，如果没有就会自动创建一个新的实例。
+`<jsp:useBean>`动作用来将一个 Java Bean 的实例引入到 JSP 中，并且使得这个实例具有一定生存范围，在这个范围内还具有一个唯一的 id。这样 JSP 通过 id 来识别 Java Bean，并通过`id.method`类似的语句来调用 Java Bean 中的公共方法。 在执行过程中，`<jsp:useBean>`首先会尝试寻找已经存在的具有相同`id`和`scope`值的 Java Bean 实例，如果没有就会自动创建一个新的实例。
 
 `<jsp:setProperty>`动作主要用于设置 Bean 的属性值。
 
@@ -885,7 +883,7 @@ Core 标签库，又称为核心标签库，对 JSP 页面一般处理的封装�
 URL 相关标签：`<c:import>`、`<c:url>`、`<c:redirect>`、`<c:param>`
 
 |      标签       |                             描述                             |
-| :-------------: | ---------------------------------------------------------- |
+| :-------------: | :----------------------------------------------------------: |
 |    `<c:out>`    |            用于在 JSP 中显示数据，就像`<%=...%>`             |
 |    `<c:set>`    |                         用于保存数据                         |
 |  `<c:remove>`   |                         用于删除数据                         |
@@ -917,12 +915,13 @@ JSTL 国际化标签用来格式化并输出文本、日期、时间、数字。
 |    `<fmt:timeZone>`     |                指定时区                |
 |   `<fmt:setTimeZone>`   |                指定时区                |
 |     `<fmt:message>`     |          显示资源配置文件信息          |
-| `<fmt:requestEncoding>` |        设置 request 的字符编码         |
+| `<fmt:requestEncoding>` |        设置`request`的字符编码         |
 
 ## 8.3 数据库标签库
 
 JSTL 数据库标签库提供了与关系型数据库进行交互的标签。对于早期纯 JSP 开发的应用以及小型的开发有着重大意义，但对于 MVC 模型来说却是违反规范的。
-
+<br>
+<br>
 |         标签          | 描述                                                         |
 | :-------------------: | ------------------------------------------------------------ |
 | `<sql:setDataSource>` | 指定数据源                                                   |
@@ -934,13 +933,13 @@ JSTL 数据库标签库提供了与关系型数据库进行交互的标签。对
 
 例如：
 
-```html{.line-numbers}
+```html
 <sql:setDataSource
     var="dataSrc"
     url="jdbc:postgresql://localhost:5432/myDB"
     driver="org.postgresql.Driver"
     user="admin"
-    password="1111"/>
+    password="1111" />
 
 <sql:query var="queryResults" dataSource=${dataSrc}>
     select * from table1

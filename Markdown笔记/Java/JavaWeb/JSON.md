@@ -1,8 +1,36 @@
-[TOC]
+---
+title: JSON
+chrome:
+    format: "A4"
+    headerTemplate: '<div></div>'
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 10px; font-size: 8pt;"> 
+    <span class=pageNumber></span> / <span class=totalPages></span></div>'
+    displayHeaderFooter: true
+    margin:
+        top: '40px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
+---
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [1 JSON介绍](#1-json介绍)
+- [2 JSON在JavaScript中的使用](#2-json在javascript中的使用)
+  - [2.1 JSON的定义](#21-json的定义)
+  - [2.2 JSON的转换](#22-json的转换)
+- [3 JSON在Java中的使用](#3-json在java中的使用)
+  - [3.1 JavaBean和JSON的相互转换](#31-javabean和json的相互转换)
+  - [3.2 List和JSON的相互转换](#32-list和json的相互转换)
+  - [3.3 Map和JSON的相互转换](#33-map和json的相互转换)
+
+<!-- /code_chunk_output -->
 
 # 1 JSON介绍
 
-JSON（JavaScript Object Notation，JavaScript 对象表示法）是一种轻量级的数据交换格式，易于人阅读和编写，也易于机器解析和生成。“轻量级” 指的是与 XML 相比，JSON 解析速度更快；“数据交换” 指的是客户端和服务器之间的业务数据传输。
+JSON（JavaScript Object Notation，JavaScript 对象表示法）是一种轻量级的数据交换格式，易于人阅读和编写，也易于机器解析和生成。“轻量级”指的是与 XML 相比，JSON 解析速度更快；“数据交换”指的是客户端和服务器之间的业务数据传输。
 
 JSON 采用完全独立于语言的文本格式，而且很多语言都提供了对 JSON 的支持，这就使得 JSON 成为理想的数据交换语言。
 

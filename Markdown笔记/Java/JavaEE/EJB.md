@@ -3,14 +3,14 @@ title: EJB
 chrome:
     format: "A4"
     headerTemplate: '<div></div>'
-    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin:  10px 10px 20px; font-size: 8pt;"> 
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin:  10px 10px 10px; font-size: 8pt;"> 
     <span class=pageNumber></span> / <span class=totalPages></span></div>'
     displayHeaderFooter: true
     margin:
-        top: '80px'
-        bottom: '80px'
-        left: '60px'
-        right: '60px'
+        top: '40px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
 ---
 
 <h1>EJB</h1>
@@ -76,7 +76,7 @@ EJB 是 Enterprise Java Bean 的缩写，又称为企业 Bean，是 Sun 公司�
 
 组件类型：
 
-1. 会话 Bean：会话 Bean 主要是对业务逻辑的封装。EJB 3.1中将会话 Bean 分成有状态会话 Bean、无状态会话 Bean、单例会话 Bean。
+1. 会话 Bean：会话 Bean 主要是对业务逻辑的封装。EJB 3.1 中将会话 Bean 分成有状态会话 Bean、无状态会话 Bean、单例会话 Bean。
 2. 消息驱动 Bean（MDB）：消息驱动 Bean 是设计用来专门处理基于消息请求的组件。一个 MDB 类必须实现`MessageListener`接口。当容器检测到 Bean 守候的队列中存在一条消息时，就调用`onMessage()`方法，将消息作为参数传入。
 
 组件的组成：
@@ -95,9 +95,9 @@ EJB 是 Enterprise Java Bean 的缩写，又称为企业 Bean，是 Sun 公司�
 4. 编写客户端程序，并将接口拷贝给客户端，通过 JNDI 查找获得 EJB，调用 EJB 的方法。
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图1.1-EJB组件之间的关系.1tvmbtvh0mtc.png">
+    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图1.1-EJB组件之间的关系.1tvmbtvh0mtc.png" style="height: 380px">
     <br>
-    图1.1 EJB组件之间的关系
+    图 1.1&nbsp;&nbsp;&nbsp;&nbsp;EJB 组件之间的关系
 </div>
 
 ## 1.4 EJB 3.1新特性
@@ -109,13 +109,13 @@ EJB 是 Enterprise Java Bean 的缩写，又称为企业 Bean，是 Sun 公司�
 <div align="center" style="margin-bottom: 10px">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图1.2-EJB-3.0打包方式.43ap2xzj75k0.png">
     <br>
-    图1.2 EJB 3.0打包方式
+    图 1.2&nbsp;&nbsp;&nbsp;&nbsp;EJB 3.0 打包方式
 </div>
 
 <div align="center" style="margin-bottom: 10px">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图1.3-EJB-3.1打包方式.7g2o4lhhh6g0.png">
     <br>
-    图1.3 EJB 3.1打包方式
+    图 1.3&nbsp;&nbsp;&nbsp;&nbsp;EJB 3.1 打包方式
 </div>
 
 4. 异步会话 Bean：异步调用可以应用于所有类型的会话 Bean。在 EJB 3.1 之前，在会话 Bean 上的任何函数调用都是同步的。EJB 3.1 规范规定：在容器开始执行某个 Bean 实例的调用之前，异步调用的控制权一定要返回给客户端，因此允许客户端触发并行处理的流程。
@@ -142,7 +142,7 @@ EJB 是 Enterprise Java Bean 的缩写，又称为企业 Bean，是 Sun 公司�
 | :--------------------------------------------------------: | ------------------------------------------------------------ | :-------------------------------------------------------: |
 |                         `app-name`                         | 应用程序的名称。如果没有在 application.xml 中指定，则默认的名称就是 EAR 的打包名称。 |                            否                             |
 |                       `module-name`                        | 模块的名称。如果没有在 ejb-jar.xml 或 web.xml 中指定，则默认的名称就是 jar 包或 war 包的名称。 |                            是                             |
-|                      `distinct-name`                       | JBoss AS7 中特有的 EJB 名字，默认为空                        |                            否                             |
+|                      `distinct-name`                       | JBoss AS7 中特有的 EJB 名字，默认为空。                        |                            否                             |
 |                        `bean-name`                         | Bean 类的名称。如果没有使用标注`@Stateless`、`@Stateful`、`@Singleton`或其它布署描述符，则默认的名称就是该 session bean 的类的完全限定名称。 |                            是                             |
 |              `fully-qualified-interface-name`              | 暴露接口的限定名称。如果是一个无接口的会话 Bean，则它的值为该 Bean 类的完全限定名称。对于有状态会话 Bean，要在末尾添加`?stateful`。 |                            是                             |
 
@@ -169,7 +169,7 @@ EJB 是 Enterprise Java Bean 的缩写，又称为企业 Bean，是 Sun 公司�
 <div align="center">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图2.1-无状态会话Bean实例与客户端的对应关系.32fp3qp5iao0.png">
     <br>
-    图2.1 无状态会话Bean实例与客户端的对应关系
+    图 2.1&nbsp;&nbsp;&nbsp;&nbsp;无状态会话 Bean 实例与客户端的对应关系
 </div>
 
 2. 有状态会话 Bean
@@ -181,7 +181,7 @@ EJB 是 Enterprise Java Bean 的缩写，又称为企业 Bean，是 Sun 公司�
 <div align="center">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图2.2-有状态会话Bean实例与客户端的对应关系.5h2xsbm5x6s0.png">
     <br>
-    图2.2 有状态会话Bean实例与客户端的对应关系
+    图 2.2&nbsp;&nbsp;&nbsp;&nbsp;有状态会话 Bean 实例与客户端的对应关系
 </div>
 
 3. 单例会话 Bean
@@ -193,7 +193,7 @@ EJB 是 Enterprise Java Bean 的缩写，又称为企业 Bean，是 Sun 公司�
 <div align="center">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图2.3-单例会话Bean实例与客户端的对应关系.5f4c8f37bxk0.png">
     <br>
-    图2.3 单例会话Bean实例与客户端的对应关系
+    图 2.3&nbsp;&nbsp;&nbsp;&nbsp;单例会话 Bean 实例与客户端的对应关系
 </div>
 
 ### 2.1.3 会话Bean的构成
@@ -267,16 +267,13 @@ public class StatelessRemoteClient
         prop.put(Context.INITIAL_CONTEXT_FACTORY,
                  org.jboss.naming.remote.client.InitialContextFactory.class.getName());
         // 用户验证
-        prop.put(Context.SECURITY_PRINCIPAL,
-　　　　　　　　　System.getProperty("username","testJNDI"));
-        prop.put(Context.SECURITY_CREDENTIALS,
-                 System.getProperty("password","123456"));
+        prop.put(Context.SECURITY_PRINCIPAL, System.getProperty("username", "testJNDI"));
+        prop.put(Context.SECURITY_CREDENTIALS, System.getProperty("password", "123456"));
         try
         {
             // 获取远程接口
             Context ctx = new InitialContext(prop);
-            Object obj = ctx.lookup(
-                "SessionEJB/HelloBean!javaee.ejb.stateless.remote.HelloBeanRemote");
+            Object obj = ctx.lookup("SessionEJB/HelloBean!javaee.ejb.stateless.remote.HelloBeanRemote");
             HelloBeanRemote hwr = (HelloBeanRemote) obj;
 
             // 调用远程接口的方法
@@ -314,8 +311,7 @@ public class StatelessRemoteClient
             final String appName = "";
             final String moduleName = "SessionEJB";
             final String distinctName = "";
-            Object obj = context.lookup("ejb:" + appName + "/" + moduleName +
-                 "/" + distinctName +
+            Object obj = context.lookup("ejb:" + appName + "/" + moduleName + "/" + distinctName +
                  "/HelloBean!javaee.ejb.stateless.remote.HelloBeanRemote");
             HelloBeanRemote hwr = (HelloBeanRemote) obj;
 
@@ -460,8 +456,7 @@ public class StatelessLocalClient
             final String moduleName = "SessionEJB";
             final String distinctName = "";         
             CallerBeanRemote remote = (CallerBeanRemote) context.lookup("ejb:" +
-                          appName + "/" + moduleName + "/" +
-                          distinctName +
+                          appName + "/" + moduleName + "/" + distinctName +
                           "/CallerBean!javaee.ejb.stateless.local.CallerBeanRemote");
 
             result = remote.callEJBOne(1000, 2000);
@@ -550,7 +545,7 @@ public class TestEJBServlet extends HttpServlet
 <div align="center" style="margin-bottom: 10px">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图2.4-无状态会话Bean的三种状态.2c4di6widt1c.png">
     <br>
-    图2.4 无状态会话Bean的三种状态
+    图 2.4&nbsp;&nbsp;&nbsp;&nbsp;无状态会话 Bean 的三种状态
 </div>
 
 1. 不存在状态：主要针对无状态会话 Bean 组件对象，而不是 EJB 组件本身。在此状态下，无状态会话 Bean 组件对象不存在，但无状态会话 Bean 组件已经被部署到服务容器中。
@@ -670,23 +665,21 @@ public class MulBy2Client
             final String distinctName = "";
 
             // 生成第一个实例                
-            Object obj = context.lookup("ejb:" + appName + "/" + moduleName +
-                "/" + distinctName +
+            Object obj = context.lookup("ejb:" + appName + "/" + moduleName + "/" + distinctName +
                 "/MulBy2Bean!javaee.ejb.stateful.remote.MulBy2Remote?stateful");
             MulBy2Remote mulBy2R1 =(MulBy2Remote)obj;
 
             // 生成第二个实例      
-            obj = context.lookup("ejb:" + appName + "/" + moduleName + "/" +
-                distinctName +
+            obj = context.lookup("ejb:" + appName + "/" + moduleName + "/" + distinctName +
                 "/MulBy2Bean!javaee.ejb.stateful.remote.MulBy2Remote?stateful");
             MulBy2Remote mulBy2R2 = (MulBy2Remote) obj;
 
-            // 第一个实例调用2次乘法操作
+            // 第一个实例调用 2 次乘法操作
             int j1 = mulBy2R1.mul();
             j1 = mulBy2R1.mul();
             System.out.println("the value in Clinet 1:  " + j1);
 
-            // 第二个实例调用1次乘法操作
+            // 第二个实例调用 1 次乘法操作
             int j2 = mulBy2R2.mul();
             System.out.println("the value in Clinet 2:  " + j2);
         }
@@ -708,7 +701,7 @@ public class MulBy2Client
 <div align="center" style="margin-bottom: 10px">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图2.5-有状态会话Bean的生命周期.3mxahdny3oq0.png">
     <br>
-    图2.5 有状态会话Bean的生命周期
+    图 2.5&nbsp;&nbsp;&nbsp;&nbsp;有状态会话 Bean 的生命周期
 </div>
 
 - 当客户向 EJB 服务器请求一个组件引用时，EJB 组件对象被服务器创建。
@@ -813,15 +806,13 @@ public class SimpleSingletonClient
             final String moduleName = "Singleton";
             final String distinctName = "";
 
-            // 生成2个客户端
+            // 生成 2 个客户端
             SimpleSingletonRemote single01 = (SimpleSingletonRemote) context.lookup(
-                "ejb:" + appName + "/" + moduleName + "/" + distinctName +
-                "/SimpleSingletonBean!" +
+                "ejb:" + appName + "/" + moduleName + "/" + distinctName + "/SimpleSingletonBean!" +
                 "javaee.ejb.singleton.remote.SimpleSingletonRemote");
 
             SimpleSingletonRemote single02 = (SimpleSingletonRemote) context.lookup(
-                "ejb:" + appName + "/" + moduleName + "/" + distinctName +
-                "/SimpleSingletonBean!" +
+                "ejb:" + appName + "/" + moduleName + "/" + distinctName + "/SimpleSingletonBean!" +
                 "javaee.ejb.singleton.remote.SimpleSingletonRemote");
        
             int value1 = single01.getValue();
@@ -853,7 +844,7 @@ public class SimpleSingletonClient
 
 #### 2.4.2.1 容器管理并发（CMC）
 
-容器管理并发（Container-Managed Concurrency，CMC） 由 EJB 容器控制客户端访问单例会话Bean的业务方法，使用`@Lock`标注来指定当客户端调用方法时容器如何管理并发。
+容器管理并发（Container-Managed Concurrency，CMC） 由 EJB 容器控制客户端访问单例会话 Bean 的业务方法，使用`@Lock`标注来指定当客户端调用方法时容器如何管理并发。
 
 `@Lock`的值可以为`READ`或`WRITE`。
 
@@ -1064,7 +1055,7 @@ public class PrintServlet extends HttpServlet
         PrintWriter out = response.getWriter();
         try
         {
-            // 调用 printAndForget 方法
+            // 调用 printAndForget() 方法
             printBean.printAndForget();
             out.println("<html>");
             out.println("<head>");
@@ -1072,7 +1063,7 @@ public class PrintServlet extends HttpServlet
             out.println("</head>");
             out.println("<body>");
             
-            // 调用 printAndCheckLater 方法
+            // 调用 printAndCheckLater() 方法
             Future<String> futureResult = printBean.printAndCheckLater();
             if (futureResult.isDone() && !futureResult.isCancelled())
             {  
@@ -1103,7 +1094,7 @@ public class PrintServlet extends HttpServlet
 
 ## 3.1 JMS的基本概念
 
-JMS（Java Message Service，Java消息服务）是由 Sun 公司开发的一组接口和相关规范，这些接口和规范定义了 JMS 客户端访问消息系统的方法。
+JMS（Java Message Service，Java 消息服务）是由 Sun 公司开发的一组接口和相关规范，这些接口和规范定义了 JMS 客户端访问消息系统的方法。
 
 JMS 为 Java 程序提供了一种创建、发送、接收和读取消息的通用方法。JMS 可以为企业软件模块间提供方便、可靠的异步通信机制。
 
@@ -1114,7 +1105,7 @@ JMS 是 Java 解决方案的消息服务类型，它的通信管道是消息队�
 <div align="center" style="margin-bottom: 10px">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图3.1-早期MQ系统调用结构示意图.bzhh837mrm8.png">
     <br>
-    图3.1 早期MQ系统调用结构示意图
+    图 3.1&nbsp;&nbsp;&nbsp;&nbsp;早期 MQ 系统调用结构示意图
 </div>
 
 Sun 公司为了统一不同消息服务和消息调用接口的标准，推出了 JMS 规范，它规定了 Java 消息队列的设计和调用方法，如图 3.2 所示。
@@ -1122,7 +1113,7 @@ Sun 公司为了统一不同消息服务和消息调用接口的标准，推出�
 <div align="center" style="margin-bottom: 10px">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图3.2-JMS-API示意图.6q92kqtk39g0.png">
     <br>
-    图3.2 JMS API示意图
+    图 3.2&nbsp;&nbsp;&nbsp;&nbsp;JMS API 示意图
 </div>
 
 JMS 规范通过标准 JMS API 屏蔽了对不同 JMS Provider 的调用差异，因此针对 JMS API 设计的 Java 程序可以方便地在不同消息服务提供者间移植。
@@ -1140,9 +1131,8 @@ PTP 模型是基于队列（Queue）的，它定义了客户端如何向队列�
 <div align="center">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图3.3-PTP类型示意图.5hk9nl1hb480.png">
     <br>
-    图3.3 PTP类型示意图
+    图 3.3&nbsp;&nbsp;&nbsp;&nbsp;PTP 类型示意图
 </div>
-
 
 PTP 模型的特点：
 
@@ -1160,9 +1150,8 @@ Pub/Sub 模型中定义了如何向一个内容节点发布和订阅消息，这
 <div align="center">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图3.4-Pub-Sub类型示意图.684nd71j89w0.png">
     <br>
-    图3.4 Pub/Sub类型示意图
+    图 3.4&nbsp;&nbsp;&nbsp;&nbsp;Pub/Sub 类型示意图
 </div>
-
 
 Pub/Sub 模型的特点：
 
@@ -1208,6 +1197,7 @@ JMS 消息由以下几部分组成：消息头，属性和消息体。
 |    JMSReplyTo    | 表示需要回复本消息的目的地。                                 |
 |     JMSType      | 消息类型的识别符。                                           |
 |  JMSRedelivered  | 如果这个值为`true`，表示消息是被重新发送了。                 |
+<br>
 
 |    消息类型     |                            消息体                            |
 | :-------------: | :----------------------------------------------------------: |
@@ -1228,7 +1218,7 @@ JMS API 定义了一组基本接口，如图 3.5 所示。
 <div align="center" style="margin-bottom: 10px">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图3.5-JMS-API的基本接口.79xhxb10bw4.png">
     <br>
-    图3.5 JMS API的基本接口
+    图 3.5&nbsp;&nbsp;&nbsp;&nbsp;JMS API 的基本接口
 </div>
 
 1. 连接工厂（`ConnectionFactory`）：为客户端创建一个连接的管理对象，由服务器管理员创建，并绑定到 JNDI 树上。客户端使用 JNDI 检索`ConnectionFactory`，然后利用它建立 JMS 连接。
@@ -1275,8 +1265,7 @@ public class JMSProducer
     private static final String DEFAULT_MESSAGE = "Welcome to JMS!";
     private static final String DEFAULT_MESSAGE_COUNT = "1"; 
     
-    private static final String DEFAULT_CONNECTION_FACTORY =
-        "jms/RemoteConnectionFactory";
+    private static final String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
     private static final String DEFAULT_DESTINATION = "jms/queue/test";
     private static final String DEFAULT_USERNAME = "testJNDI";
     private static final String DEFAULT_PASSWORD = "123456";
@@ -1294,7 +1283,7 @@ public class JMSProducer
             System.out.println("设置JNDI访问环境信息也就是设置应用服务器的上下文信息!");
             final Properties env = new Properties();
             env.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
-            env.put(Context.PROVIDER_URL, PROVIDER_URL); // Context服务提供者的URL
+            env.put(Context.PROVIDER_URL, PROVIDER_URL); // Context 服务提供者的 URL
             env.put(Context.SECURITY_PRINCIPAL, DEFAULT_USERNAME); // 应用用户的登录名
             env.put(Context.SECURITY_CREDENTIALS, DEFAULT_PASSWORD); // 应用用户的密码
 
@@ -1303,21 +1292,17 @@ public class JMSProducer
 
             // 通过 JNDI 获取连接工厂
             System.out.println("获取连接工厂!");
-            ConnectionFactory connectionFactory =
-                (ConnectionFactory) context.lookup(DEFAULT_CONNECTION_FACTORY);
+            ConnectionFactory connectionFactory = (ConnectionFactory) context.lookup(DEFAULT_CONNECTION_FACTORY);
 
             // 通过 JNDI 获取目的地
             System.out.println("获取目的地!");
-            Destination destination =
-                (Destination) context.lookup(DEFAULT_DESTINATION);
+            Destination destination = (Destination) context.lookup(DEFAULT_DESTINATION);
 
             // 使用连接工厂创建一个连接
-            connection = connectionFactory.createConnection(DEFAULT_USERNAME,
-                                                            DEFAULT_PASSWORD);
+            connection = connectionFactory.createConnection(DEFAULT_USERNAME, DEFAULT_PASSWORD);
 
             // 使用连接创建一个会话
-            Session session = connection.createSession(false,
-                                                       Session.AUTO_ACKNOWLEDGE);
+            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             
             // 使用会话和目的地创建消息的生产者
             MessageProducer producer = session.createProducer(destination);
@@ -1330,8 +1315,8 @@ public class JMSProducer
             {
                 message = session.createTextMessage(DEFAULT_MESSAGE);
                 producer.send(message);
-                System.out.println ("message:" + message);
-                System.out.println ("message:" + DEFAULT_MESSAGE);
+                System.out.println("message:" + message);
+                System.out.println("message:" + DEFAULT_MESSAGE);
             }
 
             // 等待30秒退出
@@ -1385,8 +1370,7 @@ public class SyncMesConsumer
 {
     private static final Logger log = Logger.getLogger(JMSProducer.class.getName());
     
-    private static final String DEFAULT_CONNECTION_FACTORY =
-        "jms/RemoteConnectionFactory";
+    private static final String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
     private static final String DEFAULT_DESTINATION = "jms/queue/test";
     private static final String DEFAULT_USERNAME = "testJNDI";
     private static final String DEFAULT_PASSWORD = "123456";
@@ -1405,7 +1389,7 @@ public class SyncMesConsumer
             System.out.println("设置JNDI访问环境信息也就是设置应用服务器的上下文信息!");
             final Properties env = new Properties();
             env.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
-            env.put(Context.PROVIDER_URL, PROVIDER_URL); // Context服务提供者的URL
+            env.put(Context.PROVIDER_URL, PROVIDER_URL); // Context 服务提供者的 URL
             env.put(Context.SECURITY_PRINCIPAL, DEFAULT_USERNAME); // 应用用户的登录名
             env.put(Context.SECURITY_CREDENTIALS, DEFAULT_PASSWORD); // 应用用户的密码
 
@@ -1414,21 +1398,17 @@ public class SyncMesConsumer
 
             // 通过 JNDI 获取连接工厂
             System.out.println("获取连接工厂!");
-            ConnectionFactory connectionFactory =
-                (ConnectionFactory) context.lookup(DEFAULT_CONNECTION_FACTORY);
+            ConnectionFactory connectionFactory = (ConnectionFactory) context.lookup(DEFAULT_CONNECTION_FACTORY);
             
             // 通过 JNDI 获取目的地
             System.out.println("获取目的地!");
-            Destination destination =
-                (Destination) context.lookup(DEFAULT_DESTINATION); 
+            Destination destination = (Destination) context.lookup(DEFAULT_DESTINATION); 
             
             // 使用连接工厂创建一个连接
-            connection = connectionFactory.createConnection(DEFAULT_USERNAME,
-                                                            DEFAULT_PASSWORD);
+            connection = connectionFactory.createConnection(DEFAULT_USERNAME, DEFAULT_PASSWORD);
             
             // 使用连接创建一个会话
-            Session session = connection.createSession(false,
-                                                       Session.AUTO_ACKNOWLEDGE);
+            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             
             // 使用会话和目的地创建消息的消费者
             MessageConsumer consumer = session.createConsumer(destination);
@@ -1443,7 +1423,7 @@ public class SyncMesConsumer
                 // 同步接收方法，参数为超时时间，单位为毫秒
                 // 如果不填参数或者参数为 0，方法将一直处于封锁状态，直至消息到来
                 // 如果超时参数大于 0，则根据指定的超时参数等待一个消息的到来
-                // 如果在这个时间内有可用的消息，则返回消息；如果超时后没有可用的消息，则返回null
+                // 如果在这个时间内有可用的消息，则返回消息；如果超时后没有可用的消息，则返回 null
                 msg = (TextMessage) consumer.receive(5000);
                 
                 latch.await(1, TimeUnit.SECONDS);
@@ -1471,7 +1451,7 @@ public class SyncMesConsumer
 }
 ```
 
-在消息的同步接收模式中，接收消息的调用语句会等待消息到达，只有在获取到队列中的消息或等待超时情况下，方法调用才结束。程序通过`receive`方法从消息队列中获取消息，如果当前队列中有现成消息，该方法就立即退出，并获取对应消息；如果当前队列没有消息，则该方法就阻塞当前程序，等待消息到达，直到方法等待超时或消息到达，该调用才返回。
+在消息的同步接收模式中，接收消息的调用语句会等待消息到达，只有在获取到队列中的消息或等待超时情况下，方法调用才结束。程序通过`receive()`方法从消息队列中获取消息，如果当前队列中有现成消息，该方法就立即退出，并获取对应消息；如果当前队列没有消息，则该方法就阻塞当前程序，等待消息到达，直到方法等待超时或消息到达，该调用才返回。
 
 异步接收示例：
 
@@ -1498,8 +1478,7 @@ public class AsyncMesConsumer
 {
     private static final Logger log = Logger.getLogger(JMSProducer.class.getName());
     
-    private static final String DEFAULT_CONNECTION_FACTORY =
-        "jms/RemoteConnectionFactory";
+    private static final String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
     private static final String DEFAULT_DESTINATION = "jms/queue/test";
     private static final String DEFAULT_USERNAME = "testJNDI";
     private static final String DEFAULT_PASSWORD = "123456";
@@ -1518,7 +1497,7 @@ public class AsyncMesConsumer
             System.out.println("设置JNDI访问环境信息也就是设置应用服务器的上下文信息!");
             final Properties env = new Properties();
             env.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
-            env.put(Context.PROVIDER_URL, PROVIDER_URL); // Context服务提供者的URL
+            env.put(Context.PROVIDER_URL, PROVIDER_URL); // Context 服务提供者的 URL
             env.put(Context.SECURITY_PRINCIPAL, DEFAULT_USERNAME); // 应用用户的登录名
             env.put(Context.SECURITY_CREDENTIALS, DEFAULT_PASSWORD); // 应用用户的密码
 
@@ -1527,21 +1506,17 @@ public class AsyncMesConsumer
 
             // 通过 JNDI 获取连接工厂
             System.out.println("获取连接工厂!");
-            ConnectionFactory connectionFactory =
-                (ConnectionFactory) context.lookup(DEFAULT_CONNECTION_FACTORY);
+            ConnectionFactory connectionFactory = (ConnectionFactory) context.lookup(DEFAULT_CONNECTION_FACTORY);
             
             // 通过 JNDI 获取目的地
             System.out.println("获取目的地!");
-            Destination destination =
-                (Destination) context.lookup(DEFAULT_DESTINATION); 
+            Destination destination = (Destination) context.lookup(DEFAULT_DESTINATION); 
             
             // 使用连接工厂创建一个连接
-            connection = connectionFactory.createConnection(DEFAULT_USERNAME,
-                                                            DEFAULT_PASSWORD);
+            connection = connectionFactory.createConnection(DEFAULT_USERNAME, DEFAULT_PASSWORD);
             
             // 使用连接创建一个会话
-            Session session = connection.createSession(false,
-                                                       Session.AUTO_ACKNOWLEDGE);
+            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             
             // 使用会话和目的地创建消息的消费者
             MessageConsumer consumer = session.createConsumer(destination);
@@ -1608,10 +1583,8 @@ MDB 的特点：
 ```java{.line-numbers}
 // 设置 MDB 监听的目的类型为 Queue、目的地址为 queue/test
 @MessageDriven(activationConfig = {
-    @ActivationConfigProperty(propertyName = "destinationType",
-                              propertyValue = "javax.jms.Queue"),
-    @ActivationConfigProperty(propertyName = "destination",
-                              propertyValue = "queue/test")
+    @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+    @ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/test")
 })
 public class PTPMessageBean implements MessageListener
 {
@@ -1632,8 +1605,7 @@ public class PTPMessageBean implements MessageListener
             }
             else
             {
-                System.out.println("消息的类型不正确： " +
-                                   inMessage.getClass().getName());
+                System.out.println("消息的类型不正确： " + inMessage.getClass().getName());
             }
         }
         catch (JMSException e)
@@ -1667,10 +1639,8 @@ PTP 模型的消息是可以永久存储的，消息的发送者和接收者之�
 // 设置消息驱动 Bean 监听的目的类型为 Topic、目的地址为 topic/test
 // subscriptionDurability 属性保持默认，为 NonDurable
 @MessageDriven(activationConfig = {
-    @ActivationConfigProperty(propertyName = "destinationType",
-                              propertyValue = "javax.jms.Topic"),
-    @ActivationConfigProperty(propertyName = "destination",
-                              propertyValue = "topic/test")
+    @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
+    @ActivationConfigProperty(propertyName = "destination", propertyValue = "topic/test")
 })
 public class NonDurablePubSubMessageBean implements MessageListener
 {
@@ -1689,8 +1659,7 @@ public class NonDurablePubSubMessageBean implements MessageListener
             }
             else
             {
-                System.out.println("消息的类型不正确： " +
-                                   inMessage.getClass().getName());
+                System.out.println("消息的类型不正确： " + inMessage.getClass().getName());
             }
         }
         catch (JMSException e)
@@ -1711,14 +1680,10 @@ public class NonDurablePubSubMessageBean implements MessageListener
 ```java{.line-numbers}
 // 设置消息驱动 Bean 监听的目的类型为 Topic、目的地址为 topic/test
 @MessageDriven(activationConfig = {
-    @ActivationConfigProperty(propertyName = "destinationType",
-                              propertyValue = "javax.jms.Topic"),
-    @ActivationConfigProperty(propertyName = "destination",
-                              propertyValue = "topic/test"),
-    @ActivationConfigProperty(propertyName = "subscriptionDurability",
-                              propertyValue = "Durable"),
-    @ActivationConfigProperty(propertyName = "clientID",
-                              propertyValue = "consumer")
+    @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
+    @ActivationConfigProperty(propertyName = "destination", propertyValue = "topic/test"),
+    @ActivationConfigProperty(propertyName = "subscriptionDurability", propertyValue = "Durable"),
+    @ActivationConfigProperty(propertyName = "clientID", propertyValue = "consumer")
 })
 public class DurablePubSubMessageBean implements MessageListener
 {
@@ -1737,8 +1702,7 @@ public class DurablePubSubMessageBean implements MessageListener
             }
             else
             {
-                System.out.println("消息的类型不正确： " +
-                                   inMessage.getClass().getName());
+                System.out.println("消息的类型不正确： " + inMessage.getClass().getName());
             }
         }
         catch (JMSException e)
@@ -1759,7 +1723,7 @@ public class DurablePubSubMessageBean implements MessageListener
 <div align="center" style="margin-bottom: 10px">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/EJB/图3.6-消息驱动Bean的生命周期.8wilhlr5l1c.png">
     <br>
-    图3.6 消息驱动Bean的生命周期
+    图 3.6&nbsp;&nbsp;&nbsp;&nbsp;消息驱动 Bean 的生命周期
 </div>
 
 1. 不存在状态：主要针对 MDB 组件对象不存在的状态。

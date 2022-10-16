@@ -3,14 +3,14 @@ title: EJB
 chrome:
     format: "A4"
     headerTemplate: '<div></div>'
-    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin:  10px 10px 20px; font-size: 8pt;"> 
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin:  10px 10px 10px; font-size: 8pt;"> 
     <span class=pageNumber></span> / <span class=totalPages></span></div>'
     displayHeaderFooter: true
     margin:
-        top: '80px'
-        bottom: '80px'
-        left: '60px'
-        right: '60px'
+        top: '40px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
 ---
 
 <h1>JPA</h1>
@@ -75,7 +75,7 @@ JPA 是基于 Java 持久化的解决方案，主要是为了解决 ORM 框架�
 
 在 ORM 中，由于将对象和关系型数据库关联起来，因此操作对象时就自动操作了数据库，从而避免书写大量的 SQL 语句。
 
-在ORM中，有复杂的映射类型，比如一对多、多对多映射等。无论是哪种类型的映射，都遵循以下几个基本原则：
+在 ORM 中，有复杂的映射类型，比如一对多、多对多映射等。无论是哪种类型的映射，都遵循以下几个基本原则：
 
 1. 类通常映射为表。
 2. 类中的属性通常映射为表中的一列。
@@ -94,7 +94,7 @@ JPA 不是一种新的 ORM 框架，它只是用于规范现有的 ORM 技术，
 <div align="center">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/JPA/图1.1-JPA与ORM模块示意图.2ne8ry9wbuk0.png">
     <br>
-    图1.1 JPA与ORM模块示意图
+    图 1.1&nbsp;&nbsp;&nbsp;&nbsp;JPA 与 ORM 模块示意图
 </div>
 
 JPA 包括以下 3 方面的技术：
@@ -147,9 +147,7 @@ Jboss 7.1 中使用 Hibernate 作为 ORM 映射工具。
 
 ```java
 @Entity
-@Table(name = "student", uniqueConstrains = {
-    @UniqueConstraint(columnNames = {"name", "email"})
-})
+@Table(name = "student", uniqueConstrains = { @UniqueConstraint(columnNames = {"name", "email"}) })
 public class Student
 {
     // ...
@@ -204,7 +202,7 @@ JPA 默认提供了 4 种主键生成策略：
 <div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/JPA/图3.1-实体管理器.34ojb1i5cy20.png">
     <br>
-    图3.1 实体管理器
+    图 3.1&nbsp;&nbsp;&nbsp;&nbsp;实体管理器
 </div>
 
 如图 3.1 所示，实体管理器与数据库交互的作用主要体现在以下两个方面：
@@ -418,12 +416,12 @@ public class StudentClient
 <div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/JPA/图3.2-实体对象状态转换图.6doxamyq5ns0.png">
     <br>
-    图3.2 实体对象状态转换图
+    图 3.2&nbsp;&nbsp;&nbsp;&nbsp;实体对象状态转换图
 </div>
 
 瞬时状态（New/Transient）：对象尚未保存到数据库中对应记录时的状态。通过`new`创建一个对象后，该对象保存在内存当中，一旦停止应用服务器，该对象就消失了，所以瞬时状态的对象是未持久化的对象。
 
-托管状态（Attatched）：也可以叫做被管理状态（Managed），表示实体处于持久化上下文中，并被其所管理。处于托管状态的实体对象会在事务提交或者`flush`方法调用后，被同步到数据库中。
+托管状态（Attatched）：也可以叫做被管理状态（Managed），表示实体处于持久化上下文中，并被其所管理。处于托管状态的实体对象会在事务提交或者`flush()`方法调用后，被同步到数据库中。
 
 游离状态（Detached）：相对于托管状态而言，当实体不在持久化上下文中时，实体将处在游离状态。处在游离状态的实体最大的特点是，它的属性与数据库中持久化的实体是不同步的。
 
@@ -434,42 +432,42 @@ public class StudentClient
 <div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/JPA/图3.3-实体状态转换事件及监听.11ghb4dlhzi8.png">
     <br>
-    图3.3 实体状态转换事件及监听
+    图 3.3&nbsp;&nbsp;&nbsp;&nbsp;实体状态转换事件及监听
 </div>
 
 - `public void persist(Object entity)`
-  `persist`方法可以将实例转换为托管状态。在调用`flush()`方法或提交事务后，实例将会被插入到数据库中。
-  对不同状态下的实体对象`x`，`persist`方法会产生以下操作：
+  `persist()`方法可以将实例转换为托管状态。在调用`flush()`方法或提交事务后，实例将会被插入到数据库中。
+  对不同状态下的实体对象`x`，`persist()`方法会产生以下操作：
   1. 如果`x`是一个 New 状态的实体，它将会转为 Managed 状态；实体对象`x`会在事务提交后或者调用`flush()`方法后被插入到数据库中。
-  2. 如果`x`是一个 Managed 状态的实体，`persist`操作会被忽略。
+  2. 如果`x`是一个 Managed 状态的实体，`persist()`操作会被忽略。
   3. 如果`x`是一个 Removed 状态的实体，它将会转换为 Managed 状态。
   4. 如果`x`是一个 Detached 状态的实体，该方法会抛出`EntityExistsException`异常，具体异常与不同的 JPA 实现有关。
-  5. 对所有与`x`相关联的实体对象`y`，如果关联关系中的`cascade`属性被设置为`PERSIST`或者`ALL`，则`persist`操作会作用于`y`。
+  5. 对所有与`x`相关联的实体对象`y`，如果关联关系中的`cascade`属性被设置为`PERSIST`或者`ALL`，则`persist()`操作会作用于`y`。
 - `public void remove(Object entity)`
   从持久化上下文中移除实体对象，实体状态变为 Removed 状态。在事务提交时，实体对应数据从数据库中删除。
-  对不同状态下的实例`A`，`remove`方法会产生以下操作：
-  1. 如果`A`是一个 New 状态的实例， `remove`操作会被忽略。
+  对不同状态下的实例`A`，`remove()`方法会产生以下操作：
+  1. 如果`A`是一个 New 状态的实例， `remove()`操作会被忽略。
   2. 如果`A`是一个 Managed 状态的实例，它的状态会转换为 Removed。实体对象`A`会在事务提交后从数据库中删除。
   3. 如果`A`是一个 Detached 状态的实体，该方法将会抛出`IllegalArgumentException`异常，或者事务提交会失败。
-  4. 如果`A`是一个 Removed 状态的实例，`remove`操作会被忽略。
-  5. 如果存在与`A`实体对象相关联的实体`y`，并且`cascade`属性被设置为`REMOVE`或者`ALL`时，`remove`操作会级联到关联对象`y`上。
+  4. 如果`A`是一个 Removed 状态的实例，`remove()`操作会被忽略。
+  5. 如果存在与`A`实体对象相关联的实体`y`，并且`cascade`属性被设置为`REMOVE`或者`ALL`时，`remove()`操作会级联到关联对象`y`上。
 - `public void refresh(Object entity)`
   让当前处于托管状态的实体对象与数据库中的内容一致。
-  对不同状态下的实例`A`，`refresh`方法会产生以下操作：
-  1. 如果`A`是一个 Managed 状态的实例，它的属性将会和数据库中的数据同步；如果存在与该实体对象相关联的实体`y`，并且`cascade`属性被设置为`REFRESH`或者`ALL`时，`refresh`操作会级联到关联对象`y`上。
+  对不同状态下的实例`A`，`refresh()`方法会产生以下操作：
+  1. 如果`A`是一个 Managed 状态的实例，它的属性将会和数据库中的数据同步；如果存在与该实体对象相关联的实体`y`，并且`cascade`属性被设置为`REFRESH`或者`ALL`时，`refresh()`操作会级联到关联对象`y`上。
   2. 如果`A`是一个 New、Removed、Detached 状态的实例，抛出`IllegalArgumentException`异常，具体情况与不同 JPA 实现有关。
 - `public <T> T merge(T entity)`
   将一个新建状态或游离状态实体对象的属性值更新到一个对应的托管状态的实体对象中。
-  对不同状态下的实例`A`，`merge`方法会产生以下操作：
-  1. 如果`A`是一个 Detached 状态的实体对象，找到或新建一个托管状态的实体对象`A1`，并将`A`的属性值赋值给`A1`的属性。`A1`的属性值会在事务提交或者`flush`方法被调用时，同步到数据库中。
-  2. 如果`A`是一个 New 状态的实体，新建一个托管状态的实体对象`A1`，并将`A`的属性值赋值给`A1`的属性。`A1`的属性值会在事务提交或者`flush`方法被调用时，同步到数据库中。
+  对不同状态下的实例`A`，`merge()`方法会产生以下操作：
+  1. 如果`A`是一个 Detached 状态的实体对象，找到或新建一个托管状态的实体对象`A1`，并将`A`的属性值赋值给`A1`的属性。`A1`的属性值会在事务提交或者`flush()`方法被调用时，同步到数据库中。
+  2. 如果`A`是一个 New 状态的实体，新建一个托管状态的实体对象`A1`，并将`A`的属性值赋值给`A1`的属性。`A1`的属性值会在事务提交或者`flush()`方法被调用时，同步到数据库中。
   3. 如果`A`是一个 Managed 状态的实体，该操作会被忽略。
   4. 如果`A`是一个 Removed 状态的实体，该方法会抛出`IllegalArgumentException`异常。
-  5. 如果存在与该实体对象相关联的实体`y`，并且`cascade`属性被设置为`MERGE`或者`ALL`时，`refresh`操作会级联到关联对象`y`上。
+  5. 如果存在与该实体对象相关联的实体`y`，并且`cascade`属性被设置为`MERGE`或者`ALL`时，`refresh()`操作会级联到关联对象`y`上。
 - `public void detach(Object entity)`
   将一个托管状态的实体对象从持久化上下文中移除，使其变成一个游离状态实体对象，终止与数据库的同步。
-  对不同状态下的实例`A`，`merge`方法会产生以下操作：
-  1. 如果`A`是一个 Managed 状态的实体，实体对象`A`会从持久化上下文中移除，实体状态变为游离状态。如果存在与该实体对象相关联的实体`y`，并且`cascade`属性被设置为`DETACH`或者`ALL`时，`detach`操作会级联到关联对象`y`上。
+  对不同状态下的实例`A`，`detach()`方法会产生以下操作：
+  1. 如果`A`是一个 Managed 状态的实体，实体对象`A`会从持久化上下文中移除，实体状态变为游离状态。如果存在与该实体对象相关联的实体`y`，并且`cascade`属性被设置为`DETACH`或者`ALL`时，`detach()`操作会级联到关联对象`y`上。
   2. 如果`A`是一个 New 状态的实体，该操作会被忽略。
 
 # 4 简单的JPA例子
@@ -480,7 +478,7 @@ public class StudentClient
    （1）在 Eclipse 中选择 File -> New -> JPA Project。
    （2）在弹出的对话框中设置工程名，并将运行时环境设置为 JDK，JPA 版本保持默认，点击 Next。
    （3）在路径选择界面不用做任何设置，直接下一步。
-   （4）在 JPA Facet 设置界面中，Platform 处选择 “EclipseLink 2.5.x”，Type 处选择 “User Library”，并勾选相应的实现。首次配置时需要下载类库，下载完成后会返回到 JPA Facet 配置页。在Connection 处新建一个数据库连接并选中，然后点击 Finish。
+   （4）在 JPA Facet 设置界面中，Platform 处选择“EclipseLink 2.5.x”，Type 处选择“User Library”，并勾选相应的实现。首次配置时需要下载类库，下载完成后会返回到 JPA Facet 配置页。在Connection 处新建一个数据库连接并选中，然后点击 Finish。
 2. 创建实体类
    （1）在 Eclipse 中选择 File -> New -> JPA Entities from Tables。
    （2）在弹出的对话框中指定数据库连接和数据库名，并选择要创建实体类的表，点击 Next。
@@ -488,7 +486,7 @@ public class StudentClient
    （4）其他设置全部保持默认，点击 Finish。
 3. 配置 persistence.xml 文件
 
-```xml{.line-numbers}
+```xml
 <!-- 采用本地事务 -->
 <persistence-unit name="simpleJPA" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
@@ -498,8 +496,7 @@ public class StudentClient
         <!-- JDBC驱动 -->
         <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver" />
         <!-- 数据库URL -->
-        <property name="eclipselink.jdbc.url"
-                  value="jdbc:mysql://localhost:3306/jpa" />
+        <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/jpa" />
         <!-- 数据库用户名 -->
         <property name="eclipselink.jdbc.user" value="root" />
         <!-- 密码 -->
@@ -576,7 +573,7 @@ public class Client
 3. 创建实体类
 4. 配置 persistence.xml 文件
 
-```xml{.line-numbers}
+```xml
 <!-- 采用 JTA 事务类型 -->
 <persistence-unit name="simpleJPA" transaction-type="JTA">
     <!-- 使用 JDNI 数据源 -->
@@ -630,19 +627,19 @@ JPA 中 7 种实体关系：
 | :------------: | ------------------------------------------------------------ |
 | `targetEntity` | 表示关联的实体类型，默认为当前标注的实体类                   |
 |   `cascade`    | 表示与此实体一对一关联的实体的级联操作类型，默认情况下不关联任何操作。取值包括：`PERSIST`（级联新建）、`REMOVE`（级联删除）、`REFRESH`（级联刷新）、`MERGE`（级联更新）、`ALL`（全部四项） |
-|    `fetch `    | 该实体的加载方式。取值包括：`EAGER`（关系类在主类加载的时候同时加载，默认值）、`LAZY`（关系类在被访问时才加载） |
+|    `fetch`    | 该实体的加载方式。取值包括：`EAGER`（关系类在主类加载的时候同时加载，默认值）、`LAZY`（关系类在被访问时才加载） |
 |   `optional`   | 关联的该实体是否能够存在`null`值                             |
 |   `mappedBy`   | 用于双向关联实体时，标注在不保存关系的实体中                 |
 
 其中，`cascade`属性所表示的 JPA 级联的各种类型如下所示：
-
+<br>
 |  取值   | 说明                                                         |
 | :-----: | ------------------------------------------------------------ |
-| persist | 当对象被`EntityManager`通过`persist`方法持久化时，和该对象存在关联关系的其他实体对象也会被执行`persist`操作 |
-|  merge  | 当对象被`EntityManager`通过`merge`方法持久化时，和该对象存在关联关系的其他实体对象也会被执行`merge`操作 |
-| remove  | 当对象被`EntityManager`通过`remove`方法从数据库中删除时，和该对象存在关联关系的其他实体对象也会被执行`remove`操作 |
-| refresh | 当对象被`EntityManager`通过`refresh`方法将数据库中的最新状态刷新到实体对象中时，和该对象存在关联关系的其他实体对象也会被执行`refresh`操作 |
-|   all   | 等价于上面所有选项的逻辑或                                   |
+| `PERSIST` | 当对象被`EntityManager`通过`persist()`方法持久化时，和该对象存在关联关系的其他实体对象也会被执行`persist()`操作 |
+|  `MERGE`  | 当对象被`EntityManager`通过`merge()`方法持久化时，和该对象存在关联关系的其他实体对象也会被执行`merge()`操作 |
+| `REMOVE`  | 当对象被`EntityManager`通过`remove()`方法从数据库中删除时，和该对象存在关联关系的其他实体对象也会被执行`remove()`操作 |
+| `REFRESH` | 当对象被`EntityManager`通过`refresh()`方法将数据库中的最新状态刷新到实体对象中时，和该对象存在关联关系的其他实体对象也会被执行`refresh()`操作 |
+|   `ALL`   | 等价于上面所有选项的逻辑或                                   |
 
 `@OneToOne`标注只能确定实体之间是一对一关系，不能指定数据库表中用来表示关联关系的字段。所以此时要结合`@JoinColumn`标注来进行说明。
 
@@ -758,8 +755,8 @@ public class Address implements Serializable
 |      属性      | 含义                                                         |
 | :------------: | ----------------------------------------------------------- |
 | `targetEntity` | 表示关联的实体类型。因为一对多的实体映射保存在集合类中，所以必须指明集合类中保存的具体类型。 |
-|   `cascade`    | 表示与此实体一对一关联的实体的级联操作类型，默认情况下不关联任何操作。取值包括：`PERSIST`（级联新建）、`REMOVE`（级联删除）、`REFRESH`（级联刷新）、`MERGE`（级联更新）、`ALL`（全部四项） |
-|    `fetch `    | 该实体的加载方式。取值包括：`EAGER`（关系类在主类加载的时候同时加载）、`LAZY`（关系类在被访问时才加载，默认值） |
+|   `cascade`    | 表示与此实体一对一关联的实体的级联操作类型，默认情况下不关联任何操作。取值包括：`PERSIST`、`REMOVE`、`REFRESH`、`MERGE`、`ALL` |
+|    `fetch`    | 该实体的加载方式。取值包括：`EAGER`（关系类在主类加载的时候同时加载）、`LAZY`（关系类在被访问时才加载，默认值） |
 |   `mappedBy`   | 用于双向关联实体时，标注在不保存关系的实体中                 |
 
 指定关联的实体类型时，有两种方案：
@@ -782,7 +779,7 @@ private Collection students = new ArrayList();
 
 对于一对多的实体关系，表结构有两种设计策略：外键关联、表关联。
 
-- 外键关联：不管是一对多还是多对一，都是在 “多” 方添加指向 “一” 方的外键。
+- 外键关联：不管是一对多还是多对一，都是在“多”方添加指向“一”方的外键。
 - 表关联：两个表的关系单独定义在一个表中，通过一个中间表来关联。
 
 以老师和学生为例，假设一个老师可以有多个学生，而一个学生只能有一个老师，则老师和学生之间具有一对多关系。采用外键关联建立一对多单向关联的示例如下：
@@ -838,8 +835,8 @@ public class Student implements Serializable
 通过表关联的方式来映射一对多关系时，要使用`@JoinTable`标注，它的属性如下：
 
 |         属性         | 说明                                                         |
-| :------------------: | :----------------------------------------------------------- |
-|        `name`        | 将两个表关联起来的关系表的名称。<br />若不指定，则使用默认的表名称为`"表名1" + "_" + "表名2"` |
+| :------------------: | :-----------------------------------------------------------: |
+|        `name`        | 将两个表关联起来的关系表的名称。若不指定，则使用默认的表名称为`表名1_表名2` |
 |    `joinColumns`     | 关系表中与当前实体对应的外键名称，配合`@JoinColumn`标记使用  |
 | `inverseJoinColumns` | 关系表中与当前实体所关联的对象对应的外键名称                 |
 
@@ -989,9 +986,9 @@ public class Student implements Serializable
 
 一对多双向关联用到的标注：`@OneToMany`、`@ManyToOne`、`@JoinColumn`、`@JoinTable`。
 
-在 JPA 规范中，“多” 方实体类为关系主动方，负责外键记录的更新；“一” 方为被动方，没有权力更新外键记录。
+在 JPA 规范中，“多”方实体类为关系主动方，负责外键记录的更新；“一”方为被动方，没有权力更新外键记录。
 
-仍旧使用学生与教师为例来说明一对多双向关系。由于一名教师可以有多个学生，所以 “一” 方是教师，而 “多” 方为学生。因此本例子只需要在多对一单向关联的基础上，在 “一” 端定义`mappedBy`属性，即在教师实体类中使用`mappedBy`属性，它的值是关系主动方中维护的被动方的属性名 。
+仍旧使用学生与教师为例来说明一对多双向关系。由于一名教师可以有多个学生，所以“一”方是教师，而“多”方为学生。因此本例子只需要在多对一单向关联的基础上，在“一”端定义`mappedBy`属性，即在教师实体类中使用`mappedBy`属性，它的值是关系主动方中维护的被动方的属性名 。
 
 采用外键关联建立一对多双向关联的示例如下：
 
@@ -1122,10 +1119,8 @@ public class Student implements Serializable
     
     @ManyToMany
     @JoinTable(name = "ref_teacher_student", 
-               joinColumns = {
-                   @JoinColumn(name="student_id",referencedColumnName="id")},
-               inverseJoinColumns = {
-                   @JoinColumn(name="teacher_id",referencedColumnName="id")})
+               joinColumns = {@JoinColumn(name="student_id", referencedColumnName="id")},
+               inverseJoinColumns = {@JoinColumn(name="teacher_id", referencedColumnName="id")})
     private Collection<Teacher> teachers = new ArrayList<Teacher>();
     
     // ...
@@ -1169,10 +1164,8 @@ public class Student implements Serializable
     
     @ManyToMany
     @JoinTable(name = "ref_teacher_student",
-               joinColumns = {
-                   @JoinColumn(name="student_id", referencedColumnName="id")},
-               inverseJoinColumns = {
-                   @JoinColumn(name="teacher_id", referencedColumnName="id")})
+               joinColumns = {@JoinColumn(name="student_id", referencedColumnName="id")},
+               inverseJoinColumns = {@JoinColumn(name="teacher_id", referencedColumnName="id")})
     private Collection<Teacher> teachers = new ArrayList<Teacher>();
 
     // ...
@@ -1316,12 +1309,12 @@ JPA 使用`javax.persistence.Query`接口执行查询实例，`Query`实例的�
 执行 JPQL 查询的步骤：
 
 1. 使用注入或通过`EntityManagerFactory`实例获取一个`EntityManager`实例。
-2. 通过调用相应`EntityManager`的`createQuery`方法，创建一个`Query`实例。
-3. 如果有查询参数，使用相应`Query`的`setParameter`方法进行设置。
-4. 如果需要，使用`Query`的`setMaxResults`和/或`setFirstResult`方法设置要检索的实例的最大数量和/或指定检索的起始实例位置。
-5. 如果需要，使用`Query`的`setHint`方法设置供应商特定的提示。
-6. 如果需要，使用`Query`的`setFlushMode`方法设置查询执行的刷新模式，覆盖实体管理器的刷新模式。
-7. 使用相应`Query`的方法`getSingleResult`或`getResultList`执行查询。如果进行更新或删除操作，必须使用`executeUpdate`方法，它返回已更新或删除的实体实例的数量。
+2. 通过调用相应`EntityManager`的`createQuery()`方法，创建一个`Query`实例。
+3. 如果有查询参数，使用相应`Query`的`setParameter()`方法进行设置。
+4. 如果需要，使用`Query`的`setMaxResults()`和/或`setFirstResult()`方法设置要检索的实例的最大数量和/或指定检索的起始实例位置。
+5. 如果需要，使用`Query`的`setHint()`方法设置供应商特定的提示。
+6. 如果需要，使用`Query`的`setFlushMode()`方法设置查询执行的刷新模式，覆盖实体管理器的刷新模式。
+7. 使用相应`Query`的方法`getSingleResult()`或`getResultList()`执行查询。如果进行更新或删除操作，必须使用`executeUpdate()`方法，它返回已更新或删除的实体实例的数量。
 
 ## 6.5 查询参数
 
@@ -1340,4 +1333,3 @@ query.setParameter(1, 5311);
 Query query = em.createQuery("select p from Person p where p.id=:id");
 query.setParameter("id", 5311);
 ```
-

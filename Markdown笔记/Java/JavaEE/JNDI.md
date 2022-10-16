@@ -3,14 +3,14 @@ title: EJB
 chrome:
     format: "A4"
     headerTemplate: '<div></div>'
-    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin:  10px 10px 20px; font-size: 8pt;"> 
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin:  10px 10px 10px; font-size: 8pt;"> 
     <span class=pageNumber></span> / <span class=totalPages></span></div>'
     displayHeaderFooter: true
     margin:
         top: '40px'
-        bottom: '80px'
-        left: '60px'
-        right: '60px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
 ---
 
 <h1>JNDI</h1>
@@ -47,7 +47,7 @@ JNDI 是 Java 命名与目录接口（Java Naming and Directory Interface）的�
 
 ```xml{.line-numbers}
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 注意：name属性值与文件夹名保持一致 -->
+<!-- 注意：name 属性值与文件夹名保持一致 -->
 <module xmlns="urn:jboss:module:1.0" name="com.mysql">
     <resources>
         <resource-root path="mysql-connector-java-5.1.26-bin.jar"/>
@@ -63,7 +63,7 @@ JNDI 是 Java 命名与目录接口（Java Naming and Directory Interface）的�
 接下来，修改 standalone.xml 配置文件。在 JBOSS_HOME\standalone\configuration 路径下找到 standalone.xml 文件，打开文件后找到`<datasources>...<drivers>...</drivers>...</datasources>`标签，在`drivers`标签中添加如下的配置：
 
 ```xml
-<!-- 注意：module属性值与module.xml文件中的name属性值保持一致 -->
+<!-- 注意：module 属性值与 module.xml 文件中的 name 属性值保持一致 -->
 <driver name="mysql" module="com.mysql">
     <driver-class>
         com.mysql.jdbc.Driver
@@ -110,7 +110,7 @@ JNDI 是 Java 命名与目录接口（Java Naming and Directory Interface）的�
 
 ## 2.2 在程序中引用数据源
 
-```java{.line-numbers}
+```java
 Connection conn = null;
 try
 {
@@ -118,7 +118,7 @@ try
     Object datasourceRef = ctx.lookup("java:jboss/datasources/MySqlDS"); // 引用数据源
     DataSource ds = (Datasource) datasourceRef;
     conn = ds.getConnection();
-    /* 使用conn进行数据库SQL操作 */
+    /* 使用 conn 进行数据库 SQL 操作 */
     // ......
     c.close();
 }
@@ -207,7 +207,8 @@ Realm (ApplicationRealm) :
 Username : testJNDI
 Password :
 Re-enter Password :
-What roles do you want this user to belong to? (Please enter a comma separated list, or leave blank for none) :
+What roles do you want this user to belong to? (Please enter a comma separated list, or
+leave blank for none) :
 ```
 
 输入 testrole，按下回车，效果如下所示。
@@ -218,7 +219,8 @@ Realm (ApplicationRealm) :
 Username : testJNDI
 Password :
 Re-enter Password :
-What roles do you want this user to belong to? (Please enter a comma separated list, or leave blank for none) : testrole
+What roles do you want this user to belong to? (Please enter a comma separated list, or
+leave blank for none) : testrole
 About to add user 'testJNDI' for realm 'ApplicationRealm'
 Is this correct yes/no?
 ```
@@ -231,13 +233,18 @@ Realm (ApplicationRealm) :
 Username : testJNDI
 Password :
 Re-enter Password :
-What roles do you want this user to belong to? (Please enter a comma separated list, or leave blank for none) : testrole
+What roles do you want this user to belong to? (Please enter a comma separated list, or
+leave blank for none) : testrole
 About to add user 'testJNDI' for realm 'ApplicationRealm'
 Is this correct yes/no? yes
-Added user 'testJNDI' to file 'D:\JBoss\jboss-as-7.1.1.Final\standalone\configuration\application-users.properties'
-Added user 'testJNDI' to file 'D:\JBoss\jboss-as-7.1.1.Final\domain\configuration\application-users.properties'
-Added user 'testJNDI' with roles testrole to file 'D:\JBoss\jboss-as-7.1.1.Final\standalone\configuration\application-roles.properties'
-Added user 'testJNDI' with roles testrole to file 'D:\JBoss\jboss-as-7.1.1.Final\domain\configuration\application-roles.properties'
+Added user 'testJNDI' to file 'D:\JBoss\jboss-as-7.1.1.Final\standalone\configuration\
+application-users.properties'
+Added user 'testJNDI' to file 'D:\JBoss\jboss-as-7.1.1.Final\domain\configuration\
+application-users.properties'
+Added user 'testJNDI' with roles testrole to file 'D:\JBoss\jboss-as-7.1.1.Final\
+standalone\configuration\application-roles.properties'
+Added user 'testJNDI' with roles testrole to file 'D:\JBoss\jboss-as-7.1.1.Final\domain\
+configuration\application-roles.properties'
 请按任意键继续. . .
 ```
 
@@ -245,7 +252,7 @@ Added user 'testJNDI' with roles testrole to file 'D:\JBoss\jboss-as-7.1.1.Final
 
 在客户端上创建上下文的例子如下所示：
 
-```java{.line-numbers}
+```java
 Properties prop = new Properties();
 // 服务器的命名和目录管理地址
 prop.put(Context.PROVIDER_URL, "remote://localhost:4447");
@@ -262,7 +269,7 @@ prop.put(Context.SECURITY_CREDENTIALS,
 Context context = new InitialContext(prop);
 ```
 
-可以看出在调用`InitialContext`方法中需要传递参数`Properties`，它包含 4 个值对，分别为服务器的命名和目录管理地址`PROVIDER_URL`、初始化上下文环境工厂`INITIAL_CONTEXT_FACTORY`、用户名`SECURITY_PRINCIPAL`和密码`SECURITY_CREDENTIALS`。
+可以看出在调用`InitialContext()`方法中需要传递参数`Properties`，它包含 4 个值对，分别为服务器的命名和目录管理地址`PROVIDER_URL`、初始化上下文环境工厂`INITIAL_CONTEXT_FACTORY`、用户名`SECURITY_PRINCIPAL`和密码`SECURITY_CREDENTIALS`。
 
 在服务器端创建上下文的例子如下所示：
 
@@ -270,7 +277,7 @@ Context context = new InitialContext(prop);
 Context ctx = new InitialContext();
 ```
 
-在调用`InitialContext`方法中不需要传递参数。这是因为我们是在服务器端调用`InitialContext`方法，而`InitialContext`方法中需要的参数服务器都可以从配置文件中找到，无需进行远程传递。
+在调用`InitialContext()`方法中不需要传递参数。这是因为我们是在服务器端调用`InitialContext()`方法，而`InitialContext()`方法中需要的参数服务器都可以从配置文件中找到，无需进行远程传递。
 
 ## 3.2 获取JNDI对象
 
