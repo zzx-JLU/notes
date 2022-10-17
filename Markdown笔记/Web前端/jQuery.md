@@ -3,14 +3,14 @@ title: jQuery
 chrome:
     format: "A4"
     headerTemplate: '<div></div>'
-    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;"> 
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 10px; font-size: 8pt;"> 
     <span class=pageNumber></span> / <span class=totalPages></span></div>'
     displayHeaderFooter: true
     margin:
         top: '40px'
-        bottom: '80px'
-        left: '60px'
-        right: '60px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
 ---
 
 <h1>jQuery</h1>
@@ -23,9 +23,8 @@ chrome:
 - [2 jQuery核心函数](#2-jquery核心函数)
 - [3 jQuery对象](#3-jquery对象)
   - [3.1 什么是jQuery对象](#31-什么是jquery对象)
-  - [3.2 jQuery对象的本质](#32-jquery对象的本质)
-  - [3.3 jQuery对象与DOM对象的区别](#33-jquery对象与dom对象的区别)
-  - [3.4 jQuery对象与DOM对象的相互转换](#34-jquery对象与dom对象的相互转换)
+  - [3.2 jQuery对象与DOM对象的区别](#32-jquery对象与dom对象的区别)
+  - [3.3 jQuery对象与DOM对象的相互转换](#33-jquery对象与dom对象的相互转换)
 - [4 jQuery选择器](#4-jquery选择器)
   - [4.1 基本选择器](#41-基本选择器)
   - [4.2 层级选择器](#42-层级选择器)
@@ -54,7 +53,7 @@ chrome:
 
 # 1 jQuery简介
 
-jQuery 是一个 JavaScript 代码库，它的核心思想是 “write less, do more”（写得更少，做得更多）。
+jQuery 是一个 JavaScript 代码库，它的核心思想是“write less, do more”（写得更少，做得更多）。
 
 # 2 jQuery核心函数
 
@@ -97,17 +96,15 @@ jQuery 是一个 JavaScript 代码库，它的核心思想是 “write less, do 
 2. 通过 jQuery 包装的 DOM 对象，是 jQuery 对象。
 3. 通过 jQuery 提供的 API 查询到的对象，是 jQuery 对象。
 
-## 3.2 jQuery对象的本质
+jQuery 对象的本质：jQuery 对象 = DOM 对象的数组 + jQuery 提供的一系列功能函数
 
-jQuery 对象 = DOM 对象的数组 + jQuery 提供的一系列功能函数。
+## 3.2 jQuery对象与DOM对象的区别
 
-## 3.3 jQuery对象与DOM对象的区别
-
-1. 在获取方式上：通过`getElementById()`、`getElementByTagName()`、`getElementByName()`、`createElement()`得到的对象是DOM 对象，通过 jQuery 提供的 API 得到的对象是 jQuery 对象。
+1. 在获取方式上：通过`getElementById()`、`getElementByTagName()`、`getElementByName()`、 `createElement()`得到的对象是 DOM 对象，通过 jQuery 提供的 API 得到的对象是 jQuery 对象。
 2. 在输出效果上：使用`alert()`输出对象信息时，DOM 对象输出为`[object HTMLxxxElement]`，jQuery对象输出为`[object Object]`。
 3. 在使用方法上：jQuery 对象不能使用 DOM 对象的属性和方法，DOM 对象也不能使用 jQuery 对象的属性和方法。
 
-## 3.4 jQuery对象与DOM对象的相互转换
+## 3.3 jQuery对象与DOM对象的相互转换
 
 DOM 对象转换为 jQuery 对象：`$(DomObject)`。
 
@@ -241,13 +238,12 @@ jQuery 对象转换为 DOM 对象：`jQueryObject[index]`。
             // 多选按钮
             $(":checkbox").val(["checkbox2", "checkbox1", "checkbox3"]);
             // 多选下拉列表
-            $("#multiple").val(["mul2", "mul4"]);
+            $("#multiple").val(["mul2", "mul3"]);
             // 单选下拉列表
             $("#single").val(["sin2"]);
             // 同时操作多种表单项
-            $(":radio,:checkbox,#multiple,#single").val(["radio1", "checkbox1",
-                                                        "checkbox2", "mul1",
-                                                        "mul3", "sin1"]);
+            $(":radio,:checkbox,#multiple,#single").val(
+                ["radio1", "checkbox1", "checkbox2", "mul1", "mul3", "sin1"]);
         });
     </script>
 </head>
@@ -266,7 +262,6 @@ jQuery 对象转换为 DOM 对象：`jQueryObject[index]`。
         <option value="mul1">mul1</option>
         <option value="mul2">mul2</option>
         <option value="mul3">mul3</option>
-        <option value="mul4">mul4</option>
     </select>
     <br>
     单选下拉列表：
@@ -274,7 +269,6 @@ jQuery 对象转换为 DOM 对象：`jQueryObject[index]`。
         <option value="sin1">sin1</option>
         <option value="sin2">sin2</option>
         <option value="sin3">sin3</option>
-        <option value="sin4">sin4</option>
     </select>
 </body>
 ```
@@ -295,19 +289,19 @@ jQuery 对象转换为 DOM 对象：`jQueryObject[index]`。
 示例：
 
 ```javascript
-// 1.获取所有 img 标签的 src 属性值
+// 获取所有 img 标签的 src 属性值
 $("img").attr("src");
 
-// 2.为所有 img 标签设置 src 和 alt 属性值
+// 为所有 img 标签设置 src 和 alt 属性值
 $("img").attr({
     src: "test.jpg",
     alt: "Test Image"
 });
 
-// 3.为所有 img 标签设置 src 属性
+// 为所有 img 标签设置 src 属性
 $("img").attr("src", "test.jpg");
 
-// 4.根据 title 属性的旧值计算新值并更新
+// 根据 title 属性的旧值计算新值并更新
 $("img").attr("title", function(i, val){
     return val + " - photo by Kelly Clark";
 });

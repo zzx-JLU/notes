@@ -3,14 +3,14 @@ title: UML
 chrome:
     format: "A4"
     headerTemplate: '<div></div>'
-    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;"> 
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 10px; font-size: 8pt;"> 
     <span class=pageNumber></span> / <span class=totalPages></span></div>'
     displayHeaderFooter: true
     margin:
         top: '40px'
-        bottom: '80px'
-        left: '60px'
-        right: '60px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
 ---
 
 <h1>UML</h1>
@@ -35,10 +35,6 @@ chrome:
 - [2 面向对象概念](#2-面向对象概念)
   - [2.1 对象](#21-对象)
   - [2.2 面向对象的四个原则](#22-面向对象的四个原则)
-    - [2.2.1 抽象](#221-抽象)
-    - [2.2.2 封装](#222-封装)
-    - [2.2.3 模块化](#223-模块化)
-    - [2.2.4 层次化](#224-层次化)
   - [2.3 类](#23-类)
     - [2.3.1 类的定义](#231-类的定义)
     - [2.3.2 类与对象的关系](#232-类与对象的关系)
@@ -138,7 +134,7 @@ chrome:
 
 ### 1.1.4 建模的好处
 
-建模要达到的4个目标：
+建模要达到的 4 个目标：
 
  1. 将系统可视化为开发者希望的样子。
  2. 允许开发者指定系统的结构或行为。
@@ -238,36 +234,35 @@ UML 的作用：
 每个对象都有一个唯一的标识，即使它的状态与另一个对象的状态相同。
 
 在 UML 中，对象表示为带有下划线名称的矩形。例如：
-<table align="center">
-    <tr>
-        <td align="center">
-            <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图2.1-匿名对象.3bm54jwy7yk0.png">
-            <br>
-            匿名对象
-        </td>
-        <td align="center">
-            <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图2.2-命名对象.33jrskxvhry0.png">
-            <br>
-            命名对象
-        </td>
-    </tr>
-</table>
+
+<div align="center">
+    <div style="float: left; width: 50%">
+        <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图2.1-匿名对象.3bm54jwy7yk0.png">
+        <br>
+        图 2.1&nbsp;&nbsp;&nbsp;匿名对象
+    </div>
+    <div style="width: 50%; margin-left: 50%; position: relative; bottom:3px">
+        <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图2.2-命名对象.33jrskxvhry0.png">
+        <br>
+        图 2.2&nbsp;&nbsp;&nbsp;命名对象
+    </div>
+</div>
 
 ## 2.2 面向对象的四个原则
 
-### 2.2.1 抽象
+1. 抽象
 
 抽象用于寻找一个实体区别于所有其他实体的本质特征，定义与观察角度相关的边界。它不是一种具体的表现形式，它表示事物的理想本质。
 
-### 2.2.2 封装
+2. 封装
 
 对客户隐藏实现。客户依赖于接口，通过接口与系统交互。
 
-### 2.2.3 模块化
+3. 模块化
 
 把复杂的事情分解成可管理的部分。帮助人们理解复杂系统。
 
-### 2.2.4 层次化
+4. 层次化
 
 层次结构中相同级别的元素应该处于相同的抽象级别。
 
@@ -281,7 +276,11 @@ UML 的作用：
 
 在 UML 中，类用有三个隔间的矩形表示，三个隔间中分别填写类的名字、结构（属性）和行为（操作）。例如：
 
-![类](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图2.3-类.1rrwg2p59ym8.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图2.3-类.1rrwg2p59ym8.png">
+    <br>
+    图 2.3&nbsp;&nbsp;&nbsp;&nbsp;类
+</div>
 
 ### 2.3.2 类与对象的关系
 
@@ -331,11 +330,19 @@ UML 的作用：
 
 每个图都有一个框架、左上角的标题隔室和一个内容区。如果框架没有提供任何附加值，则可以忽略它，并且工具提供的图表区域的边框将是隐含的框架。
 
-![图解说明](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图2.4-图解说明.3dkjl8kiyu40.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图2.4-图解说明.3dkjl8kiyu40.png">
+    <br>
+    图 2.4&nbsp;&nbsp;&nbsp;&nbsp;图解说明
+</div>
 
 # 3 UML结构
 
-![UML结构](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图3.1-UML结构.4zhip7ng0240.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图3.1-UML结构.4zhip7ng0240.png">
+    <br>
+    图 3.1&nbsp;&nbsp;&nbsp;&nbsp;UML 结构
+</div>
 
 ## 3.1 构造块
 
@@ -378,12 +385,10 @@ UML 的作用：
 
 公共分类描述认识世界的特殊方法。
 
-1.类元（classifier）和实例。
-
+1. 类元（classifier）和实例
 类元：一类事物的抽象概念。如 bank account。
 实例：一类事物的特定实例。如 my bank account。
-
-2.接口和实现。
+2. 接口和实现
 接口：说明事物行为的契约（做什么）。
 实现：事物是如何工作的特殊细节（如何做）。
 
@@ -391,34 +396,37 @@ UML 的作用：
 
  1. 约束：允许对模型元素添加新的规则，限制一种或多个元素语义的规则。形式：{约束条件}。
  2. 构造型（stereotypes）：基于已有的建模元素引入新的建模元素。
- 3. 标记值：允许为模型元素添加新的特性，附属于 UML 元素的各种信息，是带有相关值的关键字。具有形式：{属性名 = 值}。
+ 3. 标记值：允许为模型元素添加新的特性，附属于 UML 元素的各种信息，是带有相关值的关键字。形式：{属性名 = 值}。
 
-<table>
-    <tr  align="center">
-        <th>约束</th>
-        <th>构造型</th>
-        <th>标记值</th>
-    </tr>
-    <tr align="center">
-        <td>
-            <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图3.2-约束.4pdgydpoyac.png">
-        </td>
-        <td>
-            <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图3.3-构造型.gv584eyjn7c.png">
-        </td>
-        <td>
-            <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图3.4-标记值.3fbd403wcog0.png">
-        </td>
-    </tr>
-</table>
+<div align="center">
+    <div style="float: left; width: 33%">
+        <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图3.2-约束.4pdgydpoyac.png">
+        <br>
+        图 3.2&nbsp;&nbsp;&nbsp;&nbsp;约束
+    </div>
+    <div style="float: left; width: 33%">
+        <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图3.3-构造型.gv584eyjn7c.png">
+        <br>
+        图 3.3&nbsp;&nbsp;&nbsp;&nbsp;构造型
+    </div>
+    <div style="width: 33%; margin-left: 66%">
+        <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图3.4-标记值.3fbd403wcog0.png">
+        <br>
+        图 3.4&nbsp;&nbsp;&nbsp;&nbsp;标记值
+    </div>
+</div>
 
 ## 3.3 构架
 
 构架：系统架构的 UML 视图。
 
-4+1视图：
+4+1 视图：
 
-![4+1视图](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图3.5-4+1视图.uzbfz3rvg74.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图3.5-4+1视图.uzbfz3rvg74.png">
+    <br>
+    图 3.5&nbsp;&nbsp;&nbsp;&nbsp;4+1 视图
+</div>
 
 用例视图：与终端用户有关，用于描述系统功能。这些视图由用例视图所统一，它描述项目利益相关者的需求；所有其他视图都是从用例视图派生而来，该视图把系统的基本需求捕获为用例并提供构造其他视图的基础。
 
@@ -474,7 +482,7 @@ UML 的作用：
 
 ### 4.2.3 用例规约
 
-<table align="center">
+<table>
     <tr align="center"><td>Use Case（用例名）</td></tr>
     <tr align="center"><td>ID（编号）</td></tr>
     <tr align="center"><td>Brief description（简要描述）</td></tr>
@@ -498,11 +506,19 @@ UML 的作用：
 
 用例之间的包含关系，由基用例指向包含用例，表示在基用例的执行过程中必须执行包含用例。例如：
 
-![include](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.1-包含.4h41dlpgdci0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.1-包含.4h41dlpgdci0.png">
+    <br>
+    图 4.1&nbsp;&nbsp;&nbsp;&nbsp;包含
+</div>
 
 用例之间的扩展关系，由扩展用例指向基用例。基用例本身是完整的，可以单独正确执行，在一定条件下会触发扩展用例。例如：
 
-![extend](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.2-扩展.66xtey3icf00.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.2-扩展.66xtey3icf00.png">
+    <br>
+    图 4.2&nbsp;&nbsp;&nbsp;&nbsp;扩展
+</div>
 
 ## 4.3 活动图
 
@@ -525,15 +541,23 @@ UML 的作用：
  6. 泳道（swimlane）
  7. 对象流（object flow）
 
-![活动图](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.3-活动图.3w4x1i2pj260.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.3-活动图.3w4x1i2pj260.png">
+    <br>
+    图 4.3&nbsp;&nbsp;&nbsp;&nbsp;活动图
+</div>
 
 ### 4.3.1 动作状态
 
-动作状态是指执行原子的、不可中断的动作，并在此动作完成后通过完成转换转向另一个状态的状态。 
+动作状态是指执行原子的、不可中断的动作，并在此动作完成后通过完成转换转向另一个状态的状态。
 
-动作状态使用圆角矩形表示，动作状态所表示的动作写在圆角矩形内部。
+动作状态使用圆角矩形表示，动作状态所表示的动作写在圆角矩形内部，如图 4.4 所示。
 
-![动作状态](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.4-动作状态.2jauckftxrs0.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.4-动作状态.2jauckftxrs0.png">
+    <br>
+    图 4.4&nbsp;&nbsp;&nbsp;&nbsp;动作状态
+</div>
 
 动作状态的特点：
 
@@ -546,7 +570,7 @@ UML 的作用：
 
 ### 4.3.2 活动状态
 
-活动状态用于表达状态机中的一个非原子的执行过程。 
+活动状态用于表达状态机中的一个非原子的执行过程。
 
 活动状态也使用圆角矩形表示，并可以在图标中给出入口动作和出口动作等信息。
 
@@ -557,21 +581,33 @@ UML 的作用：
  3. 和动作状态不同，活动状态可以有入口动作和出口动作，也可以有内部转移。
  4. 动作状态是活动状态的一个特例，如果某个活动状态只包括一个动作，那么它就是一个动作状态。
 
-![活动分解](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.5-活动状态.44qvrqfg22w0.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.5-活动状态.44qvrqfg22w0.png">
+    <br>
+    图 4.5&nbsp;&nbsp;&nbsp;&nbsp;活动状态
+</div>
 
 ### 4.3.3 动作流
 
-所有动作状态之间的转换流称之为动作流。活动图的“转换”用带箭头的直线表示。
+所有动作状态之间的转换流称之为动作流。活动图的“转换”用带箭头的直线表示，如图 4.6 所示。
 
-![动作流](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.6-动作流.2rkaweuiw1a0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.6-动作流.2rkaweuiw1a0.png">
+    <br>
+    图 4.6&nbsp;&nbsp;&nbsp;&nbsp;动作流
+</div>
 
 活动图的“转换”一般都不需要特定事件的触发。一个动作状态执行完本状态需要完成的动作就会自发转换到下一个动作状态。
 
 ### 4.3.4 分支与合并
 
-动作流的条件行为用分支与合并表示。在活动图中分支与合并用空心小菱形表示。
+动作流的条件行为用分支与合并表示。在活动图中分支与合并用空心小菱形表示，如图 4.7 所示。
 
-![分支](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.7-分支.3i020dtvnvo0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.7-分支.3i020dtvnvo0.png">
+    <br>
+    图 4.7&nbsp;&nbsp;&nbsp;&nbsp;分支
+</div>
 
 一个分支有一个入转换和两个带监护条件的出转换，出转换的监护条件应当是互斥的，这样可以保证只有一条出转换能够被触发。
 
@@ -587,7 +623,11 @@ UML 的作用：
 
 分叉和汇合都使用加粗的水平线段或垂直线段表示，称为同步棒。
 
-![分叉与汇合](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.8-分叉与汇合.ndaj5lpdm74.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.8-分叉与汇合.ndaj5lpdm74.png">
+    <br>
+    图 4.8&nbsp;&nbsp;&nbsp;&nbsp;分叉与汇合
+</div>
 
 ### 4.3.6 泳道
 
@@ -599,7 +639,11 @@ UML 的作用：
 
 泳道可以提高活动图的可读性,可用于建模某些复杂的活动图。
 
-![带泳道的活动图](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.9-泳道.1pmluqhetjuo.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.9-泳道.1pmluqhetjuo.png">
+    <br>
+    图 4.9&nbsp;&nbsp;&nbsp;&nbsp;泳道
+</div>
 
 ### 4.3.7 对象流
 
@@ -615,7 +659,11 @@ UML 的作用：
 
 活动图中对象用矩形表示，矩形内是该对象的名称，名称下的方括号表示对象此时的状态。
 
-![对象流](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.10-对象流.10fghsrsy6vk.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图4.10-对象流.10fghsrsy6vk.png">
+    <br>
+    图 4.10&nbsp;&nbsp;&nbsp;&nbsp;对象流
+</div>
 
 # 5 交互图
 
@@ -646,18 +694,31 @@ UML 的作用：
 
 激活表示该对象被占用以完成某个任务。在 UML 中，为了表示对象是激活的，可以将该对象的生命线拓宽成为矩形。其中的矩形称为激活条或控制期。当收到消息时，接收对象立即开始执行活动，即对象被激活了。
 
-![顺序图](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图5.1-顺序图.79wfq4ogi980.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图5.1-顺序图.79wfq4ogi980.png">
+    <br>
+    图 5.1&nbsp;&nbsp;&nbsp;&nbsp;顺序图
+</div>
 
-有3种方式表示消息的重复执行：
+有 3 种方式表示消息的重复执行：
 
- 1. 在重复执行的消息前添加符号*，并在紧跟其后的中括号[ ]内写明具体的条件。（如上图所示）
+ 1. 在重复执行的消息前添加符号`*`，并在紧跟其后的中括号`[]`内写明具体的条件。（如上图所示）
  2. 在时间轴上用注释来指明消息的重复执行。（如下图左侧所示）
- 3. 使用一个矩形框将重复执行的消息框起来，并在附件的中括号[ ]内指明重复执行的条件。（如下图右侧所示）
+ 3. 使用一个矩形框将重复执行的消息框起来，并在附件的中括号`[]`内指明重复执行的条件。（如图 5.2 右侧所示）
 
-![重复执行](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图5.2-重复执行.5vhna7knpcg0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图5.2-重复执行.5vhna7knpcg0.png">
+    <br>
+    图 5.2&nbsp;&nbsp;&nbsp;&nbsp;重复执行
+</div>
+
 顺序图中某个对象消息的传入对应于该类对象所具有的操作。例如：
 
-![传入消息与对象的操作](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图5.3-传入消息与对象的操作.5luuu2xt6z80.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图5.3-传入消息与对象的操作.5luuu2xt6z80.png">
+    <br>
+    图 5.3&nbsp;&nbsp;&nbsp;&nbsp;传入消息与对象的操作
+</div>
 
 ## 5.2 通信图（协作图）
 
@@ -671,17 +732,25 @@ UML 的作用：
 
 通信图与顺序图中的对象的概念是一样的，只不过在通信图中，无法表示对象的创建和撤销，所以对于对象在图中的位置没有限制。
 
-通信图中的消息类型与顺序图中的相同，只不过为了说明交互过程中消息的时间顺序，需要给消息添加顺序号。顺序号是消息的一个数字前缀，是一个整数，由1开始递增，每个消息都必须有唯一的顺序号。
+通信图中的消息类型与顺序图中的相同，只不过为了说明交互过程中消息的时间顺序，需要给消息添加顺序号。顺序号是消息的一个数字前缀，是一个整数，由 1 开始递增，每个消息都必须有唯一的顺序号。
 
-消息的编号有两种，一种是无层次编号，它简单直观；另一种是嵌套的编号，它更易于表示消息的包含关系。嵌套的编号可以通过点表示法代表控制的嵌套关系，如1，1.1，1.2 。
+消息的编号有两种，一种是无层次编号，它简单直观；另一种是嵌套的编号，它更易于表示消息的包含关系。嵌套的编号可以通过点表示法代表控制的嵌套关系，如 1，1.1，1.2 。
 
 多对象：在通信图中，多对象指的是由多个对象组成的对象集合，一般这些对象是属于同一个类的。当需要把消息同时发送给多个对象而不是单个对象的时候，就使用多对象这个概念。在通信图中，多对象用多个方框的重叠表示。例如：
 
-![多对象](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图5.4-多对象.5bz3ti2q66k0.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图5.4-多对象.5bz3ti2q66k0.png">
+    <br>
+    图 5.4&nbsp;&nbsp;&nbsp;&nbsp;多对象
+</div>
 
 通信图示例：
 
-![通信图](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图5.5-通信图.26vte4d7f874.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图5.5-通信图.26vte4d7f874.png">
+    <br>
+    图 5.5&nbsp;&nbsp;&nbsp;&nbsp;通信图
+</div>
 
 ## 5.3 顺序图与通信图的比较
 
@@ -692,6 +761,7 @@ UML 的作用：
  3. 为用例场景建模。
 
 不同点：
+
 |顺序图| 通信图 |
 |:--:|:--:|
 | 展示显式的消息序列 | 除了互动之外，还要展示关系 |
@@ -709,9 +779,13 @@ UML 的作用：
  2. 界面类是用来描述系统与外界之间交互的系统要素，也称为边界类。界面类是对外界与系统之间交互的抽象表示，并不表示交互的具体内容或交互界面的具体形式。界面类的名字用名词或名词短语。
  3. 控制类表示系统中用来进行调度、协调以及业务处理的系统要素。控制类的名字用动词或动词短语表示。
 
-![类的种类](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.1-类的种类.27ov2vnop9no.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.1-类的种类.27ov2vnop9no.png">
+    <br>
+    图 6.1&nbsp;&nbsp;&nbsp;&nbsp;类的种类
+</div>
 
-类的属性的格式：`[可见性]属性名[:类型][‘[ ’多重性[次序]‘]’][=初始值][{特性}]`
+类的属性的格式：`[可见性]属性名[:类型]['['多重性[次序]']'][=初始值][{特性}]`
 例：`#studentBirthDay:Date=1999-10-21`
 
 可见性：该属性对外部实体的显现程度。
@@ -727,7 +801,7 @@ UML 的作用：
 
 特性：表示属性约束说明。
 
-操作的格式：[可见性]操作名[(参数列表)：返回类型]
+操作的格式：`[可见性]操作名[(参数列表):返回类型]`
 例：`+getName():String`
 
 ## 6.2 类的关系
@@ -740,7 +814,11 @@ UML 的作用：
 
 关联的表示形式：
 
-![关联](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.2-关联.16hnk48ewkhs.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.2-关联.16hnk48ewkhs.png">
+    <br>
+    图 6.2&nbsp;&nbsp;&nbsp;&nbsp;关联
+</div>
 
 重数是一个类与另一个类的一个实例相关的实例数。例如，在上图中，每个 Company 对象与 1 到多个 Person 对象相关，每个 Person 对象与 0 到多个 Company 对象相关。
 
@@ -748,11 +826,19 @@ UML 的作用：
 
 关联类：是一种关联，也是一种类。描述了关联的属性和操作。例如：
 
-![关联类](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.3-关联类.54rr2h4gxuk0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.3-关联类.54rr2h4gxuk0.png">
+    <br>
+    图 6.3&nbsp;&nbsp;&nbsp;&nbsp;关联类
+</div>
 
 限定关联：是这样一种关联，其中被称为限定符的属性会消除在“多”关联端上对象的歧义。
 
-![限定关联](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.4-限定关联.8ydxvtrbqig.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.4-限定关联.8ydxvtrbqig.png">
+    <br>
+    图 6.4&nbsp;&nbsp;&nbsp;&nbsp;限定关联
+</div>
 
 n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量避免 n 元关联——大部分关联可以分解成带限定符和属性的二元关联。
 
@@ -764,11 +850,19 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
 
 聚合的表示形式：
 
-![聚合](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.5-聚合.2me3v4rwy2s0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.5-聚合.2me3v4rwy2s0.png">
+    <br>
+    图 6.5&nbsp;&nbsp;&nbsp;&nbsp;聚合
+</div>
 
 组合是强语义的聚合，当整体对象消失，部分对象也消失。组合的表示形式为：
 
-![组合](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.6-组合.64h76j6bvk40.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.6-组合.64h76j6bvk40.png">
+    <br>
+    图 6.6&nbsp;&nbsp;&nbsp;&nbsp;组合
+</div>
 
 ### 6.2.3 依赖
 
@@ -776,7 +870,11 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
 
 在类图中，当一个类的某个方法中使用了另一个类的对象，或者调用了另一个类的方法，那么这个类就依赖于另一个类。例如：
 
-![依赖](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.7-依赖.48x8j7l4pnc0.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.7-依赖.48x8j7l4pnc0.png">
+    <br>
+    图 6.7&nbsp;&nbsp;&nbsp;&nbsp;依赖
+</div>
 
 ### 6.2.4 泛化
 
@@ -786,19 +884,27 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
 
 泛化是“is a kind of”关系。
 
-![继承](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.8-继承.6yb8tbe1rm80.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.8-继承.6yb8tbe1rm80.png">
+    <br>
+    图 6.8&nbsp;&nbsp;&nbsp;&nbsp;继承
+</div>
 
 ### 6.2.5 实现
 
 多数情况下，实现关系被用来规定接口和实现接口的类或组件之间的关系。
 
-![实现](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.9-实现.i3uirmft1m0.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图6.9-实现.i3uirmft1m0.png">
+    <br>
+    图 6.9&nbsp;&nbsp;&nbsp;&nbsp;实现
+</div>
 
 ## 6.3 如何阅读类图
 
- 1. 找出类。
- 2. 找出关系。
- 3. 理解多重性。
+ 1. 找出类
+ 2. 找出关系
+ 3. 理解多重性
  4. 理解属性和方法
 
 ## 6.4 如何构建类图
@@ -829,13 +935,21 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
 
 内部转换对事件做出响应，并执行一个特定的活动，但并不引起状态变化，因此不需要执行入口和出口动作。内部转换和自转换不同，虽然两者都不改变状态本身，但是自转换会激发入口动作和出口动作的执行，而内部转换却不会。
 
-![状态](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.1-状态.5zuzpy88mhk0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.1-状态.5zuzpy88mhk0.png">
+    <br>
+    图 7.1&nbsp;&nbsp;&nbsp;&nbsp;状态
+</div>
 
 初始状态是创建对象时输入的状态。初始状态是必需的，并且仅允许一个初始状态。初始状态表示为实心圆。
 
 最终状态表示对象的生命结束。最终状态是可选的，并且可能存在多个最终状态。最终状态表示为带圈的实心圆（公牛眼形）。
 
-![特殊状态](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.2-特殊状态.615d9ycw1ns0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.2-特殊状态.615d9ycw1ns0.png">
+    <br>
+    图 7.2&nbsp;&nbsp;&nbsp;&nbsp;特殊状态
+</div>
 
 按照有无子结构，可以将状态分为简单状态和组成状态：
 
@@ -847,11 +961,19 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
  1. 顺序子状态：一个组成状态的子状态对应的对象在其生命期内的任何时刻都只能处于一个子状态，即多个子状态之间是互斥的，不能同时存在。
  2. 并发子状态：组成状态有两个或者多个并发的子状态机。
 
-![子状态](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.3-子状态.4l9425otor60.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.3-子状态.4l9425otor60.png">
+    <br>
+    图 7.3&nbsp;&nbsp;&nbsp;&nbsp;子状态
+</div>
 
-历史状态：上次离开组成状态时的最后一个活动子状态，用一个包含字母“H”的小圆圈表示。每当转换到组成状态的历史状态时，对象便恢复到上次离开该组成状态时的最后一个活动子状态，并执行入口动作。
+历史状态：上次离开组成状态时的最后一个活动子状态，用一个包含字母 H 的小圆圈表示。每当转换到组成状态的历史状态时，对象便恢复到上次离开该组成状态时的最后一个活动子状态，并执行入口动作。
 
-![历史状态](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.4-历史状态.2yc01jvta3c0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.4-历史状态.2yc01jvta3c0.png">
+    <br>
+    图 7.4&nbsp;&nbsp;&nbsp;&nbsp;历史状态
+</div>
 
 ### 7.1.2 转换
 
@@ -862,10 +984,14 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
  1. 源状态：受转换影响的状态。
  2. 目标状态：当转换完成后对象的状态。
  3. 触发事件：能够引起状态转换的事件，包括调用、改变、信号、时间四类事件。
- 4. 监护条件：布尔表达式，决定是否激活转换。布尔表达式由“[ ]”括起,放在触发事件后面。当触发事件发生后，求监护条件的值，如果值为真，转换可以触发；如果值为假，转换就不能被触发，如果也没有其他的转换被这个触发事件触发，则事件被忽略。
+ 4. 监护条件：布尔表达式，决定是否激活转换。布尔表达式由`[]`括起，放在触发事件后面。当触发事件发生后，求监护条件的值，如果值为真，转换可以触发；如果值为假，转换就不能被触发，如果也没有其他的转换被这个触发事件触发，则事件被忽略。
  5. 动作：转换激活时的操作。动作可以包括发送消息给另一个对象、操作调用、设置返回值、创建和销毁对象等。动作是原子的，不可中断的，动作或动作序列的执行不会被同时发生的其他动作影响或终止。整个系统可以在同一时间执行多个动作。
 
-![转换](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.5-转换.3aylxx2n7ya0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.5-转换.3aylxx2n7ya0.png">
+    <br>
+    图 7.5&nbsp;&nbsp;&nbsp;&nbsp;转换
+</div>
 
 转换的种类：
 
@@ -875,11 +1001,11 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
 
 ### 7.1.3 状态图建模步骤
 
- 1. 找出适合用模型描述其行为的类。
- 2. 确定对象可能存在的状态。
- 3. 确定引起状态转换的事件。
- 4. 确定转换进行时对象执行的相应动作。
- 5. 对建模的结果进行相应的精化和细化。
+ 1. 找出适合用模型描述其行为的类
+ 2. 确定对象可能存在的状态
+ 3. 确定引起状态转换的事件
+ 4. 确定转换进行时对象执行的相应动作
+ 5. 对建模的结果进行相应的精化和细化
 
 ## 7.2 组件图
 
@@ -887,16 +1013,16 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
 
 组件图的作用：
 
- 1. 帮助客户理解最终的系统结构。
- 2. 使开发工作有一个明确的目标。
- 3. 复用软件组件。
- 4. 帮助开发组的其他人员理解系统。
+ 1. 帮助客户理解最终的系统结构
+ 2. 使开发工作有一个明确的目标
+ 3. 复用软件组件
+ 4. 帮助开发组的其他人员理解系统
 
 组件图的组成元素：
 
- 1. 组件(component)
- 2. 接口(interface)
- 3. 关系(relationship)
+ 1. 组件（component）
+ 2. 接口（interface）
+ 3. 关系（relationship）
 
 除此之外，还可以包括包（package）和子系统（subsystem），它们有助于将系统中的建模元素组织成更大的建模元素。
 
@@ -906,7 +1032,11 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
 
 组件表示法：
 
-![组件表示法](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.6-组件表示法.5zsj3ptbil80.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.6-组件表示法.5zsj3ptbil80.png">
+    <br>
+    图 7.6&nbsp;&nbsp;&nbsp;&nbsp;组件表示法
+</div>
 
 组件与类的相同点：二者都有名称，都可以实现一组接口，都可以参与依赖、泛化和关联关系，都可以被嵌套，都可以有实例，都可以参与交互。
 
@@ -918,15 +1048,19 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
 
 组件的类型：
 
- 1. 实施组件(Deployment Component) 。如 DLL、EXE、ActiveX 控件和 JavaBean 组件等。
+ 1. 实施组件（Deployment Component）。如 DLL、EXE、ActiveX 控件和 JavaBean 组件等。
  2. 工作产品组件（Work Product Component）。
- 3. 执行组件（Execution Component）。如由 DLL 实例化形成的 COM＋对象。
+ 3. 执行组件（Execution Component）。如由 DLL 实例化形成的 COM+对象。
 
 ### 7.2.2 接口
 
 接口是一组用于描述类或组件的一个服务的操作。它是一个被命名的操作的集合，与类不同，它不描述任何结构（因此不包含任何属性），也不描述任何实现（因此不包括任何实现操作的方法）。
 
-![接口](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.7-接口.2zdm4bnnur60.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.7-接口.2zdm4bnnur60.png">
+    <br>
+    图 7.7&nbsp;&nbsp;&nbsp;&nbsp;接口
+</div>
 
 组件的接口可以分为两种类型：
 
@@ -937,17 +1071,29 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
 
 组件图中使用最多的是依赖和实现关系。
 
-组件图中的依赖关系使用虚线箭头表示 ，如图所示。
+组件图中的依赖关系使用虚线箭头表示，如图所示。
 
-![依赖关系](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.8-依赖关系.7cbrvmfcbtg0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.8-依赖关系.7cbrvmfcbtg0.png">
+    <br>
+    图 7.8&nbsp;&nbsp;&nbsp;&nbsp;依赖关系
+</div>
 
 实现关系使用实线表示。实现关系多用于组件和接口之间。
 
-![实现关系](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.9-实现关系.5f0w5xd22sg0.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.9-实现关系.5f0w5xd22sg0.png">
+    <br>
+    图 7.9&nbsp;&nbsp;&nbsp;&nbsp;实现关系
+</div>
 
 组件接口表示法：
 
-![组件接口表示法](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.10-组件接口表示法.5d36ii9ia800.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.10-组件接口表示法.5d36ii9ia800.png">
+    <br>
+    图 7.10&nbsp;&nbsp;&nbsp;&nbsp;组件接口表示法
+</div>
 
 ### 7.2.4 组件图建模步骤
 
@@ -967,10 +1113,18 @@ n 元关联的 UML 符号是以直线连接相关类的一个菱形。要尽量�
  1. 设备：具有处理能力的物理计算资源，可以嵌套。
  2. 执行环境：表示特定的执行平台。
 
-![节点](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.11-节点.dciqhz2oyr4.png)
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.11-节点.dciqhz2oyr4.png">
+    <br>
+    图 7.11&nbsp;&nbsp;&nbsp;&nbsp;节点
+</div>
 
 连接：表示沟通机制。包括物理介质、软件协议。
 
 部署图示例：
 
-![部署图](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.12-部署图.36dadtk0b4c0.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/UML/图7.12-部署图.36dadtk0b4c0.png" style="width: 80%">
+    <br>
+    图 7.11&nbsp;&nbsp;&nbsp;&nbsp;部署图
+</div>

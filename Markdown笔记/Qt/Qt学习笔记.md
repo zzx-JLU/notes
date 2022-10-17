@@ -3,14 +3,14 @@ title: Qt
 chrome:
     format: "A4"
     headerTemplate: '<div></div>'
-    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;"> 
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 10px; font-size: 8pt;"> 
     <span class=pageNumber></span> / <span class=totalPages></span></div>'
     displayHeaderFooter: true
     margin:
         top: '40px'
-        bottom: '80px'
-        left: '60px'
-        right: '60px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
 ---
 
 <h1>Qt</h1>
@@ -63,59 +63,60 @@ chrome:
 
 第一步：选择模板。这里选择 Qt Widgets Application。
 
-<div align="center">
+<div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.1-选择模板.64gba1s00tk0.png">
     <br>
-    图1.1 选择模板
+    图 1.1&nbsp;&nbsp;&nbsp;&nbsp;选择模板
 </div>
 
 第二步：指定项目名称和路径。项目名称和路径中不能含有中文或空格。
 
-<div align="center">
+<div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.2-指定项目名称和路径.hspywtk4rdk.png">
     <br>
-    图1.2 指定项目名称和路径
+    图 1.2&nbsp;&nbsp;&nbsp;&nbsp;指定项目名称和路径
 </div>
 
 第三步：指定编译器。这里使用 qmake。
 
-<div align="center">
+<div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.3-指定编译器.3xoqw05bkma0.png">
     <br>
-    图1.3 指定编译器
+    图 1.3&nbsp;&nbsp;&nbsp;&nbsp;指定编译器
 </div>
 
 第四步：设置类信息。指定主窗口类名和主窗口的基类，头文件名、源文件名和界面文件名根据类名自动改变，不需要手动设置。
 
 基类有三种选择：`QMainWindow`表示一个有菜单栏、状态栏的窗口，`QWidget`表示一个空窗口，`QDialog`表示一个对话框。
 
-<div align="center">
+<div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.4-设置类信息.413mogzzqa60.png">
     <br>
-    图1.4 设置类信息
+    图 1.4&nbsp;&nbsp;&nbsp;&nbsp;设置类信息
 </div>
+
 第五步：如果要为项目的用户接口提供翻译，需要指定语言。
 
-<div align="center">
+<div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.5-选择翻译语言.4zvzrsd0nf40.png">
     <br>
-    图1.5 选择翻译语言
+    图 1.5&nbsp;&nbsp;&nbsp;&nbsp;选择翻译语言
 </div>
 
 第六步：选择工具包。
 
-<div align="center">
+<div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.6-选择工具包.6pb03q9jj9s0.png">
     <br>
-    图1.6 选择工具包
+    图 1.6&nbsp;&nbsp;&nbsp;&nbsp;选择工具包
 </div>
 
 第七步：选择是否将该项目作为子项目添加到另一个项目中，是否将该项目添加到版本管理系统。
 
-<div align="center">
+<div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.7-总结.39w3ynwisco0.png">
     <br>
-    图1.7 总结
+    图 1.7&nbsp;&nbsp;&nbsp;&nbsp;总结
 </div>
 
 点击“完成”，创建新项目。
@@ -124,43 +125,70 @@ chrome:
 
 项目结构如图 1.8 所示。
 
-<div align="center">
+<div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.8-项目结构.6uaztmc06lc0.png">
     <br>
-    图1.8 项目结构
+    图 1.8&nbsp;&nbsp;&nbsp;&nbsp;项目结构
 </div>
 
 `test.pro`：工程文件。
 
-<div align="center">
+<div align="center" style="margin-bottom: 10px">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.9-项目文件.6si3v24oc100.png">
     <br>
-    图1.9 工程文件
+    图 1.9&nbsp;&nbsp;&nbsp;&nbsp;工程文件
 </div>
 
 `widget.h`：主窗口的头文件。
 
-<div align="center">
-    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.10-主窗口的头文件.4a0ti64llfo0.png">
-    <br>
-    如1.10 主窗口的头文件
-</div>
+```c++{.line-numbers}
+#ifndef WIDGET_H
+#define WIDGET_H
+
+#include <QWidget> // 包含 QWidget 类的头文件
+
+class Widget : public QWidget
+{
+    Q_OBJECT // 宏，允许类中使用信号和槽的机制
+
+public:
+    Widget(QWidget *parent = nullptr);
+    ~Widget();
+}
+#endif // WIDGET_H
+```
 
 `widget.cpp`：主窗口的源文件。
 
-<div align="center">
-    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.11-主窗口的源文件.727y72sr5ms0.png">
-    <br>
-    图1.11 主窗口的源文件
-</div>
+```c++{.line-numbers}
+#include "widget.h"
+
+Widget::Widget(QWidget *parent)
+    : QWidget(parent)
+{
+}
+
+Widget::~Widget()
+{
+}
+```
 
 `main.cpp`：主程序。
 
-<div align="center">
-    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.12-主程序.4q6n5tdn4ho0.png">
-    <br>
-    图1.12 主程序
-</div>
+```c++{.line-numbers}
+#include "widget.h"
+
+#include <QApplication> // 包含一个应用程序类的头文件
+
+// 程序入口
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv); // 应用程序对象，有且只有一个
+    Widget w; // 窗口对象
+    w.show(); // 显示窗口
+    return a.exec(); // 让应用程序对象进入消息循环
+}
+```
 
 `test_zh_CN.ts`：由于创建项目时选择了翻译成中文，所以自动生成了这个文件。
 
@@ -196,9 +224,9 @@ Qt 中`QObject`类是所有类的基类。`QObject`是以对象树的形式组�
 如果`QObject`对象在栈上创建，Qt 保持同样的行为。
 
 <div align="center">
-    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.13-对象树.38vryte749e0.png">
+    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/Qt/%E5%9B%BE1.10-%E5%AF%B9%E8%B1%A1%E6%A0%91.png">
     <br>
-    图1.13 对象树
+    图 1.10&nbsp;&nbsp;&nbsp;&nbsp;对象树
 </div>
 
 ## 1.7 资源文件

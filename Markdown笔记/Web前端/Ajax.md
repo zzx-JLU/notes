@@ -3,14 +3,14 @@ title: Ajax
 chrome:
     format: "A4"
     headerTemplate: '<div></div>'
-    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;"> 
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 10px; font-size: 8pt;"> 
     <span class=pageNumber></span> / <span class=totalPages></span></div>'
     displayHeaderFooter: true
     margin:
         top: '40px'
-        bottom: '80px'
-        left: '60px'
-        right: '60px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
 ---
 
 <h1>Ajax</h1>
@@ -60,11 +60,15 @@ HTTP 协议全称为 Hypertext Transport Protocol（超文本传输协议），�
 
 请求报文包括 4 部分：请求行、请求头、空行、请求体。例如：
 
-![HTTP请求报文](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Ajax/HTTP请求报文.161eok7vp18g.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Ajax/HTTP请求报文.161eok7vp18g.png">
+</div>
 
 响应报文也包括 4 部分：响应行、响应头、空行、响应体。例如：
 
-![HTTP响应报文](https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Ajax/HTTP响应报文.63le8p6izr00.png)
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Ajax/HTTP响应报文.63le8p6izr00.png">
+</div>
 
 # 2 原生Ajax请求
 
@@ -80,20 +84,21 @@ HTTP 协议全称为 Hypertext Transport Protocol（超文本传输协议），�
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>title</title>
         <script>
-            // 发起 Ajax 请求，访问 AjaxServlet 中的 javaScriptAjax 方法
+            // 发起 Ajax 请求，访问 AjaxServlet 中的 javaScriptAjax() 方法
             function ajaxRequest()
             {
-                // 1.创建 XMLHttpRequest 对象
+                // 1. 创建 XMLHttpRequest 对象
                 var xmlhttprequest = new XMLHttpRequest();
-                // 2.调用 open 方法设置请求参数
-                // open(method, url, async)
-                // method：请求的类型，取值为 GET 或 POST
-                // url：文件在服务器上的位置
-                // async：true 表示异步，false 表示同步
+
+                // 2. 调用 open(method, url, async) 方法设置请求参数
+                //    method：请求的类型，取值为 GET 或 POST
+                //    url：文件在服务器上的位置
+                //    async：true 表示异步，false 表示同步
                 xmlhttprequest.open("GET",
                                     "http://localhost:8080/projectName/servletPath?key=value",
                                     true);
-                // 3.绑定 onreadystatechange 事件，处理请求完成后的操作
+                
+                // 3. 绑定 onreadystatechange 事件，处理请求完成后的操作
                 xmlhttprequest.onreadystatechange = function() {
                     if (xmlhttprequest.readyState === 4 && xmlhttprequest.status === 200)
                     {
@@ -101,7 +106,8 @@ HTTP 协议全称为 Hypertext Transport Protocol（超文本传输协议），�
                             xmlhttprequest.responseText;
                     }
                 }
-                // 4.调用 send 方法发送请求
+                
+                // 4. 调用 send() 方法发送请求
                 xmlhttprequest.send();
             }
         </script>

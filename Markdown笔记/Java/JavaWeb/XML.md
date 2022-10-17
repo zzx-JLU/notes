@@ -1,4 +1,33 @@
-[toc]
+---
+title: XML
+chrome:
+    format: "A4"
+    headerTemplate: '<div></div>'
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 10px; font-size: 8pt;"> 
+    <span class=pageNumber></span> / <span class=totalPages></span></div>'
+    displayHeaderFooter: true
+    margin:
+        top: '40px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
+---
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [1 XML简介](#1-xml简介)
+- [2 XML语法](#2-xml语法)
+  - [2.1 文档声明](#21-文档声明)
+  - [2.2 XML注释](#22-xml注释)
+  - [2.3 XML元素](#23-xml元素)
+  - [2.4 XML属性](#24-xml属性)
+  - [2.5 语法规则](#25-语法规则)
+- [3 XML解析技术](#3-xml解析技术)
+- [4 dom4j解析技术](#4-dom4j解析技术)
+
+<!-- /code_chunk_output -->
 
 # 1 XML简介
 
@@ -68,31 +97,29 @@ dom4j 编程步骤：
 
 1. 加载 XML 文件，创建`Document`对象。
 2. 通过`Document`对象得到根元素对象。
-3. 通过根元素对象获得子元素对象。
+3. 通过`根元素对象.elements(标签名)`获得指定标签名的子元素对象集合。
 4. 找到要修改、删除的子元素，进行相应的操作。
 5. 保存文件。
-6. 找到要修改、删除的子元素，进行相应的操作。
-7. 保存文件。
 
 例如：
 
-```xml
+```xml{.line-numbers}
 <?xml version="1.0" encoding="utf-8"?>
 <books>
-	<book sn="SN1">
-    	<name>辟邪剑谱</name>
+    <book sn="SN1">
+        <name>辟邪剑谱</name>
         <price>9.9</price>
         <author>班主任</author>
     </book>
     <book sn="SN2">
-    	<name>葵花宝典</name>
+        <name>葵花宝典</name>
         <price>99.9</price>
         <author>班长</author>
     </book>
 </books>
 ```
 
-```java
+```java{.line-numbers}
 import org.dom4j.io.SAXReader;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -128,10 +155,9 @@ public class Dom4jTest
             // 将获取到的数据封装为对象
             // Book 类是自定义类，其中的属性与 XML 文档中的标签保持一致
             System.out.println(new Book(snValue, nameText,
-                                       Double.parseDouble(priceText),
-                                       authorText));
+                                        Double.parseDouble(priceText),
+                                        authorText));
         }
     }
 }
 ```
-
