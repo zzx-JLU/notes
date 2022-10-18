@@ -33,7 +33,7 @@ chrome:
   - [2.3 信号槽的扩展](#23-信号槽的扩展)
   - [2.4 Qt4版本的连接方式](#24-qt4版本的连接方式)
   - [2.5 Lambda表达式](#25-lambda表达式)
-- [3 QMainWindow](#3-qmainwindow)
+- [3 `QMainWindow`](#3-qmainwindow)
   - [3.1 菜单栏](#31-菜单栏)
   - [3.2 工具栏](#32-工具栏)
   - [3.3 状态栏](#33-状态栏)
@@ -234,44 +234,44 @@ Qt 中`QObject`类是所有类的基类。`QObject`是以对象树的形式组�
 添加资源文件的步骤如下：
 
 1. 将要添加的资源文件拷贝到项目位置下。
-2. 鼠标右键单击项目，选择 “添加新建项”。
+2. 鼠标右键单击项目，选择“添加新建项”。
 
-<div align="center">
-    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.14-添加新建项.7hxx5mykxnw0.png">
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/Qt/%E5%9B%BE1.11-%E6%B7%BB%E5%8A%A0%E6%96%B0%E5%BB%BA%E9%A1%B9.png">
     <br>
-    图1.14 添加新建项
+    图 1.11&nbsp;&nbsp;&nbsp;&nbsp;添加新建项
 </div>
 
 3. 在新建文件对话框中，选择 Qt→Qt 资源文件。
 
-<div align="center">
-    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.15-选择Qt资源文件.i585bgytx2o.png">
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/Qt/%E5%9B%BE1.12-%E9%80%89%E6%8B%A9Qt%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6.png">
     <br>
-    图1.15 选择Qt资源文件
+    图 1.12&nbsp;&nbsp;&nbsp;&nbsp;选择 Qt 资源文件
 </div>
 
-4. 设置资源文件的名称和路径，点击 “下一步”。
+4. 设置资源文件的名称和路径，点击“下一步”。
 
-<div align="center">
-    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.16-设置资源文件的名称和路径.25lu0kpx90kg.png">
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/Qt/%E5%9B%BE1.13-%E8%AE%BE%E7%BD%AE%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%8D%E7%A7%B0%E5%92%8C%E8%B7%AF%E5%BE%84.png">
     <br>
-    图1.16 设置资源文件的名称和路径
+    图 1.13&nbsp;&nbsp;&nbsp;&nbsp;设置资源文件的名称和路径
 </div>
 
-5. 选择要添加到哪个项目和版本控制系统，点击 “完成”。
+5. 选择要添加到哪个项目和版本控制系统，点击“完成”。
 
-<div align="center">
-    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.17-添加到项目.6zg3v7t1txo0.png">
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/Qt/%E5%9B%BE1.14-%E6%B7%BB%E5%8A%A0%E5%88%B0%E9%A1%B9%E7%9B%AE.png">
     <br>
-    图1.17 添加到项目
+    图 1.14&nbsp;&nbsp;&nbsp;&nbsp;添加到项目
 </div>
 
-6. 右键单击资源文件，选择 “在编辑器中打开”。
+6. 右键单击资源文件，选择“在编辑器中打开”。
 
-<div align="center">
-    <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图1.18-打开资源文件.7g3k0xpqtp00.png">
+<div align="center" style="margin-bottom: 10px">
+    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/Qt/%E5%9B%BE1.15-%E6%89%93%E5%BC%80%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6.png">
     <br>
-    图1.18 打开资源文件
+    图 1.15&nbsp;&nbsp;&nbsp;&nbsp;打开资源文件
 </div>
 
 7. 添加前缀和文件。文件必须位于项目文件夹下。
@@ -282,13 +282,13 @@ Qt 中`QObject`类是所有类的基类。`QObject`是以对象树的形式组�
 
 ## 2.1 信号和槽简介
 
-信号和槽的本质是观察者模式。当某个事件发生后，就会发出一个信号（signal），这种发送是没有目的的，类似于广播。如果有对象对这个信号感兴趣，它就会使用`connect`函数，将想要处理的信号和自己的一个槽（slot）绑定来处理这个信号。也就是说，当信号发出时，被连接的槽函数会自动被回调。
+信号和槽的本质是观察者模式。当某个事件发生后，就会发出一个信号（signal），这种发送是没有目的的，类似于广播。如果有对象对这个信号感兴趣，它就会使用`connect()`函数，将想要处理的信号和自己的一个槽（slot）绑定来处理这个信号。也就是说，当信号发出时，被连接的槽函数会自动被回调。
 
 槽的本质是类的成员函数，和普通的成员函数几乎没有区别。槽和普通的成员函数唯一的区别在于，槽可以与信号连接在一起，每当和槽连接的信号被发出的时候，就会调用这个槽。
 
 信号和槽是 Qt 特有的信息传输机制，是 Qt 程序设计的重要基础，它可以让互不干扰的对象建立一种联系。
 
-使用`connect`函数将信号和槽连接在一起，`connect`函数最常用的一般形式为：
+使用`connect()`函数将信号和槽连接在一起，`connect()`函数最常用的一般形式为：
 
 ```c++
 connect(QObject *sender, Func1 signal, QObject *receiver, Func1 slot)
@@ -336,9 +336,9 @@ Widget::Widget(QWidget *parent)
 
 定义信号和槽函数后，要在适当位置使用`emit`关键字触发信号。
 
-例如，定义老师类和学生类，当 “下课” 事件发生时，老师发出 “饥饿” 信号，学生接收信号并响应 “请客”。代码如下：
+例如，定义老师类和学生类，当“下课”事件发生时，老师发出“饥饿”信号，学生接收信号并响应“请客”。代码如下：
 
-```c++
+```c++{.line-numbers}
 /* teacher.h */
 class Teacher : public QObject
 {
@@ -350,7 +350,9 @@ signals:
     // 只需要声明，不需要实现
     void hungry();
 };
+```
 
+```c++{.line-numbers}
 /* student.h */
 class Student : public QObject
 {
@@ -362,13 +364,17 @@ public slots:
     // 返回值是 void，需要声明，也需要实现
     void treat();
 };
+```
 
+```c++{.line-numbers}
 /* student.cpp */
 void Student::treat()
 {
     qDebug() << "请老师吃饭"; // 向控制台输出信息
 }
+```
 
+```c++{.line-numbers}
 /* widget.h */
 class Widget : public QWidget
 {
@@ -381,7 +387,9 @@ private:
     Student *student;
     void classIsOver(); // 下课事件
 };
+```
 
+```c++{.line-numbers}
 /* widget.cpp */
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -403,7 +411,7 @@ void Widget::classIsOver()
 
 当信号和槽发生重载时，在连接时需要指出使用的重载版本，通过函数指针指定具体的重载版本。例如：
 
-```c++
+```c++{.line-numbers}
 /* teacher.h */
 class Teacher : public QObject
 {
@@ -414,7 +422,9 @@ signals:
     void hungry();
     void hungry(QString foodName); // 重载的信号
 };
+```
 
+```c++{.line-numbers}
 /* student.h */
 class Student : public QObject
 {
@@ -425,7 +435,9 @@ public slots:
     void treat();
     void treat(QString foodName); // 重载的槽函数
 };
+```
 
+```c++{.line-numbers}
 /* student.cpp */
 void Student::treat()
 {
@@ -436,7 +448,9 @@ void Student::treat(QString foodName)
 {
     qDebug() << "请老师吃饭，吃的是" << foodName;
 }
+```
 
+```c++{.line-numbers}
 /* widget.h */
 class Widget : public QWidget
 {
@@ -449,7 +463,9 @@ private:
     Student *student;
     void classIsOver(); // 下课事件
 };
+```
 
+```c++{.line-numbers}
 /* widget.cpp */
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -471,7 +487,7 @@ void Widget::classIsOver()
 }
 ```
 
-这里`treat`函数的参数类型为`QString`，当输出到控制台时，`QString`类型的字符串会带有引号。为了去掉引号，可以将`QString`类型的变量转换成`char*`类型。转换方法为，先调用`toUtf8`函数转为`QByteArray`，再调用`data`函数转为`char*`类型。例如：
+这里`treat()`函数的参数类型为`QString`，当输出到控制台时，`QString`类型的字符串会带有引号。为了去掉引号，可以将`QString`类型的变量转换成`char*`类型。转换方法为，先调用`toUtf8()`函数转为`QByteArray`，再调用`data()`函数转为`char*`类型。例如：
 
 ```c++
 void Student::treat(QString foodName)
@@ -507,11 +523,11 @@ Widget::Widget(QWidget *parent)
 3. 多个信号可以连接同一个槽。
 4. 信号和槽函数的参数类型必须一一对应。
 5. 信号的参数个数可以多于槽函数，但不能少于槽函数。
-6. 信号槽可以断开连接。使用`disconnect`函数断开连接，参数与`connect`函数一致。
+6. 信号槽可以断开连接。使用`disconnect()`函数断开连接，参数与`connect()`函数一致。
 
 ## 2.4 Qt4版本的连接方式
 
-在`connect`函数中，使用`SIGNAL`和`SLOT`宏将函数名转换成字符串。例如：
+在`connect()`函数中，使用`SIGNAL`和`SLOT`宏将函数名转换成字符串。例如：
 
 ```c++
 // 无参
@@ -552,7 +568,7 @@ C++11 中的 Lambda 表达式用于定义并创建匿名的函数对象。Lambda
 4. `->returnType`：函数返回值类型。当返回值类型为`void`，或者函数体中只有一处`return`语句时，这部分可以省略。
 5. `{statement}`：函数体，不能省略，但是可以为空。
 
-可以在`connect`函数中直接使用 Lambda 表达式，例如：
+可以在`connect()`函数中直接使用 Lambda 表达式，例如：
 
 ```c++
 Widget::Widget(QWidget *parent)
@@ -567,14 +583,14 @@ Widget::Widget(QWidget *parent)
 }
 ```
 
-# 3 QMainWindow
+# 3 `QMainWindow`
 
-QMainWindow 是一个为用户提供主窗口的类，包含一个菜单栏（menu bar）、多个工具栏（tool bar）、多个锚接部件（dock widget）、一个状态栏（status bar）以及一个中心部件（central widget）。
+`QMainWindow`是一个为用户提供主窗口的类，包含一个菜单栏（menu bar）、多个工具栏（tool bar）、多个铆接部件（dock widget）、一个状态栏（status bar）以及一个中心部件（central widget）。
 
 <div align="center">
     <img src="https://cdn.jsdelivr.net/gh/zzx-JLU/images_for_markdown@main/Qt/图3.1-QMainWindow.papjrcwoi9s.png">
     <br>
-    图3.1 QMainWindow
+    图 3.1&nbsp;&nbsp;&nbsp;&nbsp;<code>QMainWindow</code>
 </div>
 
 ## 3.1 菜单栏
@@ -586,12 +602,16 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent)
 {
     // 创建菜单栏
     QMenuBar *menuBar = menuBar();
+
     // 将菜单栏添加到窗口中
     setMenuBar(menuBar);
+
     // 创建菜单
     QMenu *fileMenu = menuBar->addMenu("文件");
+
     // 创建菜单项
     QAction *newAction = fileMenu->addAction("新建");
+
     // 添加分割线
     fileMenu->addSeparator();
 }
@@ -606,28 +626,33 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent)
 {
     // 创建工具栏
     QToolBar *toolBar = new QToolBar(this);
+
     // 将工具栏添加到窗口中，默认位于上方
     addToolBar(toolBar);
     
     /* 将工具栏添加到窗口中时，可以指定位置，位置的取值包括：
-     * Qt::LeftToolBarArea, Qt::RightToolBarArea, Qt::TopToolBarArea,
-     * Qt::BottomToolBarArea, Qt::AllToolBarArea, Qt::NoToolBarArea
-     * 例如：
-     * addToolBar(Qt::LeftToolBarArea, toolBar);
+     *   Qt::LeftToolBarArea, Qt::RightToolBarArea, Qt::TopToolBarArea,
+     *   Qt::BottomToolBarArea, Qt::AllToolBarArea, Qt::NoToolBarArea
+     * 例如：addToolBar(Qt::LeftToolBarArea, toolBar);
      */
     
     // 设置工具栏允许的停靠范围，默认值为 Qt::AllToolBarArea
     // 如果有多个取值，使用或运算符分隔
     toolBar->setAllowedAreas(Qt::LeftToolBarArea | Qt::RightToolBarArea);
+
     // 设置浮动。参数为 true 表示允许浮动，参数为 false 表示不允许浮动
     toolBar->setFloatable(false);
+
     // 设置移动。参数为 true 表示允许移动，参数为 false 表示不允许移动
     toolBar->setMovable(false);
+
     // 添加菜单项
     QAction *newAction = new QAction("新建", this);
     toolBar->addAction(newAction);
+
     // 添加分割线
     toolBar->addSeparator();
+
     // 添加控件
     QPushButton *button = new QPushButton("按钮", this);
     toolBar->addWidget(button);
@@ -643,12 +668,16 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent)
 {
     // 创建状态栏
     QStatusBar* statusBar = statusBar();
+
     // 将状态栏设置到窗口中
     setStatusBar(statusBar);
+
     // 创建标签控件
     QLabel* label = new QLabel("提示信息", this);
+
     // 将标签控件放入状态栏
     statusBar->addWidget(label);
+
     // 将标签控件放在状态栏右侧
     QLabel* label2 = new QLabel("右侧提示信息", this);
     statusBar->addPermanentWidget(label2);
@@ -664,12 +693,14 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent)
 {
     // 创建铆接部件，指定窗口标题和父元素
     QDockWidget* dockWidget = new QDockWidget("浮动", this);
+
     // 将铆接部件加入窗口中
     // 第一个参数是停靠位置，位置的取值包括：
-    // Qt::LeftDockWidgetArea, Qt::RightDockWidgetArea,
-    // Qt::TopDockWidgetArea, Qt::BottomDockWidgetArea,
-    // Qt::AllDockWidgetArea, Qt::NoDockWidgetArea
+    //   Qt::LeftDockWidgetArea, Qt::RightDockWidgetArea,
+    //   Qt::TopDockWidgetArea, Qt::BottomDockWidgetArea,
+    //   Qt::AllDockWidgetArea, Qt::NoDockWidgetArea
     addDockWidget(Qt::BottomDockWidgetArea, dockWidget);
+
     // 设置允许的停靠范围
     dockWidget->setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);
 }
