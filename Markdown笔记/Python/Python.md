@@ -3,14 +3,14 @@ title: Python
 chrome:
     format: "A4"
     headerTemplate: '<div></div>'
-    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 20px; font-size: 8pt;">
+    footerTemplate: '<div style="width:100%; text-align:center; border-top: 1pt solid #eeeeee; margin: 10px 10px 10px; font-size: 8pt;">
     <span class=pageNumber></span> / <span class=totalPages></span></div>'
     displayHeaderFooter: true
     margin:
         top: '40px'
-        bottom: '80px'
-        left: '60px'
-        right: '60px'
+        bottom: '65px'
+        left: '40px'
+        right: '40px'
 ---
 
 <h1>Python</h1>
@@ -87,7 +87,19 @@ chrome:
 - [7 面向对象](#7-面向对象)
   - [7.1 类](#71-类)
   - [7.2 属性和方法](#72-属性和方法)
+    - [7.2.1 属性](#721-属性)
+    - [7.2.2 实例方法](#722-实例方法)
+    - [7.2.3 类方法](#723-类方法)
+    - [7.2.4 静态方法](#724-静态方法)
   - [7.3 对象的初始化](#73-对象的初始化)
+  - [7.4 封装](#74-封装)
+  - [7.5 `@property`装饰器](#75-property装饰器)
+  - [7.6 继承](#76-继承)
+    - [7.6.1 子类](#761-子类)
+    - [7.6.2 方法的重写](#762-方法的重写)
+    - [7.6.3 `super()`函数](#763-super函数)
+    - [7.6.4 多继承](#764-多继承)
+  - [7.7 多态](#77-多态)
 
 <!-- /code_chunk_output -->
 
@@ -1864,9 +1876,11 @@ print(type(MyClass))  # <class 'type'>
 
 ## 7.2 属性和方法
 
-可以在类的代码块中定义变量和函数，这些变量和函数会保存到类对象中，而不会保存到实例对象中。
+### 7.2.1 属性
+
 在类中定义的变量称为**类属性**，所有该类实例都可以访问这些属性。可以使用`类名.属性名`或`对象名.属性名`来访问类属性。
-在类中定义的函数称为**类方法**，所有该类实例都可以访问这些方法。可以使用`类名.方法名`或`对象名.方法名`来访问类方法。
+
+类属性会保存到类对象中，而不会保存到实例对象中。
 
 也可以直接向对象中添加变量，对象中的变量称为**实例属性**。实例属性会保存在对象中。实例属性只能通过`对象.属性名`来访问。例如：
 
@@ -1879,15 +1893,6 @@ obj = MyClass()
 obj.name = '小明'
 print(obj.name)  # 小明
 ```
-
-实例方法的调用：`对象名.方法名(实参)`
-
-调用方法时，解析器会将调用者本身作为第一个实参传入方法，因此定义方法时至少要有一个形参，并且第一个形参用于接收方法的调用者。一般将方法的第一个形参命名为`self`。在方法中可以使用`self`来访问调用者的属性和方法。
-
-属性和方法的查找流程：先在对象中查找是否含有该属性或方法，如果有，则直接访问；如果没有，则到当前对象的类对象中去寻找，如果找到则访问；如果都没有找到，则报错。
-
-类对象和实例对象中都可以保存属性和方法。如果属性和方法是所有实例共享的，则应该将其保存到类对象中；如果属性和方法是某个实例独有的，则应该将其保存到实例对象中。
-一般情况下，将属性保存到实例对象中，将方法保存到类对象中。
 
 如果使用`对象.类属性 = 值`赋值语句，只会改变对象的实例属性，而不会影响到类属性的值。例如：
 
@@ -1906,6 +1911,41 @@ obj2.a = 20  # 为对象 obj2 创建实例属性，不影响类属性
 print(obj2.a)  # 20
 print(obj.a)  # 10
 ```
+
+属性的查找流程：先在对象中查找是否含有该属性，如果有，则直接访问；如果没有，则到当前对象的类对象中去寻找，如果找到则访问；如果都没有找到，则报错。
+
+类对象和实例对象中都可以保存属性。如果属性是所有实例共享的，则应该将其保存到类对象中；如果属性是某个实例独有的，则应该将其保存到实例对象中。
+
+一般情况下，将属性保存到实例对象中，将方法保存到类对象中。
+
+### 7.2.2 实例方法
+
+在类中定义的函数称为**方法**（method）。所有方法都会保存到类对象中。
+
+在类中定义、第一个形参为`self`的方法称为**实例方法**。`self`参数用于接收调用方法的对象，在方法中可以使用`self`来访问调用者的属性和方法。
+
+可以使用`类名.方法名()`或`对象名.方法名()`来调用实例方法。
+
+- 通过实例对象调用实例方法时，会自动将调用者作为`self`参数传入。
+- 通过类名调用实例方法时，不会自动传递`self`参数，需要手动传递。
+
+### 7.2.3 类方法
+
+在类中定义、使用`@classmethod`修饰的方法称为**类方法**。
+
+类方法的第一个形参通常定义为`cls`，用于接收类对象。
+
+类方法可以通过类名调用，也可以通过实例对象调用，二者没有区别。
+
+### 7.2.4 静态方法
+
+在类中定义、使用`@staticmethod`修饰的方法称为**静态方法**。
+
+静态方法没有默认参数。
+
+静态方法可以通过类名调用，也可以通过实例对象调用。
+
+静态方法与类无关，它只是一个保存到类中的函数。静态方法一般都是工具方法。
 
 ## 7.3 对象的初始化
 
@@ -1928,3 +1968,208 @@ print(obj.name)  # 小明
 
 1. 在内存中为对象分配空间。
 2. 执行`__init__()`方法，为对象初始化。
+
+## 7.4 封装
+
+在属性名之前添加双下划线`__`，就可以将该属性隐藏起来，只能在类的内部访问，类外访问不到。例如：
+
+```python
+class Person:
+    def __init__(self, name):
+        self.__name = name  # 将 name 属性隐藏起来
+
+    def get_name(self):
+        return self.__name  # 在类的内部访问 __name 属性
+
+    def set_name(self, name):
+        self.__name = name
+
+
+obj = Person('小明')
+print(obj.get_name())  # 小明
+print(obj.__name)  # AttributeError: 'Person' object has no attribute '__name'
+```
+
+属性的隐藏是通过自动修改属性名来实现的，Python 解释器会在属性名的前面添加`_类名`，因此仍然可以通过修改后的属性名访问到该属性。例如：
+
+```python
+class Person:
+    def __init__(self, name):
+        self.__name = name  # 实际上是将属性名改成了 _Person__name
+
+    def get_name(self):
+        return self.__name
+
+    def set_name(self, name):
+        self.__name = name
+
+
+obj = Person('小明')
+print(obj._Person__name)  # 小明
+```
+
+类似地，在方法名前面添加双下划线`__`也可以将方法隐藏起来。
+
+在属性名和方法名前面添加`__`并不能实现彻底的封装，所以一般不用这种方式。
+
+一般情况下，以单下划线`_`开头表示该属性或方法是私有的，希望不要从类外直接访问。但这只是一种标记，希望其他人遵守，实际上并不能阻止对私有属性和方法的访问。
+
+## 7.5 `@property`装饰器
+
+如果在方法名之前使用`@property`装饰器，调用该方法时就可以省略括号。可以用这种方式改造 getter 方法，改造后就可以像访问属性一样调用 getter 方法。例如：
+
+```python
+class Person:
+    def __init__(self, name):
+        self._name = name
+
+    @property
+    def name(self):
+        return self._name
+
+
+obj = Person('小明')
+print(obj.name)  # 小明
+```
+
+可以用`@属性名.setter`装饰 setter 方法，要求必须存在用`@property`装饰的 getter 方法，并且 setter 方法和 getter 方法的名字必须与`@属性名.setter`中的属性名相同。装饰之后，就可以通过赋值来修改属性。例如：
+
+```python
+class Person:
+    def __init__(self, name):
+        self._name = name
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name
+
+
+obj = Person('小明')
+print(obj.name)  # 小明
+
+obj.name = '小刚'
+print(obj.name)  # 小刚
+```
+
+## 7.6 继承
+
+### 7.6.1 子类
+
+在定义类时，可以在类名之后用小括号指定父类。子类会直接继承父类中所有的属性和方法。例如：
+
+```python
+class Animal:
+    def eat(self):
+        print('动物吃东西')
+
+    def sleep(self):
+        print('动物睡觉')
+
+
+# 子类，继承 Animal 类
+class Dog(Animal):
+    def bark(self):
+        print('汪汪汪')
+
+
+dog = Dog()
+dog.eat()  # 动物吃东西
+dog.sleep()  # 动物睡觉
+dog.bark()  # 汪汪汪
+```
+
+如果在定义类时不指定父类，则默认以`object`类为父类。`object`类是所有类的父类，所有的类都继承自`object`类。
+
+`issubclass(A, B)`函数用来检查`A`是否为`B`的子类，如果是则返回`True`，否则返回`False`。
+
+使用`isinstance()`函数时，如果指定的对象是指定类的子类的实例，也会返回`True`。任何对象都是`object`类的实例，因此`isinstance(xxx, object)`总会返回`True`。
+
+### 7.6.2 方法的重写
+
+如果在子类中定义父类中的同名方法，就构成了方法的重写（override），此时子类的方法会覆盖父类的同名方法。当子类对象调用该方法时，调用的是子类的方法。例如：
+
+```python
+class Animal:
+    def eat(self):
+        print('动物吃东西')
+
+    def sleep(self):
+        print('动物睡觉')
+
+
+class Dog(Animal):
+    # 重写 Animal 类中的 eat() 方法
+    def eat(self):
+        print('狗吃东西')
+
+    def bark(self):
+        print('汪汪汪')
+
+
+dog = Dog()
+dog.eat()  # 狗吃东西
+dog.sleep()  # 动物睡觉
+dog.bark()  # 汪汪汪
+```
+
+调用一个对象的方法时，先去当前类中寻找是否存在该方法，如果有则直接调用，如果没有则去父类中寻找；如果父类中有，则调用父类中的方法，如果没有则去父类的父类中寻找。以此类推，直到`object`类，如果依然没有，就会报错。
+
+### 7.6.3 `super()`函数
+
+`super()`函数可以获取当前类的父类，通过这种方式可以在子类中访问父类的属性和方法。例如：
+
+```python
+class Animal:
+    def __init__(self, name):
+        self._name = name
+
+
+class Dog(Animal):
+    def __init__(self, name, age):
+        super().__init__(name)  # 调用父类的 __init__() 方法
+        self._age = age
+```
+
+### 7.6.4 多继承
+
+Python 支持多继承，可以为一个类指定多个父类。定义类时，多个父类用逗号隔开。
+
+`类名.__bases__`可以获取当前类的所有父类，返回值为元组。例如：
+
+```python
+class A:
+    pass
+
+
+class B:
+    pass
+
+
+class C(A, B):
+    pass
+
+
+print(C.__bases__)  # (<class '__main__.A'>, <class '__main__.B'>)
+```
+
+如果在多个父类中有同名方法，则子类调用该方法时需要指定调用哪个父类中的方法。如果子类调用时没有指定，则会按照从左到右的顺序查找父类，一旦找到就不再继续查找。因此写在前面的父类会覆盖后面类的同名方法。
+
+应尽量避免使用多继承。
+
+## 7.7 多态
+
+鸭子类型：看起来像鸭子，叫起来也像鸭子，那么肯定就是鸭子。
+
+指一种编程风格，它并不依靠查找对象类型来确定其是否具有正确的接口，而是直接调用或使用其方法或属性。由于强调接口而非特定类型，设计良好的代码可通过允许多态替代来提升灵活性。
+
+鸭子类型避免使用`type()`或`isinstance()`检测，而往往会采用`hasattr()`检测或是 EAFP 编程。
+
+EAFP：Easier to Ask for Forgiveness than Permission（求原谅比求许可更容易）。这种 Python 常用代码编写风格会假定所需的键或属性存在，并在假定错误时捕获异常。这种简洁快速风格的特点就是大量运用`try`和`except`语句。
+
+与 EAFP 相对的则是 LBYL（Look Before You Leap，先查看后跳跃）风格，常见于 C 等许多其他语言。这种代码编写风格会在进行调用或查找之前显式地检查前提条件。此风格与 EAFP 方式恰成对比，其特点是大量使用`if`语句。
+
+在多线程环境中，LBYL 方式会导致“查看”和“跳跃”之间发生条件竞争风险。这种问题可通过加锁或使用 EAFP 方式来解决。
