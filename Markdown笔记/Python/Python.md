@@ -126,6 +126,7 @@ chrome:
   - [11.3 `Ndarray`数组](#113-ndarray数组)
     - [11.3.1 `Ndarray`对象简介](#1131-ndarray对象简介)
     - [11.3.2 `Ndarray`数组的创建](#1132-ndarray数组的创建)
+    - [11.3.3 `Ndarray`数组的属性](#1133-ndarray数组的属性)
 
 <!-- /code_chunk_output -->
 
@@ -2802,7 +2803,7 @@ print(type(student_type))  # <class 'numpy.dtype[void]'>
 
 ### 11.3.1 `Ndarray`对象简介
 
-`Ndarray`对象是用于存放同类型元素的多维数组。`Ndarray`中的每个元素在内存中都有相同大小的存储区域。
+`Ndarray`对象是用于存放同类型元素的多维数组。`Ndarray`数组中的每个元素在内存中都有相同大小的存储区域。
 
 `Ndarray`对象的组成：
 
@@ -2818,9 +2819,9 @@ print(type(student_type))  # <class 'numpy.dtype[void]'>
 `numpy.array()`函数用于创建`Ndarray`数组，参数为：
 
 1. `object`：`Ndarray`数组，或嵌套的序列。
-2. `dtype`：数组元素的数据类型。可选，默认值为`None`。
+2. `dtype`：数组元素的数据类型。可选，默认值为`None`，表示由输入的数据决定。
 3. `copy`：对象是否需要复制。布尔值，可选，默认值为`True`。
-4. `order`：元素在内存中的存储方式。`'C'`为行优先，`'F'`为列优先，`'A'`为任意方向。可选，默认值为`'K'`。
+4. `order`：元素在内存中的存储方式。`'C'`为行优先，`'F'`为列优先，`'A'`为任意顺序，`'K'`为输入顺序。可选，默认值为`'K'`。
 5. `subok`：默认返回一个与基类类型一致的数组。
 6. `ndmin`：指定生成数组的最小维度。可选，默认值为 0。
 
@@ -2854,5 +2855,300 @@ print(array)  # [(b'Jack', 18) (b'Mary', 20)]
 `numpy.asarray()`函数也可以创建`Ndarray`数组，参数为：
 
 1. `a`：任意形式的参数，可以是列表、列表的元组、元组、元组的元组、元组的列表、多维数组。
-2. `dtype`：数组元素的数据类型。可选，默认值为`None`。
-3. `order`：元素在内存中的存储方式。`'C'`为行优先，`'F'`为列优先，`'A'`为任意方向。可选，默认值为`'K'`。
+2. `dtype`：数组元素的数据类型。可选，默认值为`None`，表示由输入的数据决定。
+3. `order`：元素在内存中的存储方式。可能的取值包括`'C'`、`'F'`、`'A'`、`'K'`。可选，默认值为`'K'`。
+
+`numpy.empty()`函数可以创建指定形状且未初始化的数组，参数为：
+
+1. `shape`：数组的形状。可以是整数、元组或列表。
+2. `dtype`：数据类型。可选，默认值为`float`。
+3. `order`：元素在内存中的存储方式。可能的取值包括`'C'`、`'F'`。可选，默认值为`'C'`。
+
+```python
+import numpy as np
+
+# 一维数组
+arr = np.empty(5, dtype=int)
+print(arr)  # [1166004928      32760 1166009440      32760    6881350]
+
+# 多维数组
+arr = np.empty([3, 2], dtype=int)
+print(arr)
+# [[1285870272      32760]
+#  [1285874784      32760]
+#  [   5439567         69]]
+```
+
+`numpy.zeros()`函数可以创建指定形状的数组，并且数组元素初始化为 0。参数与`numpy.empty()`函数相同。
+
+`numpy.ones()`函数可以创建指定形状的数组，并且数组元素初始化为 1。参数与`numpy.empty()`函数相同。
+
+`numpy.full()`函数可以创建指定形状的数组，并且用给定的值初始化数组元素。参数为：
+
+1. `shape`：数组的形状。
+2. `full_value`：用于初始化的数据。
+3. `dtype`：数据类型。可选，默认值为`None`，表示由输入的数据决定。
+4. `order`：元素在内存中的存储方式。可能的取值包括`'C'`、`'F'`。可选，默认值为`'C'`。
+
+```python
+import numpy as np
+
+arr = np.full(5, 3)
+print(arr)  # [3 3 3 3 3]
+```
+
+`numpy.eye()`函数用于创建二维数组，并且将对角线元素置为 1，其他元素为 0。参数为：
+
+1. `N`：行数。
+2. `M`：列数。可选，默认与行数相同。
+3. `k`：对角线的索引。可选，默认值为 0，表示主对角线。若为正数，表示主对角线上方；若为负数，表示主对角线下方。
+4. `dtype`：数据类型。可选，默认值为`float`。
+5. `order`：元素在内存中的存储方式。可能的取值包括`'C'`、`'F'`。可选，默认值为`'C'`。
+
+```python
+import numpy as np
+
+arr = np.eye(5)  # 创建 5 阶单位矩阵
+print(arr)
+# [[1. 0. 0. 0. 0.]
+#  [0. 1. 0. 0. 0.]
+#  [0. 0. 1. 0. 0.]
+#  [0. 0. 0. 1. 0.]
+#  [0. 0. 0. 0. 1.]]
+
+arr = np.eye(5, k=1)  # 将主对角线上方 1 格的对角线元素置为 1
+print(arr)
+# [[0. 1. 0. 0. 0.]
+#  [0. 0. 1. 0. 0.]
+#  [0. 0. 0. 1. 0.]
+#  [0. 0. 0. 0. 1.]
+#  [0. 0. 0. 0. 0.]]
+```
+
+`numpy.arange()`函数根据给定的范围和步长创建一维数组。参数为：
+
+1. `start`：起始值。可选，默认值为 0。
+2. `stop`：终止值（不包括）。
+3. `step`：步长。可选，默认值为 1。如果`step`参数为位置参数，则必须指定`start`参数。
+4. `dtype`：数据类型。可选，默认值为`None`，表示由输入的数据决定。
+
+```python
+import numpy as np
+
+arr = np.arange(10)  # 起始值默认为 0，终止值为 10
+print(arr)  # [0 1 2 3 4 5 6 7 8 9]
+
+arr = np.arange(1, 10)  # 起始值为 1，终止值为 10
+print(arr)  # [1 2 3 4 5 6 7 8 9]
+
+arr = np.arange(1, 10, 2)  # 起始值为 1，终止值为 10，步长为 2
+print(arr)  # [1 3 5 7 9]
+
+arr = np.arange(10, step=2) # 起始值默认为 0，终止值为 10，步长为 2
+print(arr)  # [0 2 4 6 8]
+```
+
+`numpy.frombuffer()`函数将其他对象转化成`Ndarray`数组。参数为：
+
+1. `buffer`：可以是任意对象，会以流的形式读入。
+2. `dtype`：数据类型。可选，默认值为`float`。
+3. `count`：读取数据的数量。可选，默认值为 -1，读取所有数据。
+4. `offset`：读取的起始位置。可选，默认值为 0。
+
+注意：当`buffer`参数为字符串时，Python 3 默认`str`类型为 Unicode 串，需要在字符串前面添加字符`b`转化成字节流。
+
+```python
+import numpy as np
+
+s = b'hello world'
+
+arr = np.frombuffer(s, dtype='S1')  # 读取所有字符
+print(arr)  # [b'h' b'e' b'l' b'l' b'o' b' ' b'w' b'o' b'r' b'l' b'd']
+
+arr = np.frombuffer(s, dtype='S1', count=5)  # 读取 5 个字符
+print(arr)  # [b'h' b'e' b'l' b'l' b'o']
+
+arr = np.frombuffer(s, dtype='S1', count=5, offset=3)  # 从索引 3 开始，读取 5 个字符
+print(arr)  # [b'l' b'o' b' ' b'w' b'o']
+```
+
+`numpy.fromiter()`函数从可迭代对象中读取数据，创建一维数组。参数为：
+
+1. `iterable`：可迭代对象。
+2. `dtype`：数据类型。
+3. `count`：读取数据的数量。可选，默认值为 -1，读取所有数据。
+
+```python
+import numpy as np
+
+l = [1, 2, 3, 4, 5]
+arr = np.fromiter(l, dtype=int)
+print(arr)  # [1 2 3 4 5]
+```
+
+`numpy.linspace()`函数用于创建等差数列。参数为：
+
+1. `start`：起始值。
+2. `stop`：终止值。
+3. `num`：元素个数。可选，默认值为 50。
+4. `endpoint`：是否包含终止值，为`True`则包含，为`False`则不包含。可选，默认为`True`。
+5. `retstep`：是否显示间距，为`True`则显示，为`False`则不显示。可选，默认为`False`。
+6. `dtype`：数据类型。可选。默认值为`None`，根据`start`和`stop`推断，此时不会推断出`int`类型，即使可以产生`int`类型的数组，也会用`float`类型。
+
+```python
+import numpy as np
+
+arr = np.linspace(1, 10, 5)
+print(arr)  # [ 1.    3.25  5.5   7.75 10.  ]
+
+arr = np.linspace(1, 10, 5, endpoint=False)
+print(arr)  # [1.  2.8 4.6 6.4 8.2]
+
+arr = np.linspace(1, 10, 5, retstep=True)
+print(arr)  # (array([ 1.  ,  3.25,  5.5 ,  7.75, 10.  ]), 2.25)
+```
+
+`numpy.logspace()`函数用于创建等比数列。参数为：
+
+1. `start`：起始值为`base ** start`。
+2. `stop`：终止值为`base ** stop`。
+3. `num`：元素个数。可选，默认值为 50。
+4. `endpoint`：是否包含终止值，为`True`则包含，为`False`则不包含。可选，默认为`True`。
+5. `base`：底数。可选，默认值为 10.0。
+6. `dtype`：数据类型。可选，默认值为`None`，由`start`和`stop`决定。
+
+```python
+import numpy as np
+
+arr = np.logspace(1, 4, 4)
+print(arr)  # [   10.   100.  1000. 10000.]
+
+arr = np.logspace(1, 10, 10, base=2)
+print(arr)  # [   2.    4.    8.   16.   32.   64.  128.  256.  512. 1024.]
+```
+
+`numpy.random.rand()`函数用于生成 $[0,1)$ 区间内的随机数，参数为数组各维度的大小。例如：
+
+```python
+import numpy as np
+
+arr = np.random.rand()  # 生成一个随机数
+print(arr)  # 0.46223118949331554
+
+arr = np.random.rand(3)  # 生成一个大小为 3 的一维数组
+print(arr)  # [0.10185733 0.19878431 0.46851335]
+
+arr = np.random.rand(3, 2)  # 生成一个 3 行 2 列的二维数组
+print(arr)
+# [[0.59310082 0.60284131]
+#  [0.8154639  0.27099303]
+#  [0.75609066 0.12476809]]
+```
+
+`numpy.random.random()`函数用于生成 $[0,1)$ 区间内的随机数，参数为元素个数。例如：
+
+```python
+import numpy as np
+
+arr = np.random.random()  # 生成一个随机数
+print(arr)  # 0.742250685821003
+
+arr = np.random.random(3)  # 生成一个大小为 3 的一维数组
+print(arr)  # [0.41693625 0.27771851 0.83707164]
+```
+
+`numpy.random.randint()`函数用于生成指定范围的随机数。参数为：
+
+1. `low`：下界。
+2. `high`：上界（不包含）。可选。默认值为`None`，此时范围为`[0, low)`。
+3. `size`：数组的形状。可选。默认值为`None`，表示生成 1 个随机数。
+4. `dtype`：元素类型。可选，默认值为`int`。
+
+```python
+import numpy as np
+
+arr = np.random.randint(10)  # 范围为 [0, 10)
+print(arr)  # 5
+
+arr = np.random.randint(1, 10)  # 范围为 [1, 10)
+print(arr)  # 8
+
+arr = np.random.randint(1, 10, 3)  # 生成大小为 3 的一维数组
+print(arr)  # [7 5 2]
+
+arr = np.random.randint(1, 10, (3, 2))  # 生成 3 行 2 列的二维数组
+print(arr)
+# [[4 8]
+#  [1 4]
+#  [5 3]]
+```
+
+`numpy.random.randn()`函数生成一组服从标准正态分布的样本，参数为数组各维度的大小。例如：
+
+```python
+import numpy as np
+
+arr = np.random.randn()  # 生成一个数
+print(arr)  # -0.3512395770623732
+
+arr = np.random.randn(5)  # 生成一个大小为 5 的一维数组
+print(arr)  # [ 1.14616959 -0.4599372   0.90461256 -0.08188299  0.63645179]
+
+arr = np.random.randn(3, 2)  # 生成一个 3 行 2 列的二维数组
+print(arr)
+# [[ 1.17801871 -0.06740504]
+#  [ 0.15363981 -0.08419718]
+#  [-0.65597993  0.30165878]]
+```
+
+`numpy.random.normal()`函数生成一组服从正态分布的样本。参数为：
+
+1. `loc`：正太分布的均值，浮点型。可选，默认值为 0.0。
+2. `scale`：正态分布的标准差，浮点型。可选，默认值为 1.0。
+3. `size`：数组的形状。可选。默认值为`None`，表示生成一个数。
+
+### 11.3.3 `Ndarray`数组的属性
+
+`Ndarray`数组的维数称为**秩**（rank）。一维数组的秩为 1，二维数组的秩为 2，以此类推。
+
+在 Numpy 中，每一个线性的数组称为一个轴（axis），也就是维度（dimension）。例如，二维数组相当于一维数组的一维数组，数组本身是一个一维数组，其中每个元素又是一个一维数组，因此外层数组是第一个轴，内层数组是第二个轴。轴的数量与维数相同。
+
+很多函数会用到`axis`参数，用于指定操作的方向。取值为 0 表示沿着第 0 轴进行操作，即对每一列进行操作；取值为 1 表示沿着第 1 轴进行操作，即对每一行进行操作。
+
+`Ndarray`数组的常用属性：
+
+| 属性 | 说明 |
+| :--: | :--: |
+| `ndim` | 秩，即轴的数量或维度的数量 |
+| `shape` | 数组的形状，表示为元组 |
+| `size` | 数组元素的总个数 |
+| `dtype` | 数组元素的数据类型 |
+| `itemsize` | 每个数组元素的大小，单位为字节 |
+| `flags` | `Ndarray`对象的内存信息 |
+| `real` | 数组元素的实部 |
+| `imag` | 数组元素的虚部 |
+| `data` | 包含实际数组元素的缓冲区 |
+
+`shape`属性是可以修改的，例如：
+
+```python
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+print(arr.shape)  # (2, 3)
+
+arr.shape = (3, 2)
+print(arr)
+# [[1 2]
+#  [3 4]
+#  [5 6]]
+```
+
+`flags`属性中的所有信息都是布尔类型，具体包含以下内容：
+
+| 值 | 说明 |
+| :--: | :--: |
+| `C_CONTIGUOUS`（C） | 数据是否在一个单一的 C 风格的连续段中（行优先） |
+| `F_CONTIGUOUS`（F） | 数据是否在一个单一的 Fortran 风格的连续段中（列有限） |
+| `OWNDATA`（O） | 数组拥有它所使用的内存，还是从另一个对象借用 |
+| `WRITEABLE`（W） | 数据区域是否可被写入，为`True`则可以写入，为`False`则只读 |
+| `ALIGNED`（A） | 数据和所有元素是否都适当地对齐到硬件上 |
+| `UPDATEIFCOPY`（U） | 这个数组是其他数组的一个副本，当这个数组被释放时，原数组的内容将被更新 |
