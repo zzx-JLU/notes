@@ -1,0 +1,126 @@
+\chapter{随机事件及其概率}
+
+\section{随机试验}
+
+如果试验具有以下特点：
+\begin{enumerate}
+    \item 可重复性：试验可以在相同条件下重复进行多次，甚至进行无限次；
+    \item 可观测性：每次试验的所有可能结果都是明确的、可以观测的，并且试验的可能结果有两个或两个以上；
+    \item 随机性：每次试验出现的结果是不确定的，在试验之前无法预先确定究竟会出现哪一个结果，
+\end{enumerate}
+则称之为\textbf{随机试验}，简称为\textbf{试验}.
+
+通常用字母 $E$ 表示一个随机试验. 随机试验 $E$ 的基本结果称为\textbf{样本点}，用 $\omega$ 表示.称随机试验 $E$ 的所有基本结果的集合为\textbf{样本空间}，用 $\varOmega = \{ \omega \}$ 表示.
+
+\section{随机事件}
+
+\subsection{随机事件的概念}
+
+随机试验 $E$ 的样本空间 $\varOmega = \{ \omega \}$ 的子集称为随机试验 $E$ 的\textbf{随机事件}，简称为\textbf{事件}，用大写字母 $A,B,C$ 等表示.
+
+设 $A \subseteq \varOmega$，如果试验结果 $\omega \in A$，则称在这次试验中事件 $A$ 发生；如果 $\omega \notin A$，则称事件 $A$ 不发生.
+
+由一个样本点 $\omega$ 组成的事件称为\textbf{基本事件}.
+
+样本空间 $\varOmega$ 本身也是 $\varOmega$ 的子集，它包含 $\varOmega$ 的所有样本点，在每次试验中 $\varOmega$ 必然发生，称为\textbf{必然事件}.
+
+空集 $\text{\O}$ 也是 $\varOmega$ 的子集，它不包含任何样本点，在每次试验中都不可能发生，称为\textbf{不可能事件}.
+
+在一个样本空间中，如果只有有限个样本点，则称它为\textbf{有限样本空间}；如果有无限个样本点，则称它为\textbf{无限样本空间}.
+
+\subsection{随机事件的关系}
+
+\subsubsection{事件的包含}
+
+如果当事件 $A$ 发生时事件 $B$ 一定发生，则称事件 $B$ \textbf{包含}事件 $A$，记作 $A \subseteq B$.
+
+对于任意事件 $A$，有 $\text{\O} \subseteq A \subseteq \varOmega$.
+
+如果 $A \subseteq B,B \subseteq C$，则 $A\subseteq C$.
+
+\subsubsection{事件的相等}
+
+如果事件 $A$ 和事件 $B$ 相互包含，即 $A \subseteq B$ 且 $B \subseteq A$，则称事件 $A$ 与事件 $B$ \textbf{相等}，记作 $A=B$.
+
+\subsubsection{事件的互不相容}
+
+如果事件 $A$ 和事件 $B$ 在同一次试验中不能同时发生，则称事件 $A$ 与事件 $B$ 是\textbf{互不相容}的，或称事件 $A$ 与事件 $B$ 是\textbf{互斥}的.
+
+\subsubsection{事件的互逆}
+
+如果在每一次试验中事件 $A$ 和事件 $B$ 必有一个且仅有一个发生，则称事件 $A$ 与事件 $B$ 是\textbf{互逆}的或\textbf{对立}的，称其中的一个事件是另一个事件的\textbf{逆事件}，记作 $\overline{A}=B$，或 $\overline{B}=A$.
+
+显然，$\overline{\overline{A}}=A$.
+
+\subsection{随机事件的运算}
+
+\subsubsection{事件的并}
+
+如果事件 $A$ 和事件 $B$ 至少有一个发生，则这样的一个事件称为事件 $A$ 与事件 $B$ 的\textbf{并事件}或\textbf{和事件}，记作 $A \cup B$.
+$$
+A \cup B = \{ \omega \mid \omega \in A \;\text{或}\; \omega \in B \}
+$$
+
+事件 $A$ 和事件 $B$ 作为样本空间 $\varOmega$ 的子集，并事件 $A \cup B$ 就是子集 $A$ 与 $B$ 的并集.
+
+对于任何事件 $A$ 与 $B$，有
+\begin{gather*}
+    A \cup A = A \\
+    A \cup \text{\O} = A \\
+    A \cup B = B \cup A \\
+    A \cup \overline{A} = \varOmega \\
+    A \subseteq A \cup B \\
+    B \subseteq A \cup B
+\end{gather*}
+
+如果 $A \subseteq B$，则有 $A \cup B=B$.
+
+事件的并可以推广到多个事件的情形：
+\begin{gather*}
+    \bigcup_{i=1}^n A_i = \{ \text{事件} A_1,A_2,\cdots,A_n \text{中至少有一个发生} \} \\
+    \bigcup_{i=1}^\infty A_i = \{ \text{事件} A_1,A_2,\cdots,A_n,\cdots \text{中至少有一个发生} \}
+\end{gather*}
+
+\subsubsection{事件的交}
+
+如果事件 $A$ 和事件 $B$ 同时发生，则这样的一个事件称为事件 $A$ 与事件 $B$ 的\textbf{交事件}或\textbf{积事件}，记作 $A \cap B$ 或 $AB$.
+$$
+A \cap B = \{ \omega \mid \omega \in A \;\text{且}\; \omega \in B \}
+$$
+
+事件 $A$ 和事件 $B$ 作为样本空间 $\varOmega$ 的子集，交事件 $A \cap B$ 就是子集 $A$ 与 $B$ 的交集.
+
+对于任何事件 $A$ 与 $B$，有
+\begin{gather*}
+    A \cap A = A\\
+    A \cap \text{\O} = \text{\O}\\
+    A \cap B = B \cap A\\
+    A \cap \overline{A} = \text{\O}\\
+    A \cap B \subseteq A\\
+    A \cap B \subseteq B
+\end{gather*}
+
+如果 $A \subseteq B$，则有 $A \cap B=A$. 如果 $A$ 与 $B$ 互不相容，则有 $A \cap B = \text{\O}$.
+
+事件的交可以推广到多个事件的情形：
+\begin{gather*}
+    \bigcap_{i=1}^n A_i = \{ \text{事件} A_1,A_2,\cdots,A_n \text{同时发生} \}\\
+    \bigcap_{i=1}^\infty A_i = \{ \text{事件} A_1,A_2,\cdots,A_n,\cdots \text{同时发生} \}
+\end{gather*}
+
+\subsubsection{事件的差}
+
+如果事件 $A$ 发生而事件 $B$ 不发生，则这样的一个事件称为事件 $A$ 与事件 $B$ 的\textbf{差事件}，记作 $A-B$.
+$$
+A - B = \{ \omega \mid \omega \in A \;\text{且}\; \omega \notin B \}
+$$
+
+对于任何事件 $A$ 与 $B$，有
+\begin{gather*}
+    A - A = \text{\O}\\
+    A - \text{\O} = A\\
+    A - B = A - AB = A \overline{B}\\
+    \varOmega - A = \overline{A}\\
+    A - \varOmega = \text{\O}\\
+    (A-B) \cup B = A \cup B
+\end{gather*}

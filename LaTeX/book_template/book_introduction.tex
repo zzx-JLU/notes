@@ -1,0 +1,38 @@
+% 显示标题
+\maketitle
+
+% 前言部分的页码，小写罗马字母，从 1 开始
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+% 前言标题
+\begin{center}
+    \Huge\textbf{前言}
+\end{center}
+
+前言内容。再多一点，看一下首行缩进效果，红红火火恍恍惚惚或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+
+% 署名
+\begin{flushright}
+    \begin{tabular}{c}
+        姓名\\
+        \today
+    \end{tabular}
+\end{flushright}
+
+% 另起一页
+\newpage
+
+% 目录部分的页码，大写罗马字母，从 1 开始
+\pagenumbering{Roman}
+\setcounter{page}{1}
+
+% 显示目录
+\tableofcontents
+
+% 另起一页
+\newpage
+
+% 正文部分的页码，阿拉伯数字，从 1 开始
+\setcounter{page}{1}
+\pagenumbering{arabic}
