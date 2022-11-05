@@ -1,5 +1,5 @@
 \documentclass[12pt, a4paper, oneside]{ctexbook}
-\usepackage{amsmath, amsthm, amssymb, bm, graphicx, mathrsfs, tikz, color, framed, bookmark, caption, geometry}
+\usepackage{amsmath, amsthm, amssymb, bm, graphicx, mathrsfs, tikz, color, framed, bookmark, caption, geometry, enumitem}
 \usepackage{hyperref} % 该宏包可能与其他宏包冲突，故放在所有引用的宏包之后
 
 \usetikzlibrary{arrows.meta,decorations,calligraphy}
@@ -31,6 +31,11 @@
     bookmarksnumbered = true, % 书签带章节编号
 }
 
+% 列表环境的格式
+\setenumerate[1]{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt, left=2em}
+\setitemize[1]{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt, left=2em}
+\setdescription{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt}
+
 % tikz 图形样式定义
 \tikzset{
     % 空心圆点
@@ -56,12 +61,15 @@
 \definecolor{shadecolor}{RGB}{231, 231, 231}
 
 % 定理环境
+% \newtheorem{theor}{定理}[chapter]
 \newcounter{theoremname}[chapter] % 定理计数器
 \newenvironment{theorem}[1][]{
     \begin{framed}
         \stepcounter{theoremname}
         \par\noindent
         \textbf{定理\arabic{chapter}.\arabic{theoremname}}#1\quad}
+        
+        % \begin{theor}[#1]}
 {\end{framed}\par}
 
 % 推论环境

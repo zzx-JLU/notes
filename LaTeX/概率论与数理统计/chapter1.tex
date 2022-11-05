@@ -2,6 +2,17 @@
 
 \section{随机试验}
 
+在一定条件下必然出现的现象叫做\textbf{必然现象}.在相同的条件下，可能出现不同的结果，而在试验或观测之前不能预知确切结果的现象叫做\textbf{随机现象}.
+
+随机现象具有随机性和统计规律性.
+
+\begin{itemize}
+    \item 随机性：对随机现象进行观测时，不能预先确定其结果.
+    \item 统计规律性：对随机现象进行大量重复观测后，其结果往往会表现出某种规律性.
+\end{itemize}
+
+为了研究和揭示随机现象的统计规律性，需要对随机现象进行大量重复的观察、测量或试验，统称为试验.
+
 如果试验具有以下特点：
 \begin{enumerate}
     \item 可重复性：试验可以在相同条件下重复进行多次，甚至进行无限次；
@@ -10,7 +21,7 @@
 \end{enumerate}
 则称之为\textbf{随机试验}，简称为\textbf{试验}.
 
-通常用字母 $E$ 表示一个随机试验. 随机试验 $E$ 的基本结果称为\textbf{样本点}，用 $\omega$ 表示.称随机试验 $E$ 的所有基本结果的集合为\textbf{样本空间}，用 $\varOmega = \{ \omega \}$ 表示.
+通常用字母 $E$ 表示一个随机试验. 随机试验 $E$ 的基本结果称为\textbf{样本点}，用 $\omega$ 表示.随机试验 $E$ 的所有基本结果的集合称为\textbf{样本空间}，用 $\varOmega = \{ \omega \}$ 表示.
 
 \section{随机事件}
 
@@ -45,6 +56,8 @@
 \subsubsection{事件的互不相容}
 
 如果事件 $A$ 和事件 $B$ 在同一次试验中不能同时发生，则称事件 $A$ 与事件 $B$ 是\textbf{互不相容}的，或称事件 $A$ 与事件 $B$ 是\textbf{互斥}的.
+
+任意两个基本事件一定互斥.
 
 \subsubsection{事件的互逆}
 
@@ -100,7 +113,9 @@ $$
     A \cap B \subseteq B
 \end{gather*}
 
-如果 $A \subseteq B$，则有 $A \cap B=A$. 如果 $A$ 与 $B$ 互不相容，则有 $A \cap B = \text{\O}$.
+如果 $A \subseteq B$，则有 $A \cap B=A$.
+
+如果 $A$ 与 $B$ 互不相容，则有 $A \cap B = \text{\O}$.
 
 事件的交可以推广到多个事件的情形：
 \begin{gather*}
@@ -122,5 +137,156 @@ $$
     A - B = A - AB = A \overline{B}\\
     \varOmega - A = \overline{A}\\
     A - \varOmega = \text{\O}\\
-    (A-B) \cup B = A \cup B
+    (A-B) \cup B = (B-A) \cup A = A \cup B\\
+    A \cup B = A \cup (B-AB) = B \cup (A-AB)
 \end{gather*}
+
+$A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-B) \cup AB$，$B = (B-A) \cup AB$.
+
+\subsubsection{随机事件的运算规律}
+
+\begin{enumerate}
+    \item 交换律：$A \cup B = B \cup A$，$AB=BA$.
+    \item 结合律：$(A \cup B) \cup C = A \cup (B \cup C)$，$(AB)C=A(BC)$.
+    \item 分配律：$A(B \cup C)=(AB)\cup(AC)$，$A\cup(BC)=(A \cup B)(A \cup C)$.
+    \item 对偶律：$\overline{A \cup B}=\overline{A}\,\overline{B}$，$\overline{AB}=\overline{A}\cup\overline{B}$.
+\end{enumerate}
+
+对于多个随机事件，以上的运算规律也成立.
+
+\section{随机事件的概率}
+
+\subsection{频率}
+
+\begin{definition}
+    设在相同的条件下进行的 $n$ 次试验中，事件 $A$ 发生了 $n_A$ 次，则称 $n_A$ 为事件 $A$ 发生的\textbf{频数}，称比值 $\dfrac{n_A}{n}$ 为事件 $A$ 发生的\textbf{频率}，记作 $f_n(A)$，即
+    $$
+    f_n(A)=\dfrac{n_A}{n}
+    $$
+\end{definition}
+
+事件 $A$ 发生的频率反映了事件 $A$ 在 $n$ 次试验中发生的频繁程度.频率越大，表明事件 $A$ 的发生越频繁，从而可知事件 $A$ 在一次试验中发生的可能性越大.
+
+频率的基本性质：
+
+\setcounter{propertyname}{0}
+
+\begin{property}[(非负性)]
+    对于任意事件 $A$，有 $f_n(A) \geqslant 0$.
+\end{property}
+
+\begin{property}[(规范性)]
+    对于必然事件 $\varOmega$，有 $f_n(\varOmega)=1$.
+\end{property}
+
+\begin{property}[(有限可加性)]
+    对于两两互不相容的事件 $A_1,A_2,\cdots,A_m$（即当 $i\not=j$ 时，有 $A_i A_j = \text{\O}$，$i,j=1,2,\cdots,m$），有
+    $$
+    f_n(\bigcup_{i=1}^m A_i) = \sum_{i=1}^m f_n(A_i)
+    $$
+\end{property}
+
+在相同的条件下重复进行 $n$ 次试验，当 $n$ 增大时，事件 $A$ 发生的频率 $f_n(A)$ 呈现出稳定性，逐渐稳定于某一常数 $p$.用这一常数表示事件 $A$ 发生的可能性大小，称为事件 $A$ 的概率，记为 $P(A)$，即 $P(A)=p$.
+
+当 $n$ 很大时，可以用频率 $f_n(A)$ 作为概率 $P(A)$ 的近似值.
+
+\subsection{概率}
+
+\begin{definition}
+    设随机试验 $E$ 的样本空间为 $\varOmega$，如果对于 $E$ 的每一个事件 $A$，有唯一的实数 $P(A)$ 和它对应，并且这个事件的函数 $P(A)$ 满足以下条件：
+    \begin{enumerate}
+        \item 非负性：对于任意事件 $A$，有 $P(A) \geqslant 0$；
+        \item 规范性：对于必然事件 $\varOmega$，有 $P(\varOmega)=1$；
+        \item 可列可加性：对于两两互不相容的事件 $A_1,A_2,\cdots$，有
+        $$
+        P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)
+        $$
+    \end{enumerate}
+    则称 $P(A)$ 为事件 $A$ 的\textbf{概率}.
+\end{definition}
+
+\setcounter{propertyname}{0}
+
+\begin{property} \label{property:1}
+    对于不可能事件 $\text{\O}$，有 $P(\text{\O})=0$.
+\end{property}
+
+\begin{myproof}
+    因为 $\text{\O} = \text{\O} \cup \text{\O} \cup \cdots$，根据概率的可列可加性，有
+    $$
+    P(\text{\O}) = P(\text{\O}) + P(\text{\O}) + \cdots
+    $$
+
+    由概率的非负性知 $P(\text{\O}) \geqslant 0$，因此 $P(\text{\O})=0$.
+\end{myproof}
+
+\begin{property}[(有限可加性)] \label{property:2}
+    对于两两互不相容的事件 $A_1,A_2,\cdots,A_n$，有
+    $$
+    P(\bigcup_{i=1}^n A_i) = \sum_{i=1}^n P(A_i)
+    $$
+\end{property}
+
+\begin{myproof}
+    令 $A_i = \text{\O} \;(i=n+1,n+2,\cdots)$，根据概率的可列可加性及性质\ref{property:1}，有
+    $$
+    P(\bigcup_{i=1}^n A_i) = P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i) = \sum_{i=1}^n P(A_i)
+    $$
+\end{myproof}
+
+\begin{property}
+    对于任一事件 $A$，有 $P(\overline{A})=1-P(A)$.
+\end{property}
+
+\begin{myproof}
+    因为 $A \cup \overline{A} = \varOmega$，且 $A \overline{A} = \text{\O}$，由性质 2 及概率的规范性，得
+    $$
+    P(\varOmega) = P(A \cup \overline{A}) = P(A) + P(\overline{A}) = 1
+    $$
+    即
+    $$
+    P(\overline{A})=1-P(A)
+    $$
+\end{myproof}
+
+\begin{property}
+    如果 $A \subseteq B$，则有 $P(B-A)=P(B)-P(A)$，$P(A) \leqslant P(B)$.
+\end{property}
+
+\begin{myproof}
+    因为 $A \subseteq B$，从而有 $B = A \cup (B-A)$，且 $A(B-A)=\text{\O}$，由性质 2 可得
+    $$
+    P(B) = P(A \cup (B-A)) = P(A) + P(B-A)
+    $$
+    所以
+    $$
+    P(B-A)=P(B)-P(A)
+    $$
+
+    由于 $P(B-A) \geqslant 0$，因此
+    $$
+    P(A) \leqslant P(B)
+    $$
+\end{myproof}
+
+\begin{property}
+    对于任一事件 $A$，有 $P(A) \leqslant 1$.
+\end{property}
+
+\begin{myproof}
+    因为 $A \subseteq \varOmega$，由性质 4 及概率的规范性，可得
+    $$
+    P(A) \leqslant P(\varOmega) = 1
+    $$
+\end{myproof}
+
+\begin{property}[(概率的减法公式)]
+    对于任意两个事件 $A$ 与 $B$，有 $P(B-A)=P(B)-P(AB)$.
+\end{property}
+
+\begin{myproof}
+    由于 $B-A=B-AB$，而 $AB \subseteq B$，根据性质 4 可得
+    $$
+    P(B-A)=P(B-AB)=P(B)-P(AB)
+    $$
+\end{myproof}

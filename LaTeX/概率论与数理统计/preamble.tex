@@ -1,5 +1,5 @@
 \documentclass[12pt, a4paper, oneside]{ctexbook}
-\usepackage{amsmath, amsthm, amssymb, bm, graphicx, mathrsfs, tikz, color, framed, bookmark, caption, geometry}
+\usepackage{amsmath, amsthm, amssymb, bm, graphicx, mathrsfs, tikz, color, framed, bookmark, caption, geometry, enumitem}
 \usepackage{hyperref} % 该宏包可能与其他宏包冲突，故放在所有引用的宏包之后
 
 \usetikzlibrary{arrows.meta,decorations,calligraphy}
@@ -30,6 +30,11 @@
     bookmarksopen = true, % 展开书签
     bookmarksnumbered = true, % 书签带章节编号
 }
+
+% 列表环境的格式
+\setenumerate[1]{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt, left=2em}
+\setitemize[1]{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt, left=2em}
+\setdescription{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt}
 
 % tikz 图形样式定义
 \tikzset{
