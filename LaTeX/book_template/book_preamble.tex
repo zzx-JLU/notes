@@ -63,12 +63,12 @@
 % 定理环境
 % \newtheorem{theor}{定理}[chapter]
 \newcounter{theoremname}[chapter] % 定理计数器
+\renewcommand{\thetheoremname}{\arabic{chapter}.\arabic{theoremname}}
 \newenvironment{theorem}[1][]{
     \begin{framed}
         \stepcounter{theoremname}
         \par\noindent
         \textbf{定理\arabic{chapter}.\arabic{theoremname}}#1\quad}
-        
         % \begin{theor}[#1]}
 {\end{framed}\par}
 
