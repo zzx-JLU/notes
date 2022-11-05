@@ -136,6 +136,9 @@ chrome:
       - [11.3.5.1 修改数组形状](#11351-修改数组形状)
       - [11.3.5.2 翻转数组](#11352-翻转数组)
       - [11.3.5.3 修改数组维度](#11353-修改数组维度)
+      - [11.3.5.4 连接数组](#11354-连接数组)
+      - [11.3.5.5 分割数组](#11355-分割数组)
+      - [11.3.5.6 添加和删除数组元素](#11356-添加和删除数组元素)
 
 <!-- /code_chunk_output -->
 
@@ -3967,4 +3970,331 @@ print(b)
 
 print(b.shape)  # (1, 3, 3)
 print(b.ndim)  # 3
+```
+
+#### 11.3.5.4 连接数组
+
+`numpy.concatenate()`函数用于沿指定轴连接相同形状的两个或多个数组。参数为：
+
+1. `arrays`：形状相同的数组序列。
+2. `axis`：用于连接的轴。默认值为 0。
+
+```python
+import numpy as np
+
+a = np.arange(4).reshape(2, 2)
+print(a)
+# [[0 1]
+#  [2 3]]
+
+b = np.arange(5, 9).reshape(2, 2)
+print(b)
+# [[5 6]
+#  [7 8]]
+
+# 沿 0 轴连接两个数组
+c = np.concatenate((a, b))
+print(c)
+# [[0 1]
+#  [2 3]
+#  [5 6]
+#  [7 8]]
+
+# 沿 1 轴连接两个数组
+d = np.concatenate((a, b), 1)
+print(d)
+# [[0 1 5 6]
+#  [2 3 7 8]]
+```
+
+`numpy.stack()`函数用于沿新轴堆叠数组序列。参数为：
+
+1. `arrays`：形状相同的数组序列。
+2. `axis`：数组中的轴，输入数组沿着它来堆叠。
+
+```python
+import numpy as np
+
+a = np.arange(4).reshape(2, 2)
+print(a)
+# [[0 1]
+#  [2 3]]
+
+b = np.arange(5, 9).reshape(2, 2)
+print(b)
+# [[5 6]
+#  [7 8]]
+
+c = np.stack((a, b), 0)
+print(c)
+# [[[0 1]
+#   [2 3]]
+#
+#  [[5 6]
+#   [7 8]]]
+
+d = np.stack((a, b), 1)
+print(d)
+# [[[0 1]
+#   [5 6]]
+#
+#  [[2 3]
+#   [7 8]]]
+```
+
+`numpy.hstack()`函数对数组序列进行水平堆叠，`numpy.vstack()`函数对数组进行垂直堆叠。它们只有一个参数，用来接收数组序列。例如：
+
+```python
+import numpy as np
+
+a = np.arange(4).reshape(2, 2)
+print(a)
+# [[0 1]
+#  [2 3]]
+
+b = np.arange(5, 9).reshape(2, 2)
+print(b)
+# [[5 6]
+#  [7 8]]
+
+# 水平堆叠
+c = np.hstack((a, b))
+print(c)
+# [[0 1 5 6]
+#  [2 3 7 8]]
+
+# 垂直堆叠
+d = np.vstack((a, b))
+print(d)
+# [[0 1]
+#  [2 3]
+#  [5 6]
+#  [7 8]]
+```
+
+#### 11.3.5.5 分割数组
+
+`numpy.split()`函数沿特定的轴分割数组。参数为：
+
+1. `ary`：待分割的数组。
+2. `indices_or_sections`：如果是一个整数，就平均切分出指定数量的子数组，无法平均切分时会抛出`ValueError`异常；如果是一个序列，则由序列元素指定切分的位置，切分点处的元素分到后面的子数组中。
+3. `axis`：沿指定的轴进行切分。默认值为 0。
+
+```python
+import numpy as np
+
+a = np.arange(12)
+print(a)  # [ 0  1  2  3  4  5  6  7  8  9 10 11]
+
+# 平均分成 3 份
+b = np.split(a, 3)
+print(b)  # [array([0, 1, 2, 3]), array([4, 5, 6, 7]), array([ 8,  9, 10, 11])]
+
+# 索引 2、7 为切分点
+c = np.split(a, [2, 7])
+print(c)  # [array([0, 1]), array([2, 3, 4, 5, 6]), array([ 7,  8,  9, 10, 11])]
+```
+
+```python
+import numpy as np
+
+a = np.arange(12).reshape(3, 4)
+print(a)
+# [[ 0  1  2  3]
+#  [ 4  5  6  7]
+#  [ 8  9 10 11]]
+
+# 默认沿 0 轴切分
+b = np.split(a, 3)
+print(b)  # [array([[0, 1, 2, 3]]), array([[4, 5, 6, 7]]), array([[ 8,  9, 10, 11]])]
+
+# 沿 1 轴平均分成 2 份
+c = np.split(a, 2, axis=1)
+print(c)
+# [array([[0, 1],
+#        [4, 5],
+#        [8, 9]]), array([[ 2,  3],
+#        [ 6,  7],
+#        [10, 11]])]
+```
+
+`numpy.hsplit()`函数用于水平分割数组，`numpy.vsplit()`函数用于垂直分割数组。它们的参数与`numpy.split()`函数的前两个参数相同。例如：
+
+```python
+import numpy as np
+
+a = np.arange(12).reshape(3, 4)
+print(a)
+# [[ 0  1  2  3]
+#  [ 4  5  6  7]
+#  [ 8  9 10 11]]
+
+# 水平分割，平均分成 2 份
+b = np.hsplit(a, 2)
+print(b)
+# [array([[0, 1],
+#        [4, 5],
+#        [8, 9]]), array([[ 2,  3],
+#        [ 6,  7],
+#        [10, 11]])]
+
+# 垂直分割，平均分成 3 份
+c = np.vsplit(a, 3)
+print(c) # [array([[0, 1, 2, 3]]), array([[4, 5, 6, 7]]), array([[ 8,  9, 10, 11]])]
+```
+
+#### 11.3.5.6 添加和删除数组元素
+
+`numpy.resize()`函数返回指定大小的新数组，按照内存中的存储顺序读取原数组中的元素并填充到新数组中。参数为：
+
+1. `arr`：原数组
+2. `shape`：新的形状
+
+```python
+import numpy as np
+
+a = np.arange(6).reshape(2, 3)
+print(a)
+# [[0 1 2]
+#  [3 4 5]]
+
+b = np.resize(a, (3, 2))
+print(b)
+# [[0 1]
+#  [2 3]
+#  [4 5]]
+
+# 新数组中的元素个数大于原数组，则循环读取原数组中的元素
+c = np.resize(a, (4, 4))
+print(c)
+# [[0 1 2 3]
+#  [4 5 0 1]
+#  [2 3 4 5]
+#  [0 1 2 3]]
+```
+
+`numpy.append()`函数在数组的末尾添加元素。追加操作会分配新的内存空间，并把原数组复制到新数组中。参数为：
+
+1. `arr`：原数组。
+2. `values`：要添加的元素组成的序列。形状必须和原数组匹配，否则抛出`ValueError`异常。
+3. `axis`：默认值为`None`。当`axis`无定义时，将元素添加到原数组末尾，并返回一维数组；当`axis`有定义时，要求`arr`与`values`维数相同。当`axis`为 0 时，将新元素作为新的行，要求列数相同；当`axis`为 1 时，将新元素作为新的列，要求行数相同。
+
+```python
+import numpy as np
+
+a = np.arange(6).reshape(2, 3)
+print(a)
+# [[0 1 2]
+#  [3 4 5]]
+
+# 追加一个元素
+b = np.append(a, 10)
+print(b)  # [ 0  1  2  3  4  5 10]
+
+# 追加多个元素
+c = np.append(a, [10, 11, 12])
+print(c)  # [ 0  1  2  3  4  5 10 11 12]
+
+# 追加行
+d = np.append(a, [[10, 11, 12], [7, 8, 9]], axis=0)
+print(d)
+# [[ 0  1  2]
+#  [ 3  4  5]
+#  [10 11 12]
+#  [ 7  8  9]]
+
+# 追加列
+e = np.append(a, [[10, 11], [12, 13]], axis=1)
+print(e)
+# [[ 0  1  2 10 11]
+#  [ 3  4  5 12 13]]
+```
+
+`numpy.insert()`函数在给定的索引之前、沿给定轴向数组中插入元素，返回新数组。参数为：
+
+1. `arr`：待插入的数组。
+2. `obj`：插入位置，将元素插入此位置之前。
+3. `values`：要插入的元素。
+4. `axis`：沿着此参数指定的轴插入元素。如果未提供，则返回一维数组。
+
+```python
+import numpy as np
+
+a = np.arange(6).reshape(2, 3)
+print(a)
+# [[0 1 2]
+#  [3 4 5]]
+
+# 不指定 axis 参数，返回一维数组
+b = np.insert(a, 3, [9, 10])
+print(b)  # [ 0  1  2  9 10  3  4  5]
+
+# 将 values 广播，沿 1 轴插入指定位置，即作为新的一列
+c = np.insert(a, 1, 10, axis=1)
+print(c)
+# [[ 0 10  1  2]
+#  [ 3 10  4  5]]
+
+# 沿 0 轴插入，即作为新的一行
+d = np.insert(a, 1, 10, axis=0)
+print(d)
+# [[ 0  1  2]
+#  [10 10 10]
+#  [ 3  4  5]]
+```
+
+`numpy.delete()`函数删除数组中的指定子数组，返回新数组。参数为：
+
+1. `arr`：待删除的数组。
+2. `obj`：可以为整数、整数序列或`slice`对象，指定要删除的子数组。
+3. `axis`：沿着此参数指定的轴删除元素。如果未提供，则返回一维数组。
+
+```python
+import numpy as np
+
+a = np.arange(12).reshape(3, 4)
+print(a)
+# [[ 0  1  2  3]
+#  [ 4  5  6  7]
+#  [ 8  9 10 11]]
+
+# 不指定 axis 参数，返回一维数组
+b = np.delete(a, 1)
+print(b)  # [ 0  2  3  4  5  6  7  8  9 10 11]
+
+# 删除整行
+c = np.delete(a, 1, axis=0)
+print(c)
+# [[ 0  1  2  3]
+#  [ 8  9 10 11]]
+
+# 删除整列
+d = np.delete(a, 1, axis=1)
+print(d)
+# [[ 0  2  3]
+#  [ 4  6  7]
+#  [ 8 10 11]]
+```
+
+`numpy.unique()`函数去除数组中的重复元素，返回去重后的新数组。参数为：
+
+1. `arr`：待去重的数组。如果不是一维数组，则结果会展开成一维数组。
+2. `return_index`：可选。如果为`True`，返回新数组元素在原数组中的索引。
+3. `return_inverse`：可选。如果为`True`，返回原数组元素在新数组中的索引。
+4. `return_counts`：可选。如果为`True`，则返回新数组中的元素在原数组中的出现次数。
+
+```python
+import numpy as np
+
+a = np.array([1, 2, 3, 1, 2, 1, 4, 7, 3, 5])
+print(a)  # [1 2 3 1 2 1 4 7 3 5]
+
+b = np.unique(a)
+print(b)  # [1 2 3 4 5 7]
+
+c, index, inverse, counts = np.unique(a, True, True, True)
+print(c)  # [1 2 3 4 5 7]
+print(index)  # [0 1 2 6 9 7]
+print(inverse)  # [0 1 2 0 1 0 3 5 2 4]
+print(counts)  # [3 2 2 1 1 1]
 ```
