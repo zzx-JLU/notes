@@ -36,6 +36,9 @@
 \setitemize[1]{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt, left=2em}
 \setdescription{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt}
 
+% 公式编号的样式
+\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
+
 % tikz 图形样式定义
 \tikzset{
     % 空心圆点
@@ -61,59 +64,61 @@
 \definecolor{shadecolor}{RGB}{231, 231, 231}
 
 % 定理环境
-% \newtheorem{theor}{定理}[chapter]
 \newcounter{theoremname}[chapter] % 定理计数器
 \renewcommand{\thetheoremname}{\arabic{chapter}.\arabic{theoremname}}
 \newenvironment{theorem}[1][]{
     \begin{framed}
-        \stepcounter{theoremname}
+        \refstepcounter{theoremname}
         \par\noindent
-        \textbf{定理\arabic{chapter}.\arabic{theoremname}}#1\quad}
-        % \begin{theor}[#1]}
+        \textbf{定理\thetheoremname}#1\quad}
 {\end{framed}\par}
 
 % 推论环境
 \newcounter{corollaryname}[chapter] % 推论计数器
+\renewcommand{\thecorollaryname}{\arabic{chapter}.\arabic{corollaryname}}
 \newenvironment{corollary}[1][]{
     \begin{framed}
-        \stepcounter{corollaryname}
+        \refstepcounter{corollaryname}
         \par\noindent
-        \textbf{推论\arabic{chapter}.\arabic{corollaryname}}#1\quad}
+        \textbf{推论\thecorollaryname}#1\quad}
 {\end{framed}\par}
 
 % 引理环境
 \newcounter{lemmaname}[chapter] % 引理计数器
+\renewcommand{\thelemmaname}{\arabic{chapter}.\arabic{lemmaname}}
 \newenvironment{lemma}[1][]{
     \begin{framed}
-        \stepcounter{lemmaname}
+        \refstepcounter{lemmaname}
         \par\noindent
-        \textbf{引理\arabic{chapter}.\arabic{lemmaname}}#1\quad}
+        \textbf{引理\thelemmaname}#1\quad}
 {\end{framed}\par}
 
 % 性质环境
 \newcounter{propertyname} % 性质计数器
 \newenvironment{property}[1][]{
     \begin{framed}
-        \stepcounter{propertyname}
+        \refstepcounter{propertyname}
         \par\noindent
         \textbf{性质\arabic{propertyname}}#1\quad}
 {\end{framed}\par}
 
 % 定义环境
 \newcounter{definitionname}[chapter] % 定义计数器
+\renewcommand{\thedefinitionname}{\arabic{chapter}.\arabic{definitionname}}
 \newenvironment{definition}[1][]{
     \begin{framed}
-        \stepcounter{definitionname}
+        \refstepcounter{definitionname}
         \par\noindent
-        \textbf{定义\arabic{chapter}.\arabic{definitionname}}#1\quad}
+        \textbf{定义\thedefinitionname}#1\quad}
 {\end{framed}\par}
 
 % 例题环境
 \newcounter{problemname}[chapter] % 例题计数器
+\renewcommand{\theproblemname}{\arabic{chapter}.\arabic{problemname}}
 \newenvironment{problem}{
-    \stepcounter{problemname}
+    \refstepcounter{problemname}
     \par\noindent
-    【\textbf{例\arabic{chapter}.\arabic{problemname}}】}
+    【\textbf{例\theproblemname}】}
 {\par}
 
 % 题解环境
@@ -124,3 +129,6 @@
 
 % 注记环境
 \newenvironment{note}{\begin{shaded}\par\noindent\textbf{注：}}{\end{shaded}\par}
+
+% 结论环境
+\newenvironment{conclusion}{\begin{framed}\par\noindent\textbf{结论：}}{\end{framed}\par}

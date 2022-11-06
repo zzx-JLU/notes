@@ -158,7 +158,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 
 \subsection{频率}
 
-\begin{definition}
+\begin{definition} \label{def:frequence}
     设在相同的条件下进行的 $n$ 次试验中，事件 $A$ 发生了 $n_A$ 次，则称 $n_A$ 为事件 $A$ 发生的\textbf{频数}，称比值 $\dfrac{n_A}{n}$ 为事件 $A$ 发生的\textbf{频率}，记作 $f_n(A)$，即
     $$
     f_n(A)=\dfrac{n_A}{n}
@@ -171,15 +171,15 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 
 \setcounter{propertyname}{0}
 
-\begin{property}[(非负性)]
+\begin{property}[(非负性)] \label{prop:frequence:>=0}
     对于任意事件 $A$，有 $f_n(A) \geqslant 0$.
 \end{property}
 
-\begin{property}[(规范性)]
+\begin{property}[(规范性)] \label{prop:frequence:1}
     对于必然事件 $\varOmega$，有 $f_n(\varOmega)=1$.
 \end{property}
 
-\begin{property}[(有限可加性)]
+\begin{property}[(有限可加性)] \label{prop:frequence:sum}
     对于两两互不相容的事件 $A_1,A_2,\cdots,A_m$（即当 $i\not=j$ 时，有 $A_i A_j = \text{\O}$，$i,j=1,2,\cdots,m$），有
     $$
     f_n(\bigcup_{i=1}^m A_i) = \sum_{i=1}^m f_n(A_i)
@@ -192,7 +192,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 
 \subsection{概率}
 
-\begin{definition}
+\begin{definition} \label{def:probability}
     设随机试验 $E$ 的样本空间为 $\varOmega$，如果对于 $E$ 的每一个事件 $A$，有唯一的实数 $P(A)$ 和它对应，并且这个事件的函数 $P(A)$ 满足以下条件：
     \begin{enumerate}
         \item 非负性：对于任意事件 $A$，有 $P(A) \geqslant 0$；
@@ -207,7 +207,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 
 \setcounter{propertyname}{0}
 
-\begin{property} \label{property:1}
+\begin{property} \label{prop:probability:0}
     对于不可能事件 $\text{\O}$，有 $P(\text{\O})=0$.
 \end{property}
 
@@ -220,41 +220,41 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
     由概率的非负性知 $P(\text{\O}) \geqslant 0$，因此 $P(\text{\O})=0$.
 \end{myproof}
 
-\begin{property}[(有限可加性)] \label{property:2}
+\begin{property}[(有限可加性)] \label{prop:probability:sum}
     对于两两互不相容的事件 $A_1,A_2,\cdots,A_n$，有
-    $$
+    \[
     P(\bigcup_{i=1}^n A_i) = \sum_{i=1}^n P(A_i)
-    $$
+    \]
 \end{property}
 
 \begin{myproof}
-    令 $A_i = \text{\O} \;(i=n+1,n+2,\cdots)$，根据概率的可列可加性及性质\ref{property:1}，有
-    $$
+    令 $A_i = \text{\O} \;(i=n+1,n+2,\cdots)$，根据概率的可列可加性及性质\ref{prop:probability:0}，有
+    \[
     P(\bigcup_{i=1}^n A_i) = P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i) = \sum_{i=1}^n P(A_i)
-    $$
+    \]
 \end{myproof}
 
-\begin{property}
+\begin{property} \label{prop:probability:converse}
     对于任一事件 $A$，有 $P(\overline{A})=1-P(A)$.
 \end{property}
 
 \begin{myproof}
-    因为 $A \cup \overline{A} = \varOmega$，且 $A \overline{A} = \text{\O}$，由性质 2 及概率的规范性，得
+    因为 $A \cup \overline{A} = \varOmega$，且 $A \overline{A} = \text{\O}$，由性质 \ref{prop:probability:sum} 及概率的规范性，得
     $$
     P(\varOmega) = P(A \cup \overline{A}) = P(A) + P(\overline{A}) = 1
     $$
     即
-    $$
+    \[
     P(\overline{A})=1-P(A)
-    $$
+    \]
 \end{myproof}
 
-\begin{property}
+\begin{property} \label{prop:probability:subset}
     如果 $A \subseteq B$，则有 $P(B-A)=P(B)-P(A)$，$P(A) \leqslant P(B)$.
 \end{property}
 
 \begin{myproof}
-    因为 $A \subseteq B$，从而有 $B = A \cup (B-A)$，且 $A(B-A)=\text{\O}$，由性质 2 可得
+    因为 $A \subseteq B$，从而有 $B = A \cup (B-A)$，且 $A(B-A)=\text{\O}$，由性质 \ref{prop:probability:sum} 可得
     $$
     P(B) = P(A \cup (B-A)) = P(A) + P(B-A)
     $$
@@ -262,31 +262,277 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
     $$
     P(B-A)=P(B)-P(A)
     $$
-
-    由于 $P(B-A) \geqslant 0$，因此
-    $$
-    P(A) \leqslant P(B)
-    $$
+    由于 $P(B-A) \geqslant 0$，因此 $P(A) \leqslant P(B)$.
 \end{myproof}
 
-\begin{property}
+\begin{property} \label{prop:probability:<=1}
     对于任一事件 $A$，有 $P(A) \leqslant 1$.
 \end{property}
 
 \begin{myproof}
-    因为 $A \subseteq \varOmega$，由性质 4 及概率的规范性，可得
-    $$
+    因为 $A \subseteq \varOmega$，由性质 \ref{prop:probability:subset} 及概率的规范性，可得
+    \[
     P(A) \leqslant P(\varOmega) = 1
-    $$
+    \]
 \end{myproof}
 
-\begin{property}[(概率的减法公式)]
+\begin{property}[(概率的减法公式)] \label{prop:probability:subtraction}
     对于任意两个事件 $A$ 与 $B$，有 $P(B-A)=P(B)-P(AB)$.
 \end{property}
 
 \begin{myproof}
-    由于 $B-A=B-AB$，而 $AB \subseteq B$，根据性质 4 可得
-    $$
+    由于 $B-A=B-AB$，而 $AB \subseteq B$，根据性质 \ref{prop:probability:subset} 可得
+    \[
     P(B-A)=P(B-AB)=P(B)-P(AB)
+    \]
+\end{myproof}
+
+\begin{property}
+    对于任意两个事件 $A$ 与 $B$，有
+    \begin{gather} \label{equation:add}
+        P(A \cup B) = P(A) + P(B) - P(AB)
+    \end{gather}
+    $$
+    P(A \cup B) \leqslant P(A) + P(B)
+    $$
+\end{property}
+
+\begin{myproof}
+    因为 $A \cup B = A \cup (B-AB)$，且 $A(B-AB)=\text{\O},\,AB\subseteq B$，由性质 \ref{prop:probability:sum} 及性质 \ref{prop:probability:subset} 可得
+    $$
+    \begin{aligned}
+        P(A \cup B) &= P(A \cup (B-AB))\\
+        &= P(A) + P(B-AB)\\
+        &= P(A) + P(B) - P(AB)
+    \end{aligned}
+    $$
+
+    由于 $P(AB)\geqslant 0$，因此
+    $$
+    P(A \cup B) \leqslant P(A) + P(B)
     $$
 \end{myproof}
+
+式 (\ref{equation:add}) 称为概率的\textbf{加法公式}.
+
+加法公式可以推广到任意有限个事件的情形：设 $A_1,A_2,\cdots,A_n$ 是 $n$ 个随机事件，则有
+
+\begin{align} \label{equation:normal add}
+    \begin{split}
+        P(\bigcup_{i=1}^n A_i) = & \sum_{i=1}^n P(A_i) - \sum_{1 \leqslant i<j \leqslant n} P(A_i A_j) + \sum_{1 \leqslant i<j<k \leqslant n} P(A_i A_j A_k) + \cdots\\
+        & + (-1)^{n-1} P(A_1 A_2 \cdots A_n)
+    \end{split}
+\end{align}
+
+式 (\ref{equation:normal add}) 称为概率的\textbf{一般加法公式}.
+
+\subsection{古典概型}
+
+如果随机试验具有以下两个特点：
+\begin{enumerate}
+    \item 试验的样本空间只包含有限个样本点；
+    \item 在试验中每个基本事件发生的可能性相同，
+\end{enumerate}
+则称这种试验为\textbf{等可能概型}或\textbf{古典概型}.
+
+设试验 $E$ 是古典概型，样本空间为 $\varOmega=\{\omega_1,\omega_2,\cdots,\omega_n\}$，则基本事件 $\{\omega_1\},\{\omega_2\},\cdots,\{\omega_n\}$ 两两互不相容，且
+$$
+\varOmega = \{\omega_1\} \cup \{\omega_2\} \cup \cdots \cup \{\omega_n\}
+$$
+由于 $P(\varOmega)=1$ 及 $P(\{\omega_1\})=P(\{\omega_2\})=\cdots=P(\{\omega_n\})$，因此
+$$
+P(\{\omega_1\})=P(\{\omega_2\})=\cdots=P(\{\omega_n\})=\dfrac{1}{n}
+$$
+
+如果事件 $A$ 包含 $k$ 个基本事件，$A=\{\omega_{i_1}\} \cup \{\omega_{i_2}\} \cup \cdots \cup \{\omega_{i_k}\}$，其中 $i_1,i_2,\cdots,i_k$ 是 $1,2,\cdots,n$ 中某 $k$ 个不同的数，则有
+$$
+P(A) = P(\{\omega_{i_1}\}) + P(\{\omega_{i_2}\}) + \cdots + P(\{\omega_{i_k}\}) = \dfrac{k}{n}
+$$
+即
+$$
+P(A)=\dfrac{A\,\text{包含的基本事件个数}}{\varOmega\,\text{包含的基本事件总数}}
+$$
+
+\subsection{几何概型}
+
+如果随机试验是将一个点随机地投到某一区域 $\varOmega$ 内，而这个随机点落在 $\varOmega$ 中任意两个度量相等的子区域内的可能性是一样的，则称这样的试验属于\textbf{几何概型}.
+
+\begin{note}
+    $\varOmega$ 可以是直线上的某一区间，也可以是平面或空间内的某一区域.区域的度量是指直线上区间的长度，或者平面内区域的面积，或者空间内区域的体积.
+\end{note}
+
+对于任何有度量的子区域 $A \subseteq \varOmega$，定义事件 $A = \text{“随机点落在区域}\, A \,\text{内”}$ 的概率为
+$$
+P(A)=\dfrac{A\,\text{的度量}}{\varOmega\,\text{的度量}}
+$$
+
+\section{条件概率}
+
+\subsection{条件概率与乘法公式}
+
+\begin{definition}
+    设 $A$ 和 $B$ 是试验 $E$ 的两个事件，且 $P(A)>0$，称 $\dfrac{P(AB)}{P(A)}$ 为在事件 $A$ 已经发生的条件下，事件 $B$ 发生的\textbf{条件概率}，记为 $P(B \mid A)$，即
+    $$
+    P(B \mid A)=\dfrac{P(AB)}{P(A)}
+    $$
+\end{definition}
+
+对于任意两个事件 $A$ 和 $B$，如果 $P(A)>0$，则有
+\begin{align} \label{equation:multiply}
+    P(AB)=P(A) \, P(B \mid A)
+\end{align}
+式 (\ref{equation:multiply}) 称为概率的\textbf{乘法公式}.
+
+同样可以在 $P(B)>0$ 时，定义在事件 $B$ 已经发生的条件下，事件 $A$ 发生的条件概率为
+$$
+P(A \mid B)=\dfrac{P(AB)}{P(B)}
+$$
+
+在 $P(A)>0,P(B)>0$ 的条件下，有
+$$
+P(AB) = P(A) \, P(B \mid A) = P(B) \, P(A \mid B)
+$$
+
+条件概率具有如下性质：
+
+\setcounter{propertyname}{0}
+
+\begin{property}[(非负性)]
+    对任意事件 $B$，有 $P(B \mid A) \geqslant 0$.
+\end{property}
+
+\begin{property}[(规范性)]
+    对于必然事件 $\varOmega$，有 $P(\varOmega \mid A)=1$.
+\end{property}
+
+\begin{property}[(可列可加性)]
+    对于两两互不相容的事件 $B_1,B_2,\cdots$，有
+    $$
+    P(\left( \bigcup_{i=1}^\infty B_i \right) \mid A)=\sum_{i=1}^\infty P(B_i \mid A)
+    $$
+\end{property}
+
+可由条件概率的三个基本性质推导出其他性质，例如
+\begin{gather*}
+    P(\text{\O} \mid A)=0\\
+    P(\overline{B} \mid A) = 1 - P(B \mid A)\\
+    P((B_1 \cup B_2) \mid A) = P(B_1 \mid A) + P(B_2 \mid A) - P(B_1 B_2 \mid A)
+\end{gather*}
+
+可以把乘法公式推广到有限个事件的交的情况：设 $A_1,A_2,\cdots,A_n$ 是同一试验的事件，且 $P(A_1 A_2 \cdots A_{n-1})>0$，则有
+\begin{gather} \label{equation:normal multiply}
+    P(A_1 A_2 \cdots A_n) = P(A_1) \, P(A_2 \mid A_1) \, P(A_3 \mid A_1 A_2) \cdots P(A_n \mid A_1 A_2 \cdots A_{n-1})
+\end{gather}
+
+\subsection{全概率公式}
+
+设试验 $E$ 的样本空间为 $\varOmega$，事件 $A_1,A_2,\cdots,A_n$ 两两互不相容，且 $\displaystyle\bigcup_{i=1}^n A_i=\varOmega$，则称 $A_1,A_2,\cdots,A_n$ 为样本空间 $\varOmega$ 的一个\textbf{分割}或\textbf{完全事件组}.
+
+如果 $P(A_i)>0 \ (i=1,2,\cdots,n)$，则对任意事件 $B$，有
+$$
+B = B \varOmega = B \left( \bigcup_{i=1}^n A_i \right) = \bigcup_{i=1}^n(A_i B)
+$$
+这里 $(A_i B) \cap (A_j B) = \text{\O} \ (i\not=j,\; i,j=1,2,\cdots,n)$，由概率的有限可加性得
+$$
+P(B) = P(\bigcup_{i=1}^n (A_i B)) = \sum_{i=1}^n P(A_i B)
+$$
+由乘法公式得
+\begin{gather} \label{equation:total}
+    P(B) = \sum_{i=1}^n P(A_i) \, P(B \mid A_i)
+\end{gather}
+
+式 (\ref{equation:total}) 称为\textbf{全概率公式}（Total Probability Theorem）.
+
+\subsection{贝叶斯公式}
+
+设试验 $E$ 的样本空间为 $\varOmega$，事件 $A_1,A_2,\cdots,A_n$ 是 $\varOmega$ 的一个分割，且 $P(A_i)>0 \ (i=1,2,\cdots,n)$. 对于任一事件 $B$，如果 $P(B)>0$，由乘法公式可得
+$$
+P(A_i B) = P(B) \, P(A_i \mid B) = P(A_i) \, P(B \mid A_i)
+$$
+由此得
+$$
+P(A_i \mid B)=\dfrac{P(A_i) \, P(B \mid A_i)}{P(B)}
+$$
+利用全概率公式，得
+\begin{gather} \label{equation:bayes}
+    P(A_i \mid B) = \dfrac{P(A_i) \, P(B \mid A_i)}{\displaystyle\sum_{j=1}^n P(A_j) \, P(B \mid A_j)}
+\end{gather}
+
+式 (\ref{equation:bayes}) 称为\textbf{贝叶斯公式}（Bayes Rule）.
+
+\section{事件的独立性}
+
+\begin{definition} \label{def:event-independence}
+    设 $A$ 与 $B$ 是同一试验 $E$ 的两个事件，如果 $P(AB)=P(A)\,P(B)$，则称事件 $A$ 与事件 $B$ 是\textbf{相互独立}的.
+\end{definition}
+
+对于同一试验 $E$ 的两个事件 $A$ 与 $B$，如果 $P(A)>0$，则 $A$ 与 $B$ 相互独立的充分必要条件是 $P(B \mid A)=P(B)$；如果 $P(B)>0$，则 $A$ 与 $B$ 相互独立的充分必要条件是 $P(A \mid B)=P(A)$.
+
+\begin{conclusion}
+    如果事件 $A$ 与事件 $B$ 相互独立，则事件 $A$ 与事件 $\overline{B}$ 相互独立.
+\end{conclusion}
+
+\begin{myproof}
+    $A = A (B \cup \overline{B}) = (AB) \cup (A \overline{B})$，而 $(AB)(A \overline{B})=\text{\O}$，所以
+    $$
+    P(A) = P((AB) \cup (A \overline{B})) = P(AB) + P(A \overline{B})
+    $$
+    如果 $A$ 与 $B$ 相互独立，则 $P(AB)=P(A)\,P(B)$，代入上式可得
+    $$
+    P(A) = P(A) \, P(B) + P(A \overline{B})
+    $$
+    由此得
+    $$
+    \begin{aligned}
+        P(A \overline{B}) &= P(A) - P(A) \, P(B)\\
+        &= P(A)[1-P(B)]\\
+        &= P(A) \, P(\overline{B})
+    \end{aligned}
+    $$
+    因此事件 $A$ 与事件 $\overline{B}$ 是相互独立的.
+\end{myproof}
+
+同理，如果事件 $A$ 与事件 $B$ 相互独立，则事件 $\overline{A}$ 与事件 $B$ 相互独立，事件 $\overline{A}$ 与事件 $\overline{B}$ 相互独立.
+
+\begin{definition} \label{def:independent-of-each-other-3}
+    对于同一试验 $E$ 的三个事件 $A,B,C$，如果满足
+    \begin{gather*}
+        P(AB)=P(A)\,P(B)\\
+        P(BC)=P(B)\,P(C)\\
+        P(AC)=P(A)\,P(C)
+    \end{gather*}
+    则称三个事件 $A,B,C$ 是\textbf{两两相互独立}的.
+\end{definition}
+
+\begin{definition} \label{def:independent-3}
+    如果三个事件 $A,B,C$ 是两两相互独立的，并且有 $P(ABC)=P(A)\,P(B)\,P(C)$，则称三个事件 $A,B,C$ 是\textbf{相互独立}的.
+\end{definition}
+
+\begin{definition} \label{def:independent-more}
+    设 $A_1,A_2,\cdots,A_n$ 是同一试验 $E$ 的 $n$ 个事件，如果对于任意正整数 $k$ 及这 $n$ 个事件中的任意 $k\,(2\leqslant k\leqslant n)$ 个事件 $A_{i_1},A_{i_2},\cdots,A_{i_k}$，都有等式
+    $$
+    P(A_{i_1} A_{i_2} \cdots A_{i_k}) = P(A_{i_1}) \, P(A_{i_2}) \cdots P(A_{i_k})
+    $$
+    则称这 $n$ 个事件 $A_1,A_2,\cdots,A_n$ 是\textbf{相互独立}的.
+\end{definition}
+
+\section{伯努利概型}
+
+如果将试验 $E$ 重复执行 $n$ 次，在每一次试验中，事件 $A$ 或者发生，或者不发生.假设每次试验的结果互不影响，即在每次试验中事件 $A$ 发生的概率保持不变，不受其他各次试验结果的影响，则称这 $n$ 次试验相互独立.
+
+如果试验 $E$ 只有两个可能的对立结果 $A$ 和 $\overline{A}$，并且 $P(A)=p$，$P(\overline{A})=1-p$，其中 $0<p<1$.将试验 $E$ 独立地重复进行 $n$ 次所构成的一个试验叫做 $n$ \textbf{重伯努利试验}，简称为\textbf{伯努利试验}或\textbf{伯努利概型}.
+
+$n$ 重伯努利试验的基本事件可记为 $\omega=\omega_1 \omega_2 \cdots \omega_n$，其中 $\omega_i\,(1\leqslant i\leqslant n)$ 为 $A$ 或者为 $\overline{A}$，即 $\omega$ 是从 $A$ 及 $\overline{A}$ 中每次取 1 个，独立地重复取 $n$ 次的一种排列，共有 $2^n$ 个基本事件.
+
+如果 $\omega$ 中有 $k$ 个 $A$，则必有 $n-k$ 个 $\overline{A}$，由独立性可得这一基本事件的概率为 $p^k (1-p)^{n-k}$.
+
+由于在 $2^n$ 个基本事件中共有 $C_n^k$ 个含 $k$ 个 $A$ 及 $n-k$ 个 $\overline{A}$，因此在 $n$ 次独立重复试验中，事件 $A$ 恰好发生 $k$ 次的概率 $P_n(k)$ 为
+\begin{gather} \label{equation:binomial}
+    P_n(k)=C_n^k p^k (1-p)^{n-k} \quad k=0,1,2,\cdots,n
+\end{gather}
+
+由二项式定理可得
+$$
+\sum_{k=0}^n P_n(k) = \sum_{k=0}^n C_n^k p^k (1-p)^{n-k} = [p+(1-p)]^n = 1
+$$
+由此可见，$C_n^k p^k (1-p)^{n-k}$ 是二项展开式中的一项，因此式 (\ref{equation:binomial}) 又称为\textbf{二项概率公式}.
