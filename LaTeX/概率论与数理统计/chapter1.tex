@@ -27,7 +27,7 @@
 
 \subsection{随机事件的概念}
 
-随机试验 $E$ 的样本空间 $\varOmega = \{ \omega \}$ 的子集称为随机试验 $E$ 的\textbf{随机事件}，简称为\textbf{事件}，用大写字母 $A,B,C$ 等表示.
+随机试验 $E$ 的样本空间 $\varOmega = \{ \omega \}$ 的子集称为随机试验 $E$ 的\textbf{随机事件}（random event），简称为\textbf{事件}（event），用大写字母 $A,B,C$ 等表示.
 
 设 $A \subseteq \varOmega$，如果试验结果 $\omega \in A$，则称在这次试验中事件 $A$ 发生；如果 $\omega \notin A$，则称事件 $A$ 不发生.
 
@@ -202,7 +202,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
         P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)
         $$
     \end{enumerate}
-    则称 $P(A)$ 为事件 $A$ 的\textbf{概率}.
+    则称 $P(A)$ 为事件 $A$ 的\textbf{概率}（probability）.
 \end{definition}
 
 \setcounter{propertyname}{0}
@@ -228,7 +228,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 \end{property}
 
 \begin{myproof}
-    令 $A_i = \text{\O} \;(i=n+1,n+2,\cdots)$，根据概率的可列可加性及性质\ref{prop:probability:0}，有
+    令 $A_i = \text{\O} \;(i=n+1,n+2,\cdots)$，根据概率的可列可加性及性质\ref*{prop:probability:0}，有
     \[
     P(\bigcup_{i=1}^n A_i) = P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i) = \sum_{i=1}^n P(A_i)
     \]
@@ -239,7 +239,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 \end{property}
 
 \begin{myproof}
-    因为 $A \cup \overline{A} = \varOmega$，且 $A \overline{A} = \text{\O}$，由性质 \ref{prop:probability:sum} 及概率的规范性，得
+    因为 $A \cup \overline{A} = \varOmega$，且 $A \overline{A} = \text{\O}$，由性质 \ref*{prop:probability:sum} 及概率的规范性，得
     $$
     P(\varOmega) = P(A \cup \overline{A}) = P(A) + P(\overline{A}) = 1
     $$
@@ -254,7 +254,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 \end{property}
 
 \begin{myproof}
-    因为 $A \subseteq B$，从而有 $B = A \cup (B-A)$，且 $A(B-A)=\text{\O}$，由性质 \ref{prop:probability:sum} 可得
+    因为 $A \subseteq B$，从而有 $B = A \cup (B-A)$，且 $A(B-A)=\text{\O}$，由性质 \ref*{prop:probability:sum} 可得
     $$
     P(B) = P(A \cup (B-A)) = P(A) + P(B-A)
     $$
@@ -270,7 +270,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 \end{property}
 
 \begin{myproof}
-    因为 $A \subseteq \varOmega$，由性质 \ref{prop:probability:subset} 及概率的规范性，可得
+    因为 $A \subseteq \varOmega$，由性质 \ref*{prop:probability:subset} 及概率的规范性，可得
     \[
     P(A) \leqslant P(\varOmega) = 1
     \]
@@ -281,7 +281,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 \end{property}
 
 \begin{myproof}
-    由于 $B-A=B-AB$，而 $AB \subseteq B$，根据性质 \ref{prop:probability:subset} 可得
+    由于 $B-A=B-AB$，而 $AB \subseteq B$，根据性质 \ref*{prop:probability:subset} 可得
     \[
     P(B-A)=P(B-AB)=P(B)-P(AB)
     \]
@@ -298,7 +298,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 \end{property}
 
 \begin{myproof}
-    因为 $A \cup B = A \cup (B-AB)$，且 $A(B-AB)=\text{\O},\,AB\subseteq B$，由性质 \ref{prop:probability:sum} 及性质 \ref{prop:probability:subset} 可得
+    因为 $A \cup B = A \cup (B-AB)$，且 $A(B-AB)=\text{\O},\, AB \subseteq B$，由性质 \ref*{prop:probability:sum} 及性质 \ref*{prop:probability:subset} 可得
     $$
     \begin{aligned}
         P(A \cup B) &= P(A \cup (B-AB))\\
@@ -313,7 +313,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
     $$
 \end{myproof}
 
-式 (\ref{equation:add}) 称为概率的\textbf{加法公式}.
+式 \eqref{equation:add} 称为概率的\textbf{加法公式}.
 
 加法公式可以推广到任意有限个事件的情形：设 $A_1,A_2,\cdots,A_n$ 是 $n$ 个随机事件，则有
 
@@ -324,7 +324,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
     \end{split}
 \end{align}
 
-式 (\ref{equation:normal add}) 称为概率的\textbf{一般加法公式}.
+式 \eqref{equation:normal add} 称为概率的\textbf{一般加法公式}.
 
 \subsection{古典概型}
 
@@ -333,7 +333,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
     \item 试验的样本空间只包含有限个样本点；
     \item 在试验中每个基本事件发生的可能性相同，
 \end{enumerate}
-则称这种试验为\textbf{等可能概型}或\textbf{古典概型}.
+则称这种试验为\textbf{等可能概型}或\textbf{古典概型}（classic probability model）.
 
 设试验 $E$ 是古典概型，样本空间为 $\varOmega=\{\omega_1,\omega_2,\cdots,\omega_n\}$，则基本事件 $\{\omega_1\},\{\omega_2\},\cdots,\{\omega_n\}$ 两两互不相容，且
 $$
@@ -355,7 +355,7 @@ $$
 
 \subsection{几何概型}
 
-如果随机试验是将一个点随机地投到某一区域 $\varOmega$ 内，而这个随机点落在 $\varOmega$ 中任意两个度量相等的子区域内的可能性是一样的，则称这样的试验属于\textbf{几何概型}.
+如果随机试验是将一个点随机地投到某一区域 $\varOmega$ 内，而这个随机点落在 $\varOmega$ 中任意两个度量相等的子区域内的可能性是一样的，则称这样的试验属于\textbf{几何概型}（geometric probability model）.
 
 \begin{note}
     $\varOmega$ 可以是直线上的某一区间，也可以是平面或空间内的某一区域.区域的度量是指直线上区间的长度，或者平面内区域的面积，或者空间内区域的体积.
@@ -371,7 +371,7 @@ $$
 \subsection{条件概率与乘法公式}
 
 \begin{definition}
-    设 $A$ 和 $B$ 是试验 $E$ 的两个事件，且 $P(A)>0$，称 $\dfrac{P(AB)}{P(A)}$ 为在事件 $A$ 已经发生的条件下，事件 $B$ 发生的\textbf{条件概率}，记为 $P(B \mid A)$，即
+    设 $A$ 和 $B$ 是试验 $E$ 的两个事件，且 $P(A)>0$，称 $\dfrac{P(AB)}{P(A)}$ 为在事件 $A$ 已经发生的条件下，事件 $B$ 发生的\textbf{条件概率}（conditional probability），记为 $P(B \mid A)$，即
     $$
     P(B \mid A)=\dfrac{P(AB)}{P(A)}
     $$
@@ -381,7 +381,7 @@ $$
 \begin{align} \label{equation:multiply}
     P(AB)=P(A) \, P(B \mid A)
 \end{align}
-式 (\ref{equation:multiply}) 称为概率的\textbf{乘法公式}.
+式 \eqref{equation:multiply} 称为概率的\textbf{乘法公式}.
 
 同样可以在 $P(B)>0$ 时，定义在事件 $B$ 已经发生的条件下，事件 $A$ 发生的条件概率为
 $$
@@ -441,7 +441,7 @@ $$
     P(B) = \sum_{i=1}^n P(A_i) \, P(B \mid A_i)
 \end{gather}
 
-式 (\ref{equation:total}) 称为\textbf{全概率公式}（Total Probability Theorem）.
+式 \eqref{equation:total} 称为\textbf{全概率公式}（total probability formula）.
 
 \subsection{贝叶斯公式}
 
@@ -458,7 +458,7 @@ $$
     P(A_i \mid B) = \dfrac{P(A_i) \, P(B \mid A_i)}{\displaystyle\sum_{j=1}^n P(A_j) \, P(B \mid A_j)}
 \end{gather}
 
-式 (\ref{equation:bayes}) 称为\textbf{贝叶斯公式}（Bayes Rule）.
+式 \eqref{equation:bayes} 称为\textbf{贝叶斯公式}（Bayes formula）.
 
 \section{事件的独立性}
 
@@ -520,7 +520,7 @@ $$
 
 如果将试验 $E$ 重复执行 $n$ 次，在每一次试验中，事件 $A$ 或者发生，或者不发生.假设每次试验的结果互不影响，即在每次试验中事件 $A$ 发生的概率保持不变，不受其他各次试验结果的影响，则称这 $n$ 次试验相互独立.
 
-如果试验 $E$ 只有两个可能的对立结果 $A$ 和 $\overline{A}$，并且 $P(A)=p$，$P(\overline{A})=1-p$，其中 $0<p<1$.将试验 $E$ 独立地重复进行 $n$ 次所构成的一个试验叫做 $n$ \textbf{重伯努利试验}，简称为\textbf{伯努利试验}或\textbf{伯努利概型}.
+如果试验 $E$ 只有两个可能的对立结果 $A$ 和 $\overline{A}$，并且 $P(A)=p$，$P(\overline{A})=1-p$，其中 $0<p<1$.将试验 $E$ 独立地重复进行 $n$ 次所构成的一个试验叫做 $n$ \textbf{重伯努利试验}，简称为\textbf{伯努利试验}（Bernoulli experiment）或\textbf{伯努利概型}（Bernoulli probability model）.
 
 $n$ 重伯努利试验的基本事件可记为 $\omega=\omega_1 \omega_2 \cdots \omega_n$，其中 $\omega_i\,(1\leqslant i\leqslant n)$ 为 $A$ 或者为 $\overline{A}$，即 $\omega$ 是从 $A$ 及 $\overline{A}$ 中每次取 1 个，独立地重复取 $n$ 次的一种排列，共有 $2^n$ 个基本事件.
 
@@ -535,4 +535,4 @@ $n$ 重伯努利试验的基本事件可记为 $\omega=\omega_1 \omega_2 \cdots 
 $$
 \sum_{k=0}^n P_n(k) = \sum_{k=0}^n C_n^k p^k (1-p)^{n-k} = [p+(1-p)]^n = 1
 $$
-由此可见，$C_n^k p^k (1-p)^{n-k}$ 是二项展开式中的一项，因此式 (\ref{equation:binomial}) 又称为\textbf{二项概率公式}.
+由此可见，$C_n^k p^k (1-p)^{n-k}$ 是二项展开式中的一项，因此式 \eqref{equation:binomial} 又称为\textbf{二项概率公式}.
