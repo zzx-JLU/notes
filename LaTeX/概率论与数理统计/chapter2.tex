@@ -238,13 +238,25 @@ $$
     \sum_{k=0}^\infty \dfrac{\lambda^k e^{-\lambda}}{k!} = e^{-\lambda} \sum_{k=0}^\infty \dfrac{\lambda^k}{k!} = e^{-\lambda} e^{\lambda}=1
 \end{gather*}
 
-% \begin{figure}
-%     \begin{tikzpicture}[thick]
-%         \def\U{*0.027*\textwidth}
-%         % 绘制坐标轴
-%         \draw[-{Stealth}](-2\U,0)--(25\U,0) coordinate[label={right:$x$}];
-%         \draw[-{Stealth}](0,-2\U)--(0,1\U) coordinate[label={above:$y$}];
-%         % 绘制曲线
-%         \draw[domain=0:2\U] plot (\x, 1/e/(\x!)) node[right]{$\lambda=1$};
-%     \end{tikzpicture}
-% \end{figure}
+\begin{figure}[htbp]
+    \centering
+
+    \begin{tikzpicture}
+        \begin{axis}[xlabel=$x$, ylabel=$y$,
+            axis lines=center,
+            tick align=inside,
+            xtick distance=5, ytick distance=0.1,
+            minor x tick num=4,
+            extra x ticks={0},
+            xmin=0, xmax=22.9,
+            ymin=0, ymax=0.45]
+            \addplot[domain=0:20, samples=21, mark=*]{exp(-1)/(x!)};
+            \addplot[domain=0:20, samples=21, mark=square, color=blue]{5^x * exp(-5) / (x!)};
+            \addplot[domain=0:20, samples=21, mark=x, color=red]{10^x * exp(-10) / (x!)};
+
+            \legend{$\lambda=1$, $\lambda=5$, $\lambda=10$}
+        \end{axis}
+    \end{tikzpicture}
+
+    \caption{泊松分布}
+\end{figure}

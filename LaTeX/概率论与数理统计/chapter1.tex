@@ -158,7 +158,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 
 \subsection{频率}
 
-\begin{definition} \label{def:frequence}
+\begin{definition}
     设在相同的条件下进行的 $n$ 次试验中，事件 $A$ 发生了 $n_A$ 次，则称 $n_A$ 为事件 $A$ 发生的\textbf{频数}，称比值 $\dfrac{n_A}{n}$ 为事件 $A$ 发生的\textbf{频率}，记作 $f_n(A)$，即
     $$
     f_n(A)=\dfrac{n_A}{n}
@@ -171,15 +171,15 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 
 \setcounter{propertyname}{0}
 
-\begin{property}[(非负性)] \label{prop:frequence:>=0}
+\begin{property}[(非负性)]
     对于任意事件 $A$，有 $f_n(A) \geqslant 0$.
 \end{property}
 
-\begin{property}[(规范性)] \label{prop:frequence:1}
+\begin{property}[(规范性)]
     对于必然事件 $\varOmega$，有 $f_n(\varOmega)=1$.
 \end{property}
 
-\begin{property}[(有限可加性)] \label{prop:frequence:sum}
+\begin{property}[(有限可加性)]
     对于两两互不相容的事件 $A_1,A_2,\cdots,A_m$（即当 $i\not=j$ 时，有 $A_i A_j = \text{\O}$，$i,j=1,2,\cdots,m$），有
     $$
     f_n(\bigcup_{i=1}^m A_i) = \sum_{i=1}^m f_n(A_i)
@@ -277,7 +277,10 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 \end{myproof}
 
 \begin{property}[(概率的减法公式)] \label{prop:probability:subtraction}
-    对于任意两个事件 $A$ 与 $B$，有 $P(B-A)=P(B)-P(AB)$.
+    对于任意两个事件 $A$ 与 $B$，有
+    \begin{equation}
+        P(B-A)=P(B)-P(AB)
+    \end{equation}
 \end{property}
 
 \begin{myproof}
@@ -287,14 +290,12 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
     \]
 \end{myproof}
 
-\begin{property}
+\begin{property} \label{prop:probability:add}
     对于任意两个事件 $A$ 与 $B$，有
     \begin{gather} \label{equation:add}
-        P(A \cup B) = P(A) + P(B) - P(AB)
+        P(A \cup B) = P(A) + P(B) - P(AB) \\
+        P(A \cup B) \leqslant P(A) + P(B) \nonumber
     \end{gather}
-    $$
-    P(A \cup B) \leqslant P(A) + P(B)
-    $$
 \end{property}
 
 \begin{myproof}
@@ -307,10 +308,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
     \end{aligned}
     $$
 
-    由于 $P(AB)\geqslant 0$，因此
-    $$
-    P(A \cup B) \leqslant P(A) + P(B)
-    $$
+    由于 $P(AB)\geqslant 0$，因此 $P(A \cup B) \leqslant P(A) + P(B)$.
 \end{myproof}
 
 式 \eqref{equation:add} 称为概率的\textbf{加法公式}.
@@ -325,6 +323,28 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 \end{align}
 
 式 \eqref{equation:normal add} 称为概率的\textbf{一般加法公式}.
+
+\begin{problem}
+    设 $A$ 和 $B$ 是同一试验 $E$ 的两个随机事件，证明
+    $$
+    1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB) \leqslant P(A \cup B)
+    $$
+\end{problem}
+
+\begin{myproof}
+    因为 $AB \subseteq A \subseteq (A \cup B)$，所以
+    $$
+    P(AB) \leqslant P(A \cup B)
+    $$
+    由概率的性质 \ref*{prop:probability:add}、性质 \ref*{prop:probability:converse} 及事件的对偶律，可得
+    $$
+    P(\overline{A}) + P(\overline{B}) \geqslant P(\overline{A} \cup \overline{B}) = P(\overline{AB}) = 1 - P(AB)
+    $$
+    因此
+    $$
+    1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB)
+    $$
+\end{myproof}
 
 \subsection{古典概型}
 
@@ -365,6 +385,29 @@ $$
 $$
 P(A)=\dfrac{A\,\text{的度量}}{\varOmega\,\text{的度量}}
 $$
+
+\begin{problem}[(蒲丰投针问题)]
+    在平面上画有等距离的平行线，平行线间的距离为 $2a \, (a>0)$.向该平面任意投掷一枚长为 $2l \, (l<a)$ 的圆柱形的针，求此针与任一平行线相交的概率.
+\end{problem}
+
+\begin{solution}
+    针投在该平面上，设 $x$ 为针的中点 $M$ 到最近的一条平行线的距离，$\varphi$ 为针与此直线的交角，如图 \ref{fig:pufeng:1} 所示，则有 $0 \leqslant x \leqslant a, \; 0 \leqslant \varphi \leqslant \pi$.
+
+    \begin{wrapfigure}[8]{r}{0.5\textwidth}
+        \centering
+
+        \begin{tikzpicture}[scale=0.5]
+            \draw (0,0)--(10,0);
+            \draw (0,6)--(10,6);
+            \draw[{Stealth}-{Stealth}] (1,0) --node[left]{$2a$} (1,6);
+        \end{tikzpicture}
+        
+        \caption{}
+        \label{fig:pufeng:1}
+    \end{wrapfigure}
+
+    针与最近的一条平行线相交的充分必要条件是 $x \leqslant l \sin \varphi$.
+\end{solution}
 
 \section{条件概率}
 

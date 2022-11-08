@@ -1,8 +1,9 @@
 \documentclass[12pt, a4paper, oneside]{ctexbook}
-\usepackage{amsmath, amsthm, amssymb, bm, graphicx, mathrsfs, tikz, color, framed, bookmark, caption, geometry, enumitem}
+\usepackage{amsmath, amsthm, amssymb, bm, graphicx, mathrsfs, color, framed, bookmark, caption, geometry, enumitem, subfigure, tikz, pgfplots, float, wrapfig}
 \usepackage{hyperref} % 该宏包可能与其他宏包冲突，故放在所有引用的宏包之后
 
 \usetikzlibrary{arrows.meta,decorations,calligraphy}
+\pgfplotsset{compat=1.18}
 
 % 设置页边距
 \geometry{a4paper, left=2cm, right=2cm, top=3cm, bottom=3cm}
@@ -110,7 +111,7 @@
 % 例题环境
 \newcounter{problemname}[chapter] % 例题计数器
 \renewcommand{\theproblemname}{\arabic{chapter}.\arabic{problemname}}
-\newenvironment{problem}{
+\newenvironment{problem}[1][]{
     \refstepcounter{problemname}
     \par\noindent
     【\textbf{例\theproblemname}】}
