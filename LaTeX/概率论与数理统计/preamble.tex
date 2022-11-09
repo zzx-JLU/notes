@@ -2,7 +2,7 @@
 \usepackage{amsmath, amsthm, amssymb, bm, graphicx, mathrsfs, color, framed, bookmark, caption, geometry, enumitem, subfigure, tikz, pgfplots, float, wrapfig}
 \usepackage{hyperref} % 该宏包可能与其他宏包冲突，故放在所有引用的宏包之后
 
-\usetikzlibrary{arrows.meta,decorations,calligraphy}
+\usetikzlibrary{arrows.meta, decorations, calligraphy, quotes, angles}
 \pgfplotsset{compat=1.18}
 
 % 设置页边距
@@ -114,7 +114,7 @@
 \newenvironment{problem}[1][]{
     \refstepcounter{problemname}
     \par\noindent
-    【\textbf{例\theproblemname}】}
+    【\textbf{例\theproblemname}】#1\quad}
 {\par}
 
 % 题解环境

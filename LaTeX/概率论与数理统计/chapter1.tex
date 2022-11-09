@@ -391,23 +391,85 @@ $$
 \end{problem}
 
 \begin{solution}
-    针投在该平面上，设 $x$ 为针的中点 $M$ 到最近的一条平行线的距离，$\varphi$ 为针与此直线的交角，如图 \ref{fig:pufeng:1} 所示，则有 $0 \leqslant x \leqslant a, \; 0 \leqslant \varphi \leqslant \pi$.
-
-    \begin{wrapfigure}[8]{r}{0.5\textwidth}
+    \begin{wrapfigure}[5]{r}{0.4\textwidth}
         \centering
+        \vspace{-1em}
+        \setlength{\abovecaptionskip}{0cm}
 
-        \begin{tikzpicture}[scale=0.5]
-            \draw (0,0)--(10,0);
-            \draw (0,6)--(10,6);
-            \draw[{Stealth}-{Stealth}] (1,0) --node[left]{$2a$} (1,6);
+        \begin{tikzpicture}[xscale=0.5, yscale=0.4, >=Stealth]
+            % 两条平行线
+            \draw (0, 0)--(10, 0);
+            \draw (0, 6)--(10, 6);
+            % 平行线间距
+            \draw[<->] (1, 0) --node[left]{$2a$} (1, 6);
+            % 定义针的中点
+            \coordinate (m) at (5.5, 2);
+            \fill (m) circle (.1);
+            % 定义交点
+            \coordinate (a) at (3.5, 0);
+            \coordinate (b) at (10, 0);
+            % 针
+            \draw (3, -0.5) --node[left]{$l$}
+                (m) node[left]{$M$}
+                --node[left]{$l$}
+                (8, 4.5);
+            % 针的中点到平行线的距离
+            \draw (m) --node[right]{$x$} (5.5, 0);
+            % 角度标注
+            \pic["$\varphi$", draw=black, -, angle eccentricity=1.6, angle radius=0.4cm]
+                {angle=b--a--m};
         \end{tikzpicture}
         
         \caption{}
         \label{fig:pufeng:1}
     \end{wrapfigure}
+    针投在该平面上，设 $x$ 为针的中点 $M$ 到最近的一条平行线的距离，$\varphi$ 为针与此直线的交角，如图 \ref{fig:pufeng:1} 所示，则有 $0 \leqslant x \leqslant a, \; 0 \leqslant \varphi \leqslant \pi$.因此样本空间为
+    $$
+    \varOmega = \{(\varphi,x) \mid 0 \leqslant \varphi \leqslant \pi, \, 0 \leqslant x \leqslant a\}
+    $$
 
-    针与最近的一条平行线相交的充分必要条件是 $x \leqslant l \sin \varphi$.
+    \begin{wrapfigure}[6]{r}{0.5\textwidth}
+        \centering
+        \vspace{-1.5em}
+        \setlength{\abovecaptionskip}{0cm}
+
+        \begin{tikzpicture}[xscale=1.5, >=Stealth]
+            % 坐标轴
+            \draw[->] (-0.3, 0)--(4, 0) node[below]{$\varphi$};
+            \draw[->] (0, -0.5)--(0, 3) node[left]{$x$};
+            \node at (0, 0) [below left] {$O$};
+            % 定义特殊点
+            \coordinate (a) at (0, 2);
+            \coordinate (p) at (pi, 0);
+            % 矩形
+            \draw  (a) node[left]{$a$} rectangle (p) node[below]{$\pi$};
+            % 矩形右上角
+            \node at (pi, 2) [below left] {$\varOmega$};
+            % 曲线
+            \draw[domain=0:pi, fill=lightgray] plot (\x, {sin(\x r)});
+            \node at (pi/2, 1) [above] {$x=l \sin \varphi$};
+            \node at (pi/2, 1/2) {$A$};
+        \end{tikzpicture}
+        
+        \caption{}
+        \label{fig:pufeng:2}
+    \end{wrapfigure}
+
+    针与最近的一条平行线相交的充分必要条件是 $x \leqslant l \sin \varphi$.设事件 $A=$ “针与最近的一条平行线相交”，则
+    $$
+    A = \{(\varphi,x) \mid 0 \leqslant \varphi \leqslant \pi, \, 0 \leqslant x \leqslant l \sin \varphi\}
+    $$
+
+    所求概率为
+    \begin{equation} \label{equation:pufeng}
+        p = \dfrac{A\, \text{的面积}}{\varOmega \, \text{的面积}} = \dfrac{\displaystyle\int_0^{\pi} l \sin\varphi \, \text{d} \varphi}{\pi a} = \dfrac{2l}{\pi a}
+    \end{equation}
 \end{solution}
+
+蒲丰投针问题可以用来计算 $\pi$ 的近似值.如果投针 $N$ 次，其中针与平行线相交 $n$ 次，当 $N$ 很大时，以频率 $\dfrac{n}{N}$ 作为概率 $p$ 的近似值，代入式 \eqref{equation:pufeng} 可得
+$$
+\pi \approx \dfrac{2lN}{an}
+$$
 
 \section{条件概率}
 
@@ -488,6 +550,8 @@ $$
 
 \subsection{贝叶斯公式}
 
+如果事件 $B$ 是由于在两两互不相容的事件 $A_1,A_2,\cdots,A_n$ 中某一个发生的情况下而发生的，并且知道各个事件 $A_i$ 发生的概率 $P(A_i)$ 以及在事件 $A_i$ 发生的条件下事件 $B$ 发生的条件概率 $P(B \mid A_i)$，则由全概率公式可得事件 $B$ 发生的概率 $P(B)$.我们把事件 $A_1,A_2,\cdots,A_n$ 看做是导致事件 $B$ 发生的原因，$P(A_i)$ 称为\textbf{先验概率}，它反映出各种原因发生的可能性大小.如果在试验中发生了事件 $B$，这一信息有助于探讨事件 $B$ 发生的原因.条件概率 $P(A_i \mid B)$ 称为\textbf{后验概率}，它使得我们在试验之后对各种原因发生的可能性大小有进一步的了解.
+
 设试验 $E$ 的样本空间为 $\varOmega$，事件 $A_1,A_2,\cdots,A_n$ 是 $\varOmega$ 的一个分割，且 $P(A_i)>0 \ (i=1,2,\cdots,n)$. 对于任一事件 $B$，如果 $P(B)>0$，由乘法公式可得
 $$
 P(A_i B) = P(B) \, P(A_i \mid B) = P(A_i) \, P(B \mid A_i)
@@ -558,6 +622,8 @@ $$
     $$
     则称这 $n$ 个事件 $A_1,A_2,\cdots,A_n$ 是\textbf{相互独立}的.
 \end{definition}
+
+若 $n\, (n \geqslant 2)$ 个事件相互独立，则其中任意 $k\, (2 \leqslant k \leqslant n)$ 个事件相互独立.
 
 \section{伯努利概型}
 
