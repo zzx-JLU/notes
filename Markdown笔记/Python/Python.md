@@ -139,6 +139,11 @@ chrome:
       - [11.3.5.4 连接数组](#11354-连接数组)
       - [11.3.5.5 分割数组](#11355-分割数组)
       - [11.3.5.6 添加和删除数组元素](#11356-添加和删除数组元素)
+  - [11.4 NumPy函数](#114-numpy函数)
+    - [11.4.1 字符串函数](#1141-字符串函数)
+    - [11.4.2 数学函数](#1142-数学函数)
+    - [11.4.3 算数函数](#1143-算数函数)
+    - [11.4.4 统计函数](#1144-统计函数)
 
 <!-- /code_chunk_output -->
 
@@ -4298,3 +4303,257 @@ print(index)  # [0 1 2 6 9 7]
 print(inverse)  # [0 1 2 0 1 0 3 5 2 4]
 print(counts)  # [3 2 2 1 1 1]
 ```
+
+## 11.4 NumPy函数
+
+### 11.4.1 字符串函数
+
+NumPy 字符串函数定义在`numpy.char`类中，用于对`dtype`为`numpy.string_`或`numpy.unicode_`的数组执行向量化字符串操作。
+
+`add()`函数对两个数组中的元素进行字符串拼接。例如：
+
+```python
+import numpy as np
+
+print(np.char.add('hello', ' world'))  # hello world
+print(np.char.add(['hello', 'my'], [' world', ' son']))  # ['hello world' 'my son']
+```
+
+`multiply()`函数将字符串重复若干次。例如：
+
+```python
+import numpy as np
+
+print(np.char.multiply('hello', 3))  # hellohellohello
+print(np.char.multiply(['ok', 'id'], 2))  # ['okok' 'idid']
+```
+
+`center()`函数将字符串居中，并使用指定字符在左侧和右侧进行填充。例如：
+
+```python
+import numpy as np
+
+print(np.char.center('ok', 10, fillchar='-'))  # ----ok----
+print(np.char.center(['good', 'hello'], 8, fillchar='*'))  # ['**good**' '*hello**']
+```
+
+`capitalize()`函数将字符串的第一个字母转换为大写。例如：
+
+```python
+import numpy as np
+
+print(np.char.capitalize('hello world!'))  # Hello world!
+print(np.char.capitalize(['hello world!', 'you pro?']))  # ['Hello world!' 'You pro?']
+```
+
+`title()`函数将字符串中每个单词的第一个字母转换为大写。
+`lower()`函数将字符串的所有字母转换成小写。
+`upper()`函数将字符串的所有字母转换成大写。
+
+`split()`函数用指定分隔符对字符串进行分割，并返回数组列表。例如：
+
+```python
+import numpy as np
+
+print(np.char.split(['you are my son', 'i can trust you'], sep=' '))
+# [list(['you', 'are', 'my', 'son']) list(['i', 'can', 'trust', 'you'])]
+```
+
+`splitlines()`函数用换行符分割字符串，返回数组列表。例如：
+
+```python
+import numpy as np
+
+print(np.char.splitlines(['you are\n my son', 'i \ncan trust you']))
+# [list(['you are', ' my son']) list(['i ', 'can trust you'])]
+```
+
+`strip()`函数去除字符串开头和结尾的指定字符。例如：
+
+```python
+import numpy as np
+
+print(np.char.strip(['**my**', '*ok'], '*'))  # ['my' 'ok']
+```
+
+`join()`函数用指定分隔符连接字符串中的各个字符。例如：
+
+```python
+import numpy as np
+
+print(np.char.join('-', ['good', 'nice']))  # ['g-o-o-d' 'n-i-c-e']
+print(np.char.join(['-', ':'], ['good', 'nice']))  # ['g-o-o-d' 'n:i:c:e']
+```
+
+`replace()`函数用新字符串替换字符串中的指定子串。例如：
+
+```python
+import numpy as np
+
+print(np.char.replace(['i am a good man', 'very good'], 'good', 'nice'))
+# ['i am a nice man' 'very nice']
+```
+
+`encode()`函数对字符串进行编码，将字符串转换成`bytes`类型。例如：
+
+```python
+import numpy as np
+
+print(np.char.encode(['i am a good man', 'very good'], 'utf-8'))
+# [b'i am a good man' b'very good']
+```
+
+`decode()`函数用于解码，将`bytes`类型值转换成字符串。例如：
+
+```python
+import numpy as np
+
+print(np.char.decode([b'i am a good man', b'very good'], 'utf-8'))
+# ['i am a good man' 'very good']
+```
+
+### 11.4.2 数学函数
+
+标准三角函数：`numpy.sin()`、`numpy.cos()`、`numpy.tan()`。参数为弧度制。
+反三角函数：`numpy.arcsin()`、`numpy.arccos()`、`numpy.arctan()`。返回值为弧度制。
+
+`numpy.around()`函数对浮点数进行四舍五入。参数为：
+
+1. `a`：数组。
+2. `decimals`：保留的小数位数。可选，默认值为 0，表示四舍五入到整数。如果为负数，将四舍五入到小数点左侧的位置。
+
+`numpy.floor()`函数用于向下取整，`numpy.ceil()`函数用于向上取整。
+
+### 11.4.3 算数函数
+
+四则运算：`numpy.add()`、`numpy.subtract()`、`numpy.multiply`、`numpy.divide()`
+
+`numpy.reciprocal()`函数用于取倒数。例如：
+
+```python
+import numpy as np
+
+print(np.reciprocal([0.25, 0.5, 2, 10]))  # [4.  2.  0.5 0.1]
+```
+
+`numpy.power()`函数为幂运算，第一个参数为底数，第二个参数为指数。例如：
+
+```python
+import numpy as np
+
+print(np.power([2, 3, 4], 3))  # [ 8 27 64]
+print(np.power([2, 3, 4], [4, 3, 2]))  # [16 27 16]
+```
+
+`numpy.mod()`和`numpy.remainder()`函数用于取余数。例如：
+
+```python
+import numpy as np
+
+print(np.mod([15, 16, 17], [5, 6, 7]))  # [0 4 3]
+```
+
+### 11.4.4 统计函数
+
+`numpy.amax()`：获取数组沿指定轴的最大值
+`numpy.amin()`：获取数组沿指定轴的最小值
+`numpy.ptp()`：计算数组中最大值与最小值的差
+
+```python
+import numpy as np
+
+x = np.random.randint(0, 100, 9).reshape(3, 3)
+print(x)
+# [[62 32 73]
+#  [77 35 34]
+#  [20 27 98]]
+
+# 所有元素中的最大值
+print(np.amax(x))  # 98
+
+# 每列的最大值
+print(np.amax(x, 0))  # [77 35 98]
+
+# 每行的最大值
+print(np.amax(x, 1))  # [73 77 98]
+
+# 所有元素中的最小值
+print(np.amin(x))  # 20
+
+# 每列的最小值
+print(np.amin(x, 0))  # [20 27 34]
+
+# 每行的最小值
+print(np.amin(x, 1))  # [32 34 20]
+
+print(np.ptp(x))  # 78
+print(np.ptp(x, 0))  # [57  8 64]
+print(np.ptp(x, 1))  # [41 43 78]
+```
+
+`numpy.percentile()`函数计算一个数，使得该数大于数组中指定百分比的数。参数为：
+
+1. `a`：数组
+2. `q`：百分数，取值在 0—100 之间。
+3. `axis`：轴
+
+```python
+import numpy as np
+
+x = np.array([[10, 7, 4], [3, 2, 1]])
+print(x)
+# [[10  7  4]
+#  [ 3  2  1]]
+
+# 计算一个数，使得该数大于数组 x 中 50% 的数
+print(np.percentile(x, 50))  # 3.5
+
+# 每列计算一个数，使得该数大于该列中 30% 的数
+print(np.percentile(x, 30, axis=0))  # [5.1 3.5 1.9]
+
+# 每行计算一个数，使得该数大于该行中 70% 的数
+print(np.percentile(x, 70, axis=1))  # [8.2 2.4]
+```
+
+`numpy.average()`函数用于计算数组元素的加权平均值。参数为：
+
+1. `a`：待计算的数组
+2. `axis`：轴。如果没有指定轴，则会将数组展开为一维数组。
+3. `weights`：权重
+4. `returned`：布尔值，如果为`True`，则返回权重的和，否则不返回。
+
+```python
+import numpy as np
+
+x = np.array([1, 2, 3, 4])
+w = np.array([4, 3, 2, 1])
+
+# 算术平均值
+print(np.average(x))  # 2.5
+
+# 加权平均值
+print(np.average(x, weights=w))  # 2.0
+```
+
+```python
+import numpy as np
+
+x = np.random.randint(1, 100, 6).reshape(3, 2)
+print(x)
+# [[16 39]
+#  [34 64]
+#  [ 9 39]]
+
+# 计算每列的加权平均值，权值的个数必须和行数匹配
+w0 = np.array([4, 3, 2])
+print(np.average(x, weights=w0, axis=0))  # [20.44444444 47.33333333]
+
+# 计算每行的加权平均值，权值的个数必须和列数匹配
+w1 = np.array([5, 7])
+print(np.average(x, weights=w1, axis=1))  # [29.41666667 51.5        26.5       ]
+```
+
+`numpy.median()`：计算数组元素的中位数
+`numpy.mean()`：计算数组元素的算术平均值
+`numpy.std()`：计算数组元素的标准差
+`numpy.var()`：计算数组元素的方差
