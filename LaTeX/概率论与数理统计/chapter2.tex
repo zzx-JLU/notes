@@ -297,3 +297,200 @@ $$
 C_n^k p^k (1-p)^{n-k}\approx \dfrac{\lambda^k e^{-\lambda}}{k!}
 $$
 其中 $\lambda=np$.也就是说，对于二项分布 $B(n,p)$，当 $n$ 很大而 $p$ 很小时，近似为泊松分布 $P(np)$.
+
+\subsection{几何分布}
+
+设试验 $E$ 只有两个对立的结果 $A$ 和 $\overline{A}$，并且 $P(A)=p, \, P(\overline{A})=1-p$，其中 $0<p<1$. 将试验 $E$ 独立地重复进行下去，直到事件 $A$ 发生为止. 如果用 $X$ 表示所需要的试验次数，则 $X$ 是一个随机变量，它可能取的值是 $1,2,3,\cdots$. $X$ 的概率分布为
+$$
+P\{X=k\}=(1-p)^{k-1} p, \; k=1,2,\cdots
+$$
+称随机变量 $X$ 服从参数为 $p$ 的\textbf{几何分布}.
+
+易知
+\begin{gather*}
+    (1-p)^{k-1} p > 0\\
+    \sum_{k=1}^\infty (1-p)^{k-1} p = p \sum_{i=0}^\infty (1-p)^i = p \cdot \dfrac{1}{1-(1-p)} = 1    
+\end{gather*}
+
+\subsection{均匀分布}
+
+\begin{definition}
+    如果连续型随机变量 $X$ 的概率密度为
+    $$
+    f(x)=\begin{cases}
+        \dfrac{1}{b-a} & a<x<b \\[0.5em]
+        0 & \text{其他}
+    \end{cases}
+    $$
+    则称 $X$ 在区间 $(a,b)$ 上服从\textbf{均匀分布}，记作 $X \sim U(a,b)$.
+\end{definition}
+
+服从均匀分布的随机变量 $X$ 的分布函数为
+$$
+F(x)=\begin{cases}
+    0 & x<a \\[0.2em]
+    \dfrac{x-a}{b-a} & a \leqslant x < b \\[0.5em]
+    1 & x \geqslant b
+\end{cases}
+$$
+
+\begin{figure}[htbp]
+    \centering
+
+    \subfigure[均匀分布的概率密度]{
+        \centering
+        \begin{tikzpicture}[>=Stealth]
+            % 坐标轴
+            \draw[->] (-1, 0)--(3, 0) node[below]{$x$};
+            \draw[->] (0, -1)--(0, 2.5) node[left]{$f(x)$};
+            \node at (0, 0) [below right] {$O$};
+            % 定义端点
+            \coordinate (m) at (-0.5, 1);
+            \coordinate (n) at (2.5, 1);
+            % 曲线
+            \draw[line width=1.5pt] (m)--(n);
+            \draw[line width=1.5pt] (-1, 0)--(-0.5, 0);
+            \draw[line width=1.5pt] (2.5, 0)--(2.85,0);
+            % 标记点
+            \fill (-0.5, 0) node[below]{$a$} circle (2pt);
+            \fill (2.5, 0) node[below]{$b$} circle (2pt);
+            \node at (m) [dot] {};
+            \node at (n) [dot] {};
+            \node at (0, 1) [above right] {$\dfrac{1}{b-a}$};
+        \end{tikzpicture}
+    }
+    \subfigure[均匀分布的分布函数]{
+        \centering
+        \begin{tikzpicture}[>=Stealth]
+            % 坐标轴
+            \draw[->] (-1, 0)--(4, 0) node[below]{$x$};
+            \draw[->] (0, -1)--(0, 2.5) node[left]{$F(x)$};
+            \node at (0, 0) [below right] {$O$};
+            % 曲线
+            \draw[line width=1.5pt] (-1, 0) -- (-0.5, 0) node[below]{$a$} -- (2.5, 1) -- (3.5, 1);
+            % 标记点
+            \node at (0, 1) [left] {$1$};
+            \node at (2.5, 0) [below] {$b$};
+            % 辅助线
+            \draw[dashed] (0, 1)--(2.5, 1)--(2.5, 0);
+        \end{tikzpicture}
+    }
+
+    \caption{}
+\end{figure}
+
+对任意的两个数 $x_1, x_2 \in (a,b)$，如果 $x_1 < x_2$，则有
+$$
+P\{x_1 \leqslant X \leqslant x_2\} = \int_{x_1}^{x_2} \dfrac{\text{d}x}{b-a} = \dfrac{x_2-x_1}{b-a}
+$$
+这说明随机变量 $X$ 位于区间 $(a,b)$ 的任一子区间 $[x_1,x_2]$ 内的概率，只依赖于子区间 $[x_1,x_2]$ 的长度，而与子区间的位置无关.
+
+\subsection{指数分布}
+
+\begin{definition}
+    如果连续型随机变量 $X$ 的概率密度为
+    $$
+    f(x)=\begin{cases}
+        \lambda e^{-\lambda x} & x>0 \\
+        0 & x \leqslant 0
+    \end{cases}
+    $$
+    其中 $\lambda>0$ 是常数，则称 $X$ 服从参数为 $\lambda$ 的\textbf{指数分布}.
+\end{definition}
+
+服从指数分布的随机变量 $X$ 的分布函数为
+$$
+F(x)=\begin{cases}
+    0 & x \leqslant 0\\
+    1-e^{-\lambda x} & x>0
+\end{cases}
+$$
+
+\begin{figure}[htbp]
+    \centering
+
+    \subfigure[指数分布的概率密度]{
+        \centering
+        \begin{tikzpicture}[>=Stealth]
+            % 坐标轴
+            \draw[->] (-1, 0)--(3.5, 0) node[below]{$x$};
+            \draw[->] (0, -1)--(0, 2) node[left]{$f(x)$};
+            \node at (0, 0) [below left] {$O$};
+            % 曲线
+            \draw[domain=0:3, line width=1.5pt] plot (\x, {exp(-1 * \x)});
+            \draw[line width=1.5pt] (-1, 0)--(0, 0);
+            % 标记点
+            \node at (0, 1) [dot, label={left: $\lambda$}] {};
+            \fill (0, 0) circle (2pt);
+        \end{tikzpicture}
+    }
+    \subfigure[指数分布的分布函数]{
+        \centering
+        \begin{tikzpicture}[>=Stealth]
+            % 坐标轴
+            \draw[->] (-1, 0)--(3.5, 0) node[below]{$x$};
+            \draw[->] (0, -1)--(0, 2) node[left]{$F(x)$};
+            \node at (0, 0) [below left] {$O$};
+            % 曲线
+            \draw[domain=0:3, line width=1.5pt] plot (\x, {1 - exp(-1 * \x)});
+            \draw[line width=1.5pt] (-1, 0)--(0, 0);
+            % 辅助线
+            \draw[dashed] (0, 1) node[left]{$1$} -- (3.2, 1);
+        \end{tikzpicture}
+    }
+
+    \caption{}
+\end{figure}
+
+\subsection{正态分布}
+
+\subsubsection{正态分布及其性质}
+
+\begin{definition}
+    如果连续型随机变量 $X$ 的概率密度为
+    $$
+    f(x) = \dfrac{1}{\sqrt{2\pi} \sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \; -\infty < x < +\infty
+    $$
+    其中 $\mu,\sigma \, (\sigma>0)$ 为常数，则称 $X$ 服从参数为 $\mu,\sigma$ 的\textbf{正态分布}，记作 $X \sim N(\mu,\sigma^2)$.
+\end{definition}
+
+$X$ 的分布函数为
+$$
+F(x) = \dfrac{1}{\sqrt{2\pi} \sigma} \int_{-\infty}^x e^{-\frac{(t-\mu)^2}{2\sigma^2}} \, \text{d}t, \; -\infty < x < +\infty
+$$
+
+\begin{figure}[htbp]
+    \centering
+
+    \subfigure[正态分布的概率密度]{
+        \centering
+        \begin{tikzpicture}[>=Stealth, yscale=4]
+            % 定义变量
+            \def\Mu{2}
+            \def\Sigma{1}
+            % 坐标轴
+            \draw[->] (\Mu-3*\Sigma-1, 0)--(\Mu+3*\Sigma+1, 0) node[below]{$x$};
+            \draw[->] (0, -0.5)--(0, 1) node[right]{$f(x)$};
+            \node at (0, 0) [below left] {$O$};
+            % 曲线
+            \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
+            % 辅助线
+            \draw[dashed] (0, {1/(sqrt(2*pi)*\Sigma)}) node[left]{$\dfrac{1}{\sqrt{2 \pi} \sigma}$} -- (\Mu, {1/(sqrt(2*pi)*\Sigma)}) -- (\Mu, 0) node[below]{$\mu$};
+        \end{tikzpicture}
+    }
+    \subfigure[正态分布的分布函数]{
+        \centering
+        \begin{tikzpicture}[>=Stealth]
+            % 坐标轴
+            \draw[->] (-1, 0)--(3.5, 0) node[below]{$x$};
+            \draw[->] (0, -1)--(0, 2) node[left]{$F(x)$};
+            \node at (0, 0) [below left] {$O$};
+            % 曲线
+            \draw[domain=0:3, line width=1.5pt] plot (\x, {1 - exp(-1 * \x)});
+            % 辅助线
+            \draw[dashed] (0, 1) node[left]{$1$} -- (3.2, 1);
+        \end{tikzpicture}
+    }
+
+    \caption{}
+\end{figure}
