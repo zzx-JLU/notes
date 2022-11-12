@@ -325,7 +325,7 @@ $$
     则称 $X$ 在区间 $(a,b)$ 上服从\textbf{均匀分布}，记作 $X \sim U(a,b)$.
 \end{definition}
 
-服从均匀分布的随机变量 $X$ 的分布函数为
+若 $X \sim U(a,b)$，则 $X$ 的分布函数为
 $$
 F(x)=\begin{cases}
     0 & x<a \\[0.2em]
@@ -454,7 +454,7 @@ $$
     其中 $\mu,\sigma \, (\sigma>0)$ 为常数，则称 $X$ 服从参数为 $\mu,\sigma$ 的\textbf{正态分布}，记作 $X \sim N(\mu,\sigma^2)$.
 \end{definition}
 
-$X$ 的分布函数为
+若 $X \sim N(\mu,\sigma^2)$，则 $X$ 的分布函数为
 $$
 F(x) = \dfrac{1}{\sqrt{2\pi} \sigma} \int_{-\infty}^x e^{-\frac{(t-\mu)^2}{2\sigma^2}} \, \text{d}t, \; -\infty < x < +\infty
 $$
@@ -464,33 +464,101 @@ $$
 
     \subfigure[正态分布的概率密度]{
         \centering
-        \begin{tikzpicture}[>=Stealth, yscale=4]
+        \begin{tikzpicture}[>=Stealth, yscale=5]
             % 定义变量
             \def\Mu{2}
             \def\Sigma{1}
             % 坐标轴
-            \draw[->] (\Mu-3*\Sigma-1, 0)--(\Mu+3*\Sigma+1, 0) node[below]{$x$};
-            \draw[->] (0, -0.5)--(0, 1) node[right]{$f(x)$};
+            \draw[->] (\Mu-3*\Sigma-0.5, 0)--(\Mu+3*\Sigma+0.5, 0) node[below]{$x$};
+            \draw[->] (0, -0.3)--(0, 0.6) node[right]{$f(x)$};
             \node at (0, 0) [below left] {$O$};
             % 曲线
             \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
             % 辅助线
             \draw[dashed] (0, {1/(sqrt(2*pi)*\Sigma)}) node[left]{$\dfrac{1}{\sqrt{2 \pi} \sigma}$} -- (\Mu, {1/(sqrt(2*pi)*\Sigma)}) -- (\Mu, 0) node[below]{$\mu$};
+            \draw[dashed] (\Mu-\Sigma, 0) node[below]{$\mu-\sigma$} -- (\Mu-\Sigma, {exp(-0.5) / (sqrt(2*pi)*\Sigma)});
+            \draw[dashed] (\Mu+\Sigma, 0) node[below]{$\mu+\sigma$} -- (\Mu+\Sigma, {exp(-0.5) / (sqrt(2*pi)*\Sigma)});
         \end{tikzpicture}
     }
     \subfigure[正态分布的分布函数]{
         \centering
-        \begin{tikzpicture}[>=Stealth]
+        \begin{tikzpicture}[>=Stealth, yscale=2]
+            % 定义变量
+            \def\Mu{2}
+            \def\Sigma{1}
             % 坐标轴
-            \draw[->] (-1, 0)--(3.5, 0) node[below]{$x$};
-            \draw[->] (0, -1)--(0, 2) node[left]{$F(x)$};
+            \draw[->] (-1, 0)--(5, 0) node[below]{$x$};
+            \draw[->] (0, -0.75)--(0, 1.5) node[left]{$F(x)$};
             \node at (0, 0) [below left] {$O$};
             % 曲线
-            \draw[domain=0:3, line width=1.5pt] plot (\x, {1 - exp(-1 * \x)});
+            \draw[domain=-0.5:4.5, line width=1.5pt] plot (\x, {1 / (1+exp(-1.70174454109 * (\x-\Mu)))});
             % 辅助线
-            \draw[dashed] (0, 1) node[left]{$1$} -- (3.2, 1);
+            \draw[dashed] (0, 1) node[left]{$1$} -- (4.7, 1);
+            \draw[dashed] (0, 0.5) node[left]{$0.5$} -- (\Mu, 0.5) -- (\Mu, 0) node[below]{$\mu$};
         \end{tikzpicture}
     }
 
     \caption{}
 \end{figure}
+
+概率密度曲线 $y=f(x)$ 关于直线 $x=\mu$ 对称，并在 $x=\mu$ 处取得最大值 $\dfrac{1}{\sqrt{2\pi}\sigma}$，在横坐标 $x=\mu\pm\sigma$ 处有拐点，以 $x$ 轴为水平渐近线.
+
+如果固定 $\sigma$，改变 $\mu$ 的值，则概率密度曲线沿着 $x$ 轴平移，但形状不变，如图 \ref{fig:mu} 所示.
+
+\begin{figure}[htbp]
+    \centering
+
+    \begin{tikzpicture}[>=Stealth, yscale=4]
+        % 定义变量
+        \def\Mu{2}
+        \def\Sigma{0.7}
+        \def\xMu{4.5}
+        % 坐标轴
+        \draw[->] (\Mu-3*\Sigma-0.5, 0)--(\xMu+3*\Sigma+0.5, 0) node[below]{$x$};
+        \draw[->] (0, -0.2)--(0, 0.8) node[right]{$f(x)$};
+        \node at (0, 0) [below left] {$O$};
+        % 曲线
+        \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
+        \draw[domain=\xMu-3*\Sigma:\xMu+3*\Sigma, line width=1.5pt] plot (\x, {exp(-1 * pow(\x-\xMu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
+        % 辅助线
+        \draw[dashed] (\Mu, {1/(sqrt(2*pi)*\Sigma)}) -- (\Mu, 0) node[below]{$\mu_1$};
+        \draw[dashed] (\xMu, {1/(sqrt(2*pi)*\Sigma)}) -- (\xMu, 0) node[below]{$\mu_2$};
+    \end{tikzpicture}
+
+    \caption{}
+    \label{fig:mu}
+\end{figure}
+
+如果固定 $\mu$，改变 $\sigma$ 的值，则由 $y_{\text{max}}=\dfrac{1}{\sqrt{2\pi}\sigma}$ 可知，当 $\sigma$ 越小时概率密度曲线在 $x=\mu$ 附近越陡峭，$X$ 落在 $x=\mu$ 附近的概率越大；当 $\sigma$ 越大时概率密度曲线越平坦，如图 \ref{fig:sigma} 所示.
+
+\begin{figure}[htbp]
+    \centering
+
+    \begin{tikzpicture}[>=Stealth, yscale=5]
+        % 定义变量
+        \def\Mu{2}
+        \def\Sigma{1}
+        \def\sSigma{0.5}
+        \def\tSigma{2}
+        % 坐标轴
+        \draw[->] (\Mu-2*\tSigma-0.5, 0)--(\Mu+2*\tSigma+0.5, 0) node[below]{$x$};
+        \draw[->] (0, -0.2)--(0, 0.9) node[right]{$f(x)$};
+        \node at (0, 0) [below left] {$O$};
+        % 曲线
+        \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
+        \draw[domain=\Mu-3*\sSigma:\Mu+3*\sSigma, line width=1.5pt, draw=red] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\sSigma*\sSigma)) / (sqrt(2*pi)*\sSigma)});
+        \draw[domain=\Mu-2*\tSigma:\Mu+2*\tSigma, line width=1.5pt, draw=blue] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\tSigma*\tSigma)) / (sqrt(2*pi)*\tSigma)});
+        % 辅助线
+        \draw[dashed] (\Mu, {1/(sqrt(2*pi)*\sSigma)}) -- (\Mu, 0) node[below]{$\mu$};
+        % 图例
+        \draw (4, 0.9) rectangle (7, 0.5);
+        \draw[line width=1.5pt, draw=red] (4.25, 0.8) -- (5.25, 0.8) node[right]{$\sigma=0.5$};
+        \draw[line width=1.5pt] (4.25, 0.7) -- (5.25, 0.7) node[right]{$\sigma=1$};
+        \draw[line width=1.5pt, draw=blue] (4.25, 0.6) -- (5.25, 0.6) node[right]{$\sigma=2$};
+    \end{tikzpicture}
+
+    \caption{}
+    \label{fig:sigma}
+\end{figure}
+
+\subsubsection{标准正态分布}

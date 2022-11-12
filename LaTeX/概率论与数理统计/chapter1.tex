@@ -396,25 +396,27 @@ $$
         \vspace{-1em}
         \setlength{\abovecaptionskip}{0cm}
 
-        \begin{tikzpicture}[xscale=0.5, yscale=0.4, >=Stealth]
+        \begin{tikzpicture}[>=Stealth]
+            \def\xscale{0.5}
+            \def\yscale{0.4}
             % 两条平行线
-            \draw (0, 0)--(10, 0);
-            \draw (0, 6)--(10, 6);
+            \draw (0, 0)--(10*\xscale, 0);
+            \draw (0, 6*\yscale)--(10*\xscale, 6*\yscale);
             % 平行线间距
-            \draw[<->] (1, 0) --node[left]{$2a$} (1, 6);
+            \draw[<->] (1*\xscale, 0) --node[left]{$2a$} (1*\xscale, 6*\yscale);
             % 定义针的中点
-            \coordinate (m) at (5.5, 2);
-            \fill (m) circle (.1);
+            \coordinate (m) at (5.5*\xscale, 2*\yscale);
+            \fill (m) circle (2pt);
             % 定义交点
-            \coordinate (a) at (3.5, 0);
-            \coordinate (b) at (10, 0);
+            \coordinate (a) at (3.5*\xscale, 0);
+            \coordinate (b) at (10*\xscale, 0);
             % 针
-            \draw (3, -0.5) --node[left]{$l$}
+            \draw (3*\xscale, -0.5*\yscale) --node[left]{$l$}
                 (m) node[left]{$M$}
                 --node[left]{$l$}
-                (8, 4.5);
+                (8*\xscale, 4.5*\yscale);
             % 针的中点到平行线的距离
-            \draw (m) --node[right]{$x$} (5.5, 0);
+            \draw (m) --node[right]{$x$} (5.5*\xscale, 0);
             % 角度标注
             \pic["$\varphi$", draw=black, -, angle eccentricity=1.6, angle radius=0.4cm]
                 {angle=b--a--m};
