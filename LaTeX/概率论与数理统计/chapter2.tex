@@ -304,7 +304,7 @@ $$
 $$
 P\{X=k\}=(1-p)^{k-1} p, \; k=1,2,\cdots
 $$
-称随机变量 $X$ 服从参数为 $p$ 的\textbf{几何分布}.
+称随机变量 $X$ 服从参数为 $p$ 的\textbf{几何分布}（geometric distribution）.
 
 易知
 \begin{gather*}
@@ -322,7 +322,7 @@ $$
         0 & \text{其他}
     \end{cases}
     $$
-    则称 $X$ 在区间 $(a,b)$ 上服从\textbf{均匀分布}，记作 $X \sim U(a,b)$.
+    则称 $X$ 在区间 $(a,b)$ 上服从\textbf{均匀分布}（uniform distribution），记作 $X \sim U(a,b)$.
 \end{definition}
 
 若 $X \sim U(a,b)$，则 $X$ 的分布函数为
@@ -395,7 +395,7 @@ $$
         0 & x \leqslant 0
     \end{cases}
     $$
-    其中 $\lambda>0$ 是常数，则称 $X$ 服从参数为 $\lambda$ 的\textbf{指数分布}.
+    其中 $\lambda>0$ 是常数，则称 $X$ 服从参数为 $\lambda$ 的\textbf{指数分布}（exponential distribution）.
 \end{definition}
 
 服从指数分布的随机变量 $X$ 的分布函数为
@@ -473,7 +473,7 @@ $$
             \draw[->] (0, -0.3)--(0, 0.6) node[right]{$f(x)$};
             \node at (0, 0) [below left] {$O$};
             % 曲线
-            \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
+            \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt, smooth] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
             % 辅助线
             \draw[dashed] (0, {1/(sqrt(2*pi)*\Sigma)}) node[left]{$\dfrac{1}{\sqrt{2 \pi} \sigma}$} -- (\Mu, {1/(sqrt(2*pi)*\Sigma)}) -- (\Mu, 0) node[below]{$\mu$};
             \draw[dashed] (\Mu-\Sigma, 0) node[below]{$\mu-\sigma$} -- (\Mu-\Sigma, {exp(-0.5) / (sqrt(2*pi)*\Sigma)});
@@ -491,7 +491,7 @@ $$
             \draw[->] (0, -0.75)--(0, 1.5) node[left]{$F(x)$};
             \node at (0, 0) [below left] {$O$};
             % 曲线
-            \draw[domain=-0.5:4.5, line width=1.5pt] plot (\x, {1 / (1+exp(-1.70174454109 * (\x-\Mu)))});
+            \draw[domain=-0.5:4.5, line width=1.5pt, smooth] plot (\x, {1 / (1+exp(-1.70174454109 * (\x-\Mu)))});
             % 辅助线
             \draw[dashed] (0, 1) node[left]{$1$} -- (4.7, 1);
             \draw[dashed] (0, 0.5) node[left]{$0.5$} -- (\Mu, 0.5) -- (\Mu, 0) node[below]{$\mu$};
@@ -518,8 +518,8 @@ $$
         \draw[->] (0, -0.2)--(0, 0.8) node[right]{$f(x)$};
         \node at (0, 0) [below left] {$O$};
         % 曲线
-        \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
-        \draw[domain=\xMu-3*\Sigma:\xMu+3*\Sigma, line width=1.5pt] plot (\x, {exp(-1 * pow(\x-\xMu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
+        \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt, smooth] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
+        \draw[domain=\xMu-3*\Sigma:\xMu+3*\Sigma, line width=1.5pt, smooth] plot (\x, {exp(-1 * pow(\x-\xMu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
         % 辅助线
         \draw[dashed] (\Mu, {1/(sqrt(2*pi)*\Sigma)}) -- (\Mu, 0) node[below]{$\mu_1$};
         \draw[dashed] (\xMu, {1/(sqrt(2*pi)*\Sigma)}) -- (\xMu, 0) node[below]{$\mu_2$};
@@ -529,7 +529,7 @@ $$
     \label{fig:mu}
 \end{figure}
 
-如果固定 $\mu$，改变 $\sigma$ 的值，则由 $y_{\text{max}}=\dfrac{1}{\sqrt{2\pi}\sigma}$ 可知，当 $\sigma$ 越小时概率密度曲线在 $x=\mu$ 附近越陡峭，$X$ 落在 $x=\mu$ 附近的概率越大；当 $\sigma$ 越大时概率密度曲线越平坦，如图 \ref{fig:sigma} 所示.
+如果固定 $\mu$，改变 $\sigma$ 的值，则由 $y_{\text{max}}=\dfrac{1}{\sqrt{2\pi}\sigma}$ 可知：$\sigma$ 越小，概率密度曲线在 $x=\mu$ 附近越陡峭，$X$ 落在 $x=\mu$ 附近的概率越大；$\sigma$ 越大，概率密度曲线越平坦.如图 \ref{fig:sigma} 所示.
 
 \begin{figure}[htbp]
     \centering
@@ -545,9 +545,9 @@ $$
         \draw[->] (0, -0.2)--(0, 0.9) node[right]{$f(x)$};
         \node at (0, 0) [below left] {$O$};
         % 曲线
-        \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
-        \draw[domain=\Mu-3*\sSigma:\Mu+3*\sSigma, line width=1.5pt, draw=red] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\sSigma*\sSigma)) / (sqrt(2*pi)*\sSigma)});
-        \draw[domain=\Mu-2*\tSigma:\Mu+2*\tSigma, line width=1.5pt, draw=blue] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\tSigma*\tSigma)) / (sqrt(2*pi)*\tSigma)});
+        \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt, smooth] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
+        \draw[domain=\Mu-3*\sSigma:\Mu+3*\sSigma, line width=1.5pt, draw=red, smooth] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\sSigma*\sSigma)) / (sqrt(2*pi)*\sSigma)});
+        \draw[domain=\Mu-2*\tSigma:\Mu+2*\tSigma, line width=1.5pt, draw=blue, smooth] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\tSigma*\tSigma)) / (sqrt(2*pi)*\tSigma)});
         % 辅助线
         \draw[dashed] (\Mu, {1/(sqrt(2*pi)*\sSigma)}) -- (\Mu, 0) node[below]{$\mu$};
         % 图例
@@ -562,3 +562,178 @@ $$
 \end{figure}
 
 \subsubsection{标准正态分布}
+
+\begin{definition}
+    设 $X \sim N(\mu,\sigma^2)$，如果 $\mu=0,\sigma=1$，则称 $X$ 服从\textbf{标准正态分布}（standard normal distribution），记作 $X \sim N(0,1)$.
+\end{definition}
+
+服从标准正态分布的随机变量 $X$ 的概率密度记作 $\varphi(x)$，分布函数记作 $\varPhi(x)$，即
+\begin{gather*}
+    \varphi(x) = \dfrac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}, \; -\infty < x < +\infty \\
+    \varPhi(x) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-\frac{t^2}{2}}\,\text{d}t, \; -\infty < x < +\infty
+\end{gather*}
+
+\begin{figure}[htbp]
+    \centering
+
+    \subfigure[标准正态分布的概率密度]{
+        \centering
+        \begin{tikzpicture}[>=Stealth, yscale=5]
+            % 定义变量
+            \def\Mu{0}
+            \def\Sigma{1}
+            % 坐标轴
+            \draw[->] (\Mu-3*\Sigma-0.5, 0)--(\Mu+3*\Sigma+0.5, 0) node[below]{$x$};
+            \draw[->] (0, -0.2)--(0, 0.6) node[right]{$\varphi(x)$};
+            \node at (0, 0) [below left] {$O$};
+            % 曲线
+            \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt, smooth] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
+        \end{tikzpicture}
+    }
+    \subfigure[标准正态分布的分布函数]{
+        \centering
+        \begin{tikzpicture}[>=Stealth, yscale=2]
+            % 定义变量
+            \def\Mu{0}
+            \def\Sigma{1}
+            % 坐标轴
+            \draw[->] (\Mu-3*\Sigma-0.5, 0)--(\Mu+3*\Sigma+0.5, 0) node[below]{$x$};
+            \draw[->] (0, -0.5)--(0, 1.5) node[left]{$\varPhi(x)$};
+            \node at (0, 0) [below left] {$O$};
+            % 曲线
+            \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt, smooth] plot (\x, {1 / (1+exp(-1.70174454109 * (\x-\Mu)))});
+            % 辅助线
+            \draw[dashed] (\Mu-3*\Sigma-0.2, 1) -- (\Mu+3*\Sigma+0.2, 1);
+            % 特殊点
+            \node at (0, 0.5) [left] {$0.5$};
+            \node at (0, 1) [below left] {$1$};
+            % 刻度
+            \draw (-3pt, 0.5)--(3pt, 0.5);
+        \end{tikzpicture}
+    }
+
+    \caption{}
+\end{figure}
+
+\setcounter{propertyname}{0}
+
+\begin{property}
+    \begin{equation} \label{equation:Phi(-x)}
+        \varPhi(-x) = 1-\varPhi(x)
+    \end{equation}
+\end{property}
+
+\begin{myproof}
+    由于 $\varphi(x)$ 是偶函数，所以 $\varphi(-x)=\varphi(x)$，则
+    $$
+    \begin{aligned}
+        \varPhi(-x) &= \int_{-\infty}^{-x} \varphi(t) \,\text{d}t \\
+        &= \int_{-\infty}^{+\infty} \varphi(t) \,\text{d}t - \int_{-x}^{+\infty} \varphi(t) \,\text{d}t \\
+        & \xlongequal{u=-t} 1 - \int_{x}^{-\infty} \varphi(-u) \,\text{d}(-u) \\
+        &= 1 - \int_{-\infty}^{x} \varphi(u) \,\text{d}u \\
+        &= 1-\varPhi(x)
+    \end{aligned}
+    $$
+\end{myproof}
+
+\begin{property}
+    若 $X \sim N(0,1)$，则对于任意正的实数 $a$，有
+    \begin{equation} \label{equation:P(X>a)}
+        P\{|X|>a\}=2[1-\varPhi(a)]
+    \end{equation}
+    \begin{equation} \label{equation:P(X<=a)}
+        P\{|X| \leqslant a\} = 2\varPhi(a)-1
+    \end{equation}
+\end{property}
+
+\begin{myproof}
+    $$
+    P\{|X|>a\} = 2 P\{X>a\} = 2(1-P\{X \leqslant a\}) = 2[1-\varPhi(a)]
+    $$
+    $$
+    P\{|X| \leqslant a\} = 1-P\{|X|>a\} = 1-2[1-\varPhi(a)] = 2\varPhi(a)-1
+    $$
+\end{myproof}
+
+\begin{property}[(正态分布的标准化)] \label{prop:standard}
+    若 $X \sim N(\mu,\sigma^2)$，则
+    \begin{equation} \label{equation:standard}
+        F(x)=\varPhi(\dfrac{x-\mu}{\sigma})
+    \end{equation}
+\end{property}
+
+\begin{myproof}
+    设 $X \sim N(\mu,\sigma^2)$，其分布函数为
+    $$
+    F(x) = \dfrac{1}{\sqrt{2\pi}\sigma} \int_{-\infty}^x e^{-\frac{(t-\mu)^2}{2\sigma^2}}\,\text{d}t, \; -\infty < x < +\infty
+    $$
+    令 $u=\dfrac{t-\mu}{\sigma}$，可得
+    $$
+    F(x)=\dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^{\frac{x-\mu}{\sigma}} e^{-\frac{u^2}{2}}\,\text{d}u
+    $$
+    即
+    $$
+        F(x)=\varPhi(\dfrac{x-\mu}{\sigma})
+    $$
+\end{myproof}
+
+由性质 \ref*{prop:standard} 可得，如果 $X \sim N(\mu,\sigma^2)$，则对于任意实数 $x_1,x_2\,(x_1 < x_2)$，有
+\begin{equation}
+    P\{x_1 < X < x_2\} = F(x_2)-F(x_1) = \varPhi(\dfrac{x_2-\mu}{\sigma}) - \varPhi(\dfrac{x_1-\mu}{\sigma})
+\end{equation}
+
+由式 \eqref{equation:Phi(-x)} 和式 \eqref{equation:standard} 有
+$$
+\begin{aligned}
+    P\{|X-\mu| < k \sigma\} &= P\{\mu - k \sigma < X \leqslant \mu + k \sigma\} \\
+    &= F(\mu+k\sigma) - F(\mu-k\sigma) \\
+    &= \varPhi(k)-\varPhi(-k) \\
+    &= 2\varPhi(k)-1
+\end{aligned}
+$$
+所以
+\begin{gather*}
+    P\{|X-\mu|<\sigma\}=2\varPhi(1)-1=0.6826\\
+    P\{|X-\mu|<2\sigma\}=2\varPhi(2)-1=0.9544\\
+    P\{|X-\mu|<3\sigma\}=2\varPhi(3)-1=0.9974
+\end{gather*}
+
+$3\sigma$ 规则：正态随机变量 $X$ 以 99.74\% 的概率落在以 $\mu$ 为中心、以 $3\sigma$ 为半径的区间内，而落在该区间以外的概率很小，在一次试验中，$X$ 落在该区间以外这个事件几乎不会发生.
+
+\subsubsection{标准正态分布的上 $\alpha$ 分位点}
+
+\begin{definition}
+    设 $X \sim N(0,1)$. 对于给定的 $\alpha \, (0 < \alpha < 1)$，如果 $u_{\alpha}$ 满足条件
+    $$
+    P\{X \geqslant u_{\alpha}\} = \dfrac{1}{\sqrt{2\pi}} \int_{u_{\alpha}}^{+\infty} e^{-\frac{x^2}{2}} \, \text{d}x = \alpha
+    $$
+    则称点 $u_{\alpha}$ 为标准正态分布的\textbf{上} $\alpha$ \textbf{分位点}.
+\end{definition}
+
+上 $\alpha$ 分位点的含义如图 \ref{fig:alpha} 所示.
+
+\begin{figure}[htbp]
+    \centering
+
+    \begin{tikzpicture}[>=Stealth, yscale=5]
+        % 定义变量
+        \def\Mu{0}
+        \def\Sigma{1}
+        \def\uAlpha{1.7}
+        % 坐标轴
+        \draw[->] (\Mu-3*\Sigma-0.5, 0)--(\Mu+3*\Sigma+0.5, 0) node[below]{$x$};
+        \draw[->] (0, -0.2)--(0, 0.6) node[right]{$\varphi(x)$};
+        \node at (0, 0) [below left] {$O$};
+        % 曲线
+        \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt, smooth] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
+        % 分割线
+        \draw (\uAlpha, 0) node[below]{$u_{\alpha}$} -- (\uAlpha, {exp(-1 * pow(\uAlpha-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
+        % 填充
+        \fill[pattern color=gray, pattern=north east lines] (\uAlpha, 0) -- (\uAlpha, {exp(-1 * pow(\uAlpha-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)}) -- plot[domain=\uAlpha:\Mu+3*\Sigma, smooth] (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)}) -- (\Mu+3*\Sigma, 0);
+        % 指示线
+        \draw (2, 0.02) -- (2.5, 0.2) node[above]{$\alpha$};
+    \end{tikzpicture}
+
+    \caption{}
+    \label{fig:alpha}
+\end{figure}
