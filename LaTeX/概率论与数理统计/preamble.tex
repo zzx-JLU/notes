@@ -118,6 +118,7 @@
 \newcounter{problemname}[chapter] % 例题计数器
 \renewcommand{\theproblemname}{\arabic{chapter}.\arabic{problemname}}
 \newenvironment{problem}[1][]{
+    \vspace{1em}
     \refstepcounter{problemname}
     \par\noindent
     【\textbf{例\theproblemname}】#1\quad}

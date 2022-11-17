@@ -737,3 +737,112 @@ $3\sigma$ 规则：正态随机变量 $X$ 以 99.74\% 的概率落在以 $\mu$ �
     \caption{}
     \label{fig:alpha}
 \end{figure}
+
+根据对称性，上 $1-\alpha$ 分位点 $u_{1-\alpha}$ 与上 $\alpha$ 分位点 $u_{\alpha}$ 关于原点对称，即有
+\begin{equation}
+    u_{1-\alpha}=-u_{\alpha}
+\end{equation}
+
+因为
+$$
+P\{X \leqslant u_{\alpha}\} = 1 - P\{X > u_{\alpha}\} = 1-\alpha
+$$
+所以
+\begin{equation}
+    \varPhi(u_{\alpha})=1-\alpha
+\end{equation}
+
+\section{随机变量的函数的分布}
+
+\subsection{离散型随机变量的函数的分布}
+
+设离散型随机变量 $X$ 的概率分布为
+$$
+P\{X=x_k\}=p_k, \; k=1,2,\cdots
+$$
+$y=g(x)$ 是连续函数，则对于 $X$ 的函数 $Y=g(X)$，有
+$$
+P\{Y=g(x_k)\}=p_k, \; k=1,2,\cdots
+$$
+如果数值 $g(x_k)(k=1,2,\cdots)$ 中有相等的，就把 $Y$ 取这些相等的数值的概率相加，作为 $Y=g(X)$ 取该值的概率，便可得到 $Y=g(X)$ 的概率分布.
+
+\begin{problem}
+    设随机变量 $X$ 的概率密度为
+
+    \begin{table}[htbp]
+        \centering
+
+        \begin{tabular}{c | c c c c c}
+            \hline
+            $X$ & -2 & -1 & 0 & 1 & 2 \\
+            \hline
+            $P$ & 0.2 & 0.1 & 0.3 & 0.2 & 0.2 \\
+            \hline
+        \end{tabular}
+    \end{table}
+    求 $Y=(X+1)^2$ 的概率分布.
+\end{problem}
+
+\begin{solution}
+    随机变量 $Y=(X+1)^2$ 的所有可能取值为 0,1,4,9，且 $Y$ 取每个值的概率为
+    \begin{align*}
+        & P\{Y=0\} = P\{(X+1)^2 = 0\} = P\{X=-1\} = 0.1\\
+        & P\{Y=1\} = P\{(X+1)^2 = 1\} = P\{X=0\} + P\{X=-2\} = 0.5\\
+        & P\{Y=4\} = P\{(X+1)^2 = 4\} = P\{X=1\} = 0.2\\
+        & P\{Y=9\} = P\{(X+1)^2 = 9\} = P\{X=2\} = 0.2
+    \end{align*}
+    
+    所以 $Y=(X+1)^2$ 的概率分布为\newline
+    
+    \centering
+    \begin{tabular}{c | c c c c}
+        \hline
+        $Y$ & 0 & 1 & 4 & 9 \\
+        \hline
+        $P$ & 0.1 & 0.5 & 0.2 & 0.2 \\
+        \hline
+    \end{tabular}
+\end{solution}
+
+\subsection{连续型随机变量的函数的分布}
+
+求随机变量 $Y=g(X)$ 的分布函数的关键一步是从 $g(X) \leqslant y$ 中解出 $X$ 应满足的不等式.
+
+\begin{problem}
+    设随机变量 $X$ 在区间 $(-1,3)$ 上服从均匀分布，记
+    $$
+    Y=\begin{cases}
+        -1 & X<0 \\
+        0 & X=0 \\
+        1 & X>0
+    \end{cases}
+    $$
+    求随机变量 $Y$ 的概率分布.
+\end{problem}
+
+\begin{solution}
+    $X$ 的概率密度为
+    $$
+    f(x)=\begin{cases}
+        \dfrac{1}{4} & -1 < x < 3\\
+        0 & \text{其他}
+    \end{cases}
+    $$
+
+    $Y$ 是一个离散型随机变量，可取值为 -1,0,1，且
+    \begin{align*}
+        & P\{Y=-1\} = P\{X<0\} = \int_{-1}^0 \dfrac{1}{4}\text{d}x = \dfrac{1}{4} \\
+        & P\{Y=0\} = P\{X=0\} = 0 \\
+        & P\{Y=1\} = P\{X>0\} = \int_0^3 \dfrac{1}{4}\text{d}x = \dfrac{3}{4}
+    \end{align*}
+    因此，$Y$ 的概率分布为\newline
+
+    \centering
+    \begin{tabular}{c | c c c}
+        \hline
+        $Y$ & -1 & 0 & 1 \\
+        \hline
+        \rule{0pt}{20pt}$P$ & $\dfrac{1}{4}$ & 0 & $\dfrac{3}{4}$ \\[4pt]
+        \hline
+    \end{tabular}
+\end{solution}
