@@ -846,3 +846,97 @@ $$
         \hline
     \end{tabular}
 \end{solution}
+
+\begin{problem}
+    设随机变量 $X$ 服从柯西（Cauchy）分布，即 $X$ 的概率密度为
+    $$
+    f_{X}(x) = \dfrac{1}{\pi (1+x^2)}, \; -\infty < x < +\infty
+    $$
+    求随机变量 $Y=\arctan X$ 的概率密度.
+\end{problem}
+
+\begin{solution}
+    $Y$ 的分布函数为
+    $$
+    F_{Y}(y) = P\{Y \leqslant y\} = P\{\arctan X \leqslant y\}
+    $$
+
+    当 $|y|<\dfrac{\pi}{2}$ 时，$\{\arctan X \leqslant y\}=\{X \leqslant \tan y\}$，于是得 $Y$ 的分布函数 $F_{Y}(y)$ 与 $X$ 的分布函数 $F_{X}(x)$ 之间的关系如下：
+    $$
+    F_{Y}(y) = P\{\arctan X \leqslant y\} = P\{X \leqslant \tan y\} = F_{X}(\tan y)
+    $$
+    因此 $Y$ 的概率密度为
+    $$
+    \begin{aligned}
+        f_{Y}(y) &= \dfrac{\text{d}}{\text{d}y} F_{Y}(y) \\
+        &= \dfrac{\text{d}}{\text{d}y} F_{X}(\tan y) \\
+        &= f_{X}(\tan y) \cdot \sec^2 y \\
+        &= \dfrac{\sec^2 y}{\pi (1+\tan^2 y)} \\
+        &= \dfrac{1}{\pi}
+    \end{aligned}
+    $$
+
+    当 $y \geqslant \dfrac{\pi}{2}$ 时，事件 $\{\arctan X \leqslant y\}$ 是必然事件，所以 $F_{Y}(y)=1$，从而 $f_{Y}(y)=0$.
+    \vspace{0.5em}
+
+    当 $y \leqslant -\dfrac{\pi}{2}$ 时，事件 $\{\arctan X \leqslant y\}$ 是不可能事件，所以 $F_{Y}(y)=0$，从而 $f_{Y}(y)=0$.
+
+    综上所述，$Y$ 的概率密度为
+    $$
+    f_{Y}(y)=\begin{cases}
+        \dfrac{1}{\pi} & |y| < \dfrac{\pi}{2} \\[0.5em]
+        0 & |y| \geqslant \dfrac{\pi}{2}
+    \end{cases}
+    $$
+\end{solution}
+
+\begin{theorem}
+    设随机变量 $X$ 的概率密度为 $f_{X}(x), \, -\infty < x < +\infty$，函数 $g(x)$ 是处处可导的严格单调函数，则随机变量 $Y=g(X)$ 的概率密度为
+    $$
+    f_{Y}(y)=\begin{cases}
+        f_{X}(h(y))|h'(y)| & \alpha < y < \beta \\[-0.6em]
+        0 & \text{其他}
+    \end{cases}
+    $$
+    其中 $\alpha = \min(g(-\infty),g(+\infty)), \, \beta = \max(g(-\infty),g(+\infty))$，$h(y)$ 是 $g(x)$ 的反函数.
+\end{theorem}
+
+\begin{myproof}
+    当 $g(x)$ 处处可导且严格单调增加时，它的反函数 $h(y)$ 在区间 $(\alpha,\beta)$ 内也处处可导且严格单调增加，所以当 $y \leqslant \alpha$ 时，$F_{Y}(y)=0$；当 $y \geqslant \beta$ 时，$F_{Y}(y)=1$；当 $\alpha < y < \beta$ 时，有
+    $$
+    F_{Y}(y) = P\{Y \leqslant y\} = P\{g(X) \leqslant y\} = P\{X \leqslant h(y)\} = F_{X}(h(y))
+    $$
+    于是 $Y=g(X)$ 的概率密度为
+    $$
+    f_{Y}(y)=F_{Y}'(y)=\begin{cases}
+        f_{X}(h(y)) h'(y) & \alpha < y < \beta \\
+        0 & \text{其他}
+    \end{cases}
+    $$
+
+    当 $g(x)$ 处处可导且严格单调减少时，它的反函数 $h(y)$ 在区间 $(\alpha,\beta)$ 内也处处可导且严格单调减少，所以当 $y \leqslant \alpha$ 时，$F_{Y}(y)=0$；当 $y \geqslant \beta$ 时，$F_{Y}(y)=1$；当 $\alpha < y < \beta$ 时，有
+    $$
+    \begin{aligned}
+        F_{Y}(y) &= P\{Y \leqslant y\} \\
+        &= P\{g(X) \leqslant y\} \\
+        &= P\{X \geqslant h(y)\} \\
+        &= 1-P\{X < h(y)\}\\
+        &= 1-F_{X}(h(y))
+    \end{aligned}
+    $$
+    于是 $Y=g(X)$ 的概率密度为
+    $$
+    f_{Y}(y)=F_{Y}'(y)=\begin{cases}
+        -f_{X}(h(y)) h'(y) & \alpha < y < \beta \\
+        0 & \text{其他}
+    \end{cases}
+    $$
+
+    综上所述，$Y=g(X)$ 的概率密度为
+    $$
+    f_{Y}(y)=\begin{cases}
+        f_{X}(h(y))|h'(y)| & \alpha < y < \beta \\
+        0 & \text{其他}
+    \end{cases}
+    $$
+\end{myproof}
