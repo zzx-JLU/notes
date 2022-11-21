@@ -53,6 +53,7 @@ chrome:
   - [4.7 IO函数](#47-io函数)
   - [4.8 位运算](#48-位运算)
   - [4.9 线性代数](#49-线性代数)
+  - [4.10 `nan`和`inf`](#410-nan和inf)
 
 <!-- /code_chunk_output -->
 
@@ -1887,7 +1888,7 @@ print(np.char.decode([b'i am a good man', b'very good'], 'utf-8'))
 
 ## 4.3 算数函数
 
-四则运算：`numpy.add()`、`numpy.subtract()`、`numpy.multiply`、`numpy.divide()`
+四则运算：`numpy.add()`、`numpy.subtract()`、`numpy.multiply()`、`numpy.divide()`
 
 `numpy.reciprocal()`函数用于取倒数。例如：
 
@@ -1918,7 +1919,7 @@ print(np.mod([15, 16, 17], [5, 6, 7]))  # [0 4 3]
 
 `numpy.amax()`：获取数组沿指定轴的最大值
 `numpy.amin()`：获取数组沿指定轴的最小值
-`numpy.ptp()`：计算数组中最大值与最小值的差
+`numpy.ptp()`：计算数组中最大值与最小值的差（极值）
 
 ```python
 import numpy as np
@@ -1951,6 +1952,8 @@ print(np.ptp(x))  # 78
 print(np.ptp(x, 0))  # [57  8 64]
 print(np.ptp(x, 1))  # [41 43 78]
 ```
+
+`max()`和`min()`方法也可以获得数组的最大值和最小值，参数为轴。
 
 `numpy.percentile()`函数计算一个数，使得该数大于数组中指定百分比的数。参数为：
 
@@ -2018,6 +2021,7 @@ print(np.average(x, weights=w1, axis=1))  # [29.41666667 51.5        26.5       
 `numpy.mean()`：计算数组元素的算术平均值
 `numpy.std()`：计算数组元素的标准差
 `numpy.var()`：计算数组元素的方差
+`numpy.sum()`：计算数组元素的和
 
 ## 4.5 排序函数
 
@@ -2139,6 +2143,7 @@ print(x[i][-2])  # 3
 `numpy.argmax()`：返回最大元素的索引。可以指定轴。
 `numpy.argmin()`：返回最小元素的索引。可以指定轴。
 `numpy.nonzero()`：返回非零元素的索引。
+`numpy.count_nonzero()`：返回非零元素的个数。
 `numpy.where()`：返回数组中满足给定条件的元素的索引。
 `numpy.extract()`：返回数组中满足给定条件的元素。
 
@@ -2318,3 +2323,28 @@ print(np.inner(a, b))
 `numpy.linalg.solve()`函数给求矩阵形式的线性方程的解。第一个参数为系数矩阵，第二个参数为常数项。
 
 `numpy.linalg.inv()`函数计算矩阵的逆矩阵。
+
+## 4.10 `nan`和`inf`
+
+`numpy.nan`表示不是一个数字。
+`numpy.inf`表示无穷大，`inf`表示正无穷，`-inf`表示负无穷。
+`nan`和`inf`都是`float`类型。
+
+出现`nan`的情况：
+
+1. `0 / 0`
+2. 以`float`类型读取文件时，缺失的部分用`nan`填充。
+3. 当做了不合适的计算时（如`inf - inf`）。
+
+出现`inf`的情况：非零数字除以 0。
+
+`nan`的性质：
+
+1. 两个`nan`不相等。`nan == nan`为`False`，`nan != nan`为`True`。
+2. `nan`与任何值计算，结果都为`nan`。
+
+`numpy.isnan()`函数判断一个数字是否为`nan`，是`nan`则返回`True`，否则返回`False`。
+
+要计算数组`a`中`nan`的个数，可以用如下方法：`np.count_nonzero(a != a)`或 `np.count_nonzero(np.isnan(a))`。
+
+由于两个`nan`不相等，在`a != a`的结果中，只有`nan`的位置为`True`，其他位置均为`False` （`isnan()`函数效果相同），再用`count_nonzero()`函数统计`True`的个数，即为`nan`的个数。
