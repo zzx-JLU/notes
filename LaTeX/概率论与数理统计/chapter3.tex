@@ -1,0 +1,171 @@
+\chapter{二维随机变量及其分布}
+
+\section{二维随机变量}
+
+\subsection{二维随机变量及其分布函数}
+
+\begin{definition}
+    设随机试验 $E$ 的样本空间为 $\varOmega$，$X$ 和 $Y$ 是定义在 $\varOmega$ 上的两个随机变量，由它们构成的向量 $(X,Y)$ 称为\textbf{二维随机变量}或\textbf{二维随机向量}.
+\end{definition}
+
+\begin{definition}
+    设 $(X,Y)$ 是二维随机变量.对于任意实数 $x$ 和 $y$，记事件 $\{X \leqslant x\}$ 与 $\{Y \leqslant y\}$ 的交事件为 $\{X \leqslant x, Y \leqslant y\}$，称二元函数
+    $$
+    F(x, y) = P\{X \leqslant x, Y \leqslant y\}, \; (x,y) \in \mathbf{R}^2
+    $$
+    为\textbf{二维随机变量} $(X,Y)$ \textbf{的分布函数}，或称为随机变量 $X$ 和 $Y$ 的\textbf{联合分布函数}.
+\end{definition}
+
+如果将二维随机变量 $(X,Y)$ 看做 $xOy$ 平面上随机点的坐标，则分布函数 $F(x,y)$ 在点 $(x,y)$ 处的函数值就是随机点落在以 $(x,y)$ 为顶点且位于该点左下方的无界域内的概率，如图 \ref{fig:F(x,y)} 所示.
+
+\begin{figure}[htbp]
+    \centering
+
+    \begin{tikzpicture}[>=Stealth, scale=0.55]
+        % 坐标轴
+        \draw[->] (-2, 0)--(4, 0) node[below]{$x$};
+        \draw[->] (0, -2)--(0, 4) node[left]{$y$};
+        % 图像
+        \draw[line width=1.5pt] (-1.5, 3) -- (3, 3) node[above right]{$(x,y)$} -- (3, -1.5);
+        % 填充
+        \fill[pattern=north east lines] (-1.5, 3)--(3, 3)--(3, -1.5)--(-1.5, -1.5);
+        % 原点标记
+        \node at (0, 0) [below left, fill=white] {$O$};
+    \end{tikzpicture}
+
+    \caption{}
+    \label{fig:F(x,y)}
+\end{figure}
+
+分布函数 $F(x,y)$ 具有如下性质：
+
+\setcounter{propertyname}{0}
+
+\begin{property}
+    $0 \leqslant F(x,y) \leqslant 1$，且
+    \begin{gather*}
+        F(-\infty, -\infty) = \lim_{\substack{x \to -\infty \\ y \to -\infty}} F(x,y) = 0 \\
+        F(+\infty, +\infty) = \lim_{\substack{x \to +\infty \\ y \to +\infty}} F(x,y) = 1
+    \end{gather*}
+    对于任意固定的 $x$，有 $F(x,-\infty) = \displaystyle\lim_{y \to -\infty} F(x,y) = 0$.\newline
+    对于任意固定的 $y$，有 $F(-\infty,y) = \displaystyle\lim_{x \to -\infty} F(x,y) = 0$.
+\end{property}
+
+\begin{property}
+    $F(x,y)$ 对于每个变量都是单调不减函数.即对于任意固定的 $y$，当 $x_1 < x_2$ 时，有 $F(x_1, y) \leqslant F(x_2, y)$；对于任意固定的 $x$，当 $y_1 < y_2$ 时，有 $F(x, y_1) \leqslant F(x, y_2)$.
+\end{property}
+
+\begin{property}
+    $F(x,y)$ 关于 $x$ 右连续，关于 $y$ 右连续，即
+    \begin{gather*}
+        F(x^+, y) = F(x, y) \\
+        F(x, y^+) = F(x, y)
+    \end{gather*}
+\end{property}
+
+\begin{property}
+    对于任意的 $x_1 < x_2, y_1 < y_2$，有
+    $$
+    P\{x_1 < X \leqslant x_2, y_1 < Y \leqslant y_2\} = F(x_2, y_2) - F(x_1, y_2) - F(x_2, y_1) + F(x_1, y_1)
+    $$
+\end{property}
+
+\subsection{边缘分布}
+
+\begin{definition}
+    设二维随机变量 $(X,Y)$ 的分布函数为 $F(x,y)$，记随机变量 $X$ 的分布函数为 $F_{X}(x)$，随机变量 $Y$ 的分布函数为 $F_{Y}(y)$，分别称为二维随机变量 $(X,Y)$ 关于 $X$ 和关于 $Y$ 的\textbf{边缘分布函数}.
+\end{definition}
+
+\begin{gather*}
+    F_{X}(x) = P\{X \leqslant x\} = P\{X \leqslant x, Y < +\infty\} = F(x, +\infty), \quad x \in \mathbf{R} \\
+    F_{Y}(y) = P\{Y \leqslant y\} = P\{X < +\infty, Y \leqslant y\} = F(+\infty, y), \quad y \in \mathbf{R}
+\end{gather*}
+
+\subsection{随机变量的独立性}
+
+\begin{definition}
+    设二维随机变量 $(X,Y)$ 的分布函数及其关于 $X$ 和关于 $Y$ 的边缘分布函数分别为 $F(x,y), F_{X}(x), F_{Y}(y)$，如果对于任意实数 $x,y$，都有 $F(x,y)=F_{X}(x)\,F_{Y}(y)$，则称随机变量 $X$ 与 $Y$ 是\textbf{相互独立}的.
+\end{definition}
+
+\section{二维离散型随机变量}
+
+\subsection{二维离散型随机变量及其概率分布}
+
+\begin{definition}
+    如果二维随机变量 $(X,Y)$ 所有可能取的值是有限对或可列无限对，则称 $(X,Y)$ 是\textbf{二维离散型随机变量}.
+\end{definition}
+
+设 $(X,Y)$ 所有可能取的值为 $(x_i,y_j)(i,j=1,2,\cdots)$，记事件 $\{X=x_i\}$ 与 $\{Y=y_j\}$ 的交事件为 $\{X=x_i, Y=y_j\}$.
+
+\begin{definition}
+    设 $(X,Y)$ 所有可能取的值为 $(x_i,y_j)(i,j=1,2,\cdots)$，如果
+    \begin{equation} \label{equation:P(X,Y)}
+        P\{X=x_i, Y=y_j\} = p_{ij}, \; i,j=1,2,\cdots
+    \end{equation}
+    且有
+    \begin{gather*}
+        p_{ij} \geqslant 0 \\
+        \sum_{i=1}^\infty \sum_{j=1}^\infty p_{ij} = 1
+    \end{gather*}
+    则称式 \eqref{equation:P(X,Y)} 为二维离散型随机变量 $(X,Y)$ 的\textbf{概率分布}，或称为随机变量 $X$ 和随机变量 $Y$ 的\textbf{联合概率分布}或\textbf{联合分布律}.
+\end{definition}
+
+$(X,Y)$ 的概率分布可以用如下的表格表示：
+
+\begin{table}[htbp]
+    \centering
+
+    \begin{tabular}{c | c c c c c}
+        \hline
+        \diagbox{$X$}{$Y$} & $y_1$ & $y_2$ & $\cdots$ & $y_j$ & $\cdots$ \\
+        \hline
+        $x_1$ & $p_{11}$ & $p_{12}$ & $\cdots$ & $p_{1j}$ & $\cdots$ \\
+        $x_2$ & $p_{21}$ & $p_{22}$ & $\cdots$ & $p_{2j}$ & $\cdots$ \\
+        $\vdots$ & $\vdots$ & $\vdots$ & & $\vdots$ & \\
+        $x_i$ & $p_{i1}$ & $p_{i2}$ & $\cdots$ & $p_{ij}$ & $\cdots$ \\
+        $\vdots$ & $\vdots$ & $\vdots$ & & $\vdots$ & \\
+        \hline
+    \end{tabular}
+\end{table}
+
+如果二维随机变量 $(X,Y)$ 的概率分布为 $P\{X=x_i, Y=y_j\} = p_{ij} \, (i,j=1,2,\cdots$)，则 $(X,Y)$ 的分布函数为
+$$
+F(X,Y) = P\{X \leqslant x, Y \leqslant y\} = \sum_{x_i \leqslant x} \sum_{y_j \leqslant y} p_{ij}
+$$
+
+\subsection{边缘概率分布}
+
+设二维离散型随机变量 $(X,Y)$ 的概率分布为
+$$
+P\{X=x_i, Y=y_j\} = p_{ij}, \; i,j=1,2,\cdots
+$$
+则有
+$$
+P\{X = x_i\} = P\{X=x_i, \bigcup_{j=1}^\infty \{Y=y_j\}\} = P\{\bigcup_{j=1}^\infty \{X=x_i, Y=y_j\}\}
+$$
+由于事件 $\{X=x_i, Y=y_j\}(j=1,2,\cdots)$ 是互不相容的，因此
+$$
+P\{X = x_i\} = \sum_{j=1}^\infty P\{X = x_i, Y = y_j\} = \sum_{j=1}^\infty p_{ij}
+$$
+记 $\displaystyle\sum_{j=1}^\infty p_{ij} = p_{i\cdot}$，则有
+$$
+P\{X=x_i\}=p_{i\cdot}, \; i=1,2,\cdots
+$$
+
+同理可得
+$$
+P\{Y = y_j\} = \sum_{i=1}^\infty P\{X = x_i, Y = y_j\} = \sum_{i=1}^\infty p_{ij} = p_{\cdot j}, \; j=1,2,\cdots
+$$
+
+\begin{definition}
+    设二维离散型随机变量 $(X,Y)$ 的概率分布为
+    $$
+    P\{X = x_i, Y = y_j\} = p_{ij}, \; i,j=1,2,\cdots
+    $$
+    随机变量 $X$ 和 $Y$ 的概率分布
+    \begin{gather*}
+        P\{X = x_i\} = p_{i\cdot}, \; i=1,2,\cdots\\
+        P\{Y = y_j\} = p_{\cdot j}, \; j=1,2,\cdots
+    \end{gather*}
+    分别称为 $(X,Y)$ 关于 $X$ 和关于 $Y$ 的\textbf{边缘概率分布}或\textbf{边缘分布律}.
+\end{definition}

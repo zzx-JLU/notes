@@ -890,7 +890,7 @@ $$
     $$
 \end{solution}
 
-\begin{theorem}
+\begin{theorem} \label{theorem:f(y)}
     设随机变量 $X$ 的概率密度为 $f_{X}(x), \, -\infty < x < +\infty$，函数 $g(x)$ 是处处可导的严格单调函数，则随机变量 $Y=g(X)$ 的概率密度为
     $$
     f_{Y}(y)=\begin{cases}
@@ -940,3 +940,31 @@ $$
     \end{cases}
     $$
 \end{myproof}
+
+\begin{conclusion}
+    设 $X \sim N(\mu,\sigma^2)$，$Y=aX+b \, (a \not= 0)$，则 $Y \sim N(a \mu + b, a^2 \sigma^2)$.
+\end{conclusion}
+
+\begin{myproof}
+    因为 $X \sim N(\mu,\sigma^2)$，所以 $X$ 的概率密度为
+    $$
+    f_{X}(x) = \dfrac{1}{\sqrt{2\pi} \sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \; -\infty < x < +\infty
+    $$
+
+    由 $y=ax+b$ 解得
+    \begin{gather*}
+        x = h(y) = \dfrac{y-b}{a} \\
+        h'(y) = \dfrac{1}{a}
+    \end{gather*}
+    由定理 \ref{theorem:f(y)} 得 $Y=aX+b$ 的概率密度为
+    $$
+    \begin{aligned}
+        f_{Y}(y) &= \dfrac{1}{|a|} f_{X}(\dfrac{y-b}{a}) \\
+        &= \dfrac{1}{|a|} \dfrac{1}{\sqrt{2\pi}\sigma} e^{-\frac{\left( \frac{y-b}{a}-\mu \right)^2}{2\sigma^2}}\\
+        &= \dfrac{1}{\sqrt{2\pi}|a|\sigma} e^{-\frac{[y-(a\mu+b)]^2}{2 a^2 \sigma^2}}
+    \end{aligned}
+    $$
+    即 $Y \sim N(a \mu + b, a^2 \sigma^2)$.
+\end{myproof}
+
+特别地，当 $a = \dfrac{1}{\sigma}, b=-\dfrac{\mu}{\sigma}$ 时，有 $Y=\dfrac{X-\mu}{\sigma} \sim N(0,1)$.
