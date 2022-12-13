@@ -28,6 +28,14 @@ chrome:
   - [4.1 `Figure`类](#41-figure类)
   - [4.2 `Axes`类](#42-axes类)
   - [4.3 `Figure`与`Axes`的关系](#43-figure与axes的关系)
+  - [4.4 在画布上创建多个子图](#44-在画布上创建多个子图)
+  - [4.5 网格线](#45-网格线)
+  - [4.6 设置轴线](#46-设置轴线)
+    - [4.6.1 设置基本样式](#461-设置基本样式)
+    - [4.6.2 格式化轴](#462-格式化轴)
+    - [4.6.3 设置取值范围](#463-设置取值范围)
+    - [4.6.4 刻度和刻度标签](#464-刻度和刻度标签)
+    - [4.6.5 设置轴线类型](#465-设置轴线类型)
 
 <!-- /code_chunk_output -->
 
@@ -222,6 +230,20 @@ plt.show()
 
 <div align="center">
     <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/4.png" width=50% style="margin-top: -15px">
+</div>
+
+`x`参数是可选的，`y`参数是必需的。当省略`x`时，默认值为从 0 开始的整数索引。例如：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.plot(range(12))
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/10.png" width=50% style="margin-top: -15px">
 </div>
 
 `title()`函数设置图像的标题，`xlabel()`函数设置 x 轴的标签，`ylabel()`函数设置 y 轴的标签。例如：
@@ -443,6 +465,339 @@ fig.show()
 
 ## 4.4 在画布上创建多个子图
 
-`pyplot.subplot(nrows, nclos, index)`函数返回给定网格位置的`Axes`对象。具体说明如下：
+`pyplot.subplot(nrows, ncols, index)`函数返回给定网格位置的`Axes`对象。具体说明如下：
 
-1. 该函数在当前图中创建并返回一个`Axes`对象，
+1. 将画布划分成`nrows`行、`ncols`列的网格，索引从 1 到`nrows * ncols`，按行优先顺序递增。在索引为`index`的网格中创建`Axes`对象。
+2. 如果`nrows`、`ncols`和`index`都小于 10，可以将这 3 个参数连着写，中间不加逗号。例如，`subplot(2, 3, 3)`可以写成`subplot(233)`。
+3. 创建子图将删除任何与其重叠的预先存在的子图，而不是共享边界。
+
+```python
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+
+# 子图 1，位于上方
+ax1 = plt.subplot(2, 1, 1)
+ax1.plot(range(10))
+
+# 子图 2，位于下方，背景颜色为黄色
+ax2 = plt.subplot(212, facecolor='y')
+ax2.plot(range(10))
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/Matplotlib/11.png" style="margin-top: -15px">
+</div>
+
+`pyplot.subplots(nrows, ncols)`函数返回一个`Figure`对象和一个`nrows`行、`ncols`列的`Axes`对象元组，通过索引访问`Axes`对象。例如：
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, axList = plt.subplots(2, 2)
+x = np.arange(1, 5)
+
+axList[0][0].plot(x, x * x)
+axList[0][1].plot(x, np.exp(x))
+axList[1][0].plot(x, np.sqrt(x))
+axList[1][1].plot(x, np.log10(x))
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/12.png" style="margin-top: -15px">
+</div>
+
+`pyplot.subplot2grid()`函数在网格的特定位置创建`Axes`对象，并且允许`Axes`对象跨越多个行或列。参数为：
+
+1. `shape`：整数元组，指定网格的行数和列数。
+2. `loc`：整数元组，指定`Axes`对象的位置。
+3. `rowspan`：跨越的行数。可选，默认值为 1。
+4. `colspan`：跨越的列数。可选，默认值为 1。
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(1, 9)
+
+ax1 = plt.subplot2grid((3, 3), (0, 0), colspan=2)
+ax1.plot(x, np.exp(x))
+
+ax2 = plt.subplot2grid((3, 3), (0, 2), rowspan=3)
+ax2.plot(x, x * x)
+
+ax3 = plt.subplot2grid((3, 3), (1, 0), rowspan=2, colspan=2)
+ax3.plot(x, np.log(x))
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/13.png" style="margin-top: -15px">
+</div>
+
+`Figure.add_axes()`方法也可以在图中插入多个子图。例如：
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+fig = plt.figure()
+x = np.arange(0, math.pi * 2, 0.05)
+
+ax1 = fig.add_axes([0.05, 0.05, 0.9, 0.9])
+ax1.plot(x, np.sin(x))
+ax1.set_title("sin")
+
+ax2 = fig.add_axes([0.55, 0.55, 0.3, 0.3])
+ax2.plot(x, np.cos(x), 'r')
+ax2.set_title("cos")
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/14.png" style="margin-top: -15px">
+</div>
+
+`Figure.add_subplot()`方法也可以向图中添加子图，用法与`pyplot.subplot()`函数相同。例如：
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+fig = plt.figure()
+x = np.arange(0, math.pi * 2, 0.05)
+
+ax1 = fig.add_subplot(111)
+ax1.plot(x, np.sin(x))
+ax1.set_title("sin")
+
+ax2 = fig.add_subplot(222)
+ax2.plot(x, np.cos(x), 'r')
+ax2.set_title("cos")
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/15.png" style="margin-top: -15px">
+</div>
+
+## 4.5 网格线
+
+`Axes.grid()`方法用于设置网格线的样式。参数为：
+
+1. `b`：可选，默认值为`None`。可以设置为布尔值，`True`为显示网格线，`False`为不显示。如果设置了`**kwargs`参数，则值为`True`。
+2. `which`：可选，可选值有`'major'`、`'minor'`和`'both'`，默认为`'major'`，表示应用更改的网格线。
+3. `axis`：可选，设置显示哪个方向的网格线，可选值有`'both'`、`'x'`或`'y'`，分别表示两个方向、x 轴方向或 y 轴方向。默认值为`'both'`。
+4. `**kwargs`：可选，设置网格线样式。可选的关键字有：
+   （1）`color`：线条颜色
+   （2）`linestyle`或`ls`：线条样式
+   （3）`linewidth`或`lw`：线条宽度
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig, axList = plt.subplots(1, 2)
+x = np.arange(1, 11)
+
+axList[0].plot(x, x * x)
+axList[0].grid(True)
+
+axList[1].plot(x, x * x)
+axList[1].grid(color='r', ls='--', lw='0.3')
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/16.png" style="margin-top: -15px">
+</div>
+
+## 4.6 设置轴线
+
+### 4.6.1 设置基本样式
+
+轴脊（spine）是连接轴刻度的线，划分绘图区域的边界。`Axes`对象的轴脊位于顶部、底部、左侧和右侧。每个轴脊可以通过指定颜色和宽度进行格式化，将轴脊的颜色设置为“无”可以使其不可见。
+
+`Axes`对象的`spines`属性是一个`Spines`对象，保存了`Axes`对象的所有轴脊。它具有类似于字典的接口，可以通过`[]`访问各个轴脊，`'left'`对应于左轴脊，`'right'`对应于右轴脊，`'top'`对应于上轴脊，`'bottom'`对应于下轴脊。也可以使用属性`left`、`right`、`top`、`bottom`来访问。
+
+每个轴脊是一个`Spine`对象，`set_color()`方法用于设置轴脊的颜色，`set_linewidth()`方法设置轴脊的宽度。例如：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+
+x = np.arange(1, 11)
+ax.plot(x, x * x)
+
+ax.spines['top'].set_color(None)  # 隐藏上轴脊
+ax.spines.right.set_color(None)  # 隐藏右轴脊
+ax.spines.left.set_linewidth(2)  # 左轴脊宽度为 2
+ax.spines['bottom'].set_color('red')  # 下轴脊颜色为红色
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/17.png" style="margin-top: -15px">
+</div>
+
+### 4.6.2 格式化轴
+
+`Axes`对象的`set_xscale()`和`set_yscale()`方法用于设置轴的比例，取值为`'log'`可以将轴设置为对数比例。例如：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+
+x = np.arange(1, 11)
+ax.plot(x, x * x)
+
+ax.set_yscale("log")  # 将 y 轴设置为对数比例
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/18.png" style="margin-top: -15px">
+</div>
+
+轴的`labelpad`属性用于设置轴标签和轴刻度的距离。例如：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+x = np.arange(1, 5)
+
+# 设置轴标签距离
+axes[0].plot(x, x**2)
+axes[0].set_xlabel("x axis")
+axes[0].set_ylabel("y axis")
+axes[0].xaxis.labelpad = 10  # 为 x 轴标签设置距离
+
+# 不设置轴标签距离，作为对照
+axes[1].plot(x, x**2)
+axes[1].set_xlabel("x axis")
+axes[1].set_ylabel("y axis")
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/19.png" style="margin-top: -15px">
+</div>
+
+### 4.6.3 设置取值范围
+
+`Axes.set_xlim()`方法用于设置 x 轴的取值范围，`Axes.set_ylim()`方法用于设置 y 轴的取值范围。例如：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+x = np.arange(1, 11)
+y = np.exp(x)
+
+axes[0].plot(x, y)
+
+axes[1].plot(x, y)
+axes[1].set_ylim(0, 10000)  # 设置 y 轴的取值范围为 0-10000
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/20.png" style="margin-top: -15px">
+</div>
+
+### 4.6.4 刻度和刻度标签
+
+`Axes`对象的`xticks()`和`yticks()`方法用于设置刻度。参数为列表，列表元素为显示刻度线的位置。
+
+`set_xticklabels()`和`set_yticklabels()`方法用于设置刻度标签。参数为列表，列表元素为标签值。
+
+刻度和刻度标签必须配合使用，并且要对应起来。
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+x = np.arange(1, 11)
+y = np.exp(x)
+
+axes[0].plot(x, y)
+
+axes[1].plot(x, y)
+axes[1].set_xticks(range(1, 11))
+axes[1].set_xticklabels(['1', '2', 'three', '4', '5', 'six', '7', '8', 'nine', '10'])
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/21.png" style="margin-top: -15px">
+</div>
+
+### 4.6.5 设置轴线类型
+
+`Axes.axis()`方法用于设置轴线类型。常用类型有：
+
+- `'tight'`：仅修改坐标轴极值以显示全部数据，不再进一步自动缩放坐标轴。
+- `'on'`：显示坐标轴。
+- `'off'`：不显示坐标轴。
+- `'equal'`：通过改变坐标轴极值等比例缩放。
+- `'scaled'`：通过改变绘图区维度等比例缩放。
+- `'auto'`：自动缩放坐标轴。
+- `'image'`：使用`'scaled'`模式，但是坐标轴极值等于数据极值。
+- `'square'`：设置绘图区为正方形。
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 4, figsize=(16, 3))
+x = np.linspace(-1, 1, 100)
+f = lambda x: (1 - x ** 2) ** 0.5
+y = np.exp(x)
+
+axes[0].plot(x, f(x))
+axes[0].plot(x, -f(x))
+
+axes[1].plot(x, f(x))
+axes[1].plot(x, -f(x))
+axes[1].axis("equal")
+
+axes[2].plot(x, f(x))
+axes[2].plot(x, -f(x))
+axes[2].axis("off")
+
+axes[3].plot(x, f(x))
+axes[3].plot(x, -f(x))
+axes[3].axis("tight")
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/22.png" style="margin-top: -15px">
+</div>
