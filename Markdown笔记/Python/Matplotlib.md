@@ -36,6 +36,10 @@ chrome:
     - [4.6.3 设置取值范围](#463-设置取值范围)
     - [4.6.4 刻度和刻度标签](#464-刻度和刻度标签)
     - [4.6.5 设置轴线类型](#465-设置轴线类型)
+  - [4.7 保存图片](#47-保存图片)
+- [5 绘图](#5-绘图)
+  - [5.1 条形图](#51-条形图)
+  - [5.2 直方图](#52-直方图)
 
 <!-- /code_chunk_output -->
 
@@ -800,4 +804,176 @@ plt.show()
 
 <div align="center">
     <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/22.png" style="margin-top: -15px">
+</div>
+
+## 4.7 保存图片
+
+`Figure.savefig()`方法用于将绘图保存到图片。参数为：
+
+1. `fname`：含有文件路径的字符串或 Python 文件对象。图片格式由文件扩展名推断得出。
+2. `dpi`：图像分辨率（每英寸点数）。可选，默认为`None`。
+3. `facecolor`：图像的背景色。可选，默认为`'w'`（白色）。
+4. `edgecolor`：图像的边缘颜色。可选，默认为`'w'`。
+
+# 5 绘图
+
+## 5.1 条形图
+
+条形图显示了离散类别之间的比较，图标的一个轴显示要比较的特定类别，另一个轴表示测量值。
+
+`Axes.bar()`方法用于绘制垂直条形图。参数为：
+
+1. `x`：表示条形的 x 坐标的标量序列。如果 x 是条形中心或左边缘，则对齐控件。
+2. `height`：标量或标量序列，表示条的高度。
+3. `width`：标量或标量序列，表示条的宽度。可选，默认为 0.8。
+4. `bottom`：标量或标量序列，表示条形底部的 y 坐标。可选，默认为`None`。
+5. `align`：条形与刻度的位置关系。可选，`'center'`表示条形中心与刻度对齐，`'edge'`表示条形边缘与刻度对齐，默认为`'center'`。
+6. `color`：条形颜色，可以是字符串，也可以是列表。
+
+垂直基本条形图：
+
+```python
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+
+langs = ['C', 'C++', 'Python', 'Java', 'PHP']
+students = [22, 45, 58, 36, 12]
+
+ax.bar(langs, students, 0.5, color='r')
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/23.png" style="margin-top: -15px">
+</div>
+
+垂直组合条形图：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+
+X = np.arange(4)
+data = [[30, 25, 50, 20],
+        [40, 23, 51, 17],
+        [35, 22, 45, 19]]
+
+ax.bar(X, data[0], color='b', width=0.25)
+ax.bar(X + 0.25, data[1], color='g', width=0.25)
+ax.bar(X + 0.5, data[2], color='r', width=0.25)
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/24.png" style="margin-top: -15px">
+</div>
+
+垂直堆叠条形图：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+
+n = 5  # 类别数
+index = np.arange(1, n + 1)
+menNum = [20, 35, 30, 35, 27]  # 男性人数
+womenNum = [25, 32, 34, 20, 25]  # 女性人数
+
+ax.bar(index, menNum, color='r')  # 男性条
+ax.bar(index, womenNum, color='b', bottom=menNum)  # 将女性条的底部设置为男性条的顶部
+
+ax.set_title("The number of men and women in the class")
+ax.set_ylabel("people num")
+ax.set_xticks(index)
+ax.set_xticklabels(['G1', 'G2', 'G3', 'G4', 'G5'])
+ax.set_yticks(np.arange(0, 81, 10))
+ax.legend(labels=['men', 'women'])
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/25.png" style="margin-top: -15px">
+</div>
+
+`Axes.barh()`方法用于绘制水平条形图。参数为：
+
+1. `y`：表示条形的 y 坐标的标量序列。如果 y 是条形中心或左边缘，则对齐控件。
+2. `width`：标量或标量序列，表示条的宽度。
+3. `height`：标量或标量序列，表示条的高度。可选，默认为 0.8。
+4. `left`：标量或标量序列，表示条形左侧的 x 坐标。可选，默认为`None`。
+5. `align`：条形与刻度的位置关系。可选，可选值为`'center'`、`'edge'`，默认为`'center'`。
+6. `color`：条形颜色，可以是字符串，也可以是列表。
+
+水平条形图的绘制方法与垂直条形图一致。例如：
+
+```python
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+
+langs = ['C', 'C++', 'Python', 'Java', 'PHP']
+students = [22, 45, 58, 36, 12]
+
+ax.barh(langs, students, 0.5, color='r')
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/26.png" style="margin-top: -15px">
+</div>
+
+## 5.2 直方图
+
+`Axes.hist()`方法用于绘制直方图。参数为：
+
+1. `x`：数组或数组序列。
+2. `bins`：指定一系列连续、非重叠区间。当取值为整数时，将`range`参数等分成指定的份数；当取值为序列时，指定所有区间端点，最后一个区间为闭区间，其他区间都是左闭右开区间；当取值为字符串时，可以取指定的值，如`'auto'`、`'fd'`等。可选，默认为`None`。
+3. `range`：元组，指定区间的下界和上界。如果不指定，则默认范围为`(x.min(), x.max())`。如果`bins`参数为序列，则`range`参数无效。可选，默认为`None`。
+4. `density`：布尔值，如果为`True`，则 y 轴表示概率密度，并返回概率密度。可选，默认为`False`。
+5. `weights`：一个与`x`形状相同的权重数组，`x`中的每个值只将其相关权重贡献给 bin 参与计数（默认为 1）。如果`density`参数为`True`，权重将被归一化，使得密度在`range`范围内的积分保持为 1。可选，默认为`None`。
+6. `cumulative`：如果为`True`，则直方图中每个 bin 的值为该 bin 的计数加上比它更小的所有 bin 的值。最后一个 bin 的值为数据点的总数。可选，默认为`False`。
+7. `bottom`：数组或常数，指定每个 bin 图形底部的坐标。如果为常数，则将所有 bin 移动相同的距离；如果为数组，则每个 bin 都会独立移动，并且`bottom`数组的长度必须和`bins`的区间数相同。可选，默认值为`None`，相当于取 0。
+8. `histtype`：直方图的类型。可选，可能的取值为`'bar'`、`'barstacked'`、`'step'`、`'stepfilled'`，默认值为`'bar'`。
+9. `align`：条形的水平对齐方式。可选，可能的取值为`'left'`、`'mid'`、`'right'`，默认值为`'mid'`。
+10. `orientation`：`'horizontal'`表示水平直方图，`'vertical'`表示垂直直方图。可选，默认为`'vertical'`。
+11. `rwidth`：将条形的宽度设置为 bin 宽度的一定比例。可选，默认值为`None`，自动计算宽度。如果`histtype`参数为`'step'`或`'stepfilled'`，则忽略此参数。
+12. `log`：为`True`则将轴设置为对数比例。可选，默认为`False`。
+13. `color`：条形的颜色。可选，默认为`None`。
+14. `label=None`：字符串或字符串序列，为条形设置标签。可选，默认为`None`。
+15. `stacked=False`：如果为`True`，则会将多个数据堆叠在一起。如果为`False`，则当`histtype`参数为`'bar'`时将多个数据并排排列，当`histtype`参数为`'step'`时将多个数据堆叠排列。可选，默认为`False`。
+16. `normed`：如果为`True`，则对直方图的值进行归一化处理，形成概率密度。可选，默认为`False`。
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+
+data = np.array([22, 87, 5, 43, 56, 73, 55, 54, 11, 20, 51, 5, 79, 31, 27])
+
+ax.hist(data, bins=[0, 25, 50, 75, 100])
+
+ax.set_xticks([0, 25, 50, 75, 100])
+ax.set_xlabel("score")
+ax.set_ylabel("The number of students")
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/27.png" style="margin-top: -15px">
 </div>
