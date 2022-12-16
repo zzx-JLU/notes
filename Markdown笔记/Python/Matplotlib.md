@@ -40,6 +40,11 @@ chrome:
 - [5 绘图](#5-绘图)
   - [5.1 条形图](#51-条形图)
   - [5.2 直方图](#52-直方图)
+  - [5.3 饼图](#53-饼图)
+  - [5.4 散点图](#54-散点图)
+  - [5.5 箱型图](#55-箱型图)
+  - [5.6 轮廓图](#56-轮廓图)
+  - [5.7 图像中的文字、注释、箭头](#57-图像中的文字-注释-箭头)
 
 <!-- /code_chunk_output -->
 
@@ -976,4 +981,199 @@ plt.show()
 
 <div align="center">
     <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/27.png" style="margin-top: -15px">
+</div>
+
+## 5.3 饼图
+
+`Axes.pie()`方法用于绘制饼图。参数为：
+
+1. `x`：数组，表示每个扇形的大小。
+2. `explode`：数组，设置每个扇形的顶点到圆心的距离（比例值）。可选，默认为`None`。
+3. `labels`：字符串列表，为每个扇形提供标签。可选，默认为`None`。
+4. `colors`：数组，从中循环选取颜色为扇形上色。可选，默认为`None`，此时将使用当前当前活动周期中的颜色。
+5. `autopct`：字符串，用于设置扇形内部显示的数值。可选，默认为`None`
+6. `pctdistance`：浮点数，设置比例值文字到圆心的距离。可选，默认值为 0.6。
+7. `shadow`：布尔值，设置是否绘制阴影。可选，默认值为`False`。
+8. `normalize`：布尔值，如果为`True`，则将`x`标准化，使得`sum(x) == 1`，从而生成完整的饼图；如果为`False`，则当`sum(x) <= 1`时生成部分饼图，当`sum(x) > 1`时抛出`ValueError`异常。可选，默认为`True`。
+9. `labeldistance`：浮点数，设置标签到圆心的距离。如果取值为`None`，则不显示标签，但会将标签保存起来以供`legend()`函数使用。可选，默认值为 1.1。
+10. `startangle`：设置饼图起点的旋转角度，角度值以 x 轴为起点，以逆时针方向为正方向。可选，默认值为 0。
+11. `radius`：饼图的半径。可选，默认值为 1。
+12. `counterclock`：布尔值，指定绘制方向，`True`表示逆时针，`False`表示顺时针。可选，默认值为`True`。
+13. `wedgeprops`：字典，设置扇形的属性。可选，默认为`None`。
+14. `textprops`：字典，设置文字的属性。可选，默认为`None`。
+15. `center`：圆心坐标。可选，默认值为`(0, 0)`。
+16. `frame=False`：布尔值，如果为`True`则绘制边框。可选，默认为`False`。
+17. `rotatelabels=False`：布尔值，如果为`True`则将标签旋转到相应扇形的角度。可选，默认为`False`。
+
+```python
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+ax.axis('equal')
+
+langs = ['C', 'C++', 'Python', 'Java', 'PHP']
+students = [22, 45, 58, 36, 12]
+
+ax.pie(students, labels=langs, autopct='%1.2f%%')
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/28.png" style="margin-top: -15px">
+</div>
+
+## 5.4 散点图
+
+`Axes.scatter()`方法用于绘制散点图。参数为：
+
+1. `x`：浮点数或数组，表示数据的 x 坐标。
+2. `y`：浮点数或数组，表示数据的 y 坐标。
+3. `s`：浮点数或数组，设置标记点的大小。可选，默认为`None`。
+4. `c`：标记点的颜色。可选，默认为`None`。
+5. `marker`：标记点的样式。可选，默认为`None`。
+6. `cmap`：一个`Colormap`对象，或已注册的颜色映射名称，用于将常数映射为颜色。如果`c`参数的值为 RGB(A)，则忽略此参数。可选，默认为`None`。
+7. `norm`：在使用`cmap`映射到颜色之前，用于将常数缩放到 $[0,1]$ 范围的归一化方法。可选，默认为`None`，使用线性缩放，将最小值映射到 0，将最大值映射到 1。
+8. `vmin`：当使用常数映射颜色而不使用`norm`参数时，定义颜色映射的下界。可选，默认为`None`。
+9. `vmax`：当使用常数映射颜色而不使用`norm`参数时，定义颜色映射的上界。可选，默认为`None`。
+10. `alpha`：透明度，取值范围为 $[0,1]$，0 表示完全透明，1 表示不透明。可选，默认为`None`。
+11. `linewidths`：标记点边缘线的宽度。可选，默认值为 1.5。
+12. `edgecolors`：标记点边缘线的颜色。可取的值包括`'face'`、`'none'`、颜色值或颜色值的序列。可选，默认为`'face'`，表示边缘线的颜色与点的颜色相同。
+13. `plotnonfinite=False`：是否使用非限定的`c`参数值（如`inf`、`-inf`、`nan`）绘制标记点。如果为`True`，则使用内置的错误颜色来绘制标记点。
+
+```python
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+
+girls_grades = [89, 90, 70, 89, 95, 80, 90, 100, 80, 34]
+boys_grades = [30, 29, 49, 48, 100, 48, 38, 45, 20, 30]
+grades_range = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+ax.scatter(grades_range, girls_grades, color='r')
+ax.scatter(grades_range, boys_grades, color='b', alpha=0.5)
+
+ax.set_xlabel('Scores range')
+ax.set_ylabel('grades')
+ax.legend(labels=('girls', 'boys'), loc='upper right')
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/29.png" style="margin-top: -15px">
+</div>
+
+## 5.5 箱型图
+
+箱型图也称为须状图，显示一组数据的最小值、第一四分位数、中位数、第三四分位数和最大值，并在第一四分位数和第三四分位数之间绘制方框。
+
+`Axes.boxplot()`方法用于绘制箱型图。例如：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+
+data = np.random.normal(0, 1, 200)
+ax.boxplot(data)
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/30.png" style="margin-top: -15px">
+</div>
+
+## 5.6 轮廓图
+
+轮廓图是一种在二维平面上显示三维表面的方法，它绘制了 y 轴上的两个预测变量 X、Y 和轮廓的响应变量 Z，这些轮廓也称为 z 切片或等响应值。如果要查看 Z 如何随输入 X 和 Y 的变化而变化，就可以使用轮廓图。
+
+自变量 x 和 y 通常限于称为 meshgrid 的规则网格，`numpy.meshgrid(x, y)`函数用于创建矩形网格。
+
+`Axes.contourf()`方法用于绘制轮廓图。例如：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+ax.axis('equal')
+
+x = np.linspace(-3, 3, 100)
+y = np.linspace(-3, 3, 100)
+
+X, Y = np.meshgrid(x, y)
+Z = np.sqrt(X ** 2 + Y ** 2)
+
+ct = ax.contourf(X, Y, Z)  # 绘制轮廓图
+fig.colorbar(ct)  # 颜色条
+
+plt.show()
+```
+
+<div align="center">
+    <img src="https://cdn.staticaly.com/gh/zzx-JLU/images_for_markdown@main/Matplotlib/31.png" style="margin-top: -15px">
+</div>
+
+## 5.7 图像中的文字、注释、箭头
+
+1. `Axes.text()`：在`Axes`对象的任意位置添加文字。
+2. `Axes.set_xlabel()`：为 x 轴添加标签。
+3. `Axes.set_ylabel()`：为 y 轴添加标签。
+4. `Axes.set_title()`：为`Axes`对象添加标题。
+5. `Axes.legend()`：为`Axes`对象添加图例。
+6. `pyplot.suptitle()`：为`Figure`对象添加中心化的标题。
+7. `pyplot.figtext()`：在`Figure`对象的任意位置添加文字。
+8. `Axes.annotate()`：为`Axes`对象添加注释，箭头可选。
+   - `xy`：设置箭头指示的位置
+   - `xytext`：设置注释文字的位置
+   - `arrowprops`：字典，设置箭头的样式
+      - `width`：设置连接线的宽度
+      - `headlength`：设置箭头尖端的长度
+      - `headwidth`：设置箭头尖端底部的宽度
+      - `facecolor`：设置箭头颜色
+      - `shrink`：设置箭头顶点、尾部与指示点、注释文字的距离（比例值）
+      - `arrowstyle`：箭头样式
+      - `connectionstyle`：连接线的样式
+
+上述所有函数和方法会返回一个`matplotlib.text.Text`对象。
+
+注：可以将 TeXmarkup 文本放在一对`$`符号中，以插入数学公式。
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure(figsize=(12, 4))
+
+x = np.arange(0, 2, 0.01)
+y1 = np.sin(2 * np.pi * x)
+y2 = np.cos(2 * np.pi * x)
+
+ax1 = plt.subplot(121)
+ax1.plot(x, y1)
+ax1.set_title('sin', fontsize=20)  # 设置标题
+ax1.set_xlabel(r'$x$')  # 设置 x 轴标签
+ax1.set_ylabel(r'$y$')  # 设置 y 轴标签
+ax1.text(0.6, 0.3, r'$y=\sin(2 \pi x)$')  # 添加文字
+
+ax2 = plt.subplot(122)
+ax2.plot(x, y2)
+ax2.set_title('cos', fontsize=20)  # 设置标题
+ax2.set_xlabel(r'$x$')  # 设置 x 轴标签
+ax2.set_ylabel(r'$y$')  # 设置 y 轴标签
+ax2.text(0.3, 0.3, r'$y=\cos(2 \pi x)$')  # 添加文字
+
+plt.suptitle('sin and cos', fontsize=20)  # 设置中心化标题
+plt.show()
+```
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/Matplotlib/32.png" style="margin-top: -15px">
 </div>
