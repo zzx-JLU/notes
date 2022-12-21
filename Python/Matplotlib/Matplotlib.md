@@ -45,6 +45,11 @@ chrome:
   - [5.5 箱型图](#55-箱型图)
   - [5.6 轮廓图](#56-轮廓图)
   - [5.7 图像中的文字、注释、箭头](#57-图像中的文字-注释-箭头)
+- [6 图像处理](#6-图像处理)
+  - [6.1 Pillow模块](#61-pillow模块)
+  - [6.2 Matplotlib中的图像模块](#62-matplotlib中的图像模块)
+  - [6.3 Ndarray图像操作](#63-ndarray图像操作)
+  - [6.4 图像灰度化](#64-图像灰度化)
 
 <!-- /code_chunk_output -->
 
@@ -371,7 +376,7 @@ fig.show()
 ```
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/Matplotlib/7.png" style="margin-top: -10px">
+    <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/Matplotlib/7.png" style="margin-top: -10px; margin-bottom: 10px">
 </div>
 
 `Axes.plot()`方法的其他参数：
@@ -1177,3 +1182,94 @@ plt.show()
 <div align="center">
     <img src="https://raw.githubusercontent.com/zzx-JLU/images_for_markdown/main/Matplotlib/32.png" style="margin-top: -15px">
 </div>
+
+# 6 图像处理
+
+## 6.1 Pillow模块
+
+```python
+from PIL import Image  # 引入 Pillow 模块
+import numpy as np
+
+# 读取图片
+path = "cat.jpg"  # 图片文件的路径
+cat = Image.open(path)  # 打开图片
+cat_data = np.array(cat)  # 转换成 numpy 数组，结果为三维数组，保存每个像素的 RGB 值
+
+# 对 numpy 数组做操作
+cat_data = cat_data[:, :, ::-1]  # 将“红绿蓝”变成“蓝绿红”
+
+# 获得操作后的图片
+cat2 = Image.fromarray(cat_data)  # 将 numpy 数组转化成图片
+```
+
+## 6.2 Matplotlib中的图像模块
+
+Matplotlib 提供了加载、缩放和显示图像所需的功能，但是 Matplotlib 仅支持 png 图像。
+
+对于 RGB 和 RGBA 图像，Matplotlib 支持`float32`和`uint8`数据类型；对于灰度图，Matplotlib 仅支持`float32`。
+
+`matplotlib.image.imread()`函数用于读取 png 图像数据，返回一个`dtype`为`float32`的 Ndarray 数组，其中每个数组元素都是 0 到 1 之间的浮点数。如果图片不是 png 类型，则会调用 Pillow 模块的相关函数，返回的数组中元素类型为`uint8`。
+
+`matplotlib.pyplot.imshow()`函数用于显示图像，参数为三维数组。
+
+`matplotlib.pyplot.imsave()`函数用于保存图片。第一个参数为文件路径，第二个参数为三维数组。
+
+## 6.3 Ndarray图像操作
+
+水平翻转：将列倒序（`data = data[:, ::-1, :]`）
+上下翻转：将行倒序（`data = data[::-1, :, :]`）
+截取图片：数组的切片操作
+拼接图片：`numpy.concatenate()`、`numpy.stack()`
+切割图片：`numpy.split()`
+
+## 6.4 图像灰度化
+
+在 RGB 模型中，当 R=G=B 时表示一种灰度颜色，其中 R=G=B 的值称为灰度值，又称强度值、亮度值。灰度图像中的每个像素只需一个字节存放灰度值。
+
+将彩色图像转化成灰度图像的过程称为图像的灰度化处理。
+
+极值法：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+data = mpimg.imread("cat.png")
+
+# 最小值法，得到的灰度图较暗
+data_gray = data.min(axis=-1)  # 取出 RGB 中的最小值
+plt.imshow(data_gray, cmap="gray")
+
+# 最大值法，得到的灰度图较亮
+data_gray2 = data.max(axis=-1)  # 取出 RGB 中的最大值
+plt.imshow(data_gray2, cmap="gray")
+```
+
+平均值法：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+data = mpimg.imread("cat.png")
+
+data_gray = data.mean(axis=-1)  # 求每个像素 RGB 值的均值
+plt.imshow(data_gray, cmap="gray")
+```
+
+加权平均值法：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+data = mpimg.imread("cat.png")
+
+weight = [0.299, 0.587, 0.114]
+data_gray = np.dot(data, weight)
+plt.imshow(data_gray, cmap="gray")
+```
