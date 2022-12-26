@@ -22,6 +22,7 @@ chrome:
 - [1 常用工具](#1-常用工具)
   - [1.1 `Dataset`类](#11-dataset类)
   - [1.2 TensorBoard](#12-tensorboard)
+  - [1.3 Transforms](#13-transforms)
 
 <!-- /code_chunk_output -->
 
@@ -110,3 +111,49 @@ for i in range(100):
 ```
 
 要想查看事件文件，可以在命令行输入`tensorboard --logdir=*** --port=****`，然后点击生成的 URL。
+
+`add_image()`方法用于添加图像。参数为：
+
+1. `tag`：标题
+2. `img_tensor`：图像数据。类型可以是`torch.Tensor`、`numpy.array`或`string`。
+3. `global_step`：步骤数
+4. `dataformats`：数据格式。默认值为`'CHW'`，表示通道、高度、宽度三个维度的顺序。可以根据实际数据的格式进行设置。
+
+```python
+from torch.utils.tensorboard import SummaryWriter
+from PIL import Image
+import numpy as np
+
+writer = SummaryWriter("logs")
+
+img = Image.open('./data/hymenoptera_data/train/ants/0013035.jpg')
+img_array = np.array(img)
+
+writer.add_image('train', img_array, 1, dataformats='HWC')
+
+# 使用完毕后需要关闭
+writer.close()
+```
+
+## 1.3 Transforms
+
+Transforms 用于处理图像，通常用于数据预处理。
+
+`torchvision.transforms`包中提供了很多类，具有不同的功能。
+
+`ToTensor`类用于将`PIL.Image`或`numpy.ndarray`类型的图像数据转换成`Tensor`类型。使用方法为：
+
+1. 创建`ToTensor`类实例。
+2. 直接调用类实例，将待转换的图像数据作为参数传入，返回转换后的图像数据。
+
+```python
+from torchvision import transforms
+from PIL import Image
+
+img = Image.open('./data/hymenoptera_data/train/ants/0013035.jpg')
+print(type(img))  # <class 'PIL.JpegImagePlugin.JpegImageFile'>
+
+tensor_trans = transforms.ToTensor()  # 创建类实例
+img_tensor = tensor_trans(img)  # 调用类实例，执行转换
+print(type(img_tensor))  # <class 'torch.Tensor'>
+```
