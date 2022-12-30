@@ -24,6 +24,10 @@ chrome:
   - [1.2 TensorBoard](#12-tensorboard)
   - [1.3 Transforms](#13-transforms)
   - [1.4 torchvision中的数据集](#14-torchvision中的数据集)
+  - [1.5 `DataLoader`类](#15-dataloader类)
+- [2 神经网络](#2-神经网络)
+  - [2.1 神经网络的基本骨架](#21-神经网络的基本骨架)
+  - [2.2 卷积层](#22-卷积层)
 
 <!-- /code_chunk_output -->
 
@@ -291,4 +295,115 @@ print(train_set.classes)
 # ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
 print(train_set.classes[target])  # frog
+```
+
+## 1.5 `DataLoader`类
+
+`torch.utils.data.DataLoader`类用于加载数据，作为人工智能模型的输入。
+
+使用`DataLoader()`创建类对象，参数为：
+
+1. `dataset`：`Dataset`对象，从该数据集中加载数据。
+2. `batch_size`：每批次加载的样本数量。可选，默认值为 1。
+3. `shuffle`：布尔值，若为`True`则将每个 epoch 的数据打乱。可选，默认值为`False`。
+4. `num_workers`：用于加载数据的子进程数量，如果为 0 则在主进程中加载数据。可选，默认值为 0。
+5. `drop_last`：布尔值，如果为`True`，则当数据集大小无法被`batch_size`整除时，舍去最后一个不完整的批次；如果为`False`，则不会舍去，将最后一个批次的大小变小。可选，默认值为`False`。
+
+可以用 for 循环遍历`DataLoader`对象，获取各个批次，每个批次的数据封装在一起。例如：
+
+```python
+import torchvision
+from torch.utils.data import DataLoader
+
+test_set = torchvision.datasets.CIFAR10('./data/CIFAR10', train=False, download=True,
+                                        transform=torchvision.transforms.ToTensor())
+
+test_loader = DataLoader(test_set, batch_size=64)
+
+for batch in test_loader:
+    # CIFAR10 的 Dataset 对象返回 img 和 target
+    # 在 DataLoader 中，将每个批次的 img 和 target 分别包装到一起
+    imgs, targets = batch
+    print(imgs.shape)
+    print(targets)
+```
+
+# 2 神经网络
+
+## 2.1 神经网络的基本骨架
+
+`torch.nn.Module`类是所有神经网络模块的基类，自定义的模型需要继承`Module`类。`forward()`方法定义了前向传播操作，子类必须重写该方法。
+
+神经网络模型的基本结构如下所示：
+
+```python
+import torch
+from torch import nn
+
+
+class Demo(nn.Module):
+    # 定义模型结构
+    def __init__(self):
+        super().__init__()
+
+    # 前向传播
+    def forward(self, input):
+        output = input + 1
+        return output
+
+
+demo = Demo()
+x = torch.tensor(1.0)  # 输入数据
+y = demo.forward(x)  # 执行前向传播，得到输出
+print(y)  # tensor(2.)
+```
+
+## 2.2 卷积层
+
+`torch.nn.functional`模块提供了神经网络中常用的函数，其中`conv2d()`函数实现了二维矩阵的卷积运算。参数为：
+
+1. `input`：输入矩阵，`Tensor`类型，形状为 $(\text{minibatch}, \text{in\_channels}, iH, iW)$。
+2. `weight`：卷积核，`Tensor`类型，形状为 $(\text{out\_channels}, \frac{\text{in\_channels}}{\text{groups}}, kH, kW)$。
+3. `bias`：偏移量，`Tensor`类型，形状为 $(\text{out\_channels})$。可选，默认值为`None`。
+4. `stride`：卷积核移动的步长。如果取值为单个整数，则将垂直和水平方向的步长设置为相同值；如果取值为元组`(sH, sW)`，则分别设置垂直和水平方向的步长。可选，默认值为 1。
+5. `padding`：在输入矩阵周围补零的宽度，可以为单个整数，也可以为元组`(padH, padW)`。可选，默认值为 0。
+6. `dilation`：卷积核元素之间的距离，可以为单个整数，也可以为元组`(dH, dW)`。可选，默认值为 1。
+7. `groups`：将输入矩阵分组，$\text{in\_channels}$ 必须能够被`groups`值整除。可选，默认值为 1。
+
+```python
+import torch
+import torch.nn.functional as F
+
+x = torch.tensor([[1, 2, 0, 3, 1],
+                      [0, 1, 2, 3, 1],
+                      [1, 2, 1, 0, 0],
+                      [5, 2, 3, 1, 1],
+                      [2, 1, 0, 1, 1]])
+
+kernel = torch.tensor([[1, 2, 1],
+                       [0, 1, 0],
+                       [2, 1, 0]])
+
+# 调整形状
+x = torch.reshape(x, (1, 1, 5, 5))
+kernel = torch.reshape(kernel, (1, 1, 3, 3))
+
+output = F.conv2d(x, kernel)
+print(output)
+# tensor([[[[10, 12, 12],
+#           [18, 16, 16],
+#           [13,  9,  3]]]])
+
+output2 = F.conv2d(x, kernel, stride=2)
+print(output2)
+# tensor([[[[10, 12],
+#           [13,  3]]]])
+
+output3 = F.conv2d(x, kernel, padding=1)
+print(output3)
+# tensor([[[[ 1,  3,  4, 10,  8],
+#           [ 5, 10, 12, 12,  6],
+#           [ 7, 18, 16, 16,  8],
+#           [11, 13,  9,  3,  4],
+#           [14, 13,  9,  7,  4]]]])
 ```
