@@ -263,3 +263,97 @@ $$
 f(x,y) = \dfrac{1}{2 \pi \sigma_1 \sigma_2 \sqrt{1-\rho^2}} e^{\frac{-1}{2(1-\rho^2)} \left[ \frac{(x-\mu_1)^2}{\sigma_1^2} - 2 \rho \frac{(x-\mu_1)(y-\mu_2)}{\sigma_1 \sigma_2} + \frac{(y-\mu_2)^2}{\sigma_2^2} \right]},\ (x,y)\in \mathbf{R}^2
 $$
 其中 $\mu_1,\mu_2,\sigma_1,\sigma_2,\rho$ 都是常数，且 $\sigma_1 > 0, \sigma_2 > 0, -1 < \rho < 1$，则称 $(X,Y)$ 服从参数为 $\mu_1,\mu_2,\sigma_1,\sigma_2,\rho$ 的\textbf{二维正态分布}，记作 $(X,Y) \sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$.
+
+\begin{conclusion}
+    设 $(X,Y) \sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘概率密度分别为
+    \begin{gather*}
+        f_{X}(x) = \dfrac{1}{\sqrt{2\pi} \sigma_1} e^{-\frac{(x-\mu_1)^2}{2 \sigma_1^2}}, -\infty < x < +\infty \\
+        f_{Y}(y) = \dfrac{1}{\sqrt{2\pi} \sigma_2} e^{-\frac{(y-\mu_2)^2}{2 \sigma_2^2}}, -\infty < y < +\infty
+    \end{gather*}
+\end{conclusion}
+
+\begin{myproof}
+    $$
+    \begin{aligned}
+        & \frac{-1}{2(1-\rho^2)} \left[ \frac{(x-\mu_1)^2}{\sigma_1^2} - 2 \rho \frac{(x-\mu_1)(y-\mu_2)}{\sigma_1 \sigma_2} + \frac{(y-\mu_2)^2}{\sigma_2^2} \right] \\
+        = & \frac{-1}{2(1-\rho^2)} \left\{ \frac{(x-\mu_1)^2}{\sigma_1^2} + \left[ \frac{(y-\mu_2)^2}{\sigma_2^2} - 2 \rho \frac{(x-\mu_1)(y-\mu_2)}{\sigma_1 \sigma_2} + \rho^2 \frac{(x-\mu_1)^2}{\sigma_1^2} \right] - \rho^2 \frac{(x-\mu_1)^2}{\sigma_1^2} \right\} \\
+        = & \frac{-1}{2(1-\rho^2)} \left\{ \frac{(1-\rho^2)(x-\mu_1)^2}{\sigma_1^2} + \left( \dfrac{y-\mu_2}{\sigma_2} - \rho \dfrac{x-\mu_1}{\sigma_1} \right)^2 \right\} \\
+        = & -\frac{(x-\mu_1)^2}{2\sigma_1^2} - \dfrac{1}{2(1-\rho^2)} \left( \dfrac{y-\mu_2}{\sigma_2} - \rho \dfrac{x-\mu_1}{\sigma_1} \right)^2
+    \end{aligned}
+    $$
+    因此
+    $$
+    \begin{aligned}
+        f_{X}(x) &= \int_{-\infty}^{+\infty} f(x,y) \, \text{d}y \\
+        &= \dfrac{1}{2 \pi \sigma_1 \sigma_2 \sqrt{1-\rho^2}} e^{-\frac{(x-\mu_1)^2}{2 \sigma_1^2}} \int_{-\infty}^{+\infty} e^{\frac{-1}{2(1-\rho^2)} \left( \frac{y-\mu_2}{\sigma_2} - \rho \frac{x-\mu_1}{\sigma_1} \right)^2} \, \text{d}y
+    \end{aligned}
+    $$
+    对于任意给定的实数 $x$，令 $t = \dfrac{1}{\sqrt{1-\rho^2}} \left( \dfrac{y-\mu_2}{\sigma_2} - \rho \dfrac{x-\mu_1}{\sigma_1} \right)$，则
+    $$
+    \text{d}t = \dfrac{1}{\sigma_2 \sqrt{1-\rho^2}} \text{d}y
+    $$
+    因此
+    $$
+    \begin{aligned}
+        f_{X}(x) &= \dfrac{1}{2 \pi \sigma_1} e^{-\frac{(x-\mu_1)^2}{2 \sigma_1^2}} \int_{-\infty}^{+\infty} e^{-\frac{t^2}{2}} \dfrac{1}{\sigma_2 \sqrt{1-\rho^2}} \text{d}y \\
+        &= \dfrac{1}{\sqrt{2\pi} \sigma_1} e^{-\frac{(x-\mu_1)^2}{2 \sigma_1^2}} \int_{-\infty}^{+\infty} \dfrac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} \, \text{d}t
+    \end{aligned}
+    $$
+    因为
+    $$
+    \int_{-\infty}^{+\infty} \dfrac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} \, \text{d}t = 1
+    $$
+    所以
+    $$
+    f_{X}(x) = \dfrac{1}{\sqrt{2\pi} \sigma_1} e^{-\frac{(x-\mu_1)^2}{2 \sigma_1^2}}
+    $$
+
+    同理可得
+    $$
+    f_{Y}(y) = \dfrac{1}{\sqrt{2\pi} \sigma_2} e^{-\frac{(y-\mu_2)^2}{2 \sigma_2^2}}
+    $$
+\end{myproof}
+
+由此可知，若 $(X,Y) \sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘分布都是一维正态分布，且有 $X \sim N(\mu_1,\sigma_1^2)$，$Y \sim N(\mu_2,\sigma_2^2)$. $(X,Y)$ 的分布与参数 $\rho$ 有关，对于不同的 $\rho$，有不同的二维正态分布，但 $(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘分布都与 $\rho$ 无关.
+
+上述结论还表明，仅仅根据关于 $X$ 和关于 $Y$ 的边缘分布，一般是不能确定随机变量 $X$ 和 $Y$ 的联合分布的.
+
+\begin{conclusion}
+    设 $(X,Y) \sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $X$ 与 $Y$ 相互独立的充分必要条件是 $\rho=0$.
+\end{conclusion}
+
+\begin{myproof}
+    $$
+    f_{X}(x) \, f_{Y}(y) = \dfrac{1}{2 \pi \sigma_1 \sigma_2} e^{-\frac{1}{2} \left[ \frac{(x-\mu_1)^2}{2 \sigma_1^2} + \frac{(y-\mu_2)^2}{2 \sigma_2^2} \right]}
+    $$
+
+    先证充分性. 如果 $\rho=0$，则对于任意实数 $x$ 和 $y$，都有 $f(x,y) = f_{X}(x) \, f_{Y}(y)$，因此 $X$ 和 $Y$ 相互独立. 充分性得证.
+
+    再证必要性. 如果 $X$ 和 $Y$ 相互独立，由于 $f(x,y), f_{X}(x), f_{Y}(y)$ 都是连续函数，因此对于任意实数 $x$ 和 $y$，都有 $f(x,y) = f_{X}(x) \, f_{Y}(y)$. 如果取 $x=\mu_1, y=\mu_2$，则有
+    $$
+    \begin{cases}
+        f(\mu_1,\mu_2) = \dfrac{1}{2 \pi \sigma_1 \sigma_2 \sqrt{1-\rho^2}} \\[0.5em]
+        f_{X}(\mu_1) \, f_{Y}(\mu_2) = \dfrac{1}{2 \pi \sigma_1 \sigma_2} \\[0.5em]
+        f(\mu_1,\mu_2) = f_{X}(\mu_1) \, f_{Y}(\mu_2)
+    \end{cases}
+    $$
+    从而 $\rho=0$. 必要性得证.
+\end{myproof}
+
+\section{条件分布}
+
+\subsection{离散型随机变量的条件分布}
+
+\begin{definition}
+    设 $(X,Y)$ 是二维离散型随机变量，对于固定的 $j$，如果 $P\{Y = y_j\} = p_{\cdot j} > 0$，则称
+    $$
+    P\{X=x_i | Y=y_j\} = \dfrac{P\{X=x_i, Y=y_j\}}{P\{Y=y_j\}} = \dfrac{p_{ij}}{p_{\cdot j}},\ i=1,2,\cdots
+    $$
+    为在条件 $Y=y_j$ 下随机变量 $X$ 的\textbf{条件概率分布}.
+    
+    对于固定的 $i$，如果 $P\{X=x_i\} = p_{i \cdot} > 0$，则称
+    $$
+    P\{Y=y_j | X=x_i\} = \dfrac{P\{X=x_i,Y=y_j\}}{P\{X=x_i\}} = \dfrac{p_{ij}}{p_{i \cdot}},\ j=1,2,\cdots
+    $$
+    为在条件 $X=x_i$ 下随机变量 $Y$ 的\textbf{条件概率分布}.
+\end{definition}
