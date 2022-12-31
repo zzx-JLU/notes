@@ -28,6 +28,7 @@ chrome:
 - [2 神经网络](#2-神经网络)
   - [2.1 神经网络的基本骨架](#21-神经网络的基本骨架)
   - [2.2 卷积层](#22-卷积层)
+  - [2.3 池化层](#23-池化层)
 
 <!-- /code_chunk_output -->
 
@@ -344,7 +345,7 @@ from torch import nn
 class Demo(nn.Module):
     # 定义模型结构
     def __init__(self):
-        super().__init__()
+        super(Demo, self).__init__()
 
     # 前向传播
     def forward(self, input):
@@ -362,13 +363,13 @@ print(y)  # tensor(2.)
 
 `torch.nn.functional`模块提供了神经网络中常用的函数，其中`conv2d()`函数实现了二维矩阵的卷积运算。参数为：
 
-1. `input`：输入矩阵，`Tensor`类型，形状为 $(\text{minibatch}, \text{in\_channels}, iH, iW)$。
+1. `input`：输入数据，`Tensor`类型，形状为 $(\text{minibatch}, \text{in\_channels}, iH, iW)$。
 2. `weight`：卷积核，`Tensor`类型，形状为 $(\text{out\_channels}, \frac{\text{in\_channels}}{\text{groups}}, kH, kW)$。
 3. `bias`：偏移量，`Tensor`类型，形状为 $(\text{out\_channels})$。可选，默认值为`None`。
 4. `stride`：卷积核移动的步长。如果取值为单个整数，则将垂直和水平方向的步长设置为相同值；如果取值为元组`(sH, sW)`，则分别设置垂直和水平方向的步长。可选，默认值为 1。
 5. `padding`：在输入矩阵周围补零的宽度，可以为单个整数，也可以为元组`(padH, padW)`。可选，默认值为 0。
 6. `dilation`：卷积核元素之间的距离，可以为单个整数，也可以为元组`(dH, dW)`。可选，默认值为 1。
-7. `groups`：将输入矩阵分组，$\text{in\_channels}$ 必须能够被`groups`值整除。可选，默认值为 1。
+7. `groups`：将输入数据的通道分组，$\text{in\_channels}$ 必须能够被`groups`值整除。可选，默认值为 1。
 
 ```python
 import torch
@@ -406,4 +407,110 @@ print(output3)
 #           [ 7, 18, 16, 16,  8],
 #           [11, 13,  9,  3,  4],
 #           [14, 13,  9,  7,  4]]]])
+```
+
+`torch.nn.Conv2d`类定义了二维卷积层，实例化参数为：
+
+1. `in_channels`：输入图像的通道数。
+2. `out_channels`：输出通道数。卷积核的个数与输出通道数相同。
+3. `kernel_size`：元组，卷积核的形状。
+4. `stride`：卷积核移动的步长。可选，默认值为 1。
+5. `padding`：输入图像的边距。可选，默认值为 0。
+6. `dilation`：卷积核元素之间的距离。可选，默认值为 1。
+7. `groups`：分组数。可选，默认值为 1。
+8. `bias`：布尔值，设置是否偏置。可选，默认值为`True`。
+9. `padding_mode`：边距的填充方式。可选，默认值为`'zeros'`，表示在填充位置补零。
+
+设输入数据的形状为 $(N, C_{\text{in}}, H_{\text{in}}, W_{\text{in}})$，输出数据的形状为 $(N, C_{\text{out}}, H_{\text{out}}, W_{\text{out}})$，则输出数据的形状可以按照下列公式确定：
+
+$$
+H_{\text{out}} = \left\lfloor \dfrac{H_{\text{in}} + 2 \times \text{padding}[0] - \text{dilation}[0] \times (\text{kernel\_size}[0] - 1)}{\text{stride}[0]} + 1 \right\rfloor \\[0.5em]
+W_{\text{out}} = \left\lfloor \dfrac{W_{\text{in}} + 2 \times \text{padding}[1] - \text{dilation}[1] \times (\text{kernel\_size}[1] - 1)}{\text{stride}[1]} + 1 \right\rfloor
+$$
+
+网络示例：
+
+```python
+import torchvision
+from torch import nn
+from torch.utils.data import DataLoader
+
+
+class ConvTest(nn.Module):
+    def __init__(self):
+        super(ConvTest, self).__init__()
+        self.conv1 = nn.Conv2d(in_channels=3, out_channels=6, kernel_size=(3, 3))
+
+    def forward(self, x):
+        return self.conv1(x)
+
+
+test_set = torchvision.datasets.CIFAR10('./data/CIFAR10', train=False, download=True,
+                                        transform=torchvision.transforms.ToTensor())
+test_loader = DataLoader(test_set, batch_size=64)
+
+model = ConvTest()
+for data in test_loader:
+    imgs, targets = data
+    output = model.forward(imgs)
+```
+
+## 2.3 池化层
+
+`torch.nn.MaxPool2d`类定义了最大池化层，实例化参数为：
+
+1. `kernel_size`：池化核的形状。
+2. `stride`：池化核移动的步长。可选，默认值为`None`，此时取值与`kernel_size`相同。
+3. `padding`：输入数据的边距宽度。可选，默认值为 0。
+4. `dilation`：池化核中元素的间距。可选，默认值为 1。
+5. `return_indices=False`
+6. `ceil_mode`：取值为`True`时，输出数据的形状用 $\lceil \, \rceil$ 计算，此时当池化核窗口内有空数据时，保留该次取得的数据；取值为`False`时，输出数据的形状用 $\lfloor \, \rfloor$ 计算，此时当池化核窗口内有空数据时，舍去该次取得的数据。可选，默认为`False`。
+
+在最简单的情况下，设输入数据的形状为 $(N,C,H,W)$，输出数据的形状为 $(N, C, H_{\text{out}}, W_{\text{out}})$，池化核的形状为 $(kH, kW)$，则输出数据的计算方法为：
+
+$$
+\begin{aligned}
+    \operatorname{out}(N_i, C_j, h, w) = & \max_{m=0,\cdots,kH-1} \max_{n=0,\cdots,kH-1} \\
+    & \operatorname{input}(N_i, C_j, \text{stride}[0] \times h + m, \text{stride}[1] \times w + n)
+\end{aligned}
+$$
+
+即每次选取池化核窗口范围内的最大值。
+
+输出数据的形状可以按照下列公式确定：
+
+$$
+H_{\text{out}} = \left\lfloor \dfrac{H + 2 \times \text{padding}[0] - \text{dilation}[0] \times (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1 \right\rfloor \\[0.5em]
+W_{\text{out}} = \left\lfloor \dfrac{W + 2 \times \text{padding}[1] - \text{dilation}[1] \times (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1 \right\rfloor
+$$
+
+示例代码：
+
+```python
+import torch
+from torch import nn
+
+
+class PoolTest(nn.Module):
+    def __init__(self):
+        super(PoolTest, self).__init__()
+        self.maxpool1 = nn.MaxPool2d(kernel_size=3, ceil_mode=True)
+
+    def forward(self, x):
+        return self.maxpool1(x)
+
+
+model = PoolTest()
+
+x = torch.tensor([[1, 2, 0, 3, 1],
+                  [0, 1, 2, 3, 1],
+                  [1, 2, 1, 0, 0],
+                  [5, 2, 3, 1, 1],
+                  [2, 1, 0, 1, 1]], dtype=torch.float32)
+x = torch.reshape(x, (1, 1, 5, 5))
+
+output = model(x)
+print(output)
+# tensor([[[[2., 3.],
+#           [5., 1.]]]])
 ```
