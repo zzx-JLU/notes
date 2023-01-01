@@ -29,6 +29,9 @@ chrome:
   - [2.1 神经网络的基本骨架](#21-神经网络的基本骨架)
   - [2.2 卷积层](#22-卷积层)
   - [2.3 池化层](#23-池化层)
+  - [2.4 非线性激活函数](#24-非线性激活函数)
+  - [2.5 线性层](#25-线性层)
+  - [2.6 `Sequential`](#26-sequential)
 
 <!-- /code_chunk_output -->
 
@@ -424,8 +427,8 @@ print(output3)
 设输入数据的形状为 $(N, C_{\text{in}}, H_{\text{in}}, W_{\text{in}})$，输出数据的形状为 $(N, C_{\text{out}}, H_{\text{out}}, W_{\text{out}})$，则输出数据的形状可以按照下列公式确定：
 
 $$
-H_{\text{out}} = \left\lfloor \dfrac{H_{\text{in}} + 2 \times \text{padding}[0] - \text{dilation}[0] \times (\text{kernel\_size}[0] - 1)}{\text{stride}[0]} + 1 \right\rfloor \\[0.5em]
-W_{\text{out}} = \left\lfloor \dfrac{W_{\text{in}} + 2 \times \text{padding}[1] - \text{dilation}[1] \times (\text{kernel\_size}[1] - 1)}{\text{stride}[1]} + 1 \right\rfloor
+H_{\text{out}} = \left\lfloor \dfrac{H_{\text{in}} + 2 \times \text{padding}[0] - \text{dilation}[0] \times (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1 \right\rfloor \\[0.5em]
+W_{\text{out}} = \left\lfloor \dfrac{W_{\text{in}} + 2 \times \text{padding}[1] - \text{dilation}[1] \times (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1 \right\rfloor
 $$
 
 网络示例：
@@ -514,3 +517,35 @@ print(output)
 # tensor([[[[2., 3.],
 #           [5., 1.]]]])
 ```
+
+## 2.4 非线性激活函数
+
+`torch.nn.ReLU`类定义了 ReLU 激活函数。
+
+- 实例化参数为`inplace`，布尔值，设置是否直接修改输入数据，可选，默认值为`False`。
+- 对输入数据的所有元素应用 ReLU 激活函数，输入数据与输出数据形状相同。
+- ReLU 激活函数的数学表达式为
+  $$
+  \operatorname{ReLU}(x) = \max(0, x) = \begin{cases}
+    x & x > 0 \\
+    0 & x \leqslant 0
+  \end{cases}
+  $$
+
+`torch.nn.Sigmoid`类定义了 Sigmoid 激活函数，数学表达式为
+
+$$
+\operatorname{sigmoid}(x) = \sigma(x) = \dfrac{1}{1 + e^{-x}}
+$$
+
+## 2.5 线性层
+
+`torch.nn.Linear`类定义了线性层，即全连接层。实例化参数为：
+
+1. `in_features`：输入数据的特征数，即每个输入样本的长度。
+2. `out_features`：输出数据的特征数，即每个输出样本的长度。
+3. `bias`：布尔值，设置是否训练偏置。可选，默认值为`True`。
+
+## 2.6 `Sequential`
+
+`torch.nn.Sequential`类是一个序列容器，可以将多个模块按照构造器中指定的顺序添加到容器中。调用容器时，将会按顺序依次执行各个模块。
