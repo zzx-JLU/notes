@@ -357,3 +357,84 @@ $$
     $$
     为在条件 $X=x_i$ 下随机变量 $Y$ 的\textbf{条件概率分布}.
 \end{definition}
+
+\subsection{连续型随机变量的条件分布}
+
+\begin{definition}
+    设 $(X,Y)$ 是二维连续型随机变量，对于给定的实数 $y$ 及任意给定的正数 $\varepsilon$，都有 $P\{y-\varepsilon < Y \leqslant y+\varepsilon\} > 0$. 如果对于任意实数 $x$，极限
+    $$
+    \lim_{\varepsilon \to 0^+} P\{X \leqslant x \;|\; y-\varepsilon < Y \leqslant y+\varepsilon\} = \lim_{\varepsilon \to 0^+} \dfrac{P\{X \leqslant x, y-\varepsilon < Y \leqslant y+\varepsilon\}}{P\{y-\varepsilon < Y \leqslant y+\varepsilon\}}
+    $$
+    存在，则称此极限值为在条件 $Y=y$ 下 $X$ 的\textbf{条件分布函数}，记作 $F_{X|Y}(x|y)$. 如果非负函数 $f_{X|Y}(x|y)$ 使得
+    $$
+    F_{X|Y}(x|y) = \int_{-\infty}^x f_{X|Y}(u|y) \, \text{d}u,\ x \in \mathbf{R}
+    $$
+    成立，则称 $f_{X|Y}(x|y)$ 为在条件 $Y=y$ 下 $X$ 的\textbf{条件概率密度}.
+\end{definition}
+
+设二维连续型随机变量 $(X,Y)$ 的分布函数为 $F(x,y)$，概率密度为 $f(x,y)$. 如果在点 $(x,y)$ 处 $f(x,y)$ 连续，$(X,Y)$ 关于 $Y$ 的边缘概率密度 $f_{Y}(y)$ 连续，且 $f_{Y}(y)>0$，$Y$ 的分布函数为 $F_{Y}(y)$，则有
+$$
+\begin{aligned}
+    F_{X|Y}(x|y) &= \lim_{\varepsilon \to 0^+} \dfrac{P\{X \leqslant x, y-\varepsilon < Y \leqslant y+\varepsilon\}}{P\{y-\varepsilon < Y \leqslant y+\varepsilon\}} \\[0.7em]
+    &= \lim_{\varepsilon \to 0^+} \dfrac{F(x, y+\varepsilon) - F(x, y-\varepsilon)}{F_{Y}(y+\varepsilon) - F_{Y}(y-\varepsilon)} \\[0.7em]
+    &= \lim_{\varepsilon \to 0^+} \dfrac{\dfrac{F(x, y+\varepsilon) - F(x,y)}{\varepsilon} + \dfrac{F(x, y-\varepsilon) - F(x,y)}{-\varepsilon}}{\dfrac{F_{Y}(y+\varepsilon) - F_{Y}(y)}{\varepsilon} + \dfrac{F_{Y}(y-\varepsilon) - F_{Y}(y)}{-\varepsilon}} \\
+    &= \dfrac{\dfrac{\partial F(x,y)}{\partial y}}{\dfrac{\text{d} F_{Y}(y)}{\text{d}y}} \\[1em]
+    &= \dfrac{\displaystyle\int_{-\infty}^x f(u,y) \, \text{d}u}{f_{Y}(y)} \\[1em]
+    &= \int_{-\infty}^x \dfrac{f(u,y)}{f_{Y}(y)} \text{d}u
+\end{aligned}
+$$
+由此可得在条件 $Y=y$ 下 $X$ 的条件概率密度为
+$$
+f_{X|Y}(x|y) = \dfrac{f(x,y)}{f_{Y}(y)},\ x \in \mathbf{R}
+$$
+
+类似地，可以定义在条件 $X=x$ 下 $Y$ 的条件分布函数 $F_{Y|X}(y|x)$ 和在条件 $X=x$ 下 $Y$ 的条件概率密度 $f_{Y|X}(y|x)=\dfrac{f(x,y)}{f_{X}(x)},\ y \in \mathbf{R}$.
+
+\section{二维随机变量的函数的分布}
+
+设 $(X,Y)$ 为二维随机变量，$g(x,y)$ 为二元函数，则一维随机变量 $Z=g(X,Y)$ 是二维随机变量 $(X,Y)$ 的函数.
+
+\subsection{二维离散型随机变量的函数的分布}
+
+\begin{problem}
+    设 $(X,Y)$ 的概率分布为
+    \begin{table}[H]
+        \centering
+    
+        \begin{tabular}{c | c c c c}
+            \hline
+            \diagbox{$X$}{$Y$} & -1 & 1 & 2 \\
+            \hline
+            0 & $\dfrac{1}{10}$ & $\dfrac{2}{10}$ & $\dfrac{1}{10}$ \\
+            2 & $\dfrac{3}{10}$ & $\dfrac{1}{10}$ & $\dfrac{2}{10}$ \\
+            \hline
+        \end{tabular}
+    \end{table}
+    求 $X+Y$ 的概率分布.
+\end{problem}
+
+\begin{solution}
+    $X+Y$ 所有可能取的值为 $-1,1,2,3,4$，且
+    $$
+    \begin{aligned}
+        & P\{X+Y=-1\} = P\{X=0,Y=-1\} = \dfrac{1}{10} \\[0.5em]
+        & P\{X+Y=1\} = P\{X=0,Y=1\} + P\{X=2,Y=-1\} = \dfrac{2}{10} + \dfrac{3}{10} = \dfrac{1}{2} \\[0.5em]
+        & P\{X+Y=2\} = P\{X=0,Y=2\} = \dfrac{1}{10} \\[0.5em]
+        & P\{X+Y=3\} = P\{X=2,Y=1\} = \dfrac{1}{10} \\[0.5em]
+        & P\{X+Y=4\} = P\{X=2,Y=2\} = \dfrac{2}{10} = \dfrac{1}{5}
+    \end{aligned}
+    $$
+    即 $X+Y$ 的概率分布为
+
+    \begin{table}[H]
+        \centering
+    
+        \begin{tabular}{c | c c c c c}
+            \hline
+            $X+Y$ & -1 & 1 & 2 & 3 & 4 \\
+            \hline
+            $P$ & $\dfrac{1}{10}$ & $\dfrac{1}{2}$ & $\dfrac{1}{10}$ & $\dfrac{1}{10}$ & $\dfrac{1}{5}$ \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{solution}
