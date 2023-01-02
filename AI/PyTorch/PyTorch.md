@@ -32,6 +32,8 @@ chrome:
   - [2.4 非线性激活函数](#24-非线性激活函数)
   - [2.5 线性层](#25-线性层)
   - [2.6 `Sequential`](#26-sequential)
+  - [2.7 损失函数](#27-损失函数)
+  - [2.8 优化器](#28-优化器)
 
 <!-- /code_chunk_output -->
 
@@ -549,3 +551,141 @@ $$
 ## 2.6 `Sequential`
 
 `torch.nn.Sequential`类是一个序列容器，可以将多个模块按照构造器中指定的顺序添加到容器中。调用容器时，将会按顺序依次执行各个模块。
+
+## 2.7 损失函数
+
+`torch.nn.L1Loss`类定义了平均绝对误差（mean absolute error，MAE），也称为 L1 损失函数。实例化参数为：
+
+1. `reduction`：指定输出结果的压缩策略，可能的取值有`none`、`mean`、`sum`。可选，默认值为`mean`。
+
+设预测结果为 $\hat{y}$，实际值为 $y$，批次大小为 $N$。当`reduction`参数为`none`时，返回值为
+
+$$
+l(\hat{y}, y) = (|\hat{y}_1-y_1|, |\hat{y}_2-y_2|, \cdots, |\hat{y}_N-y_N|)
+$$
+
+当`reduction`参数为`mean`时，返回值为
+
+$$
+l(\hat{y}, y) = \dfrac{1}{N} \sum_{i=1}^N |\hat{y}_i-y_i|
+$$
+
+当`reduction`参数为`sum`时，返回值为
+
+$$
+l(\hat{y}, y) = \sum_{i=1}^N |\hat{y}_i-y_i|
+$$
+
+调用`L1Loss`对象时，要求 input 和 target 形状相同，例如：
+
+```python
+import torch
+from torch import nn
+
+inputs = torch.tensor([1, 2, 3], dtype=torch.float32)
+targets = torch.tensor([2, 3, 5], dtype=torch.float32)
+
+loss1 = nn.L1Loss()
+print(loss1(inputs, targets))  # tensor(1.3333)
+
+loss2 = nn.L1Loss(reduction='none')
+print(loss2(inputs, targets))  # tensor([1., 1., 2.])
+
+loss3 = nn.L1Loss(reduction='sum')
+print(loss3(inputs, targets))  # tensor(4.)
+```
+
+`torch.nn.MSELoss`类定义了均方误差（mean square error，MSE）。当`reduction`参数为`none`时，返回值为
+
+$$
+\operatorname{MSE}(\hat{y}, y) = ((\hat{y}_1-y_1)^2, (\hat{y}_2-y_2)^2, \cdots, (\hat{y}_N-y_N)^2)
+$$
+
+当`reduction`参数为`mean`时，返回值为
+
+$$
+\operatorname{MSE}(\hat{y}, y) = \dfrac{1}{N} \sum_{i=1}^N (\hat{y}_i-y_i)^2
+$$
+
+当`reduction`参数为`sum`时，返回值为
+
+$$
+\operatorname{MSE}(\hat{y}, y) = \sum_{i=1}^N (\hat{y}_i-y_i)^2
+$$
+
+`torch.nn.CrossEntropyLoss`类定义了交叉熵损失函数，常用于分类问题。设类别数为 $C$，批次大小为 $N$，则 input 的形状为 $(N,C)$ 或 $(N,C,d_1,d_2,\cdots,d_K)$，target 的形状为 $(N)$ 或 $(N,d_1,d_2,\cdots,d_K)$。例如：
+
+```python
+import torch
+from torch import nn
+
+inputs = torch.tensor([[0.1, 0.2, 0.3],
+                       [0.2, 0.1, 0.7]])
+targets = torch.tensor([1, 2])
+cross_entropy_loss = nn.CrossEntropyLoss()
+print(cross_entropy_loss(inputs, targets))  # tensor(0.9349)
+```
+
+对损失函数的返回结果调用`backward()`方法，可以执行反向传播，获得模型参数的梯度值。
+
+## 2.8 优化器
+
+`torch.optim`模块包含多种优化器。优化器的使用方法：
+
+1. 构造优化器对象。优化器会保存当前状态，并根据梯度值更新参数。构造优化器时，必须传递模型参数，之后可以指定优化器特定的可选参数。
+2. 调用`zero_grad()`方法清空梯度值。
+3. 计算梯度值。
+4. 调用`step()`方法，执行优化算法。
+
+`Optimizer`类是所有优化器的基类，定义了优化器的基本方法。
+
+使用优化器训练模型的示例如下：
+
+```python
+import torchvision
+from torch import nn
+import torch
+from torch.utils.data import DataLoader
+
+
+class Cifar10(nn.Module):
+    def __init__(self):
+        super(Cifar10, self).__init__()
+        self.model = nn.Sequential(
+            nn.Conv2d(3, 32, (5, 5), padding=2),
+            nn.MaxPool2d(2),
+            nn.Conv2d(32, 32, (5, 5), padding=2),
+            nn.MaxPool2d(2),
+            nn.Conv2d(32, 64, (5, 5), padding=2),
+            nn.MaxPool2d(2),
+            nn.Flatten(),
+            nn.Linear(1024, 64),
+            nn.Linear(64, 10)
+        )
+
+    def forward(self, x):
+        return self.model(x)
+
+
+model = Cifar10()  # 模型
+loss = nn.CrossEntropyLoss()  # 损失函数
+optim = torch.optim.SGD(model.parameters(), lr=0.01)  # 优化器
+
+# 加载数据
+test_set = torchvision.datasets.CIFAR10('./data/CIFAR10', train=False, download=True,
+                                        transform=torchvision.transforms.ToTensor())
+test_loader = DataLoader(test_set, batch_size=64)
+
+# 训练模型
+for epoch in range(20):
+    # 每个 epoch 将所有数据看一遍
+    running_loss = 0.0
+    for imgs, targets in test_loader:
+        optim.zero_grad()  # 将梯度值清零
+        outputs = model.forward(imgs)  # 前向传播
+        error = loss(outputs, targets)  # 计算误差
+        error.backward()  # 反向传播，得到梯度值
+        optim.step()  # 执行优化算法
+        running_loss = running_loss + error
+    print(running_loss)
+```
