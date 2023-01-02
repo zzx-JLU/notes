@@ -438,3 +438,84 @@ $$
         \end{tabular}
     \end{table}
 \end{solution}
+
+\begin{conclusion}
+    设随机变量 $X$ 和 $Y$ 相互独立，且 $X \sim P(\lambda_1)$，$Y \sim P(\lambda_2)$，则 $X+Y \sim P(\lambda_1 + \lambda_2)$.
+\end{conclusion}
+
+\begin{myproof}
+    因为 $X \sim P(\lambda_1)$，$Y \sim P(\lambda_2)$，所以
+    \begin{gather*}
+        P\{X=i\} = \dfrac{\lambda_1^i e^{-\lambda_1}}{i!},\ i=0,1,2,\cdots \\[0.5em]
+        P\{Y=j\} = \dfrac{\lambda_2^j e^{-\lambda_2}}{j!},\ j=0,1,2,\cdots
+    \end{gather*}
+
+    $X+Y$ 所有可能取的值为 $0,1,2,\cdots$. 由于 $X$ 和 $Y$ 相互独立，因此对于任意的非负整数 $k$，有
+    $$
+    \begin{aligned}
+        P\{X+Y=k\} &= P(\bigcup_{l=0}^k \{X=l, Y=k-l\}) \\
+        &= \sum_{l=0}^k (P\{X=l\} \cdot P\{Y=k-l\}) \\
+        &= \sum_{l=0}^k \left[ \dfrac{\lambda_1^l e^{-\lambda_1}}{l!} \dfrac{\lambda_2^{k-l} e^{-\lambda_2}}{(k-l)!} \right] \\
+        &= \sum_{l=0}^k \left[ \dfrac{k!}{l!(k-l)!} \lambda_1^l \lambda_2^{k-l} \dfrac{e^{-(\lambda_1 + \lambda_2)}}{k!} \right] \\
+        &= \dfrac{e^{-(\lambda_1 + \lambda_2)}}{k!} \sum_{i=0}^k \dfrac{k!}{l!(k-l)!} \lambda_1^l \lambda_2^{k-l} \\
+        &= \dfrac{(\lambda_1 + \lambda_2)^k e^{-(\lambda_1 + \lambda_2)}}{k!}
+    \end{aligned}
+    $$
+    即 $X+Y \sim P(\lambda_1 + \lambda_2)$.
+\end{myproof}
+
+\subsection{二维连续型随机变量的函数的分布}
+
+设 $(X,Y)$ 为二维连续型随机变量，其概率密度为 $f(x,y)$.
+
+\subsubsection{$Z=X+Y$ 的概率密度}
+
+首先求 $Z$ 的分布函数
+
+$$
+\begin{aligned}
+    F_{Z}(z) &= P\{Z \leqslant z\} = P\{X+Y \leqslant z\} \\
+    &= \underset{x+y \leqslant z}{\iint} f(x,y) \, \text{d}x \text{d}y \\
+    &= \int_{-\infty}^{+\infty} \int_{-\infty}^{z-x} f(x,y) \, \text{d}y \text{d}x \\
+\end{aligned}
+$$
+
+对固定的 $z$ 和 $x$，作变量代换 $y=u-x$，得
+$$
+\int_{-\infty}^{z-x} f(x,y) \, \text{d}y = \int_{-\infty}^z f(x,u-x) \, \text{d}u
+$$
+因此
+$$
+\begin{aligned}
+    F_{Z}(z) &= \int_{-\infty}^{+\infty} \int_{-\infty}^z f(x,u-x) \, \text{d}u \text{d}x \\
+    &= \int_{-\infty}^z \int_{-\infty}^{+\infty} f(x,u-x) \, \text{d}x \text{d}u 
+\end{aligned}
+$$
+于是，随机变量 $Z$ 的概率密度为
+$$
+f_{Z}(z) = \int_{-\infty}^{+\infty} f(x,z-x) \, \text{d}x
+$$
+
+同理可得
+$$
+f_{Z}(z) = \int_{-\infty}^{+\infty} f(z-y,y) \, \text{d}y
+$$
+
+如果 $X$ 和 $Y$ 相互独立，设 $f_{X}(x)$ 和 $f_{Y}(y)$ 分别是二维随机变量 $(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘概率密度，则有
+\begin{gather*}
+    f_{Z}(z) = \int_{-\infty}^{+\infty} f_{X}(x) f_{Y}(z-x) \, \text{d}x \\
+    f_{Z}(z) = \int_{-\infty}^{+\infty} f_{X}(z-y) f_{Y}(y) \, \text{d}y
+\end{gather*}
+上式称为 $f_X$ 和 $f_Y$ 的\textbf{卷积公式}，记作 $f_X * f_Y$，即
+\begin{equation}
+    f_{Z}(z) = f_X * f_Y = \int_{-\infty}^{+\infty} f_{X}(x) f_{Y}(z-x) \, \text{d}x = \int_{-\infty}^{+\infty} f_{X}(z-y) f_{Y}(y) \, \text{d}y
+\end{equation}
+
+如果随机变量 $X$ 和 $Y$ 相互独立，并且 $X \sim N(\mu_1,\sigma_1^2)$，$Y \sim N(\mu_2,\sigma_2^2)$，则利用卷积公式可求得随机变量 $Z=X+Y$ 的概率密度，从而可知 $Z=X+Y$ 仍服从正态分布，且
+$$
+Z = X+Y \sim N(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)
+$$
+
+\subsubsection{$M = \max(X,Y)$ 及 $N = \min(X,Y)$ 的分布函数}
+
+设随机变量 $X$ 和 $Y$ 相互独立，分布函数分别为 $F_{X}(x)$ 和 $F_{Y}(y)$，$M$ 和 $N$ 的分布函数分别为 $F_{\text{max}}(z)$ 和 $F_{\text{min}}(z)$.
