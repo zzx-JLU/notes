@@ -518,4 +518,52 @@ $$
 
 \subsubsection{$M = \max(X,Y)$ 及 $N = \min(X,Y)$ 的分布函数}
 
-设随机变量 $X$ 和 $Y$ 相互独立，分布函数分别为 $F_{X}(x)$ 和 $F_{Y}(y)$，$M$ 和 $N$ 的分布函数分别为 $F_{\text{max}}(z)$ 和 $F_{\text{min}}(z)$.
+设随机变量 $X$ 和 $Y$ 相互独立，分布函数分别为 $F_{X}(x)$ 和 $F_{Y}(y)$，$M = \max(X,Y)$ 和 $N = \min(X,Y)$ 的分布函数分别为 $F_{\text{max}}(z)$ 和 $F_{\text{min}}(z)$.
+
+由于事件 $\{M \leqslant z\} = \{X \leqslant z, Y \leqslant z\}$，而 $X$ 和 $Y$ 相互独立，所以事件 $\{X \leqslant z\}$ 与事件 $\{Y \leqslant z\}$ 相互独立，由此可得
+$$
+\begin{aligned}
+    F_{\text{max}}(z) &= P\{M \leqslant z\} \\
+    &= P\{X \leqslant z, Y \leqslant z\} \\
+    &= P\{X \leqslant z\} \, P\{Y \leqslant z\} \\
+    &= F_{X}(z) \, F_{Y}(z)
+\end{aligned}
+$$
+
+由于事件 $\{N>z\} = \{X>z, Y>z\}$，而 $X$ 和 $Y$ 相互独立，所以事件 $\{X>z\}$ 与事件 $\{Y>z\}$ 相互独立，由此可得
+$$
+\begin{aligned}
+    F_{\text{min}}(z) &= P\{N \leqslant z\} \\
+    &= 1 - P\{N>z\} \\
+    &= 1 - P\{X>z, Y>z\} \\
+    &= 1 - P\{X>z\} \, P\{Y>z\} \\
+    &= 1 - (1 - P\{X \leqslant z\})(1 - P\{Y \leqslant z\}) \\
+    &= 1 - [1 - F_{X}(z)][1 - F_{Y}(z)]
+\end{aligned}
+$$
+
+\subsubsection{瑞利分布}
+
+设随机变量 $X$ 和 $Y$ 相互独立，并且都服从正态分布 $N(0, \sigma^2)$，则随机变量 $Z = \sqrt{X^2 + Y^2}$ 服从参数为 $\sigma \; (\sigma > 0)$ 的\textbf{瑞利分布}（Rayleigh distribution）.
+
+由于随机变量 $X$ 和 $Y$ 相互独立，因此二维随机变量 $(X,Y)$ 的概率密度为
+$$
+f(x,y) = f_{X}(x) \, f_{Y}(y) = \dfrac{1}{2 \pi \sigma^2} e^{-\frac{x^2 + y^2}{2 \sigma^2}}
+$$
+
+当 $z<0$ 时，有
+$$
+F_{Z}(z) = P\{Z \leqslant z\} = P\{\sqrt{X^2 + Y^2} \leqslant z\} = 0
+$$
+
+当 $z \geqslant 0$ 时，有
+$$
+\begin{aligned}
+    F_{Z}(z) &= P\{Z \leqslant z\} = P\{\sqrt{X^2 + Y^2} \leqslant z\} \\
+    &= \underset{\sqrt{X^2 + Y^2} \leqslant z}{\iint} f(x,y) \, \text{d}x \text{d}y \\
+    &= \underset{\sqrt{X^2 + Y^2} \leqslant z}{\iint} \dfrac{1}{2 \pi \sigma^2} e^{-\frac{x^2 + y^2}{2 \sigma^2}} \, \text{d}x \text{d}y \\
+    &= \dfrac{1}{2 \pi} \int_0^{2 \pi} \text{d}\theta \int_0^z \dfrac{1}{\sigma^2} e^{-\frac{r^2}{2 \sigma^2}} r \, \text{d}r \\
+    &= \left. -e^{-\frac{r^2}{2 \sigma^2}} \right|_0^z \\
+    &= 1 - e^{-\frac{z^2}{2 \sigma^2}}
+\end{aligned}
+$$
