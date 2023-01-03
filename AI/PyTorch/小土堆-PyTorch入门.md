@@ -1,5 +1,5 @@
 ---
-title: PyTorch
+title: PyTorch入门
 chrome:
     format: "A4"
     headerTemplate: '<div></div>'
@@ -13,7 +13,7 @@ chrome:
         right: '40px'
 ---
 
-<h1>PyTorch</h1>
+<h1>PyTorch入门</h1>
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
@@ -34,6 +34,8 @@ chrome:
   - [2.6 `Sequential`](#26-sequential)
   - [2.7 损失函数](#27-损失函数)
   - [2.8 优化器](#28-优化器)
+  - [2.9 现有网络模型的使用及修改](#29-现有网络模型的使用及修改)
+  - [2.10 网络模型的保存与读取](#210-网络模型的保存与读取)
 
 <!-- /code_chunk_output -->
 
@@ -688,4 +690,168 @@ for epoch in range(20):
         optim.step()  # 执行优化算法
         running_loss = running_loss + error
     print(running_loss)
+```
+
+## 2.9 现有网络模型的使用及修改
+
+PyTorch 提供了很多成熟的模型。例如，`torchvision.models`模块提供了计算机视觉常用的模型，下面以 VGG 模型为例，介绍现有网络模型的使用及修改方法。
+
+`torchvision.models.vgg16()`函数可以获得 VGG16 模型。参数为：
+
+1. `pretrained`：布尔值，如果为`True`，则返回在 ImageNet 数据集上预训练的模型。可选，默认值为`False`。
+2. `progress`：布尔值，如果为`True`，则在`stderr`显示下载进度条。可选，默认值为`True`。
+
+用`print()`输出模型，可以看到模型的结构，例如：
+
+```python
+import torchvision
+
+vgg16 = torchvision.models.vgg16()
+print(vgg16)
+# VGG(
+#   (features): Sequential(
+#     (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (1): ReLU(inplace=True)
+#     (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (3): ReLU(inplace=True)
+#     (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+#     (5): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (6): ReLU(inplace=True)
+#     (7): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (8): ReLU(inplace=True)
+#     (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+#     (10): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (11): ReLU(inplace=True)
+#     (12): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (13): ReLU(inplace=True)
+#     (14): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (15): ReLU(inplace=True)
+#     (16): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+#     (17): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (18): ReLU(inplace=True)
+#     (19): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (20): ReLU(inplace=True)
+#     (21): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (22): ReLU(inplace=True)
+#     (23): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+#     (24): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (25): ReLU(inplace=True)
+#     (26): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (27): ReLU(inplace=True)
+#     (28): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+#     (29): ReLU(inplace=True)
+#     (30): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+#   )
+#   (avgpool): AdaptiveAvgPool2d(output_size=(7, 7))
+#   (classifier): Sequential(
+#     (0): Linear(in_features=25088, out_features=4096, bias=True)
+#     (1): ReLU(inplace=True)
+#     (2): Dropout(p=0.5, inplace=False)
+#     (3): Linear(in_features=4096, out_features=4096, bias=True)
+#     (4): ReLU(inplace=True)
+#     (5): Dropout(p=0.5, inplace=False)
+#     (6): Linear(in_features=4096, out_features=1000, bias=True)
+#   )
+# )
+```
+
+模型中的每个模块都有一个名字，可以像访问属性一样访问这些模块。例如：
+
+```python
+import torchvision
+
+vgg16 = torchvision.models.vgg16()
+print(vgg16.classifier)
+# Sequential(
+#   (0): Linear(in_features=25088, out_features=4096, bias=True)
+#   (1): ReLU(inplace=True)
+#   (2): Dropout(p=0.5, inplace=False)
+#   (3): Linear(in_features=4096, out_features=4096, bias=True)
+#   (4): ReLU(inplace=True)
+#   (5): Dropout(p=0.5, inplace=False)
+#   (6): Linear(in_features=4096, out_features=1000, bias=True)
+# )
+```
+
+`add_module()`方法用于向模块中添加子模块。参数为：
+
+1. `name`：名称，可以使用此名称访问子模块。
+2. `module`：要添加的模块。
+
+```python
+import torchvision
+from torch import nn
+
+vgg16 = torchvision.models.vgg16()
+vgg16.classifier.add_module('output', nn.Linear(1000, 10))
+print(vgg16.classifier)
+# Sequential(
+#   (0): Linear(in_features=25088, out_features=4096, bias=True)
+#   (1): ReLU(inplace=True)
+#   (2): Dropout(p=0.5, inplace=False)
+#   (3): Linear(in_features=4096, out_features=4096, bias=True)
+#   (4): ReLU(inplace=True)
+#   (5): Dropout(p=0.5, inplace=False)
+#   (6): Linear(in_features=4096, out_features=1000, bias=True)
+#   (output): Linear(in_features=1000, out_features=10, bias=True)
+# )
+```
+
+`Sequential`容器中的模块具有整数索引，可以使用索引访问它们。例如：
+
+```python
+import torchvision
+
+vgg16 = torchvision.models.vgg16()
+print(vgg16.classifier[6])  # Linear(in_features=4096, out_features=1000, bias=True)
+```
+
+可以通过赋值修改模块。例如：
+
+```python
+import torchvision
+from torch import nn
+
+vgg16 = torchvision.models.vgg16()
+vgg16.classifier[6] = nn.Linear(4096, 10)
+print(vgg16.classifier)
+# Sequential(
+#   (0): Linear(in_features=25088, out_features=4096, bias=True)
+#   (1): ReLU(inplace=True)
+#   (2): Dropout(p=0.5, inplace=False)
+#   (3): Linear(in_features=4096, out_features=4096, bias=True)
+#   (4): ReLU(inplace=True)
+#   (5): Dropout(p=0.5, inplace=False)
+#   (6): Linear(in_features=4096, out_features=10, bias=True)
+# )
+```
+
+## 2.10 网络模型的保存与读取
+
+`torch.save()`函数用于保存模型，`torch.load()`函数用于加载模型。
+
+要想保存模型的完整信息，包括模型结构和参数，可以直接将模型对象传入`save()`函数。加载模型时直接使用`load()`函数就能得到完整的模型。例如：
+
+```python
+import torchvision
+import torch
+
+vgg16 = torchvision.models.vgg16()
+torch.save(vgg16, './model/vgg16.pt')
+
+saved_model = torch.load('./model/vgg16.pt')
+```
+
+如果只保存模型参数，可以对模型调用`state_dict()`方法，将返回值传入`save()`函数。此时通过`load()`函数只能得到模型参数，还需要对模型对象调用`load_state_dict()`方法，将参数导入模型。例如：
+
+```python
+import torchvision
+import torch
+
+vgg16 = torchvision.models.vgg16()
+torch.save(vgg16.state_dict(), './model/vgg16_param.pt')
+
+params = torch.load('./model/vgg16_param.pt')
+vgg16_load = torchvision.models.vgg16()
+vgg16_load.load_state_dict(params)
 ```
