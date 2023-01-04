@@ -567,3 +567,53 @@ $$
     &= 1 - e^{-\frac{z^2}{2 \sigma^2}}
 \end{aligned}
 $$
+
+因此，随机变量 $Z$ 的分布函数为
+$$
+F_{Z}(z) = \begin{cases}
+    1 - e^{-\frac{z^2}{2 \sigma^2}} & z \geqslant 0 \\
+    0 & z<0
+\end{cases}
+$$
+由此可得 $Z$ 的概率密度为
+$$
+f_{Z}(z) = F_{Z}'(z) = \begin{cases}
+    \dfrac{z}{\sigma^2} e^{-\frac{z^2}{2 \sigma^2}} & z \geqslant 0 \\[0.5em]
+    0 & z<0
+\end{cases}
+$$
+
+综上所述，如果随机变量 $X$ 服从参数为 $\sigma \; (\sigma > 0)$ 的瑞利分布，则
+$$
+\begin{aligned}
+    & F(X) = \begin{cases}
+        1 - e^{-\frac{x^2}{2 \sigma^2}} & x \geqslant 0 \\
+        0 & x<0
+    \end{cases} \\[0.5em]
+    & f(x) = \begin{cases}
+        \dfrac{x}{\sigma^2} e^{-\frac{x^2}{2 \sigma^2}} & x \geqslant 0 \\[0.5em]
+        0 & x<0
+    \end{cases}
+\end{aligned}
+$$
+
+\section{$n$ 维随机变量}
+
+设 $E$ 是一个随机试验，其样本空间为 $\varOmega$. 对于定义在 $\varOmega$ 上的 $n$ 个随机变量 $X_1,X_2,\cdots,X_n$，称由它们构成的向量 $(X_1,X_2,\cdots,X_n)$ 为 $n$ \textbf{维随机向量} 或 $n$ \textbf{维随机变量}.
+
+对于任意 $n$ 个实数 $x_1,x_2,\cdots,x_n$，称 $n$ 元函数
+$$
+F(x_1,x_2,\cdots,x_n) = P\{X_1 \leqslant x_1, X_2 \leqslant x_2, \cdots, X_n \leqslant x_n\}
+$$
+为 $n$ 维随机变量 $(X_1,X_2,\cdots,X_n)$ 的\textbf{分布函数}，或称为随机变量 $X_1,X_2,\cdots,X_n$ 的\textbf{联合分布函数}.
+
+如果 $n$ 维随机变量 $(X_1,X_2,\cdots,X_n)$ 所有可能取的值是有限个或可列无限个 $n$ 元数组，则称之为 $n$ 维\textbf{离散型随机变量}，其概率分布（也叫做 $X_1,X_2,\cdots,X_n$ 的\textbf{联合概率分布}）为
+$$
+P\{X_1 = x_1, X_2 = x_2, \cdots, X_n = x_n\} = p_{i_1 i_2 \cdots i_n}, \; i_1 i_2 \cdots i_n = 1,2,\cdots
+$$
+
+如果存在非负的 $n$ 元函数 $f(x_1,x_2,\cdots,x_n)$，使得对于任意的 $n$ 个实数 $x_1,x_2,\cdots,x_n$，都有
+$$
+F(x_1,x_2,\cdots,x_n) = \int_{-\infty}^{x_1} \int_{-\infty}^{x_2} \cdots \int_{-\infty}^{x_n} f(t_1,t_2,\cdots,t_n) \, \text{d}t_n \cdots \text{d}t_2 \, \text{d}t_1
+$$
+则称 $(X_1,X_2,\cdots,X_n)$ 为 $n$ 维连续型随机变量，称 $f(x_1,x_2,\cdots,x_n)$ 为 $(X_1,X_2,\cdots,X_n)$ 的\textbf{概率密度}或 $X_1,X_2,\cdots,X_n$ 的\textbf{联合概率密度}.
