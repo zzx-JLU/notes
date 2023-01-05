@@ -38,6 +38,8 @@ chrome:
   - [2.10 网络模型的保存与读取](#210-网络模型的保存与读取)
 - [3 搭建完整模型](#3-搭建完整模型)
   - [3.1 完整的模型训练套路](#31-完整的模型训练套路)
+  - [3.2 使用GPU训练](#32-使用gpu训练)
+  - [3.3 完整的模型测试套路](#33-完整的模型测试套路)
 
 <!-- /code_chunk_output -->
 
@@ -967,7 +969,77 @@ for i in range(epoch):
     total_test_step += 1
 
     # 保存每轮训练后的模型参数
-    torch.save(model, f'../model/CIFAR10{i}.pt')
+    torch.save(model, f'../model/CIFAR10_{i}.pt')
 
 writer.close()
+```
+
+## 3.2 使用GPU训练
+
+方法一：对模型对象、损失函数和输入数据调用`cuda()`方法。例如：
+
+```python
+# 模型
+model = Cifar10()
+if torch.cuda.is_available():
+    model.cuda()
+
+# 损失函数
+loss_fn = nn.CrossEntropyLoss()
+if torch.cuda.is_available():
+    loss_fn.cuda()
+
+# 输入数据
+for imgs, targets in train_loader:
+    if torch.cuda.is_available():
+        imgs = imgs.cuda()
+        targets = targets.cuda()
+```
+
+方法二：对模型对象、损失函数和输入数据调用`to()`方法。例如：
+
+```python
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+# 模型
+model = Cifar10()
+model.to(device)
+
+# 损失函数
+loss_fn = nn.CrossEntropyLoss()
+loss_fn.to(device)
+
+# 输入数据
+for imgs, targets in train_loader:
+    imgs = imgs.to(device)
+    targets = targets.to(device)
+```
+
+此外，colab、百度飞桨、Kaggle 等平台可以免费使用 GPU 算力。
+
+## 3.3 完整的模型测试套路
+
+```python
+from PIL import Image
+import torchvision
+import torch
+from model import Cifar10
+
+# 读取测试数据
+image_path = '../imgs/dog.png'
+image = Image.open(image_path).convert('RGB')  # 保留颜色通道，适应各种格式的图片
+
+transform = torchvision.transforms.Compose([torchvision.transforms.Resize((32, 32)),
+                                            torchvision.transforms.ToTensor()])
+image = transform(image)
+image = torch.reshape(image, (1, 3, 32, 32))
+
+# 加载模型
+model = torch.load('../model/CIFAR10_0.pt', map_location=torch.device('cpu'))
+model.eval()
+
+# 开始测试
+with torch.no_grad():
+    output = model(image)
+print(output)
 ```
