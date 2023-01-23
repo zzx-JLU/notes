@@ -609,7 +609,7 @@ $$
 
 如果 $n$ 维随机变量 $(X_1,X_2,\cdots,X_n)$ 所有可能取的值是有限个或可列无限个 $n$ 元数组，则称之为 $n$ 维\textbf{离散型随机变量}，其概率分布（也叫做 $X_1,X_2,\cdots,X_n$ 的\textbf{联合概率分布}）为
 $$
-P\{X_1 = x_1, X_2 = x_2, \cdots, X_n = x_n\} = p_{i_1 i_2 \cdots i_n}, \; i_1 i_2 \cdots i_n = 1,2,\cdots
+P\{X_1 = x_{i_1}, X_2 = x_{i_2}, \cdots, X_n = x_{i_n}\} = p_{i_1 i_2 \cdots i_n}, \; i_1, i_2, \cdots, i_n = 1,2,\cdots
 $$
 
 如果存在非负的 $n$ 元函数 $f(x_1,x_2,\cdots,x_n)$，使得对于任意的 $n$ 个实数 $x_1,x_2,\cdots,x_n$，都有
@@ -617,3 +617,83 @@ $$
 F(x_1,x_2,\cdots,x_n) = \int_{-\infty}^{x_1} \int_{-\infty}^{x_2} \cdots \int_{-\infty}^{x_n} f(t_1,t_2,\cdots,t_n) \, \text{d}t_n \cdots \text{d}t_2 \, \text{d}t_1
 $$
 则称 $(X_1,X_2,\cdots,X_n)$ 为 $n$ 维连续型随机变量，称 $f(x_1,x_2,\cdots,x_n)$ 为 $(X_1,X_2,\cdots,X_n)$ 的\textbf{概率密度}或 $X_1,X_2,\cdots,X_n$ 的\textbf{联合概率密度}.
+
+如果已知 $n$ 维随机变量 $(X_1,X_2,\cdots,X_n)$ 的分布函数 $F(x_1,x_2,\cdots,x_n)$，则可确定 \\
+$(X_1,X_2,\cdots,X_n)$ 的 $k \, (1 \leqslant k < n)$ 维边缘分布函数：在 $F(x_1,x_2,\cdots,x_n)$ 中保留相应位置的 $k$ 个变量，而让其他变量趋向于 $+\infty$，其极限即为所求. 例如，$(X_1,X_2,\cdots,X_n)$ 关于 $X_1$ 的边缘分布函数为
+$$
+F_{X_1}(x_1) = F(x_1, +\infty, +\infty, \cdots, +\infty), \; x_1 \in \mathbf{R}
+$$
+而 $(X_1,X_2,\cdots,X_n)$ 关于 $(X_1,X_2,X_3)$ 的边缘分布函数为
+$$
+F_{X_1 X_2 X_3}(x_1,x_2,x_3) = F(x_1, x_2, x_3, +\infty, +\infty, \cdots, +\infty), \; x_1,x_2,x_3 \in \mathbf{R}
+$$
+
+如果 $n$ 维连续型随机变量 $(X_1,X_2,\cdots,X_n)$ 具有概率密度 $f(x_1,x_2,\cdots,x_n)$，则 \\
+$(X_1,X_2,\cdots,X_n)$ 关于 $X_1$ 的边缘概率密度为
+$$
+f_{X_1}(x_1) = \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} \cdots \int_{-\infty}^{+\infty} f(x_1,x_2,\cdots,x_n) \, \text{d}x_2 \text{d}x_3 \cdots \text{d}x_n, \; x_1 \in \mathbf{R}
+$$
+而 $(X_1,X_2,\cdots,X_n)$ 关于 $(X_1,X_2,X_3)$ 的边缘概率密度为
+$$
+f_{X_1 X_2 X_3}(x_1,x_2,x_3) = \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} \cdots \int_{-\infty}^{+\infty} f(x_1,x_2,\cdots,x_n) \, \text{d}x_4 \text{d}x_5 \cdots \text{d}x_n, \; x_1,x_2,x_3 \in \mathbf{R}
+$$
+
+设 $n$ 维离散型随机变量 $(X_1,X_2,\cdots,X_n)$ 的概率分布为
+$$
+P\{X_1 = x_{i_1}, X_2 = x_{i_2}, \cdots, X_n = x_{i_n}\} = p_{i_1 i_2 \cdots i_n}, \; i_1, i_2, \cdots, i_n = 1,2,\cdots
+$$
+则 $(X_1,X_2,\cdots,X_n)$ 关于 $X_1$ 的边缘概率分布（或边缘分布律）为
+$$
+P\{X_1=x_{i_1}\} = \sum_{i_2=1}^{\infty} \sum_{i_3=1}^{\infty} \cdots \sum_{i_n=1}^{\infty} p_{i_1 i_2 \cdots i_n}, \; i_1 = 1,2,\cdots
+$$
+
+如果对于任意 $n$ 个实数 $x_1,x_2,\cdots,x_n$，有
+$$
+F(x_1,x_2,\cdots,x_n) = F_{X_1}(x_1) \, F_{X_2}(x_2) \cdots F_{X_n}(x_n) = \prod_{i=1}^n F_{X_i}(x_i)
+$$
+则称随机变量 $X_1,X_2,\cdots,X_n$ 是\textbf{相互独立}的.
+
+如果 $(X_1,X_2,\cdots,X_n)$ 是 $n$ 维离散型随机变量，则 $X_1,X_2,\cdots,X_n$ 相互独立的充分必要条件是：对于 $(X_1,X_2,\cdots,X_n)$ 的任意一组可能取的值 $x_{i_1}, x_{i_2}, \cdots, x_{i_n}$，有
+$$
+\begin{aligned}
+    & P\{X_1 = x_{i_1}, X_2 = x_{i_2}, \cdots, X_n = x_{i_n}\} \\
+    = & P\{X_1 = x_{i_1}\} \, P\{X_2 = x_{i_2}\} \cdots P\{X_n = x_{i_n}\} \\
+    = & \prod_{j=1}^n P\{X_j = x_{i_j}\}
+\end{aligned}
+$$
+
+如果 $(X_1,X_2,\cdots,X_n)$ 是 $n$ 维连续型随机变量，则 $X_1,X_2,\cdots,X_n$ 相互独立的充分必要条件是：对于任意 $n$ 个实数 $x_1,x_2,\cdots,x_n$，有
+$$
+f(x_1,x_2,\cdots,x_n) = f_{X_1}(x_1) \, f_{X_2}(x_2) \cdots f_{X_n}(x_n) = \prod_{i=1}^n f_{X_i}(x_i)
+$$
+
+如果 $n$ 维随机变量 $X_1,X_2,\cdots,X_n$ 相互独立，并且 $X_i \sim N(\mu_i, \sigma_i^2) \, (i=1,2,\cdots,n)$，则它们的和 $Z = X_1 + X_2 + \cdots + X_n$ 仍然服从正态分布，且有
+$$
+Z \sim N(\mu_1 + \mu_2 + \cdots + \mu_n, \sigma_1^2 + \sigma_2^2 + \cdots + \sigma_n^2)
+$$
+它们的线性函数 $\displaystyle\sum_{i=1}^n c_i X_i$ 仍然服从正态分布，且有 $\displaystyle\sum_{i=1}^n c_i X_i \sim N(\displaystyle\sum_{i=1}^n c_i \mu_i, \displaystyle\sum_{i=1}^n c_i^2 \sigma_i^2)$，其中 $c_1,c_2,\cdots,c_n$ 是不全为零的常数.
+
+如果对于任意 $m+n$ 个实数 $x_1,x_2,\cdots,x_m,y_1,y_2,\cdots,y_n$，有
+$$
+F(x_1,x_2,\cdots,x_m,y_1,y_2,\cdots,y_n) = F_1(x_1,x_2,\cdots,x_m) F_2(y_1,y_2,\cdots,y_n)
+$$
+其中 $F,F_1$ 和 $F_2$ 分别是 $m+n$ 维随机变量 $(X_1,X_2,\cdots,X_m,Y_1,Y_2,\cdots,Y_n)$，$m$ 维随机变量 $(X_1,X_2,\cdots,X_m)$ 和 $n$ 维随机变量 $(Y_1,Y_2,\cdots,Y_n)$ 的分布函数，则称 $m$ 维随机变量 $(X_1,X_2,\cdots,X_m)$ 和 $n$ 维随机变量 $(Y_1,Y_2,\cdots,Y_n)$ 是相互独立的.
+
+设 $(X_1,X_2,\cdots,X_m)$ 和 $(Y_1,Y_2,\cdots,Y_n)$ 相互独立，则 $X_i \, (i=1,2,\cdots,m)$ 和 $Y_j \, (j=1,2,\cdots,n)$ 相互独立. 如果 $h,g$ 是连续函数，则随机变量 $h(X_1,X_2,\cdots,X_m)$ 和 $g(Y_1,Y_2,\cdots,Y_n)$ 相互独立.
+
+设 $X_1,X_2,\cdots,X_n$ 是 $n$ 个相互独立的随机变量，它们的分布函数分别为 $F_{X_1}(x_1), F_{X_2}(x_2), \cdots,\\ F_{X_n}(x_n)$，则随机变量 $M = \max(X_1,X_2,\cdots,X_n)$ 的分布函数为
+$$
+F_{\text{max}}(z) = F_{X_1}(z) F_{X_2}(z) \cdots F_{X_n}(z) = \prod_{i=1}^n F_{X_i}(z), \; z \in \mathbf{R}
+$$
+随机变量 $N = \min(X_1,X_2,\cdots,X_n)$ 的分布函数为
+$$
+F_{\text{min}}(z) = 1-[1-F_{X_1}(z)][1-F_{X_2}(z)] \cdots [1-F_{X_n}(z)] = 1-\prod_{i=1}^n [1-F_{X_i}(z)], \; z \in \mathbf{R}
+$$
+
+当随机变量 $X_1,X_2,\cdots,X_n$ 相互独立且具有相同的分布函数 $F(x)$ 时，有
+$$
+\begin{aligned}
+    & F_{\text{max}}(z) = [F(z)]^n, \; z \in \mathbf{R} \\
+    & F_{\text{min}}(z) = 1-[1-F(z)]^n, \; z \in \mathbf{R}
+\end{aligned}
+$$
