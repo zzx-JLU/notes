@@ -3,3 +3,110 @@
 \section{数学期望}
 
 \subsection{数学期望的概念}
+
+\begin{definition}
+    设离散型随机变量 $X$ 的概率分布为 $P\{X=x_k\} = p_k, \; k=1,2,\cdots$，如果无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 绝对收敛，则称无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 的和为离散型随机变量 $X$ 的\textbf{数学期望}或\textbf{均值}，记作 $E(X)$ 或 $EX$，即
+    $$
+    E(X) = \sum_{k=1}^{\infty} x_k p_k
+    $$
+
+    设连续型随机变量 $X$ 的概率密度为 $f(x)$，如果反常积分 $\displaystyle\int_{-\infty}^{+\infty} x f(x) \, \text{d}x$ 绝对收敛，则称反常积分 $\displaystyle\int_{-\infty}^{+\infty} x f(x) \, \text{d}x$ 的值为连续型随机变量 $X$ 的\textbf{数学期望}或\textbf{均值}，记作 $E(X)$ 或 $EX$，即
+    $$
+    E(X) = \int_{-\infty}^{+\infty} x f(x) \, \text{d}x
+    $$
+\end{definition}
+
+若随机变量 $X$ 服从参数为 $p$ 的(0-1)分布，即 $X$ 的分布律为
+
+\begin{table}[htbp]
+    \centering
+
+    \begin{tabular}{c | c c}
+        \hline
+        $X$ & 0 & 1 \\
+        \hline
+        $P$ & $1-p$ & $p$ \\
+        \hline
+    \end{tabular}
+\end{table}
+则有
+$$
+E(X) = 0 \times (1-p) + 1 \times p = p
+$$
+\\
+
+若随机变量 $X \sim B(n,p)$，即 $X$ 的概率分布为 $P\{X=k\} = C_n^k p^k (1-p)^{n-k}, \; k=0,1,2,\cdots,n$，则
+$$
+\begin{aligned}
+    E(X) &= \sum_{k=0}^n k C_n^k p^k (1-p)^{n-k} \\
+    &= \sum_{k=0}^n \dfrac{kn!}{k! (n-k)!} p^k (1-p)^{n-k} \\
+    &= \sum_{k=1}^n \dfrac{np(n-1)! \, p^{k-1} (1-p)^{(n-1)-(k-1)}}{(k-1)! \, [(n-1)-(k-1)]!} \\
+    &= np[p+(1-p)]^{n-1} \\
+    &= np
+\end{aligned}
+$$
+
+若随机变量 $X \sim P(\lambda)$，即 $X$ 的概率分布为 $P\{X=k\} = \dfrac{\lambda^k e^{-\lambda}}{k!}, \; k=0,1,2,\cdots$，则
+$$
+\begin{aligned}
+    E(X) &= \sum_{k=0}^{\infty} k \dfrac{\lambda^k e^{-\lambda}}{k!} \\
+    &= \lambda e^{-\lambda} \sum_{k=1}^{\infty} \dfrac{\lambda^{k-1}}{(k-1)!} \\
+    &= \lambda e^{-\lambda} e^{\lambda} \\
+    &= \lambda
+\end{aligned}
+$$
+
+若随机变量 $X$ 在区间 $[a,b]$ 上服从均匀分布，即 $X$ 的概率密度为
+$$
+f(x) = \begin{cases}
+    \dfrac{1}{b-a} & a \leqslant x \leqslant b \\[0.5em]
+    0 & \text{其他}
+\end{cases}
+$$
+则
+$$
+E(X) = \int_{-\infty}^{+\infty} x f(x) \, \text{d}x = \int_a^b \dfrac{x}{b-a} \text{d}x = \dfrac{a+b}{2}
+$$
+
+若随机变量 $X$ 服从参数为 $\lambda \, (\lambda>0)$ 的指数分布，即 $X$ 的概率密度为
+$$
+f(x) = \begin{cases}
+    \lambda e^{-\lambda x} & x>0 \\
+    0 & x \leqslant 0
+\end{cases}
+$$
+则
+$$
+\begin{aligned}
+    E(X) &= \int_{-\infty}^{+\infty} x f(x) \, \text{d}x \\
+    &= \int_0^{+\infty} x \lambda e^{-\lambda x} \, \text{d}x \\
+    &= \left. -xe^{-\lambda x} \right|_0^{+\infty} + \int_0^{+\infty} e^{-\lambda x} \, \text{d}x \\
+    &= \left. -\dfrac{1}{\lambda} e^{-\lambda x} \right|_0^{+\infty} \\
+    &= \dfrac{1}{\lambda}
+\end{aligned}
+$$
+
+若随机变量 $X \sim N(\mu,\sigma^2)$，即 $X$ 的概率密度为
+$$
+f(x) = \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}, \; -\infty < x < +\infty
+$$
+则
+$$
+\begin{aligned}
+    E(X) &= \int_{-\infty}^{+\infty} x \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \text{d}x \\
+    & \xlongequal{t = \frac{x-\mu}{\sigma}} \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} (\sigma t + \mu) e^{-\frac{t^2}{2}} \text{d}t \\
+    &= \dfrac{\sigma}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} te^{-\frac{t^2}{2}} \text{d}t + \mu \int_{-\infty}^{+\infty} \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{t^2}{2}} \text{d}t \\
+    &= \mu
+\end{aligned}
+$$
+
+\subsection{随机变量函数的数学期望}
+
+\begin{theorem}
+    设随机变量 $Y$ 是随机变量 $X$ 的函数：$Y=g(X)$，其中 $g$ 是一元连续函数.
+
+    若 $X$ 是离散型随机变量，其概率分布为 $P\{X=x_k\} = p_k, \; k=1,2,\cdots$，如果无穷级数 $\displaystyle\sum_{k=1}^{\infty} g(x_k) p_k$ 绝对收敛，则随机变量 $Y$ 的数学期望为
+    $$
+    E(Y) = E[g(X)] = \sum_{k=1}^{\infty} g(x_k) p_k
+    $$
+\end{theorem}
