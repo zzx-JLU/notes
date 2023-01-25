@@ -5,7 +5,7 @@
 \subsection{数学期望的概念}
 
 \begin{definition}
-    设离散型随机变量 $X$ 的概率分布为 $P\{X=x_k\} = p_k, \; k=1,2,\cdots$，如果无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 绝对收敛，则称无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 的和为离散型随机变量 $X$ 的\textbf{数学期望}或\textbf{均值}，记作 $E(X)$ 或 $EX$，即
+    设离散型随机变量 $X$ 的概率分布为 $P\{X=x_k\} = p_k, \; k=1,2,\cdots$，如果无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 绝对收敛，则称无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 的和为离散型随机变量 $X$ 的\textbf{数学期望}（mathematic expectation）或\textbf{均值}，记作 $E(X)$ 或 $EX$，即
     $$
     E(X) = \sum_{k=1}^{\infty} x_k p_k
     $$
@@ -103,10 +103,181 @@ $$
 \subsection{随机变量函数的数学期望}
 
 \begin{theorem}
-    设随机变量 $Y$ 是随机变量 $X$ 的函数：$Y=g(X)$，其中 $g$ 是一元连续函数.
+    设随机变量 $Y$ 是随机变量 $X$ 的函数，$Y=g(X)$，其中 $g$ 是一元连续函数.
 
     若 $X$ 是离散型随机变量，其概率分布为 $P\{X=x_k\} = p_k, \; k=1,2,\cdots$，如果无穷级数 $\displaystyle\sum_{k=1}^{\infty} g(x_k) p_k$ 绝对收敛，则随机变量 $Y$ 的数学期望为
     $$
-    E(Y) = E[g(X)] = \sum_{k=1}^{\infty} g(x_k) p_k
+    E(Y) = E[g(X)] = \sum_{k=1}^{\infty} g(x_k) \, p_k
+    $$
+
+    若 $X$ 是连续型随机变量，其概率密度为 $f(x)$，如果反常积分 $\displaystyle\int_{-\infty}^{+\infty} g(x) f(x) \, \text{d}x$ 绝对收敛，则随机变量 $Y$ 的数学期望为
+    $$
+    E(Y) = E[g(X)] = \int_{-\infty}^{+\infty} g(x) f(x) \, \text{d}x
     $$
 \end{theorem}
+
+\begin{theorem}
+    设随机变量 $Z$ 是随机变量 $X$ 和 $Y$ 的函数，$Z=g(X,Y)$，其中 $g$ 是二元连续函数.
+
+    若 $(X,Y)$ 是二维离散型随机变量，其概率分布为 $P\{X=x_i,Y=y_j\} = p_{ij}, \; i,j=1,2,\cdots$，如果无穷级数 $\displaystyle\sum_{j=1}^{\infty} \displaystyle\sum_{i=1}^{\infty} g(x_i,y_j) \, p_{ij}$ 绝对收敛，则随机变量 $Z$ 的数学期望为
+    $$
+    E(Z) = E[g(X,Y)] = \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} g(x_i,y_j) \, p_{ij}
+    $$
+
+    若 $(X,Y)$ 是二维连续型随机变量，其概率密度为 $f(x,y)$，如果反常积分 $\displaystyle\int_{-\infty}^{+\infty} \displaystyle\int_{-\infty}^{+\infty} g(x,y) f(x,y) \, \text{d}x \text{d}y$ 绝对收敛，则随机变量 $Z$ 的数学期望为
+    $$
+    E(Z) = E[g(X,Y)] = \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} g(x,y) f(x,y) \, \text{d}x \text{d}y
+    $$
+\end{theorem}
+
+\subsection{数学期望的性质}
+
+设 $C$ 为常数，$X$ 和 $Y$ 是随机变量，且 $E(X)$ 和 $E(Y)$ 都存在.
+
+\setcounter{propertyname}{0}
+
+\begin{property} \label{property:E(C)=C}
+    $E(C)=C$
+\end{property}
+
+\begin{myproof}
+    如果随机变量 $X$ 恒取常数 $C$，则有 $P\{X=C\}=1$，从而有 $E(C) = C \times 1 = C$.
+\end{myproof}
+
+\begin{property} \label{property:E(CX)=CE(X)}
+    $E(CX)=CE(X)$
+\end{property}
+
+\begin{myproof}
+    若离散型随机变量 $X$ 的概率分布为 $P\{X=x_i\}=p_i, \; i=1,2,\cdots$，则
+    $$
+    E(CX) = \sum_{i=1}^{\infty} C x_i p_i = C \sum_{i=1}^{\infty} x_i p_i = CE(X)
+    $$
+
+    若连续型随机变量 $X$ 的概率密度为 $f(x)$，则
+    $$
+    E(CX) = \int_{-\infty}^{+\infty} Cx f(x) \, \text{d}x = C \int_{-\infty}^{+\infty} x f(x) \, \text{d}x = CE(X)
+    $$
+\end{myproof}
+
+\begin{property} \label{property:E(X+Y)=E(X)+E(Y)}
+    $E(X+Y)=E(X)+E(Y)$
+\end{property}
+
+\begin{myproof}
+    设二维连续型随机变量 $(X,Y)$ 的概率密度为 $f(x,y)$，$(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘概率密度分别为 $f_X(x)$ 和 $f_Y(y)$，则有
+    $$
+    \begin{aligned}
+        E(X+Y) &= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} (x+y) f(x,y) \, \text{d}x \text{d}y \\
+        &= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} x f(x,y) \, \text{d}x \text{d}y + \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} y f(x,y) \, \text{d}x \text{d}y \\
+        &= \int_{-\infty}^{+\infty} x \left[ \int_{-\infty}^{+\infty} f(x,y) \, \text{d}y \right] \text{d}x + \int_{-\infty}^{+\infty} y \left[ \int_{-\infty}^{+\infty} f(x,y) \, \text{d}x \right] \text{d}y \\
+        &= \int_{-\infty}^{+\infty} x f_X(x) \, \text{d}x + \int_{-\infty}^{+\infty} y f_Y(y) \, \text{d}y \\
+        &= E(X)+E(Y)
+    \end{aligned}
+    $$
+
+    设二维离散型随机变量 $(X,Y)$ 的概率分布为 $P\{X=x_i,Y=y_j\} = p_{ij}, \; i,j=1,2,\cdots$，$(X,Y)$ 关于 $X$ 的边缘概率分布为 $P\{X=x_i\}=p_{i\cdot}, \; i=1,2,\cdots$，$(X,Y)$ 关于 $Y$ 的边缘概率分布为 $P\{Y=y_j\}=p_{\cdot j}, \; j=1,2,\cdots$，则有
+    $$
+    \begin{aligned}
+        E(X+Y) &= \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} (x_i + y_j) \, p_{ij} \\
+        &= \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} x_i p_{ij} + \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} y_j p_{ij} \\
+        &= \sum_{i=1}^{\infty} \left( x_i \sum_{j=1}^{\infty} p_{ij} \right) + \sum_{j=1}^{\infty} \left( y_j \sum_{i=1}^{\infty} p_{ij} \right) \\
+        &= \sum_{i=1}^{\infty} x_i p_{i \cdot} + \sum_{j=1}^{\infty} y_j p_{\cdot j} \\
+        &= E(X)+E(Y)
+    \end{aligned}
+    $$
+\end{myproof}
+
+综合性质\ref*{property:E(C)=C}、\ref*{property:E(CX)=CE(X)}、\ref*{property:E(X+Y)=E(X)+E(Y)}，有
+$$
+E(aX+bY+c) = aE(X) + bE(Y) + c \quad (a,b,c \, \text{均为常数})
+$$
+
+\begin{property}
+    若随机变量 $X$ 和 $Y$ 相互独立，则有 $E(XY)=E(X) \, E(Y)$.
+\end{property}
+
+\begin{myproof}
+    设二维连续型随机变量 $(X,Y)$ 的概率密度为 $f(x,y)$，$(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘概率密度分别为 $f_X(x)$ 和 $f_Y(y)$. 因为 $X$ 和 $Y$ 相互独立，所以 $f(x,y) = f_X(x) \, f_Y(y)$，从而有
+    $$
+    \begin{aligned}
+        E(XY) &= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} xy f(x,y) \, \text{d}x \text{d}y \\
+        &= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} xy f_X(x) \, f_Y(y) \, \text{d}x \text{d}y \\
+        &= \int_{-\infty}^{+\infty} x f_X(x) \, \text{d}x \int_{-\infty}^{+\infty} y f_Y(y) \, \text{d}y \\
+        &= E(X) \, E(Y)
+    \end{aligned}
+    $$
+
+    设二维离散型随机变量 $(X,Y)$ 的概率分布为 $P\{X=x_i,Y=y_j\} = p_{ij}, \; i,j=1,2,\cdots$，$(X,Y)$ 关于 $X$ 的边缘概率分布为 $P\{X=x_i\}=p_{i\cdot}, \; i=1,2,\cdots$，$(X,Y)$ 关于 $Y$ 的边缘概率分布为 $P\{Y=y_j\}=p_{\cdot j}, \; j=1,2,\cdots$. 因为 $X$ 和 $Y$ 相互独立，所以 $p_{ij} = p_{i\cdot} \, p_{\cdot j}$，从而有
+    $$
+    \begin{aligned}
+        E(XY) &= \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} x_i y_j p_{ij} \\
+        &= \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} x_i y_j p_{i\cdot} p_{\cdot j} \\
+        &= \sum_{i=1}^{\infty} x_i p_{i\cdot} \sum_{j=1}^{\infty} y_j p_{\cdot j} \\
+        &= E(X) \, E(Y)
+    \end{aligned}
+    $$
+\end{myproof}
+
+\begin{property}[（柯西-施瓦茨不等式）]
+    对于两个随机变量 $X$ 和 $Y$，设 $E(X^2)$ 和 $E(Y^2)$ 都存在，则
+    $$
+    [E(XY)]^2 \leqslant E(X^2) E(Y^2)
+    $$
+\end{property}
+
+\begin{myproof}
+    对于任意实数 $t$，令 $g(t) = E[(X+tY)^2]$，则由数学期望的性质有
+    $$
+    g(t) = E[(X+tY)^2] = E(X^2 + 2tXY + t^2 Y^2) = E(X^2) + 2tE(XY) + t^2 E(Y^2)
+    $$
+    由于 $g(t) \geqslant 0$，所以有
+    $$
+    \varDelta = 4 [E(XY)]^2 - 4 E(X^2) E(Y^2) \leqslant 0
+    $$
+    从而
+    $$
+    [E(XY)]^2 \leqslant E(X^2) E(Y^2)
+    $$
+\end{myproof}
+
+\section{方差}
+
+\subsection{方差的概念}
+
+\begin{definition} \label{def:variance}
+    设 $X$ 是一个随机变量，如果 $E([X-E(X)]^2)$ 存在，则称之为随机变量 $X$ 的\textbf{方差}（variance），记作 $D(X)$ 或 $DX$，即
+    $$
+    D(X) = E([X-E(X)]^2)
+    $$
+    称 $\sqrt{D(X)}$ 为随机变量 $X$ 的\textbf{标准差}（standard deviation）或\textbf{均方差}，记作 $\sigma(X)$，即
+    $$
+    \sigma(X) = \sqrt{D(X)}
+    $$
+\end{definition}
+
+随机变量 $X$ 的方差反映了 $X$ 与其数学期望 $E(X)$ 的偏离程度. 如果 $X$ 取值集中在 $E(X)$ 附近，则 $D(X)$ 较小；如果 $X$ 取值比较分散，则 $D(X)$ 较大.
+
+如果 $X$ 是离散型随机变量，其概率分布为 $P\{X=x_k\} = p_k, \; k=1,2,\cdots$，则由定义\ref{def:variance}，有
+$$
+D(X) = E([X-E(X)]^2) = \sum_{k=1}^{\infty} [x_k - E(X)]^2 p_k
+$$
+
+如果 $X$ 是连续型随机变量，其概率密度为 $f(x)$，则由定义\ref{def:variance}，有
+$$
+D(X) = E([X-E(X)]^2) = \int_{-\infty}^{+\infty} [x - E(X)]^2 f(x) \, \text{d}x
+$$
+
+根据数学期望的性质，可得
+$$
+\begin{aligned}
+    D(X) &= E([X-E(X)]^2) \\
+    &= E(X^2 - 2XE(X) + [E(X)]^2) \\
+    &= E(X^2) - 2[E(X)]^2 + [E(X)]^2 \\
+    &= E(X^2) - [E(X)]^2
+\end{aligned}
+$$
+即
+\begin{equation}
+    D(X) = E(X^2) - [E(X)]^2
+\end{equation}
