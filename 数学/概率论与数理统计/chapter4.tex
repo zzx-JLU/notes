@@ -193,7 +193,7 @@ $$
 E(aX+bY+c) = aE(X) + bE(Y) + c \quad (a,b,c \, \text{均为常数})
 $$
 
-\begin{property}
+\begin{property} \label{prop:E(XY)=E(X)E(Y)}
     若随机变量 $X$ 和 $Y$ 相互独立，则有 $E(XY)=E(X) \, E(Y)$.
 \end{property}
 
@@ -281,3 +281,259 @@ $$
 \begin{equation}
     D(X) = E(X^2) - [E(X)]^2
 \end{equation}
+
+若随机变量 $X$ 服从参数为 $p$ 的(0-1)分布，由于 $E(X)=p$，所以有
+$$
+\begin{aligned}
+    D(X) &= E([X-E(X)]^2) \\
+    &= (0-p)^2 (1-p) + (1-p)^2 p \\
+    &= p(1-p)
+\end{aligned}
+$$
+
+若随机变量 $X \sim P(\lambda)$，则
+$$
+E(X^2) = \sum_{k=0}^{\infty} k^2 \dfrac{\lambda^k e^{-\lambda}}{k!} = \lambda \sum_{k=1}^{\infty} k \dfrac{\lambda^{k-1}}{(k-1)!} e^{-\lambda}
+$$
+记 $i=k-1$，则
+$$
+\begin{aligned}
+    E(X^2) &= \lambda \sum_{i=0}^{\infty} (i+1) \dfrac{\lambda^i}{i!} e^{-\lambda} \\
+    &= \lambda \sum_{i=0}^{\infty} i \dfrac{\lambda^i}{i!} e^{-\lambda} + \lambda \sum_{i=0}^{\infty} \dfrac{\lambda^i}{i!} e^{-\lambda} \\
+    &= \lambda^2 + \lambda
+\end{aligned}
+$$
+由于 $E(X) = \lambda$，因此
+$$
+D(X) = E(X^2) - [E(X)]^2 = \lambda^2 + \lambda - \lambda^2 = \lambda
+$$
+
+若随机变量 $X$ 在区间 $[a,b]$ 上服从均匀分布，则
+$$
+E(X^2) = \int_{-\infty}^{+\infty} x^2 f(x) \, \text{d}x = \int_a^b x^2 \dfrac{1}{b-a} \text{d}x = \left. \dfrac{x^3}{3(b-a)} \right|_a^b = \dfrac{b^2 + ab + a^2}{3}
+$$
+由于 $E(X) = \dfrac{a+b}{2}$，因此
+$$
+D(X) = E(X^2) - [E(X)]^2 = \dfrac{b^2 + ab + a^2}{3} - \dfrac{(a+b)^2}{4} = \dfrac{(b-a)^2}{12}
+$$
+
+若随机变量 $X$ 服从参数为 $\lambda \, (\lambda > 0)$ 的指数分布，由于 $E(X) = \dfrac{1}{\lambda}$，则
+$$
+\begin{aligned}
+    E(X^2) &= \int_{-\infty}^{+\infty} x^2 f(x) \, \text{d}x \\
+    &= \int_0^{+\infty} x^2 \lambda e^{-\lambda x} \, \text{d}x \\
+    &= \left. -x^2 e^{-\lambda x} \right|_0^{+\infty} + \int_0^{+\infty} 2x e^{-\lambda x} \, \text{d}x \\
+    &= \dfrac{2}{\lambda} \int_0^{+\infty} x \lambda e^{-\lambda x} \, \text{d}x \\
+    &= \dfrac{2}{\lambda} E(X) \\
+    &= \dfrac{2}{\lambda^2}
+\end{aligned}
+$$
+因此
+$$
+D(X) = E(X^2) - [E(X)]^2 = \dfrac{2}{\lambda^2} - \dfrac{1}{\lambda^2} = \dfrac{1}{\lambda^2}
+$$
+
+若随机变量 $X \sim N(\mu,\sigma^2)$，则 $E(X)=\mu$，因此
+$$
+\begin{aligned}
+    D(X) &= E([X-E(X)]^2) \\
+    &= \int_{-\infty}^{+\infty} (x-\mu)^2 f(x) \, \text{d}x \\
+    &= \int_{-\infty}^{+\infty} (x-\mu)^2 \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \text{d}x \\
+    & \xlongequal{t = \frac{x-\mu}{\sigma}} \sigma^2 \int_{-\infty}^{+\infty} t^2 \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{t^2}{2}} \text{d}t \\
+    &= -\sigma^2 \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} t \, \text{d} e^{-\frac{t^2}{2}} \\
+    &= -\dfrac{\sigma^2}{\sqrt{2 \pi}} \left( \left. t e^{-\frac{t^2}{2}} \right|_{-\infty}^{+\infty} - \int_{-\infty}^{+\infty} e^{-\frac{t^2}{2}} \text{d}t \right) \\
+    &= \dfrac{\sigma^2}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} e^{-\frac{t^2}{2}} \text{d}t \\
+    &= \sigma^2
+\end{aligned}
+$$
+
+\subsection{方差的性质}
+
+设 $C$ 是常数，随机变量 $X$ 和 $Y$ 的方差 $D(X)$ 和 $D(Y)$ 都存在.
+
+\setcounter{propertyname}{0}
+
+\begin{property}
+    $D(C) = 0$
+\end{property}
+
+\begin{myproof}
+    $$
+    D(C) = E([C-E(C)]^2) = E([C-C]^2) = E(0) = 0
+    $$
+\end{myproof}
+
+\begin{property}
+    $D(CX) = C^2 D(X)$
+\end{property}
+
+\begin{myproof}
+    $$
+    \begin{aligned}
+        D(CX) &= E([CX - E(CX)]^2) \\
+        &= E([CX - CE(X)]^2) \\
+        &= E(C^2 [X-E(X)]^2) \\
+        &= C^2 E([X-E(X)]^2) \\
+        &= C^2 D(X)
+    \end{aligned}
+    $$
+\end{myproof}
+
+\begin{property}
+    $D(X+C) = D(X)$
+\end{property}
+
+\begin{myproof}
+    $$
+    \begin{aligned}
+        D(X+C) &= E([(X+C) - E(X+C)]^2) \\
+        &= E([X + C - E(X) - C]^2) \\
+        &= E([X-E(X)]^2) \\
+        &= D(X)
+    \end{aligned}
+    $$
+\end{myproof}
+
+\begin{property} \label{prop:D(X+Y)=D(X)+D(Y)}
+    如果随机变量 $X$ 和 $Y$ 相互独立，则有 $D(X \pm Y) = D(X)+D(Y)$.
+\end{property}
+
+\begin{myproof}
+    $$
+    \begin{aligned}
+        D(X \pm Y) &= E([X \pm Y - E(X \pm Y)]^2) \\
+        &= E([(X-E(X)) \pm (Y-E(Y))]^2) \\
+        &= E([X-E(X)]^2) \pm 2E([X-E(X)][Y-E(Y)]) + E([Y-E(Y)]^2)
+    \end{aligned}
+    $$
+    因为 $X$ 与 $Y$ 相互独立，故 $X-E(X)$ 与 $Y-E(Y)$ 也相互独立，又 $E(X-E(X)) = 0$，再由数学期望的性质\ref*{prop:E(XY)=E(X)E(Y)} 及方差的定义，得
+    $$
+    \begin{aligned}
+        D(X \pm Y) &= D(X) \pm 2E(X-E(X)) \, E(Y-E(Y)) + D(Y) \\
+        &= D(X) + D(Y)
+    \end{aligned}
+    $$
+\end{myproof}
+
+\begin{property}
+    随机变量 $X$ 的方差 $D(X)=0$ 的充分必要条件是 $X$ 以概率1取常数 $C$，即 $P\{X=C\}=1$，其中 $C=E(X)$.
+\end{property}
+
+若随机变量 $X \sim B(n,p)$，根据二项分布的意义可知，$p$ 为 $n$ 重伯努利试验中每次试验成功的概率. 引入随机变量
+$$
+X_k = \begin{cases}
+    1 & \text{第 $k$ 次试验成功} \\
+    0 & \text{第 $k$ 次试验不成功}
+\end{cases} \quad k=1,2,\cdots,n
+$$
+则有
+$$
+X = X_1 + X_2 + \cdots + X_n
+$$
+由于 $X_k$ 只依赖于第 $k$ 次试验，而各次试验相互独立，于是 $X_1, X_2, \cdots, X_n$ 相互独立，且均服从参数为 $p$ 的(0-1)分布. 由于 $D(X_i) = p(1-p), \, i=1,2,\cdots,n$，所以根据方差的性质 \ref*{prop:D(X+Y)=D(X)+D(Y)}，有
+$$
+D(X) = \sum_{i=1}^n D(X_i) = np(1-p)
+$$
+
+\subsection{随机变量的标准化}
+
+设随机变量 $X$ 具有数学期望 $E(X)=\mu$ 及方差 $D(X) = \sigma^2 > 0$，则称 $X^* = \dfrac{X-\mu}{\sigma}$ 为 $X$ 的\textbf{标准化随机变量}.
+
+随机变量 $X$ 的标准化随机变量 $X^*$ 满足 $E(X^*)=0$，$D(X^*)=1$.
+
+若 $X \sim N(\mu,\sigma^2) \, (\sigma > 0)$，则 $X^* = \dfrac{X-\mu}{\sigma} \sim N(0,1)$.
+
+\section{协方差与相关系数}
+
+\subsection{协方差}
+
+在方差性质 \ref*{prop:D(X+Y)=D(X)+D(Y)} 的证明中可知，如果两个随机变量 $X$ 和 $Y$ 相互独立，则有 \\
+$E([X-E(X)][Y-E(Y)]) = 0$. 这表明，当 $E([X-E(X)][Y-E(Y)]) \not= 0$ 时，$X$ 与 $Y$ 不相互独立，因此可以用这个量来描述 $X$ 和 $Y$ 之间的关系.
+
+\begin{definition}
+    设随机变量 $X$ 和 $Y$ 的数学期望 $E(X)$ 和 $E(Y)$ 都存在，如果 $E([X-E(X)][Y-E(Y)])$ 存在，则称之为随机变量 $X$ 和 $Y$ 的\textbf{协方差}（covariance），记作 $\operatorname{Cov}(X,Y)$，即
+    $$
+    \operatorname{Cov}(X,Y) = E([X-E(X)][Y-E(Y)]) = E(XY) - E(X) E(Y)
+    $$
+\end{definition}
+
+\setcounter{propertyname}{0}
+
+\begin{property}
+    $\operatorname{Cov}(X,Y) = \operatorname{Cov}(Y,X)$
+\end{property}
+
+\begin{property}
+    对于常数 $a$ 和 $b$，有 $\operatorname{Cov}(aX,bY) = ab \operatorname{Cov}(X,Y)$.
+\end{property}
+
+\begin{myproof}
+    $$
+    \begin{aligned}
+        \operatorname{Cov}(aX,bY) &= E(aX \cdot bY) - E(aX) E(bY) \\
+        &= ab E(XY) - ab E(X) E(Y) \\
+        &= ab[E(XY) - E(X) E(Y)] \\
+        &= ab \operatorname{Cov}(X,Y)
+    \end{aligned}
+    $$
+\end{myproof}
+
+\begin{property}
+    对于随机变量 $X,Y$ 和 $Z$，有
+    $$
+    \operatorname{Cov}(X+Y,Z) = \operatorname{Cov}(X,Z) + \operatorname{Cov}(Y,Z)
+    $$
+\end{property}
+
+\begin{myproof}
+    $$
+    \begin{aligned}
+        \operatorname{Cov}(X+Y,Z) &= E((X+Y)Z) - E(X+Y) E(Z) \\
+        &= E(XZ) + E(YZ) - E(X) E(Z) - E(Y) E(Z) \\
+        &= [E(XZ) - E(X) E(Z)] + [E(YZ) - E(Y) E(Z)] \\
+        &= \operatorname{Cov}(X,Z) + \operatorname{Cov}(Y,Z)
+    \end{aligned}
+    $$
+\end{myproof}
+
+\begin{property}
+    对任意随机变量 $X,Y$，有
+    $$
+    D(X \pm Y) = D(X) + D(Y) \pm 2 \operatorname{Cov}(X,Y)
+    $$
+\end{property}
+
+\subsection{相关系数}
+
+\begin{definition}
+    设随机变量 $X$ 和 $Y$ 的方差都存在且不等于零，协方差 $\operatorname{Cov}(X,Y)$ 存在，称 $\dfrac{\operatorname{Cov}(X,Y)}{\sqrt{D(X)} \sqrt{D(Y)}}$ 为随机变量 $X$ 和 $Y$ 的\textbf{相关系数}，记作 $\rho_{XY}$，即
+    $$
+    \rho_{XY} = \dfrac{\operatorname{Cov}(X,Y)}{\sqrt{D(X)} \sqrt{D(Y)}}
+    $$
+    当 $\rho_{XY} = 0$ 时，称 $X$ 与 $Y$ \textbf{不相关}.
+\end{definition}
+
+\setcounter{propertyname}{0}
+
+\begin{property}
+    $|\rho_{XY}| \leqslant 1$
+\end{property}
+
+\begin{myproof}
+    由柯西-施瓦茨不等式可得
+    $$
+    \begin{aligned}
+        \left[ \operatorname{Cov}(X,Y) \right]^2 &= [E([X-E(X)][Y-E(Y)])]^2 \\
+        & \leqslant E([X-E(X)]^2) E([Y-E(Y)]^2) \\
+        &= D(X) D(Y)
+    \end{aligned}
+    $$
+    因此
+    $$
+    |\operatorname{Cov}(X,Y)| \leqslant \sqrt{D(X)} \sqrt{D(Y)}
+    $$
+    从而有
+    $$
+    |\rho_{XY}| = \left| \dfrac{\operatorname{Cov}(X,Y)}{\sqrt{D(X)} \sqrt{D(Y)}} \right| \leqslant 1
+    $$
+\end{myproof}
