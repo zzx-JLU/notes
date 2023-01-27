@@ -56,6 +56,19 @@ $$
 \end{aligned}
 $$
 
+若随机变量 $X$ 服从参数为 $p$ 的几何分布，即 $X$ 的概率分布为 $P\{X=k\} = (1-p)^{k-1} p, \; k=1,2,\cdots$，则
+$$
+\begin{aligned}
+    E(X) &= \sum_{k=1}^{\infty} k (1-p)^{k-1} p \\
+    & \xlongequal{q=1-p} p \sum_{k=1}^{\infty} k q^{k-1} \\
+    &= p \left( \dfrac{\text{d}}{\text{d}q} \sum_{k=1}^{\infty} q^k \right) \\
+    &= p \left( \dfrac{\text{d}}{\text{d}q} \dfrac{q}{1-q} \right) \\
+    &= p \dfrac{1}{(1-q)^2} \\
+    &= p \dfrac{1}{p^2} \\
+    &= \dfrac{1}{p}
+\end{aligned}
+$$
+
 若随机变量 $X$ 在区间 $[a,b]$ 上服从均匀分布，即 $X$ 的概率密度为
 $$
 f(x) = \begin{cases}
@@ -308,6 +321,21 @@ $$
 D(X) = E(X^2) - [E(X)]^2 = \lambda^2 + \lambda - \lambda^2 = \lambda
 $$
 
+若随机变量 $X$ 服从参数为 $p$ 的几何分布，由于 $E(X) = \dfrac{1}{p}$，所以有
+$$
+\begin{aligned}
+    D(X) &= E(X^2) - [E(X)]^2 \\
+    &= \sum_{k=1}^{\infty} k^2 (1-p)^{k-1} p - \dfrac{1}{p^2} \\
+    &= p \left[ \sum_{k=1}^{\infty} (k+1)k (1-p)^{k-1} - \sum_{k=1}^{\infty} k (1-p)^{k-1} \right] - \dfrac{1}{p^2} \\
+    & \xlongequal{q=1-p} p \left[ \sum_{k=1}^{\infty} (k+1)k q^{k-1} - \sum_{k=1}^{\infty} k q^{k-1} \right] - \dfrac{1}{p^2} \\
+    &= p \left( \dfrac{\text{d}^2}{\text{d}q^2} \sum_{k=1}^{\infty} q^{k+1} - \dfrac{\text{d}}{\text{d}q} \sum_{k=1}^{\infty} q^k \right) - \dfrac{1}{p^2} \\
+    &= p \left( \dfrac{\text{d}^2}{\text{d}q^2} \dfrac{q^2}{1-q} - \dfrac{\text{d}}{\text{d}q} \dfrac{q}{1-q} \right) - \dfrac{1}{p^2} \\
+    &= p \left[ \dfrac{2}{(1-q)^3} - \dfrac{1}{(1-q)^2} \right] - \dfrac{1}{p^2} \\
+    &= p \left( \dfrac{2}{p^3} - \dfrac{1}{p^2} \right) - \dfrac{1}{p^2} \\
+    &= \dfrac{1-p}{p^2}
+\end{aligned}
+$$
+
 若随机变量 $X$ 在区间 $[a,b]$ 上服从均匀分布，则
 $$
 E(X^2) = \int_{-\infty}^{+\infty} x^2 f(x) \, \text{d}x = \int_a^b x^2 \dfrac{1}{b-a} \text{d}x = \left. \dfrac{x^3}{3(b-a)} \right|_a^b = \dfrac{b^2 + ab + a^2}{3}
@@ -435,6 +463,36 @@ $$
 D(X) = \sum_{i=1}^n D(X_i) = np(1-p)
 $$
 
+\begin{table}
+    \centering
+
+    \begin{tabular}{c | c | c | c | c}
+        \hline
+        \textbf{分布} & \textbf{符号} & \textbf{概率分布/概率密度} & \textbf{数学期望} & \textbf{方差} \\
+        \hline
+        (0-1)分布 & $B(1,p)$ & $P\{X=k\}=p^k (1-p)^{1-k}, \; k=0,1, \; 0<p<1$ & $p$ & $p(1-p)$ \\
+        \hline
+        二项分布 & $B(n,p)$ & $P\{X=k\}=C_n^k p^k (1-p)^{n-k}, \; k=0,1,\cdots,n$ & $np$ & $np(1-p)$ \\
+        \hline
+        \rule{0pt}{24pt}泊松分布 & $P(\lambda)$ & $P\{X=k\} = \dfrac{\lambda^k e^{-\lambda}}{k!}, \; k=0,1,2\cdots$ & $\lambda$ & $\lambda$ \\[8pt]
+        \hline
+        \rule{0pt}{24pt}几何分布 & - & $P\{X=k\}=(1-p)^{k-1} p, \; k=1,2,\cdots$ & $\dfrac{1}{p}$ & $\dfrac{1-p}{p^2}$ \\[8pt]
+        \hline
+        \rule{0pt}{36pt}均匀分布 & $U(a,b)$ & $f(x)=\begin{cases}
+            \dfrac{1}{b-a} & a<x<b \\[0.5em]
+            0 & \text{其他}
+        \end{cases}$ & $\dfrac{a+b}{2}$ & $\dfrac{(b-a)^2}{12}$ \\[8pt]
+        \hline
+        \rule{0pt}{35pt}指数分布 & - & $f(x)=\begin{cases}
+            \lambda e^{-\lambda x} & x>0 \\
+            0 & x \leqslant 0
+        \end{cases}$ & $\dfrac{1}{\lambda}$ & $\dfrac{1}{\lambda^2}$ \\[8pt]
+        \hline
+        \rule{0pt}{24pt}正态分布 & $N(\mu, \sigma^2)$ & $f(x) = \dfrac{1}{\sqrt{2\pi} \sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \; -\infty < x < +\infty$ & $\mu$ & $\sigma^2$ \\[8pt]
+        \hline
+    \end{tabular}
+\end{table}
+
 \subsection{随机变量的标准化}
 
 设随机变量 $X$ 具有数学期望 $E(X)=\mu$ 及方差 $D(X) = \sigma^2 > 0$，则称 $X^* = \dfrac{X-\mu}{\sigma}$ 为 $X$ 的\textbf{标准化随机变量}.
@@ -556,7 +614,7 @@ $E([X-E(X)][Y-E(Y)]) = 0$. 这表明，当 $E([X-E(X)][Y-E(Y)]) \not= 0$ 时，$
         &= \sigma_Y^2 - 2b \operatorname{Cov}(X,Y) + b^2 \sigma_X^2
     \end{aligned}
     $$
-    取 $b = \frac{\operatorname{Cov}(X,Y)}{\sigma_X^2}$，则有
+    取 $b = \dfrac{\operatorname{Cov}(X,Y)}{\sigma_X^2}$，则有
     $$
     \begin{aligned}
         D(Y-bX) &= \sigma_Y^2 - \dfrac{2 [\operatorname{Cov}(X,Y)]^2}{\sigma_X^2} + \dfrac{[\operatorname{Cov}(X,Y)]^2}{\sigma_X^2} \\
