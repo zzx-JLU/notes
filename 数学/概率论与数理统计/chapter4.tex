@@ -700,3 +700,19 @@ $E([X-E(X)][Y-E(Y)]) = 0$. 这表明，当 $E([X-E(X)][Y-E(Y)]) \not= 0$ 时，$
 若 $(X,Y) \sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $X$ 与 $Y$ 相互独立的充分必要条件是 $\rho=0$. 由于 $\rho_{XY} = \rho$，所以当 $(X,Y) \sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$ 时，$X$ 与 $Y$ 相互独立的充分必要条件是 $X$ 与 $Y$ 不相关.
 
 由于二维正态随机变量 $(X,Y)$ 的概率密度中的参数 $\rho$ 就是 $X$ 与 $Y$ 的相关系数，因此二维正态随机变量 $(X,Y)$ 的分布完全由 $X$ 和 $Y$ 的数学期望、方差以及 $X$ 与 $Y$ 的相关系数确定.
+
+\section{矩}
+
+\subsection{矩的概念}
+
+\begin{definition}
+    设 $X$ 和 $Y$ 是随机变量. 如果 $E(X^k), \, k=1,2,\cdots$ 存在，则称之为随机变量 $X$ 的 $k$ \textbf{阶原点矩}，记作 $E(X^k) = \mu_k \, (k=1,2,\cdots)$.
+
+    如果 $E([X-E(X)]^k), \, k=1,2,\cdots$ 存在，则称之为随机变量 $X$ 的 $k$ \textbf{阶中心矩}.
+
+    如果 $E(X^k Y^l), \; k,l=1,2,\cdots$ 存在，则称之为随机变量 $X$ 和 $Y$ 的 $k+l$ \textbf{阶混合原点矩}.
+
+    如果 $E([X-E(X)]^k [Y-E(Y)]^l), \; k,l=1,2,\cdots$ 存在，则称之为随机变量 $X$ 和 $Y$ 的 $k+l$ \textbf{阶混合中心矩}.
+\end{definition}
+
+随机变量 $X$ 的数学期望 $E(X)$ 是 $X$ 的一阶原点矩，方差 $D(X)$ 是 $X$ 的二阶中心矩，随机变量 $X$ 和 $Y$ 的协方差 $\operatorname{Cov}(X,Y)$ 是 $X$ 和 $Y$ 的二阶混合中心矩.
