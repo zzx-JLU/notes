@@ -716,3 +716,136 @@ $E([X-E(X)][Y-E(Y)]) = 0$. 这表明，当 $E([X-E(X)][Y-E(Y)]) \not= 0$ 时，$
 \end{definition}
 
 随机变量 $X$ 的数学期望 $E(X)$ 是 $X$ 的一阶原点矩，方差 $D(X)$ 是 $X$ 的二阶中心矩，随机变量 $X$ 和 $Y$ 的协方差 $\operatorname{Cov}(X,Y)$ 是 $X$ 和 $Y$ 的二阶混合中心矩.
+
+\subsection{协方差矩阵}
+
+\begin{definition}
+    设二维随机变量 $(X_1,X_2)$ 关于 $X_1$ 和 $X_2$ 的二阶中心距和二阶混合中心距
+    $$
+    c_{ij} = E([X_i-E(X_i)][X_j-E(X_j)]), \; i,j=1,2
+    $$
+    都存在，则称矩阵
+    $$
+    \boldsymbol{C} = \begin{bmatrix}
+        c_{11} & c_{12} \\
+        c_{21} & c_{22}
+    \end{bmatrix}
+    $$
+    为二维随机变量 $(X_1,X_2)$ 的\textbf{协方差矩阵}.
+
+    设 $n$ 维随机变量 $(X_1,X_2,\cdots,X_n)$ 关于 $X_1,X_2,\cdots,X_n$ 的二阶中心距和二阶混合中心距
+    $$
+    c_{ij} = E([X_i-E(X_i)][X_j-E(X_j)]), \; i,j=1,2,\cdots,n
+    $$
+    都存在，则称矩阵
+    $$
+    \boldsymbol{C} = \begin{bmatrix}
+        c_{11} & c_{12} & \cdots & c_{1n} \\
+        c_{21} & c_{22} & \cdots & c_{2n} \\
+        \vdots & \vdots & & \vdots \\
+        c_{n1} & c_{n2} & \cdots & c_{nn} \\
+    \end{bmatrix}
+    $$
+    为 $n$ 维随机变量 $(X_1,X_2,\cdots,X_n)$ 的\textbf{协方差矩阵}.
+\end{definition}
+
+由于 $c_{ij}=c_{ji} (i \not= j, \; i,j=1,2,\cdots,n)$，所以 $\boldsymbol{C}$ 是对称矩阵.
+
+\subsection{$n$ 维正态分布}
+
+设二维随机变量 $(X_1,X_2) \sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则
+$$
+E(X_1) = \mu_1, \; E(X_2) = \mu_2, \; D(X_1) = \sigma_1^2, \; D(X_2) = \sigma_2^2
+$$
+又由于 $\operatorname{Cov}(X_1,X_2) = \operatorname{Cov}(X_2,X_1) = \rho \sigma_1 \sigma_2$，从而有
+$$
+c_{11} = \sigma_1^2, \; c_{12} = c_{21} = \rho \sigma_1 \sigma_2, \; c_{22} = \sigma_2^2
+$$
+所以 $(X_1,X_2)$ 的协方差矩阵为
+$$
+\boldsymbol{C} = \begin{bmatrix}
+    \sigma_1^2 & \rho \sigma_1 \sigma_2 \\
+    \rho \sigma_1 \sigma_2 & \sigma_2^2
+\end{bmatrix}
+$$
+其行列式 $|\boldsymbol{C}| = \sigma_1^2 \sigma_2^2 (1-\rho^2)$，$\boldsymbol{C}$ 的逆矩阵为
+$$
+\boldsymbol{C}^{-1} = \dfrac{1}{|\boldsymbol{C}|} \begin{bmatrix}
+    \sigma_2^2 & -\rho \sigma_1 \sigma_2 \\
+    -\rho \sigma_1 \sigma_2 & \sigma_1^2
+\end{bmatrix}
+$$
+令
+$$
+\boldsymbol{X} = \begin{bmatrix}
+    x_1 \\
+    x_2
+\end{bmatrix}, \;
+\boldsymbol{\mu} = \begin{bmatrix}
+    \mu_1 \\
+    \mu_2
+\end{bmatrix}
+$$
+则
+$$
+\begin{aligned}
+    (\boldsymbol{X} - \boldsymbol{\mu})^{\text{T}} \boldsymbol{C}^{-1} (\boldsymbol{X} - \boldsymbol{\mu}) &= \dfrac{1}{|\boldsymbol{C}|}
+    \begin{bmatrix}
+        x_1-\mu_1 & x_2-\mu_2
+    \end{bmatrix}
+    \begin{bmatrix}
+        \sigma_2^2 & -\rho \sigma_1 \sigma_2 \\
+        -\rho \sigma_1 \sigma_2 & \sigma_1^2
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1-\mu_1 \\
+        x_2-\mu_2
+    \end{bmatrix} \\
+    &= \dfrac{1}{1-\rho^2} \left[ \dfrac{(x_1-\mu_1)^2}{\sigma_1^2} - 2\rho \dfrac{(x_1-\mu_1)(x_2-\mu_2)}{\sigma_1 \sigma_2} + \dfrac{(x_2-\mu_2)^2}{\sigma_2^2} \right]
+\end{aligned}
+$$
+因此二维正态随机变量 $(X_1,X_2)$ 的概率密度可以写成
+$$
+f(x_1,x_2) = \dfrac{1}{(2\pi)^{\frac{2}{2}} |\boldsymbol{C}|^{\frac{1}{2}}} e^{-\frac{1}{2} (\boldsymbol{X} - \boldsymbol{\mu})^{\text{T}} \boldsymbol{C}^{-1} (\boldsymbol{X} - \boldsymbol{\mu})}
+$$
+
+设 $(X_1,X_2,\cdots,X_n)$ 为 $n$ 维随机变量，记
+$$
+\boldsymbol{X} = \begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_n
+\end{bmatrix}, \;
+\boldsymbol{\mu} = \begin{bmatrix}
+    \mu_1 \\
+    \mu_2 \\
+    \vdots \\
+    \mu_n
+\end{bmatrix} = \begin{bmatrix}
+    E(X_1) \\
+    E(X_2) \\
+    \vdots \\
+    E(X_n)
+\end{bmatrix}
+$$
+如果 $(X_1,X_2,\cdots,X_n)$ 具有概率密度
+$$
+f(x_1,x_2,\cdots,x_n) = \dfrac{1}{(2\pi)^{\frac{n}{2}} |\boldsymbol{C}|^{\frac{1}{2}}} e^{-\frac{1}{2} (\boldsymbol{X} - \boldsymbol{\mu})^{\text{T}} \boldsymbol{C}^{-1} (\boldsymbol{X} - \boldsymbol{\mu})}
+$$
+其中 $\boldsymbol{C}$ 为 $(X_1,X_2,\cdots,X_n)$ 的协方差矩阵，则称 $(X_1,X_2,\cdots,X_n)$ 服从 $n$ 维正态分布.
+
+\setcounter{propertyname}{0}
+
+\begin{property}
+    $n$ 维随机变量 $(X_1,X_2,\cdots,X_n)$ 服从 $n$ 维正态分布的充分必要条件是：\\
+    $X_1,X_2,\cdots,X_n$ 的任意线性组合 $k_1 X_1 + k_2 X_2 + \cdots + k_n X_n$ 都服从一维正态分布，其中 $k_1,k_2,\cdots,k_n$ 是不全为零的常数.
+\end{property}
+
+\begin{property}
+    设 $(X_1,X_2,\cdots,X_n)$ 服从 $n$ 维正态分布. 如果 $Y_1,Y_2,\cdots,Y_m$ 是 $X_i \, (i=1,2,\cdots,n)$ 的线性函数，则 $(Y_1,Y_2,\cdots,Y_m)$ 也服从多维正态分布.
+\end{property}
+
+\begin{property}
+    如果 $(X_1,X_2,\cdots,X_n)$ 服从 $n$ 维正态分布，则“随机变量 $X_1,X_2,\cdots,X_n$ 相互独立”与“$X_1,X_2,\cdots,X_n$ 两两不相关”等价.
+\end{property}
