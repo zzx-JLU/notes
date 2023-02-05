@@ -1,0 +1,49 @@
+\chapter{大数定律与中心极限定理}
+
+\section{切比雪夫不等式}
+
+\begin{theorem}
+    设随机变量 $X$ 具有数学期望 $E(X)=\mu$ 和方差 $D(X) = \sigma^2$，则对于任意给定的正数 $\varepsilon$，有
+    $$
+    P\{ |X-E(X)| \geqslant \varepsilon \} \leqslant \dfrac{D(X)}{\varepsilon^2}
+    $$
+    这一不等式称为\textbf{切比雪夫不等式}，它的等价形式是
+    $$
+    P\{ |X-E(X)| < \varepsilon \} \geqslant 1 - \dfrac{D(X)}{\varepsilon^2}
+    $$
+\end{theorem}
+
+\begin{myproof}
+    如果 $X$ 是离散型随机变量，设 $X$ 的概率分布为 $P\{X = x_k\} = p_k, \; k=1,2,\cdots$，根据概率的可加性可得
+    $$
+    P\{ |X-\mu| \geqslant \varepsilon \} = \sum_{|x_k-\mu| \geqslant \varepsilon} P\{ X=x_k \} = \sum_{|x_k-\mu| \geqslant \varepsilon} p_k
+    $$
+    由 $|x_k-\mu| \geqslant \varepsilon$ 得 $(x_k-\mu)^2 \geqslant \varepsilon^2$，即
+    $$
+    \dfrac{(x_k-\mu)^2}{\varepsilon^2} \geqslant 1
+    $$
+    从而有
+    $$
+    \begin{aligned}
+        \sum_{|x_k-\mu| \geqslant \varepsilon} p_k & \leqslant \sum_{|x_k-\mu| \geqslant \varepsilon} \dfrac{(x_k-\mu)^2}{\varepsilon^2} p_k \\
+        & \leqslant \dfrac{1}{\varepsilon^2} \sum_{k=1}^{\infty} (x_k-\mu)^2 p_k \\
+        &= \dfrac{D(X)}{\varepsilon^2}
+    \end{aligned}
+    $$
+    因此
+    $$
+    P\{ |X-E(X)| \geqslant \varepsilon \} \leqslant \dfrac{D(X)}{\varepsilon^2}
+    $$
+
+    如果 $X$ 是连续型随机变量，设 $X$ 的概率密度为 $f(x)$，则
+    $$
+    \begin{aligned}
+        P\{ |X-E(X)| \geqslant \varepsilon \} &= \underset{|x-\mu| \geqslant \varepsilon}{\int} f(x) \, \text{d}x \\
+         & \leqslant \underset{|x-\mu| \geqslant \varepsilon}{\int} \dfrac{(x-\mu)^2}{\varepsilon^2} f(x) \, \text{d}x \\
+         & \leqslant \dfrac{1}{\varepsilon^2} \int_{-\infty}^{+\infty} (x-\mu)^2 f(x) \, \text{d}x \\
+         &= \dfrac{D(X)}{\varepsilon^2}
+    \end{aligned}
+    $$
+\end{myproof}
+
+切比雪夫不等式给出了在随机变量 $X$ 的分布未知的情况下随机事件 $\{ |X-\mu| < \varepsilon \}$ 的概率的一种估计. 例如，取 $\varepsilon = 3\sigma$，则 $P\{ |X-\mu| < 3\sigma \} \geqslant 0.8889$.
