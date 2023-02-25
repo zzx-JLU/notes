@@ -63,7 +63,9 @@
 
 如果在每一次试验中事件 $A$ 和事件 $B$ 必有一个且仅有一个发生，则称事件 $A$ 与事件 $B$ 是\textbf{互逆}的或\textbf{对立}的，称其中的一个事件是另一个事件的\textbf{逆事件}，记作 $\overline{A}=B$，或 $\overline{B}=A$.
 
-显然，$\overline{\overline{A}}=A$.
+对于任意事件 $A$，有 $\overline{\overline{A}}=A$.
+
+如果事件 $A$ 与事件 $B$ 互逆，则事件 $A$ 与事件 $B$ 一定互斥. 反之，如果事件 $A$ 与事件 $B$ 互斥，事件 $A$ 与事件 $B$ 不一定互逆.
 
 \subsection{随机事件的运算}
 
@@ -76,17 +78,16 @@ $$
 
 事件 $A$ 和事件 $B$ 作为样本空间 $\varOmega$ 的子集，并事件 $A \cup B$ 就是子集 $A$ 与 $B$ 的并集.
 
-对于任何事件 $A$ 与 $B$，有
-\begin{gather*}
-    A \cup A = A \\
-    A \cup \text{\O} = A \\
-    A \cup B = B \cup A \\
-    A \cup \overline{A} = \varOmega \\
-    A \subseteq A \cup B \\
-    B \subseteq A \cup B
-\end{gather*}
-
-如果 $A \subseteq B$，则有 $A \cup B=B$.
+对于任何事件 $A$ 与 $B$，事件的并运算有如下性质：
+\begin{enumerate}
+    \item $A \cup A = A$
+    \item $A \cup \text{\O} = A$
+    \item $A \cup B = B \cup A$
+    \item $A \cup \overline{A} = \varOmega$
+    \item $A \subseteq A \cup B$
+    \item $B \subseteq A \cup B$
+    \item 如果 $A \subseteq B$，则有 $A \cup B=B$.
+\end{enumerate}
 
 事件的并可以推广到多个事件的情形：
 \begin{gather*}
@@ -103,19 +104,17 @@ $$
 
 事件 $A$ 和事件 $B$ 作为样本空间 $\varOmega$ 的子集，交事件 $A \cap B$ 就是子集 $A$ 与 $B$ 的交集.
 
-对于任何事件 $A$ 与 $B$，有
-\begin{gather*}
-    A \cap A = A\\
-    A \cap \text{\O} = \text{\O}\\
-    A \cap B = B \cap A\\
-    A \cap \overline{A} = \text{\O}\\
-    A \cap B \subseteq A\\
-    A \cap B \subseteq B
-\end{gather*}
-
-如果 $A \subseteq B$，则有 $A \cap B=A$.
-
-如果 $A$ 与 $B$ 互不相容，则有 $A \cap B = \text{\O}$.
+对于任何事件 $A$ 与 $B$，事件的交运算有如下性质：
+\begin{enumerate}
+    \item $A \cap A = A$
+    \item $A \cap \text{\O} = \text{\O}$
+    \item $A \cap B = B \cap A$
+    \item $A \cap \overline{A} = \text{\O}$
+    \item $A \cap B \subseteq A$
+    \item $A \cap B \subseteq B$
+    \item 如果 $A \subseteq B$，则有 $A \cap B = A$.
+    \item 如果 $A$ 与 $B$ 互不相容，则有 $A \cap B = \text{\O}$.
+\end{enumerate}
 
 事件的交可以推广到多个事件的情形：
 \begin{gather*}
@@ -130,18 +129,20 @@ $$
 A - B = \{ \omega \mid \omega \in A \;\text{且}\; \omega \notin B \}
 $$
 
-对于任何事件 $A$ 与 $B$，有
-\begin{gather*}
-    A - A = \text{\O}\\
-    A - \text{\O} = A\\
-    A - B = A - AB = A \overline{B}\\
-    \varOmega - A = \overline{A}\\
-    A - \varOmega = \text{\O}\\
-    (A-B) \cup B = (B-A) \cup A = A \cup B\\
-    A \cup B = A \cup (B-AB) = B \cup (A-AB)
-\end{gather*}
-
-$A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-B) \cup AB$，$B = (B-A) \cup AB$.
+对于任何事件 $A$ 与 $B$，事件的差运算有如下性质：
+\begin{enumerate}
+    \item $A - A = \text{\O}$
+    \item $A - \text{\O} = A$
+    \item $A - B = A - AB = A \overline{B}$
+    \item $\varOmega - A = \overline{A}$
+    \item $A - \varOmega = \text{\O}$
+    \item $(A-B) \cup B = (B-A) \cup A = A \cup B$
+    \item $A \cup B = A \cup (B-AB) = B \cup (A-AB)$
+    \item $A-B,AB,B-A$ 两两互斥，且 \\
+    （1）$A \cup B = (A-B) \cup AB \cup (B-A)$\\
+    （2）$A = (A-B) \cup AB$\\
+    （3）$B = (B-A) \cup AB$
+\end{enumerate}
 
 \subsubsection{随机事件的运算规律}
 
@@ -167,19 +168,17 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
 
 事件 $A$ 发生的频率反映了事件 $A$ 在 $n$ 次试验中发生的频繁程度.频率越大，表明事件 $A$ 的发生越频繁，从而可知事件 $A$ 在一次试验中发生的可能性越大.
 
-频率的基本性质：
-
 \setcounter{propertyname}{0}
 
-\begin{property}[(非负性)]
+\begin{property}[（非负性）]
     对于任意事件 $A$，有 $f_n(A) \geqslant 0$.
 \end{property}
 
-\begin{property}[(规范性)]
+\begin{property}[（规范性）]
     对于必然事件 $\varOmega$，有 $f_n(\varOmega)=1$.
 \end{property}
 
-\begin{property}[(有限可加性)]
+\begin{property}[（有限可加性）]
     对于两两互不相容的事件 $A_1,A_2,\cdots,A_m$（即当 $i\not=j$ 时，有 $A_i A_j = \text{\O}$，$i,j=1,2,\cdots,m$），有
     $$
     f_n(\bigcup_{i=1}^m A_i) = \sum_{i=1}^m f_n(A_i)
@@ -220,7 +219,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
     由概率的非负性知 $P(\text{\O}) \geqslant 0$，因此 $P(\text{\O})=0$.
 \end{myproof}
 
-\begin{property}[(有限可加性)] \label{prop:probability:sum}
+\begin{property}[（有限可加性）] \label{prop:probability:sum}
     对于两两互不相容的事件 $A_1,A_2,\cdots,A_n$，有
     \[
     P(\bigcup_{i=1}^n A_i) = \sum_{i=1}^n P(A_i)
@@ -276,7 +275,7 @@ $A-B,AB,B-A$ 两两互斥，且 $A \cup B = (A-B) \cup AB \cup (B-A)$，$A = (A-
     \]
 \end{myproof}
 
-\begin{property}[(概率的减法公式)] \label{prop:probability:subtraction}
+\begin{property}[（概率的减法公式）] \label{prop:probability:subtraction}
     对于任意两个事件 $A$ 与 $B$，有
     \begin{equation}
         P(B-A)=P(B)-P(AB)
@@ -504,15 +503,15 @@ $$
 
 \setcounter{propertyname}{0}
 
-\begin{property}[(非负性)]
+\begin{property}[（非负性）]
     对任意事件 $B$，有 $P(B \mid A) \geqslant 0$.
 \end{property}
 
-\begin{property}[(规范性)]
+\begin{property}[（规范性）]
     对于必然事件 $\varOmega$，有 $P(\varOmega \mid A)=1$.
 \end{property}
 
-\begin{property}[(可列可加性)]
+\begin{property}[（可列可加性）]
     对于两两互不相容的事件 $B_1,B_2,\cdots$，有
     $$
     P(\left( \bigcup_{i=1}^\infty B_i \right) \mid A)=\sum_{i=1}^\infty P(B_i \mid A)
