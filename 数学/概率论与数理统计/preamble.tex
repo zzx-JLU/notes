@@ -135,4 +135,8 @@
 \newenvironment{note}{\begin{shaded}\par\noindent\textbf{注：}}{\end{shaded}\par}
 
 % 结论环境
-\newenvironment{conclusion}{\begin{framed}\par\noindent\textbf{结论：}}{\end{framed}\par}
+\newenvironment{conclusion}[1][]{
+    \begin{framed}
+        \par\noindent
+        \textbf{结论}#1\quad}
+{\end{framed}\par}

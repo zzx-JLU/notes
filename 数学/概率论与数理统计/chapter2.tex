@@ -78,9 +78,9 @@
     \end{equation}
     并且 $p_k$ 满足以下两个条件：
     \begin{enumerate}
-        \item $p_k \geqslant 0$；
-        \item $\displaystyle\sum_{k=1}^\infty p_k=1$，
-    \end{enumerate}
+        \item 非负性：$p_k \geqslant 0$；\vspace{0.5em}
+        \item 归一性：$\displaystyle\sum_{k=1}^\infty p_k=1$，
+    \end{enumerate} \vspace{0.5em}
     则称式 \eqref{equation:distribution} 为离散型随机变量 $X$ 的\textbf{概率分布}（probability distribution）或\textbf{分布律}.
 \end{definition}
 
@@ -506,6 +506,8 @@ $$
         \end{tikzpicture}
     }
 
+    \vspace{-1em}
+
     \caption{}
 \end{figure}
 
@@ -532,6 +534,8 @@ $$
         \draw[dashed] (\Mu, {1/(sqrt(2*pi)*\Sigma)}) -- (\Mu, 0) node[below]{$\mu_1$};
         \draw[dashed] (\xMu, {1/(sqrt(2*pi)*\Sigma)}) -- (\xMu, 0) node[below]{$\mu_2$};
     \end{tikzpicture}
+
+    \vspace{-1em}
 
     \caption{}
     \label{fig:mu}
@@ -576,10 +580,12 @@ $$
 \end{definition}
 
 服从标准正态分布的随机变量 $X$ 的概率密度记作 $\varphi(x)$，分布函数记作 $\varPhi(x)$，即
-\begin{gather*}
-    \varphi(x) = \dfrac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}, \; -\infty < x < +\infty \\
-    \varPhi(x) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-\frac{t^2}{2}}\,\text{d}t, \; -\infty < x < +\infty
-\end{gather*}
+$$
+\begin{aligned}
+    & \varphi(x) = \dfrac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}, \; -\infty < x < +\infty \\
+    & \varPhi(x) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-\frac{t^2}{2}}\,\text{d}t, \; -\infty < x < +\infty
+\end{aligned}
+$$
 
 \begin{figure}[htbp]
     \centering
@@ -620,6 +626,8 @@ $$
         \end{tikzpicture}
     }
 
+    \vspace{-1em}
+
     \caption{}
 \end{figure}
 
@@ -630,6 +638,8 @@ $$
         \varPhi(-x) = 1-\varPhi(x)
     \end{equation}
 \end{property}
+
+\vspace{-1.5em}
 
 \begin{myproof}
     由于 $\varphi(x)$ 是偶函数，所以 $\varphi(-x)=\varphi(x)$，则
@@ -663,7 +673,7 @@ $$
     $$
 \end{myproof}
 
-\begin{property}[(正态分布的标准化)] \label{prop:standard}
+\begin{property}[（正态分布的标准化）] \label{prop:standard}
     若 $X \sim N(\mu,\sigma^2)$，则
     \begin{equation} \label{equation:standard}
         F(x)=\varPhi(\dfrac{x-\mu}{\sigma})
@@ -690,25 +700,33 @@ $$
     P\{x_1 < X < x_2\} = F(x_2)-F(x_1) = \varPhi(\dfrac{x_2-\mu}{\sigma}) - \varPhi(\dfrac{x_1-\mu}{\sigma})
 \end{equation}
 
-由式 \eqref{equation:Phi(-x)} 和式 \eqref{equation:standard} 有
-$$
-\begin{aligned}
-    P\{|X-\mu| < k \sigma\} &= P\{\mu - k \sigma < X \leqslant \mu + k \sigma\} \\
-    &= F(\mu+k\sigma) - F(\mu-k\sigma) \\
-    &= \varPhi(k)-\varPhi(-k) \\
-    &= 2\varPhi(k)-1
-\end{aligned}
-$$
-所以
-\begin{gather*}
-    P\{|X-\mu|<\sigma\}=2\varPhi(1)-1=0.6826\\
-    P\{|X-\mu|<2\sigma\}=2\varPhi(2)-1=0.9544\\
-    P\{|X-\mu|<3\sigma\}=2\varPhi(3)-1=0.9974
-\end{gather*}
+\begin{conclusion}[（$3\sigma$ 规则）]
+    正态随机变量 $X$ 以 99.74\% 的概率落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间内，而落在该区间以外的概率小于千分之三. 在一次试验中，$X$ 落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间以外这个事件几乎不会发生.
+\end{conclusion}
 
-$3\sigma$ 规则：正态随机变量 $X$ 以 99.74\% 的概率落在以 $\mu$ 为中心、以 $3\sigma$ 为半径的区间内，而落在该区间以外的概率很小，在一次试验中，$X$ 落在该区间以外这个事件几乎不会发生.
+\vspace{-1.7em}
+
+\begin{myproof}
+    由式 \eqref{equation:Phi(-x)} 和式 \eqref{equation:standard} 有
+    $$
+    \begin{aligned}
+        P\{|X-\mu| < k \sigma\} &= P\{\mu - k \sigma < X \leqslant \mu + k \sigma\} \\
+        &= F(\mu+k\sigma) - F(\mu-k\sigma) \\
+        &= \varPhi(k)-\varPhi(-k) \\
+        &= 2\varPhi(k)-1
+    \end{aligned}
+    $$
+    所以
+    \begin{gather*}
+        P\{|X-\mu|<\sigma\}=2\varPhi(1)-1=0.6826\\
+        P\{|X-\mu|<2\sigma\}=2\varPhi(2)-1=0.9544\\
+        P\{|X-\mu|<3\sigma\}=2\varPhi(3)-1=0.9974
+    \end{gather*}
+\end{myproof}
 
 \subsubsection{标准正态分布的上 $\alpha$ 分位点}
+
+\vspace{-1em}
 
 \begin{definition}
     设 $X \sim N(0,1)$. 对于给定的 $\alpha \, (0 < \alpha < 1)$，如果 $u_{\alpha}$ 满足条件
@@ -718,12 +736,12 @@ $3\sigma$ 规则：正态随机变量 $X$ 以 99.74\% 的概率落在以 $\mu$ �
     则称点 $u_{\alpha}$ 为标准正态分布的\textbf{上} $\alpha$ \textbf{分位点}.
 \end{definition}
 
-上 $\alpha$ 分位点的含义如图 \ref{fig:alpha} 所示.
+\vspace{-0.5em}
 
 \begin{figure}[htbp]
     \centering
 
-    \begin{tikzpicture}[>=Stealth, yscale=5]
+    \begin{tikzpicture}[>=Stealth, yscale=4, xscale=0.8]
         % 定义变量
         \def\Mu{0}
         \def\Sigma{1}
@@ -742,23 +760,32 @@ $3\sigma$ 规则：正态随机变量 $X$ 以 99.74\% 的概率落在以 $\mu$ �
         \draw (2, 0.02) -- (2.5, 0.2) node[above]{$\alpha$};
     \end{tikzpicture}
 
-    \caption{}
+    \vspace{-1em}
+
+    \caption{标准正态分布的上 $\alpha$ 分位点}
     \label{fig:alpha}
 \end{figure}
 
-根据对称性，上 $1-\alpha$ 分位点 $u_{1-\alpha}$ 与上 $\alpha$ 分位点 $u_{\alpha}$ 关于原点对称，即有
-\begin{equation}
-    u_{1-\alpha}=-u_{\alpha}
-\end{equation}
+\setcounter{propertyname}{0}
 
-因为
-$$
-P\{X \leqslant u_{\alpha}\} = 1 - P\{X > u_{\alpha}\} = 1-\alpha
-$$
-所以
-\begin{equation}
-    \varPhi(u_{\alpha})=1-\alpha
-\end{equation}
+\begin{property}
+    上 $1-\alpha$ 分位点 $u_{1-\alpha}$ 与上 $\alpha$ 分位点 $u_{\alpha}$ 关于原点对称，即
+    \begin{equation}
+        u_{1-\alpha}=-u_{\alpha}
+    \end{equation}
+\end{property}
+
+\begin{property}
+    \begin{equation}
+        \varPhi(u_{\alpha}) = 1 - \alpha
+    \end{equation}
+\end{property}
+
+\begin{myproof}
+    $$
+    \varPhi(u_{\alpha}) = P\{X \leqslant u_{\alpha}\} = 1 - P\{X > u_{\alpha}\} = 1-\alpha
+    $$
+\end{myproof}
 
 \section{随机变量的函数的分布}
 
@@ -856,7 +883,7 @@ $$
 \end{solution}
 
 \begin{problem}
-    设随机变量 $X$ 服从柯西（Cauchy）分布，即 $X$ 的概率密度为
+    设随机变量 $X$ 服从标准柯西分布，即 $X$ 的概率密度为
     $$
     f_{X}(x) = \dfrac{1}{\pi (1+x^2)}, \; -\infty < x < +\infty
     $$
@@ -887,7 +914,7 @@ $$
     当 $y \geqslant \dfrac{\pi}{2}$ 时，事件 $\{\arctan X \leqslant y\}$ 是必然事件，所以 $F_{Y}(y)=1$，从而 $f_{Y}(y)=0$.
     \vspace{0.5em}
 
-    当 $y \leqslant -\dfrac{\pi}{2}$ 时，事件 $\{\arctan X \leqslant y\}$ 是不可能事件，所以 $F_{Y}(y)=0$，从而 $f_{Y}(y)=0$.
+    当 $y \leqslant -\dfrac{\pi}{2}$ 时，事件 $\{\arctan X \leqslant y\}$ 是不可能事件，所以 $F_{Y}(y)=0$，从而 $f_{Y}(y)=0$. \vspace{0.5em}
 
     综上所述，$Y$ 的概率密度为
     $$
