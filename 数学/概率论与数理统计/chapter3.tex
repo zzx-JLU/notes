@@ -64,7 +64,7 @@
 \end{property}
 
 \begin{property}
-    对于任意的 $x_1 < x_2, y_1 < y_2$，有
+    对于任意的 $x_1 < x_2, \, y_1 < y_2$，有
     $$
     P\{x_1 < X \leqslant x_2, y_1 < Y \leqslant y_2\} = F(x_2, y_2) - F(x_1, y_2) - F(x_2, y_1) + F(x_1, y_1)
     $$
@@ -251,7 +251,7 @@ $z=f(x,y)$ 表示空间 $Oxyz$ 中的一张曲面. 性质 \ref*{property: densit
 $$
 f(x,y)=\begin{cases}
     \dfrac{1}{A} & (x,y) \in D \\[0.5em]
-    0 & 其他
+    0 & \text{其他}
 \end{cases}
 $$
 则称 $(X,Y)$ 在区域 $D$ 上服从\textbf{均匀分布}.
@@ -276,9 +276,9 @@ $$
     $$
     \begin{aligned}
         & \frac{-1}{2(1-\rho^2)} \left[ \frac{(x-\mu_1)^2}{\sigma_1^2} - 2 \rho \frac{(x-\mu_1)(y-\mu_2)}{\sigma_1 \sigma_2} + \frac{(y-\mu_2)^2}{\sigma_2^2} \right] \\
-        = & \frac{-1}{2(1-\rho^2)} \left\{ \frac{(x-\mu_1)^2}{\sigma_1^2} + \left[ \frac{(y-\mu_2)^2}{\sigma_2^2} - 2 \rho \frac{(x-\mu_1)(y-\mu_2)}{\sigma_1 \sigma_2} + \rho^2 \frac{(x-\mu_1)^2}{\sigma_1^2} \right] - \rho^2 \frac{(x-\mu_1)^2}{\sigma_1^2} \right\} \\
-        = & \frac{-1}{2(1-\rho^2)} \left\{ \frac{(1-\rho^2)(x-\mu_1)^2}{\sigma_1^2} + \left( \dfrac{y-\mu_2}{\sigma_2} - \rho \dfrac{x-\mu_1}{\sigma_1} \right)^2 \right\} \\
-        = & -\frac{(x-\mu_1)^2}{2\sigma_1^2} - \dfrac{1}{2(1-\rho^2)} \left( \dfrac{y-\mu_2}{\sigma_2} - \rho \dfrac{x-\mu_1}{\sigma_1} \right)^2
+        = \  & \frac{-1}{2(1-\rho^2)} \left\{ \frac{(x-\mu_1)^2}{\sigma_1^2} + \left[ \frac{(y-\mu_2)^2}{\sigma_2^2} - 2 \rho \frac{(x-\mu_1)(y-\mu_2)}{\sigma_1 \sigma_2} + \rho^2 \frac{(x-\mu_1)^2}{\sigma_1^2} \right] - \rho^2 \frac{(x-\mu_1)^2}{\sigma_1^2} \right\} \\
+        = \  & \frac{-1}{2(1-\rho^2)} \left\{ \frac{(1-\rho^2)(x-\mu_1)^2}{\sigma_1^2} + \left( \dfrac{y-\mu_2}{\sigma_2} - \rho \dfrac{x-\mu_1}{\sigma_1} \right)^2 \right\} \\
+        = \  & -\frac{(x-\mu_1)^2}{2\sigma_1^2} - \dfrac{1}{2(1-\rho^2)} \left( \dfrac{y-\mu_2}{\sigma_2} - \rho \dfrac{x-\mu_1}{\sigma_1} \right)^2
     \end{aligned}
     $$
     因此
@@ -347,13 +347,13 @@ $$
 \begin{definition}
     设 $(X,Y)$ 是二维离散型随机变量，对于固定的 $j$，如果 $P\{Y = y_j\} = p_{\cdot j} > 0$，则称
     $$
-    P\{X=x_i | Y=y_j\} = \dfrac{P\{X=x_i, Y=y_j\}}{P\{Y=y_j\}} = \dfrac{p_{ij}}{p_{\cdot j}},\ i=1,2,\cdots
+    P\{X=x_i \mid Y=y_j\} = \dfrac{P\{X=x_i, Y=y_j\}}{P\{Y=y_j\}} = \dfrac{p_{ij}}{p_{\cdot j}},\ i=1,2,\cdots
     $$
     为在条件 $Y=y_j$ 下随机变量 $X$ 的\textbf{条件概率分布}.
     
     对于固定的 $i$，如果 $P\{X=x_i\} = p_{i \cdot} > 0$，则称
     $$
-    P\{Y=y_j | X=x_i\} = \dfrac{P\{X=x_i,Y=y_j\}}{P\{X=x_i\}} = \dfrac{p_{ij}}{p_{i \cdot}},\ j=1,2,\cdots
+    P\{Y=y_j \mid X=x_i\} = \dfrac{P\{X=x_i,Y=y_j\}}{P\{X=x_i\}} = \dfrac{p_{ij}}{p_{i \cdot}},\ j=1,2,\cdots
     $$
     为在条件 $X=x_i$ 下随机变量 $Y$ 的\textbf{条件概率分布}.
 \end{definition}
@@ -363,13 +363,13 @@ $$
 \begin{definition}
     设 $(X,Y)$ 是二维连续型随机变量，对于给定的实数 $y$ 及任意给定的正数 $\varepsilon$，都有 $P\{y-\varepsilon < Y \leqslant y+\varepsilon\} > 0$. 如果对于任意实数 $x$，极限
     $$
-    \lim_{\varepsilon \to 0^+} P\{X \leqslant x \;|\; y-\varepsilon < Y \leqslant y+\varepsilon\} = \lim_{\varepsilon \to 0^+} \dfrac{P\{X \leqslant x, y-\varepsilon < Y \leqslant y+\varepsilon\}}{P\{y-\varepsilon < Y \leqslant y+\varepsilon\}}
+    \lim_{\varepsilon \to 0^+} P\{X \leqslant x \mid y-\varepsilon < Y \leqslant y+\varepsilon\} = \lim_{\varepsilon \to 0^+} \dfrac{P\{X \leqslant x, y-\varepsilon < Y \leqslant y+\varepsilon\}}{P\{y-\varepsilon < Y \leqslant y+\varepsilon\}}
     $$
-    存在，则称此极限值为在条件 $Y=y$ 下 $X$ 的\textbf{条件分布函数}，记作 $F_{X|Y}(x|y)$. 如果非负函数 $f_{X|Y}(x|y)$ 使得
+    存在，则称此极限值为在条件 $Y=y$ 下 $X$ 的\textbf{条件分布函数}，记作 $F_{X|Y}(x \mid y)$. 如果非负函数 $f_{X|Y}(x \mid y)$ 使得
     $$
-    F_{X|Y}(x|y) = \int_{-\infty}^x f_{X|Y}(u|y) \, \text{d}u,\ x \in \mathbf{R}
+    F_{X|Y}(x \mid y) = \int_{-\infty}^x f_{X|Y}(u \mid y) \, \text{d}u,\ x \in \mathbf{R}
     $$
-    成立，则称 $f_{X|Y}(x|y)$ 为在条件 $Y=y$ 下 $X$ 的\textbf{条件概率密度}.
+    成立，则称 $f_{X|Y}(x \mid y)$ 为在条件 $Y=y$ 下 $X$ 的\textbf{条件概率密度}.
 \end{definition}
 
 设二维连续型随机变量 $(X,Y)$ 的分布函数为 $F(x,y)$，概率密度为 $f(x,y)$. 如果在点 $(x,y)$ 处 $f(x,y)$ 连续，$(X,Y)$ 关于 $Y$ 的边缘概率密度 $f_{Y}(y)$ 连续，且 $f_{Y}(y)>0$，$Y$ 的分布函数为 $F_{Y}(y)$，则有
