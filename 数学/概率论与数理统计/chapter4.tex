@@ -16,102 +16,144 @@
     $$
 \end{definition}
 
-若随机变量 $X$ 服从参数为 $p$ 的(0-1)分布，即 $X$ 的分布律为
+任给一个随机变量，其数学期望未必存在.
 
-\begin{table}[htbp]
-    \centering
+\begin{conclusion}
+    若随机变量 $X$ 服从参数为 $p$ 的(0-1)分布，则 $E(X) = p$.
+\end{conclusion}
 
-    \begin{tabular}{c | c c}
-        \hline
-        $X$ & 0 & 1 \\
-        \hline
-        $P$ & $1-p$ & $p$ \\
-        \hline
-    \end{tabular}
-\end{table}
-则有
-$$
-E(X) = 0 \times (1-p) + 1 \times p = p
-$$
-\\
+\begin{myproof}
+    $X$ 的分布律为
 
-若随机变量 $X \sim B(n,p)$，即 $X$ 的概率分布为 $P\{X=k\} = C_n^k p^k (1-p)^{n-k}, \; k=0,1,2,\cdots,n$，则
-$$
-\begin{aligned}
-    E(X) &= \sum_{k=0}^n k C_n^k p^k (1-p)^{n-k} \\
-    &= \sum_{k=0}^n \dfrac{kn!}{k! (n-k)!} p^k (1-p)^{n-k} \\
-    &= \sum_{k=1}^n \dfrac{np(n-1)! \, p^{k-1} (1-p)^{(n-1)-(k-1)}}{(k-1)! \, [(n-1)-(k-1)]!} \\
-    &= np[p+(1-p)]^{n-1} \\
-    &= np
-\end{aligned}
-$$
+    \begin{center}
+        \begin{tabular}{c | c c}
+            \hline
+            $X$ & 0 & 1 \\
+            \hline
+            $P$ & $1-p$ & $p$ \\
+            \hline
+        \end{tabular}
+    \end{center}
 
-若随机变量 $X \sim P(\lambda)$，即 $X$ 的概率分布为 $P\{X=k\} = \dfrac{\lambda^k e^{-\lambda}}{k!}, \; k=0,1,2,\cdots$，则
-$$
-\begin{aligned}
-    E(X) &= \sum_{k=0}^{\infty} k \dfrac{\lambda^k e^{-\lambda}}{k!} \\
-    &= \lambda e^{-\lambda} \sum_{k=1}^{\infty} \dfrac{\lambda^{k-1}}{(k-1)!} \\
-    &= \lambda e^{-\lambda} e^{\lambda} \\
-    &= \lambda
-\end{aligned}
-$$
+    因此
+    $$
+    E(X) = 0 \times (1-p) + 1 \times p = p
+    $$
+\end{myproof}
 
-若随机变量 $X$ 服从参数为 $p$ 的几何分布，即 $X$ 的概率分布为 $P\{X=k\} = (1-p)^{k-1} p, \; k=1,2,\cdots$，则
-$$
-\begin{aligned}
-    E(X) &= \sum_{k=1}^{\infty} k (1-p)^{k-1} p \\
-    & \xlongequal{q=1-p} p \sum_{k=1}^{\infty} k q^{k-1} \\
-    &= p \left( \dfrac{\text{d}}{\text{d}q} \sum_{k=1}^{\infty} q^k \right) \\
-    &= p \left( \dfrac{\text{d}}{\text{d}q} \dfrac{q}{1-q} \right) \\
-    &= p \dfrac{1}{(1-q)^2} \\
-    &= p \dfrac{1}{p^2} \\
-    &= \dfrac{1}{p}
-\end{aligned}
-$$
+\begin{conclusion}
+    若随机变量 $X \sim B(n,p)$，则 $E(X) = np$.
+\end{conclusion}
 
-若随机变量 $X$ 在区间 $[a,b]$ 上服从均匀分布，即 $X$ 的概率密度为
-$$
-f(x) = \begin{cases}
-    \dfrac{1}{b-a} & a \leqslant x \leqslant b \\[0.5em]
-    0 & \text{其他}
-\end{cases}
-$$
-则
-$$
-E(X) = \int_{-\infty}^{+\infty} x f(x) \, \text{d}x = \int_a^b \dfrac{x}{b-a} \text{d}x = \dfrac{a+b}{2}
-$$
+\begin{myproof}
+    $X$ 的概率分布为 $P\{X=k\} = C_n^k p^k (1-p)^{n-k}, \; k=0,1,2,\cdots,n$，因此
+    $$
+    \begin{aligned}
+        E(X) &= \sum_{k=0}^n k C_n^k p^k (1-p)^{n-k} \\
+        &= \sum_{k=0}^n \dfrac{kn!}{k! (n-k)!} p^k (1-p)^{n-k} \\
+        &= \sum_{k=1}^n \dfrac{np(n-1)! \, p^{k-1} (1-p)^{(n-1)-(k-1)}}{(k-1)! \, [(n-1)-(k-1)]!} \\
+        &= np[p+(1-p)]^{n-1} \\
+        &= np
+    \end{aligned}
+    $$
+\end{myproof}
 
-若随机变量 $X$ 服从参数为 $\lambda \, (\lambda>0)$ 的指数分布，即 $X$ 的概率密度为
-$$
-f(x) = \begin{cases}
-    \lambda e^{-\lambda x} & x>0 \\
-    0 & x \leqslant 0
-\end{cases}
-$$
-则
-$$
-\begin{aligned}
-    E(X) &= \int_{-\infty}^{+\infty} x f(x) \, \text{d}x \\
-    &= \int_0^{+\infty} x \lambda e^{-\lambda x} \, \text{d}x \\
-    &= \left. -xe^{-\lambda x} \right|_0^{+\infty} + \int_0^{+\infty} e^{-\lambda x} \, \text{d}x \\
-    &= \left. -\dfrac{1}{\lambda} e^{-\lambda x} \right|_0^{+\infty} \\
-    &= \dfrac{1}{\lambda}
-\end{aligned}
-$$
+\begin{conclusion}
+    若随机变量 $X \sim P(\lambda)$，则 $E(X) = \lambda$.
+\end{conclusion}
 
-若随机变量 $X \sim N(\mu,\sigma^2)$，即 $X$ 的概率密度为
-$$
-f(x) = \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}, \; -\infty < x < +\infty
-$$
-则
-$$
-\begin{aligned}
-    E(X) &= \int_{-\infty}^{+\infty} x \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \text{d}x \\
-    & \xlongequal{t = \frac{x-\mu}{\sigma}} \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} (\sigma t + \mu) e^{-\frac{t^2}{2}} \text{d}t \\
-    &= \dfrac{\sigma}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} te^{-\frac{t^2}{2}} \text{d}t + \mu \int_{-\infty}^{+\infty} \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{t^2}{2}} \text{d}t \\
-    &= \mu
-\end{aligned}
-$$
+\begin{myproof}
+    $X$ 的概率分布为 $P\{X=k\} = \dfrac{\lambda^k e^{-\lambda}}{k!}, \; k=0,1,2,\cdots$，因此
+    $$
+    \begin{aligned}
+        E(X) &= \sum_{k=0}^{\infty} k \dfrac{\lambda^k e^{-\lambda}}{k!} \\
+        &= \lambda e^{-\lambda} \sum_{k=1}^{\infty} \dfrac{\lambda^{k-1}}{(k-1)!} \\
+        &= \lambda e^{-\lambda} e^{\lambda} \\
+        &= \lambda
+    \end{aligned}
+    $$
+\end{myproof}
+
+\begin{conclusion}
+    若随机变量 $X$ 服从参数为 $p$ 的几何分布，则 $E(X) = \dfrac{1}{p}$.
+\end{conclusion}
+
+\begin{myproof}
+    $X$ 的概率分布为 $P\{X=k\} = (1-p)^{k-1} p, \; k=1,2,\cdots$，则
+    $$
+    \begin{aligned}
+        E(X) &= \sum_{k=1}^{\infty} k (1-p)^{k-1} p \\
+        & \xlongequal{q=1-p} p \sum_{k=1}^{\infty} k q^{k-1} \\
+        &= p \left( \dfrac{\text{d}}{\text{d}q} \sum_{k=1}^{\infty} q^k \right) \\
+        &= p \left( \dfrac{\text{d}}{\text{d}q} \dfrac{q}{1-q} \right) \\
+        &= p \dfrac{1}{(1-q)^2} \\
+        &= p \dfrac{1}{p^2} \\
+        &= \dfrac{1}{p}
+    \end{aligned}
+    $$
+\end{myproof}
+
+\begin{conclusion}
+    若随机变量 $X$ 在区间 $[a,b]$ 上服从均匀分布，则 $E(X) = \dfrac{a+b}{2}$.
+\end{conclusion}
+
+\begin{myproof}
+    $X$ 的概率密度为
+    $$
+    f(x) = \begin{cases}
+        \dfrac{1}{b-a} & a \leqslant x \leqslant b \\[0.5em]
+        0 & \text{其他}
+    \end{cases}
+    $$
+    因此
+    $$
+    E(X) = \int_{-\infty}^{+\infty} x f(x) \, \text{d}x = \int_a^b \dfrac{x}{b-a} \text{d}x = \dfrac{a+b}{2}
+    $$
+\end{myproof}
+
+\begin{conclusion}
+    若随机变量 $X$ 服从参数为 $\lambda \, (\lambda>0)$ 的指数分布，则 $E(X) = \dfrac{1}{\lambda}$.
+\end{conclusion}
+
+\begin{myproof}
+    $X$ 的概率密度为
+    $$
+    f(x) = \begin{cases}
+        \lambda e^{-\lambda x} & x>0 \\
+        0 & x \leqslant 0
+    \end{cases}
+    $$
+    因此
+    $$
+    \begin{aligned}
+        E(X) &= \int_{-\infty}^{+\infty} x f(x) \, \text{d}x \\
+        &= \int_0^{+\infty} x \lambda e^{-\lambda x} \, \text{d}x \\
+        &= \left. -xe^{-\lambda x} \right|_0^{+\infty} + \int_0^{+\infty} e^{-\lambda x} \, \text{d}x \\
+        &= \left. -\dfrac{1}{\lambda} e^{-\lambda x} \right|_0^{+\infty} \\
+        &= \dfrac{1}{\lambda}
+    \end{aligned}
+    $$
+\end{myproof}
+
+\begin{conclusion}
+    若随机变量 $X \sim N(\mu,\sigma^2)$，则 $E(X) = \mu$.
+\end{conclusion}
+
+\begin{myproof}
+    $X$ 的概率密度为
+    $$
+    f(x) = \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}, \; -\infty < x < +\infty
+    $$
+    因此
+    $$
+    \begin{aligned}
+        E(X) &= \int_{-\infty}^{+\infty} x \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \text{d}x \\
+        & \xlongequal{t = \frac{x-\mu}{\sigma}} \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} (\sigma t + \mu) e^{-\frac{t^2}{2}} \text{d}t \\
+        &= \dfrac{\sigma}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} te^{-\frac{t^2}{2}} \text{d}t + \mu \int_{-\infty}^{+\infty} \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{t^2}{2}} \text{d}t \\
+        &= \mu
+    \end{aligned}
+    $$
+\end{myproof}
 
 \subsection{随机变量函数的数学期望}
 
@@ -269,9 +311,11 @@ $$
     $$
 \end{definition}
 
+\vspace{-0.5em}
+
 随机变量 $X$ 的方差反映了 $X$ 与其数学期望 $E(X)$ 的偏离程度. 如果 $X$ 取值集中在 $E(X)$ 附近，则 $D(X)$ 较小；如果 $X$ 取值比较分散，则 $D(X)$ 较大.
 
-如果 $X$ 是离散型随机变量，其概率分布为 $P\{X=x_k\} = p_k, \; k=1,2,\cdots$，则由定义\ref{def:variance}，有
+如果 $X$ 是离散型随机变量，概率分布为 $P\{X=x_k\} = p_k, \; k=1,2,\cdots$，则由定义\ref{def:variance}，有
 $$
 D(X) = E([X-E(X)]^2) = \sum_{k=1}^{\infty} [x_k - E(X)]^2 p_k
 $$
@@ -281,99 +325,31 @@ $$
 D(X) = E([X-E(X)]^2) = \int_{-\infty}^{+\infty} [x - E(X)]^2 f(x) \, \text{d}x
 $$
 
-根据数学期望的性质，可得
-$$
-\begin{aligned}
-    D(X) &= E([X-E(X)]^2) \\
-    &= E(X^2 - 2XE(X) + [E(X)]^2) \\
-    &= E(X^2) - 2[E(X)]^2 + [E(X)]^2 \\
-    &= E(X^2) - [E(X)]^2
-\end{aligned}
-$$
-即
-\begin{equation}
-    D(X) = E(X^2) - [E(X)]^2
-\end{equation}
+\begin{conclusion}[（方差的计算公式）]
+    $D(X) = E(X^2) - [E(X)]^2$
+\end{conclusion}
 
-若随机变量 $X$ 服从参数为 $p$ 的(0-1)分布，由于 $E(X)=p$，所以有
-$$
-\begin{aligned}
-    D(X) &= E([X-E(X)]^2) \\
-    &= (0-p)^2 (1-p) + (1-p)^2 p \\
-    &= p(1-p)
-\end{aligned}
-$$
+\vspace{-2em}
 
-若随机变量 $X \sim P(\lambda)$，则
-$$
-E(X^2) = \sum_{k=0}^{\infty} k^2 \dfrac{\lambda^k e^{-\lambda}}{k!} = \lambda \sum_{k=1}^{\infty} k \dfrac{\lambda^{k-1}}{(k-1)!} e^{-\lambda}
-$$
-记 $i=k-1$，则
-$$
-\begin{aligned}
-    E(X^2) &= \lambda \sum_{i=0}^{\infty} (i+1) \dfrac{\lambda^i}{i!} e^{-\lambda} \\
-    &= \lambda \sum_{i=0}^{\infty} i \dfrac{\lambda^i}{i!} e^{-\lambda} + \lambda \sum_{i=0}^{\infty} \dfrac{\lambda^i}{i!} e^{-\lambda} \\
-    &= \lambda^2 + \lambda
-\end{aligned}
-$$
-由于 $E(X) = \lambda$，因此
-$$
-D(X) = E(X^2) - [E(X)]^2 = \lambda^2 + \lambda - \lambda^2 = \lambda
-$$
+\begin{myproof}
+    \vspace{-1.3em}
+    $$
+    \begin{aligned}
+        D(X) &= E([X-E(X)]^2) \\
+        &= E(X^2 - 2XE(X) + [E(X)]^2) \\
+        &= E(X^2) - 2[E(X)]^2 + [E(X)]^2 \\
+        &= E(X^2) - [E(X)]^2
+    \end{aligned}
+    $$
 
-若随机变量 $X$ 服从参数为 $p$ 的几何分布，由于 $E(X) = \dfrac{1}{p}$，所以有
-$$
-\begin{aligned}
-    D(X) &= E(X^2) - [E(X)]^2 \\
-    &= \sum_{k=1}^{\infty} k^2 (1-p)^{k-1} p - \dfrac{1}{p^2} \\
-    &= p \left[ \sum_{k=1}^{\infty} (k+1)k (1-p)^{k-1} - \sum_{k=1}^{\infty} k (1-p)^{k-1} \right] - \dfrac{1}{p^2} \\
-    & \xlongequal{q=1-p} p \left[ \sum_{k=1}^{\infty} (k+1)k q^{k-1} - \sum_{k=1}^{\infty} k q^{k-1} \right] - \dfrac{1}{p^2} \\
-    &= p \left( \dfrac{\text{d}^2}{\text{d}q^2} \sum_{k=1}^{\infty} q^{k+1} - \dfrac{\text{d}}{\text{d}q} \sum_{k=1}^{\infty} q^k \right) - \dfrac{1}{p^2} \\
-    &= p \left( \dfrac{\text{d}^2}{\text{d}q^2} \dfrac{q^2}{1-q} - \dfrac{\text{d}}{\text{d}q} \dfrac{q}{1-q} \right) - \dfrac{1}{p^2} \\
-    &= p \left[ \dfrac{2}{(1-q)^3} - \dfrac{1}{(1-q)^2} \right] - \dfrac{1}{p^2} \\
-    &= p \left( \dfrac{2}{p^3} - \dfrac{1}{p^2} \right) - \dfrac{1}{p^2} \\
-    &= \dfrac{1-p}{p^2}
-\end{aligned}
-$$
+    \vspace{-1.3em}
+\end{myproof}
 
-若随机变量 $X$ 在区间 $[a,b]$ 上服从均匀分布，则
-$$
-E(X^2) = \int_{-\infty}^{+\infty} x^2 f(x) \, \text{d}x = \int_a^b x^2 \dfrac{1}{b-a} \text{d}x = \left. \dfrac{x^3}{3(b-a)} \right|_a^b = \dfrac{b^2 + ab + a^2}{3}
-$$
-由于 $E(X) = \dfrac{a+b}{2}$，因此
-$$
-D(X) = E(X^2) - [E(X)]^2 = \dfrac{b^2 + ab + a^2}{3} - \dfrac{(a+b)^2}{4} = \dfrac{(b-a)^2}{12}
-$$
+\vspace{-1em}
 
-若随机变量 $X$ 服从参数为 $\lambda \, (\lambda > 0)$ 的指数分布，由于 $E(X) = \dfrac{1}{\lambda}$，则
-$$
-\begin{aligned}
-    E(X^2) &= \int_{-\infty}^{+\infty} x^2 f(x) \, \text{d}x \\
-    &= \int_0^{+\infty} x^2 \lambda e^{-\lambda x} \, \text{d}x \\
-    &= \left. -x^2 e^{-\lambda x} \right|_0^{+\infty} + \int_0^{+\infty} 2x e^{-\lambda x} \, \text{d}x \\
-    &= \dfrac{2}{\lambda} \int_0^{+\infty} x \lambda e^{-\lambda x} \, \text{d}x \\
-    &= \dfrac{2}{\lambda} E(X) \\
-    &= \dfrac{2}{\lambda^2}
-\end{aligned}
-$$
-因此
-$$
-D(X) = E(X^2) - [E(X)]^2 = \dfrac{2}{\lambda^2} - \dfrac{1}{\lambda^2} = \dfrac{1}{\lambda^2}
-$$
-
-若随机变量 $X \sim N(\mu,\sigma^2)$，则 $E(X)=\mu$，因此
-$$
-\begin{aligned}
-    D(X) &= E([X-E(X)]^2) \\
-    &= \int_{-\infty}^{+\infty} (x-\mu)^2 f(x) \, \text{d}x \\
-    &= \int_{-\infty}^{+\infty} (x-\mu)^2 \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \text{d}x \\
-    & \xlongequal{t = \frac{x-\mu}{\sigma}} \sigma^2 \int_{-\infty}^{+\infty} t^2 \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{t^2}{2}} \text{d}t \\
-    &= -\sigma^2 \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} t \, \text{d} e^{-\frac{t^2}{2}} \\
-    &= -\dfrac{\sigma^2}{\sqrt{2 \pi}} \left( \left. t e^{-\frac{t^2}{2}} \right|_{-\infty}^{+\infty} - \int_{-\infty}^{+\infty} e^{-\frac{t^2}{2}} \text{d}t \right) \\
-    &= \dfrac{\sigma^2}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} e^{-\frac{t^2}{2}} \text{d}t \\
-    &= \sigma^2
-\end{aligned}
-$$
+\begin{conclusion}
+    由于 $D(X) = E(X^2) - [E(X)]^2 \geqslant 0$，因此 $E(X^2) \geqslant [E(X)]^2$.
+\end{conclusion}
 
 \subsection{方差的性质}
 
@@ -385,6 +361,8 @@ $$
     $D(C) = 0$
 \end{property}
 
+\vspace{-1em}
+
 \begin{myproof}
     $$
     D(C) = E([C-E(C)]^2) = E([C-C]^2) = E(0) = 0
@@ -394,6 +372,8 @@ $$
 \begin{property}
     $D(CX) = C^2 D(X)$
 \end{property}
+
+\vspace{-1em}
 
 \begin{myproof}
     $$
@@ -410,6 +390,8 @@ $$
 \begin{property}
     $D(X+C) = D(X)$
 \end{property}
+
+\vspace{-1em}
 
 \begin{myproof}
     $$
@@ -434,6 +416,7 @@ $$
         &= E([X-E(X)]^2) \pm 2E([X-E(X)][Y-E(Y)]) + E([Y-E(Y)]^2)
     \end{aligned}
     $$
+
     因为 $X$ 与 $Y$ 相互独立，故 $X-E(X)$ 与 $Y-E(Y)$ 也相互独立，又 $E(X-E(X)) = 0$，再由数学期望的性质\ref*{prop:E(XY)=E(X)E(Y)} 及方差的定义，得
     $$
     \begin{aligned}
@@ -447,23 +430,162 @@ $$
     随机变量 $X$ 的方差 $D(X)=0$ 的充分必要条件是 $X$ 以概率1取常数 $C$，即 $P\{X=C\}=1$，其中 $C=E(X)$.
 \end{property}
 
-若随机变量 $X \sim B(n,p)$，根据二项分布的意义可知，$p$ 为 $n$ 重伯努利试验中每次试验成功的概率. 引入随机变量
-$$
-X_k = \begin{cases}
-    1 & \text{第 $k$ 次试验成功} \\
-    0 & \text{第 $k$ 次试验不成功}
-\end{cases} \quad k=1,2,\cdots,n
-$$
-则有
-$$
-X = X_1 + X_2 + \cdots + X_n
-$$
-由于 $X_k$ 只依赖于第 $k$ 次试验，而各次试验相互独立，于是 $X_1, X_2, \cdots, X_n$ 相互独立，且均服从参数为 $p$ 的(0-1)分布. 由于 $D(X_i) = p(1-p), \, i=1,2,\cdots,n$，所以根据方差的性质 \ref*{prop:D(X+Y)=D(X)+D(Y)}，有
-$$
-D(X) = \sum_{i=1}^n D(X_i) = np(1-p)
-$$
+\begin{conclusion}
+    对于任意常数 $C$，有 $E[(X-C)^2] \geqslant E([X-E(X)]^2) = D(X)$，当且仅当 $C=E(X)$ 时等号成立，此时 $E[(X-C)^2]$ 取得最小值.
+\end{conclusion}
 
-\begin{table}
+\subsection{常见概率分布的方差}
+
+\begin{conclusion}
+    若随机变量 $X$ 服从参数为 $p$ 的(0-1)分布，则 $D(X) = p(1-p)$.
+\end{conclusion}
+
+\begin{myproof}
+    $X$ 服从参数为 $p$ 的(0-1)分布，则 $E(X)=p$，所以
+    $$
+    \begin{aligned}
+        D(X) &= E([X-E(X)]^2) \\
+        &= (0-p)^2 (1-p) + (1-p)^2 p \\
+        &= p(1-p)
+    \end{aligned}
+    $$
+
+    \vspace{-1.3em}
+\end{myproof}
+
+\begin{conclusion}
+    若随机变量 $X \sim B(n,p)$，则 $D(X) = np(1-p)$.
+\end{conclusion}
+
+\begin{myproof}
+    根据二项分布的意义可知，$p$ 为 $n$ 重伯努利试验中每次试验成功的概率. 引入随机变量
+    $$
+    X_k = \begin{cases}
+        1 & \text{第 $k$ 次试验成功} \\
+        0 & \text{第 $k$ 次试验不成功}
+    \end{cases} \quad k=1,2,\cdots,n
+    $$
+    则有
+    $$
+    X = X_1 + X_2 + \cdots + X_n
+    $$
+    由于 $X_k$ 只依赖于第 $k$ 次试验，而各次试验相互独立，于是 $X_1, X_2, \cdots, X_n$ 相互独立，且均服从参数为 $p$ 的(0-1)分布. 由于 $D(X_i) = p(1-p), \, i=1,2,\cdots,n$，所以根据方差的性质 \ref*{prop:D(X+Y)=D(X)+D(Y)}，有
+    $$
+    D(X) = \sum_{i=1}^n D(X_i) = np(1-p)
+    $$
+\end{myproof}
+
+\begin{conclusion}
+    若随机变量 $X \sim P(\lambda)$，则 $D(X) = \lambda$.
+\end{conclusion}
+
+\begin{myproof}
+    若随机变量 $X \sim P(\lambda)$，则
+    $$
+    E(X^2) = \sum_{k=0}^{\infty} k^2 \dfrac{\lambda^k e^{-\lambda}}{k!} = \lambda \sum_{k=1}^{\infty} k \dfrac{\lambda^{k-1}}{(k-1)!} e^{-\lambda}
+    $$
+    记 $i=k-1$，则
+    $$
+    \begin{aligned}
+        E(X^2) &= \lambda \sum_{i=0}^{\infty} (i+1) \dfrac{\lambda^i}{i!} e^{-\lambda} \\
+        &= \lambda \sum_{i=0}^{\infty} i \dfrac{\lambda^i}{i!} e^{-\lambda} + \lambda \sum_{i=0}^{\infty} \dfrac{\lambda^i}{i!} e^{-\lambda} \\
+        &= \lambda^2 + \lambda
+    \end{aligned}
+    $$
+    由于 $E(X) = \lambda$，因此
+    $$
+    D(X) = E(X^2) - [E(X)]^2 = \lambda^2 + \lambda - \lambda^2 = \lambda
+    $$
+\end{myproof}
+
+\begin{conclusion}
+    若随机变量 $X$ 服从参数为 $p$ 的几何分布，则 $D(X) = \dfrac{1-p}{p^2}$.
+\end{conclusion}
+
+\begin{myproof}
+    随机变量 $X$ 服从参数为 $p$ 的几何分布，则 $E(X) = \dfrac{1}{p}$，所以
+    $$
+    \begin{aligned}
+        D(X) &= E(X^2) - [E(X)]^2 \\
+        &= \sum_{k=1}^{\infty} k^2 (1-p)^{k-1} p - \dfrac{1}{p^2} \\
+        &= p \left[ \sum_{k=1}^{\infty} (k+1)k (1-p)^{k-1} - \sum_{k=1}^{\infty} k (1-p)^{k-1} \right] - \dfrac{1}{p^2} \\
+        & \xlongequal{q=1-p} p \left[ \sum_{k=1}^{\infty} (k+1)k q^{k-1} - \sum_{k=1}^{\infty} k q^{k-1} \right] - \dfrac{1}{p^2} \\
+        &= p \left( \dfrac{\text{d}^2}{\text{d}q^2} \sum_{k=1}^{\infty} q^{k+1} - \dfrac{\text{d}}{\text{d}q} \sum_{k=1}^{\infty} q^k \right) - \dfrac{1}{p^2} \\
+        &= p \left( \dfrac{\text{d}^2}{\text{d}q^2} \dfrac{q^2}{1-q} - \dfrac{\text{d}}{\text{d}q} \dfrac{q}{1-q} \right) - \dfrac{1}{p^2} \\
+        &= p \left[ \dfrac{2}{(1-q)^3} - \dfrac{1}{(1-q)^2} \right] - \dfrac{1}{p^2} \\
+        &= p \left( \dfrac{2}{p^3} - \dfrac{1}{p^2} \right) - \dfrac{1}{p^2} \\
+        &= \dfrac{1-p}{p^2}
+    \end{aligned}
+    $$
+
+    \vspace{-2.2em}
+\end{myproof}
+
+\begin{conclusion}
+    若随机变量 $X$ 在区间 $[a,b]$ 上服从均匀分布，则 $D(X) = \dfrac{(b-a)^2}{12}$.
+\end{conclusion}
+
+\begin{myproof}
+    若随机变量 $X$ 在区间 $[a,b]$ 上服从均匀分布，则
+    $$
+    E(X^2) = \int_{-\infty}^{+\infty} x^2 f(x) \, \text{d}x = \int_a^b x^2 \dfrac{1}{b-a} \text{d}x = \left. \dfrac{x^3}{3(b-a)} \right|_a^b = \dfrac{b^2 + ab + a^2}{3}
+    $$
+    由于 $E(X) = \dfrac{a+b}{2}$，因此
+    $$
+    D(X) = E(X^2) - [E(X)]^2 = \dfrac{b^2 + ab + a^2}{3} - \dfrac{(a+b)^2}{4} = \dfrac{(b-a)^2}{12}
+    $$
+
+    \vspace{-2.5em}
+\end{myproof}
+
+\begin{conclusion}
+    若随机变量 $X$ 服从参数为 $\lambda \, (\lambda > 0)$ 的指数分布，则 $D(X) = \dfrac{1}{\lambda^2}$.
+\end{conclusion}
+
+\vspace{-1.5em}
+
+\begin{myproof}
+    由于 $E(X) = \dfrac{1}{\lambda}$，则
+    $$
+    \begin{aligned}
+        E(X^2) &= \int_{-\infty}^{+\infty} x^2 f(x) \, \text{d}x \\
+        &= \int_0^{+\infty} x^2 \lambda e^{-\lambda x} \, \text{d}x \\
+        &= \left. -x^2 e^{-\lambda x} \right|_0^{+\infty} + \int_0^{+\infty} 2x e^{-\lambda x} \, \text{d}x \\
+        &= \dfrac{2}{\lambda} \int_0^{+\infty} x \lambda e^{-\lambda x} \, \text{d}x \\
+        &= \dfrac{2}{\lambda} E(X) \\
+        &= \dfrac{2}{\lambda^2}
+    \end{aligned}
+    $$
+    因此 $D(X) = E(X^2) - [E(X)]^2 = \dfrac{2}{\lambda^2} - \dfrac{1}{\lambda^2} = \dfrac{1}{\lambda^2}$.
+\end{myproof}
+
+\vspace{-0.7em}
+
+\begin{conclusion}
+    若随机变量 $X \sim N(\mu,\sigma^2)$，则 $D(X) = \sigma^2$.
+\end{conclusion}
+
+\vspace{-1.5em}
+
+\begin{myproof}
+    随机变量 $X \sim N(\mu,\sigma^2)$，则 $E(X)=\mu$，因此
+    $$
+    \begin{aligned}
+        D(X) &= E([X-E(X)]^2) \\
+        &= \int_{-\infty}^{+\infty} (x-\mu)^2 f(x) \, \text{d}x \\
+        &= \int_{-\infty}^{+\infty} (x-\mu)^2 \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \text{d}x \\
+        & \xlongequal{t = \frac{x-\mu}{\sigma}} \sigma^2 \int_{-\infty}^{+\infty} t^2 \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{t^2}{2}} \text{d}t \\
+        &= -\sigma^2 \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} t \, \text{d} e^{-\frac{t^2}{2}} \\
+        &= -\dfrac{\sigma^2}{\sqrt{2 \pi}} \left( \left. t e^{-\frac{t^2}{2}} \right|_{-\infty}^{+\infty} - \int_{-\infty}^{+\infty} e^{-\frac{t^2}{2}} \text{d}t \right) \\
+        &= \dfrac{\sigma^2}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} e^{-\frac{t^2}{2}} \text{d}t \\
+        &= \sigma^2
+    \end{aligned}
+    $$
+
+    \vspace{-2.2em}
+\end{myproof}
+
+\begin{table}[htbp]
     \centering
 
     \begin{tabular}{c | c | c | c | c}
@@ -499,14 +621,19 @@ $$
 
 随机变量 $X$ 的标准化随机变量 $X^*$ 满足 $E(X^*)=0$，$D(X^*)=1$.
 
+\vspace{0.5em}
+
 若 $X \sim N(\mu,\sigma^2) \, (\sigma > 0)$，则 $X^* = \dfrac{X-\mu}{\sigma} \sim N(0,1)$.
 
 \section{协方差与相关系数}
 
 \subsection{协方差}
 
-在方差性质 \ref*{prop:D(X+Y)=D(X)+D(Y)} 的证明中可知，如果两个随机变量 $X$ 和 $Y$ 相互独立，则有 \\
-$E([X-E(X)][Y-E(Y)]) = 0$. 这表明，当 $E([X-E(X)][Y-E(Y)]) \not= 0$ 时，$X$ 与 $Y$ 不相互独立，因此可以用这个量来描述 $X$ 和 $Y$ 之间的关系.
+在方差性质 \ref*{prop:D(X+Y)=D(X)+D(Y)} 的证明中可知，如果两个随机变量 $X$ 和 $Y$ 相互独立，则有
+$$
+E([X-E(X)][Y-E(Y)]) = 0
+$$
+这表明，当 $E([X-E(X)][Y-E(Y)]) \not= 0$ 时，$X$ 与 $Y$ 不相互独立，因此可以用这个量来描述 $X$ 和 $Y$ 之间的关系.
 
 \begin{definition}
     设随机变量 $X$ 和 $Y$ 的数学期望 $E(X)$ 和 $E(Y)$ 都存在，如果 $E([X-E(X)][Y-E(Y)])$ 存在，则称之为随机变量 $X$ 和 $Y$ 的\textbf{协方差}（covariance），记作 $\operatorname{Cov}(X,Y)$，即
@@ -577,6 +704,8 @@ $E([X-E(X)][Y-E(Y)]) = 0$. 这表明，当 $E([X-E(X)][Y-E(Y)]) \not= 0$ 时，$
     $|\rho_{XY}| \leqslant 1$
 \end{property}
 
+\vspace{-1.5em}
+
 \begin{myproof}
     由柯西-施瓦茨不等式可得
     $$
@@ -590,11 +719,15 @@ $E([X-E(X)][Y-E(Y)]) = 0$. 这表明，当 $E([X-E(X)][Y-E(Y)]) \not= 0$ 时，$
     $$
     |\rho_{XY}| = \left| \dfrac{\operatorname{Cov}(X,Y)}{\sqrt{D(X)} \sqrt{D(Y)}} \right| \leqslant 1
     $$
+
+    \vspace{-2.3em}
 \end{myproof}
 
 \begin{property}
     如果随机变量 $X$ 和 $Y$ 相互独立，则 $\rho_{XY} = 0$.
 \end{property}
+
+\vspace{-1em}
 
 \begin{myproof}
     若 $X$ 和 $Y$ 相互独立，则 $\operatorname{Cov}(X,Y) = 0$，进而 $\rho_{XY} = 0$.
