@@ -517,12 +517,12 @@ $$
     $$
 \end{property}
 
-可由条件概率的三个基本性质推导出其他性质，例如
-\begin{gather*}
-    P(\text{\O} \mid A)=0\\
-    P(\overline{B} \mid A) = 1 - P(B \mid A)\\
-    P((B_1 \cup B_2) \mid A) = P(B_1 \mid A) + P(B_2 \mid A) - P(B_1 B_2 \mid A)
-\end{gather*}
+可由条件概率的三个基本性质推导出其他性质，例如：
+\begin{enumerate}
+    \item $P(\text{\O} \mid A) = 0$
+    \item $P(\overline{B} \mid A) = 1 - P(B \mid A)$
+    \item $P((B_1 \cup B_2) \mid A) = P(B_1 \mid A) + P(B_2 \mid A) - P(B_1 B_2 \mid A)$
+\end{enumerate}
 
 可以把乘法公式推广到有限个事件的交的情况：设 $A_1,A_2,\cdots,A_n$ 是同一试验的事件，且 $P(A_1 A_2 \cdots A_{n-1})>0$，则有
 \begin{gather} \label{equation:normal multiply}
@@ -533,39 +533,62 @@ $$
 
 设试验 $E$ 的样本空间为 $\varOmega$，事件 $A_1,A_2,\cdots,A_n$ 两两互不相容，且 $\displaystyle\bigcup_{i=1}^n A_i=\varOmega$，则称 $A_1,A_2,\cdots,A_n$ 为样本空间 $\varOmega$ 的一个\textbf{分割}或\textbf{完全事件组}.
 
-如果 $P(A_i)>0 \ (i=1,2,\cdots,n)$，则对任意事件 $B$，有
-$$
-B = B \varOmega = B \left( \bigcup_{i=1}^n A_i \right) = \bigcup_{i=1}^n(A_i B)
-$$
-这里 $(A_i B) \cap (A_j B) = \text{\O} \ (i\not=j,\; i,j=1,2,\cdots,n)$，由概率的有限可加性得
-$$
-P(B) = P(\bigcup_{i=1}^n (A_i B)) = \sum_{i=1}^n P(A_i B)
-$$
-由乘法公式得
-\begin{gather} \label{equation:total}
-    P(B) = \sum_{i=1}^n P(A_i) \, P(B \mid A_i)
-\end{gather}
+\begin{theorem}[（全概率公式）]
+    若事件 $A_1,A_2,\cdots,A_n$ 构成一个完全事件组，且 $P(A_i)>0 \ (i=1,2,\cdots,n)$，则对任意事件 $B$，有
+    \begin{gather} \label{equation:total}
+        P(B) = \sum_{i=1}^n P(A_i) \, P(B \mid A_i)
+    \end{gather}
+\end{theorem}
 
-式 \eqref{equation:total} 称为\textbf{全概率公式}（total probability formula）.
+\begin{myproof}
+    $$
+    B = B \varOmega = B \left( \bigcup_{i=1}^n A_i \right) = \bigcup_{i=1}^n(A_i B)
+    $$
+    这里 $(A_i B) \cap (A_j B) = \text{\O} \ (i\not=j,\; i,j=1,2,\cdots,n)$，由概率的有限可加性得
+    $$
+    P(B) = P(\bigcup_{i=1}^n (A_i B)) = \sum_{i=1}^n P(A_i B)
+    $$
+    由乘法公式得
+    $$
+    P(B) = \sum_{i=1}^n P(A_i) \, P(B \mid A_i)
+    $$
+\end{myproof}
 
 \subsection{贝叶斯公式}
 
 如果事件 $B$ 是由于在两两互不相容的事件 $A_1,A_2,\cdots,A_n$ 中某一个发生的情况下而发生的，并且知道各个事件 $A_i$ 发生的概率 $P(A_i)$ 以及在事件 $A_i$ 发生的条件下事件 $B$ 发生的条件概率 $P(B \mid A_i)$，则由全概率公式可得事件 $B$ 发生的概率 $P(B)$.我们把事件 $A_1,A_2,\cdots,A_n$ 看做是导致事件 $B$ 发生的原因，$P(A_i)$ 称为\textbf{先验概率}，它反映出各种原因发生的可能性大小.如果在试验中发生了事件 $B$，这一信息有助于探讨事件 $B$ 发生的原因.条件概率 $P(A_i \mid B)$ 称为\textbf{后验概率}，它使得我们在试验之后对各种原因发生的可能性大小有进一步的了解.
 
-设试验 $E$ 的样本空间为 $\varOmega$，事件 $A_1,A_2,\cdots,A_n$ 是 $\varOmega$ 的一个分割，且 $P(A_i)>0 \ (i=1,2,\cdots,n)$. 对于任一事件 $B$，如果 $P(B)>0$，由乘法公式可得
-$$
-P(A_i B) = P(B) \, P(A_i \mid B) = P(A_i) \, P(B \mid A_i)
-$$
-由此得
-$$
-P(A_i \mid B)=\dfrac{P(A_i) \, P(B \mid A_i)}{P(B)}
-$$
-利用全概率公式，得
-\begin{gather} \label{equation:bayes}
-    P(A_i \mid B) = \dfrac{P(A_i) \, P(B \mid A_i)}{\displaystyle\sum_{j=1}^n P(A_j) \, P(B \mid A_j)}
-\end{gather}
+\begin{theorem}[（贝叶斯公式）]
+    对于任意事件 $A,B$，如果 $P(A)>0, P(B)>0$，则
+    \begin{equation}
+        P(A \mid B)=\dfrac{P(A) \, P(B \mid A)}{P(B)}
+    \end{equation}
 
-式 \eqref{equation:bayes} 称为\textbf{贝叶斯公式}（Bayes formula）.
+    如果事件 $A_1,A_2,\cdots,A_n$ 构成一个完全事件组，且 $P(A_i)>0 \ (i=1,2,\cdots,n)$，则对于任一事件 $B$，如果 $P(B)>0$，有
+    \begin{equation} \label{equation:bayes}
+        P(A_i \mid B) = \dfrac{P(A_i) \, P(B \mid A_i)}{\displaystyle\sum_{j=1}^n P(A_j) \, P(B \mid A_j)}
+    \end{equation}
+\end{theorem}
+
+\begin{myproof}
+    如果 $P(A)>0, P(B)>0$，由乘法公式可得
+    $$
+    P(AB) = P(B) \, P(A \mid B) = P(A) \, P(B \mid A)
+    $$
+    由此得
+    $$
+    P(A \mid B)=\dfrac{P(A) \, P(B \mid A)}{P(B)}
+    $$
+
+    对于完全事件组中的任一事件 $A_i$，有
+    $$
+    P(A_i \mid B)=\dfrac{P(A_i) \, P(B \mid A_i)}{P(B)}
+    $$
+    利用全概率公式，得
+    $$
+    P(A_i \mid B) = \dfrac{P(A_i) \, P(B \mid A_i)}{\displaystyle\sum_{j=1}^n P(A_j) \, P(B \mid A_j)}
+    $$
+\end{myproof}
 
 \section{事件的独立性}
 

@@ -375,7 +375,7 @@ $$
 设二维连续型随机变量 $(X,Y)$ 的分布函数为 $F(x,y)$，概率密度为 $f(x,y)$. 如果在点 $(x,y)$ 处 $f(x,y)$ 连续，$(X,Y)$ 关于 $Y$ 的边缘概率密度 $f_{Y}(y)$ 连续，且 $f_{Y}(y)>0$，$Y$ 的分布函数为 $F_{Y}(y)$，则有
 $$
 \begin{aligned}
-    F_{X|Y}(x|y) &= \lim_{\varepsilon \to 0^+} \dfrac{P\{X \leqslant x, y-\varepsilon < Y \leqslant y+\varepsilon\}}{P\{y-\varepsilon < Y \leqslant y+\varepsilon\}} \\[0.7em]
+    F_{X|Y}(x \mid y) &= \lim_{\varepsilon \to 0^+} \dfrac{P\{X \leqslant x, y-\varepsilon < Y \leqslant y+\varepsilon\}}{P\{y-\varepsilon < Y \leqslant y+\varepsilon\}} \\[0.7em]
     &= \lim_{\varepsilon \to 0^+} \dfrac{F(x, y+\varepsilon) - F(x, y-\varepsilon)}{F_{Y}(y+\varepsilon) - F_{Y}(y-\varepsilon)} \\[0.7em]
     &= \lim_{\varepsilon \to 0^+} \dfrac{\dfrac{F(x, y+\varepsilon) - F(x,y)}{\varepsilon} + \dfrac{F(x, y-\varepsilon) - F(x,y)}{-\varepsilon}}{\dfrac{F_{Y}(y+\varepsilon) - F_{Y}(y)}{\varepsilon} + \dfrac{F_{Y}(y-\varepsilon) - F_{Y}(y)}{-\varepsilon}} \\
     &= \dfrac{\dfrac{\partial F(x,y)}{\partial y}}{\dfrac{\text{d} F_{Y}(y)}{\text{d}y}} \\[1em]
@@ -385,10 +385,10 @@ $$
 $$
 由此可得在条件 $Y=y$ 下 $X$ 的条件概率密度为
 $$
-f_{X|Y}(x|y) = \dfrac{f(x,y)}{f_{Y}(y)},\ x \in \mathbf{R}
+f_{X|Y}(x \mid y) = \dfrac{f(x,y)}{f_{Y}(y)},\ x \in \mathbf{R}
 $$
 
-类似地，可以定义在条件 $X=x$ 下 $Y$ 的条件分布函数 $F_{Y|X}(y|x)$ 和在条件 $X=x$ 下 $Y$ 的条件概率密度 $f_{Y|X}(y|x)=\dfrac{f(x,y)}{f_{X}(x)},\ y \in \mathbf{R}$.
+类似地，可以定义在条件 $X=x$ 下 $Y$ 的条件分布函数 $F_{Y|X}(y \mid x)$ 和在条件 $X=x$ 下 $Y$ 的条件概率密度 $f_{Y|X}(y \mid x) = \dfrac{f(x,y)}{f_{X}(x)}, \  y \in \mathbf{R}$.
 
 \section{二维随机变量的函数的分布}
 
@@ -466,40 +466,45 @@ $$
 
 \subsection{二维连续型随机变量的函数的分布}
 
-设 $(X,Y)$ 为二维连续型随机变量，其概率密度为 $f(x,y)$.
-
 \subsubsection{$Z=X+Y$ 的概率密度}
 
-首先求 $Z$ 的分布函数
+\begin{conclusion}
+    设 $(X,Y)$ 为二维连续型随机变量，其概率密度为 $f(x,y)$，则 $Z=X+Y$ 的概率密度为
+    $$
+    f_{Z}(z) = \int_{-\infty}^{+\infty} f(x,z-x) \, \text{d}x = \int_{-\infty}^{+\infty} f(z-y,y) \, \text{d}y
+    $$
+\end{conclusion}
 
-$$
-\begin{aligned}
-    F_{Z}(z) &= P\{Z \leqslant z\} = P\{X+Y \leqslant z\} \\
-    &= \underset{x+y \leqslant z}{\iint} f(x,y) \, \text{d}x \text{d}y \\
-    &= \int_{-\infty}^{+\infty} \int_{-\infty}^{z-x} f(x,y) \, \text{d}y \text{d}x \\
-\end{aligned}
-$$
+\begin{myproof}
+    首先求 $Z$ 的分布函数
+    $$
+    \begin{aligned}
+        F_{Z}(z) &= P\{Z \leqslant z\} = P\{X+Y \leqslant z\} \\
+        &= \underset{x+y \leqslant z}{\iint} f(x,y) \, \text{d}x \text{d}y \\
+        &= \int_{-\infty}^{+\infty} \int_{-\infty}^{z-x} f(x,y) \, \text{d}y \text{d}x \\
+    \end{aligned}
+    $$
+    对固定的 $z$ 和 $x$，作变量代换 $y=u-x$，得
+    $$
+    \int_{-\infty}^{z-x} f(x,y) \, \text{d}y = \int_{-\infty}^z f(x,u-x) \, \text{d}u
+    $$
+    因此
+    $$
+    \begin{aligned}
+        F_{Z}(z) &= \int_{-\infty}^{+\infty} \int_{-\infty}^z f(x,u-x) \, \text{d}u \text{d}x \\
+        &= \int_{-\infty}^z \int_{-\infty}^{+\infty} f(x,u-x) \, \text{d}x \text{d}u 
+    \end{aligned}
+    $$
+    于是，随机变量 $Z$ 的概率密度为
+    $$
+    f_{Z}(z) = \int_{-\infty}^{+\infty} f(x,z-x) \, \text{d}x
+    $$
 
-对固定的 $z$ 和 $x$，作变量代换 $y=u-x$，得
-$$
-\int_{-\infty}^{z-x} f(x,y) \, \text{d}y = \int_{-\infty}^z f(x,u-x) \, \text{d}u
-$$
-因此
-$$
-\begin{aligned}
-    F_{Z}(z) &= \int_{-\infty}^{+\infty} \int_{-\infty}^z f(x,u-x) \, \text{d}u \text{d}x \\
-    &= \int_{-\infty}^z \int_{-\infty}^{+\infty} f(x,u-x) \, \text{d}x \text{d}u 
-\end{aligned}
-$$
-于是，随机变量 $Z$ 的概率密度为
-$$
-f_{Z}(z) = \int_{-\infty}^{+\infty} f(x,z-x) \, \text{d}x
-$$
-
-同理可得
-$$
-f_{Z}(z) = \int_{-\infty}^{+\infty} f(z-y,y) \, \text{d}y
-$$
+    同理可得
+    $$
+    f_{Z}(z) = \int_{-\infty}^{+\infty} f(z-y,y) \, \text{d}y
+    $$
+\end{myproof}
 
 如果 $X$ 和 $Y$ 相互独立，设 $f_{X}(x)$ 和 $f_{Y}(y)$ 分别是二维随机变量 $(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘概率密度，则有
 \begin{gather*}
@@ -511,14 +516,13 @@ $$
     f_{Z}(z) = f_X * f_Y = \int_{-\infty}^{+\infty} f_{X}(x) f_{Y}(z-x) \, \text{d}x = \int_{-\infty}^{+\infty} f_{X}(z-y) f_{Y}(y) \, \text{d}y
 \end{equation}
 
-如果随机变量 $X$ 和 $Y$ 相互独立，并且 $X \sim N(\mu_1,\sigma_1^2)$，$Y \sim N(\mu_2,\sigma_2^2)$，则利用卷积公式可求得随机变量 $Z=X+Y$ 的概率密度，从而可知 $Z=X+Y$ 仍服从正态分布，且
-$$
-Z = X+Y \sim N(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)
-$$
+\begin{conclusion}
+    如果随机变量 $X$ 和 $Y$ 相互独立，并且 $X \sim N(\mu_1,\sigma_1^2)$，$Y \sim N(\mu_2,\sigma_2^2)$，则 $X+Y \sim N(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)$.
+\end{conclusion}
 
 \subsubsection{$M = \max(X,Y)$ 及 $N = \min(X,Y)$ 的分布函数}
 
-设随机变量 $X$ 和 $Y$ 相互独立，分布函数分别为 $F_{X}(x)$ 和 $F_{Y}(y)$，$M = \max(X,Y)$ 和 $N = \min(X,Y)$ 的分布函数分别为 $F_{\text{max}}(z)$ 和 $F_{\text{min}}(z)$.
+设 $(X,Y)$ 为二维连续型随机变量，其概率密度为 $f(x,y)$. 随机变量 $X$ 和 $Y$ 相互独立，分布函数分别为 $F_{X}(x)$ 和 $F_{Y}(y)$，$M = \max(X,Y)$ 和 $N = \min(X,Y)$ 的分布函数分别为 $F_{\text{max}}(z)$ 和 $F_{\text{min}}(z)$.
 
 由于事件 $\{M \leqslant z\} = \{X \leqslant z, Y \leqslant z\}$，而 $X$ 和 $Y$ 相互独立，所以事件 $\{X \leqslant z\}$ 与事件 $\{Y \leqslant z\}$ 相互独立，由此可得
 $$
@@ -560,8 +564,8 @@ $$
 $$
 \begin{aligned}
     F_{Z}(z) &= P\{Z \leqslant z\} = P\{\sqrt{X^2 + Y^2} \leqslant z\} \\
-    &= \underset{\sqrt{X^2 + Y^2} \leqslant z}{\iint} f(x,y) \, \text{d}x \text{d}y \\
-    &= \underset{\sqrt{X^2 + Y^2} \leqslant z}{\iint} \dfrac{1}{2 \pi \sigma^2} e^{-\frac{x^2 + y^2}{2 \sigma^2}} \, \text{d}x \text{d}y \\
+    &= \underset{\sqrt{x^2 + y^2} \leqslant z}{\iint} f(x,y) \, \text{d}x \text{d}y \\
+    &= \underset{\sqrt{x^2 + y^2} \leqslant z}{\iint} \dfrac{1}{2 \pi \sigma^2} e^{-\frac{x^2 + y^2}{2 \sigma^2}} \, \text{d}x \text{d}y \\
     &= \dfrac{1}{2 \pi} \int_0^{2 \pi} \text{d}\theta \int_0^z \dfrac{1}{\sigma^2} e^{-\frac{r^2}{2 \sigma^2}} r \, \text{d}r \\
     &= \left. -e^{-\frac{r^2}{2 \sigma^2}} \right|_0^z \\
     &= 1 - e^{-\frac{z^2}{2 \sigma^2}}
@@ -657,8 +661,8 @@ $$
 $$
 \begin{aligned}
     & P\{X_1 = x_{i_1}, X_2 = x_{i_2}, \cdots, X_n = x_{i_n}\} \\
-    = & P\{X_1 = x_{i_1}\} \, P\{X_2 = x_{i_2}\} \cdots P\{X_n = x_{i_n}\} \\
-    = & \prod_{j=1}^n P\{X_j = x_{i_j}\}
+    = \  & P\{X_1 = x_{i_1}\} \, P\{X_2 = x_{i_2}\} \cdots P\{X_n = x_{i_n}\} \\
+    = \  & \prod_{j=1}^n P\{X_j = x_{i_j}\}
 \end{aligned}
 $$
 
