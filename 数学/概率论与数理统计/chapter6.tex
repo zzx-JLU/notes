@@ -38,10 +38,60 @@
     设总体 $X$ 是具有某一概率分布的随机变量，如果随机变量 $X_1,X_2,\cdots,X_n$ 相互独立，且都与 $X$ 具有相同的概率分布，则称 $X_1,X_2,\cdots,X_n$ 为来自总体 $X$ 的\textbf{简单随机样本}，简称为\textbf{样本}，$n$ 称为\textbf{样本容量}.在对总体 $X$ 进行一次具体的抽样并做观测后，得到样本 $X_1,X_2,\cdots,X_n$ 的确切数值 $x_1,x_2,\cdots,x_n$，称为\textbf{样本观察值}（或\textbf{观测值}），简称为\textbf{样本值}.
 \end{definition}
 
-如果从总体 $X$ 中抽取到样本观测值 $x_1,x_2,\cdots,x_n$，则可以认为是以下 $n$ 个相互独立的事件
-$$
-\{X_1=x_1\}, \{X_2=x_2\}, \cdots, \{X_n=x_n\}
-$$
-同时发生了.
+如果从总体 $X$ 中抽取到样本观测值 $x_1,x_2,\cdots,x_n$，则可以认为是 $n$ 个相互独立的事件 $\{X_1=x_1\}, \{X_2=x_2\}, \cdots, \{X_n=x_n\}$ 同时发生了.
 
-如果把样本容量为 $n$ 的样本看成是 $n$ 维随机变量 $(X_1,X_2,\cdots,X_n)$，
+如果把样本容量为 $n$ 的样本看成是 $n$ 维随机变量 $(X_1,X_2,\cdots,X_n)$，则 $(X_1,X_2,\cdots,X_n)$ 所有可能取值的全体是 $n$ 维空间或它的一个子集，样本观测值是其中的一个点 $(x_1,x_2,\cdots,x_n)$.
+
+如果总体 $X$ 的分布函数为 $F_X(t)$，则样本 $X_1,X_2,\cdots,X_n$ 的联合分布函数为
+$$
+F(t_1,t_2,\cdots,t_n) = F_X(t_1) \, F_X(t_2) \cdots F_X(t_n) = \prod_{i=1}^{n} F_X(t_i)
+$$
+
+如果总体 $X$ 是离散型随机变量，其概率分布为 $P \{ X=t \} = p_X(t)$，则样本 $X_1,X_2,\cdots,X_n$ 的联合概率分布为
+$$
+P \{ X_1=t_1, X_2=t_2, \cdots, X_n=t_n \} = p_X(t_1) \, p_X(t_2) \cdots p_X(t_n) = \prod_{i=1}^n p_X(t_i)
+$$
+
+如果总体 $X$ 是连续型随机变量，其概率密度为 $f_X(t)$，则样本 $X_1,X_2,\cdots,X_n$ 的联合概率密度为
+$$
+f(t_1,t_2,\cdots,t_n) = f_X(t_1) \, f_X(t_2) \cdots f_X(t_n) = \prod_{i=1}^n f_X(t_i)
+$$
+
+\section{直方图}
+
+根据总体 $X$ 的样本观测值 $x_1,x_2,\cdots,x_n$ 作直方图的一般步骤为：
+
+\begin{enumerate}
+    \item 找出 $x_1,x_2,\cdots,x_n$ 中的最小值 $x_{(1)}$ 和最大值 $x_{(n)}$，选取略小于 $x_{(1)}$ 的数 $a$ 和略大于 $x_{(n)}$ 的数 $b$；
+
+    \item 根据样本容量确定组数 $k$；
+
+    \item 选取分点
+    $$
+    a = t_0 < t_1 < \cdots < t_{i-1} < t_i < \cdots < t_k = b
+    $$
+    把区间 $(a,b)$ 分为 $k$ 个子区间
+    $$
+    (a, t_1], (t_1, t_2], \cdots, (t_{i-1}, t_i], \cdots, (t_{k-1}, b]
+    $$
+    第 $i$ 个子区间 $(t_{i-1}, t_i]$ 的长度为
+    $$
+    \Delta t_i = t_i - t_{i-1}, \, i=1,2,\cdots,k
+    $$
+    各子区间的长度可以相等，也可以不相等.如果取各子区间的长度相等，则有
+    $$
+    \Delta t_i = \dfrac{b-a}{k}, \, i=1,2,\cdots,k
+    $$
+    记 $\Delta t = \dfrac{b-a}{k}$，并把 $\Delta t$ 叫做\textbf{组距}.此时分点为
+    $$
+    t_i = a + i \Delta t, \, i=1,2,\cdots,k
+    $$
+    为了方便起见，分点 $t_i$ 应比样本观测值 $x_i$ 多取一位有效数字；
+
+    \item 数出 $x_1,x_2,\cdots,x_n$ 落在每个子区间 $(t_{i-1}, t_i]$ 内的频数 $n_i$，再算出频率
+    $$
+    f_i = \dfrac{n_i}{n}, \, i=1,2,\cdots,k
+    $$
+
+    \item 在 $Ox$ 轴上画出各个分点 $t_i(i=0,1,2,\cdots,k)$，并以各子区间 $(t_{i-1}, t_i]$ 为底，以 $y_i = \dfrac{f_i}{\Delta t_i} (i=0,1,2,\cdots,k)$ 为高作小矩形，这样作出的所有小矩形就构成了直方图.
+\end{enumerate}
