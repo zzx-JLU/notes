@@ -10,9 +10,9 @@
 
 在具体问题中，人们关心的往往不是总体的一切方面，而是它的某一项数量指标 $X$ 以及它在总体中的分布情况.如果 $X$ 在总体中的分布情况可以用一个概率分布来表示，那么 $X$ 就可以看成是服从这一概率分布的随机变量.将表示总体的这项数量指标的随机变量 $X$ 可能取的值的全体作为总体，称作总体 $X$，而 $X$ 可能取的每一个数值 $x$ 都是一个个体.
 
-总体 $X$ 的分布函数 $F(x)$ 叫做总体的分布函数，总体 $X$ 的数字特征叫做总体的数字特征.
+总体 $X$ 的分布函数 $F(x)$ 叫做\textbf{总体的分布函数}，总体 $X$ 的数字特征叫做\textbf{总体的数字特征}.
 
-如果 $X$ 是离散型随机变量，则其概率分布叫做离散型总体 $X$ 的概率分布；如果 $X$ 是连续型随机变量，则其概率密度叫做连续型总体 $X$ 的概率密度；并将它们和总体 $X$ 的分布函数统称为总体的分布.
+如果 $X$ 是离散型随机变量，则其概率分布叫做\textbf{离散型总体} $X$ \textbf{的概率分布}；如果 $X$ 是连续型随机变量，则其概率密度叫做\textbf{连续型总体} $X$ \textbf{的概率密度}；并将它们和总体 $X$ 的分布函数统称为\textbf{总体的分布}.
 
 \subsection{简单随机样本}
 
@@ -94,4 +94,116 @@ $$
     $$
 
     \item 在 $Ox$ 轴上画出各个分点 $t_i(i=0,1,2,\cdots,k)$，并以各子区间 $(t_{i-1}, t_i]$ 为底，以 $y_i = \dfrac{f_i}{\Delta t_i} (i=0,1,2,\cdots,k)$ 为高作小矩形，这样作出的所有小矩形就构成了直方图.
+\end{enumerate}
+
+\vspace{0.5em}
+
+第 $i$ 个矩形的面积为
+$$
+\Delta S_i = \Delta t_i \cdot \dfrac{f_i}{\Delta t_i} = f_i
+$$
+即第 $i$ 个小矩形的面积等于样本观测值落在该子区间内的频率，因此有
+$$
+\sum_{i=1}^k \Delta S_i = \sum_{i=1}^k f_i = 1
+$$
+即所有小矩形的面积的和等于 1.
+
+当样本容量 $n$ 充分大时，随机变量 $X$ 落在第 $i$ 个小区间 $(t_{i-1}, t_i]$ 内的频率近似等于其概率，所以直方图大致反映了总体 $X$ 的概率分布.
+
+\section{样本分布函数}
+
+设总体 $X$ 的分布函数为 $F(x)$，从总体中抽取容量为 $n$ 的样本，样本观测值为 $x_1,x_2,\cdots,x_n$，其中相同的观测值可能重复出现若干次.假设在 $n$ 个样本观测值 $x_1,x_2,\cdots,x_n$ 中有 $k$ 个不相同的值，按由小到大的顺序依次记为 $x_{(1)} < x_{(2)} < \cdots < x_{(k)} \; (k \leqslant n)$，并假设各个 $x_{(i)}$ 出现的频数为 $n_i$，则各个 $x_{(i)}$ 出现的频率为
+$$
+f_i = \dfrac{n_i}{n}, \, i=1,2,\cdots,k, \, k \leqslant n
+$$
+显然有
+$$
+\sum_{i=1}^k n_i = n, \quad \sum_{i=1}^k f_i = 1
+$$
+
+设函数
+$$
+F_n(x) = \begin{cases}
+    0 & x < x_{(1)} \\
+    \displaystyle\sum_{j=1}^i f_j & x_{(i)} \leqslant x < x_{(i+1)} (i=1,2,\cdots,k-1) \\
+    1 & x \geqslant x_{(k)}
+\end{cases}
+$$
+把 $F_n(x)$ 叫做\textbf{样本分布函数}. $F_n(x)$ 的图像如图 \ref{fig:样本分布函数} 所示.
+
+\begin{figure}[htbp]
+    \centering
+
+    \begin{tikzpicture}[>=Stealth, scale=4.2]
+        % 坐标轴
+        \draw[->] (-0.4, 0)--(1.2, 0) node[below]{$x$};
+        \draw[->] (0, -0.2)--(0, 1.2) node[right]{$F_n(x)$};
+        \node at (0, 0) [above left] {$O$};
+        % 辅助线
+        \draw[dashed] (-0.3, 0.125) -- (-0.3, 0) node[below]{$\scriptstyle{x_{(1)}}$};
+        \draw[dashed] (-0.15, 0.25) -- (-0.15, 0) node[below]{$\scriptstyle{x_{(2)}}$};
+        \draw[dashed] (0.1, 0.375) -- (0.1, 0) node[below]{$\scriptstyle{x_{(i)}}$};
+        \draw[dashed] (0.3, 0.5) -- (0.3, 0) node[below]{$\scriptstyle{x_{(i+1)}}$};
+        \draw[dashed] (0.45, 0.625) -- (0.45, 0);
+        \draw[dashed] (0.6, 0.75) -- (0.6, 0);
+        \draw[dashed] (0.75, 0.875) -- (0.75, 0);
+        \draw[dashed] (0.9, 1) -- (0.9, 0) node[below]{$\scriptstyle{x_{(k)}}$};
+        % 曲线
+        \draw (-0.3, 0.125) -- (-0.15, 0.125) node[dot]{};
+        \draw (-0.15, 0.25) -- (0.1, 0.25) node[dot]{};
+        \draw (0.1, 0.375) -- (0.3, 0.375) node[dot]{};
+        \draw (0.3, 0.5) -- (0.45, 0.5) node[dot]{};
+        \draw (0.45, 0.625) -- (0.6, 0.625) node[dot]{};
+        \draw (0.6, 0.75) -- (0.75, 0.75) node[dot]{};
+        \draw (0.75, 0.875) -- (0.9, 0.875) node[dot]{};
+        \draw (0.9, 1) -- (1.05, 1);
+        % 刻度
+        \draw (0, 1) node[left]{1} -- (0.05, 1);
+    \end{tikzpicture}
+
+    \caption{样本分布函数}
+    \label{fig:样本分布函数}
+\end{figure}
+
+样本分布函数 $F_n(x)$ 的性质：
+
+\begin{enumerate}
+    \item $0 \leqslant F_n(x) \leqslant 1$.
+    \item $F_n(x)$ 是单调不减函数.
+    \item $F_n(-\infty) = 0$，$F_n(+\infty) = 1$.
+    \item $F_n(x)$ 在每个观测值 $x_{(i)}$ 处是右连续的，点 $x_{(i)}$ 是 $F_n(x)$ 的跳跃间断点，$F_n(x)$ 在该点的跃度就是频率 $f_i \, (i=1,2,\cdots,k)$.
+\end{enumerate}
+
+对于给定的实数 $x$，当给出总体 $X$ 的不同的样本观测值时，相应的样本分布函数 $F_n(x)$ 的值有可能是不同的，因此 $F_n(x)$ 是一个随机变量.当给定样本观测值 $x_1,x_2,\cdots,x_n$ 时，$F_n(x)$ 是在 $n$ 次独立重复试验中事件 $\{ X \leqslant x \}$ 发生的频率.由于总体 $X$ 的分布函数是事件 $\{ X \leqslant x \}$ 发生的概率，根据伯努利定理可知，当 $n \to \infty$ 时，对于任意给定的正数 $\varepsilon$，有
+$$
+\lim_{n \to \infty} P \{ |F_n(x) - F(x)| < \varepsilon \} = 1
+$$
+
+\begin{theorem}[（格利文科定理）]
+    当 $n \to \infty$ 时，样本分布函数 $F_n(x)$ 依概率1关于 $x$ 一致收敛于总体分布函数 $F(x)$，即
+    $$
+    P \{ \lim_{n \to \infty} \sup_{-\infty < x < +\infty} |F_n(x) - F(x)| = 0 \} = 1
+    $$
+\end{theorem}
+
+\section{样本函数及其概率分布}
+
+\begin{definition}
+    设 $X_1,X_2,\cdots,X_n$ 是来自总体 $X$ 的样本，$x_1,x_2,\cdots,x_n$ 是样本观测值.如果 $g(t_1,t_2,\cdots,t_n)$ 为已知的 $n$ 元函数，则称 $g(X_1,X_2,\cdots,X_n)$ 为\textbf{样本函数}，它是一个随机变量，称 $g(x_1,x_2,\cdots,x_n)$ 为\textbf{样本函数的观测值}.如果样本函数 $g(X_1,X_2,\cdots,X_n)$ 中不含有未知参数，则称这种样本函数为\textbf{统计量}.
+\end{definition}
+
+常用的统计量：
+
+\begin{enumerate}
+    \item \textbf{样本均值}：$\overline{X} = \dfrac{1}{n} \displaystyle\sum_{i=1}^n X_i$ \\[0.5em]
+    观测值：$\overline{x} = \dfrac{1}{n} \displaystyle\sum_{i=1}^n x_i$\\[0.5em]
+    设总体 $X$ 具有数学期望 $E(X) = \mu$ 和方差 $D(X) = \sigma^2 (\sigma > 0)$，则 $E(X_i) = \mu$，$D(X_i) = \sigma^2 \, (i=1,2,\cdots,n)$，从而有
+    $$
+    \begin{aligned}
+        & E(\overline{X}) = E(\dfrac{1}{n} \sum_{i=1}^n X_i) = \dfrac{1}{n} \sum_{i=1}^n E(X_i) = \mu \\
+        & D(\overline{X}) = D(\dfrac{1}{n} \sum_{i=1}^n X_i) = \dfrac{1}{n^2} \sum_{i=1}^n D(X_i) = \dfrac{\sigma^2}{n}
+    \end{aligned}
+    $$
+
+    \item 
 \end{enumerate}
