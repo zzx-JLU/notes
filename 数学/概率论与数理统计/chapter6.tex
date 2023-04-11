@@ -205,5 +205,51 @@ $$
     \end{aligned}
     $$
 
-    \item 
+    \item \textbf{样本方差}：$S^2 = \dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (X_i - \overline{X})^2 = \dfrac{1}{n-1} \left( \displaystyle\sum_{i=1}^n X_i^2 - n \overline{X}^2 \right)$ \\[0.5em]
+    观测值：$s^2 = \dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (x_i - \overline{x})^2 = \dfrac{1}{n-1} \left( \displaystyle\sum_{i=1}^n x_i^2 - n \overline{x}^2 \right)$ \\[0.5em]
+    设总体 $X$ 具有数学期望 $E(X) = \mu$ 和方差 $D(X) = \sigma^2 (\sigma > 0)$，则
+    $$
+    \begin{aligned}
+        E(S^2) &= E \left( \dfrac{1}{n-1} \left( \displaystyle\sum_{i=1}^n X_i^2 - n \overline{X}^2 \right) \right) \\
+        &= \dfrac{1}{n-1} \left[ \displaystyle\sum_{i=1}^n E(X_i^2) - nE(\overline{X}^2) \right] \\
+        &= \dfrac{1}{n-1} \left\{ \sum_{i=1}^n [D(X_i) + (E(X_i))^2] - n [D(\overline{X}) + (E(\overline{X}))^2] \right\} \\
+        &= \dfrac{1}{n-1} \left( n \sigma^2 + n \mu^2 - n \cdot \dfrac{\sigma^2}{n} - n \mu^2 \right) \\
+        &= \sigma^2
+    \end{aligned}
+    $$
+
+    \item \textbf{样本标准差}：$S = \sqrt{S^2} = \sqrt{\dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (X_i - \overline{X})^2}$ \\[0.5em]
+    观测值：$s = \sqrt{s^2} = \sqrt{\dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (x_i - \overline{x})^2}$
+
+    \item \textbf{样本} $k$ \textbf{阶原点矩}：$A_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n X_i^k, \; k=1,2,\cdots$ \\[0.5em]
+    观测值：$a_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n x_i^k, \; k=1,2,\cdots$ \\[0.5em]
+    样本一阶原点矩就是样本均值，即
+    $$
+    A_1 = \overline{X}
+    $$
+
+    \item \textbf{样本} $k$ \textbf{阶中心矩}：$B_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n (X_i - \overline{X})^k, k=1,2,\cdots$ \\[0.5em]
+    观测值：$b_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n (x_i - \overline{x})^k, k=1,2,\cdots$ \\[0.5em]
+    样本一阶中心矩等于零，即 $B_1 = 0$. \\
+    样本二阶中心矩 $B_2$ 和样本方差 $S^2$ 有如下关系：$B_2 = \dfrac{n-1}{n} S^2$\\
+    如果总体 $X$ 具有方差 $\sigma^2$，则有
+    $$
+    E(B_2) = E(\dfrac{n-1}{n} S^2) = \dfrac{n-1}{n} E(S^2) = \dfrac{n-1}{n} \sigma^2
+    $$
+
+    \item 样本最大值和样本最小值 \\
+    设 $X_1, X_2, \cdots, X_n$ 是来自总体 $X$ 的样本，对于每一样本观测值 $x_1, x_2, \cdots, x_n$，取
+    $$
+    \begin{aligned}
+        & x_{(n)} = \max(x_1, x_2, \cdots, x_n) \\
+        & x_{(1)} = \min(x_1, x_2, \cdots, x_n)
+    \end{aligned}
+    $$
+    分别作为随机变量 $X_{(n)}$ 和 $X_{(1)}$ 的观测值，称 $X_{(n)}$ 和 $X_{(1)}$ 分别为\textbf{样本最大值}和\textbf{样本最小值}，分别记为
+    $$
+    \begin{aligned}
+        & X_{(n)} = \max(x_1, x_2, \cdots, x_n) \\
+        & X_{(1)} = \min(x_1, x_2, \cdots, x_n)
+    \end{aligned}
+    $$
 \end{enumerate}
