@@ -1,3 +1,5 @@
+% !TeX root = main.tex
+
 \chapter{样本及样本函数的分布}
 
 \section{总体与样本}
@@ -248,8 +250,111 @@ $$
     分别作为随机变量 $X_{(n)}$ 和 $X_{(1)}$ 的观测值，称 $X_{(n)}$ 和 $X_{(1)}$ 分别为\textbf{样本最大值}和\textbf{样本最小值}，分别记为
     $$
     \begin{aligned}
-        & X_{(n)} = \max(x_1, x_2, \cdots, x_n) \\
-        & X_{(1)} = \min(x_1, x_2, \cdots, x_n)
+        & X_{(n)} = \max(X_1, X_2, \cdots, X_n) \\
+        & X_{(1)} = \min(X_1, X_2, \cdots, X_n)
+    \end{aligned}
+    $$
+    设总体 $X$ 的分布函数为 $F(x)$，记 $X_{(n)}$ 和 $X_{(1)}$ 的分布函数依次为 $F_{\text{max}}(x)$ 和 $F_{\text{min}}(x)$ ，则
+    $$
+    \begin{aligned}
+        F_{\text{max}}(x) &= P \{ \max(X_1, X_2, \cdots, X_n) \leqslant x \} \\
+        &= P \{ X_1 \leqslant x, X_2 \leqslant x, \cdots, X_n \leqslant x \} \\
+        &= P \{ X_1 \leqslant x \} \, P \{ X_2 \leqslant x \} \cdots P \{ X_n \leqslant x \} \\
+        &= [F(x)]^n \\
+        \\
+        F_{\text{min}}(x) &= P \{ \min(X_1, X_2, \cdots, X_n) \leqslant x \} \\
+        &= 1 - P \{ \min(X_1, X_2, \cdots, X_n) > x \} \\
+        &= 1 - P \{ X_1 > x \} \, P \{ X_2 > x \} \cdots P \{ X_n > x \} \\
+        &= 1-[1-F(x)]^n
     \end{aligned}
     $$
 \end{enumerate}
+
+\begin{theorem}
+    设 $X \sim N(\mu, \sigma^2)$，$X_1, X_2, \cdots, X_n$ 是来自总体 $X$ 的样本，$\overline{X}$ 为样本均值，则随机变量
+    $$
+    u = \dfrac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)
+    $$
+\end{theorem}
+
+\begin{myproof}
+    由于 $X_1, X_2, \cdots, X_n$ 相互独立，$X_i \sim N(\mu, \sigma^2) \, (i=1,2,\cdots,n)$，因此 $\overline{X} = \dfrac{1}{n} \displaystyle\sum_{i=1}^n X_i$ 服从正态分布.而 $E(\overline{X}) = \mu$，$D(\overline{X}) = \dfrac{\sigma^2}{n}$，故
+    $$
+    \overline{X} \sim N(\mu, \dfrac{\sigma^2}{n})
+    $$
+    将随机变量 $\overline{X}$ 标准化，可得
+    $$
+    u = \dfrac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)
+    $$
+\end{myproof}
+
+\begin{theorem}
+    设 $X \sim N(\mu_1, \sigma_1^2)$，$Y \sim N(\mu_2, \sigma_2^2)$，分别独立地从总体 $X$ 和总体 $Y$ 中抽取样本 $X_1, X_2, \cdots, X_{n_1}$ 及 $Y_1, Y_2, \cdots, Y_{n_2}$，样本均值分别为 $\overline{X}$ 和 $\overline{Y}$，则随机变量
+    $$
+    u = \dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{\sqrt{\dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2}}} \sim N(0,1)
+    $$
+\end{theorem}
+
+\begin{myproof}
+    样本 $X_1, X_2, \cdots, X_{n_1}$ 和 $Y_1, Y_2, \cdots, Y_{n_2}$ 相互独立，也就是两个多维随机变量 $(X_1, X_2, \cdots, X_{n_1})$ 与 $(Y_1, Y_2, \cdots, Y_{n_2})$ 相互独立，因此 $\overline{X}$ 和 $\overline{Y}$ 相互独立，且
+    $$
+    \overline{X} \sim N(\mu_1, \dfrac{\sigma_1^2}{n_1}), \quad \overline{Y} \sim N(\mu_2, \dfrac{\sigma_2^2}{n_2})
+    $$
+    从而有
+    $$
+    \overline{X} - \overline{Y} \sim N(\mu_1 - \mu_2, \dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2})
+    $$
+    所以
+    $$
+    u = \dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{\sqrt{\dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2}}} \sim N(0,1)
+    $$
+\end{myproof}
+
+\section{来自正态总体的统计量及其分布}
+
+\subsection{\texorpdfstring{$\chi^2$}{} 分布}
+
+\begin{definition}
+    设 $X_1, X_2, \cdots, X_n$ 是来自标准正态总体 $N(0,1)$ 的样本，称统计量
+    $$
+    \chi^2 = X_1^2 + X_2^2 + \cdots + X_n^2
+    $$
+    服从自由度为 $n$ 的 $\chi^2$ 分布，记作 $\chi^2 \sim \chi^2(n)$.
+\end{definition}
+
+若 $\chi^2 \sim \chi^2(n)$，则 $\chi^2$ 的概率密度为
+$$
+f(x) = \begin{cases}
+    \dfrac{1}{2^{\frac{n}{2}} \Gamma(\frac{n}{2})} x^{\frac{n}{2} - 1} e^{-\frac{x}{2}} & x>0 \\
+    0 & x \leqslant 0
+\end{cases}
+$$
+
+\setcounter{propertyname}{0}
+
+\begin{property}
+    若 $\chi^2 \sim \chi^2(n)$，则 $E(\chi^2) = n$，$D(\chi^2) = 2n$.
+\end{property}
+
+\begin{myproof}
+    $\chi^2 = \displaystyle\sum_{i=1}^n X_i^2$，其中 $X_i \sim N(0,1) \, (i=1,2,\cdots,n)$，$X_1, X_2, \cdots, X_n$ 相互独立，且 $E(X_i) = 0$，$D(X_i) = 1$，从而有
+    $$
+    E(X_i^2) = E([X_i - E(X_i)]^2) = D(X_i) = 1
+    $$
+    因此
+    $$
+    E(\chi^2) = \sum_{i=1}^n E(X_i^2) = n
+    $$
+    因为
+    $$
+    E(X_i^4) = \int_{-\infty}^{+\infty} x^4 f(x) \, \text{d}x = \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} x^4 e^{-\frac{x^2}{2}} \text{d}x = 3
+    $$
+    所以
+    $$
+    D(X_i^2) = E(X_i^4) - [E(X_i^2)]^2 = 3-1 = 2
+    $$
+    从而有
+    $$
+    D(\chi^2) = \sum_{i=1}^n D(X_i^2) = 2n
+    $$
+\end{myproof}
