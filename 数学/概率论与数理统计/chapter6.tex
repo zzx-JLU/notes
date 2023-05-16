@@ -270,7 +270,7 @@ $$
     $$
 \end{enumerate}
 
-\begin{theorem}
+\begin{theorem} \label{theorem:正态总体的样本均值服从正态分布}
     设 $X \sim N(\mu, \sigma^2)$，$X_1, X_2, \cdots, X_n$ 是来自总体 $X$ 的样本，$\overline{X}$ 为样本均值，则随机变量
     $$
     u = \dfrac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)
@@ -288,7 +288,7 @@ $$
     $$
 \end{myproof}
 
-\begin{theorem}
+\begin{theorem} \label{theorem:两个正太总体的样本均值}
     设 $X \sim N(\mu_1, \sigma_1^2)$，$Y \sim N(\mu_2, \sigma_2^2)$，分别独立地从总体 $X$ 和总体 $Y$ 中抽取样本 $X_1, X_2, \cdots, X_{n_1}$ 及 $Y_1, Y_2, \cdots, Y_{n_2}$，样本均值分别为 $\overline{X}$ 和 $\overline{Y}$，则随机变量
     $$
     u = \dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{\sqrt{\dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2}}} \sim N(0,1)
@@ -314,7 +314,7 @@ $$
 
 \subsection{\texorpdfstring{$\chi^2$}{} 分布}
 
-\begin{definition}
+\begin{definition} \label{def: 卡方分布}
     设 $X_1, X_2, \cdots, X_n$ 是来自标准正态总体 $N(0,1)$ 的样本，称统计量
     $$
     \chi^2 = X_1^2 + X_2^2 + \cdots + X_n^2
@@ -332,7 +332,7 @@ $$
 
 \setcounter{propertyname}{0}
 
-\begin{property}
+\begin{property} \label{prop:卡方分布的数学期望和方差}
     若 $\chi^2 \sim \chi^2(n)$，则 $E(\chi^2) = n$，$D(\chi^2) = 2n$.
 \end{property}
 
@@ -357,4 +357,243 @@ $$
     $$
     D(\chi^2) = \sum_{i=1}^n D(X_i^2) = 2n
     $$
+\end{myproof}
+
+\begin{property}[（可加性）]
+    设 $X \sim \chi^2(n_1)$，$Y \sim \chi^2(n_2)$，且 $X$ 与 $Y$ 相互独立，则 $X+Y \sim \chi^2(n_1 + n_2)$.
+\end{property}
+
+\begin{property} \label{prop: 卡方分布-正态分布}
+    设 $\chi^2 \sim \chi^2(n)$，则对任意实数 $x$，有
+    $$
+    \lim_{n \to \infty} P \left\{ \dfrac{\chi^2 - n}{\sqrt{2n}} \leqslant x \right\} = \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{x} e^{-\frac{t^2}{2}} \text{d}t
+    $$
+\end{property}
+
+性质\ref*{prop: 卡方分布-正态分布} 说明当 $n$ 很大时，$\dfrac{\chi^2 - n}{\sqrt{2n}}$ 近似服从标准正态分布，也即自由度为 $n$ 的 $\chi^2$ 分布近似于正态分布 $N(n,2n)$.
+
+\begin{definition}
+    设 $\chi^2 \sim \chi^2(n)$，$f(x)$ 为其概率密度，对于给定的正数 $\alpha \, (0 < \alpha < 1)$，称满足条件
+    $$
+    P \{ \chi^2 > \chi_{\alpha}^2(n) \} = \int_{\chi_{\alpha}^2(n)}^{+\infty} f(x) \, \text{d}x = \alpha
+    $$
+    的点 $\chi_{\alpha}^2(n)$ 为 $\chi^2$ 分布的\textbf{上} $\alpha$ \textbf{分位点（数）}.
+\end{definition}
+
+\begin{theorem} \label{theorem:来自正态总体的样本标准化后求和，服从卡方分布}
+    设 $X_1,X_2,\cdots,X_n$ 是来自总体 $N(\mu,\sigma^2)$ 的样本，则随机变量
+    $$
+    \chi^2 = \dfrac{1}{\sigma^2} \sum_{i=1}^n (X_i - \mu)^2 \sim \chi^2(n)
+    $$
+\end{theorem}
+
+\begin{myproof}
+    随机变量 $X_1,X_2,\cdots,X_n$ 相互独立，且都与总体服从相同的分布 $N(\mu,\sigma^2)$，将 $X_i$ 标准化，得
+    $$
+    \dfrac{X_i - \mu}{\sigma} \sim N(0,1), \; i=1,2,\cdots,n
+    $$
+    且 $\dfrac{X_1 - \mu}{\sigma}, \dfrac{X_2 - \mu}{\sigma},\cdots, \dfrac{X_n - \mu}{\sigma}$ 相互独立.根据定义 \ref{def: 卡方分布} 可得
+    $$
+    \chi^2 = \sum_{i=1}^n \left( \dfrac{X_i - \mu}{\sigma} \right)^2 = \dfrac{1}{\sigma^2} \sum_{i=1}^n (X_i - \mu)^2 \sim \chi^2(n)
+    $$
+\end{myproof}
+
+\begin{theorem} \label{theorem:正态总体的样本均值与样本方差}
+    设总体 $X$ 服从正态分布 $N(\mu,\sigma^2)$，从总体 $X$ 中抽取样本 $X_1,X_2,\cdots,X_n$，样本均值和样本方差分别为 $\overline{X}$ 和 $S^2$，则
+
+    \begin{enumerate}
+        \item $\dfrac{(n-1) S^2}{\sigma^2} \sim \chi^2(n-1)$
+        \item $\overline{X}$ 与 $S^2$ 相互独立.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    设总体 $X \sim N(\mu,\sigma^2)$，从总体 $X$ 中抽取样本容量为 $n$ 的样本，其样本方差为 $S^2$，则
+    $$
+    D(S^2) = \dfrac{2 \sigma^4}{n-1}
+    $$
+\end{theorem}
+
+\begin{myproof}
+    由定理 \ref{theorem:正态总体的样本均值与样本方差} 可知
+    $$
+    \dfrac{(n-1) S^2}{\sigma^2} \sim \chi^2(n-1)
+    $$
+    由 $\chi^2$ 分布的性质 \ref*{prop:卡方分布的数学期望和方差} 可得
+    $$
+    D \left( \dfrac{(n-1) S^2}{\sigma^2} \right) = 2(n-1)
+    $$
+    因为
+    $$
+    D \left( \dfrac{(n-1) S^2}{\sigma^2} \right) = \dfrac{(n-1)^2}{\sigma^4} D(S^2)
+    $$
+    所以
+    $$
+    D(S^2) = \dfrac{2 \sigma^4}{n-1}
+    $$
+\end{myproof}
+
+\subsection{\texorpdfstring{$t$}{} 分布}
+
+\begin{definition} \label{def:t分布}
+    设 $X \sim N(0,1)$，$Y \sim \chi^2(n)$，且 $X$ 与 $Y$ 相互独立，称随机变量
+    $$
+    t = \dfrac{X}{\sqrt{Y/n}}
+    $$
+    服从\textbf{自由度为} $n$ \textbf{的} $t$ \textbf{分布}，记作 $t \sim t(n)$.
+\end{definition}
+
+$t(n)$ 分布的概率密度为
+$$
+f(x) = \dfrac{\Gamma(\frac{n+1}{2})}{\sqrt{n \pi} \, \Gamma(\frac{n}{2})} \left( 1 + \dfrac{x^2}{n} \right)^{-\frac{n+1}{2}}, \; -\infty < x < +\infty
+$$
+
+$f(x)$ 是偶函数，其图像关于 $y$ 轴对称.
+
+当 $n \to \infty$ 时，$t(n)$ 分布的概率密度趋向于标准正态分布的概率密度，即
+$$
+\lim_{n \to \infty} f(x) = \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}}, \; -\infty < x < +\infty
+$$
+因此，当自由度 $n$ 很大时，$t(n)$ 分布近似于标准正态分布.
+
+\begin{definition}
+    设 $t \sim t(n)$，其概率密度为 $f(x)$，对于给定的正数 $\alpha \, (0 < \alpha < 1)$，称满足条件
+    $$
+    P \{ t > t_{\alpha}(n) \} = \int_{t_{\alpha}(n)}^{+\infty} f(x) \, \text{d}x = \alpha
+    $$
+    的点 $t_{\alpha}(n)$ 为 $t(n)$ 分布的\textbf{上} $\alpha$ \textbf{分位点（数）}.
+\end{definition}
+
+根据 $t(n)$ 分布概率密度曲线的对称性可知
+$$
+t_{1 - \alpha}(n) = -t_{\alpha}(n)
+$$
+
+当 $n$ 很大（$n \geqslant 50$）时，$t_{\alpha}(n)$ 近似等于标准正态分布的上 $\alpha$ 分位点 $u_{\alpha}$，即 $t_{\alpha}(n) \approx u_{\alpha}$.
+
+\begin{theorem}
+    设总体 $X$ 服从正态分布 $N(\mu,\sigma^2)$，从总体 $X$ 中抽取样本 $X_1,X_2,\cdots,X_n$，样本均值和样本方差分别为 $\overline{X}$ 和 $S^2$，则随机变量
+    $$
+    t = \dfrac{\overline{X} - \mu}{S} \sqrt{n} \sim t(n-1)
+    $$
+\end{theorem}
+
+\begin{myproof}
+    由定理 \ref{theorem:正态总体的样本均值服从正态分布} 可知
+    $$
+    u = \dfrac{\overline{X} - \mu}{\sigma} \sqrt{n} \sim N(0,1)
+    $$
+    由定理 \ref{theorem:正态总体的样本均值与样本方差} 可知 $\overline{X}$ 与 $S^2$ 相互独立，并且
+    $$
+    \chi^2 = \dfrac{(n-1) S^2}{\sigma^2} \sim \chi^2(n-1)
+    $$
+    从而可得 $u$ 与 $\chi^2$ 相互独立.根据定义 \ref{def:t分布} 可得
+    $$
+    t = \dfrac{u}{\sqrt{\dfrac{\chi^2}{n-1}}} = \dfrac{\dfrac{\overline{X} - \mu}{\sigma} \sqrt{n}}{\sqrt{\dfrac{(n-1) S^2}{\sigma^2 (n-1)}}} = \dfrac{\overline{X} - \mu}{S} \sqrt{n} \sim t(n-1)
+    $$
+\end{myproof}
+
+\begin{theorem}
+    若从两个正态总体 $N(\mu_1, \sigma^2)$ 和 $N(\mu_2, \sigma^2)$ 中分别独立地抽取样本，样本容量依次为 $n_1$ 和 $n_2$，样本均值依次为 $\overline{X}$ 和 $\overline{Y}$，样本方差依次为 $S_1^2$ 和 $S_2^2$.记
+    $$
+    S_W = \sqrt{\dfrac{(n_1 - 1) S_1^2 + (n_2 - 1) S_2^2}{n_1 + n_2 - 2}}
+    $$
+    则随机变量
+    $$
+    t = \dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{S_W \sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}} \sim t(n_1 + n_2 - 2)
+    $$
+\end{theorem}
+
+\begin{myproof}
+    根据定理 \ref{theorem:两个正太总体的样本均值} 可得
+    $$
+    u = \dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{\sigma \sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}} \sim N(0,1)
+    $$
+    根据定理 \ref{theorem:正态总体的样本均值与样本方差} 可知
+    $$
+    \begin{aligned}
+        & \chi_1^2 = \dfrac{(n_1 - 1) S_1^2}{\sigma^2} \sim \chi^2(n_1 - 1) \\
+        & \chi_2^2 = \dfrac{(n_2 - 1) S_2^2}{\sigma^2} \sim \chi^2(n_2 - 1)
+    \end{aligned}
+    $$
+    因为两个样本相互独立，所以 $S_1^2$ 与 $S_2^2$ 相互独立，从而可知 $\chi_1^2$ 与 $\chi_2^2$ 相互独立.由 $\chi^2$ 分布的可加性得
+    $$
+    \chi_1^2 + \chi_2^2 = \dfrac{(n_1 - 1) S_1^2 + (n_2 - 1) S_2^2}{\sigma^2} \sim \chi^2(n_1 + n_2 - 2)
+    $$
+    根据定理 \ref{theorem:正态总体的样本均值与样本方差} 可得 $\overline{X}$ 与 $S_1^2$ 相互独立，$\overline{Y}$ 与 $S_2^2$ 相互独立，因此 $u$ 与 $\chi_1^2 + \chi_2^2$ 相互独立.由定义 \ref{def:t分布} 可知
+    $$
+    t = \dfrac{u}{\sqrt{\dfrac{\chi_1^2 + \chi_2^2}{n_1 + n_2 - 2}}} = \dfrac{\dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{\sigma \sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}}}{\sqrt{\dfrac{(n_1 - 1) S_1^2 + (n_2 - 1) S_2^2}{\sigma^2 (n_1 + n_2 - 2)}}} = \dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{S_W \sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}} \sim t(n_1 + n_2 - 2)
+    $$
+\end{myproof}
+
+\subsection{\texorpdfstring{$F$}{} 分布}
+
+\begin{definition}
+    设 $X \sim \chi^2(n_1)$，$Y \sim \chi^2(n_2)$，且 $X$ 与 $Y$ 相互独立，称随机变量
+    $$
+    F = \dfrac{X / n_1}{Y / n_2}
+    $$
+    服从第一自由度为 $n_1$、第二自由度为 $n_2$（或自由度为 $(n_1,n_2)$）的 $F$ \textbf{分布}，记作
+    $F \sim F(n_1, n_2)$.
+\end{definition}
+
+$F(n_1, n_2)$ 分布的概率密度为
+$$
+f(x) = \begin{cases}
+    \dfrac{\Gamma(\frac{n_1 + n_2}{2})}{\Gamma(\frac{n_1}{2}) \Gamma(\frac{n_2}{2})} \left( \dfrac{n_1}{n_2} \right)^{\frac{n_1}{2}} x^{\frac{n_1}{2} - 1} \left( 1 + \dfrac{n_1}{n_2} x \right)^{-\frac{n_1 + n_2}{2}} & x>0 \\[0.5em]
+    0 & x \leqslant 0
+\end{cases}
+$$
+
+若 $F \sim F(n_1, n_2)$，则 $\dfrac{1}{F} \sim F(n_2, n_1)$.
+
+\begin{definition}
+    设 $F \sim F(n_1, n_2)$，其概率密度为 $f(x)$，对于给定的正数 $\alpha \, (0 < \alpha < 1)$，称满足条件
+    $$
+    P \{ F > F_{\alpha}(n_1, n_2) \} = \int_{F_{\alpha}(n_1, n_2)}^{+\infty} f(x) \, \text{d}x = \alpha
+    $$
+    的点 $F_{\alpha}(n_1, n_2)$ 为 $F(n_1, n_2)$ 分布的\textbf{上} $\alpha$ \textbf{分位点（数）}.
+\end{definition}
+
+\setcounter{propertyname}{0}
+
+\begin{property}
+    $$
+    F_{1 - \alpha}(n_1, n_2) = \dfrac{1}{F_{\alpha}(n_2, n_1)}
+    $$
+\end{property}
+
+\begin{myproof}
+    设 $F \sim F(n_1, n_2)$，则对于 $\alpha \, (0 < \alpha < 1)$，有
+    $$
+    \begin{aligned}
+        1 - \alpha &= P \{ F > F_{1 - \alpha}(n_1, n_2) \} \\
+        &= P \left\{ \dfrac{1}{F} < \dfrac{1}{F_{1 - \alpha}(n_1, n_2)} \right\} \\
+        &= 1 - P \left\{ \dfrac{1}{F} \geqslant \dfrac{1}{F_{1 - \alpha}(n_1, n_2)} \right\} \\
+        &= 1 - P \left\{ \dfrac{1}{F} > \dfrac{1}{F_{1 - \alpha}(n_1, n_2)} \right\}
+    \end{aligned}
+    $$
+    于是有
+    $$
+    P \left\{ \dfrac{1}{F} > \dfrac{1}{F_{1 - \alpha}(n_1, n_2)} \right\} = \alpha
+    $$
+    由于 $\dfrac{1}{F} \sim F(n_2, n_1)$，因此 $\dfrac{1}{F_{1 - \alpha}(n_1, n_2)}$ 就是 $F(n_2, n_1)$ 的上 $\alpha$ 分位点，即
+    $$
+    F_{\alpha}(n_2, n_1) = \dfrac{1}{F_{1 - \alpha}(n_1, n_2)}
+    $$
+    所以
+    $$
+    F_{1 - \alpha}(n_1, n_2) = \dfrac{1}{F_{\alpha}(n_2, n_1)}
+    $$
+\end{myproof}
+
+\begin{theorem}
+    设 $X_1, X_2, \cdots, X_{n_1}$ 是来自正态总体 $N(\mu_1, \sigma_1^2)$ 的样本，$Y_1, Y_2, \cdots, Y_{n_2}$ 是来自正态总体 $N(\mu_2, \sigma_2^2)$ 的样本，并且这两个样本相互独立，则随机变量
+    $$
+    F = \dfrac{n_2}{n_1} \cdot \dfrac{\sigma_2^2}{\sigma_1^2} \cdot \dfrac{\displaystyle\sum_{i=1}^{n_1} (X_i - \mu_1)^2}{\displaystyle\sum_{j=1}^{n_2} (Y_j - \mu_2)^2} \sim F(n_1, n_2)
+    $$
+\end{theorem}
+
+\begin{myproof}
+    根据定理 \ref{theorem:来自正态总体的样本标准化后求和，服从卡方分布} 可得
 \end{myproof}
