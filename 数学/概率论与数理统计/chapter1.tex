@@ -124,6 +124,8 @@ $$
     \bigcap_{i=1}^\infty A_i = \{ \text{事件} A_1,A_2,\cdots,A_n,\cdots \text{同时发生} \}
 \end{gather*}
 
+事件 $A$ 与 $B$ 互为对立事件的充要条件是：$A \cap B = \text{\O}$，且 $A \cup B = \varOmega$.
+
 \subsubsection{事件的差}
 
 如果事件 $A$ 发生而事件 $B$ 不发生，则这样的一个事件称为事件 $A$ 与事件 $B$ 的\textbf{差事件}，记作 $A-B$.
@@ -151,11 +153,57 @@ $$
 \begin{enumerate}
     \item 交换律：$A \cup B = B \cup A$，$AB=BA$.
     \item 结合律：$(A \cup B) \cup C = A \cup (B \cup C)$，$(AB)C=A(BC)$.
-    \item 分配律：$A(B \cup C)=(AB)\cup(AC)$，$A\cup(BC)=(A \cup B)(A \cup C)$.
-    \item 对偶律：$\overline{A \cup B}=\overline{A}\,\overline{B}$，$\overline{AB}=\overline{A}\cup\overline{B}$.
+    \item 分配律：$A(B \cup C)=(AB) \cup (AC)$，$A \cup (BC)=(A \cup B)(A \cup C)$.
+    \item 对偶律：$\overline{A \cup B}=\overline{A} \cap \overline{B}$，$\overline{A \cap B}=\overline{A} \cup \overline{B}$.
 \end{enumerate}
 
 对于多个随机事件，以上的运算规律也成立.
+
+\subsection{事件域}
+
+\begin{definition}
+    设 $\varOmega$ 为样本空间，$\mathcal{F}$ 为 $\varOmega$ 的某些子集组成的集合类.如果 $\mathcal{F}$ 满足：
+    \begin{enumerate}
+        \item $\varOmega \in \mathcal{F}$；
+        \item 若 $A \in \mathcal{F}$，则 $\overline{A} \in \mathcal{F}$；
+        \item 若 $A_i \in \mathcal{F}, \, i=1,2,\cdots$，则 $\displaystyle\bigcup_{i=1}^\infty A_i \in \mathcal{F}$，
+    \end{enumerate}
+    则称 $\mathcal{F}$ 为一个\textbf{事件域}，也称为 $\sigma$ \textbf{域}或 $\sigma$ \textbf{代数}.将 $(\varOmega, \mathcal{F})$ 称为\textbf{可测空间}.
+\end{definition}
+
+在可测空间上才可定义概率，这时 $\mathcal{F}$ 中都是有概率可言的事件.
+
+如果样本空间为全体实数，即 $\varOmega = \mathbf{R}$，此时事件域 $\mathcal{F}$ 中的元素无法一一列出，而是由一个基本集合类逐步扩展形成，具体操作如下：
+\begin{enumerate}
+    \item 取基本集合类 $\mathcal{P}$ 为“全体半直线组成的类”，即
+    $$
+    \mathcal{P} = \{ (-\infty, x) \mid -\infty < x < +\infty \}
+    $$
+    \item 把有限的左闭右开区间扩展进来
+    $$
+    [a,b) = (-\infty,b) - (-\infty,a), \, a,b \in \mathbf{R}
+    $$
+    \item 把闭区间、单点集、左开右闭区间、开区间扩展进来
+    $$
+    \begin{aligned}
+        & [a,b] = \bigcap_{i=1}^{\infty} \Big[ a, b + \dfrac{1}{i} \Big) \\
+        & \{ b \} = [a,b] - [a,b) \\
+        & (a,b] = [a,b] - \{ a \} \\
+        & (a,b) = [a,b) - \{ a \}
+    \end{aligned}
+    $$
+    \item 最后用（有限个或可列个）并运算和交运算把实数集中一切有限集、可列集、开集、闭集都扩展进来.
+\end{enumerate}
+
+经过上述几步扩展所得集合的全体就是事件域 $\mathcal{F}$，这样的事件域 $\mathcal{F}$ 又称为\textbf{博雷尔事件域}，域中的每个元素称为\textbf{博雷尔集}，或称为\textbf{可测集}，这种可测集都是有概率可言的事件.
+
+可测空间 $(\varOmega, \mathcal{F})$ 的性质：
+\begin{enumerate}
+    \item $\text{\O} \in \mathcal{F}$
+    \item 若 $A_i \in \mathcal{F}, \, i=1,2,\cdots$，则 $\displaystyle\bigcap_{i=1}^{\infty} A_i \in \mathcal{F}$.
+    \item 若 $A_i \in \mathcal{F}, \, i=1,2,\cdots,n$，则 $\displaystyle\bigcap_{i=1}^n A_i \in \mathcal{F}$.
+    \item 若 $A,B \in \mathcal{F}$，则 $A-B \in \mathcal{F}$.
+\end{enumerate}
 
 \section{随机事件的概率}
 
@@ -194,16 +242,16 @@ $$
 \subsection{概率}
 
 \begin{definition} \label{def:probability}
-    设随机试验 $E$ 的样本空间为 $\varOmega$，如果对于 $E$ 的每一个事件 $A$，有唯一的实数 $P(A)$ 和它对应，并且这个事件的函数 $P(A)$ 满足以下条件：
+    设 $\varOmega$ 为一个样本空间，$\mathcal{F}$ 为 $\varOmega$ 的某些子集组成的事件域.如果对于任一事件 $A \in \mathcal{F}$，定义在 $\mathcal{F}$ 上的一个实值函数 $P(A)$ 满足：
     \begin{enumerate}
-        \item 非负性：对于任意事件 $A$，有 $P(A) \geqslant 0$；
+        \item 非负性：对于任意事件 $A \in \mathcal{F}$，有 $P(A) \geqslant 0$；
         \item 规范性：对于必然事件 $\varOmega$，有 $P(\varOmega)=1$；
         \item 可列可加性：对于两两互不相容的事件 $A_1,A_2,\cdots$，有
         $$
         P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)
         $$
     \end{enumerate}
-    则称 $P(A)$ 为事件 $A$ 的\textbf{概率}（probability）.
+    则称集合函数 $P$ 为可测空间 $(\varOmega, \mathcal{F})$ 上的\textbf{概率}（probability），$P(A)$ 为事件 $A$ 的\textbf{概率}，$(\varOmega, \mathcal{F}, P)$ 为\textbf{概率空间}.
 \end{definition}
 
 \setcounter{propertyname}{0}
@@ -291,7 +339,7 @@ $$
     \]
 \end{myproof}
 
-\begin{property} \label{prop:probability:add}
+\begin{property}[（概率的加法公式）] \label{prop:probability:add}
     对于任意两个事件 $A$ 与 $B$，有
     \begin{gather} \label{equation:add}
         P(A \cup B) = P(A) + P(B) - P(AB) \\
@@ -312,18 +360,51 @@ $$
     由于 $P(AB)\geqslant 0$，因此 $P(A \cup B) \leqslant P(A) + P(B)$.
 \end{myproof}
 
-式 \eqref{equation:add} 称为概率的\textbf{加法公式}.
+\begin{property}[（概率的一般加法公式）]
+    设 $A_1,A_2,\cdots,A_n$ 是 $n$ 个随机事件，则有
+    \begin{align} \label{equation:normal add}
+        \begin{split}
+            P(\bigcup_{i=1}^n A_i) = & \sum_{i=1}^n P(A_i) - \sum_{1 \leqslant i<j \leqslant n} P(A_i A_j) + \sum_{1 \leqslant i<j<k \leqslant n} P(A_i A_j A_k) + \cdots \\
+            & + (-1)^{n-1} P(A_1 A_2 \cdots A_n)
+        \end{split}
+    \end{align}
+\end{property}
 
-加法公式可以推广到任意有限个事件的情形：设 $A_1,A_2,\cdots,A_n$ 是 $n$ 个随机事件，则有
+\begin{myproof}
+    使用数学归纳法.当 $n=2$ 时，式 \eqref{equation:normal add} 即为式 \eqref{equation:add}.
 
-\begin{align} \label{equation:normal add}
-    \begin{split}
-        P(\bigcup_{i=1}^n A_i) = & \sum_{i=1}^n P(A_i) - \sum_{1 \leqslant i<j \leqslant n} P(A_i A_j) + \sum_{1 \leqslant i<j<k \leqslant n} P(A_i A_j A_k) + \cdots\\
-        & + (-1)^{n-1} P(A_1 A_2 \cdots A_n)
-    \end{split}
-\end{align}
+    设式 \eqref{equation:normal add} 对 $n-1$ 成立，则对于 $n$，先对两个事件 $A_1 \cup A_2 \cup \cdots \cup A_{n-1}$ 与 $A_n$ 应用式 \eqref{equation:add}：
+    $$
+    \begin{aligned}
+        & P(A_1 \cup A_2 \cup \cdots \cup A_n) \\
+        =\ & P(A_1 \cup A_2 \cup \cdots \cup A_{n-1}) + P(A_n) - P((A_1 \cup A_2 \cup \cdots \cup A_{n-1}) A_n) \\
+        =\ & P(A_1 \cup A_2 \cup \cdots \cup A_{n-1}) + P(A_n) - P((A_1 A_n) \cup (A_2 A_n) \cup \cdots \cup (A_{n-1} A_n))
+    \end{aligned}
+    $$
+    由归纳假设，将 $P(A_1 \cup A_2 \cup \cdots \cup A_{n-1})$ 和 $P((A_1 A_n) \cup (A_2 A_n) \cup \cdots \cup (A_{n-1} A_n))$ 展开，得
+    $$
+    \begin{aligned}
+        \begin{split}
+            & P(A_1 \cup A_2 \cup \cdots \cup A_n) \\
+            =\ & \left[ \sum_{i=1}^{n-1} P(A_i) - \sum_{1 \leqslant i<j \leqslant n-1} P(A_i A_j) + \sum_{1 \leqslant i<j<k \leqslant n-1} P(A_i A_j A_k) + \cdots + (-1)^{n-2} P(A_1 A_2 \cdots A_{n-1}) \right] \\
+            & + P(A_n) - \Bigg[ \sum_{i=1}^{n-1} P(A_i A_n) - \sum_{1 \leqslant i<j \leqslant n-1} P((A_i A_n) (A_j A_n)) \\
+            & + \sum_{1 \leqslant i<j<k \leqslant n-1} P((A_i A_n) (A_j A_n) (A_k A_n)) + \cdots + (-1)^{n-2} P((A_1 A_n) (A_2 A_n) \cdots (A_{n-1} A_n)) \Bigg] \\
+            =\ & \sum_{i=1}^{n} P(A_i) - \sum_{1 \leqslant i<j \leqslant n-1} P(A_i A_j) + \sum_{1 \leqslant i<j<k \leqslant n-1} P(A_i A_j A_k) + \cdots + (-1)^{n-2} P(A_1 A_2 \cdots A_{n-1}) \\
+            & - \sum_{i=1}^{n-1} P(A_i A_n) + \sum_{1 \leqslant i<j \leqslant n-1} P(A_i A_j A_n) - \sum_{1 \leqslant i<j<k \leqslant n-1} P(A_i A_j A_k A_n) + \cdots \\
+            & + (-1)^{n-1} P(A_1 A_2 \cdots A_n) \\
+            =\ & \sum_{i=1}^n P(A_i) - \sum_{1 \leqslant i<j \leqslant n} P(A_i A_j) + \sum_{1 \leqslant i<j<k \leqslant n} P(A_i A_j A_k) + \cdots + (-1)^{n-1} P(A_1 A_2 \cdots A_n)
+        \end{split}
+    \end{aligned}
+    $$
+    因此式 \eqref{equation:normal add} 对 $n$ 也成立，归纳法完成.
+\end{myproof}
 
-式 \eqref{equation:normal add} 称为概率的\textbf{一般加法公式}.
+\begin{corollary}[（半可加性）]
+    设 $A_1,A_2,\cdots,A_n$ 是 $n$ 个随机事件，则有
+    $$
+    P(\bigcup_{i=1}^n A_i) \leqslant \sum_{i=1}^n P(A_i)
+    $$
+\end{corollary}
 
 \begin{problem}
     设 $A$ 和 $B$ 是同一试验 $E$ 的两个随机事件，证明
