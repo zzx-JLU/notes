@@ -428,6 +428,118 @@ $$
     $$
 \end{myproof}
 
+\subsection{概率的连续性}
+
+\begin{definition}
+    对 $\mathcal{F}$ 中任一单调不减的事件序列 $F_1 \subseteq F_2 \subseteq \cdots \subseteq F_n \subseteq \cdots$，称 $\displaystyle\bigcup_{i=1}^{\infty} F_i$ 为 $\{F_n\}$ 的\textbf{极限事件}，记为
+    $$
+    \lim_{n \to \infty} F_n = \bigcup_{i=1}^{\infty} F_i
+    $$
+
+    对 $\mathcal{F}$ 中任一单调不增的事件序列 $E_1 \supseteq E_2 \supseteq \cdots \supseteq E_n \supseteq \cdots$，称 $\displaystyle\bigcap_{i=1}^{\infty} E_i$ 为 $\{E_n\}$ 的\textbf{极限事件}，记为
+    $$
+    \lim_{n \to \infty} E_n = \bigcap_{i=1}^{\infty} E_i
+    $$
+\end{definition}
+
+\begin{definition}
+    对 $\mathcal{F}$ 上的一个概率 $P$，若它对 $\mathcal{F}$ 中任一单调不减的事件序列 $\{F_n\}$ 均有
+    $$
+    \lim_{n \to \infty} P(F_n) = P(\lim_{n \to \infty} F_n)
+    $$
+    则称概率 $P$ 是\textbf{下连续}的.若它对 $\mathcal{F}$ 中任一单调不增的事件序列 $\{E_n\}$ 均有
+    $$
+    \lim_{n \to \infty} P(E_n) = P(\lim_{n \to \infty} E_n)
+    $$
+    则称概率 $P$ 是\textbf{上连续}的.
+\end{definition}
+
+\begin{property} \label{prop:连续性}
+    若 $P$ 为事件域 $\mathcal{F}$ 上的概率，则 $P$ 既是下连续的，又是上连续的.
+\end{property}
+
+\vspace{-1em}
+
+\begin{myproof}
+    先证 $P$ 的下连续性.设 $\{ F_n \}$ 是 $\mathcal{F}$ 中一个单调不减的事件序列，则
+    $$
+    \lim_{n \to \infty} F_n = \bigcup_{i=1}^{\infty} F_i
+    $$
+    若定义 $F_0 = \text{\O}$，则
+    $$
+    \bigcup_{i=1}^{\infty} F_i = \bigcup_{i=1}^{\infty} (F_i - F_{i-1})
+    $$
+    由于 $F_{i-1} \subseteq F_i$，所以各个 $F_i - F_{i-1}$ 两两互不相容，再由可列可加性得
+    $$
+    \begin{aligned}
+        P(\lim_{n \to \infty} F_n) &= P(\bigcup_{i=1}^{\infty} F_i) \\
+        &= P(\bigcup_{i=1}^{\infty} (F_i - F_{i-1})) \\
+        &= \sum_{i=1}^{\infty} P(F_i - F_{i-1}) \\
+        &= \lim_{n \to \infty} \sum_{i=1}^n P(F_i - F_{i-1})
+    \end{aligned}
+    $$
+    由有限可加性得
+    $$
+    \sum_{i=1}^n P(F_i - F_{i-1}) = P(\bigcup_{i=1}^n (F_i - F_{i-1})) = P(F_n)
+    $$
+    所以
+    $$
+    P(\lim_{n \to \infty} F_n) = \lim_{n \to \infty} P(F_n)
+    $$
+    下连续性得证.
+
+    再证 $P$ 的上连续性.设 $\{ E_n \}$ 是 $\mathcal{F}$ 中一个单调不增的事件序列，则 $\{ \overline{E_n} \}$ 为单调不减的事件序列，由概率的下连续性得
+    $$
+    \begin{aligned}
+        \lim_{n \to \infty} P(\overline{E_n}) &= P(\lim_{n \to \infty} \overline{E_n}) \\
+        &= P(\bigcup_{i=1}^{\infty} \overline{E_i}) \\
+        &= P(\overline{\bigcap_{i=1}^{\infty} E_i}) \\
+        &= 1 - P(\bigcap_{i=1}^{\infty} E_i) \\
+        &= 1 - P(\lim_{n \to \infty} E_n)
+    \end{aligned}
+    $$
+    另一方面
+    $$
+    \lim_{n \to \infty} P(\overline{E_n}) = \lim_{n \to \infty} [1 - P(E_n)] = 1 - \lim_{n \to \infty} P(E_n)
+    $$
+    所以
+    $$
+    \lim_{n \to \infty} P(E_n) = P(\lim_{n \to \infty} E_n)
+    $$
+    上连续性得证.
+\end{myproof}
+
+\begin{theorem}
+    若 $P$ 是 $\mathcal{F}$ 上满足 $P(\varOmega) = 1$ 的非负集合函数，则 $P$ 具有可列可加性的充分必要条件是：\\
+    （1）$P$ 是有限可加的；（2）$P$ 是下连续的.
+\end{theorem}
+
+\begin{myproof}
+    由概率的有限可加性和连续性的证明过程可知必要性成立.下面证明充分性.
+
+    设 $A_i \in \mathcal{F}, \, i=1,2,\cdots$ 是两两互不相容的事件序列，由有限可加性可知，对任意有限的 $n$ 都有
+    $$
+    P(\bigcup_{i=1}^n A_i) = \sum_{i=1}^n P(A_i) \leqslant 1
+    $$
+    因此正项级数 $\displaystyle\sum_{i=1}^{\infty} P(A_i)$ 收敛，即
+    $$
+    \lim_{n \to \infty} P(\bigcup_{i=1}^n A_i) = \lim_{n \to \infty} \sum_{i=1}^n P(A_i) = \sum_{i=1}^{\infty} P(A_i)
+    $$
+    记
+    $$
+    F_n = \bigcup_{i=1}^n A_i
+    $$
+    则 $\{ F_n \}$ 为单调不减的事件序列，由下连续性得
+    $$
+    \lim_{n \to \infty} P(\bigcup_{i=1}^n A_i) = \lim_{n \to \infty} P(F_n) = P(\bigcup_{i=1}^{\infty} F_i) = P(\bigcup_{i=1}^{\infty} A_i)
+    $$
+    因此
+    $$
+    P(\bigcup_{i=1}^{\infty} A_i) = \sum_{i=1}^{\infty} P(A_i)
+    $$
+    可列可加性成立，充分性得证.
+\end{myproof}
+
 \subsection{古典概型}
 
 如果随机试验具有以下两个特点：
@@ -637,6 +749,12 @@ $$
     $$
 \end{myproof}
 
+注意：
+\begin{enumerate}
+    \item 将条件改成“$A_1, A_2, \cdots, A_n$ 两两互不相容，且 $B \subseteq \displaystyle\bigcup_{i=1}^n A_i$”，全概率公式仍然成立.
+    \item 将条件改成“$A_1, A_2, \cdots, A_n, \cdots$ 两两互不相容，且 $B \subseteq \displaystyle\bigcup_{i=1}^{\infty} A_i$”，全概率公式仍然成立.
+\end{enumerate}
+
 \subsection{贝叶斯公式}
 
 如果事件 $B$ 是由于在两两互不相容的事件 $A_1,A_2,\cdots,A_n$ 中某一个发生的情况下而发生的，并且知道各个事件 $A_i$ 发生的概率 $P(A_i)$ 以及在事件 $A_i$ 发生的条件下事件 $B$ 发生的条件概率 $P(B \mid A_i)$，则由全概率公式可得事件 $B$ 发生的概率 $P(B)$.我们把事件 $A_1,A_2,\cdots,A_n$ 看做是导致事件 $B$ 发生的原因，$P(A_i)$ 称为\textbf{先验概率}，它反映出各种原因发生的可能性大小.如果在试验中发生了事件 $B$，这一信息有助于探讨事件 $B$ 发生的原因.条件概率 $P(A_i \mid B)$ 称为\textbf{后验概率}，它使得我们在试验之后对各种原因发生的可能性大小有进一步的了解.
@@ -730,6 +848,42 @@ $$
 \end{definition}
 
 若 $n\, (n \geqslant 2)$ 个事件相互独立，则其中任意 $k\, (2 \leqslant k \leqslant n)$ 个事件相互独立.
+
+\begin{conclusion}
+    若 $A,B,C$ 相互独立，则 $A \cup B$ 与 $C$ 相互独立，$AB$ 与 $C$ 相互独立，$A-B$ 与 $C$ 相互独立.
+\end{conclusion}
+
+\begin{myproof}
+    $$
+    \begin{aligned}
+        P((A \cup B) C) &= P(AC \cup BC) \\
+        &= P(AC) + P(BC) - P(ABC) \\
+        &= P(A) P(C) + P(B) P(C) - P(A) P(B) P(C) \\
+        &= [P(A) + P(B) - P(A) P(B)] P(C) \\
+        &= P(A \cup B) P(C)
+    \end{aligned}
+    $$
+    所以 $A \cup B$ 与 $C$ 相互独立.
+
+    $$
+    P((AB)C) = P(A) P(B) P(C) = P(AB) P(C)
+    $$
+    所以 $AB$ 与 $C$ 相互独立.
+
+    $$
+    \begin{aligned}
+        P((A-B)C) &= P(A \overline{B} C) \\
+        &= P(AC-B) \\
+        &= P(AC - ABC) \\
+        &= P(AC) - P(ABC) \\
+        &= P(A) P(C) - P(AB) P(C) \\
+        &= [P(A) - P(AB)] P(C) \\
+        &= P(A-AB) P(C) \\
+        &= P(A-B) P(C)
+    \end{aligned}
+    $$
+    所以 $A-B$ 与 $C$ 相互独立.
+\end{myproof}
 
 \section{伯努利概型}
 

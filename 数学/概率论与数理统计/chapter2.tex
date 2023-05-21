@@ -23,10 +23,6 @@
 \setcounter{propertyname}{0}
 
 \begin{property}
-    对于任意实数 $x$，有 $0 \leqslant F(x) \leqslant 1$.
-\end{property}
-
-\begin{property}
     对于任意实数 $x_1,x_2\, (x_1<x_2)$，有 $P\{x_1 < X \leqslant x_2\}=F(x_2)-F(x_1)$.
 \end{property}
 
@@ -44,18 +40,7 @@
     $$
 \end{myproof}
 
-\begin{property}
-    \begin{gather*}
-        F(-\infty)= \lim_{x \to -\infty} F(x)=0\\
-        F(+\infty)= \lim_{x \to +\infty} F(x)=1
-    \end{gather*}
-\end{property}
-
-\begin{property}
-    $F(x)$ 处处右连续，即 $F(x^+)=F(x)$.
-\end{property}
-
-\begin{property}
+\begin{property}[（单调性）]
     $F(x)$ 是一个单调不减函数.
 \end{property}
 
@@ -66,6 +51,50 @@
     $$
     因此 $F(x)$ 是单调不减函数.
 \end{myproof}
+
+\begin{property}[（有界性）]
+    对于任意实数 $x$，有 $0 \leqslant F(x) \leqslant 1$，且
+    \begin{gather*}
+        F(-\infty)= \lim_{x \to -\infty} F(x)=0\\
+        F(+\infty)= \lim_{x \to +\infty} F(x)=1
+    \end{gather*}
+\end{property}
+
+\begin{myproof}
+    因为 $F(x) = P \{ X \leqslant x \}$，根据概率的性质可得 $0 \leqslant F(x) \leqslant 1$.
+
+    $F(x)$ 在 $(-\infty, +\infty)$ 内单调不减且有界，由单调有界原理可知，$\displaystyle\lim_{x \to -\infty} F(x)$ 和 $\displaystyle\lim_{x \to +\infty} F(x)$ 存在.
+
+    记 $A_n = \{ X \leqslant n \}$，则有 $A_n \leqslant A_{n+1}$，$\displaystyle\bigcup_{i=1}^{\infty} A_i = \varOmega$.由海涅定理可得
+    $$
+    \lim_{x \to +\infty} F(x) = \lim_{n \to \infty} F(n) = \lim_{n \to \infty} P(A_n) = P(\lim_{n \to \infty} A_n) = P(\bigcup_{i=1}^{\infty} A_i) = 1
+    $$
+
+    记 $B_n = \{ X \leqslant -n \}$，则有 $B_n \supseteq B_{n+1}$，$\displaystyle\bigcap_{i=1}^{\infty} B_i = \text{\O}$.由海涅定理可得
+    $$
+    \lim_{x \to -\infty} F(x) = \lim_{n \to \infty} F(-n) = \lim_{n \to \infty} P(B_n) = P(\lim_{n \to \infty} B_n) = P(\bigcap_{i=1}^{\infty} B_i) = 0
+    $$
+\end{myproof}
+
+\begin{property}[（右连续性）]
+    $F(x)$ 处处右连续，即 $F(x^+)=F(x)$.
+\end{property}
+
+\begin{myproof}
+    因为 $F(x)$ 是单调不减有界函数，所以对任意实数 $x_0$，右极限 $F(x_0^+)$ 一定存在.记 $A_n = \{ X \leqslant x_0 + \dfrac{1}{n} \}$，则有 $A_n \supseteq A_{n+1}$，$\displaystyle\bigcap_{i=1}^{\infty} A_i = \{ X \leqslant x_0 \}$，由海涅定理得
+    $$
+    \begin{aligned}
+        \lim_{x \to x_0^+} F(x) &= \lim_{n \to \infty} F(x_0 + \dfrac{1}{n}) \\
+        &= \lim_{n \to \infty} P(A_n) \\
+        &= P(\lim_{n \to \infty} A_n) \\
+        &= P(\bigcap_{i=1}^{\infty} A_i) \\
+        &= P \{ X \leqslant x_0 \} \\
+        &= F(x_0)
+    \end{aligned}
+    $$
+\end{myproof}
+
+单调性、有界性、右连续性是分布函数的基本性质.分布函数一定具有这些基本性质，反过来，满足这些基本性质的函数一定是某个随机变量的分布函数.因此，这三条基本性质是判定某个函数能否成为分布函数的充分必要条件.
 
 \section{离散型随机变量及其概率分布}
 
