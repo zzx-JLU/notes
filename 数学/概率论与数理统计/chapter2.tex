@@ -201,10 +201,10 @@ $$
 
 据此，在计算连续型随机变量在某一区间取值的概率时，可以不区分该区间是开区间或闭区间或半开半闭区间，即有
 $$
-P\{x_1 < X < x_2\} = P\{x_1 \leqslant X \leqslant x_2\} = \int_{x_1}^{x_2} f(x)\,\text{d}x
+P\{x_1 < X < x_2\} = P\{x_1 \leqslant X \leqslant x_2\} = P\{x_1 < X \leqslant x_2\} = P\{x_1 \leqslant X < x_2\} = \int_{x_1}^{x_2} f(x)\,\text{d}x
 $$
 
-由上述结论可知，概率为 0 的事件未必是不可能事件.
+由上述结论可知，概率为 0 的事件未必是不可能事件，概率为 1 的事件也未必是必然事件.
 
 \section{常用的分布}
 
@@ -317,13 +317,14 @@ $$
         =\ & \dfrac{\lambda^k}{k!} \left[ 1 \times \left( 1-\dfrac{1}{n} \right) \left( 1-\dfrac{2}{n} \right) \cdots \left( 1-\dfrac{k-1}{n} \right) \right] \left( 1-\dfrac{\lambda}{n} \right)^n \left( 1-\dfrac{\lambda}{n} \right)^{-k}
     \end{aligned}
     $$
-
-    对于固定的 $k$，当 $n\to\infty$ 时，有
-    \begin{gather*}
-        1 \times \left( 1-\dfrac{1}{n} \right) \left( 1-\dfrac{2}{n} \right) \cdots \left( 1-\dfrac{k-1}{n} \right) \to 1 \\
-        \left( 1-\dfrac{\lambda}{n} \right)^n \to e^{-\lambda} \\
-        \left( 1-\dfrac{\lambda}{n} \right)^{-k}\to 1
-    \end{gather*}
+    对于固定的 $k$，有
+    $$
+    \begin{aligned}
+        & \lim_{n \to \infty} 1 \times \left( 1-\dfrac{1}{n} \right) \left( 1-\dfrac{2}{n} \right) \cdots \left( 1-\dfrac{k-1}{n} \right) \to 1 \\
+        & \lim_{n \to \infty} \left( 1-\dfrac{\lambda}{n} \right)^n \to e^{-\lambda} \\
+        & \lim_{n \to \infty} \left( 1-\dfrac{\lambda}{n} \right)^{-k}\to 1
+    \end{aligned}
+    $$
     所以
     $$
     \lim_{n\to\infty} C_n^k p_n^k (1-p_n)^{n-k} = \dfrac{\lambda^k e^{-\lambda}}{k!}

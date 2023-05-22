@@ -52,8 +52,8 @@
     $$
     \begin{aligned}
         E(X) &= \sum_{k=0}^n k C_n^k p^k (1-p)^{n-k} \\
-        &= \sum_{k=0}^n \dfrac{kn!}{k! (n-k)!} p^k (1-p)^{n-k} \\
-        &= \sum_{k=1}^n \dfrac{np(n-1)! \, p^{k-1} (1-p)^{(n-1)-(k-1)}}{(k-1)! \, [(n-1)-(k-1)]!} \\
+        &= \sum_{k=0}^n k \dfrac{n!}{k! (n-k)!} p^k (1-p)^{n-k} \\
+        &= \sum_{k=1}^n np \dfrac{(n-1)!}{(k-1)! \, [(n-1)-(k-1)]!} p^{k-1} (1-p)^{(n-1)-(k-1)} \\
         &= np[p+(1-p)]^{n-1} \\
         &= np
     \end{aligned}
