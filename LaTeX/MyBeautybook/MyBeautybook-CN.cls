@@ -38,7 +38,7 @@
 \usepackage{physics}
 \usepackage{amsmath}
 \usepackage{zhlipsum}
-\usepackage[left = 2cm, right = 2cm, top = .6cm, bottom = 2.2cm]{geometry}
+\usepackage[left = 2cm, right = 2cm, top = 1cm, bottom = 2.2cm]{geometry}
 \usepackage{xpatch} % 修正章节编号
 \usepackage[automark]{scrlayer-scrpage} % 页面设置宏包，隶属于 koma-script 文档类
 \usepackage{fontawesome5}
@@ -62,6 +62,9 @@
 \usepackage{extarrows}
 \usepackage{appendix} % 附录
 \usepackage{rotating}
+\usepackage{bm, color, framed, bookmark, subfigure, float, wrapfig}
+% \usepackage{extpfeil} % 额外的箭头类型
+\usepackage{diagbox} % 表格斜线
 
 \usepackage{tikz}
 \usetikzlibrary{calc, shadows, hobby, intersections, decorations.markings, decorations.pathreplacing, spy, arrows, shapes, fadings, trees, mindmap, patterns, shapes.arrows, shapes.symbols, tikzmark, shapes.geometric, graphs, quotes, angles, decorations.pathmorphing, through, shadings, backgrounds, positioning, fit, arrows.meta, shapes.misc, decorations.shapes}
@@ -124,7 +127,7 @@
 % 如果图片没有指定后缀, 依次按下列顺序搜索
 \DeclareGraphicsExtensions{.pdf,.eps,.jpg,.png}
 % 设置图表搜索路径, 可以给图表文件夹取如下名字
-\graphicspath{{figures/}{figure/}{pictures/}{picture/}{pic/}{pics/}{image/}{images/}}
+\graphicspath{{figures/}{figure/}{pictures/}{picture/}{pic/}{pics/}{image/}{images/}{Figures/}}
 
 % tcolorbox 中插入图片
 \newcommand\Figure[4]{
@@ -257,20 +260,21 @@
 % define a new mark for the chapter number
 \newmarks\chapternum
 \newmarks\secnum
-\renewcommand{\sectionmark}[1]{\markright{\thesection \quad #1}{}} % 偶数页页眉右侧显示二级标题
+\renewcommand{\chaptermark}[1]{\markboth{第\zhnumber{\arabic{chapter}}章 \quad #1}{}} % 左侧页页眉显示章节标题
+\renewcommand{\sectionmark}[1]{\markright{\thesection \quad #1}{}} % 右侧页页眉显示二级标题
 
 % 侧边栏页码
 \newcommand*\outermarginpagemark{
     \tikzoverlay{
         \begin{pgfonlayer}{top}
             \ifodd\value{page}
-                \coordinate (anchor of headmark) at ([shift={(-1.2\outermarginwidth, -0.2cm)}] current page.north east);
-                \node[below, text=outermarginfgcolor, font=\bfseries\fontsize{20}{20}\selectfont] at ([shift={(-.5\outermarginwidth, -0.2cm)}] current page.north east) {\thepage};
+                \coordinate (anchor of headmark) at ([shift={(-1.2\outermarginwidth, -0.8cm)}] current page.north east);
+                \node[below, text=outermarginfgcolor, font=\bfseries\fontsize{20}{20}\selectfont] at ([shift={(-.5\outermarginwidth, -0.8cm)}] current page.north east) {\thepage};
                 \node[below left, font=\upshape, text=outermarginfgcolor] at (anchor of headmark) {\begin{varwidth}{\linewidth}\rightmark\end{varwidth}};
             \else
-                \coordinate (anchor of headmark) at ([shift={(1.2\outermarginwidth, -0.2cm)}] current page.north west);
-                \node[below, text=outermarginfgcolor, font=\bfseries\fontsize{20}{20}\selectfont] at ([shift={(.5\outermarginwidth, -0.2cm)}]current page.north west) {\thepage};
-                \node[below right, font=\upshape, text=outermarginfgcolor] at (anchor of headmark) {\begin{varwidth}{\linewidth}\rightmark\end{varwidth}};
+                \coordinate (anchor of headmark) at ([shift={(1.2\outermarginwidth, -0.8cm)}] current page.north west);
+                \node[below, text=outermarginfgcolor, font=\bfseries\fontsize{20}{20}\selectfont] at ([shift={(.5\outermarginwidth, -0.8cm)}]current page.north west) {\thepage};
+                \node[below right, font=\upshape, text=outermarginfgcolor] at (anchor of headmark) {\begin{varwidth}{\linewidth}\leftmark\end{varwidth}};
             \fi
         \end{pgfonlayer}}
 }
@@ -934,3 +938,23 @@
 \newenvironment{eq}[1]{\begin{equation}\begin{aligned}#1}{\end{aligned}\end{equation}} % 有编号
 \newenvironment{eq*}[1]{\begin{equation*}\begin{aligned}#1}{\end{aligned}\end{equation*}} % 无编号
 \everymath{\displaystyle}
+
+% 列表环境的格式
+\setenumerate[1]{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt, left=2em}
+\setitemize[1]{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt, left=2em}
+\setdescription{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt}
+
+% tikz 图形样式定义
+\tikzset{
+    % 空心圆点
+    dot/.style = {
+        draw,
+        fill = white,
+        circle,
+        inner sep = 0pt,
+        minimum size = 4pt,
+    }
+}
+
+\captionsetup[table]{labelsep=quad} % 表格标题的分隔符
+\captionsetup[figure]{labelsep=quad} % 图片标题的分隔符
