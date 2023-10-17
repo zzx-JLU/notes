@@ -427,6 +427,8 @@ $$
     $$
     P(X > m+n \mid X>m) = \dfrac{P(X > m+n)}{P(X>m)} = \dfrac{(1-p)^{m+n}}{(1-p)^m} = (1-p)^n = P(X>n)
     $$
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{note}
@@ -488,9 +490,9 @@ $$
 均匀分布 $U(a,b)$ 的分布函数为
 $$
 F(x)=\begin{cases}
-    0 & x<a \\[0.5em]
-    \dfrac{x-a}{b-a} & a \leqslant x < b \\[0.5em]
-    1 & x \geqslant b
+    0, & x<a \\[0.5em]
+    \dfrac{x-a}{b-a}, & a \leqslant x < b \\[0.5em]
+    1, & x \geqslant b
 \end{cases}
 $$
 
@@ -561,8 +563,8 @@ $$
 指数分布 $Exp(\lambda)$ 的分布函数为
 $$
 F(x)=\begin{cases}
-    0 & x \leqslant 0 \\
-    1-e^{-\lambda x} & x>0
+    0, & x \leqslant 0 \\
+    1 - e^{-\lambda x}, & x>0
 \end{cases}
 $$
 
@@ -599,6 +601,7 @@ $$
         \end{tikzpicture}
     }
 
+    \vspace{-1em}
     \caption{指数分布}
 \end{figure}
 
@@ -618,6 +621,8 @@ $$
     $$
     P(X > s+t \mid X>s) = \dfrac{P(X > s+t)}{P(X>s)} = \dfrac{e^{-\lambda (s+t)}}{e^{-\lambda s}} = e^{-\lambda t} = P(X > t)
     $$
+
+    \vspace{-2em}
 \end{proof}
 
 定理 \ref{theorem:指数分布的无记忆性} 的含义为：记 $X$ 是某种产品的使用寿命，若 $X$ 服从指数分布，那么已知此产品使用了 $s$ 小时没发生故障，则能再使用 $t$ 小时而不发生故障的概率与已使用的 $s$ 小时无关，只相当于重新开始使用 $t$ 小时的概率.
@@ -1036,8 +1041,22 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 
     （2）% TODO
     $$
-    \Gamma(\dfrac{1}{2}) = \int_{0}^{+\infty} x^{-\frac{1}{2}} e^{-x} \text{d}x = \int_{0}^{+\infty} \dfrac{e^{-x}}{\sqrt{x}} \text{d}x
+    \left[ \Gamma(\dfrac{1}{2}) \right]^2 = \int_{0}^{+\infty} x^{-\frac{1}{2}} e^{-x} \text{d}x \int_{0}^{+\infty} y^{-\frac{1}{2}} e^{-y} \text{d}y = \int_{0}^{+\infty} 2 e^{-x} \text{d} \sqrt{x} \int_{0}^{+\infty} 2 e^{-y} \text{d} \sqrt{y} \\
     $$
+    令 $u = \sqrt{x}, v = \sqrt{y}$，则
+    $$
+    \left[ \Gamma(\dfrac{1}{2}) \right]^2 = \int_{0}^{+\infty} 2 e^{-u^2} \text{d}u \int_{0}^{+\infty} 2 e^{-v^2} \text{d}v = 4 \int_{0}^{+\infty} \int_{0}^{+\infty} e^{-(u^2 + v^2)} \text{d}u \text{d}v
+    $$
+    令 $u = t \cos\theta, v = t \sin\theta$，则
+    $$
+    \begin{aligned}
+        \left[ \Gamma(\dfrac{1}{2}) \right]^2 &= 4 \int_{0}^{\frac{\pi}{2}} \int_{0}^{+\infty} r e^{-r^2} \text{d}r \text{d} \theta \\
+        &= 4 \int_{0}^{\frac{\pi}{2}} \text{d} \theta \int_{0}^{+\infty} r e^{-r^2} \text{d}r \\
+        &= 4 \times \dfrac{\pi}{2} \int_{0}^{+\infty} \dfrac{1}{2} e^{-r^2} \text{d}r^2 \\
+        &= \pi
+    \end{aligned}
+    $$
+    因此 $\Gamma(\dfrac{1}{2}) = \sqrt{\pi}$.
 
     （3）
     $$
