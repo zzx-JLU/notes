@@ -181,7 +181,7 @@ $$
 \lim_{n \to \infty} P \{ |F_n(x) - F(x)| < \varepsilon \} = 1
 $$
 
-\begin{theorem}[（格利文科定理）]
+\begin{theorem}[][格利文科定理]
     当 $n \to \infty$ 时，样本分布函数 $F_n(x)$ 依概率1关于 $x$ 一致收敛于总体分布函数 $F(x)$，即
     $$
     P \{ \lim_{n \to \infty} \sup_{-\infty < x < +\infty} |F_n(x) - F(x)| = 0 \} = 1
@@ -277,7 +277,7 @@ $$
     $$
 \end{theorem}
 
-\begin{myproof}
+\begin{proof}
     由于 $X_1, X_2, \cdots, X_n$ 相互独立，$X_i \sim N(\mu, \sigma^2) \, (i=1,2,\cdots,n)$，因此 $\overline{X} = \dfrac{1}{n} \displaystyle\sum_{i=1}^n X_i$ 服从正态分布.而 $E(\overline{X}) = \mu$，$D(\overline{X}) = \dfrac{\sigma^2}{n}$，故
     $$
     \overline{X} \sim N(\mu, \dfrac{\sigma^2}{n})
@@ -286,7 +286,7 @@ $$
     $$
     u = \dfrac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)
     $$
-\end{myproof}
+\end{proof}
 
 \begin{theorem} \label{theorem:两个正太总体的样本均值}
     设 $X \sim N(\mu_1, \sigma_1^2)$，$Y \sim N(\mu_2, \sigma_2^2)$，分别独立地从总体 $X$ 和总体 $Y$ 中抽取样本 $X_1, X_2, \cdots, X_{n_1}$ 及 $Y_1, Y_2, \cdots, Y_{n_2}$，样本均值分别为 $\overline{X}$ 和 $\overline{Y}$，则随机变量
@@ -295,7 +295,7 @@ $$
     $$
 \end{theorem}
 
-\begin{myproof}
+\begin{proof}
     样本 $X_1, X_2, \cdots, X_{n_1}$ 和 $Y_1, Y_2, \cdots, Y_{n_2}$ 相互独立，也就是两个多维随机变量 $(X_1, X_2, \cdots, X_{n_1})$ 与 $(Y_1, Y_2, \cdots, Y_{n_2})$ 相互独立，因此 $\overline{X}$ 和 $\overline{Y}$ 相互独立，且
     $$
     \overline{X} \sim N(\mu_1, \dfrac{\sigma_1^2}{n_1}), \quad \overline{Y} \sim N(\mu_2, \dfrac{\sigma_2^2}{n_2})
@@ -308,7 +308,7 @@ $$
     $$
     u = \dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{\sqrt{\dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2}}} \sim N(0,1)
     $$
-\end{myproof}
+\end{proof}
 
 \section{来自正态总体的统计量及其分布}
 
@@ -330,13 +330,11 @@ f(x) = \begin{cases}
 \end{cases}
 $$
 
-\setcounter{propertyname}{0}
-
 \begin{property} \label{prop:卡方分布的数学期望和方差}
     若 $\chi^2 \sim \chi^2(n)$，则 $E(\chi^2) = n$，$D(\chi^2) = 2n$.
 \end{property}
 
-\begin{myproof}
+\begin{proof}
     $\chi^2 = \displaystyle\sum_{i=1}^n X_i^2$，其中 $X_i \sim N(0,1) \, (i=1,2,\cdots,n)$，$X_1, X_2, \cdots, X_n$ 相互独立，且 $E(X_i) = 0$，$D(X_i) = 1$，从而有
     $$
     E(X_i^2) = E([X_i - E(X_i)]^2) = D(X_i) = 1
@@ -357,9 +355,9 @@ $$
     $$
     D(\chi^2) = \sum_{i=1}^n D(X_i^2) = 2n
     $$
-\end{myproof}
+\end{proof}
 
-\begin{property}[（可加性）]
+\begin{property}[][可加性]
     设 $X \sim \chi^2(n_1)$，$Y \sim \chi^2(n_2)$，且 $X$ 与 $Y$ 相互独立，则 $X+Y \sim \chi^2(n_1 + n_2)$.
 \end{property}
 
@@ -387,7 +385,7 @@ $$
     $$
 \end{theorem}
 
-\begin{myproof}
+\begin{proof}
     随机变量 $X_1,X_2,\cdots,X_n$ 相互独立，且都与总体服从相同的分布 $N(\mu,\sigma^2)$，将 $X_i$ 标准化，得
     $$
     \dfrac{X_i - \mu}{\sigma} \sim N(0,1), \; i=1,2,\cdots,n
@@ -396,7 +394,7 @@ $$
     $$
     \chi^2 = \sum_{i=1}^n \left( \dfrac{X_i - \mu}{\sigma} \right)^2 = \dfrac{1}{\sigma^2} \sum_{i=1}^n (X_i - \mu)^2 \sim \chi^2(n)
     $$
-\end{myproof}
+\end{proof}
 
 \begin{theorem} \label{theorem:正态总体的样本均值与样本方差相互独立}
     设总体 $X$ 服从正态分布 $N(\mu,\sigma^2)$，从总体 $X$ 中抽取样本 $X_1,X_2,\cdots,X_n$，样本均值和样本方差分别为 $\overline{X}$ 和 $S^2$，则
@@ -409,7 +407,7 @@ $$
 
 \vspace{-1.8em}
 
-\begin{myproof}
+\begin{proof}
     设有 $n$ 维正交矩阵 $\boldsymbol{A}$，且其第一行元素均为 $\dfrac{1}{\sqrt{n}}$.记
     $$
     (Y_1, Y_2, \cdots, Y_n)^{\text{T}} = \boldsymbol{A} (X_1, X_2, \cdots, X_n)^{\text{T}}
@@ -475,7 +473,7 @@ $$
     $$
     \dfrac{(n-1) S^2}{\sigma^2} = \dfrac{1}{\sigma^2} \sum_{i=2}^n Y_i^2 \sim \chi^2(n-1)
     $$
-\end{myproof}
+\end{proof}
 
 \begin{theorem}
     设总体 $X \sim N(\mu,\sigma^2)$，从总体 $X$ 中抽取样本容量为 $n$ 的样本，其样本方差为 $S^2$，则
@@ -484,7 +482,7 @@ $$
     $$
 \end{theorem}
 
-\begin{myproof}
+\begin{proof}
     由定理 \ref{theorem:正态总体的样本均值与样本方差相互独立} 可知
     $$
     \dfrac{(n-1) S^2}{\sigma^2} \sim \chi^2(n-1)
@@ -501,7 +499,7 @@ $$
     $$
     D(S^2) = \dfrac{2 \sigma^4}{n-1}
     $$
-\end{myproof}
+\end{proof}
 
 \subsection{\texorpdfstring{$t$}{} 分布}
 
@@ -548,7 +546,7 @@ $$
     $$
 \end{theorem}
 
-\begin{myproof}
+\begin{proof}
     由定理 \ref{theorem:正态总体的样本均值服从正态分布} 可知
     $$
     u = \dfrac{\overline{X} - \mu}{\sigma} \sqrt{n} \sim N(0,1)
@@ -561,7 +559,7 @@ $$
     $$
     t = \dfrac{u}{\sqrt{\dfrac{\chi^2}{n-1}}} = \dfrac{\dfrac{\overline{X} - \mu}{\sigma} \sqrt{n}}{\sqrt{\dfrac{(n-1) S^2}{\sigma^2 (n-1)}}} = \dfrac{\overline{X} - \mu}{S} \sqrt{n} \sim t(n-1)
     $$
-\end{myproof}
+\end{proof}
 
 \begin{theorem}
     若从两个正态总体 $N(\mu_1, \sigma^2)$ 和 $N(\mu_2, \sigma^2)$ 中分别独立地抽取样本，样本容量依次为 $n_1$ 和 $n_2$，样本均值依次为 $\overline{X}$ 和 $\overline{Y}$，样本方差依次为 $S_1^2$ 和 $S_2^2$.记
@@ -574,7 +572,7 @@ $$
     $$
 \end{theorem}
 
-\begin{myproof}
+\begin{proof}
     根据定理 \ref{theorem:两个正太总体的样本均值} 可得
     $$
     u = \dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{\sigma \sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}} \sim N(0,1)
@@ -594,7 +592,7 @@ $$
     $$
     t = \dfrac{u}{\sqrt{\dfrac{\chi_1^2 + \chi_2^2}{n_1 + n_2 - 2}}} = \dfrac{\dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{\sigma \sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}}}{\sqrt{\dfrac{(n_1 - 1) S_1^2 + (n_2 - 1) S_2^2}{\sigma^2 (n_1 + n_2 - 2)}}} = \dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{S_W \sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}} \sim t(n_1 + n_2 - 2)
     $$
-\end{myproof}
+\end{proof}
 
 \begin{conclusion}
     设随机变量 $X$ 与 $Y$ 相互独立，且 $X \sim N(\mu, \sigma^2)$，$\dfrac{Y}{\sigma^2} \sim \chi^2(n)$，则
@@ -603,12 +601,12 @@ $$
     $$
 \end{conclusion}
 
-\begin{myproof}
+\begin{proof}
     由 $X \sim N(\mu, \sigma^2)$ 可得 $\dfrac{X - \mu}{\sigma} \sim N(0,1)$.根据定义 \ref{def:t分布} 可得
     $$
     t = \dfrac{\dfrac{X - \mu}{\sigma}}{\sqrt{\dfrac{Y}{n \sigma^2}}} = \dfrac{X - \mu}{\sqrt{Y / n}} \sim t(n)
     $$
-\end{myproof}
+\end{proof}
 
 \subsection{\texorpdfstring{$F$}{} 分布}
 
@@ -641,13 +639,11 @@ $$
     的点 $F_{\alpha}(n_1, n_2)$ 为 $F(n_1, n_2)$ 分布的\textbf{上} $\alpha$ \textbf{分位点（数）}.
 \end{definition}
 
-\setcounter{propertyname}{0}
-
 \begin{property}
     $F_{1 - \alpha}(n_1, n_2) = \dfrac{1}{F_{\alpha}(n_2, n_1)}$
 \end{property}
 
-\begin{myproof}
+\begin{proof}
     设 $F \sim F(n_1, n_2)$，则对于 $\alpha \, (0 < \alpha < 1)$，有
     $$
     \begin{aligned}
@@ -669,7 +665,7 @@ $$
     $$
     F_{1 - \alpha}(n_1, n_2) = \dfrac{1}{F_{\alpha}(n_2, n_1)}
     $$
-\end{myproof}
+\end{proof}
 
 \begin{theorem}
     设 $X_1, X_2, \cdots, X_{n_1}$ 是来自正态总体 $N(\mu_1, \sigma_1^2)$ 的样本，$Y_1, Y_2, \cdots, Y_{n_2}$ 是来自正态总体 $N(\mu_2, \sigma_2^2)$ 的样本，并且这两个样本相互独立，则随机变量
@@ -678,7 +674,7 @@ $$
     $$
 \end{theorem}
 
-\begin{myproof}
+\begin{proof}
     根据定理 \ref{theorem:来自正态总体的样本标准化后求和，服从卡方分布} 可得
     $$
     \begin{aligned}
@@ -690,7 +686,7 @@ $$
     $$
     F = \dfrac{\chi_1^2 / n_1}{\chi_2^2 / n_2} = \dfrac{n_2}{n_1} \cdot \dfrac{\sigma_2^2}{\sigma_1^2} \cdot \dfrac{\displaystyle\sum_{i=1}^{n_1} (X_i - \mu_1)^2}{\displaystyle\sum_{j=1}^{n_2} (Y_j - \mu_2)^2} \sim F(n_1, n_2)
     $$
-\end{myproof}
+\end{proof}
 
 \begin{theorem}
     若从两个正态总体 $N(\mu_1, \sigma^2)$ 和 $N(\mu_2, \sigma^2)$ 中分别独立地抽取样本，样本容量依次为 $n_1$ 和 $n_2$，样本均值依次为 $\overline{X}$ 和 $\overline{Y}$，样本方差依次为 $S_1^2$ 和 $S_2^2$，则随机变量
@@ -699,7 +695,7 @@ $$
     $$
 \end{theorem}
 
-\begin{myproof}
+\begin{proof}
     根据定理 \ref{theorem:正态总体的样本均值与样本方差相互独立} 可得
     $$
     \begin{aligned}
@@ -711,13 +707,13 @@ $$
     $$
     F = \dfrac{\chi_1^2 / (n_1 - 1)}{\chi_2^2 / (n_2 - 1)} = \dfrac{\sigma_2^2}{\sigma_1^2} \cdot \dfrac{S_1^2}{S_2^2} \sim F(n_1 - 1, n_2 - 1)
     $$
-\end{myproof}
+\end{proof}
 
 \begin{conclusion}
     若 $X \sim t(n)$，则 $X^2 \sim F(1,n)$.
 \end{conclusion}
 
-\begin{myproof}
+\begin{proof}
     根据定义 \ref{def:t分布}，若 $X \sim t(n)$，则存在 $Y \sim N(0,1)$，$Z \sim \chi^2(n)$，$Y$ 与 $Z$ 相互独立，且
     $$
     X = \dfrac{Y}{\sqrt{Z / n}}
@@ -727,4 +723,4 @@ $$
     X^2 = \dfrac{Y^2}{Z / n}
     $$
     根据定义 \ref{def:卡方分布} 可得 $Y^2 \sim \chi^2(1)$，则由定义 \ref{def:F分布} 可知 $X^2 \sim F(1,n)$.
-\end{myproof}
+\end{proof}

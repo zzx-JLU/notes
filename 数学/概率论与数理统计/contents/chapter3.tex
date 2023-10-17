@@ -41,8 +41,6 @@
 
 分布函数 $F(x,y)$ 具有如下性质：
 
-\setcounter{propertyname}{0}
-
 \begin{property}
     $0 \leqslant F(x,y) \leqslant 1$，且
     \begin{gather*}
@@ -206,8 +204,6 @@ $$
 
 概率密度 $f(x,y)$ 具有下列性质：
 
-\setcounter{propertyname}{0}
-
 \begin{property} \label{property: density-1}
     $f(x,y) \geqslant 0$
 \end{property}
@@ -274,7 +270,7 @@ $$
     \end{gather*}
 \end{conclusion}
 
-\begin{myproof}
+\begin{proof}
     $$
     \begin{aligned}
         & \frac{-1}{2(1-\rho^2)} \left[ \frac{(x-\mu_1)^2}{\sigma_1^2} - 2 \rho \frac{(x-\mu_1)(y-\mu_2)}{\sigma_1 \sigma_2} + \frac{(y-\mu_2)^2}{\sigma_2^2} \right] \\
@@ -314,7 +310,7 @@ $$
     $$
     f_{Y}(y) = \dfrac{1}{\sqrt{2\pi} \sigma_2} e^{-\frac{(y-\mu_2)^2}{2 \sigma_2^2}}
     $$
-\end{myproof}
+\end{proof}
 
 由此可知，若 $(X,Y) \sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘分布都是一维正态分布，且有 $X \sim N(\mu_1,\sigma_1^2)$，$Y \sim N(\mu_2,\sigma_2^2)$. $(X,Y)$ 的分布与参数 $\rho$ 有关，对于不同的 $\rho$，有不同的二维正态分布，但 $(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘分布都与 $\rho$ 无关.
 
@@ -324,7 +320,7 @@ $$
     设 $(X,Y) \sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $X$ 与 $Y$ 相互独立的充分必要条件是 $\rho=0$.
 \end{conclusion}
 
-\begin{myproof}
+\begin{proof}
     $$
     f_{X}(x) \, f_{Y}(y) = \dfrac{1}{2 \pi \sigma_1 \sigma_2} e^{-\frac{1}{2} \left[ \frac{(x-\mu_1)^2}{2 \sigma_1^2} + \frac{(y-\mu_2)^2}{2 \sigma_2^2} \right]}
     $$
@@ -340,7 +336,7 @@ $$
     \end{cases}
     $$
     从而 $\rho=0$. 必要性得证.
-\end{myproof}
+\end{proof}
 
 \section{条件分布}
 
@@ -398,7 +394,7 @@ $$
 
 \subsection{二维离散型随机变量的函数的分布}
 
-\begin{problem}
+\begin{example}
     设 $(X,Y)$ 的概率分布为
     \begin{table}[H]
         \centering
@@ -413,7 +409,7 @@ $$
         \end{tabular}
     \end{table}
     求 $X+Y$ 的概率分布.
-\end{problem}
+\end{example}
 
 \begin{solution}
     $X+Y$ 所有可能取的值为 $-1,1,2,3,4$，且
@@ -445,7 +441,7 @@ $$
     设随机变量 $X$ 和 $Y$ 相互独立，且 $X \sim P(\lambda_1)$，$Y \sim P(\lambda_2)$，则 $X+Y \sim P(\lambda_1 + \lambda_2)$.
 \end{conclusion}
 
-\begin{myproof}
+\begin{proof}
     因为 $X \sim P(\lambda_1)$，$Y \sim P(\lambda_2)$，所以
     \begin{gather*}
         P\{X=i\} = \dfrac{\lambda_1^i e^{-\lambda_1}}{i!},\ i=0,1,2,\cdots \\[0.5em]
@@ -464,11 +460,11 @@ $$
     \end{aligned}
     $$
     即 $X+Y \sim P(\lambda_1 + \lambda_2)$.
-\end{myproof}
+\end{proof}
 
 \subsection{二维连续型随机变量的函数的分布}
 
-\subsubsection{$Z=X+Y$ 的概率密度}
+\subsubsection{\texorpdfstring{$Z=X+Y$}{} 的概率密度}
 
 \begin{conclusion}
     设 $(X,Y)$ 为二维连续型随机变量，其概率密度为 $f(x,y)$，则 $Z=X+Y$ 的概率密度为
@@ -477,7 +473,7 @@ $$
     $$
 \end{conclusion}
 
-\begin{myproof}
+\begin{proof}
     首先求 $Z$ 的分布函数
     $$
     \begin{aligned}
@@ -506,7 +502,7 @@ $$
     $$
     f_{Z}(z) = \int_{-\infty}^{+\infty} f(z-y,y) \, \text{d}y
     $$
-\end{myproof}
+\end{proof}
 
 如果 $X$ 和 $Y$ 相互独立，设 $f_{X}(x)$ 和 $f_{Y}(y)$ 分别是二维随机变量 $(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘概率密度，则有
 \begin{gather*}
@@ -522,7 +518,7 @@ $$
     如果随机变量 $X$ 和 $Y$ 相互独立，并且 $X \sim N(\mu_1,\sigma_1^2)$，$Y \sim N(\mu_2,\sigma_2^2)$，则 $X+Y \sim N(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)$.
 \end{conclusion}
 
-\subsubsection{$M = \max(X,Y)$ 及 $N = \min(X,Y)$ 的分布函数}
+\subsubsection{\texorpdfstring{$M = \max(X,Y)$}{} 及 \texorpdfstring{$N = \min(X,Y)$}{} 的分布函数}
 
 设 $(X,Y)$ 为二维连续型随机变量，其概率密度为 $f(x,y)$. 随机变量 $X$ 和 $Y$ 相互独立，分布函数分别为 $F_{X}(x)$ 和 $F_{Y}(y)$，$M = \max(X,Y)$ 和 $N = \min(X,Y)$ 的分布函数分别为 $F_{\text{max}}(z)$ 和 $F_{\text{min}}(z)$.
 

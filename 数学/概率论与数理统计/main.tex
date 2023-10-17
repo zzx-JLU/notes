@@ -1,16 +1,30 @@
 % !TeX root = main.tex
 
-\input{preamble} % 引入导言
+\documentclass[zihao=-4, fontset=windows]{MyBeautybook-CN}
 
-\includeonly{introduction, chapter1, chapter2, chapter3, chapter4, chapter5, chapter6}
+\includeonly{contents/chapter1, contents/chapter2, contents/chapter3, contents/chapter4, contents/chapter5, contents/chapter6}
 
 % 文档开始
 \begin{document}
-    \include{introduction} % 引入前言
-    \include{chapter1}
-    \include{chapter2}
-    \include{chapter3}
-    \include{chapter4}
-    \include{chapter5}
-    \include{chapter6}
+    \title{\Huge{\textbf{概率论与数理统计}}} % 标题
+    \author{赵子轩} % 作者
+    \date{\today} % 日期
+    \linespread{1.5}
+    \maketitle
+    \thispagestyle{empty}
+
+    \frontmatter
+    \pagenumbering{Roman}
+    \tableofcontents
+    \newpage
+    \thispagestyle{empty}
+
+    \mainmatter
+
+    \include{contents/chapter1}
+    \include{contents/chapter2}
+    \include{contents/chapter3}
+    \include{contents/chapter4}
+    % \include{contents/chapter5}
+    % \include{contents/chapter6}
 \end{document}
