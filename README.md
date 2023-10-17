@@ -1,2 +1,3 @@
 # notes
-markdown notes
+
+self-study notes
