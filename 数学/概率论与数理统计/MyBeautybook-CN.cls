@@ -30,7 +30,6 @@
     anchorcolor = red,
     urlcolor = blue, % 超链接颜色为蓝色
     citecolor = blue, % 引用颜色为黑色
-    bookmarksopen = true, % 展开书签
     bookmarksnumbered = true, % 书签带章节编号
 ]{hyperref}
 \usepackage{dashrule}
@@ -39,7 +38,7 @@
 \usepackage{physics}
 \usepackage{amsmath}
 \usepackage{zhlipsum}
-\usepackage[a4paper, left = 2cm, right = 2cm, top = 1cm, bottom = 2.2cm]{geometry}
+\usepackage[a4paper, left = 1.75cm, right = 1.75cm, top = 1cm, bottom = 2.2cm]{geometry}
 \usepackage{xpatch} % 修正章节编号
 \usepackage[automark]{scrlayer-scrpage} % 页面设置宏包，隶属于 koma-script 文档类
 \usepackage{fontawesome5}
