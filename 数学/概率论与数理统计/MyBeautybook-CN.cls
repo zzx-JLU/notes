@@ -929,5 +929,31 @@
     }
 }
 
+\pgfplotsset{
+    plane cs/.style = {
+        axis lines = center,
+        xlabel=$x$, ylabel=$y$,
+        every axis x label/.style = {
+            at = {(xticklabel* cs:1)},
+            anchor = north
+        },
+        every axis y label/.style = {
+            at = {(yticklabel* cs:1)},
+            anchor = east
+        },
+        no markers,
+        every axis plot/.append style = {line width=1.5pt},
+        tick align = inside,
+        extra x ticks = {0},
+        extra x tick labels = {$O$},
+        extra x tick style = {
+            tick label style = {anchor=north east}
+        },
+        legend style = {
+            cells = {anchor=west}
+        }
+    }
+}
+
 \captionsetup[table]{labelsep=quad} % 表格标题的分隔符
 \captionsetup[figure]{labelsep=quad} % 图片标题的分隔符
