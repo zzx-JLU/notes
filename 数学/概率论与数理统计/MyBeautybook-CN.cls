@@ -930,7 +930,7 @@
 }
 
 \pgfplotsset{
-    plane cs/.style = {
+    2d plot axis/.style = {
         axis lines = center,
         xlabel=$x$, ylabel=$y$,
         every axis x label/.style = {

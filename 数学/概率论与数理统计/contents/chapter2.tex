@@ -1050,11 +1050,32 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 
 \begin{definition}
     \indent 函数
-    \begin{equation}
+    \begin{equation} \label{equation:gamma}
         \Gamma(\alpha) = \int_{0}^{+\infty} x^{\alpha - 1} e^{-x} \text{d}x
     \end{equation}
-    称为{\heiti 伽马函数}，其中 $\alpha > 0$.
+    称为{\heiti 伽马函数}，也叫{\heiti 欧拉第二积分}，其中 $\alpha > 0$.
 \end{definition}
+
+\begin{figure}[htbp]
+    \centering
+
+    \begin{tikzpicture}
+        \centering
+
+        \begin{axis}[
+            2d plot axis,
+            xmin=-5.8, xmax=4.8,
+            ymin=-12, ymax=12,
+            minor x tick num = 1
+        ]
+            \addplot[smooth, black] table [header=false] {./data/gamma.dat};
+        \end{axis}
+    \end{tikzpicture}
+
+    \caption{伽马函数}
+\end{figure}
+
+% TODO
 
 \begin{property}[][伽马函数的性质]
     \begin{enumerate}
@@ -1114,6 +1135,16 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
     \vspace{-1.5em}
 \end{proof}
 
+将式 \eqref{equation:gamma} 变形可得
+$$
+\int_{0}^{+\infty} \dfrac{x^{\alpha - 1} e^{-x}}{\Gamma(\alpha)} \text{d}x = 1
+$$
+令 $x = \lambda t$，得
+$$
+\int_{0}^{+\infty} \dfrac{(\lambda t)^{\alpha - 1} e^{-\lambda t}}{\Gamma(\alpha)} \text{d}(\lambda t) = \int_{0}^{+\infty} \dfrac{\lambda^{\alpha}}{\Gamma(\alpha)} t^{\alpha - 1}  e^{-\lambda t} \text{d}t = 1
+$$
+这样就得到了伽马分布的定义.
+
 \begin{definition}
     \indent 若随机变量 $X$ 的概率密度为
     $$
@@ -1132,7 +1163,7 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
         \centering
 
         \begin{axis}[
-            plane cs,
+            2d plot axis,
             xmin=0, xmax=2.8,
             ymin=0, ymax=2.8
         ]
@@ -1146,7 +1177,7 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
         \centering
 
         \begin{axis}[
-            plane cs,
+            2d plot axis,
             xmin=0, xmax=3.3,
             ymin=0, ymax=3.3
         ]
@@ -1160,7 +1191,7 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
         \centering
 
         \begin{axis}[
-            plane cs,
+            2d plot axis,
             xmin=0, xmax=15.5,
             ymin=0, ymax=0.55
         ]
@@ -1174,7 +1205,7 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
         \centering
 
         \begin{axis}[
-            plane cs,
+            2d plot axis,
             xmin=0, xmax=17.3,
             ymin=0, ymax=0.45
         ]
