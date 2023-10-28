@@ -467,6 +467,23 @@ $$
 \end{proof}
 
 \begin{conclusion}
+    \indent 若随机变量 $X \sim Ga(\alpha,\lambda)$，则 $E(X) = \dfrac{\alpha}{\lambda}$.
+\end{conclusion}
+
+\begin{proof}
+    $$
+    \begin{aligned}
+        E(X) &= \int_{-\infty}^{+\infty} x f(x) \, \text{d}x \\
+        &= \int_{0}^{+\infty} \dfrac{\lambda^\alpha}{\Gamma(\alpha)} x^\alpha e^{-\lambda x} \text{d}x \\
+        &= \dfrac{1}{\Gamma(\alpha)} \dfrac{1}{\lambda} \int_{0}^{+\infty} (\lambda x)^\alpha e^{-\lambda x} \text{d}(\lambda x) \\
+        &= \dfrac{\Gamma(\alpha + 1)}{\Gamma(\alpha)} \dfrac{1}{\lambda} \\
+        &= \dfrac{\alpha \Gamma(\alpha)}{\Gamma(\alpha)} \dfrac{1}{\lambda} \\
+        &= \dfrac{\alpha}{\lambda}
+    \end{aligned}
+    $$
+\end{proof}
+
+\begin{conclusion}
     \indent 柯西分布的数学期望不存在.
 \end{conclusion}
 
@@ -984,6 +1001,27 @@ $$
         &= \dfrac{\sigma^2}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} e^{-\frac{t^2}{2}} \text{d}t \\
         &= \sigma^2
     \end{aligned}
+    $$
+\end{proof}
+
+\begin{conclusion}
+    \indent 若随机变量 $X \sim Ga(\alpha,\lambda)$，则 $D(X) = \dfrac{\alpha}{\lambda^2}$.
+\end{conclusion}
+
+\begin{proof}
+    $$
+    \begin{aligned}
+        E(X^2) &= \int_{-\infty}^{+\infty} x^2 f(x) \, \mathrm{d}x \\
+        &= \int_{0}^{+\infty} \dfrac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha + 1} e^{-\lambda x} \mathrm{d}x \\
+        &= \dfrac{1}{\Gamma(\alpha)} \dfrac{1}{\lambda^2} \int_{0}^{+\infty} (\lambda x)^{\alpha + 1} e^{-\lambda x} \mathrm{d}(\lambda x) \\
+        &= \dfrac{\Gamma(\alpha + 2)}{\Gamma(\alpha)} \dfrac{1}{\lambda^2} \\
+        &= \dfrac{\alpha (\alpha + 1) \Gamma(\alpha)}{\Gamma(\alpha)} \dfrac{1}{\lambda^2} \\
+        &= \dfrac{\alpha (\alpha + 1)}{\lambda^2}
+    \end{aligned}
+    $$
+    由于 $E(X) = \dfrac{\alpha}{\lambda}$，因此
+    $$
+    D(X) = E(X^2) - [E(X)]^2 = \dfrac{\alpha (\alpha + 1)}{\lambda^2} - \dfrac{\alpha^2}{\lambda^2} = \dfrac{\alpha}{\lambda^2}
     $$
 \end{proof}
 

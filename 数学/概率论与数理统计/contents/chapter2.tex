@@ -1073,9 +1073,10 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
     \end{tikzpicture}
 
     \caption{伽马函数}
+    \label{fig:伽马函数}
 \end{figure}
 
-% TODO
+从图 \ref{fig:伽马函数} 可知，伽马函数在 $x>0$ 时是连续的，$0$ 及所有负整数点都是奇点.
 
 \begin{property}[][伽马函数的性质]
     \begin{enumerate}
@@ -1089,11 +1090,7 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 \begin{proof}
     （1）
     $$
-    \begin{aligned}
-        \Gamma(1) &= \int_{0}^{+\infty} e^{-x} \text{d}x \\
-        &= -e^{-x} \Big|_0^{+\infty} \\
-        &= 1
-    \end{aligned}
+    \Gamma(1) = \int_{0}^{+\infty} e^{-x} \text{d}x = -e^{-x} \Big|_0^{+\infty} = 1
     $$
 
     （2）
@@ -1116,10 +1113,13 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
         \left[ \Gamma(\dfrac{1}{2}) \right]^2 &= 4 \int_{0}^{\frac{\pi}{2}} \int_{0}^{+\infty} r e^{-r^2} \text{d}r \text{d} \theta \\
         &= 4 \int_{0}^{\frac{\pi}{2}} \text{d} \theta \int_{0}^{+\infty} r e^{-r^2} \text{d}r \\
         &= 4 \times \dfrac{\pi}{2} \int_{0}^{+\infty} \dfrac{1}{2} e^{-r^2} \text{d}r^2 \\
+        &= \pi \int_{0}^{+\infty} e^{-r^2} \text{d}r^2 \\
         &= \pi
     \end{aligned}
     $$
     因此 $\Gamma(\dfrac{1}{2}) = \sqrt{\pi}$.
+
+    \vspace{0.5em}
 
     （3）
     $$
@@ -1134,6 +1134,10 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 
     \vspace{-1.5em}
 \end{proof}
+
+\begin{note}
+    \indent 由上述性质可知，伽马函数是阶乘运算在实数上的扩展.
+\end{note}
 
 将式 \eqref{equation:gamma} 变形可得
 $$
@@ -1244,7 +1248,100 @@ $$
     $$
     F(t) = P(S_n \leqslant t) = P(N(t) \geqslant n) = \sum_{k=n}^{\infty} \dfrac{(\lambda t)^k e^{-\lambda t}}{k!}
     $$
-    %TODO
+    由泊松分布的定义可得
+    $$
+    \sum_{k=0}^{\infty} \dfrac{(\lambda t)^k e^{-\lambda t}}{k!} = 1
+    $$
+    因此
+    $$
+    F(t) = 1 - \sum_{k=0}^{n-1} \dfrac{(\lambda t)^k e^{-\lambda t}}{k!}
+    $$
+
+    考虑下列积分
+    $$
+    \int_{t}^{+\infty} \dfrac{\lambda^n}{\Gamma(n)} x^{n-1} e^{-\lambda x} \text{d}x = \dfrac{1}{\Gamma(n)} \int_{t}^{+\infty} (\lambda x)^{n-1} e^{-\lambda x} \text{d}(\lambda x)
+    $$
+    令 $\lambda x = u$，则
+    $$
+    \begin{aligned}
+        \int_{t}^{+\infty} \dfrac{\lambda^n}{\Gamma(n)} x^{n-1} e^{-\lambda x} \text{d}x &= \dfrac{1}{\Gamma(n)} \int_{\lambda t}^{+\infty} u^{n-1} e^{-u} \text{d}u \\
+        &= \dfrac{1}{\Gamma(n)} \int_{\lambda t}^{+\infty} -u^{n-1} \text{d}(e^{-u}) \\
+        &= -\dfrac{1}{\Gamma(n)} \left( u^{n-1} e^{-u} \Big|_{\lambda t}^{+\infty} - \int_{\lambda t}^{+\infty} e^{-u} \text{d} u^{n-1} \right) \\
+        &= \dfrac{1}{\Gamma(n)} \int_{\lambda t}^{+\infty} (n-1) u^{n-2} e^{-u} \text{d}u + \dfrac{(\lambda t)^{n-1} e^{-\lambda t}}{\Gamma(n)} \\
+        &= \dfrac{n-1}{(n-1) \Gamma(n-1)} \int_{\lambda t}^{+\infty} -u^{n-2} \text{d} e^{-u} + \dfrac{(\lambda t)^{n-1}}{\Gamma(n)} e^{-\lambda t} \\
+        &= -\dfrac{1}{\Gamma(n-1)} \left( u^{n-2} e^{-u} \Big|_{\lambda t}^{+\infty} - \int_{\lambda t}^{+\infty} e^{-u} \text{d} u^{n-2} \right) + \dfrac{(\lambda t)^{n-1}}{\Gamma(n)} e^{-\lambda t} \\
+        &= \dfrac{n-2}{\Gamma(n-1)} \int_{\lambda t}^{+\infty} u^{n-3} e^{-u} \text{d}u + \dfrac{(\lambda t)^{n-1}}{\Gamma(n)} e^{-\lambda t} + \dfrac{(\lambda t)^{n-2}}{\Gamma(n-1)} e^{-\lambda t} \\
+        &= \dfrac{1}{\Gamma(n-2)} \int_{\lambda t}^{+\infty} u^{n-3} e^{-u} \text{d}u + \dfrac{(\lambda t)^{n-1}}{\Gamma(n)} e^{-\lambda t} + \dfrac{(\lambda t)^{n-2}}{\Gamma(n-1)} e^{-\lambda t} \\
+        &= \cdots \\
+        &= \dfrac{1}{\Gamma(1)} \int_{\lambda t}^{+\infty} e^{-u} \text{d}u + \sum_{k=1}^{n-1} \dfrac{(\lambda t)^{k}}{\Gamma(k+1)} e^{-\lambda t} \\
+        &= e^{-\lambda t} + \sum_{k=1}^{n-1} \dfrac{(\lambda t)^{k}}{k!} e^{-\lambda t} \\
+        &= \sum_{k=0}^{n-1} \dfrac{(\lambda t)^{k}}{k!} e^{-\lambda t}
+    \end{aligned}
+    $$
+    即
+    $$
+    \sum_{k=0}^{n-1} \dfrac{(\lambda t)^{k}}{k!} e^{-\lambda t} = \int_{t}^{+\infty} \dfrac{\lambda^n}{\Gamma(n)} x^{n-1} e^{-\lambda x} \text{d}x
+    $$
+    因此
+    $$
+    F(t) = 1 - \int_{t}^{+\infty} \dfrac{\lambda^n}{\Gamma(n)} x^{n-1} e^{-\lambda x} \text{d}x
+    $$
+    由伽马分布的定义可知
+    $$
+    \int_{0}^{+\infty} \dfrac{\lambda^n}{\Gamma(n)} x^{n-1} e^{-\lambda x} \text{d}x = 1
+    $$
+    所以
+    $$
+    F(t) = \int_{0}^{t} \dfrac{\lambda^n}{\Gamma(n)} x^{n-1} e^{-\lambda x} \text{d}x
+    $$
+    $S_n$ 的分布函数与伽马分布 $Ga(n,\lambda)$ 的分布函数相同，因此 $S_n \sim Ga(n,\lambda)$.
+\end{proof}
+
+\subsection{贝塔分布}
+
+\begin{definition}
+    \indent 函数
+    \begin{equation}
+        B(a,b) = \int_{0}^{1} x^{a-1} (1-x)^{b-1} \mathrm{d}x
+    \end{equation}
+    称为{\heiti 贝塔函数}，其中 $a>0, b>0$.
+\end{definition}
+
+\begin{property}
+    \begin{equation}
+        B(a,b) = B(b,a)
+    \end{equation}
+\end{property}
+
+\begin{proof}
+    令 $y = 1-x$，得
+    $$
+    B(a,b) = \int_{1}^{0} (1-y)^{a-1} y^{b-1} \mathrm{d}(1-y) = \int_{0}^{1} (1-y)^{a-1} y^{b-1} \mathrm{d}y = B(b,a)
+    $$
+\end{proof}
+
+\begin{property}
+    \begin{equation}
+        B(a,b) = \dfrac{\Gamma(a) \, \Gamma(b)}{\Gamma(a+b)}
+    \end{equation}
+\end{property}
+
+\begin{proof}
+    $$
+    \Gamma(a) \, \Gamma(b) = \int_{0}^{+\infty} \int_{0}^{+\infty} x^{a-1} y^{b-1} e^{-(x+y)} \mathrm{d}x \mathrm{d}y
+    $$
+    令 $x = uv$，$y = u(1-v)$，其雅可比行列式 $J = -u$，则
+    $$
+    \begin{aligned}
+        \Gamma(a) \, \Gamma(b) &= \int_{0}^{1} \int_{0}^{+\infty} (uv)^{a-1} [u(1-v)]^{b-1} e^{-u} u \, \mathrm{d}u \mathrm{d}v \\
+        &= \int_{0}^{+\infty} u^{a+b-1} e^{-u} \mathrm{d}u \int_{0}^{1} v^{a-1} (1-v)^{b-1} \mathrm{d}v \\
+        &= \Gamma(a+b) \, B(a,b)
+    \end{aligned}
+    $$
+    整理得
+    $$
+    B(a,b) = \dfrac{\Gamma(a) \, \Gamma(b)}{\Gamma(a+b)}
+    $$
 \end{proof}
 
 % \section{随机变量的函数的分布}
