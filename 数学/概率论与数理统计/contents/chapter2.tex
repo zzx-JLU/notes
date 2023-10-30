@@ -271,7 +271,7 @@ $$
 
 \section{常用的概率分布}
 
-\subsection{(0-1)分布}
+\subsection{0-1分布}
 
 \begin{definition}
     \indent 如果离散型随机变量 $X$ 只取 $0$ 与 $1$ 两个值，其概率分布为
@@ -282,7 +282,7 @@ $$
     $$
     P(X=k)=p^k (1-p)^{1-k}, \; k=0,1, \; 0<p<1
     $$
-    则称随机变量 $X$ 服从参数为 $p$ 的{\heiti (0-1)分布}或{\heiti 两点分布}（two-point distribution）.
+    则称随机变量 $X$ 服从参数为 $p$ 的{\heiti 0-1分布}或{\heiti 两点分布}（two-point distribution）.
 \end{definition}
 
 服从两点分布的随机变量 $X$ 的概率分布也可以写成
@@ -323,13 +323,13 @@ $$
 $$
 P(X=k) = p^k (1-p)^{1-k}, \; k=0,1
 $$
-这就是(0-1)分布. 因此，(0-1)分布是二项分布的特例.
+这就是0-1分布. 因此，0-1分布是二项分布的特例.
 
-在 $n$ 重伯努利试验中，设第 $i$ 次试验中 $A$ 出现的次数为 $X_i$，则 $X_i$ 服从(0-1)分布.由于 $n$ 次试验相互独立，所以产生的 $n$ 个随机变量 $X_1, X_2, \cdots, X_n$ 也相互独立，将它们加起来，得到新的随机变量
+在 $n$ 重伯努利试验中，设第 $i$ 次试验中 $A$ 出现的次数为 $X_i$，则 $X_i$ 服从0-1分布.由于 $n$ 次试验相互独立，所以产生的 $n$ 个随机变量 $X_1, X_2, \cdots, X_n$ 也相互独立，将它们加起来，得到新的随机变量
 $$
 X = X_1 + X_2 + \cdots + X_n
 $$
-$X$ 就是 $n$ 重伯努利试验中 $A$ 出现的总次数，它服从二项分布 $B(n,p)$.因此，服从二项分布的随机变量总可以分解成 $n$ 个相互独立且同为(0-1)分布的随机变量之和.
+$X$ 就是 $n$ 重伯努利试验中 $A$ 出现的总次数，它服从二项分布 $B(n,p)$.因此，服从二项分布的随机变量总可以分解成 $n$ 个相互独立且同为0-1分布的随机变量之和.
 
 \subsection{泊松分布}
 
@@ -1304,7 +1304,7 @@ $$
     \begin{equation}
         B(a,b) = \int_{0}^{1} x^{a-1} (1-x)^{b-1} \mathrm{d}x
     \end{equation}
-    称为{\heiti 贝塔函数}，其中 $a>0, b>0$.
+    称为{\heiti 贝塔函数}，也叫{\heiti 欧拉第一积分}，其中 $a>0, b>0$.
 \end{definition}
 
 \begin{property}
@@ -1343,6 +1343,54 @@ $$
     B(a,b) = \dfrac{\Gamma(a) \, \Gamma(b)}{\Gamma(a+b)}
     $$
 \end{proof}
+
+\begin{definition}
+    \indent 若随机变量 $X$ 的概率密度为
+    \begin{equation}
+        f(x) = \begin{cases}
+            \dfrac{\Gamma(a+b)}{\Gamma(a) \, \Gamma(b)} x^{a-1} (1-x)^{b-1}, & 0<x<1 \\[0.5em]
+            0, & \text{其他}
+        \end{cases}
+    \end{equation}
+    则称 $X$ 服从{\heiti 贝塔分布}，记作 $X \sim Be(a,b)$，其中 $a>0, b>0$，$a,b$ 称为形状参数.
+\end{definition}
+
+\begin{figure}[htbp]
+    \centering
+
+    \begin{tikzpicture}
+        \centering
+
+        \begin{axis}[
+            2d plot axis,
+            xmin=0, xmax=1.1,
+            ymin=0, ymax=2.8,
+            every axis legend/.append style = {
+                at = {(1,1)},
+                anchor = north west
+            }
+        ]
+            \addplot[smooth, black] table [header=false] {./data/beta(0.2,0.3).dat};
+            \addplot[smooth, blue] table [header=false] {./data/beta(2,3).dat};
+            \addplot[smooth, red] table [header=false] {./data/beta(0.2,1.5).dat};
+            \addplot[smooth, green] table [header=false] {./data/beta(2,0.3).dat};
+            \addplot[orange] coordinates {(0,1) (1,1)};
+            \legend{{$a<1,b<1$}, {$a>1,b>1$}, {$a<1,b \geqslant 1$}, {$a \geqslant 1,b < 1$}, {$a = 1,b = 1$}}
+        \end{axis}
+    \end{tikzpicture}
+
+    \caption{贝塔分布}
+    \label{fig:贝塔分布}
+\end{figure}
+
+从图 \ref{fig:贝塔分布} 可以看出：
+\begin{itemize}
+    \item 当 $a<1, b<1$ 时，贝塔分布的概率密度是下凸的 U 形函数.
+    \item 当 $a>1, b>1$ 时，贝塔分布的概率密度是上凸的单峰函数.
+    \item 当 $a<1, b \geqslant 1$ 时，贝塔分布的概率密度是下凸的单调递减函数.
+    \item 当 $a \geqslant 1, b<1$ 时，贝塔分布的概率密度是下凸的单调递增函数.
+    \item 当 $a=1, b=1$ 时，贝塔分布退化为均匀分布 $U(0,1)$.
+\end{itemize}
 
 % \section{随机变量的函数的分布}
 

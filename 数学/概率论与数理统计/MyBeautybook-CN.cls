@@ -160,9 +160,8 @@
 % 目录页的页码设置
 \titleformat{name=\chapter, numberless}{\bfseries\huge\filcenter}{#1}{0em}{
     \makebox[0pt][l]{
-        \def\rad{7pt}
         \begin{tikzpicture}[remember picture, overlay]
-            \node[above, font=\normalfont\fontsize{15}{15}\selectfont, text=black] (pagenumber) at ([shift={(0mm,5mm)}] current page.south) {\thepage};
+            \node[above, font=\normalfont\fontsize{15}{15}\selectfont, text=black] (pagenumber) at ([shift={(0mm,3mm)}] current page.south) {\thepage};
         \end{tikzpicture}
     }
 }
@@ -898,19 +897,6 @@
 \indexsetup{level = \chapter*, noclearpage}
 \makeindex[title = 索引, columns = 3, columnsep = 15pt, columnseprule]
 \makeindex
-
-% 自定义命令
-\newcommand{\Diff}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\Dif}[2]{\frac{\dd #1}{\dd #2}}
-\newcommand{\pr}{^\prime}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\F}{\mathcal{F}}
-\newcommand{\lan}[1]{\langle #1 \rangle}
-
-% 自定义公式环境
-\newenvironment{eq}[1]{\begin{equation}\begin{aligned}#1}{\end{aligned}\end{equation}} % 有编号
-\newenvironment{eq*}[1]{\begin{equation*}\begin{aligned}#1}{\end{aligned}\end{equation*}} % 无编号
-\everymath{\displaystyle}
 
 % 列表环境的格式
 \setenumerate[1]{itemsep=0pt, partopsep=0pt, parsep=\parskip, topsep=0pt, left=2em}
