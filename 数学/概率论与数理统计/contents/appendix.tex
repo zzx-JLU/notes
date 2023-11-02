@@ -1,7 +1,27 @@
 \appendix
-\chapter{附录}
+\renewcommand{\appendixname}{}
 
-\subsection{常见的概率分布}
+% 附录标题设置
+\titleformat{\chapter}{\huge\bfseries\filcenter}{#1}{0em}{
+    \makebox[0pt][l]{
+        \def\rad{7pt}
+        \begin{tikzpicture}[remember picture, overlay]
+            \ifodd\value{page}
+                \node[above left, font=\normalfont\fontsize{15}{15}\selectfont, circle, fill=outermarginfgcolor, text=white, inner sep=1mm] (pagenumber) at ([shift={(-5mm,5mm)}] current page.south east) {\thepage};
+            \else
+                \node[above right, font=\normalfont\fontsize{15}{15}\selectfont, circle, fill=outermarginfgcolor, text=white, inner sep=1mm] (pagenumber) at ([shift={(5mm,5mm)}] current page.south west) {\thepage};
+            \fi
+        \end{tikzpicture}
+    }
+}
+
+\titleformat{\section}{\large\bfseries}{\thesection \quad #1}{0em}{}
+
+\chapter*{附录}
+\addcontentsline{toc}{chapter}{附录}
+\setcounter{chapter}{1}
+
+\section{常见的概率分布}
 
 \begin{table}[htbp]
     \centering
@@ -10,22 +30,22 @@
         \hline
         \textbf{分布} & \textbf{符号} & \textbf{概率分布/概率密度} & \textbf{数学期望} & \textbf{方差} \\
         \hline
-        0-1分布 & $B(1,p)$ & $P\{X=k\}=p^k (1-p)^{1-k}, \; k=0,1, \; 0<p<1$ & $p$ & $p(1-p)$ \\
+        0-1分布 & $B(1,p)$ & $P(X=k)=p^k (1-p)^{1-k}, \; k=0,1, \; 0<p<1$ & $p$ & $p(1-p)$ \\
         \hline
-        二项分布 & $B(n,p)$ & $P\{X=k\}=C_n^k p^k (1-p)^{n-k}, \; k=0,1,\cdots,n$ & $np$ & $np(1-p)$ \\
+        二项分布 & $B(n,p)$ & $P(X=k)=C_n^k p^k (1-p)^{n-k}, \; k=0,1,\cdots,n$ & $np$ & $np(1-p)$ \\
         \hline
-        \rule{0pt}{24pt}泊松分布 & $P(\lambda)$ & $P\{X=k\} = \dfrac{\lambda^k e^{-\lambda}}{k!}, \; k=0,1,2\cdots$ & $\lambda$ & $\lambda$ \\[8pt]
+        \rule{0pt}{24pt}泊松分布 & $P(\lambda)$ & $P(X=k) = \dfrac{\lambda^k e^{-\lambda}}{k!}, \; k=0,1,2\cdots$ & $\lambda$ & $\lambda$ \\[8pt]
         \hline
-        \rule{0pt}{24pt}几何分布 & - & $P\{X=k\}=(1-p)^{k-1} p, \; k=1,2,\cdots$ & $\dfrac{1}{p}$ & $\dfrac{1-p}{p^2}$ \\[8pt]
+        \rule{0pt}{24pt}几何分布 & $Ge(p)$ & $P(X=k)=(1-p)^{k-1} p, \; k=1,2,\cdots$ & $\dfrac{1}{p}$ & $\dfrac{1-p}{p^2}$ \\[8pt]
         \hline
         \rule{0pt}{36pt}均匀分布 & $U(a,b)$ & $f(x)=\begin{cases}
-            \dfrac{1}{b-a} & a<x<b \\[0.5em]
-            0 & \text{其他}
+            \dfrac{1}{b-a}, & a<x<b \\[0.5em]
+            0, & \text{其他}
         \end{cases}$ & $\dfrac{a+b}{2}$ & $\dfrac{(b-a)^2}{12}$ \\[8pt]
         \hline
-        \rule{0pt}{35pt}指数分布 & - & $f(x)=\begin{cases}
-            \lambda e^{-\lambda x} & x>0 \\
-            0 & x \leqslant 0
+        \rule{0pt}{35pt}指数分布 & $Exp(\lambda)$ & $f(x)=\begin{cases}
+            \lambda e^{-\lambda x}, & x>0 \\
+            0, & x \leqslant 0
         \end{cases}$ & $\dfrac{1}{\lambda}$ & $\dfrac{1}{\lambda^2}$ \\[8pt]
         \hline
         \rule{0pt}{24pt}正态分布 & $N(\mu, \sigma^2)$ & $f(x) = \dfrac{1}{\sqrt{2\pi} \sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \; -\infty < x < +\infty$ & $\mu$ & $\sigma^2$ \\[8pt]

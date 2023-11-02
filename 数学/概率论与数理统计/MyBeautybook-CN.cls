@@ -86,8 +86,8 @@
 
 \setmainfont{XITS}
 
-\setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{3} % 增加编号深度
+\setcounter{tocdepth}{2} % 目录深度
+\setcounter{secnumdepth}{3} % 编号深度
 
 \setlist{nosep, font=\upshape} % 取消所有列表默认距离
 
