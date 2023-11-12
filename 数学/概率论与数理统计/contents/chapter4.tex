@@ -507,13 +507,25 @@ $$
 \begin{proof}
     柯西分布的概率密度为
     $$
-    f(x) = \dfrac{1}{\pi} \dfrac{1}{1 + x^2},\; -\infty < x < +\infty
+    f(x) = \dfrac{1}{\pi} \dfrac{\gamma}{(x + x_0)^2 + \gamma^2},\; -\infty < x < +\infty
     $$
     而
     $$
-    \int_{-\infty}^{+\infty} |x| f(x)\,\text{d}x = \int_{-\infty}^{+\infty} |x| \dfrac{1}{\pi} \dfrac{1}{1 + x^2} \text{d}x = \infty
+    \begin{aligned}
+        \int_{-\infty}^{+\infty} |x| f(x)\,\text{d}x &= \int_{-\infty}^{+\infty} |x| \dfrac{1}{\pi} \dfrac{\gamma}{(x - x_0)^2 + \gamma^2} \text{d}x \\
+        &= \int_{-\infty}^{0} -x \dfrac{1}{\pi} \dfrac{\gamma}{(x - x_0)^2 + \gamma^2} \text{d}x + \int_{0}^{+\infty} x \dfrac{1}{\pi} \dfrac{\gamma}{(x - x_0)^2 + \gamma^2} \text{d}x \\
+        &= 2 \int_{0}^{+\infty} x \dfrac{1}{\pi} \dfrac{\gamma}{(x - x_0)^2 + \gamma^2} \text{d}x \\
+        &= \dfrac{1}{\pi} \int_{0}^{+\infty} \dfrac{2x}{\gamma \big[(\dfrac{x - x_0}{\gamma})^2 + 1 \big]} \text{d}x \\
+        &= \dfrac{1}{\pi} \int_{0}^{+\infty} \dfrac{2(x - x_0) + 2x_0}{\gamma \big[(\dfrac{x - x_0}{\gamma})^2 + 1 \big]} \text{d}x \\
+        &= \dfrac{1}{\pi} \left[ \int_{0}^{+\infty} \dfrac{2(x - x_0)}{\gamma \big[ (\dfrac{x - x_0}{\gamma})^2 + 1 \big]} \text{d}x + \int_{0}^{+\infty} \dfrac{2x_0}{\gamma \big[(\dfrac{x - x_0}{\gamma})^2 + 1 \big]} \text{d}x \right] \\
+        &= \dfrac{1}{\pi} \left[ \int_{-\frac{x_0}{\gamma}}^{+\infty} \dfrac{2t}{t^2 + 1} \text{d}(\gamma t + x_0) + \int_{0}^{+\infty} \dfrac{2x_0}{(\dfrac{x - x_0}{\gamma})^2 + 1} \text{d} \dfrac{x - x_0}{\gamma} \right] \\
+        &= \dfrac{1}{\pi} \left[ \int_{-\frac{x_0}{\gamma}}^{+\infty} \dfrac{2 \gamma t}{t^2 + 1} \text{d}t + 2x_0 \arctan(\dfrac{x - x_0}{\gamma}) \Big|_0^{+\infty} \right] \\
+        &= \dfrac{1}{\pi} \left[ \int_{-\frac{x_0}{\gamma}}^{+\infty} \dfrac{\gamma}{t^2 + 1} \text{d} (t^2 + 1) + 2x_0 \arctan(\dfrac{x - x_0}{\gamma}) \Big|_0^{+\infty} \right] \\
+        &= \dfrac{1}{\pi} \left[ \gamma \ln(t^2 + 1) \Big|_{-\frac{x_0}{\gamma}}^{+\infty} + 2x_0 \arctan(\dfrac{x - x_0}{\gamma}) \Big|_0^{+\infty} \right] \\
+        &= +\infty
+    \end{aligned}
     $$
-    所以柯西分布的数学期望不存在.
+    积分 $\displaystyle\int_{-\infty}^{+\infty} x f(x)\,\text{d}x$ 不绝对收敛，所以柯西分布的数学期望不存在.
 \end{proof}
 
 \section{方差}

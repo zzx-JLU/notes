@@ -1318,6 +1318,8 @@ $$
     $$
     B(a,b) = \int_{1}^{0} (1-y)^{a-1} y^{b-1} \mathrm{d}(1-y) = \int_{0}^{1} (1-y)^{a-1} y^{b-1} \mathrm{d}y = B(b,a)
     $$
+
+    \vspace{-1.8em}
 \end{proof}
 
 \begin{property}
@@ -1342,6 +1344,8 @@ $$
     $$
     B(a,b) = \dfrac{\Gamma(a) \, \Gamma(b)}{\Gamma(a+b)}
     $$
+
+    \vspace{-1.5em}
 \end{proof}
 
 \begin{definition}
@@ -1392,9 +1396,83 @@ $$
     \item 当 $a=1, b=1$ 时，贝塔分布退化为均匀分布 $U(0,1)$.
 \end{itemize}
 
-% \section{随机变量的函数的分布}
+\subsection{柯西分布}
 
-% \subsection{离散型随机变量的函数的分布}
+\begin{definition}
+    \indent 若随机变量 $X$ 的概率密度为
+    \begin{equation}
+        f(x) = \dfrac{1}{\pi} \dfrac{\gamma}{(x - x_0)^2 + \gamma^2}
+    \end{equation}
+    则称随机变量 $X$ 服从{\heiti 柯西分布}（Cauchy distribution），也称为{\heiti 柯西-洛伦兹分布}，记作 $X \sim C(\gamma, x_0)$，其中 $\gamma$ 称为{\heiti 尺度参数}，$x_0$ 称为{\heiti 位置参数}.
+\end{definition}
+
+柯西分布 $C(\gamma, x_0)$ 的分布函数为
+\begin{equation}
+    F(x) = \dfrac{1}{\pi} \arctan \left( \dfrac{x - x_0}{\gamma} \right) + \dfrac{1}{2}
+\end{equation}
+
+\begin{figure}[htbp]
+    \centering
+
+    \subfigure[柯西分布的概率密度]{
+        \centering
+
+        \begin{tikzpicture}
+            \centering
+    
+            \begin{axis}[2d plot axis,
+                xmin=-5, xmax=5,
+                ymax = 0.7,
+                every axis legend/.append style = {
+                    at = {(-0.2,1)},
+                    anchor = north west
+                }
+            ]
+                \addplot[smooth, blue, domain=-4.5:4.5, samples=1000] {0.5 / ((x-1)^2 + 0.5^2) / pi};
+                \addplot[smooth, black, domain=-4.5:4.5, samples=1000] {1 / ((x-1)^2 + 1^2) / pi};
+                \addplot[smooth, red, domain=-4.5:4.5, samples=1000] {2 / ((x-1)^2 + 2^2) / pi};
+                \addplot[smooth, green, domain=-4.5:4.5, samples=1000] {1 / ((x+1)^2 + 1^2) / pi};
+                \legend{{$\gamma = 0.5, x_0 = 1$}, {$\gamma = 1, x_0 = 1$}, {$\gamma = 2, x_0 = 1$}, {$\gamma = 1, x_0 = -1$}}
+            \end{axis}
+        \end{tikzpicture}
+    }
+    \subfigure[柯西分布的分布函数]{
+        \centering
+
+        \begin{tikzpicture}
+            \centering
+    
+            \begin{axis}[2d plot axis,
+                xmin=-7, xmax=7,
+                ymax = 1.1,
+                every axis legend/.append style = {
+                    at = {(-0.2,1)},
+                    anchor = north west
+                }
+            ]
+                \addplot[smooth, blue, domain=-6.5:6.5, samples=1000] {0.5 + rad(atan((x-1) / 0.5)) / pi};
+                \addplot[smooth, black, domain=-6.5:6.5, samples=1000] {0.5 + rad(atan(x-1)) / pi};
+                \addplot[smooth, red, domain=-6.5:6.5, samples=1000] {0.5 + rad(atan((x-1) / 2)) / pi};
+                \addplot[smooth, green, domain=-6.5:6.5, samples=1000] {0.5 + rad(atan(x+1)) / pi};
+                \legend{{$\gamma = 0.5, x_0 = 1$}, {$\gamma = 1, x_0 = 1$}, {$\gamma = 2, x_0 = 1$}, {$\gamma = 1, x_0 = -1$}}
+            \end{axis}
+        \end{tikzpicture}
+    }
+
+    \caption{柯西分布}
+\end{figure}
+
+当 $\gamma = 1, x_0 = 0$ 时，称为\textbf{标准柯西分布}，此时概率密度和分布函数为
+$$
+\begin{aligned}
+    & f(x) = \dfrac{1}{\pi(x^2 + 1)} \\
+    & F(x) = \dfrac{1}{\pi} \arctan x + \dfrac{1}{2}
+\end{aligned}
+$$
+
+\section{随机变量的函数的分布}
+
+\subsection{离散型随机变量的函数的分布}
 
 % 设离散型随机变量 $X$ 的概率分布为
 % $$
