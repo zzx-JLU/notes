@@ -146,7 +146,6 @@
 % 章节标题页的页码设置
 \titleformat{\chapter}{\huge\bfseries\filcenter}{第\zhnumber{\arabic{chapter}}章 \quad #1}{0em}{
     \makebox[0pt][l]{
-        \def\rad{7pt}
         \begin{tikzpicture}[remember picture, overlay]
             \ifodd\value{page}
                 \node[above left, font=\normalfont\fontsize{15}{15}\selectfont, circle, fill=outermarginfgcolor, text=white, inner sep=1mm] (pagenumber) at ([shift={(-5mm,5mm)}] current page.south east) {\thepage};

@@ -264,6 +264,37 @@ $$
     \end{enumerate}
 \end{property}
 
+\begin{proof}
+    （1）由定义 \ref{def:事件域} 可知，$\varOmega \in \mathcal{F}$，进而有
+    $$
+    \overline{\varOmega} = \text{\O} \in \mathcal{F}
+    $$
+
+    （2）若 $A_i \in \mathcal{F}$，则 $\overline{A_i} \in \mathcal{F}$，因此
+    $$
+    \bigcup_{i=1}^{\infty} \overline{A_i} = \overline{\bigcap_{i=1}^{\infty} A_i} \in \mathcal{F}
+    $$
+    进而有
+    $$
+    \bigcap_{i=1}^{\infty} A_i \in \mathcal{F}
+    $$
+
+    （3）令 $A_{i} = \varOmega,\; i = n+1, n+2, \cdots$，则由性质2可得
+    $$
+    \bigcap_{i=1}^{\infty} A_i = \bigcap_{i=1}^{n} A_i \in \mathcal{F}
+    $$
+
+    （4）令 $A_{i} = \text{\O},\; i = n+1, n+2, \cdots$，则由定义 \ref{def:事件域} 可得
+    $$
+    \bigcup_{i=1}^{\infty} A_i = \bigcup_{i=1}^{n} A_i \in \mathcal{F}
+    $$
+
+    （5）因为 $B \in \mathcal{F}$，所以 $\overline{B} \in \mathcal{F}$，进而有
+    $$
+    A-B = A \overline{B} \in \mathcal{F}
+    $$
+\end{proof}
+
 \section{随机事件的概率}
 
 \subsection{频率}
@@ -665,6 +696,37 @@ $$
     $$
 \end{solution}
 
+\begin{example}[][盒子模型]
+    \indent 设有 $n$ 个球，每个球都等可能地被放到 $N$（$n \leqslant N$） 个不同盒子中的任一个，每个盒子所放球数不限.求
+
+    （1）指定的 $n$ 个盒子中各有一球的概率 $p_1$；
+
+    （2）恰好有 $n$ 个盒子各有一球的概率 $p_2$.
+\end{example}
+
+\begin{solution}
+    每个球都可放到 $N$ 个盒子中的任一个，$n$ 个球的存放方式共有 $N^n$ 种.
+
+    （1）因为各有一球的 $n$ 个盒子已经指定，余下的没有球的 $N-n$ 个盒子也同时被指定，所以只需要考虑 $n$ 个球在这指定的 $n$ 个盒子中各放1个的放法数.第1个球有 $n$ 种放法，第2个球有 $n-1$ 种放法，$\cdots$，第 $n$ 个球有1种放法，根据乘法原理，总的放法数为 $n!$，于是其概率为
+    $$
+    p_1 = \dfrac{n!}{N^n}
+    $$
+
+    （2）第1个球可放在 $N$ 个盒子中的任一个，第2个球可放在余下的 $N-1$ 个盒子中的任一个，$\cdots$，第 $n$ 个球只可放在余下的 $N-n+1$ 个盒子中的任一个，根据乘法原理，总的放法数为 $N (N-1) (N-2) \cdots (N-n+1)$，因此所求概率为
+    $$
+    p_2 = \dfrac{N (N-1) (N-2) \cdots (N-n+1)}{N^n} = \dfrac{N!}{N^n (N-n)!}
+    $$
+\end{solution}
+
+\begin{note}
+    \indent 盒子模型可以应用到很多实际问题中.譬如将球解释为“粒子”，把盒子解释为空间中的小区域，这个问题便是统计物理学中的麦克斯韦-玻尔兹曼统计；若 $n$ 个“粒子”是不可辨的，便是波色-爱因斯坦统计；若 $n$ 个“粒子”是不可辨的，且每个“盒子”里最多只能放一个“粒子”，这时就是费米-狄拉克统计.
+
+    “生日问题”也属于盒子模型.求 $n$ 个人的生日各不相同的概率 $p_n$，可以将 $n$ 个人看成 $n$ 个球，将一年 365 天看成 $N=365$ 个盒子，则“$n$ 个人的生日各不相同”等价于“恰好有 $n$ 个盒子各有一球”，其概率为
+    $$
+    p_n = \dfrac{365 (365-1) (365-2) \cdots (365-n+1)}{365^n} = \left( 1 - \dfrac{1}{365} \right) \left( 1 - \dfrac{2}{365} \right) \cdots \left( 1 - \dfrac{n-1}{365} \right)
+    $$
+\end{note}
+
 \subsection{几何概型}
 
 如果随机试验是将一个点随机地投到某一区域 $\varOmega$ 内，而这个点落在 $\varOmega$ 中任意两个度量相等的子区域内的概率相同，则称这样的试验属于\textbf{几何概型}（geometric probability model）.
@@ -677,6 +739,49 @@ $$
 $$
 P(A)=\dfrac{A\,\text{的度量}}{\varOmega\,\text{的度量}}
 $$
+
+\begin{example}[][会面问题]
+    \indent 甲乙两人约定在下午 6 时到 7 时之间在某处会面，并约定先到者应等候另一个人 20 分钟，过时即可离去.求两人能会面的概率.
+\end{example}
+
+\begin{solution}
+    设 $x$ 和 $y$ 分别表示甲、乙两人到达约会地点的时间，则样本空间为
+    $$
+    \varOmega = \{ (x,y) \mid 0 \leqslant x \leqslant 60, 0 \leqslant y \leqslant 60 \}
+    $$
+    设事件 $A=$ “甲乙两人能够会面”，则
+    $$
+    A = \{ (x,y) \mid |x-y| \leqslant 20 \}
+    $$
+    由图 \ref{fig:会面问题} 可知，$\varOmega$ 的面积为 $60^2$，$A$ 的面积为 $60^2 - 40^2$，因此
+    $$
+    P(A) = \dfrac{60^2 - 40^2}{60^2} = \dfrac{5}{9}
+    $$
+
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}[>=Stealth, scale=0.5]
+            % 坐标轴
+            \draw[->] (0, 0)--(7, 0) node[below]{$x$};
+            \draw[->] (0, 0)--(0, 7) node[left]{$y$};
+            \node at (0, 0) [below left] {$O$};
+            % 样本空间
+            \draw (0,0) rectangle (6,6);
+            \node at (6,0) [below] {60};
+            \node at (0,6) [left] {60};
+            \node at (1, 5) {$\varOmega$};
+            % A
+            \filldraw[fill=lightgray] (0,0) -- (0,2) -- (4,6) -- (6,6) -- (6,4) -- (2,0) -- cycle;
+            \node at (3,3) {$A$};
+            \node at (0,2) [left] {20};
+            \node at (2,0) [below] {20};
+        \end{tikzpicture}
+
+        \caption{}
+        \label{fig:会面问题}
+    \end{figure}
+\end{solution}
 
 \begin{example}[][蒲丰投针问题]
     \indent 在平面上画有等距离的平行线，平行线间的距离为 $2a \, (a>0)$.向该平面任意投掷一枚长为 $2l \, (l<a)$ 的圆柱形的针，求此针与任一平行线相交的概率.
@@ -698,7 +803,7 @@ $$
     $$
     如图 \ref{fig:pufeng:2} 所示.所求概率为
     \begin{equation} \label{equation:pufeng}
-        p = P(A) = \dfrac{A\, \text{的面积}}{\varOmega \, \text{的面积}} = \dfrac{\displaystyle\int_0^{\pi} l \sin\varphi \, \text{d} \varphi}{\pi a} = \dfrac{2l}{\pi a}
+        p = P(A) = \dfrac{\displaystyle\int_0^{\pi} l \sin\varphi \, \text{d} \varphi}{\pi a} = \dfrac{2l}{\pi a}
     \end{equation}
 
     \begin{figure}[H]
