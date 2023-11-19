@@ -2,7 +2,9 @@
 
 \chapter{随机事件及其概率}
 
-\section{随机试验}
+\section{随机事件}
+
+\subsection{随机试验}
 
 在一定条件下必然出现的现象叫做\textbf{必然现象}.在相同的条件下，可能出现不同的结果，而在试验或观测之前不能预知确切结果的现象叫做\textbf{随机现象}.
 
@@ -34,8 +36,6 @@
     \end{enumerate}
 \end{note}
 
-\section{随机事件}
-
 \subsection{随机事件的概念}
 
 随机试验 $E$ 的样本空间 $\varOmega = \{ \omega \}$ 的子集称为随机试验 $E$ 的\textbf{随机事件}（random event），简称为\textbf{事件}（event），用大写字母 $A,B,C$ 等表示.
@@ -52,11 +52,15 @@
 
 \subsubsection{事件的包含}
 
-如果当事件 $A$ 发生时事件 $B$ 一定发生，则称事件 $B$ \textbf{包含}事件 $A$，记作 $A \subseteq B$.
+如果当事件 $A$ 发生时事件 $B$ 一定发生，则称事件 $B$ \textbf{包含}事件 $A$，或称事件 $A$ 包含于事件 $B$，记作 $A \subseteq B$.
 
-对于任意事件 $A$，有 $\text{\O} \subseteq A \subseteq \varOmega$.
+\begin{property}
+    \indent 对于任意事件 $A$，有 $\text{\O} \subseteq A \subseteq \varOmega$.
+\end{property}
 
-如果 $A \subseteq B,B \subseteq C$，则 $A\subseteq C$.
+\begin{property}
+    \indent 如果 $A \subseteq B,B \subseteq C$，则 $A\subseteq C$.
+\end{property}
 
 \subsubsection{事件的相等}
 
@@ -72,9 +76,11 @@
 
 如果在每一次试验中事件 $A$ 和事件 $B$ 必有一个且仅有一个发生，则称事件 $A$ 与事件 $B$ 是\textbf{互逆}的或\textbf{对立}的，称其中的一个事件是另一个事件的\textbf{逆事件}，记作 $\overline{A}=B$，或 $\overline{B}=A$.
 
-对于任意事件 $A$，有 $\overline{\overline{A}}=A$.
-
 如果事件 $A$ 与事件 $B$ 互逆，则事件 $A$ 与事件 $B$ 一定互斥. 反之，如果事件 $A$ 与事件 $B$ 互斥，事件 $A$ 与事件 $B$ 不一定互逆.
+
+\begin{property}
+    \indent 对于任意事件 $A$，有 $\overline{\overline{A}}=A$.
+\end{property}
 
 \subsection{随机事件的运算}
 
@@ -88,23 +94,24 @@ $$
 事件 $A$ 和事件 $B$ 作为样本空间 $\varOmega$ 的子集，并事件 $A \cup B$ 就是子集 $A$ 与 $B$ 的并集.
 
 \begin{property}
-    \indent 对于任何事件 $A$ 与 $B$，事件的并运算有如下性质：
+    \indent 对于任意事件 $A$ 与 $B$，有：
     \begin{enumerate}
-        \item $A \cup A = A$
-        \item $A \cup \text{\O} = A$
-        \item $A \cup B = B \cup A$
-        \item $A \cup \overline{A} = \varOmega$
-        \item $A \subseteq A \cup B$
-        \item $B \subseteq A \cup B$
+        \item $A \cup A = A$.
+        \item $A \cup \text{\O} = A$.
+        \item $A \cup B = B \cup A$.
+        \item $A \cup \overline{A} = \varOmega$.
+        \item $A \subseteq A \cup B$，$B \subseteq A \cup B$.
         \item 如果 $A \subseteq B$，则有 $A \cup B=B$.
     \end{enumerate}
 \end{property}
 
 事件的并可以推广到多个事件的情形：
-\begin{gather*}
-    \bigcup_{i=1}^n A_i = \{ \text{事件} A_1,A_2,\cdots,A_n \text{中至少有一个发生} \} \\
-    \bigcup_{i=1}^\infty A_i = \{ \text{事件} A_1,A_2,\cdots,A_n,\cdots \text{中至少有一个发生} \}
-\end{gather*}
+$$
+\begin{aligned}
+    & \bigcup_{i=1}^n A_i = \{ \text{事件} A_1,A_2,\cdots,A_n \text{中至少有一个发生} \} \\
+    & \bigcup_{i=1}^\infty A_i = \{ \text{事件} A_1,A_2,\cdots,A_n,\cdots \text{中至少有一个发生} \}
+\end{aligned}
+$$
 
 \subsubsection{事件的交}
 
@@ -116,26 +123,29 @@ $$
 事件 $A$ 和事件 $B$ 作为样本空间 $\varOmega$ 的子集，交事件 $A \cap B$ 就是子集 $A$ 与 $B$ 的交集.
 
 \begin{property}
-    \indent 对于任何事件 $A$ 与 $B$，事件的交运算有如下性质：
+    \indent 对于任意事件 $A$ 与 $B$，有：
     \begin{enumerate}
-        \item $A \cap A = A$
-        \item $A \cap \text{\O} = \text{\O}$
-        \item $A \cap B = B \cap A$
-        \item $A \cap \overline{A} = \text{\O}$
-        \item $A \cap B \subseteq A$
-        \item $A \cap B \subseteq B$
+        \item $A \cap A = A$.
+        \item $A \cap \text{\O} = \text{\O}$.
+        \item $A \cap B = B \cap A$.
+        \item $A \cap \overline{A} = \text{\O}$.
+        \item $A \cap B \subseteq A$，$A \cap B \subseteq B$.
         \item 如果 $A \subseteq B$，则有 $A \cap B = A$.
         \item 如果 $A$ 与 $B$ 互不相容，则有 $A \cap B = \text{\O}$.
     \end{enumerate}
 \end{property}
 
 事件的交可以推广到多个事件的情形：
-\begin{gather*}
-    \bigcap_{i=1}^n A_i = \{ \text{事件} A_1,A_2,\cdots,A_n \text{同时发生} \} \\
-    \bigcap_{i=1}^\infty A_i = \{ \text{事件} A_1,A_2,\cdots,A_n,\cdots \text{同时发生} \}
-\end{gather*}
+$$
+\begin{aligned}
+    & \bigcap_{i=1}^n A_i = \{ \text{事件} A_1,A_2,\cdots,A_n \text{同时发生} \} \\
+    & \bigcap_{i=1}^\infty A_i = \{ \text{事件} A_1,A_2,\cdots,A_n,\cdots \text{同时发生} \}
+\end{aligned}
+$$
 
-事件 $A$ 与 $B$ 互为对立事件的充要条件是：$A \cap B = \text{\O}$，且 $A \cup B = \varOmega$.
+\begin{conclusion}
+    \indent 事件 $A$ 与 $B$ 互为对立事件的充要条件是：$A \cap B = \text{\O}$，且 $A \cup B = \varOmega$.
+\end{conclusion}
 
 \subsubsection{事件的差}
 

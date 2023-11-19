@@ -886,6 +886,36 @@
     parbox = false
 }
 
+% 习题
+\newcounter{exerciseNB}[chapter]
+\newcommand{\exercise}{
+    \stepcounter{exerciseNB}
+
+    \begin{tcolorbox}[enhanced,
+        title = 习题\ \thechapter.\theexerciseNB,
+        fonttitle = \large\bfseries,
+        colbacktitle = cyan,
+        attach boxed title to top center,
+        boxed title size = copy,
+        boxed title style = {
+            arc = 0pt,
+            outer arc = 0pt,
+            colframe = cyan
+        },
+        colback = white,
+        top=0mm, bottom=0mm,
+        frame code = {
+            \draw[cyan, line width=2pt] (frame.north east) -- (frame.north west);
+        }]
+    \end{tcolorbox}
+}
+
+\newcounter{questionNB}[exerciseNB]
+\newcommand{\question}{
+    \stepcounter{questionNB}
+    \indent\arabic{questionNB}.\ 
+}
+
 % 参考文献
 \usepackage[
     backend = biber,
