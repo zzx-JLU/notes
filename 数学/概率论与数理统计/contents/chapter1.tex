@@ -23,9 +23,9 @@
     \item 可观测性：每次试验的所有可能结果都是明确的、可以观测的，并且试验的可能结果有两个或两个以上；
     \item 随机性：每次试验出现的结果是不确定的，在试验之前无法预先确定究竟会出现哪一个结果，
 \end{enumerate}
-则称之为\textbf{随机试验}，简称为\textbf{试验}.
+则称之为\textbf{随机试验}（random experiment），简称为\textbf{试验}（experiment）.
 
-通常用字母 $E$ 表示一个随机试验. 随机试验 $E$ 的基本结果称为\textbf{样本点}，用 $\omega$ 表示.随机试验 $E$ 的所有基本结果的集合称为\textbf{样本空间}，用 $\varOmega = \{ \omega \}$ 表示.
+通常用字母 $E$ 表示一个随机试验. 随机试验 $E$ 的基本结果称为\textbf{样本点}（sample point），用 $\omega$ 表示.随机试验 $E$ 的所有基本结果的集合称为\textbf{样本空间}（sample space），用 $\varOmega = \{ \omega \}$ 表示.
 
 \begin{note}
     \begin{enumerate}
@@ -42,11 +42,13 @@
 
 设 $A \subseteq \varOmega$，如果试验结果 $\omega \in A$，则称在这次试验中事件 $A$ 发生；如果 $\omega \notin A$，则称事件 $A$ 不发生.
 
-由一个样本点 $\omega$ 组成的事件称为\textbf{基本事件}.
+由一个样本点 $\omega$ 组成的事件称为\textbf{基本事件}（elementary event）.
 
-样本空间 $\varOmega$ 本身也是 $\varOmega$ 的子集，它包含 $\varOmega$ 的所有样本点，在每次试验中 $\varOmega$ 必然发生，称为\textbf{必然事件}.
+$\varOmega$ 本身也是 $\varOmega$ 的子集，在每次试验中必然发生，称为\textbf{必然事件}（certain event）.
 
-空集 $\text{\O}$ 也是 $\varOmega$ 的子集，它不包含任何样本点，在每次试验中都不可能发生，称为\textbf{不可能事件}.
+空集 $\text{\O}$ 也是 $\varOmega$ 的子集，在试验中不可能发生，称为\textbf{不可能事件}（impossible event）.
+
+必然事件和不可能事件统称为\textbf{确定事件}.
 
 \subsection{随机事件的关系}
 
@@ -59,24 +61,24 @@
 \end{property}
 
 \begin{property}
-    \indent 如果 $A \subseteq B,B \subseteq C$，则 $A\subseteq C$.
+    \indent 如果 $A \subseteq B$，$B \subseteq C$，则 $A\subseteq C$.
 \end{property}
 
 \subsubsection{事件的相等}
 
-如果事件 $A$ 和事件 $B$ 相互包含，即 $A \subseteq B$ 且 $B \subseteq A$，则称事件 $A$ 与事件 $B$ \textbf{相等}，记作 $A=B$.
+如果事件 $A$ 与 $B$ 相互包含，即 $A \subseteq B$ 且 $B \subseteq A$，则称事件 $A$ 与事件 $B$ \textbf{相等}，记作 $A=B$.
 
 \subsubsection{事件的互不相容}
 
-如果事件 $A$ 和事件 $B$ 在同一次试验中不能同时发生，则称事件 $A$ 与事件 $B$ 是\textbf{互不相容}的，或称事件 $A$ 与事件 $B$ 是\textbf{互斥}的.
+如果事件 $A$ 和事件 $B$ 在同一次试验中不能同时发生，则称事件 $A$ 与事件 $B$ \textbf{互不相容}，或称事件 $A$ 与事件 $B$ \textbf{互斥}.
 
-任意两个基本事件一定互斥.
+任意两个基本事件一定互不相容.
 
 \subsubsection{事件的互逆}
 
-如果在每一次试验中事件 $A$ 和事件 $B$ 必有一个且仅有一个发生，则称事件 $A$ 与事件 $B$ 是\textbf{互逆}的或\textbf{对立}的，称其中的一个事件是另一个事件的\textbf{逆事件}，记作 $\overline{A}=B$，或 $\overline{B}=A$.
+如果在每一次试验中事件 $A$ 和事件 $B$ 必有一个且仅有一个发生，则称事件 $A$ 与事件 $B$ 是\textbf{互逆}的或\textbf{对立}的，称事件 $A$ 与事件 $B$ 互为\textbf{逆事件}或\textbf{对立事件}，记作 $\overline{A}=B$，或 $\overline{B}=A$.
 
-如果事件 $A$ 与事件 $B$ 互逆，则事件 $A$ 与事件 $B$ 一定互斥. 反之，如果事件 $A$ 与事件 $B$ 互斥，事件 $A$ 与事件 $B$ 不一定互逆.
+对立事件一定互不相容. 反之，互不相容的事件不一定对立.
 
 \begin{property}
     \indent 对于任意事件 $A$，有 $\overline{\overline{A}}=A$.
@@ -91,7 +93,7 @@ $$
 A \cup B = \{ \omega \mid \omega \in A \;\text{或}\; \omega \in B \}
 $$
 
-事件 $A$ 和事件 $B$ 作为样本空间 $\varOmega$ 的子集，并事件 $A \cup B$ 就是子集 $A$ 与 $B$ 的并集.
+事件 $A$ 和事件 $B$ 作为样本空间 $\varOmega$ 的子集，并事件 $A \cup B$ 就是集合 $A$ 与 $B$ 的并集.
 
 \begin{property}
     \indent 对于任意事件 $A$ 与 $B$，有：
@@ -120,7 +122,7 @@ $$
 A \cap B = \{ \omega \mid \omega \in A \;\text{且}\; \omega \in B \}
 $$
 
-事件 $A$ 和事件 $B$ 作为样本空间 $\varOmega$ 的子集，交事件 $A \cap B$ 就是子集 $A$ 与 $B$ 的交集.
+事件 $A$ 和事件 $B$ 作为样本空间 $\varOmega$ 的子集，交事件 $A \cap B$ 就是集合 $A$ 与 $B$ 的交集.
 
 \begin{property}
     \indent 对于任意事件 $A$ 与 $B$，有：
@@ -144,7 +146,7 @@ $$
 $$
 
 \begin{conclusion}
-    \indent 事件 $A$ 与 $B$ 互为对立事件的充要条件是：$A \cap B = \text{\O}$，且 $A \cup B = \varOmega$.
+    \indent 事件 $A$ 与 $B$ 对立的充分必要条件是：$A \cap B = \text{\O}$，且 $A \cup B = \varOmega$.
 \end{conclusion}
 
 \subsubsection{事件的差}
@@ -154,19 +156,22 @@ $$
 A - B = \{ \omega \mid \omega \in A \;\text{且}\; \omega \notin B \}
 $$
 
+事件 $A$ 和事件 $B$ 作为样本空间 $\varOmega$ 的子集，差事件 $A - B$ 就是集合 $A$ 对 $B$ 的差集.
+
 \begin{property}
-    \indent 对于任何事件 $A$ 与 $B$，事件的差运算有如下性质：
+    \indent 对于任意事件 $A$ 与 $B$，有：
     \begin{enumerate}
         \item $A - A = \text{\O}$
         \item $A - \text{\O} = A$
-        \item $A - B = A - AB = A \overline{B}$
+        \item $\text{\O} - A = \text{\O}$
         \item $\varOmega - A = \overline{A}$
         \item $A - \varOmega = \text{\O}$
-        \item $(A-B) \cup B = (B-A) \cup A = A \cup B$
-        \item $A \cup B = A \cup (B-AB) = B \cup (A-AB)$
-        \item $A-B,AB,B-A$ 两两互斥，且 \\
-        （1）$A \cup B = (A-B) \cup AB \cup (B-A)$\\
-        （2）$A = (A-B) \cup AB$\\
+        \item $A - B = A - AB = A \overline{B}$
+        \item $A \cup B = A \cup (B-A) = A \cup (B-AB)$
+        \item $A \cup B = B \cup (A-B) = B \cup (A-AB)$
+        \item $A-B,AB,B-A$ 两两互不相容，且 \\
+        （1）$A \cup B = (A-B) \cup AB \cup (B-A)$ \\
+        （2）$A = (A-B) \cup AB$ \\
         （3）$B = (B-A) \cup AB$
     \end{enumerate}
 \end{property}
@@ -217,13 +222,13 @@ $$
         \item 若 $A \in \mathcal{F}$，则 $\overline{A} \in \mathcal{F}$；
         \item 若 $A_i \in \mathcal{F}, \, i=1,2,\cdots$，则 $\displaystyle\bigcup_{i=1}^\infty A_i \in \mathcal{F}$，
     \end{enumerate}
-    则称 $\mathcal{F}$ 为一个{\heiti 事件域}，也称为 $\sigma$ {\heiti 域}或 $\sigma$ {\heiti 代数}.将 $(\varOmega, \mathcal{F})$ 称为{\heiti 可测空间}.
+    则称 $\mathcal{F}$ 为一个{\heiti 事件域}，也称为 $\sigma$ {\heiti 域}或 $\sigma$ {\heiti 代数}.将 $(\varOmega, \mathcal{F})$ 称为{\heiti 可测空间}（measurable space）.
 \end{definition}
 
 在可测空间上才可定义概率，这时 $\mathcal{F}$ 中都是有概率可言的事件.
 
 \begin{note}
-    \indent 事件域就是样本空间中某些子集及其运算结果组成的集合类.对于离散样本空间，它的所有子集就构成了事件域；而对连续样本空间，存在无法测量长度的子集，这样的子集称为\textbf{不可测集}，如果将不可测集也看成事件，那么这样的事件将没有概率可言.因此，没有必要将连续样本空间的所有子集都看做事件，只需将可度量的子集（称为\textbf{可测集}）看做事件即可.
+    \indent 事件域就是样本空间中某些子集及其运算结果组成的集合类.对于离散样本空间，它的所有子集就构成了事件域.而对连续样本空间，存在无法测量长度的子集，这样的集合称为\textbf{不可测集}.如果将不可测集也看成事件，那么这样的事件将没有概率可言.因此，没有必要将连续样本空间的所有子集都看做事件，只需将可度量的子集（称为\textbf{可测集}）看做事件即可.
 
     \indent 事件域包含样本空间的所有可测子集，这些子集都可以看做有概率可言的事件.事件之间可以进行运算，并且运算结果仍然是事件，因此事件域要对事件的各种运算具有封闭性.
 
@@ -232,7 +237,7 @@ $$
         \item 交运算可通过并与对立来实现（$A \cap B = \overline{\overline{A} \cup \overline{B}}$）.
         \item 差运算可通过对立与交来实现（$A-B = A \overline{B}$）.
     \end{itemize}
-    所以，事件域中的任意事件经过并或对立运算后仍然是事件域中的事件，这就是定义 \ref{def:事件域} 的来源.
+    所以，只需事件域对并运算和对立运算封闭，这就是定义 \ref{def:事件域} 的来源.
 \end{note}
 
 若样本空间含有 $n$ 个样本点，则其事件域 $\mathcal{F}$ 是由空集 $\text{\O}$、$n$ 个单元素集、$C_n^2$ 个双元素集、$C_n^3$ 个三元素集……和 $\varOmega$ 组成的集合类，此时 $\mathcal{F}$ 中共有 $C_n^0 + C_n^1 + C_n^2 + \cdots + C_n^n = 2^n$ 个事件.
@@ -260,8 +265,7 @@ $$
     $$
     \item 最后用（有限个或可列个）并运算和交运算把实数集中一切有限集、可列集、开集、闭集都扩展进来.
 \end{enumerate}
-
-经过上述几步扩展所得集合的全体就是事件域 $\mathcal{F}$，这样的事件域 $\mathcal{F}$ 又称为\textbf{博雷尔事件域}，域中的每个元素称为\textbf{博雷尔集}，或称为\textbf{可测集}，这种可测集都是有概率可言的事件.
+经过上述几步扩展所得集合的全体就是事件域 $\mathcal{F}$，这样的事件域 $\mathcal{F}$ 又称为\textbf{博雷尔事件域}，域中的每个元素称为\textbf{博雷尔集}（Borel set）.
 
 \begin{property}
     \indent 可测空间 $(\varOmega, \mathcal{F})$ 的性质：
@@ -303,6 +307,8 @@ $$
     $$
     A-B = A \overline{B} \in \mathcal{F}
     $$
+
+    \vspace{-2em}
 \end{proof}
 
 \section{随机事件的概率}
@@ -324,7 +330,7 @@ $$
     \begin{enumerate}
         \item {\heiti 非负性}：对于任意事件 $A$，有 $f_n(A) \geqslant 0$.
         \item {\heiti 规范性}：对于必然事件 $\varOmega$，有 $f_n(\varOmega)=1$.
-        \item {\heiti 有限可加性}：对于两两互不相容的事件 $A_1,A_2,\cdots,A_m$（即当 $i\not=j$ 时，有 $A_i A_j = \text{\O}$，$i,j=1,2,\cdots,m$），有
+        \item {\heiti 有限可加性}：对于两两互不相容的事件 $A_1,A_2,\cdots,A_m$，有
         $$
         f_n \left(\bigcup_{i=1}^m A_i \right) = \sum_{i=1}^m f_n(A_i)
         $$
