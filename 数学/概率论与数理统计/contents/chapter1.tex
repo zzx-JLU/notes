@@ -346,14 +346,14 @@ $$
 \begin{definition}[][概率的公理化定义][def:probability]
     \indent 设 $\varOmega$ 为一个样本空间，$\mathcal{F}$ 为 $\varOmega$ 的某些子集组成的事件域.如果对于任一事件 $A \in \mathcal{F}$，定义在 $\mathcal{F}$ 上的一个实值函数 $P(A)$ 满足：
     \begin{enumerate}
-        \item 非负性：对于任意事件 $A \in \mathcal{F}$，有 $P(A) \geqslant 0$；
-        \item 规范性：对于必然事件 $\varOmega$，有 $P(\varOmega)=1$；
-        \item 可列可加性：对于两两互不相容的事件 $A_1,A_2,\cdots$，有
+        \item {\heiti 非负性}：对于任意事件 $A \in \mathcal{F}$，有 $P(A) \geqslant 0$；
+        \item {\heiti 规范性}：对于必然事件 $\varOmega$，有 $P(\varOmega)=1$；
+        \item {\heiti 可列可加性}：对于两两互不相容的事件 $A_1,A_2,\cdots$，有
         $$
         P \left(\bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P(A_i)
         $$
     \end{enumerate}
-    则称集合函数 $P$ 为可测空间 $(\varOmega, \mathcal{F})$ 上的{\heiti 概率}（probability），称 $P(A)$ 为事件 $A$ 的{\heiti 概率}，称三元素 $(\varOmega, \mathcal{F}, P)$ 为{\heiti 概率空间}.
+    则称集合函数 $P$ 为可测空间 $(\varOmega, \mathcal{F})$ 上的{\heiti 概率}（probability），称 $P(A)$ 为事件 $A$ 的{\heiti 概率}，称三元素 $(\varOmega, \mathcal{F}, P)$ 为{\heiti 概率空间}（probability space）.
 \end{definition}
 
 \begin{property}[][][prop:probability:0]
@@ -403,6 +403,8 @@ $$
     \[
     P(\overline{A})=1-P(A)
     \]
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][][prop:probability:subset]
@@ -418,6 +420,8 @@ $$
     $$
     P(B-A)=P(B)-P(A)
     $$
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{corollary}[][概率的单调性][推论：概率的单调性]
@@ -445,6 +449,8 @@ $$
     \[
     P(A) \leqslant P(\varOmega) = 1
     \]
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][概率的减法公式][prop:probability:subtraction]
@@ -469,7 +475,10 @@ $$
 
     对任意 $n$ 个事件 $A_1,A_2,\cdots,A_n$，有
     \begin{equation} \label{equation:normal add}
-        \small P \left( \bigcup_{i=1}^n A_i \right) = \sum_{i=1}^n P(A_i) - \sum_{1 \leqslant i<j \leqslant n} P(A_i A_j) + \sum_{1 \leqslant i<j<k \leqslant n} P(A_i A_j A_k) + \cdots + (-1)^{n-1} P(A_1 A_2 \cdots A_n)
+        \begin{aligned}
+            P \left( \bigcup_{i=1}^n A_i \right) &= \sum_{i=1}^n P(A_i) - \sum_{1 \leqslant i<j \leqslant n} P(A_i A_j) + \\
+            & \sum_{1 \leqslant i<j<k \leqslant n} P(A_i A_j A_k) + \cdots + (-1)^{n-1} P(A_1 A_2 \cdots A_n)
+        \end{aligned}
     \end{equation}
 \end{property}
 
@@ -482,6 +491,7 @@ $$
         &= P(A) + P(B) - P(AB)
     \end{aligned}
     $$
+    式 \eqref{equation:add} 得证.
 
     对于式 \eqref{equation:normal add}，使用数学归纳法.当 $n=2$ 时，式 \eqref{equation:normal add} 即为式 \eqref{equation:add}.
 
@@ -494,6 +504,7 @@ $$
     \end{aligned}
     $$
     由归纳假设，将 $P(A_1 \cup A_2 \cup \cdots \cup A_{n-1})$ 和 $P((A_1 A_n) \cup (A_2 A_n) \cup \cdots \cup (A_{n-1} A_n))$ 展开，得
+
     \begin{small}
         $$
         \begin{aligned}
@@ -521,28 +532,6 @@ $$
         P \left(\bigcup_{i=1}^n A_i \right) \leqslant \sum_{i=1}^n P(A_i)
     \end{equation}
 \end{corollary}
-
-\begin{example}
-    \indent 设 $A$ 和 $B$ 是同一试验 $E$ 的两个随机事件，证明
-    $$
-    1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB) \leqslant P(A \cup B)
-    $$
-\end{example}
-
-\begin{proof}
-    因为 $AB \subseteq A \subseteq (A \cup B)$，所以
-    $$
-    P(AB) \leqslant P(A \cup B)
-    $$
-    由概率的性质 \ref{prop:probability:add}、性质 \ref{prop:probability:converse} 及事件的对偶律，可得
-    $$
-    P(\overline{A}) + P(\overline{B}) \geqslant P(\overline{A} \cup \overline{B}) = P(\overline{AB}) = 1 - P(AB)
-    $$
-    因此
-    $$
-    1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB)
-    $$
-\end{proof}
 
 \subsection{概率的连续性}
 
@@ -603,6 +592,7 @@ $$
     下连续性得证.
 
     再证 $P$ 的上连续性.设 $\{ E_n \}$ 是 $\mathcal{F}$ 中一个单调不增的事件序列，则 $\{ \overline{E_n} \}$ 为单调不减的事件序列，由概率的下连续性得
+
     $$
     \begin{aligned}
         \lim_{n \to \infty} P(\overline{E_n}) &= P(\lim_{n \to \infty} \overline{E_n}) \\
@@ -624,9 +614,7 @@ $$
 \end{proof}
 
 \begin{theorem}[][][theorem:可列可加性=有限可加性+下连续性]
-    \indent 若 $P$ 是 $\mathcal{F}$ 上满足 $P(\varOmega) = 1$ 的非负集合函数，则 $P$ 具有可列可加性的充分必要条件是：
-
-    （1）$P$ 是有限可加的；（2）$P$ 是下连续的.
+    \indent 若 $P$ 是 $\mathcal{F}$ 上满足 $P(\varOmega) = 1$ 的非负集合函数，则 $P$ 具有可列可加性的充分必要条件是：（1）$P$ 是有限可加的；（2）$P$ 是下连续的.
 \end{theorem}
 
 \begin{proof}
@@ -640,11 +628,7 @@ $$
     $$
     \lim_{n \to \infty} P \left( \bigcup_{i=1}^n A_i \right) = \lim_{n \to \infty} \sum_{i=1}^n P(A_i) = \sum_{i=1}^{\infty} P(A_i)
     $$
-    记
-    $$
-    F_n = \bigcup_{i=1}^n A_i
-    $$
-    则 $\{ F_n \}$ 为单调不减的事件序列，由下连续性得
+    记 $F_n = \displaystyle\bigcup_{i=1}^n A_i$，则 $\{ F_n \}$ 为单调不减的事件序列，由下连续性得
     $$
     \lim_{n \to \infty} P \left( \bigcup_{i=1}^n A_i \right) = \lim_{n \to \infty} P(F_n) = P \left(  \bigcup_{i=1}^{\infty} F_i \right) = P \left( \bigcup_{i=1}^{\infty} A_i \right)
     $$
@@ -656,7 +640,7 @@ $$
 \end{proof}
 
 \begin{note}
-    从定理 \ref{theorem:可列可加性=有限可加性+下连续性} 可知，在概率的公理化定义中，可以将可列可加性换成有限可加性和下连续性。
+    \indent 从定理 \ref{theorem:可列可加性=有限可加性+下连续性} 可知，在概率的公理化定义中，可以将可列可加性换成有限可加性和下连续性。
 \end{note}
 
 \subsection{古典概型}
@@ -1049,6 +1033,25 @@ $$
 
     可见，上述三个答案针对的是三个不同的样本空间，它们都是正确的.贝特朗奇论提醒我们，在定义概率时需要明确指出其样本空间.
 \end{note}
+
+\exercise
+
+\question 设 $A$ 和 $B$ 是同一试验 $E$ 的两个随机事件，证明：$1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB) \leqslant P(A \cup B)$.
+
+\begin{proof}
+    因为 $AB \subseteq A \subseteq (A \cup B)$，所以
+    $$
+    P(AB) \leqslant P(A \cup B)
+    $$
+    由概率的性质 \ref{prop:probability:add}、性质 \ref{prop:probability:converse} 及事件的对偶律，可得
+    $$
+    P(\overline{A}) + P(\overline{B}) \geqslant P(\overline{A} \cup \overline{B}) = P(\overline{AB}) = 1 - P(AB)
+    $$
+    因此
+    $$
+    1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB)
+    $$
+\end{proof}
 
 \section{条件概率}
 
