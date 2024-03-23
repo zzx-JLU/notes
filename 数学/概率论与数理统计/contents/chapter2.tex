@@ -628,7 +628,6 @@ $$
         \end{tikzpicture}
     }
 
-    \vspace{-1em}
     \caption{指数分布}
 \end{figure}
 
@@ -648,11 +647,11 @@ $$
     $$
     P(X > s+t \mid X>s) = \dfrac{P(X > s+t)}{P(X>s)} = \dfrac{e^{-\lambda (s+t)}}{e^{-\lambda s}} = e^{-\lambda t} = P(X > t)
     $$
-
-    \vspace{-2em}
 \end{proof}
 
-定理 \ref{theorem:指数分布的无记忆性} 的含义为：记 $X$ 是某种产品的使用寿命，若 $X$ 服从指数分布，那么已知此产品使用了 $s$ 小时没发生故障，则能再使用 $t$ 小时而不发生故障的概率与已使用的 $s$ 小时无关，只相当于重新开始使用 $t$ 小时的概率.
+\begin{note}
+    \indent 定理 \ref{theorem:指数分布的无记忆性} 的物理意义：记 $X$ 是某种产品的使用寿命，若 $X$ 服从指数分布，那么已知此产品使用了 $s$ 小时没发生故障，则能再使用 $t$ 小时而不发生故障的概率与已使用的 $s$ 小时无关，只相当于重新开始使用 $t$ 小时的概率.
+\end{note}
 
 \begin{conclusion}[][泊松分布与指数分布的关系]
     \indent 如果在 $[0,t]$ 时间段内随机事件 $A$ 发生的次数 $N(t)$ 服从参数为 $\lambda t$ 的泊松分布，则 $A$ 相邻两次发生的时间间隔 $T$ 服从参数为 $\lambda$ 的指数分布.
@@ -664,7 +663,7 @@ $$
     P(N(t) = k) = \dfrac{(\lambda t)^k e^{- \lambda t}}{k!},\ k=0,1,2,\cdots
     $$
 
-    事件 $\{ T \geqslant t \}$ 说明此设备在 $[0,t]$ 内没有发生故障，即 $\{ T \geqslant t \} = \{ N(t) = 0 \}$，由此可得：
+    事件 $\{ T \geqslant t \}$ 说明事件 $A$ 在 $[0,t]$ 时间段内没有发生，即 $\{ T \geqslant t \} = \{ N(t) = 0 \}$，由此可得：
     \begin{itemize}
         \item 当 $t<0$ 时，有 $F_T(t) = P(T \leqslant t) = 0$；
         \item 当 $t \geqslant 0$ 时，有
@@ -674,6 +673,10 @@ $$
     \end{itemize}
     所以 $T \sim Exp(\lambda)$.
 \end{proof}
+
+\begin{note}
+    \indent 泊松分布常用来描述单位时间内随机事件发生的次数，如一天之内光临店铺的顾客数、一段时间内电话来电的次数、一段时间内设备发生故障的次数等.指数分布常用作描述时间长度，如随机服务中的等待时间、设备的寿命、电话的通话时间等.
+\end{note}
 
 \subsection{正态分布}
 
@@ -688,6 +691,8 @@ $$
 \end{definition}
 
 概率密度 $f(x)$ 的图像如图 \ref{fig:正态分布的概率密度} 所示，它是一条钟形曲线，关于直线 $x=\mu$ 对称，并在 $x=\mu$ 处取得最大值 $\dfrac{1}{\sqrt{2\pi}\sigma}$，在 $x=\mu\pm\sigma$ 处有拐点，以 $x$ 轴为水平渐近线.
+
+\vspace{0.5em}
 
 正态分布 $N(\mu,\sigma^2)$ 的分布函数为
 $$
@@ -799,7 +804,6 @@ $$
         \label{fig:sigma}
     }
 
-    \vspace{-1em}
     \caption{}
 \end{figure}
 
@@ -857,7 +861,6 @@ $$
         \end{tikzpicture}
     }
 
-    \vspace{-1em}
     \caption{标准正态分布}
 \end{figure}
 
