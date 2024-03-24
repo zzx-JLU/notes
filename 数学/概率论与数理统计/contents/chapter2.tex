@@ -481,22 +481,24 @@ $$
 \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n} \approx C_n^k p^k (1-p)^{n-k}
 $$
 
-\subsection{负二项分布}
+\subsection{帕斯卡分布}
 
-设试验 $E$ 只有两个对立的结果 $A$ 和 $\overline{A}$，并且 $P(A)=p, \, P(\overline{A})=1-p$，其中 $0<p<1$. 将试验 $E$ 独立地重复进行下去，记事件 $A$ 第 $r$ 次出现时的试验次数为 $X$，则 $X$ 的可能取值为 $r, r+1, r+2, \cdots$，称随机变量 $X$ 服从\textbf{负二项分布}或\textbf{帕斯卡分布}，记作 $X \sim Nb(r,p)$.
+设试验 $E$ 只有两个对立的结果 $A$ 和 $\overline{A}$，并且 $P(A)=p, \, P(\overline{A})=1-p$，其中 $0<p<1$. 将试验 $E$ 独立地重复进行下去，记事件 $A$ 第 $r$ 次出现时的试验次数为 $X$，则 $X$ 的可能取值为 $r, r+1, r+2, \cdots$，称随机变量 $X$ 服从\textbf{帕斯卡分布}（Pascal distribution）.
+
+帕斯卡分布是\textbf{负二项分布}（negative binomial distribution）的正整数形式，因此可以将帕斯卡分布记作 $X \sim Nb(r,p)$.
 
 如果 $X=k$，意味着第 $k$ 次试验时事件 $A$ 第 $r$ 次出现，而前 $k-1$ 次试验中 $A$ 出现 $r-1$ 次，由二项分布知
 $$
 P(X=k) = C_{k-1}^{r-1} p^{r-1} (1-p)^{k-r} \cdot p
 $$
-因此负二项分布的概率分布为
+因此帕斯卡分布的概率分布为
 $$
 P(X=k) = C_{k-1}^{r-1} p^r (1-p)^{k-r},\ k = r, r+1, r+2, \cdots
 $$
 
-当 $r=1$ 时，负二项分布即为几何分布.
+当 $r=1$ 时，帕斯卡分布即为几何分布.
 
-如果将第一个 $A$ 出现的试验次数记为 $X_1$，第二个 $A$ 出现的试验次数记为 $X_2$（从第一个 $A$ 出现之后算起），$\cdots$，第 $r$ 个 $A$ 出现的试验次数记为 $X_r$（从第 $r-1$ 个 $A$ 出现之后算起），则诸 $X_i$ 独立同分布，且 $X_i \sim Ge(p)$.此时有 $X = X_1 + X_2 + \cdots + X_r \sim Nb(r,p)$，即负二项分布的随机变量可以分解成 $r$ 个独立同分布的几何分布随机变量之和.
+如果将第一个 $A$ 出现的试验次数记为 $X_1$，第二个 $A$ 出现的试验次数记为 $X_2$（从第一个 $A$ 出现之后算起），$\cdots$，第 $r$ 个 $A$ 出现的试验次数记为 $X_r$（从第 $r-1$ 个 $A$ 出现之后算起），则诸 $X_i$ 独立同分布，且 $X_i \sim Ge(p)$.此时有 $X = X_1 + X_2 + \cdots + X_r \sim Nb(r,p)$，即服从帕斯卡分布的随机变量可以分解成 $r$ 个独立同分布的几何分布随机变量之和.
 
 \subsection{均匀分布}
 
@@ -860,7 +862,8 @@ $$
             \draw (-3pt, 0.5)--(3pt, 0.5);
         \end{tikzpicture}
     }
-
+    
+    \vspace{-1em}
     \caption{标准正态分布}
 \end{figure}
 
@@ -972,6 +975,8 @@ $$
         & P(|X - \mu| < 3\sigma) = 2\varPhi(3) - 1 = 0.9974
     \end{aligned}
     $$
+
+    \vspace{-1.5em}
 \end{proof}
 
 $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间内，而落在该区间以外的概率小于千分之三. 在一次试验中，$X$ 落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间以外这个事件几乎不会发生.
@@ -991,7 +996,7 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 \begin{figure}[htbp]
     \centering
 
-    \begin{tikzpicture}[>=Stealth, yscale=4, xscale=0.8]
+    \begin{tikzpicture}[>=Stealth, yscale=3.5, xscale=0.8]
         % 定义变量
         \def\Mu{0}
         \def\Sigma{1}
@@ -1023,9 +1028,12 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 \end{property}
 
 \begin{proof}
+    \vspace{-1.2em}
     $$
     \varPhi(u_{\alpha}) = P(X \leqslant u_{\alpha}) = 1 - P(X > u_{\alpha}) = 1 - \alpha
     $$
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{property}
@@ -1036,6 +1044,7 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 \end{property}
 
 \begin{proof}
+    \vspace{-1em}
     $$
     \begin{aligned}
         P(X \geqslant -u_{\alpha}) &= 1 - P(X < -u_{\alpha}) \\
@@ -1083,18 +1092,15 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 
 \begin{property}[][伽马函数的性质]
     \begin{enumerate}
-        \item $\Gamma(1) = 1$
-        \item $\Gamma(\dfrac{1}{2}) = \sqrt{\pi}$
+        \item $\Gamma(1) = 1$ \vspace{0.5em}
+        \item $\Gamma(\dfrac{1}{2}) = \sqrt{\pi}$ \vspace{0.5em}
         \item $\Gamma(\alpha + 1) = \alpha \Gamma(\alpha)$
-        \item 对于自然数 $n$，有 $\Gamma(n+1) = n \Gamma(n) = n!$
+        \item 对于正整数 $n$，有 $\Gamma(n+1) = n \Gamma(n) = n!$
     \end{enumerate}
 \end{property}
 
 \begin{proof}
-    （1）
-    $$
-    \Gamma(1) = \int_{0}^{+\infty} e^{-x} \text{d}x = -e^{-x} \Big|_0^{+\infty} = 1
-    $$
+    （1）$\Gamma(1) = \displaystyle\int_{0}^{+\infty} e^{-x} \text{d}x = -e^{-x} \Big|_0^{+\infty} = 1$
 
     （2）
     $$
@@ -1116,7 +1122,6 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
         \left[ \Gamma(\dfrac{1}{2}) \right]^2 &= 4 \int_{0}^{\frac{\pi}{2}} \int_{0}^{+\infty} r e^{-r^2} \text{d}r \text{d} \theta \\
         &= 4 \int_{0}^{\frac{\pi}{2}} \text{d} \theta \int_{0}^{+\infty} r e^{-r^2} \text{d}r \\
         &= 4 \times \dfrac{\pi}{2} \int_{0}^{+\infty} \dfrac{1}{2} e^{-r^2} \text{d}r^2 \\
-        &= \pi \int_{0}^{+\infty} e^{-r^2} \text{d}r^2 \\
         &= \pi
     \end{aligned}
     $$
@@ -1135,7 +1140,20 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
     \end{aligned}
     $$
 
-    \vspace{-1.5em}
+    （4）对于任意正整数 $n$，由性质 3 可得
+    $$
+    \Gamma(n+1) = n \Gamma(n)
+    $$
+
+    下面用数学归纳法证明 $\Gamma(n+1) = n!$.当 $n=1$ 时，有
+    $$
+    \Gamma(1+1) = 1 \times \Gamma(1) = 1 = 1!
+    $$
+    假设当 $n = k \, (k>1)$ 时 $\Gamma(k+1) = k!$ 成立，则
+    $$
+    \Gamma((k+1)+1) = (k+1) \Gamma(k+1) = (k+1) k! = (k+1)!
+    $$
+    归纳法完成.
 \end{proof}
 
 \begin{note}
@@ -1166,7 +1184,7 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \begin{tikzpicture}[scale=0.85]
+    \begin{tikzpicture}[scale=0.75]
         \centering
 
         \begin{axis}[
@@ -1180,7 +1198,7 @@ $$
             \legend{{$\alpha=0.5,\lambda=1$}, {$\alpha=0.5,\lambda=2$}, {$\alpha=0.5,\lambda=3$}}
         \end{axis}
     \end{tikzpicture}
-    \begin{tikzpicture}[scale=0.85]
+    \begin{tikzpicture}[scale=0.75]
         \centering
 
         \begin{axis}[
@@ -1194,7 +1212,7 @@ $$
             \legend{{$\alpha=1,\lambda=1$}, {$\alpha=1,\lambda=2$}, {$\alpha=1,\lambda=3$}}
         \end{axis}
     \end{tikzpicture}
-    \begin{tikzpicture}[scale=0.85]
+    \begin{tikzpicture}[scale=0.75]
         \centering
 
         \begin{axis}[
@@ -1208,7 +1226,7 @@ $$
             \legend{{$\alpha=1.5,\lambda=1$}, {$\alpha=1.5,\lambda=2$}, {$\alpha=1.5,\lambda=3$}}
         \end{axis}
     \end{tikzpicture}
-    \begin{tikzpicture}[scale=0.85]
+    \begin{tikzpicture}[scale=0.75]
         \centering
 
         \begin{axis}[
@@ -1232,8 +1250,7 @@ $$
     \item 当 $0 < \alpha < 1$ 时，$f(x)$ 是严格单调下降函数，且在 $x=0$ 处有奇点.
     \item 当 $\alpha = 1$ 时，$f(x)$ 是严格单调下降函数，且 $f(0) = \lambda$.
     \item 当 $1 < \alpha \leqslant 2$ 时，$f(x)$ 是单峰函数，先上凸、后下凸，在 $x = \dfrac{\alpha - 1}{\lambda}$ 处取得最大值.
-    \item 当 $\alpha > 2$ 时，$f(x)$ 是单峰函数，先下凸、中间上凸、后下凸，在 $x = \dfrac{\alpha - 1}{\lambda}$ 处取得最大值.
-    \item $\alpha$ 越大，$f(x)$ 越近似于正态分布；$\alpha$ 越小，曲线的偏斜程度越严重.
+    \item 当 $\alpha > 2$ 时，$f(x)$ 是单峰函数，先下凸、中间上凸、后下凸，在 $x = \dfrac{\alpha - 1}{\lambda}$ 处取得最大值.此时 $\alpha$ 越大，$f(x)$ 越近似于正态分布；$\alpha$ 越小，曲线的偏斜程度越严重.
 \end{itemize}
 
 伽马分布的特例：
@@ -1249,15 +1266,12 @@ $$
 \begin{proof}
     事件 $\{ S_n \leqslant t \}$ 表示事件 $A$ 第 $n$ 次发生的时间小于等于 $t$，这意味着 $(0,t)$ 时间段内事件 $A$ 发生的次数 $N(t) \geqslant n$，因此 $\{ S_n \leqslant t \} = \{ N(t) \geqslant n \}$.于是 $S_n$ 的分布函数为
     $$
-    F(t) = P(S_n \leqslant t) = P(N(t) \geqslant n) = \sum_{k=n}^{\infty} \dfrac{(\lambda t)^k e^{-\lambda t}}{k!}
-    $$
-    由泊松分布的定义可得
-    $$
-    \sum_{k=0}^{\infty} \dfrac{(\lambda t)^k e^{-\lambda t}}{k!} = 1
-    $$
-    因此
-    $$
-    F(t) = 1 - \sum_{k=0}^{n-1} \dfrac{(\lambda t)^k e^{-\lambda t}}{k!}
+    \begin{aligned}
+        F(t) &= P(S_n \leqslant t) \\
+        &= P(N(t) \geqslant n) \\
+        &= 1 - P(N(t) \leqslant n-1) \\
+        &= 1 - \sum_{k=0}^{n-1} \dfrac{(\lambda t)^k e^{-\lambda t}}{k!}
+    \end{aligned}
     $$
 
     考虑下列积分

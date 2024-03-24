@@ -307,8 +307,6 @@ $$
     $$
     A-B = A \overline{B} \in \mathcal{F}
     $$
-
-    \vspace{-2em}
 \end{proof}
 
 \begin{definition}
@@ -389,6 +387,8 @@ $$
         &= \sum_{i=1}^n P(A_i)
     \end{aligned}
     $$
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][][prop:probability:converse]
@@ -453,8 +453,6 @@ $$
     \[
     P(A) \leqslant P(\varOmega) = 1
     \]
-
-    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][概率的减法公式][prop:probability:subtraction]
@@ -469,8 +467,6 @@ $$
     \[
     P(A-B)=P(A-AB)=P(A)-P(AB)
     \]
-
-    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][概率的加法公式][prop:probability:add]
@@ -510,7 +506,6 @@ $$
     \end{aligned}
     $$
     由归纳假设，将 $P(A_1 \cup A_2 \cup \cdots \cup A_{n-1})$ 和 $P((A_1 A_n) \cup (A_2 A_n) \cup \cdots \cup (A_{n-1} A_n))$ 展开，得
-
     \begin{small}
         $$
         \begin{aligned}
@@ -529,15 +524,43 @@ $$
 
 \begin{corollary}[][半可加性]
     \indent 对于任意两个事件 $A$ 与 $B$，有
-    \begin{equation}
+    \begin{equation} \label{equation:半可加性}
         P(A \cup B) \leqslant P(A) + P(B)
     \end{equation}
 
     对任意 $n$ 个事件 $A_1,A_2,\cdots,A_n$，有
-    \begin{equation}
+    \begin{equation} \label{equation:半可加性2}
         P \left(\bigcup_{i=1}^n A_i \right) \leqslant \sum_{i=1}^n P(A_i)
     \end{equation}
 \end{corollary}
+
+\begin{proof}
+    根据性质 \ref{prop:probability:add}，对于任意两个事件 $A$ 与 $B$，有
+    $$
+    P(A \cup B) = P(A) + P(B) - P(AB)
+    $$
+    整理得
+    $$
+    P(AB) = P(A) + P(B) - P(A \cup B) \geqslant 0
+    $$
+    进而可得
+    $$
+    P(A \cup B) \leqslant P(A) + P(B)
+    $$
+    式 \eqref{equation:半可加性} 得证.
+
+    由式 \eqref{equation:半可加性} 可得
+    $$
+    \begin{aligned}
+        P \left(\bigcup_{i=1}^n A_i \right) & \leqslant P(A_1) + P \left(\bigcup_{i=2}^n A_i \right) \\
+        & \leqslant P(A_1) + P(A_2) + P \left(\bigcup_{i=3}^n A_i \right) \\
+        & \leqslant \cdots \\
+        & \leqslant P(A_1) + P(A_2) + \cdots + P(A_n) \\
+        &= \sum_{i=1}^n P(A_i)
+    \end{aligned}
+    $$
+    式 \eqref{equation:半可加性2} 得证.
+\end{proof}
 
 \subsection{概率的连续性}
 
@@ -740,7 +763,9 @@ $$
 \end{solution}
 
 \begin{note}
-    \indent 生日问题的结果与我们的直觉不符.我们通常认为 30 个人的生日各不相同的概率是比较大的，至少应大于 0.5.然而，根据例题 \ref{example:生日问题} 的结果，当 $n=10$ 时，$p_{10}=0.8831$；$n=30$ 时，$p_{30}=0.2937$；$n=60$ 时，$p_{60} \approx 0.0078$，$1 - p_{60} \approx 0.9922$.这表明 30 个人的生日各不相同的概率比我们想象中更小，而在 60 个人的群体中至少有两个人生日相同的概率超过 99\%，这是出乎预料的.
+    \indent 直觉上，30 个人的生日各不相同的概率应该是比较大的，至少大于 0.5.然而，根据例题 \ref{example:生日问题} 的结果，$p_{30} \approx 0.2937$，这表明 30 个人的生日各不相同的概率比我们想象中更小.当 $n=23$ 时，$1 - p_{23} \approx 0.5073$，也就是说，23 个人中至少有两个人生日相同的概率就已经超过了 50\%.而当 $n=60$ 时，$1 - p_{60} \approx 0.9941$，说明 60 个人中至少有两个人生日相同的概率超过 99\%.
+
+    生日问题告诉我们，我们的直觉并不一定准确，有些问题的结果与我们的直觉不符.因此，我们不能过度依赖直觉，应该学会用科学理性的思维去思考.
 \end{note}
 
 \subsection{几何概型}
@@ -793,6 +818,8 @@ $$
             \node at (0,2) [left] {20};
             \node at (2,0) [below] {20};
         \end{tikzpicture}
+
+        \vspace{-0.8em}
 
         \caption{}
         \label{fig:会面问题}
@@ -1115,7 +1142,9 @@ $$
     $$
 \end{proof}
 
-条件概率满足概率定义的三条公理，因此概率的任何性质对条件概率都成立.
+\begin{note}
+    \indent 条件概率满足概率的公理化定义，因此概率的任何性质对条件概率都成立.
+\end{note}
 
 \subsection{乘法公式}
 
@@ -1146,8 +1175,6 @@ $$
         =\ & P(A_1 A_2 \cdots A_n)
     \end{aligned}
     $$
-
-    \vspace{-2em}
 \end{proof}
 
 \begin{example}[][波利亚罐子模型]
@@ -1348,19 +1375,19 @@ $$
 当 $P(A)=0$ 或 $P(B)=0$ 时，式 \eqref{equation:相互独立} 仍然成立，因此用式 \eqref{equation:相互独立} 作为事件相互独立的定义.
 
 \begin{definition}[][][def:event-independence]
-    \indent 设 $A$ 与 $B$ 是同一试验 $E$ 的两个事件，如果 $P(AB) = P(A) \, P(B)$，则称事件 $A$ 与事件 $B$ {\heiti 相互独立}.
+    \indent 对于任意事件 $A$ 与 $B$，如果 $P(AB) = P(A) \, P(B)$，则称事件 $A$ 与 $B$ {\heiti 相互独立}.
 \end{definition}
 
 \begin{note}
-    \indent 当事件 $A$ 与 $B$ 互斥，且 $P(A) \not= 0, \, P(B) \not= 0$ 时，事件 $A$ 与 $B$ 一定不相互独立，因为此时 $P(AB) = 0$，而 $P(A) \, P(B) \not= 0$.反之，当事件 $A$ 与 $B$ 相互独立，且 $P(A) \not= 0, \, P(B) \not= 0$ 时，事件 $A$ 与 $B$ 一定不互斥，因为此时 $P(AB) = P(A) \, P(B) \not= 0$.总之，当两个事件的概率都不为 0 时，互斥一定不相互独立，相互独立一定不互斥.
+    \indent 当事件 $A$ 与 $B$ 互斥，且 $P(A) \not= 0, \, P(B) \not= 0$ 时，事件 $A$ 与 $B$ 一定不相互独立，因为此时 $P(AB) = 0$，而 $P(A) \, P(B) \not= 0$.反之，当事件 $A$ 与 $B$ 相互独立，且 $P(A) \not= 0, \, P(B) \not= 0$ 时，事件 $A$ 与 $B$ 一定不互斥，因为此时 $P(AB) = P(A) \, P(B) \not= 0$.总之，当两个事件的概率都不为 $0$ 时，互斥一定不相互独立，相互独立一定不互斥.
 
-    不可能事件 $\text{\O}$ 与任意事件 $A$ 相互独立，因为 $P(\text{\O} A) = P(\text{\O}) \, P(A) = 0$.同理，概率为 0 的事件与任意事件相互独立.
+    不可能事件 $\text{\O}$ 与任意事件 $A$ 相互独立，因为 $P(\text{\O} A) = P(\text{\O}) \, P(A) = 0$.同理，概率为 $0$ 的事件与任意事件相互独立.
 
-    必然事件 $\varOmega$ 与任意事件 $A$ 相互独立，因为 $P(\varOmega A) = P(A) = P(\varOmega) \, P(A)$.同理，概率为 1 的事件与任意事件相互独立.
+    必然事件 $\varOmega$ 与任意事件 $A$ 相互独立，因为 $P(\varOmega A) = P(A) = P(\varOmega) \, P(A)$.同理，概率为 $1$ 的事件与任意事件相互独立.
 \end{note}
 
 \begin{conclusion}
-    \indent 对于任意事件 $A$ 和 $B$，如果 $P(A) > 0$，则 $A$ 与 $B$ 相互独立的充分必要条件是 $P(B \mid A) = P(B)$；如果 $P(B) > 0$，则 $A$ 与 $B$ 相互独立的充分必要条件是 $P(A \mid B) = P(A)$.
+    \indent 对于同一试验 $E$ 的任意两个事件 $A$ 和 $B$，如果 $P(A) > 0$，则 $A$ 与 $B$ 相互独立的充分必要条件是 $P(B \mid A) = P(B)$；如果 $P(B) > 0$，则 $A$ 与 $B$ 相互独立的充分必要条件是 $P(A \mid B) = P(A)$.
 \end{conclusion}
 
 \begin{conclusion}
@@ -1368,6 +1395,7 @@ $$
 \end{conclusion}
 
 \begin{proof}
+    \vspace{-1em}
     $$
     \begin{aligned}
         P(A \overline{B}) &= P(A-B) \\
@@ -1465,6 +1493,10 @@ $$
     $$
     所以 $A-B$ 与 $C$ 相互独立.
 \end{proof}
+
+\begin{note}
+    \indent 如果事件 $A,B,C$ 只有两两相互独立，则不能证明 $A \cup B$ 与 $C$ 相互独立、$AB$ 与 $C$ 相互独立、$A-B$ 与 $C$ 相互独立.
+\end{note}
 
 \begin{definition}[][][def:independent-more]
     \indent 设 $A_1,A_2,\cdots,A_n$ 是同一试验 $E$ 的 $n$ 个事件，如果对于这 $n$ 个事件中的任意 $k\,(2\leqslant k\leqslant n)$ 个事件 $A_{i_1},A_{i_2},\cdots,A_{i_k}$，都有等式
