@@ -1,24 +1,12 @@
-\appendix
-\renewcommand{\appendixname}{}
-
-% 附录标题设置
-\titleformat{\chapter}{\huge\bfseries\filcenter}{#1}{0em}{
-    \makebox[0pt][l]{
-        \begin{tikzpicture}[remember picture, overlay]
-            \ifodd\value{page}
-                \node[above left, font=\normalfont\fontsize{15}{15}\selectfont, circle, fill=outermarginfgcolor, text=white, inner sep=1mm] (pagenumber) at ([shift={(-5mm,5mm)}] current page.south east) {\thepage};
-            \else
-                \node[above right, font=\normalfont\fontsize{15}{15}\selectfont, circle, fill=outermarginfgcolor, text=white, inner sep=1mm] (pagenumber) at ([shift={(5mm,5mm)}] current page.south west) {\thepage};
-            \fi
-        \end{tikzpicture}
-    }
-}
+% !TeX root = main.tex
 
 \titleformat{\section}{\large\bfseries}{\thesection \quad #1}{0em}{}
 
 \chapter*{附录}
 \addcontentsline{toc}{chapter}{附录}
 \setcounter{chapter}{1}
+\markboth{附录}{}
+\thispagestyle{plain}
 
 \section{常见的概率分布}
 

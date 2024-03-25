@@ -1,6 +1,7 @@
 % !TeX root = main.tex
 
 \chapter{随机事件及其概率}
+\thispagestyle{plain}
 
 \section{随机事件}
 
@@ -222,7 +223,7 @@ $$
         \item 若 $A \in \mathcal{F}$，则 $\overline{A} \in \mathcal{F}$；
         \item 若 $A_i \in \mathcal{F}, \, i=1,2,\cdots$，则 $\displaystyle\bigcup_{i=1}^\infty A_i \in \mathcal{F}$，
     \end{enumerate}
-    则称 $\mathcal{F}$ 为一个{\heiti 事件域}，也称为 $\sigma$ {\heiti 域}或 $\sigma$ {\heiti 代数}.将 $(\varOmega, \mathcal{F})$ 称为{\heiti 可测空间}（measurable space）.
+    则称 $\mathcal{F}$ 为一个\textbf{事件域}，也称为 $\sigma$ \textbf{域}或 $\sigma$ \textbf{代数}.将 $(\varOmega, \mathcal{F})$ 称为\textbf{可测空间}（measurable space）.
 \end{definition}
 
 在可测空间上才可定义概率，这时 $\mathcal{F}$ 中都是有概率可言的事件.
@@ -230,7 +231,7 @@ $$
 \begin{note}
     \indent 事件域就是样本空间中某些子集及其运算结果组成的集合类.对于离散样本空间，它的所有子集就构成了事件域.而对连续样本空间，存在无法测量长度的子集，这样的集合称为\textbf{不可测集}.如果将不可测集也看成事件，那么这样的事件将没有概率可言.因此，没有必要将连续样本空间的所有子集都看做事件，只需将可度量的子集（称为\textbf{可测集}）看做事件即可.
 
-    \indent 事件域包含样本空间的所有可测子集，这些子集都可以看做有概率可言的事件.事件之间可以进行运算，并且运算结果仍然是事件，因此事件域要对事件的各种运算具有封闭性.
+    \indent 事件域包含样本空间的所有可测子集，这些子集可以看做有概率可言的事件.事件之间可以进行运算，并且运算结果仍然是事件，因此事件域要对事件的各种运算具有封闭性.
 
     \indent 在事件的各种运算中，并与对立是最基本的运算，因为：
     \begin{itemize}
@@ -310,7 +311,7 @@ $$
 \end{proof}
 
 \begin{definition}
-    \indent 对样本空间 $\varOmega$，如果事件 $A_1,A_2,\cdots,A_n$ 互斥，且 $\displaystyle\bigcup_{i=1}^n A_i=\varOmega$，则称 $A_1,A_2,\cdots,A_n$ 为样本空间 $\varOmega$ 的一个{\heiti 分割}或{\heiti 完全事件组}.
+    \indent 对样本空间 $\varOmega$，如果事件 $A_1,A_2,\cdots,A_n$ 互斥，且 $\displaystyle\bigcup_{i=1}^n A_i=\varOmega$，则称 $A_1,A_2,\cdots,A_n$ 为样本空间 $\varOmega$ 的一个\textbf{分割}或\textbf{完全事件组}.
 \end{definition}
 
 若 $A = \{ A_1,A_2,\cdots,A_n \}$ 为样本空间 $\varOmega$ 的一个分割，由分割 $A$ 产生的事件域记作 $\sigma(A)$，则 $\sigma(A)$ 中含有 $2^n$ 个不同的事件.利用分割可以将事件域简化，从而简化所研究的问题.
@@ -320,7 +321,7 @@ $$
 \subsection{频率}
 
 \begin{definition}
-    \indent 设在相同的条件下进行的 $n$ 次试验中，事件 $A$ 发生了 $n_A$ 次，则称 $n_A$ 为事件 $A$ 发生的{\heiti 频数}，称比值 $\dfrac{n_A}{n}$ 为事件 $A$ 发生的{\heiti 频率}，记作 $f_n(A)$，即
+    \indent 设在相同的条件下进行的 $n$ 次试验中，事件 $A$ 发生了 $n_A$ 次，则称 $n_A$ 为事件 $A$ 发生的\textbf{频数}，称比值 $\dfrac{n_A}{n}$ 为事件 $A$ 发生的\textbf{频率}，记作 $f_n(A)$，即
     $$
     f_n(A)=\dfrac{n_A}{n}
     $$
@@ -330,9 +331,9 @@ $$
 
 \begin{property}[][频率的基本性质]
     \begin{enumerate}
-        \item {\heiti 非负性}：对于任意事件 $A$，有 $f_n(A) \geqslant 0$.
-        \item {\heiti 规范性}：对于必然事件 $\varOmega$，有 $f_n(\varOmega)=1$.
-        \item {\heiti 有限可加性}：对于两两互斥的事件 $A_1,A_2,\cdots,A_m$，有
+        \item \textbf{非负性}：对于任意事件 $A$，有 $f_n(A) \geqslant 0$.
+        \item \textbf{规范性}：对于必然事件 $\varOmega$，有 $f_n(\varOmega)=1$.
+        \item \textbf{有限可加性}：对于两两互斥的事件 $A_1,A_2,\cdots,A_m$，有
         $$
         f_n \left(\bigcup_{i=1}^m A_i \right) = \sum_{i=1}^m f_n(A_i)
         $$
@@ -348,14 +349,14 @@ $$
 \begin{definition}[][概率的公理化定义][def:probability]
     \indent 设 $\varOmega$ 为一个样本空间，$\mathcal{F}$ 为 $\varOmega$ 的某些子集组成的事件域.如果对于任一事件 $A \in \mathcal{F}$，定义在 $\mathcal{F}$ 上的一个实值函数 $P(A)$ 满足：
     \begin{enumerate}
-        \item {\heiti 非负性}：对于任意事件 $A \in \mathcal{F}$，有 $P(A) \geqslant 0$；
-        \item {\heiti 规范性}：对于必然事件 $\varOmega$，有 $P(\varOmega)=1$；
-        \item {\heiti 可列可加性}：对于两两互斥的事件 $A_1,A_2,\cdots$，有
+        \item \textbf{非负性}：对于任意事件 $A \in \mathcal{F}$，有 $P(A) \geqslant 0$；
+        \item \textbf{规范性}：对于必然事件 $\varOmega$，有 $P(\varOmega)=1$；
+        \item \textbf{可列可加性}：对于两两互斥的事件 $A_1,A_2,\cdots$，有
         $$
         P \left(\bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P(A_i)
         $$
     \end{enumerate}
-    则称集合函数 $P$ 为可测空间 $(\varOmega, \mathcal{F})$ 上的{\heiti 概率}（probability），称 $P(A)$ 为事件 $A$ 的{\heiti 概率}，称三元素 $(\varOmega, \mathcal{F}, P)$ 为{\heiti 概率空间}（probability space）.
+    则称集合函数 $P$ 为可测空间 $(\varOmega, \mathcal{F})$ 上的\textbf{概率}（probability），称 $P(A)$ 为事件 $A$ 的\textbf{概率}，称三元素 $(\varOmega, \mathcal{F}, P)$ 为\textbf{概率空间}（probability space）.
 \end{definition}
 
 \begin{property}[][][prop:probability:0]
@@ -565,12 +566,12 @@ $$
 \subsection{概率的连续性}
 
 \begin{definition}
-    \indent 对 $\mathcal{F}$ 中任一单调不减的事件序列 $F_1 \subseteq F_2 \subseteq \cdots \subseteq F_n \subseteq \cdots$，称 $\displaystyle\bigcup_{i=1}^{\infty} F_i$ 为 $\{F_n\}$ 的{\heiti 极限事件}，记为
+    \indent 对 $\mathcal{F}$ 中任一单调不减的事件序列 $F_1 \subseteq F_2 \subseteq \cdots \subseteq F_n \subseteq \cdots$，称 $\displaystyle\bigcup_{i=1}^{\infty} F_i$ 为 $\{F_n\}$ 的\textbf{极限事件}，记为
     $$
     \lim_{n \to \infty} F_n = \bigcup_{i=1}^{\infty} F_i
     $$
 
-    对 $\mathcal{F}$ 中任一单调不增的事件序列 $E_1 \supseteq E_2 \supseteq \cdots \supseteq E_n \supseteq \cdots$，称 $\displaystyle\bigcap_{i=1}^{\infty} E_i$ 为 $\{E_n\}$ 的{\heiti 极限事件}，记为
+    对 $\mathcal{F}$ 中任一单调不增的事件序列 $E_1 \supseteq E_2 \supseteq \cdots \supseteq E_n \supseteq \cdots$，称 $\displaystyle\bigcap_{i=1}^{\infty} E_i$ 为 $\{E_n\}$ 的\textbf{极限事件}，记为
     $$
     \lim_{n \to \infty} E_n = \bigcap_{i=1}^{\infty} E_i
     $$
@@ -581,11 +582,11 @@ $$
     $$
     \lim_{n \to \infty} P(F_n) = P(\lim_{n \to \infty} F_n)
     $$
-    则称概率 $P$ 是{\heiti 下连续}的.若它对 $\mathcal{F}$ 中任一单调不增的事件序列 $\{E_n\}$ 均有
+    则称概率 $P$ 是\textbf{下连续}的.若它对 $\mathcal{F}$ 中任一单调不增的事件序列 $\{E_n\}$ 均有
     $$
     \lim_{n \to \infty} P(E_n) = P(\lim_{n \to \infty} E_n)
     $$
-    则称概率 $P$ 是{\heiti 上连续}的.
+    则称概率 $P$ 是\textbf{上连续}的.
 \end{definition}
 
 \begin{property}[][概率的连续性][prop:连续性]
@@ -1098,7 +1099,7 @@ $$
     $$
     P(A \mid B) = \dfrac{P(AB)}{P(B)}
     $$
-    为“在事件 $B$ 发生的条件下事件 $A$ 发生的概率”，简称{\heiti 条件概率}（conditional probability）.
+    为“在事件 $B$ 发生的条件下事件 $A$ 发生的概率”，简称\textbf{条件概率}（conditional probability）.
 \end{definition}
 
 \begin{note}
@@ -1375,7 +1376,7 @@ $$
 当 $P(A)=0$ 或 $P(B)=0$ 时，式 \eqref{equation:相互独立} 仍然成立，因此用式 \eqref{equation:相互独立} 作为事件相互独立的定义.
 
 \begin{definition}[][][def:event-independence]
-    \indent 对于任意事件 $A$ 与 $B$，如果 $P(AB) = P(A) \, P(B)$，则称事件 $A$ 与 $B$ {\heiti 相互独立}.
+    \indent 对于任意事件 $A$ 与 $B$，如果 $P(AB) = P(A) \, P(B)$，则称事件 $A$ 与 $B$ \textbf{相互独立}.
 \end{definition}
 
 \begin{note}
@@ -1439,11 +1440,11 @@ $$
         P(BC) = P(B) \, P(C) \\
         P(AC) = P(A) \, P(C)
     \end{gather*}
-    则称三个事件 $A,B,C$ {\heiti 两两相互独立}.
+    则称三个事件 $A,B,C$ \textbf{两两相互独立}.
 \end{definition}
 
 \begin{definition}[][][def:independent-3]
-    \indent 如果三个事件 $A,B,C$ 两两相互独立，并且有 $P(ABC)=P(A)\,P(B)\,P(C)$，则称三个事件 $A,B,C$ {\heiti 相互独立}.
+    \indent 如果三个事件 $A,B,C$ 两两相互独立，并且有 $P(ABC)=P(A)\,P(B)\,P(C)$，则称三个事件 $A,B,C$ \textbf{相互独立}.
 \end{definition}
 
 \begin{note}
@@ -1503,7 +1504,7 @@ $$
     $$
     P(A_{i_1} A_{i_2} \cdots A_{i_k}) = P(A_{i_1}) \, P(A_{i_2}) \cdots P(A_{i_k})
     $$
-    则称这 $n$ 个事件 $A_1,A_2,\cdots,A_n$ {\heiti 相互独立}.
+    则称这 $n$ 个事件 $A_1,A_2,\cdots,A_n$ \textbf{相互独立}.
 \end{definition}
 
 \begin{conclusion}
@@ -1517,11 +1518,11 @@ $$
 \end{definition}
 
 \begin{definition}
-    \indent 如果试验 $E_1$ 的任一结果、试验 $E_2$ 的任一结果、……、试验 $E_n$ 的任一结果都是相互独立的事件，则称试验 $E_1, E_2, \cdots, E_n$ 相互独立.如果这 $n$ 个独立试验是相同的，则称其为 $n$ {\heiti 重独立重复试验}.
+    \indent 如果试验 $E_1$ 的任一结果、试验 $E_2$ 的任一结果、……、试验 $E_n$ 的任一结果都是相互独立的事件，则称试验 $E_1, E_2, \cdots, E_n$ 相互独立.如果这 $n$ 个独立试验是相同的，则称其为 $n$ \textbf{重独立重复试验}.
 \end{definition}
 
 \begin{definition}
-    \indent 如果在 $n$ 重独立重复试验中，每次试验的可能结果只有两个（$A$ 或 $\overline{A}$），则称这种试验为 $n$ {\heiti 重伯努利试验}，简称为 {\heiti 伯努利试验}（Bernoulli experiment），也称为 {\heiti 伯努利概型}（Bernoulli probability model）.
+    \indent 如果在 $n$ 重独立重复试验中，每次试验的可能结果只有两个（$A$ 或 $\overline{A}$），则称这种试验为 $n$ \textbf{重伯努利试验}，简称为 \textbf{伯努利试验}（Bernoulli experiment），也称为 \textbf{伯努利概型}（Bernoulli probability model）.
 \end{definition}
 
 $n$ 重伯努利试验的基本事件可记为 $\omega=\omega_1 \omega_2 \cdots \omega_n$，其中 $\omega_i\,(1\leqslant i\leqslant n)$ 为 $A$ 或者为 $\overline{A}$，即 $\omega$ 是从 $A$ 及 $\overline{A}$ 中每次取 1 个，独立地重复取 $n$ 次的一种排列，共有 $2^n$ 个基本事件.

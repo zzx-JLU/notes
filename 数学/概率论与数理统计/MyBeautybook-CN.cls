@@ -38,9 +38,8 @@
 \usepackage{physics}
 \usepackage{amsmath}
 \usepackage{zhlipsum}
-\usepackage[a4paper, left = 1.75cm, right = 1.75cm, top = 1cm, bottom = 2.2cm]{geometry}
+\usepackage[a4paper, left = 2cm, right = 2cm, top = 2.5cm, bottom = 1.75cm]{geometry}
 \usepackage{xpatch} % 修正章节编号
-\usepackage[automark]{scrlayer-scrpage} % 页面设置宏包，隶属于 koma-script 文档类
 \usepackage{fontawesome5}
 \usepackage{mathrsfs}
 \usepackage{tabularx}
@@ -85,6 +84,7 @@
 \pgfsetlayers{bottom, background, main, foreground, top}
 
 \setmainfont{XITS}
+\setCJKfamilyfont{zhkai}{KaiTi}[BoldFont=SimHei] % 楷体字的粗体设置为黑体
 
 \setcounter{tocdepth}{2} % 目录深度
 \setcounter{secnumdepth}{3} % 编号深度
@@ -140,30 +140,29 @@
     \end{center}
 }
 
+% 页眉页脚
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhf{} % 清空页眉页脚
+\renewcommand{\headrulewidth}{0.4pt} % 页眉线
+\fancyhead[LE,RO]{\thepage} % 偶数页左页眉，奇数页右页眉，页码
+\fancyhead[CO]{\rightmark} % 奇数页中页眉
+\fancyhead[CE]{\leftmark} % 偶数页中页眉
+
+% plain 页面类型
+\fancypagestyle{plain}{
+    \fancyhf{} % 清空页眉页脚
+    \renewcommand{\headrulewidth}{0pt} % 去页眉线
+    \fancyfoot[LE,RO]{\thepage} % 奇数页右页脚，偶数页左页脚，页码
+}
+
 \colorlet{outermarginfgcolor}{DarkCyan} % foregroundcolor 较深
 \colorlet{outermarginbgcolor}{DarkCyan!30} % backgroundcolor 较浅
 
-% 章节标题页的页码设置
-\titleformat{\chapter}{\huge\bfseries\filcenter}{第\zhnumber{\arabic{chapter}}章 \quad #1}{0em}{
-    \makebox[0pt][l]{
-        \begin{tikzpicture}[remember picture, overlay]
-            \ifodd\value{page}
-                \node[above left, font=\normalfont\fontsize{15}{15}\selectfont, circle, fill=outermarginfgcolor, text=white, inner sep=1mm] (pagenumber) at ([shift={(-5mm,5mm)}] current page.south east) {\thepage};
-            \else
-                \node[above right, font=\normalfont\fontsize{15}{15}\selectfont, circle, fill=outermarginfgcolor, text=white, inner sep=1mm] (pagenumber) at ([shift={(5mm,5mm)}] current page.south west) {\thepage};
-            \fi
-        \end{tikzpicture}
-    }
-}
-
-% 目录页的页码设置
-\titleformat{name=\chapter, numberless}{\bfseries\huge\filcenter}{#1}{0em}{
-    \makebox[0pt][l]{
-        \begin{tikzpicture}[remember picture, overlay]
-            \node[above, font=\normalfont\fontsize{15}{15}\selectfont, text=black] (pagenumber) at ([shift={(0mm,3mm)}] current page.south) {\thepage};
-        \end{tikzpicture}
-    }
-}
+% 章节标题设置
+\titleformat{\chapter}{\huge\bfseries\filcenter}{第\zhnumber{\arabic{chapter}}章 \quad #1}{0em}{}
+% 目录和附录标题设置
+\titleformat{name=\chapter, numberless}{\bfseries\huge\filcenter}{#1}{0em}{}
 
 % Part 样式
 \makeatletter
@@ -212,85 +211,6 @@
 
 \assignpagestyle{\part}{empty}
 \assignpagestyle{\chapter}{empty}
-
-% 侧边条
-\newlength\outermarginwidth
-\setlength\outermarginwidth{1.5cm}
-\setlength{\headheight}{40pt} % 页眉高度
-\renewcommand\chaptermarkformat{}
-
-% define a new mark for the chapter number
-\renewcommand{\chaptermark}[1]{\markboth{第\zhnumber{\arabic{chapter}}章 \quad #1}{}} % 左侧页页眉显示章节标题
-\renewcommand{\sectionmark}[1]{\markright{\thesection \quad #1}{}} % 右侧页页眉显示二级标题
-
-% 侧边栏页码
-\newcommand*\outermarginpagemark{
-    \tikzoverlay{
-        \begin{pgfonlayer}{top}
-            \ifodd\value{page}
-                \coordinate (anchor of headmark) at ([shift={(-1.2\outermarginwidth, -0.8cm)}] current page.north east);
-                \node[below, text=outermarginfgcolor, font=\bfseries\fontsize{20}{20}\selectfont] at ([shift={(-.7\outermarginwidth, -0.8cm)}] current page.north east) {\thepage};
-                \node[below left, font=\upshape, text=outermarginfgcolor] at (anchor of headmark) {\begin{varwidth}{\linewidth}\rightmark\end{varwidth}};
-            \else
-                \coordinate (anchor of headmark) at ([shift={(1.2\outermarginwidth, -0.8cm)}] current page.north west);
-                \node[below, text=outermarginfgcolor, font=\bfseries\fontsize{20}{20}\selectfont] at ([shift={(.7\outermarginwidth, -0.8cm)}]current page.north west) {\thepage};
-                \node[below right, font=\upshape, text=outermarginfgcolor] at (anchor of headmark) {\begin{varwidth}{\linewidth}\leftmark\end{varwidth}};
-            \fi
-        \end{pgfonlayer}}
-}
-
-\makeatletter
-\newcommand*\even@outermargin{}
-\newcommand*\odd@outermargin{}
-\newcommand*\evenoutermargin[1]{\renewcommand\even@outermargin{#1}} % 偶数页内容
-\newcommand*\oddoutermargin[1]{\renewcommand\odd@outermargin{#1}} % 奇数页内容
-\makeatother
-
-% declare new page style using layers
-\DeclareNewPageStyleByLayers{scth}{
-    scth.outermargin.pn.even,
-    scth.outermargin.pn.odd,
-}
-
-% 偶数页页脚页码
-\DeclareNewLayer[
-    foreground, % 上层 (背景之上)
-    evenpage,
-    foot, % 页脚
-    contents=\outermarginpagemark
-]{scth.outermargin.pn.even}
-
-% define the layers for odd page from the settings for even pages
-% 复制自偶数页样式命令
-\newcommand*\DeclareOddFromEven[1]{
-    \DeclareNewLayer[
-        clone = #1.even,
-        oddpage,
-        align = r,
-        hoffset = \paperwidth
-    ]{#1.odd}
-}
-\DeclareOddFromEven{scth.outermargin.pn}
-
-% add the layers to page style scrheadings and page style plain
-\ForEachLayerOfPageStyle*{scth}{
-    \AddLayersToPageStyle{scrheadings}{#1}
-    \AddLayersToPageStyle{plain.scrheadings}{#1}
-}
-
-\KOMAoptions{markcase=upper} % 页眉
-
-% for page styles scrheadings and plain
-\clearpairofpagestyles
-\ohead{}
-\cfoot{}
-\ofoot{}
-
-% set the contents of the outer margin on even and odd pages for scrheadings, plain and scth
-\oddoutermargin{\bf\leftmark} % Odd 奇数页
-\makeatletter
-\evenoutermargin{\cabin\bfseries\@title} % Even 偶数页
-\makeatother
 
 %% Begin The Most Beautiful Box (STYLE : ys style) % 中国风盒子
 \makeatletter
