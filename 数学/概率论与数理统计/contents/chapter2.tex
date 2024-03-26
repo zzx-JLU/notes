@@ -526,7 +526,7 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \subfigure[均匀分布的概率密度]{
+    \subcaptionbox{均匀分布的概率密度}{
         \centering
         \begin{tikzpicture}[>=Stealth]
             % 坐标轴
@@ -549,7 +549,7 @@ $$
         \end{tikzpicture}
     }
     \hspace{3em}
-    \subfigure[均匀分布的分布函数]{
+    \subcaptionbox{均匀分布的分布函数}{
         \centering
         \begin{tikzpicture}[>=Stealth]
             % 坐标轴
@@ -600,7 +600,7 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \subfigure[指数分布的概率密度]{
+    \subcaptionbox{指数分布的概率密度}{
         \centering
         \begin{tikzpicture}[>=Stealth]
             % 坐标轴
@@ -616,7 +616,7 @@ $$
         \end{tikzpicture}
     }
     \hspace{3em}
-    \subfigure[指数分布的分布函数]{
+    \subcaptionbox{指数分布的分布函数}{
         \centering
         \begin{tikzpicture}[>=Stealth]
             % 坐标轴
@@ -706,7 +706,7 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \subfigure[正态分布的概率密度]{
+    \subcaptionbox{正态分布的概率密度\label{fig:正态分布的概率密度}}{
         \centering
         \begin{tikzpicture}[>=Stealth, yscale=4, xscale=0.8]
             % 定义变量
@@ -723,10 +723,9 @@ $$
             \draw[dashed] (\Mu-\Sigma, 0) node[below]{$\mu-\sigma$} -- (\Mu-\Sigma, {exp(-0.5) / (sqrt(2*pi)*\Sigma)});
             \draw[dashed] (\Mu+\Sigma, 0) node[below]{$\mu+\sigma$} -- (\Mu+\Sigma, {exp(-0.5) / (sqrt(2*pi)*\Sigma)});
         \end{tikzpicture}
-        \label{fig:正态分布的概率密度}
     }
     \hspace{3em}
-    \subfigure[正态分布的分布函数]{
+    \subcaptionbox{正态分布的分布函数\label{fig:正态分布的分布函数}}{
         \centering
         \begin{tikzpicture}[>=Stealth, yscale=1.6, xscale=0.8]
             % 定义变量
@@ -742,7 +741,6 @@ $$
             \draw[dashed] (0, 1) node[left]{$1$} -- (4.7, 1);
             \draw[dashed] (0, 0.5) node[left]{$0.5$} -- (\Mu, 0.5) -- (\Mu, 0) node[below]{$\mu$};
         \end{tikzpicture}
-        \label{fig:正态分布的分布函数}
     }
 
     \vspace{-1em}
@@ -756,7 +754,7 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \subfigure[固定 $\sigma$，改变 $\mu$]{
+    \subcaptionbox{固定 $\sigma$，改变 $\mu$\label{fig:mu}}{
         \centering
 
         \begin{tikzpicture}[>=Stealth, xscale=0.9, yscale=3.5]
@@ -775,10 +773,8 @@ $$
             \draw[dashed] (\Mu, {1/(sqrt(2*pi)*\Sigma)}) -- (\Mu, 0) node[below]{$\mu_1$};
             \draw[dashed] (\xMu, {1/(sqrt(2*pi)*\Sigma)}) -- (\xMu, 0) node[below]{$\mu_2$};
         \end{tikzpicture}
-
-        \label{fig:mu}
     }
-    \subfigure[固定 $\mu$，改变 $\sigma$]{
+    \subcaptionbox{固定 $\mu$，改变 $\sigma$\label{fig:sigma}}{
         \centering
 
         \begin{tikzpicture}[>=Stealth, xscale=0.9, yscale=3.5]
@@ -803,8 +799,6 @@ $$
             \draw[line width=1.5pt] (4.25, 0.7) -- (5, 0.7) node[right]{$\sigma=1$};
             \draw[line width=1.5pt, draw=blue] (4.25, 0.6) -- (5, 0.6) node[right]{$\sigma=2$};
         \end{tikzpicture}
-
-        \label{fig:sigma}
     }
 
     \caption{}
@@ -827,7 +821,7 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \subfigure[标准正态分布的概率密度]{
+    \subcaptionbox{标准正态分布的概率密度}{
         \centering
         \begin{tikzpicture}[>=Stealth, yscale=4, xscale=0.8]
             % 定义变量
@@ -842,7 +836,7 @@ $$
         \end{tikzpicture}
     }
     \hspace{2em}
-    \subfigure[标准正态分布的分布函数]{
+    \subcaptionbox{标准正态分布的分布函数}{
         \centering
         \begin{tikzpicture}[>=Stealth, yscale=1.6, xscale=0.8]
             % 定义变量
@@ -1432,10 +1426,10 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \subfigure[柯西分布的概率密度]{
+    \subcaptionbox{柯西分布的概率密度}{
         \centering
 
-        \begin{tikzpicture}
+        \begin{tikzpicture}[scale=0.9]
             \centering
     
             \begin{axis}[2d plot axis,
@@ -1454,10 +1448,10 @@ $$
             \end{axis}
         \end{tikzpicture}
     }
-    \subfigure[柯西分布的分布函数]{
+    \subcaptionbox{柯西分布的分布函数}{
         \centering
 
-        \begin{tikzpicture}
+        \begin{tikzpicture}[scale=0.9]
             \centering
     
             \begin{axis}[2d plot axis,

@@ -60,7 +60,10 @@
 \usepackage{extarrows}
 \usepackage{appendix} % 附录
 \usepackage{rotating}
-\usepackage{bm, color, framed, bookmark, subfigure, float, wrapfig}
+\usepackage{bm, color, framed, bookmark, float, wrapfig}
+
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
 
 \usepackage{tikz}
 \usetikzlibrary{calc, shadows, hobby, intersections, decorations.markings, decorations.pathreplacing, spy, arrows, shapes, fadings, trees, mindmap, patterns, shapes.arrows, shapes.symbols, tikzmark, shapes.geometric, graphs, quotes, angles, decorations.pathmorphing, through, shadings, backgrounds, positioning, fit, arrows.meta, shapes.misc, decorations.shapes, calligraphy}
@@ -99,7 +102,7 @@
 % 公式编号以 section 为排序单位
 \numberwithin{equation}{section}
 
-\newcommand{\tikzoverlay}[1]{\begin{tikzpicture}[remember picture, overlay] #1 \end{tikzpicture}}
+% \newcommand{\tikzoverlay}[1]{\begin{tikzpicture}[remember picture, overlay] #1 \end{tikzpicture}}
 
 % ------------浮动环境设置
 %% 默认情况下, \LaTeX{} 要求每页的文字至少占据 20%, 否则该页就只单独放置一个浮动环境, 而这通常不是我们想要的, 我们将这个要求降低到 5%.

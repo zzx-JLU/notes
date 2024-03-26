@@ -83,7 +83,9 @@ $\varOmega$ 本身也是 $\varOmega$ 的子集，在每次试验中必然发生�
 
 对立事件一定互斥. 反之，互斥的事件不一定对立.
 
-对于任意事件 $A$，有 $\overline{\overline{A}}=A$.
+\begin{property}
+    \indent 对于任意事件 $A$，有 $\overline{\overline{A}}=A$.
+\end{property}
 
 \subsection{随机事件的运算}
 
@@ -388,8 +390,6 @@ $$
         &= \sum_{i=1}^n P(A_i)
     \end{aligned}
     $$
-
-    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][][prop:probability:converse]
@@ -408,8 +408,6 @@ $$
     \[
     P(\overline{A})=1-P(A)
     \]
-
-    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][][prop:probability:subset]
@@ -425,8 +423,6 @@ $$
     $$
     P(B-A)=P(B)-P(A)
     $$
-
-    \vspace{-2em}
 \end{proof}
 
 \begin{corollary}[][概率的单调性][推论：概率的单调性]
@@ -454,6 +450,8 @@ $$
     \[
     P(A) \leqslant P(\varOmega) = 1
     \]
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][概率的减法公式][prop:probability:subtraction]
@@ -468,6 +466,8 @@ $$
     \[
     P(A-B)=P(A-AB)=P(A)-P(AB)
     \]
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][概率的加法公式][prop:probability:add]
@@ -999,7 +999,7 @@ $$
     \begin{figure}[H]
         \centering
 
-        \subfigure[]{
+        \subcaptionbox{\label{fig:贝特朗奇论1}}{
             \centering
             \begin{tikzpicture}
                 % 定义常量
@@ -1019,9 +1019,8 @@ $$
                 \draw (E) -- (F); % 弦
                 \pic[draw=black, -, angle radius=0.2cm] {right angle = F--G--A}; % 垂直记号
             \end{tikzpicture}
-            \label{fig:贝特朗奇论1}
         }
-        \subfigure[]{
+        \subcaptionbox{\label{fig:贝特朗奇论2}}{
             \centering
             \begin{tikzpicture}
                 % 定义常量
@@ -1040,9 +1039,8 @@ $$
                 \pic["$60^{\circ}$", draw=black, -, angle eccentricity=1.6, angle radius=0.5cm] {angle = E--C--D};
                 \draw (C) -- (0.6*\r, 0.8*\r); % 弦
             \end{tikzpicture}
-            \label{fig:贝特朗奇论2}
         }
-        \subfigure[]{
+        \subcaptionbox{\label{fig:贝特朗奇论3}}{
             \centering
             \begin{tikzpicture}
                 \def\r{2} % 半径
@@ -1052,7 +1050,6 @@ $$
                 \draw (0.6*\r, 0.8*\r) -- (-0.9165*\r, -0.4*\r); % 弦
                 \fill (-0.15825*\r, 0.2*\r) circle (2pt); % 弦的中点
             \end{tikzpicture}
-            \label{fig:贝特朗奇论3}
         }
 
         \caption{贝特朗奇论}
