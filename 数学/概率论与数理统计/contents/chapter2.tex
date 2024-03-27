@@ -8,7 +8,7 @@
 \subsection{随机变量}
 
 \begin{definition}
-    \indent 设随机试验 $E$ 的样本空间为 $\varOmega=\{\omega\}$. 如果对于每一个 $\omega\in\varOmega$，都有一个实数 $X(\omega)$ 与之对应，则称 $X=X(\omega)$ 为\textbf{随机变量}（random variable）.
+    \indent 设随机试验 $E$ 的样本空间为 $\varOmega=\{\omega\}$. 如果对于每一个 $\omega\in\varOmega$，都有一个实数 $X(\omega)$ 与之对应，则称 $X=X(\omega)$ 为\textbf{随机变量}(random variable).
 \end{definition}
 
 随机变量常用大写字母 $X,Y,Z$ 等表示.
@@ -20,7 +20,7 @@
     $$
     F(x)=P(X \leqslant x), \ x \in \mathbf{R}
     $$
-    称 $F(x)$ 为随机变量 $X$ 的\textbf{分布函数}（cumulative distribution function）.称随机变量 $X$ 服从 $F(x)$，记为 $X \sim F(x)$.
+    称 $F(x)$ 为随机变量 $X$ 的\textbf{分布函数}(cumulative distribution function).称随机变量 $X$ 服从 $F(x)$，记为 $X \sim F(x)$.
 \end{definition}
 
 随机变量 $X$ 的分布函数 $F(x)$ 是定义在 $(-\infty, +\infty)$ 上的函数，是随机事件 $\{X \leqslant x\}$ 发生的概率.分布函数值 $F(a)$ 表示 $X$ 落在区间 $(-\infty,a]$ 上的概率.
@@ -108,7 +108,7 @@
 \section{离散型随机变量及其概率分布}
 
 \begin{definition}
-    \indent 如果一个随机变量 $X$ 所有可能取到的不相同的值是有限个或可列无限多个，并且以确定的概率取这些不同的值，则称 $X$ 为\textbf{离散型随机变量}（discrete random variable）.
+    \indent 如果一个随机变量 $X$ 所有可能取到的不相同的值是有限个或可列无限多个，并且以确定的概率取这些不同的值，则称 $X$ 为\textbf{离散型随机变量}(discrete random variable).
 \end{definition}
 
 \begin{definition}
@@ -121,7 +121,7 @@
         \item 非负性：$p_k \geqslant 0$；\vspace{0.5em}
         \item 归一性：$\displaystyle\sum_{k=1}^\infty p_k = 1$，
     \end{enumerate} \vspace{0.5em}
-    则称式 \eqref{equation:distribution} 为离散型随机变量 $X$ 的\textbf{概率分布}（probability distribution）或\textbf{分布律}.
+    则称式 \eqref{equation:distribution} 为离散型随机变量 $X$ 的\textbf{概率分布}(probability distribution)或\textbf{分布律}.
 \end{definition}
 
 概率分布也可以用如下的表格来表示：
@@ -143,7 +143,7 @@
 $$
 F(x) = P(X \leqslant x) = \sum_{x_k \leqslant x} P(X=x_k) = \sum_{x_k \leqslant x} p_k
 $$
-它的图像是有限级（或可列无限级）的阶梯形曲线.
+它的图像是有限级(或可列无限级)的阶梯形曲线.
 
 如果随机变量 $X$ 只能取一个常数 $c$，即 $P(X=c) = 1$，这样的分布称为\textbf{单点分布}或\textbf{退化分布}，它的分布函数是
 $$
@@ -156,7 +156,7 @@ $$
 \section{连续型随机变量及其概率密度}
 
 \begin{definition}[][][def:f(x)]
-    \indent 对于随机变量 $X$ 的分布函数 $F(x)$，如果存在非负函数 $f(x)$，使得对任意的 $x$，都有 $F(x)=\displaystyle\int_{-\infty}^x f(t)\,\text{d}t$，则称随机变量 $X$ 是\textbf{连续型随机变量}（continuous random variable），其中函数 $f(x)$ 叫做 $X$ 的\textbf{概率密度函数}（probability density function），简称为\textbf{概率密度}（probability density），记作 $X \sim f(x)$.
+    \indent 对于随机变量 $X$ 的分布函数 $F(x)$，如果存在非负函数 $f(x)$，使得对任意的 $x$，都有 $F(x)=\displaystyle\int_{-\infty}^x f(t)\,\text{d}t$，则称随机变量 $X$ 是\textbf{连续型随机变量}(continuous random variable)，其中函数 $f(x)$ 叫做 $X$ 的\textbf{概率密度函数}(probability density function)，简称为\textbf{概率密度}(probability density)，记作 $X \sim f(x)$.
 \end{definition}
 
 由定义 \ref{def:f(x)} 可知，连续型随机变量的分布函数处处连续.
@@ -267,7 +267,7 @@ $$
         1, & x \geqslant 1
     \end{cases}
     $$
-    而 $F_1(x)$ 是离散型概率分布（单点分布）的分布函数，$F_2(x)$ 是连续型概率分布（均匀分布）的分布函数.
+    而 $F_1(x)$ 是离散型概率分布(单点分布)的分布函数，$F_2(x)$ 是连续型概率分布(均匀分布)的分布函数.
 \end{note}
 
 \section{常用的概率分布}
@@ -283,7 +283,7 @@ $$
     $$
     P(X=k)=p^k (1-p)^{1-k}, \; k=0,1, \; 0<p<1
     $$
-    则称随机变量 $X$ 服从参数为 $p$ 的\textbf{0-1分布}或\textbf{两点分布}（two-point distribution）.
+    则称随机变量 $X$ 服从参数为 $p$ 的\textbf{0-1分布}或\textbf{两点分布}(two-point distribution).
 \end{definition}
 
 服从两点分布的随机变量 $X$ 的概率分布也可以写成
@@ -301,7 +301,7 @@ $$
 
 \subsection{二项分布}
 
-在 $n$ 重伯努利试验中，如果以 $X$ 表示事件 $A$ 出现的次数，则 $X$ 是一个离散型随机变量，它的所有可能取值是 $0,1,2,\cdots,n$.设 $P(A)=p\,(0<p<1)$，则由二项概率公式（式 \eqref{equation:binomial}）可得
+在 $n$ 重伯努利试验中，如果以 $X$ 表示事件 $A$ 出现的次数，则 $X$ 是一个离散型随机变量，它的所有可能取值是 $0,1,2,\cdots,n$.设 $P(A)=p\,(0<p<1)$，则由二项概率公式(式 \eqref{equation:binomial})可得
 $$
 P(X=k)=C_n^k p^k (1-p)^{n-k}, \; k=0,1,\cdots,n
 $$
@@ -311,7 +311,7 @@ $$
     $$
     P(X=k)=C_n^k p^k (1-p)^{n-k}, \; k=0,1,\cdots,n
     $$
-    则称随机变量 $X$ 服从参数为 $n,p$ 的\textbf{二项分布}（binomial distribution），记作 $X \sim B(n,p)$.
+    则称随机变量 $X$ 服从参数为 $n,p$ 的\textbf{二项分布}(binomial distribution)，记作 $X \sim B(n,p)$.
 \end{definition}
 
 由定义 \ref{def:binomial distribution} 可得
@@ -339,7 +339,7 @@ $X$ 就是 $n$ 重伯努利试验中 $A$ 出现的总次数，它服从二项分
     $$
     P(X=k) = \dfrac{\lambda^k e^{-\lambda}}{k!}, \; k=0,1,2\cdots
     $$
-    其中 $\lambda > 0$ 是常数，则称随机变量 $X$ 服从参数为 $\lambda$ 的\textbf{泊松分布}（poisson distribution），记作 $X \sim P(\lambda)$ 或 $X \sim \pi(\lambda)$.
+    其中 $\lambda > 0$ 是常数，则称随机变量 $X$ 服从参数为 $\lambda$ 的\textbf{泊松分布}(poisson distribution)，记作 $X \sim P(\lambda)$ 或 $X \sim \pi(\lambda)$.
 \end{definition}
 
 由定义可知
@@ -388,7 +388,7 @@ $X$ 就是 $n$ 重伯努利试验中 $A$ 出现的总次数，它服从二项分
 \end{figure}
 
 \begin{theorem}[][泊松定理]
-    \indent 设 $\{ p_n \}$ 为一个实数序列，且对于任意正整数 $n$，有 $p_n \in [0,1]$.若 $n \to \infty$ 时有 $n p_n \to \lambda$（$\lambda > 0$），则对任一固定的非负整数 $k$，有
+    \indent 设 $\{ p_n \}$ 为一个实数序列，且对于任意正整数 $n$，有 $p_n \in [0,1]$.若 $n \to \infty$ 时有 $n p_n \to \lambda$($\lambda > 0$)，则对任一固定的非负整数 $k$，有
     $$
     \lim_{n\to\infty} C_n^k p_n^k (1-p_n)^{n-k} = \dfrac{\lambda^k e^{-\lambda}}{k!}
     $$
@@ -428,7 +428,7 @@ $X$ 就是 $n$ 重伯努利试验中 $A$ 出现的总次数，它服从二项分
 $$
 P(X=k) = (1-p)^{k-1} p, \; k=1,2,\cdots
 $$
-称随机变量 $X$ 服从参数为 $p$ 的\textbf{几何分布}（geometric distribution），记作 $X \sim Ge(p)$.
+称随机变量 $X$ 服从参数为 $p$ 的\textbf{几何分布}(geometric distribution)，记作 $X \sim Ge(p)$.
 
 易知
 \begin{gather*}
@@ -462,7 +462,7 @@ $$
 
 \subsection{超几何分布}
 
-设有 $N$ 件物品，其中有 $M$（$M \leqslant N$） 件为甲类，从中不放回地随机抽取 $n$（$n \leqslant N$） 件，记抽出甲类物品的数量为 $X$，则随机变量 $X$ 服从\textbf{超几何分布}（hypergeometric distribution），记为 $X \sim H(n,N,M)$.
+设有 $N$ 件物品，其中有 $M$($M \leqslant N$) 件为甲类，从中不放回地随机抽取 $n$($n \leqslant N$) 件，记抽出甲类物品的数量为 $X$，则随机变量 $X$ 服从\textbf{超几何分布}(hypergeometric distribution)，记为 $X \sim H(n,N,M)$.
 
 当 $n \leqslant N-M$ 时，$X$ 的取值范围为 $0,1,2,\cdots,\min\{ M,n \}$；当 $n > N-M$ 时，一定能够抽出甲类物品，$X$ 的取值范围为 $n+M-N, n+M-N+1, n+M-N+2, \cdots, \min\{ M,n \}$.综合两种情况，记 $m = \max\{ 0, n+M-N \}$，$r = \min\{ M,n \}$，则超几何分布的概率分布为
 $$
@@ -484,9 +484,9 @@ $$
 
 \subsection{帕斯卡分布}
 
-设试验 $E$ 只有两个对立的结果 $A$ 和 $\overline{A}$，并且 $P(A)=p, \, P(\overline{A})=1-p$，其中 $0<p<1$. 将试验 $E$ 独立地重复进行下去，记事件 $A$ 第 $r$ 次出现时的试验次数为 $X$，则 $X$ 的可能取值为 $r, r+1, r+2, \cdots$，称随机变量 $X$ 服从\textbf{帕斯卡分布}（Pascal distribution）.
+设试验 $E$ 只有两个对立的结果 $A$ 和 $\overline{A}$，并且 $P(A)=p, \, P(\overline{A})=1-p$，其中 $0<p<1$. 将试验 $E$ 独立地重复进行下去，记事件 $A$ 第 $r$ 次出现时的试验次数为 $X$，则 $X$ 的可能取值为 $r, r+1, r+2, \cdots$，称随机变量 $X$ 服从\textbf{帕斯卡分布}(Pascal distribution).
 
-帕斯卡分布是\textbf{负二项分布}（negative binomial distribution）的正整数形式，因此可以将帕斯卡分布记作 $X \sim Nb(r,p)$.
+帕斯卡分布是\textbf{负二项分布}(negative binomial distribution)的正整数形式，因此可以将帕斯卡分布记作 $X \sim Nb(r,p)$.
 
 如果 $X=k$，意味着第 $k$ 次试验时事件 $A$ 第 $r$ 次出现，而前 $k-1$ 次试验中 $A$ 出现 $r-1$ 次，由二项分布知
 $$
@@ -499,7 +499,7 @@ $$
 
 当 $r=1$ 时，帕斯卡分布即为几何分布.
 
-如果将第一个 $A$ 出现的试验次数记为 $X_1$，第二个 $A$ 出现的试验次数记为 $X_2$（从第一个 $A$ 出现之后算起），$\cdots$，第 $r$ 个 $A$ 出现的试验次数记为 $X_r$（从第 $r-1$ 个 $A$ 出现之后算起），则诸 $X_i$ 独立同分布，且 $X_i \sim Ge(p)$.此时有 $X = X_1 + X_2 + \cdots + X_r \sim Nb(r,p)$，即服从帕斯卡分布的随机变量可以分解成 $r$ 个独立同分布的几何分布随机变量之和.
+如果将第一个 $A$ 出现的试验次数记为 $X_1$，第二个 $A$ 出现的试验次数记为 $X_2$(从第一个 $A$ 出现之后算起)，$\cdots$，第 $r$ 个 $A$ 出现的试验次数记为 $X_r$(从第 $r-1$ 个 $A$ 出现之后算起)，则诸 $X_i$ 独立同分布，且 $X_i \sim Ge(p)$.此时有 $X = X_1 + X_2 + \cdots + X_r \sim Nb(r,p)$，即服从帕斯卡分布的随机变量可以分解成 $r$ 个独立同分布的几何分布随机变量之和.
 
 \subsection{均匀分布}
 
@@ -511,7 +511,7 @@ $$
         0, & \text{其他}
     \end{cases}
     $$
-    则称 $X$ 在区间 $(a,b)$ 上服从\textbf{均匀分布}（uniform distribution），记作 $X \sim U(a,b)$.
+    则称 $X$ 在区间 $(a,b)$ 上服从\textbf{均匀分布}(uniform distribution)，记作 $X \sim U(a,b)$.
 \end{definition}
 
 均匀分布 $U(a,b)$ 的分布函数为
@@ -586,7 +586,7 @@ $$
         0 & x \leqslant 0
     \end{cases}
     $$
-    其中 $\lambda>0$ 是常数，则称 $X$ 服从参数为 $\lambda$ 的\textbf{指数分布}（exponential distribution），记作 $X \sim Exp(\lambda)$.
+    其中 $\lambda>0$ 是常数，则称 $X$ 服从参数为 $\lambda$ 的\textbf{指数分布}(exponential distribution)，记作 $X \sim Exp(\lambda)$.
 \end{definition}
 
 指数分布 $Exp(\lambda)$ 的分布函数为
@@ -690,7 +690,7 @@ $$
     $$
     f(x) = \dfrac{1}{\sqrt{2\pi} \sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \; -\infty < x < +\infty
     $$
-    其中 $\mu,\sigma \, (\sigma>0)$ 为常数，则称 $X$ 服从参数为 $\mu,\sigma$ 的\textbf{正态分布}（normal distribution），记作 $X \sim N(\mu,\sigma^2)$.
+    其中 $\mu,\sigma \, (\sigma>0)$ 为常数，则称 $X$ 服从参数为 $\mu,\sigma$ 的\textbf{正态分布}(normal distribution)，记作 $X \sim N(\mu,\sigma^2)$.
 \end{definition}
 
 概率密度 $f(x)$ 的图像如图 \ref{fig:正态分布的概率密度} 所示，它是一条钟形曲线，关于直线 $x=\mu$ 对称，并在 $x=\mu$ 处取得最大值 $\dfrac{1}{\sqrt{2\pi}\sigma}$，在 $x=\mu\pm\sigma$ 处有拐点，以 $x$ 轴为水平渐近线.
@@ -807,7 +807,7 @@ $$
 \subsubsection{标准正态分布}
 
 \begin{definition}
-    \indent 设 $X \sim N(\mu,\sigma^2)$，如果 $\mu=0,\sigma=1$，则称 $X$ 服从\textbf{标准正态分布}（standard normal distribution），记作 $X \sim N(0,1)$.
+    \indent 设 $X \sim N(\mu,\sigma^2)$，如果 $\mu=0,\sigma=1$，则称 $X$ 服从\textbf{标准正态分布}(standard normal distribution)，记作 $X \sim N(0,1)$.
 \end{definition}
 
 服从标准正态分布的随机变量 $X$ 的概率密度记作 $\varphi(x)$，分布函数记作 $\varPhi(x)$，即
@@ -1095,9 +1095,9 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 \end{property}
 
 \begin{proof}
-    （1）$\Gamma(1) = \displaystyle\int_{0}^{+\infty} e^{-x} \text{d}x = -e^{-x} \Big|_0^{+\infty} = 1$
+    (1)$\Gamma(1) = \displaystyle\int_{0}^{+\infty} e^{-x} \text{d}x = -e^{-x} \Big|_0^{+\infty} = 1$
 
-    （2）
+    (2)
     $$
     \begin{aligned}
         \left[ \Gamma(\dfrac{1}{2}) \right]^2 &= \int_{0}^{+\infty} x^{-\frac{1}{2}} e^{-x} \text{d}x \int_{0}^{+\infty} y^{-\frac{1}{2}} e^{-y} \text{d}y \\
@@ -1124,7 +1124,7 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 
     \vspace{0.5em}
 
-    （3）
+    (3)
     $$
     \begin{aligned}
         \Gamma(\alpha + 1) &= \int_{0}^{+\infty} x^{\alpha} e^{-x} \text{d}x \\
@@ -1135,7 +1135,7 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
     \end{aligned}
     $$
 
-    （4）对于任意正整数 $n$，由性质 3 可得
+    (4)对于任意正整数 $n$，由性质 3 可得
     $$
     \Gamma(n+1) = n \Gamma(n)
     $$
@@ -1173,7 +1173,7 @@ $$
         0, & x<0
     \end{cases}
     $$
-    则称 $X$ 服从\textbf{伽马分布}（Gamma distribution），记作 $X \sim Ga(\alpha,\lambda)$，其中 $\alpha > 0$ 为\textbf{形状参数}（shape parameter），$\lambda > 0$ 为\textbf{尺度参数}（scale parameter）.
+    则称 $X$ 服从\textbf{伽马分布}(Gamma distribution)，记作 $X \sim Ga(\alpha,\lambda)$，其中 $\alpha > 0$ 为\textbf{形状参数}(shape parameter)，$\lambda > 0$ 为\textbf{尺度参数}(scale parameter).
 \end{definition}
 
 \begin{figure}[htbp]
@@ -1415,7 +1415,7 @@ $$
     \begin{equation}
         f(x) = \dfrac{1}{\pi} \dfrac{\gamma}{(x - x_0)^2 + \gamma^2}
     \end{equation}
-    则称随机变量 $X$ 服从\textbf{柯西分布}（Cauchy distribution），也称为\textbf{柯西-洛伦兹分布}，记作 $X \sim C(\gamma, x_0)$，其中 $\gamma$ 称为\textbf{尺度参数}，$x_0$ 称为\textbf{位置参数}.
+    则称随机变量 $X$ 服从\textbf{柯西分布}(Cauchy distribution)，也称为\textbf{柯西-洛伦兹分布}，记作 $X \sim C(\gamma, x_0)$，其中 $\gamma$ 称为\textbf{尺度参数}，$x_0$ 称为\textbf{位置参数}.
 \end{definition}
 
 柯西分布 $C(\gamma, x_0)$ 的分布函数为

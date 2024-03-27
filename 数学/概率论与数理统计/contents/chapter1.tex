@@ -24,9 +24,9 @@
     \item 可观测性：每次试验的所有可能结果都是明确的、可以观测的，并且试验的可能结果有两个或两个以上；
     \item 随机性：每次试验出现的结果是不确定的，在试验之前无法预先确定究竟会出现哪一个结果，
 \end{enumerate}
-则称之为\textbf{随机试验}（random experiment），简称为\textbf{试验}（experiment）.
+则称之为\textbf{随机试验}(random experiment)，简称为\textbf{试验}(experiment).
 
-通常用字母 $E$ 表示一个随机试验. 随机试验 $E$ 的基本结果称为\textbf{样本点}（sample point），用 $\omega$ 表示.随机试验 $E$ 的所有基本结果的集合称为\textbf{样本空间}（sample space），用 $\varOmega = \{ \omega \}$ 表示.
+通常用字母 $E$ 表示一个随机试验. 随机试验 $E$ 的基本结果称为\textbf{样本点}(sample point)，用 $\omega$ 表示.随机试验 $E$ 的所有基本结果的集合称为\textbf{样本空间}(sample space)，用 $\varOmega = \{ \omega \}$ 表示.
 
 \begin{note}
     \begin{enumerate}
@@ -39,15 +39,15 @@
 
 \subsection{随机事件的概念}
 
-随机试验 $E$ 的样本空间 $\varOmega = \{ \omega \}$ 的子集称为随机试验 $E$ 的\textbf{随机事件}（random event），简称为\textbf{事件}（event），用大写字母 $A,B,C$ 等表示.
+随机试验 $E$ 的样本空间 $\varOmega = \{ \omega \}$ 的子集称为随机试验 $E$ 的\textbf{随机事件}(random event)，简称为\textbf{事件}(event)，用大写字母 $A,B,C$ 等表示.
 
 设 $A \subseteq \varOmega$，如果试验结果 $\omega \in A$，则称在这次试验中事件 $A$ 发生；如果 $\omega \notin A$，则称事件 $A$ 不发生.
 
-由一个样本点 $\omega$ 组成的事件称为\textbf{基本事件}（elementary event）.
+由一个样本点 $\omega$ 组成的事件称为\textbf{基本事件}(elementary event).
 
-$\varOmega$ 本身也是 $\varOmega$ 的子集，在每次试验中必然发生，称为\textbf{必然事件}（certain event）.
+$\varOmega$ 本身也是 $\varOmega$ 的子集，在每次试验中必然发生，称为\textbf{必然事件}(certain event).
 
-空集 $\text{\O}$ 也是 $\varOmega$ 的子集，在试验中不可能发生，称为\textbf{不可能事件}（impossible event）.
+空集 $\text{\O}$ 也是 $\varOmega$ 的子集，在试验中不可能发生，称为\textbf{不可能事件}(impossible event).
 
 必然事件和不可能事件统称为\textbf{确定事件}.
 
@@ -173,9 +173,9 @@ $$
         \item $A \cup B = A \cup (B-A) = A \cup (B-AB)$
         \item $A \cup B = B \cup (A-B) = B \cup (A-AB)$
         \item $A-B, AB, B-A$ 两两互斥，且 \\
-        （1）$A \cup B = (A-B) \cup AB \cup (B-A)$ \\
-        （2）$A = (A-B) \cup AB$ \\
-        （3）$B = (B-A) \cup AB$
+        (1) $A \cup B = (A-B) \cup AB \cup (B-A)$ \\
+        (2) $A = (A-B) \cup AB$ \\
+        (3) $B = (B-A) \cup AB$
     \end{enumerate}
 \end{property}
 
@@ -204,7 +204,7 @@ $$
             A \cup (BC) = (A \cup B)(A \cup C)
         \end{gathered}
         $$
-        \item 对偶律（德摩根公式）
+        \item 对偶律(德摩根公式)
         $$
         \begin{gathered}
             \overline{A \cup B} = \overline{A} \cap \overline{B} \\
@@ -225,20 +225,20 @@ $$
         \item 若 $A \in \mathcal{F}$，则 $\overline{A} \in \mathcal{F}$；
         \item 若 $A_i \in \mathcal{F}, \, i=1,2,\cdots$，则 $\displaystyle\bigcup_{i=1}^\infty A_i \in \mathcal{F}$，
     \end{enumerate}
-    则称 $\mathcal{F}$ 为一个\textbf{事件域}，也称为 $\sigma$ \textbf{域}或 $\sigma$ \textbf{代数}.将 $(\varOmega, \mathcal{F})$ 称为\textbf{可测空间}（measurable space）.
+    则称 $\mathcal{F}$ 为一个\textbf{事件域}，也称为 $\sigma$ \textbf{域}或 $\sigma$ \textbf{代数}.将 $(\varOmega, \mathcal{F})$ 称为\textbf{可测空间}(measurable space).
 \end{definition}
 
 在可测空间上才可定义概率，这时 $\mathcal{F}$ 中都是有概率可言的事件.
 
 \begin{note}
-    \indent 事件域就是样本空间中某些子集及其运算结果组成的集合类.对于离散样本空间，它的所有子集就构成了事件域.而对连续样本空间，存在无法测量长度的子集，这样的集合称为\textbf{不可测集}.如果将不可测集也看成事件，那么这样的事件将没有概率可言.因此，没有必要将连续样本空间的所有子集都看做事件，只需将可度量的子集（称为\textbf{可测集}）看做事件即可.
+    \indent 事件域就是样本空间中某些子集及其运算结果组成的集合类.对于离散样本空间，它的所有子集就构成了事件域.而对连续样本空间，存在无法测量长度的子集，这样的集合称为\textbf{不可测集}.如果将不可测集也看成事件，那么这样的事件将没有概率可言.因此，没有必要将连续样本空间的所有子集都看做事件，只需将可度量的子集(称为\textbf{可测集})看做事件即可.
 
     \indent 事件域包含样本空间的所有可测子集，这些子集可以看做有概率可言的事件.事件之间可以进行运算，并且运算结果仍然是事件，因此事件域要对事件的各种运算具有封闭性.
 
     \indent 在事件的各种运算中，并与对立是最基本的运算，因为：
     \begin{itemize}
-        \item 交运算可通过并与对立来实现（$A \cap B = \overline{\overline{A} \cup \overline{B}}$）.
-        \item 差运算可通过对立与交来实现（$A-B = A \overline{B}$）.
+        \item 交运算可通过并与对立来实现($A \cap B = \overline{\overline{A} \cup \overline{B}}$).
+        \item 差运算可通过对立与交来实现($A-B = A \overline{B}$).
     \end{itemize}
     所以，只需事件域对并运算和对立运算封闭，这就是定义 \ref{def:事件域} 的来源.
 \end{note}
@@ -266,9 +266,9 @@ $$
         & (a,b) = [a,b) - \{ a \}
     \end{aligned}
     $$
-    \item 最后用（有限个或可列个）并运算和交运算把实数集中一切有限集、可列集、开集、闭集都扩展进来.
+    \item 最后用(有限个或可列个)并运算和交运算把实数集中一切有限集、可列集、开集、闭集都扩展进来.
 \end{enumerate}
-经过上述几步扩展所得集合的全体就是事件域 $\mathcal{F}$，这样的事件域 $\mathcal{F}$ 又称为\textbf{博雷尔事件域}，域中的每个元素称为\textbf{博雷尔集}（Borel set）.
+经过上述几步扩展所得集合的全体就是事件域 $\mathcal{F}$，这样的事件域 $\mathcal{F}$ 又称为\textbf{博雷尔事件域}，域中的每个元素称为\textbf{博雷尔集}(Borel set).
 
 \begin{property}
     \indent 可测空间 $(\varOmega, \mathcal{F})$ 的性质：
@@ -282,12 +282,12 @@ $$
 \end{property}
 
 \begin{proof}
-    （1）由定义 \ref{def:事件域} 可知，$\varOmega \in \mathcal{F}$，进而有
+    (1)由定义 \ref{def:事件域} 可知，$\varOmega \in \mathcal{F}$，进而有
     $$
     \overline{\varOmega} = \text{\O} \in \mathcal{F}
     $$
 
-    （2）若 $A_i \in \mathcal{F}$，则 $\overline{A_i} \in \mathcal{F}$，因此
+    (2)若 $A_i \in \mathcal{F}$，则 $\overline{A_i} \in \mathcal{F}$，因此
     $$
     \bigcup_{i=1}^{\infty} \overline{A_i} = \overline{\bigcap_{i=1}^{\infty} A_i} \in \mathcal{F}
     $$
@@ -296,17 +296,17 @@ $$
     \bigcap_{i=1}^{\infty} A_i \in \mathcal{F}
     $$
 
-    （3）令 $A_{i} = \varOmega,\; i = n+1, n+2, \cdots$，则由性质2可得
+    (3)令 $A_{i} = \varOmega,\; i = n+1, n+2, \cdots$，则由性质2可得
     $$
     \bigcap_{i=1}^{\infty} A_i = \bigcap_{i=1}^{n} A_i \in \mathcal{F}
     $$
 
-    （4）令 $A_{i} = \text{\O},\; i = n+1, n+2, \cdots$，则由定义 \ref{def:事件域} 可得
+    (4)令 $A_{i} = \text{\O},\; i = n+1, n+2, \cdots$，则由定义 \ref{def:事件域} 可得
     $$
     \bigcup_{i=1}^{\infty} A_i = \bigcup_{i=1}^{n} A_i \in \mathcal{F}
     $$
 
-    （5）因为 $B \in \mathcal{F}$，所以 $\overline{B} \in \mathcal{F}$，进而有
+    (5)因为 $B \in \mathcal{F}$，所以 $\overline{B} \in \mathcal{F}$，进而有
     $$
     A-B = A \overline{B} \in \mathcal{F}
     $$
@@ -358,7 +358,7 @@ $$
         P \left(\bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P(A_i)
         $$
     \end{enumerate}
-    则称集合函数 $P$ 为可测空间 $(\varOmega, \mathcal{F})$ 上的\textbf{概率}（probability），称 $P(A)$ 为事件 $A$ 的\textbf{概率}，称三元素 $(\varOmega, \mathcal{F}, P)$ 为\textbf{概率空间}（probability space）.
+    则称集合函数 $P$ 为可测空间 $(\varOmega, \mathcal{F})$ 上的\textbf{概率}(probability)，称 $P(A)$ 为事件 $A$ 的\textbf{概率}，称三元素 $(\varOmega, \mathcal{F}, P)$ 为\textbf{概率空间}(probability space).
 \end{definition}
 
 \begin{property}[][][prop:probability:0]
@@ -415,7 +415,11 @@ $$
 \end{property}
 
 \begin{proof}
-    因为 $A \subseteq B$，从而有 $B = A \cup (B-A)$，且 $A(B-A)=\text{\O}$，由性质 \ref{prop:probability:sum} 可得
+    因为 $A \subseteq B$，从而有
+    $$
+    B = A \cup (B-A)
+    $$
+    又因为 $A(B-A)=\text{\O}$，由性质 \ref{prop:probability:sum} 可得
     $$
     P(B) = P(A \cup (B-A)) = P(A) + P(B-A)
     $$
@@ -434,11 +438,14 @@ $$
     $$
     P(B-A) = P(B)-P(A) \geqslant 0
     $$
-    因此 $P(A) \leqslant P(B)$.
+    因此
+    $$
+    P(A) \leqslant P(B)
+    $$
 \end{proof}
 
 \begin{note}
-    \indent 推论 \ref{推论：概率的单调性} 的逆命题不成立，即当 $P(A) \leqslant P(B)$ 时 $A \subseteq B$ 未必成立.
+    \indent 推论 \ref{推论：概率的单调性} 的逆命题不成立，即当 $P(A) \leqslant P(B)$ 时未必有 $A \subseteq B$.
 \end{note}
 
 \begin{property}[][][prop:probability:<=1]
@@ -450,8 +457,6 @@ $$
     \[
     P(A) \leqslant P(\varOmega) = 1
     \]
-
-    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][概率的减法公式][prop:probability:subtraction]
@@ -466,8 +471,6 @@ $$
     \[
     P(A-B)=P(A-AB)=P(A)-P(AB)
     \]
-
-    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][概率的加法公式][prop:probability:add]
@@ -644,7 +647,11 @@ $$
 \end{proof}
 
 \begin{theorem}[][][theorem:可列可加性=有限可加性+下连续性]
-    \indent 若 $P$ 是 $\mathcal{F}$ 上满足 $P(\varOmega) = 1$ 的非负集合函数，则 $P$ 具有可列可加性的充分必要条件是：（1）$P$ 是有限可加的；（2）$P$ 是下连续的.
+    \indent 若 $P$ 是 $\mathcal{F}$ 上满足 $P(\varOmega) = 1$ 的非负集合函数，则 $P$ 具有可列可加性的充分必要条件是：
+    \begin{enumerate}
+        \item $P$ 是有限可加的；
+        \item $P$ 是下连续的.
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
@@ -680,7 +687,7 @@ $$
     \item 试验的样本空间只包含有限个样本点；
     \item 在试验中每个基本事件发生的可能性相同，
 \end{enumerate}
-则称这种试验为\textbf{等可能概型}或\textbf{古典概型}（classic probability model）.
+则称这种试验为\textbf{等可能概型}或\textbf{古典概型}(classic probability model).
 
 设试验 $E$ 是古典概型，样本空间为 $\varOmega = \{\omega_1,\omega_2,\cdots,\omega_n\}$，基本事件 $\{\omega_1\},\{\omega_2\},\cdots,\{\omega_n\}$ 两两互斥，且
 $$
@@ -701,7 +708,7 @@ P(A)=\dfrac{A\,\text{包含的基本事件个数}}{\varOmega\,\text{包含的基
 $$
 
 \begin{example}[][不放回抽样]
-    \indent 一批同种物品共有 $N$ 件，其中 $M$ 件为甲类，其余 $N-M$ 件为乙类.从中随机取出 $n$ 件（$n \leqslant N$），求事件 $A_m=$ “取出的 $n$ 件物品中有 $m$ 件为甲类”的概率（$m \leqslant M, n-m \leqslant N-M$）.
+    \indent 一批同种物品共有 $N$ 件，其中 $M$ 件为甲类，其余 $N-M$ 件为乙类.从中随机取出 $n$ 件($n \leqslant N$)，求事件 $A_m=$ “取出的 $n$ 件物品中有 $m$ 件为甲类”的概率($m \leqslant M, n-m \leqslant N-M$).
 \end{example}
 
 \begin{solution}
@@ -714,7 +721,7 @@ $$
 \end{solution}
 
 \begin{example}[][放回抽样]
-    \indent 一批同种物品共有 $N$ 件，其中 $M$ 件为甲类，其余 $N-M$ 件为乙类.每次抽取一件后放回，然后再抽取下一件，如此重复直至抽出 $n$ 件（$n \leqslant N$）为止.求事件 $B_m=$ “取出的 $n$ 件物品中有 $m$ 件为甲类”的概率（$m \leqslant M, n-m \leqslant N-M$）.
+    \indent 一批同种物品共有 $N$ 件，其中 $M$ 件为甲类，其余 $N-M$ 件为乙类.每次抽取一件后放回，然后再抽取下一件，如此重复直至抽出 $n$ 件($n \leqslant N$)为止.求事件 $B_m=$ “取出的 $n$ 件物品中有 $m$ 件为甲类”的概率($m \leqslant M, n-m \leqslant N-M$).
 \end{example}
 
 \begin{solution}
@@ -727,22 +734,22 @@ $$
 \end{solution}
 
 \begin{example}[][盒子模型][example:盒子模型]
-    \indent 设有 $n$ 个球，每个球都等可能地被放到 $N$（$n \leqslant N$） 个不同盒子中的任一个，每个盒子所放球数不限.求
+    \indent 设有 $n$ 个球，每个球都等可能地被放到 $N \, (n \leqslant N)$ 个不同盒子中的任一个，每个盒子所放球数不限.求
 
-    （1）指定的 $n$ 个盒子中各有一球的概率 $p_1$；
+    (1)指定的 $n$ 个盒子中各有一球的概率 $p_1$；
 
-    （2）恰好有 $n$ 个盒子各有一球的概率 $p_2$.
+    (2)恰好有 $n$ 个盒子各有一球的概率 $p_2$.
 \end{example}
 
 \begin{solution}
     每个球都可放到 $N$ 个盒子中的任一个，$n$ 个球的存放方式共有 $N^n$ 种.
 
-    （1）因为各有一球的 $n$ 个盒子已经指定，余下的没有球的 $N-n$ 个盒子也同时被指定，所以只需要考虑 $n$ 个球在这指定的 $n$ 个盒子中各放1个的放法数.第1个球有 $n$ 种放法，第2个球有 $n-1$ 种放法，$\cdots$，第 $n$ 个球有1种放法，根据乘法原理，总的放法数为 $n!$，于是其概率为
+    (1)因为各有一球的 $n$ 个盒子已经指定，余下的没有球的 $N-n$ 个盒子也同时被指定，所以只需要考虑 $n$ 个球在这指定的 $n$ 个盒子中各放1个的放法数.第1个球有 $n$ 种放法，第2个球有 $n-1$ 种放法，$\cdots$，第 $n$ 个球有1种放法，根据乘法原理，总的放法数为 $n!$，于是其概率为
     $$
     p_1 = \dfrac{n!}{N^n}
     $$
 
-    （2）第1个球可放在 $N$ 个盒子中的任一个，第2个球可放在余下的 $N-1$ 个盒子中的任一个，$\cdots$，第 $n$ 个球只可放在余下的 $N-n+1$ 个盒子中的任一个，根据乘法原理，总的放法数为 $N (N-1) (N-2) \cdots (N-n+1)$，因此所求概率为
+    (2)第1个球可放在 $N$ 个盒子中的任一个，第2个球可放在余下的 $N-1$ 个盒子中的任一个，$\cdots$，第 $n$ 个球只可放在余下的 $N-n+1$ 个盒子中的任一个，根据乘法原理，总的放法数为 $N (N-1) (N-2) \cdots (N-n+1)$，因此所求概率为
     $$
     p_2 = \dfrac{N (N-1) (N-2) \cdots (N-n+1)}{N^n} = \dfrac{N!}{N^n (N-n)!}
     $$
@@ -769,9 +776,39 @@ $$
     生日问题告诉我们，我们的直觉并不一定准确，有些问题的结果与我们的直觉不符.因此，我们不能过度依赖直觉，应该学会用科学理性的思维去思考.
 \end{note}
 
+\begin{example}[][配对问题]
+    \indent 一个晚会有 $n$ 个人参加，每个人带了一件礼物，且各人带的礼物都不相同.每人从放在一起的 $n$ 件礼物中随机抽取一件，求至少有一个人抽到自己礼物的概率.
+\end{example}
+
+\begin{solution}
+    设事件 $A_i=$ “第 $i$ 个人抽到自己的礼物”，$i=1,2,\cdots,n$，则所求概率为 $P(A_1 \cup A_2 \cup \cdots \cup A_n)$.因为
+    $$
+    \begin{aligned}
+        & P(A_1) = P(A_2) = \cdots = P(A_n) = \dfrac{1}{n} \\
+        & P(A_1 A_2) = P(A_1 A_3) = \cdots = P(A_{n-1} A_n) = \dfrac{1}{n(n-1)} \\
+        & P(A_1 A_2 A_3) = P(A_1 A_2 A_4) = \cdots = P(A_{n-2} A_{n-1} A_n) = \dfrac{1}{n(n-1)(n-2)} \\
+        & \cdots \\
+        & P(A_1 A_2 \cdots A_n) = \dfrac{1}{n!}
+    \end{aligned}
+    $$
+    所以由概率的加法公式得
+    $$
+    \begin{aligned}
+        & P(A_1 \cup A_2 \cup \cdots \cup A_n) \\
+        =\ & n \cdot \dfrac{1}{n} - C_n^2 \dfrac{1}{n(n-1)} + C_n^3 \dfrac{1}{n(n-1)(n-2)} + \cdots + (-1)^{n-1} \dfrac{1}{n!} \\
+        =\ & 1 - \dfrac{n!}{2! (n-2)!} \dfrac{1}{n(n-1)} + \dfrac{n!}{3! (n-3)!} \dfrac{1}{n(n-1)(n-2)} + \cdots + (-1)^{n-1} \dfrac{1}{n!} \\
+        =\ & 1 - \dfrac{1}{2!} + \dfrac{1}{3!} + \cdots + (-1)^{n-1} \dfrac{1}{n!} \\
+    \end{aligned}
+    $$
+\end{solution}
+
+\begin{note}
+    \indent 当 $n \to \infty$ 时，此概率的极限为 $1 - e^{-1} \approx 0.6321$.这表明，即使人数很多，事件“至少有一个人抽到自己礼物”也不是必然事件.
+\end{note}
+
 \subsection{几何概型}
 
-如果随机试验是将一个点随机地投到某一区域 $\varOmega$ 内，而这个点落在 $\varOmega$ 中任意两个度量相等的子区域内的概率相同，则称这样的试验属于\textbf{几何概型}（geometric probability model）.
+如果随机试验是将一个点随机地投到某一区域 $\varOmega$ 内，而这个点落在 $\varOmega$ 中任意两个度量相等的子区域内的概率相同，则称这样的试验属于\textbf{几何概型}(geometric probability model).
 
 \begin{note}
     \indent $\varOmega$ 可以是直线上的某一区间，也可以是平面或空间内的某一区域.区域的度量是指直线上区间的长度，或者平面内区域的面积，或者空间内区域的体积.
@@ -803,10 +840,10 @@ $$
     \begin{figure}[H]
         \centering
 
-        \begin{tikzpicture}[>=Stealth, scale=0.5]
+        \begin{tikzpicture}[scale=0.55]
             % 坐标轴
-            \draw[->] (0, 0)--(7, 0) node[below]{$x$};
-            \draw[->] (0, 0)--(0, 7) node[left]{$y$};
+            \draw[->] (0, 0)--(8, 0) node[below]{$x$};
+            \draw[->] (0, 0)--(0, 8) node[left]{$y$};
             \node at (0, 0) [below left] {$O$};
             % 样本空间
             \draw (0,0) rectangle (6,6);
@@ -819,8 +856,6 @@ $$
             \node at (0,2) [left] {20};
             \node at (2,0) [below] {20};
         \end{tikzpicture}
-
-        \vspace{-0.8em}
 
         \caption{}
         \label{fig:会面问题}
@@ -854,7 +889,7 @@ $$
         \begin{minipage}[b]{0.48\linewidth}
             \centering
     
-            \begin{tikzpicture}[>=Stealth]
+            \begin{tikzpicture}[scale=0.9]
                 \def\xscale{0.5}
                 \def\yscale{0.55}
                 % 两条平行线
@@ -888,7 +923,7 @@ $$
         \begin{minipage}[b]{0.48\linewidth}
             \centering
     
-            \begin{tikzpicture}[xscale=1.2, >=Stealth]
+            \begin{tikzpicture}[xscale=1.08, yscale=0.9]
                 % 坐标轴
                 \draw[->] (-0.3, 0)--(4, 0) node[below]{$\varphi$};
                 \draw[->] (0, -0.5)--(0, 3) node[left]{$x$};
@@ -915,11 +950,11 @@ $$
 \begin{note}
     \indent 蒲丰投针问题可以用来计算 $\pi$ 的近似值.如果投针 $N$ 次，其中针与平行线相交 $n$ 次，当 $N$ 很大时，以频率 $\dfrac{n}{N}$ 作为概率 $p$ 的近似值，代入式 \eqref{equation:pufeng} 可得
     $$
-    \pi \approx \dfrac{2lN}{an}
+    \pi = \dfrac{2l}{ap} \approx \dfrac{2lN}{an}
     $$
-\end{note}
 
-设计一个随机试验，使一个事件的概率与某个未知数有关，然后通过重复试验，用频率估计概率，即可求出未知数的近似值.这种方法称为\textbf{随机模拟法}，又称为\textbf{蒙特卡罗法}.
+    设计一个随机试验，使一个事件的概率与某个未知数有关，然后通过重复试验，用频率估计概率，即可求出未知数的近似值.这种方法称为\textbf{随机模拟法}，又称为\textbf{蒙特卡罗法}.
+\end{note}
 
 \begin{example}
     \indent 在长度为 $a$ 的线段内任取两点将其分为三段，求它们可以构成一个三角形的概率.
@@ -928,7 +963,11 @@ $$
 \begin{solution}
     设分成的三段长度分别为 $x, y$ 和 $a-x-y$，则有
     $$
-    0<x<a,\ 0<y<a,\ 0 < a-x-y < a
+    \begin{cases}
+        0<x<a \\
+        0<y<a \\
+        0 < a-x-y < a
+    \end{cases}
     $$
     其中 $0 < a-x-y < a$ 等价于 $0 < x+y < a$，则样本空间为
     $$
@@ -955,7 +994,7 @@ $$
     \begin{figure}[H]
         \centering
 
-        \begin{tikzpicture}[>=Stealth]
+        \begin{tikzpicture}[scale=1.1]
             % 坐标轴
             \draw[->] (-0.5, 0)--(3.5, 0) node[below]{$x$};
             \draw[->] (0, -0.5)--(0, 3.5) node[left]{$y$};
@@ -970,14 +1009,11 @@ $$
             \draw (A) node[left]{$a$} -- (B) node[below]{$a$};
             \draw (C) node[left]{$\dfrac{a}{2}$} -- (D) node[below]{$\dfrac{a}{2}$} -- (E) -- cycle;
             % 填充
-            \filldraw[fill=DarkGray] (A) -- (B) -- (0,0) -- cycle;
             \filldraw[fill=lightgray] (C) -- (D) -- (E) -- cycle;
             % 区域标记
             \node at (1,1) {$A$};
             \node at (0.5, 2) {$\varOmega$};
         \end{tikzpicture}
-
-        \vspace{-0.8em}
         
         \caption{}
         \label{fig:example-三角形}
@@ -990,11 +1026,15 @@ $$
 
 \begin{solution}
 
-    \textbf{解法一：}由于对称性，可只考察某指定方向的弦，作一条直径垂直于这个方向，只有交直径于 \resizebox{0.75\width}{!}{$\dfrac{1}{4}$} 与 \resizebox{0.75\width}{!}{$\dfrac{3}{4}$} 之间的弦才能超过内接等边三角形的边长，如图 \ref{fig:贝特朗奇论1} 所示.因此，所求概率为 \resizebox{0.75\width}{!}{$\dfrac{1}{2}$}.
+    \textbf{解法一：}由于对称性，可只考察某指定方向的弦，作一条直径垂直于这个方向，只有交直径于 $\dfrac{1}{4}$ 与 $\dfrac{3}{4}$ 之间的弦才能超过内接等边三角形的边长，如图 \ref{fig:贝特朗奇论1} 所示.因此，所求概率为 $\dfrac{1}{2}$.
 
-    \textbf{解法二：}由于对称性，可让弦的一个端点固定，让另一端点在圆周上运动.若在固定端点作切线，则与此切线夹角在 $60^{\circ}$ 与 $120^{\circ}$ 之间的弦才能超过内接等边三角形的边长，如图 \ref{fig:贝特朗奇论2} 所示.因此，所求概率为 \resizebox{0.75\width}{!}{$\dfrac{1}{3}$}.
+    \vspace{0.5em}
 
-    \textbf{解法三：}圆内弦的位置由该弦的中点唯一确定.在圆内作一同心圆，其半径为大圆半径的一半，这个小圆即为大圆内接等边三角形的内接圆.只有大圆上的弦的中点落在小圆内，此弦长才能超过内接等边三角形的边长，如图 \ref{fig:贝特朗奇论3} 所示.因此，所求概率为 \resizebox{0.75\width}{!}{$\dfrac{1}{4}$}.
+    \textbf{解法二：}由于对称性，可让弦的一个端点固定，让另一端点在圆周上运动.若在固定端点作切线，则与此切线夹角在 $60^{\circ}$ 与 $120^{\circ}$ 之间的弦才能超过内接等边三角形的边长，如图 \ref{fig:贝特朗奇论2} 所示.因此，所求概率为 $\dfrac{1}{3}$.
+
+    \vspace{0.5em}
+
+    \textbf{解法三：}圆内弦的位置由该弦的中点唯一确定.在圆内作一同心圆，其半径为大圆半径的一半，这个小圆即为大圆内接等边三角形的内接圆.只有大圆上的弦的中点落在小圆内，此弦长才能超过内接等边三角形的边长，如图 \ref{fig:贝特朗奇论3} 所示.因此，所求概率为 $\dfrac{1}{4}$.
 
     \begin{figure}[H]
         \centering
@@ -1096,7 +1136,7 @@ $$
     $$
     P(A \mid B) = \dfrac{P(AB)}{P(B)}
     $$
-    为“在事件 $B$ 发生的条件下事件 $A$ 发生的概率”，简称\textbf{条件概率}（conditional probability）.
+    为“在事件 $B$ 发生的条件下事件 $A$ 发生的概率”，简称\textbf{条件概率}(conditional probability).
 \end{definition}
 
 \begin{note}
@@ -1120,15 +1160,15 @@ $$
 \end{property}
 
 \begin{proof}
-    （1）$P(A \mid B) = \dfrac{P(AB)}{P(B)}$，而 $P(AB) \geqslant 0$，$P(B)>0$，因此 $P(A \mid B) \geqslant 0$.
+    (1) $P(A \mid B) = \dfrac{P(AB)}{P(B)}$，而 $P(AB) \geqslant 0$，$P(B)>0$，因此 $P(A \mid B) \geqslant 0$.
 
     \vspace{0.5em}
 
-    （2）$P(\varOmega \mid B) = \dfrac{P(\varOmega B)}{P(B)} = \dfrac{P(B)}{P(B)} = 1$
+    (2) $P(\varOmega \mid B) = \dfrac{P(\varOmega B)}{P(B)} = \dfrac{P(B)}{P(B)} = 1$
 
     \vspace{0.5em}
 
-    （3）若 $A_1, A_2, \cdots, A_n, \cdots$ 两两互斥，则 $A_1 B, A_2 B, \cdots, A_n B, \cdots$ 也两两互斥，因此
+    (3)若 $A_1, A_2, \cdots, A_n, \cdots$ 两两互斥，则 $A_1 B, A_2 B, \cdots, A_n B, \cdots$ 也两两互斥，因此
     $$
     \begin{aligned}
         P \left( \bigcup_{i=1}^{\infty} A_i \mid B \right) &= \dfrac{P \left( \left( \displaystyle\bigcup_{i=1}^{\infty} A_i \right) B \right)}{P(B)} \\
@@ -1138,6 +1178,8 @@ $$
         &= \sum_{i=1}^{\infty} P(A_i \mid B)
     \end{aligned}
     $$
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{note}
@@ -1182,7 +1224,7 @@ $$
 \begin{solution}
     设事件 $A$ 为“连续从罐中取出三个球，其中有两个红球、一个黑球”，所求概率 $P(A)$ 与黑球在第几次被取出有关，下面进行分类讨论.
 
-    （1）黑球在第1次被取出：第1次取球时有 $b$ 个黑球、$r$ 个红球，取出的是黑球；第2次取球时有 $b+c$ 个黑球、$r+d$ 个红球，取出的是红球；第3次取球时有 $b+c+d$ 个黑球、$r+d+c$ 个红球，取出的是红球.因此
+    (1)黑球在第1次被取出：第1次取球时有 $b$ 个黑球、$r$ 个红球，取出的是黑球；第2次取球时有 $b+c$ 个黑球、$r+d$ 个红球，取出的是红球；第3次取球时有 $b+c+d$ 个黑球、$r+d+c$ 个红球，取出的是红球.因此
     $$
     \begin{aligned}
         P(A) &= P(B_1 R_2 R_3) \\
@@ -1191,7 +1233,7 @@ $$
     \end{aligned}
     $$
 
-    （2）黑球在第2次被取出：第1次取球时有 $b$ 个黑球、$r$ 个红球，取出的是红球；第2次取球时有 $b+d$ 个黑球、$r+c$ 个红球，取出的是黑球；第3次取球时有 $b+d+c$ 个黑球、$r+c+d$ 个红球，取出的是红球.因此
+    (2)黑球在第2次被取出：第1次取球时有 $b$ 个黑球、$r$ 个红球，取出的是红球；第2次取球时有 $b+d$ 个黑球、$r+c$ 个红球，取出的是黑球；第3次取球时有 $b+d+c$ 个黑球、$r+c+d$ 个红球，取出的是红球.因此
     $$
     \begin{aligned}
         P(A) &= P(R_1 B_2 R_3) \\
@@ -1200,7 +1242,7 @@ $$
     \end{aligned}
     $$
 
-    （3）黑球在第3次被取出：第1次取球时有 $b$ 个黑球、$r$ 个红球，取出的是红球；第2次取球时有 $b+d$ 个黑球、$r+c$ 个红球，取出的是红球；第3次取球时有 $b+2d$ 个黑球、$r+2c$ 个红球，取出的是黑球.因此
+    (3)黑球在第3次被取出：第1次取球时有 $b$ 个黑球、$r$ 个红球，取出的是红球；第2次取球时有 $b+d$ 个黑球、$r+c$ 个红球，取出的是红球；第3次取球时有 $b+2d$ 个黑球、$r+2c$ 个红球，取出的是黑球.因此
     $$
     \begin{aligned}
         P(A) &= P(R_1 R_2 B_3) \\
@@ -1234,7 +1276,7 @@ $$
     P(B_1 R_2 R_3) = P(R_1 B_2 R_3) = P(R_1 R_2 B_3) = \dfrac{br(r+c)}{(b+r)(b+r+c)(b+r+2c)}
     $$
 
-    当 $c=0$，$d>0$ 时，称为\textbf{安全模型}.此模型可解释为：每当事故发生了（红球被取出），安全工作就抓紧一些，下次再发生事故的概率就会减少；而当事故没有发生时（黑球被取出），安全工作就放松一些，下次发生事故的概率就会增大.此时，上述三个概率不再相等，它们分别为
+    当 $c=0$，$d>0$ 时，称为\textbf{安全模型}.此模型可解释为：每当事故发生了(红球被取出)，安全工作就抓紧一些，下次再发生事故的概率就会减少；而当事故没有发生时(黑球被取出)，安全工作就放松一些，下次发生事故的概率就会增大.此时，上述三个概率不再相等，它们分别为
     $$
     \begin{aligned}
         & P(B_1 R_2 R_3) = \dfrac{b}{b+r} \cdot \dfrac{r+d}{b+r+d} \cdot \dfrac{r+d}{b+r+2d} \\
@@ -1275,7 +1317,7 @@ $$
         P(B) = P(A) \, P(B \mid A) + P(\overline{A}) \, P(B \mid \overline{A})
         $$
         \item 将条件改成“$A_1, A_2, \cdots, A_n, \cdots$ 两两互斥，$P(A_i)>0 \ (i=1,2,\cdots)$，且 $B \subseteq \displaystyle\bigcup_{i=1}^{\infty} A_i$”，全概率公式仍然成立，只需要将式 \eqref{equation:total} 右侧改成可列项之和即可.
-        \item $P(A_i)$ 可以看做事件 $A_i$ 对事件 $B$ 的重要程度（权重），$P(A_i) \, P(B \mid A_i)$ 为事件 $A_i$ 对事件 $B$ 的贡献.全概率公式就是将 $A_i \, (i=1,2,\cdots,n)$ 对 $B$ 的贡献加在一起，类似于加权平均.
+        \item $P(A_i)$ 可以看做事件 $A_i$ 对事件 $B$ 的重要程度(权重)，$P(A_i) \, P(B \mid A_i)$ 为事件 $A_i$ 对事件 $B$ 的贡献.全概率公式就是将 $A_i \, (i=1,2,\cdots,n)$ 对 $B$ 的贡献加在一起，类似于加权平均.
     \end{enumerate}
 \end{note}
 
@@ -1511,7 +1553,7 @@ $$
 \section{伯努利概型}
 
 \begin{definition}
-    \indent 设有两个试验 $E_1$ 和 $E_2$，假如试验 $E_1$ 的任一结果（事件）与试验 $E_2$ 的任一结果（事件）都是相互独立的事件，则称这两个试验相互独立.
+    \indent 设有两个试验 $E_1$ 和 $E_2$，假如试验 $E_1$ 的任一结果(事件)与试验 $E_2$ 的任一结果(事件)都是相互独立的事件，则称这两个试验相互独立.
 \end{definition}
 
 \begin{definition}
@@ -1519,7 +1561,7 @@ $$
 \end{definition}
 
 \begin{definition}
-    \indent 如果在 $n$ 重独立重复试验中，每次试验的可能结果只有两个（$A$ 或 $\overline{A}$），则称这种试验为 $n$ \textbf{重伯努利试验}，简称为 \textbf{伯努利试验}（Bernoulli experiment），也称为 \textbf{伯努利概型}（Bernoulli probability model）.
+    \indent 如果在 $n$ 重独立重复试验中，每次试验的可能结果只有两个($A$ 或 $\overline{A}$)，则称这种试验为 $n$ \textbf{重伯努利试验}，简称为 \textbf{伯努利试验}(Bernoulli experiment)，也称为 \textbf{伯努利概型}(Bernoulli probability model).
 \end{definition}
 
 $n$ 重伯努利试验的基本事件可记为 $\omega=\omega_1 \omega_2 \cdots \omega_n$，其中 $\omega_i\,(1\leqslant i\leqslant n)$ 为 $A$ 或者为 $\overline{A}$，即 $\omega$ 是从 $A$ 及 $\overline{A}$ 中每次取 1 个，独立地重复取 $n$ 次的一种排列，共有 $2^n$ 个基本事件.

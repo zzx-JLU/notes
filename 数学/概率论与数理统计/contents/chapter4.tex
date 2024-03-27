@@ -12,7 +12,7 @@
     $$
     \sum_{k=1}^{\infty} |x_k| p_k < \infty
     $$
-    则称无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 的和为离散型随机变量 $X$ 的\textbf{数学期望}（mathematic expectation）或\textbf{均值}，记作 $E(X)$ 或 $EX$，即
+    则称无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 的和为离散型随机变量 $X$ 的\textbf{数学期望}(mathematic expectation)或\textbf{均值}，记作 $E(X)$ 或 $EX$，即
     $$
     E(X) = \sum_{k=1}^{\infty} x_k p_k
     $$
@@ -342,9 +342,9 @@ $$
 
     下面证明超几何分布的数学期望.
 
-    （1）当 $N=M$ 时，$P(X=n)=1$，因此 $E(X) = n = \dfrac{nM}{N}$.
+    (1)当 $N=M$ 时，$P(X=n)=1$，因此 $E(X) = n = \dfrac{nM}{N}$.
 
-    （2）当 $N>M=1$ 时，$X$ 的概率分布为
+    (2)当 $N>M=1$ 时，$X$ 的概率分布为
     $$
     \begin{aligned}
         & P(X=0) = \dfrac{C_{N-1}^n}{C_N^n} \\
@@ -356,7 +356,7 @@ $$
     E(X) = 0 \times \dfrac{C_{N-1}^n}{C_N^n} + 1 \times \dfrac{n}{N} = \dfrac{n}{N} = \dfrac{nM}{N}
     $$
 
-    （3）当 $N>M \geqslant 2$ 时，$X$ 的概率分布为 $P(X=k) = \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n},\; k = m, m+1, m+2, \cdots, r$，则
+    (3)当 $N>M \geqslant 2$ 时，$X$ 的概率分布为 $P(X=k) = \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n},\; k = m, m+1, m+2, \cdots, r$，则
     $$
     E(X) = \sum_{k=m}^r k \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n}
     $$
@@ -534,11 +534,11 @@ $$
 \subsection{方差的定义}
 
 \begin{definition}[][][def:variance]
-    \indent 设 $X$ 是一个随机变量，如果 $E([X-E(X)]^2)$ 存在，则称之为随机变量 $X$ 的\textbf{方差}（variance），记作 $D(X)$ 或 $DX$，即
+    \indent 设 $X$ 是一个随机变量，如果 $E([X-E(X)]^2)$ 存在，则称之为随机变量 $X$ 的\textbf{方差}(variance)，记作 $D(X)$ 或 $DX$，即
     $$
     D(X) = E([X-E(X)]^2)
     $$
-    称 $\sqrt{D(X)}$ 为随机变量 $X$ 的\textbf{标准差}（standard deviation）或\textbf{均方差}，记作 $\sigma(X)$，即
+    称 $\sqrt{D(X)}$ 为随机变量 $X$ 的\textbf{标准差}(standard deviation)或\textbf{均方差}，记作 $\sigma(X)$，即
     $$
     \sigma(X) = \sqrt{D(X)}
     $$
@@ -667,7 +667,7 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    （1）如果 $X$ 是离散型随机变量，设 $X$ 的概率分布为 $P(X = x_k) = p_k, \; k=1,2,\cdots$，则
+    (1)如果 $X$ 是离散型随机变量，设 $X$ 的概率分布为 $P(X = x_k) = p_k, \; k=1,2,\cdots$，则
     $$
     E(X) = \sum_{k=1}^{\infty} x_k p_k
     $$
@@ -685,11 +685,11 @@ $$
     a = \int_{a}^{b} a f(x)\,\text{d}x \leqslant E(X) \leqslant \int_{a}^{b} b f(x)\,\text{d}x = b
     $$
 
-    （2）前面已经证明，对于任意常数 $C$，有 $E[(X-C)^2] \geqslant D(X)$.令 $C = \dfrac{a+b}{2}$，该不等式仍然成立，即
+    (2)前面已经证明，对于任意常数 $C$，有 $E[(X-C)^2] \geqslant D(X)$.令 $C = \dfrac{a+b}{2}$，该不等式仍然成立，即
     $$
     D(X) \leqslant E[(X - \dfrac{a+b}{2})^2 ]
     $$
-    因为 $X$ 的取值范围为 $[a,b]$，所以 $X - \dfrac{a+b}{2}$ 的取值范围为 $\left[ \dfrac{a-b}{2}, \dfrac{b-a}{2} \right]$，$\left( X - \dfrac{a+b}{2} \right)^2$ 的取值范围为 $\left[ 0, \left( \dfrac{b-a}{2} \right)^2 \right]$.根据（1）所得结论，有
+    因为 $X$ 的取值范围为 $[a,b]$，所以 $X - \dfrac{a+b}{2}$ 的取值范围为 $\left[ \dfrac{a-b}{2}, \dfrac{b-a}{2} \right]$，$\left( X - \dfrac{a+b}{2} \right)^2$ 的取值范围为 $\left[ 0, \left( \dfrac{b-a}{2} \right)^2 \right]$.根据(1)所得结论，有
     $$
     D(X) \leqslant E[(X - \dfrac{a+b}{2})^2] \leqslant \left( \dfrac{b-a}{2} \right)^2
     $$
@@ -901,9 +901,9 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    （1）当 $N=M$ 时，$P(X=n)=1$，$D(X)=0$，待证结论成立.
+    (1)当 $N=M$ 时，$P(X=n)=1$，$D(X)=0$，待证结论成立.
 
-    （2）当 $N>M=1$ 时，$X$ 的概率分布为
+    (2)当 $N>M=1$ 时，$X$ 的概率分布为
     $$
     \begin{aligned}
         & P(X=0) = \dfrac{C_1^0 C_{N-1}^n}{C_N^n} = \dfrac{C_{N-1}^n}{C_N^n} \\
@@ -923,7 +923,7 @@ $$
     $$
     待证结论成立.
     
-    （3）当 $N > M \geqslant 2$ 时，有
+    (3)当 $N > M \geqslant 2$ 时，有
     $$
     \begin{aligned}
         E(X^2) &= \sum_{k=m}^{r} k^2 \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n} \\
@@ -1096,7 +1096,7 @@ $$
 这表明，当 $E([X-E(X)][Y-E(Y)]) \not= 0$ 时，$X$ 与 $Y$ 不相互独立，因此可以用这个量来描述 $X$ 和 $Y$ 之间的关系.
 
 \begin{definition}
-    设随机变量 $X$ 和 $Y$ 的数学期望 $E(X)$ 和 $E(Y)$ 都存在，如果 $E([X-E(X)][Y-E(Y)])$ 存在，则称之为随机变量 $X$ 和 $Y$ 的\textbf{协方差}（covariance），记作 $\operatorname{Cov}(X,Y)$，即
+    设随机变量 $X$ 和 $Y$ 的数学期望 $E(X)$ 和 $E(Y)$ 都存在，如果 $E([X-E(X)][Y-E(Y)])$ 存在，则称之为随机变量 $X$ 和 $Y$ 的\textbf{协方差}(covariance)，记作 $\operatorname{Cov}(X,Y)$，即
     $$
     \operatorname{Cov}(X,Y) = E([X-E(X)][Y-E(Y)]) = E(XY) - E(X) E(Y)
     $$
@@ -1149,7 +1149,7 @@ $$
 \subsection{相关系数}
 
 \begin{definition}
-    设随机变量 $X$ 和 $Y$ 的方差都存在且不等于零，协方差 $\operatorname{Cov}(X,Y)$ 存在，称 $\dfrac{\operatorname{Cov}(X,Y)}{\sqrt{D(X)} \sqrt{D(Y)}}$ 为随机变量 $X$ 和 $Y$ 的\textbf{相关系数}（correlation coefficient），记作 $\rho_{XY}$，即
+    设随机变量 $X$ 和 $Y$ 的方差都存在且不等于零，协方差 $\operatorname{Cov}(X,Y)$ 存在，称 $\dfrac{\operatorname{Cov}(X,Y)}{\sqrt{D(X)} \sqrt{D(Y)}}$ 为随机变量 $X$ 和 $Y$ 的\textbf{相关系数}(correlation coefficient)，记作 $\rho_{XY}$，即
     $$
     \rho_{XY} = \dfrac{\operatorname{Cov}(X,Y)}{\sqrt{D(X)} \sqrt{D(Y)}}
     $$
