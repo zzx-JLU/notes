@@ -351,7 +351,7 @@ $X$ 就是 $n$ 重伯努利试验中 $A$ 出现的总次数，它服从二项分
 \begin{figure}[htbp]
     \centering
 
-    \begin{tikzpicture}[scale=0.8]
+    \begin{tikzpicture}
         \begin{axis}[xlabel=$x$, ylabel=$y$,
             axis lines=center,
             tick align=inside,
@@ -416,8 +416,6 @@ $X$ 就是 $n$ 重伯努利试验中 $A$ 出现的总次数，它服从二项分
     $$
     \lim_{n\to\infty} C_n^k p_n^k (1-p_n)^{n-k} = \dfrac{\lambda^k e^{-\lambda}}{k!}
     $$
-
-    \vspace{-1.5em}
 \end{proof}
 
 对于二项分布 $B(n,p)$，$np$ 为定值，当 $n$ 很大而 $p$ 很小时，$np = \lambda$ 大小适中，可以将二项分布近似为泊松分布.
