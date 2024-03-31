@@ -68,7 +68,9 @@
 \end{property}
 
 \begin{proof}
-    因为 $F(x)$ 是单调不减有界函数，所以对任意实数 $x_0$，右极限 $F(x_0^+)$ 一定存在.记 $A_n = \{ X \leqslant x_0 + \dfrac{1}{n} \}$，则有 $A_n \supseteq A_{n+1}$，$\displaystyle\bigcap_{i=1}^{\infty} A_i = \{ X \leqslant x_0 \}$，由海涅定理得
+    因为 $F(x)$ 是单调不减有界函数，所以对任意实数 $x_0$，右极限 $F(x_0^+)$ 一定存在.
+    
+    记 $A_n = \{ X \leqslant x_0 + \dfrac{1}{n} \}$，则有 $A_n \supseteq A_{n+1}$，$\displaystyle\bigcap_{i=1}^{\infty} A_i = \{ X \leqslant x_0 \}$，由海涅定理得
     $$
     \begin{aligned}
         \lim_{x \to x_0^+} F(x) &= \lim_{n \to \infty} F(x_0 + \dfrac{1}{n}) \\
@@ -156,7 +158,7 @@ $$
 \section{连续型随机变量及其概率密度}
 
 \begin{definition}[][][def:f(x)]
-    \indent 对于随机变量 $X$ 的分布函数 $F(x)$，如果存在非负函数 $f(x)$，使得对任意的 $x$，都有 $F(x)=\displaystyle\int_{-\infty}^x f(t)\,\text{d}t$，则称随机变量 $X$ 是\textbf{连续型随机变量}(continuous random variable)，其中函数 $f(x)$ 叫做 $X$ 的\textbf{概率密度函数}(probability density function)，简称为\textbf{概率密度}(probability density)，记作 $X \sim f(x)$.
+    \indent 对于随机变量 $X$ 的分布函数 $F(x)$，如果存在非负函数 $f(x)$，使得对于任意实数 $x$，都有 $F(x)=\displaystyle\int_{-\infty}^x f(t)\,\text{d}t$，则称随机变量 $X$ 是\textbf{连续型随机变量}(continuous random variable)，其中函数 $f(x)$ 叫做 $X$ 的\textbf{概率密度函数}(probability density function)，简称为\textbf{概率密度}(probability density)，记作 $X \sim f(x)$.
 \end{definition}
 
 由定义 \ref{def:f(x)} 可知，连续型随机变量的分布函数处处连续.
@@ -388,7 +390,7 @@ $X$ 就是 $n$ 重伯努利试验中 $A$ 出现的总次数，它服从二项分
 \end{figure}
 
 \begin{theorem}[][泊松定理]
-    \indent 设 $\{ p_n \}$ 为一个实数序列，且对于任意正整数 $n$，有 $p_n \in [0,1]$.若 $n \to \infty$ 时有 $n p_n \to \lambda$($\lambda > 0$)，则对任一固定的非负整数 $k$，有
+    \indent 设 $\{ p_n \}$ 为一个实数序列，且对于任意正整数 $n$，有 $p_n \in [0,1]$.若 $n \to \infty$ 时有 $n p_n \to \lambda \, (\lambda > 0)$，则对任一固定的非负整数 $k$，有
     $$
     \lim_{n\to\infty} C_n^k p_n^k (1-p_n)^{n-k} = \dfrac{\lambda^k e^{-\lambda}}{k!}
     $$
@@ -460,7 +462,7 @@ $$
 
 \subsection{超几何分布}
 
-设有 $N$ 件物品，其中有 $M$($M \leqslant N$) 件为甲类，从中不放回地随机抽取 $n$($n \leqslant N$) 件，记抽出甲类物品的数量为 $X$，则随机变量 $X$ 服从\textbf{超几何分布}(hypergeometric distribution)，记为 $X \sim H(n,N,M)$.
+设有 $N$ 件物品，其中有 $M \, (M \leqslant N)$ 件为甲类，从中不放回地随机抽取 $n \, (n \leqslant N)$ 件，记抽出甲类物品的数量为 $X$，则随机变量 $X$ 服从\textbf{超几何分布}(hypergeometric distribution)，记为 $X \sim H(n,N,M)$.
 
 当 $n \leqslant N-M$ 时，$X$ 的取值范围为 $0,1,2,\cdots,\min\{ M,n \}$；当 $n > N-M$ 时，一定能够抽出甲类物品，$X$ 的取值范围为 $n+M-N, n+M-N+1, n+M-N+2, \cdots, \min\{ M,n \}$.综合两种情况，记 $m = \max\{ 0, n+M-N \}$，$r = \min\{ M,n \}$，则超几何分布的概率分布为
 $$
@@ -497,7 +499,7 @@ $$
 
 当 $r=1$ 时，帕斯卡分布即为几何分布.
 
-如果将第一个 $A$ 出现的试验次数记为 $X_1$，第二个 $A$ 出现的试验次数记为 $X_2$(从第一个 $A$ 出现之后算起)，$\cdots$，第 $r$ 个 $A$ 出现的试验次数记为 $X_r$(从第 $r-1$ 个 $A$ 出现之后算起)，则诸 $X_i$ 独立同分布，且 $X_i \sim Ge(p)$.此时有 $X = X_1 + X_2 + \cdots + X_r \sim Nb(r,p)$，即服从帕斯卡分布的随机变量可以分解成 $r$ 个独立同分布的几何分布随机变量之和.
+如果将第一个 $A$ 出现的试验次数记为 $X_1$，第二个 $A$ 出现的试验次数记为 $X_2$ (从第一个 $A$ 出现之后算起)，$\cdots$，第 $r$ 个 $A$ 出现的试验次数记为 $X_r$ (从第 $r-1$ 个 $A$ 出现之后算起)，则诸 $X_i$ 独立同分布，且 $X_i \sim Ge(p)$.此时有 $X = X_1 + X_2 + \cdots + X_r \sim Nb(r,p)$，即服从帕斯卡分布的随机变量可以分解成 $r$ 个独立同分布的几何分布随机变量之和.
 
 \subsection{均匀分布}
 
@@ -526,7 +528,7 @@ $$
 
     \subcaptionbox{均匀分布的概率密度}{
         \centering
-        \begin{tikzpicture}[>=Stealth]
+        \begin{tikzpicture}
             % 坐标轴
             \draw[->] (-1, 0)--(3, 0) node[below]{$x$};
             \draw[->] (0, -1)--(0, 2.5) node[left]{$f(x)$};
@@ -549,7 +551,7 @@ $$
     \hspace{3em}
     \subcaptionbox{均匀分布的分布函数}{
         \centering
-        \begin{tikzpicture}[>=Stealth]
+        \begin{tikzpicture}
             % 坐标轴
             \draw[->] (-1, 0)--(4, 0) node[below]{$x$};
             \draw[->] (0, -1)--(0, 2.5) node[left]{$F(x)$};
@@ -564,15 +566,16 @@ $$
         \end{tikzpicture}
     }
 
-    \vspace{-1em}
     \caption{均匀分布}
 \end{figure}
 
-对任意的两个数 $x_1, x_2 \in (a,b)$，如果 $x_1 < x_2$，则有
-$$
-P\{x_1 \leqslant X \leqslant x_2\} = \int_{x_1}^{x_2} \dfrac{\text{d}x}{b-a} = \dfrac{x_2-x_1}{b-a}
-$$
-这说明随机变量 $X$ 位于区间 $(a,b)$ 的任一子区间 $[x_1,x_2]$ 内的概率，只依赖于子区间 $[x_1,x_2]$ 的长度，而与子区间的位置无关.
+\begin{note}
+    \indent 对任意的两个数 $x_1, x_2 \in (a,b)$，如果 $x_1 < x_2$，则有
+    $$
+    P\{x_1 \leqslant X \leqslant x_2\} = \int_{x_1}^{x_2} \dfrac{\text{d}x}{b-a} = \dfrac{x_2-x_1}{b-a}
+    $$
+    这说明随机变量 $X$ 位于区间 $(a,b)$ 的任一子区间 $[x_1,x_2]$ 内的概率，只依赖于子区间 $[x_1,x_2]$ 的长度，而与子区间的位置无关.
+\end{note}
 
 \subsection{指数分布}
 
@@ -580,8 +583,8 @@ $$
     \indent 如果连续型随机变量 $X$ 的概率密度为
     $$
     f(x)=\begin{cases}
-        \lambda e^{-\lambda x} & x>0 \\
-        0 & x \leqslant 0
+        \lambda e^{-\lambda x}, & x>0 \\
+        0, & x \leqslant 0
     \end{cases}
     $$
     其中 $\lambda>0$ 是常数，则称 $X$ 服从参数为 $\lambda$ 的\textbf{指数分布}(exponential distribution)，记作 $X \sim Exp(\lambda)$.
@@ -590,8 +593,8 @@ $$
 指数分布 $Exp(\lambda)$ 的分布函数为
 $$
 F(x)=\begin{cases}
-    0, & x \leqslant 0 \\
-    1 - e^{-\lambda x}, & x>0
+    1 - e^{-\lambda x}, & x>0 \\
+    0, & x \leqslant 0
 \end{cases}
 $$
 
@@ -600,7 +603,7 @@ $$
 
     \subcaptionbox{指数分布的概率密度}{
         \centering
-        \begin{tikzpicture}[>=Stealth]
+        \begin{tikzpicture}
             % 坐标轴
             \draw[->] (-1, 0)--(3.5, 0) node[below]{$x$};
             \draw[->] (0, -1)--(0, 2) node[left]{$f(x)$};
@@ -616,7 +619,7 @@ $$
     \hspace{3em}
     \subcaptionbox{指数分布的分布函数}{
         \centering
-        \begin{tikzpicture}[>=Stealth]
+        \begin{tikzpicture}
             % 坐标轴
             \draw[->] (-1, 0)--(3.5, 0) node[below]{$x$};
             \draw[->] (0, -1)--(0, 2) node[left]{$F(x)$};
@@ -648,6 +651,8 @@ $$
     $$
     P(X > s+t \mid X>s) = \dfrac{P(X > s+t)}{P(X>s)} = \dfrac{e^{-\lambda (s+t)}}{e^{-\lambda s}} = e^{-\lambda t} = P(X > t)
     $$
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{note}
@@ -664,10 +669,10 @@ $$
     P(N(t) = k) = \dfrac{(\lambda t)^k e^{- \lambda t}}{k!},\ k=0,1,2,\cdots
     $$
 
-    事件 $\{ T \geqslant t \}$ 说明事件 $A$ 在 $[0,t]$ 时间段内没有发生，即 $\{ T \geqslant t \} = \{ N(t) = 0 \}$，由此可得：
+    事件 $\{ T > t \}$ 说明事件 $A$ 在 $[0,t]$ 时间段内没有发生，即 $\{ T > t \} = \{ N(t) = 0 \}$，由此可得：
     \begin{itemize}
-        \item 当 $t<0$ 时，有 $F_T(t) = P(T \leqslant t) = 0$；
-        \item 当 $t \geqslant 0$ 时，有
+        \item 当 $t \leqslant 0$ 时，有 $F_T(t) = P(T \leqslant t) = 0$；
+        \item 当 $t > 0$ 时，有
         $$
         F_T(t) = P(T \leqslant t) = 1 - P(T>t) = 1 - P(N(t) = 0) = 1 - e^{-\lambda t}
         $$
@@ -775,7 +780,7 @@ $$
     \subcaptionbox{固定 $\mu$，改变 $\sigma$\label{fig:sigma}}{
         \centering
 
-        \begin{tikzpicture}[>=Stealth, xscale=0.9, yscale=3.5]
+        \begin{tikzpicture}[>=Stealth, xscale=0.8, yscale=3.5]
             % 定义变量
             \def\Mu{2}
             \def\Sigma{1}
@@ -799,7 +804,7 @@ $$
         \end{tikzpicture}
     }
 
-    \caption{}
+    \caption{正态分布的参数}
 \end{figure}
 
 \subsubsection{标准正态分布}
@@ -808,7 +813,7 @@ $$
     \indent 设 $X \sim N(\mu,\sigma^2)$，如果 $\mu=0,\sigma=1$，则称 $X$ 服从\textbf{标准正态分布}(standard normal distribution)，记作 $X \sim N(0,1)$.
 \end{definition}
 
-服从标准正态分布的随机变量 $X$ 的概率密度记作 $\varphi(x)$，分布函数记作 $\varPhi(x)$，即
+标准正态分布的概率密度记作 $\varphi(x)$，分布函数记作 $\varPhi(x)$，即
 $$
 \begin{aligned}
     & \varphi(x) = \dfrac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}, \; -\infty < x < +\infty \\
@@ -821,13 +826,13 @@ $$
 
     \subcaptionbox{标准正态分布的概率密度}{
         \centering
-        \begin{tikzpicture}[>=Stealth, yscale=4, xscale=0.8]
+        \begin{tikzpicture}[>=Stealth, yscale=5, xscale=0.8]
             % 定义变量
             \def\Mu{0}
             \def\Sigma{1}
             % 坐标轴
             \draw[->] (\Mu-3*\Sigma-0.5, 0)--(\Mu+3*\Sigma+0.5, 0) node[below]{$x$};
-            \draw[->] (0, -0.2)--(0, 0.6) node[right]{$\varphi(x)$};
+            \draw[->] (0, -0.15)--(0, 0.6) node[right]{$\varphi(x)$};
             \node at (0, 0) [below left] {$O$};
             % 曲线
             \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt, smooth] plot (\x, {exp(-1 * pow(\x-\Mu, 2) / (2*\Sigma*\Sigma)) / (sqrt(2*pi)*\Sigma)});
@@ -836,13 +841,13 @@ $$
     \hspace{2em}
     \subcaptionbox{标准正态分布的分布函数}{
         \centering
-        \begin{tikzpicture}[>=Stealth, yscale=1.6, xscale=0.8]
+        \begin{tikzpicture}[>=Stealth, yscale=2, xscale=0.8]
             % 定义变量
             \def\Mu{0}
             \def\Sigma{1}
             % 坐标轴
             \draw[->] (\Mu-3*\Sigma-0.5, 0)--(\Mu+3*\Sigma+0.5, 0) node[below]{$x$};
-            \draw[->] (0, -0.5)--(0, 1.5) node[right]{$\varPhi(x)$};
+            \draw[->] (0, -0.375)--(0, 1.5) node[right]{$\varPhi(x)$};
             \node at (0, 0) [below left] {$O$};
             % 曲线
             \draw[domain=\Mu-3*\Sigma:\Mu+3*\Sigma, line width=1.5pt, smooth] plot (\x, {1 / (1+exp(-1.70174454109 * (\x-\Mu)))});
@@ -855,8 +860,7 @@ $$
             \draw (-3pt, 0.5)--(3pt, 0.5);
         \end{tikzpicture}
     }
-    
-    \vspace{-1em}
+
     \caption{标准正态分布}
 \end{figure}
 
@@ -883,8 +887,6 @@ $$
         &= 1-\varPhi(x)
     \end{aligned}
     $$
-
-    \vspace{-1.5em}
 \end{proof}
 
 \begin{property}
@@ -963,18 +965,18 @@ $$
     所以
     $$
     \begin{aligned}
-        & P(|X - \mu| < \sigma) = 2\varPhi(1) - 1 = 0.6826 \\
-        & P(|X - \mu| < 2\sigma) = 2\varPhi(2) - 1 = 0.9544 \\
-        & P(|X - \mu| < 3\sigma) = 2\varPhi(3) - 1 = 0.9974
+        & P(|X - \mu| < \sigma) = 2\varPhi(1) - 1 \approx 0.6826 \\
+        & P(|X - \mu| < 2\sigma) = 2\varPhi(2) - 1 \approx 0.9544 \\
+        & P(|X - \mu| < 3\sigma) = 2\varPhi(3) - 1 \approx 0.9974
     \end{aligned}
     $$
-
-    \vspace{-1.5em}
 \end{proof}
 
-$3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间内，而落在该区间以外的概率小于千分之三. 在一次试验中，$X$ 落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间以外这个事件几乎不会发生.
+\begin{note}
+    \indent $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间内，而落在该区间以外的概率小于千分之三. 在一次试验中，$X$ 落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间以外这个事件几乎不会发生.
 
-如果某随机变量近似满足 $3\sigma$ 规则，则可认为该随机变量近似服从正态分布；反之，如果随机变量与 $3\sigma$ 规则相差较大，则可认为该随机变量不服从正态分布.
+    如果某随机变量近似满足 $3\sigma$ 规则，则可认为该随机变量近似服从正态分布；反之，如果随机变量与 $3\sigma$ 规则相差较大，则可认为该随机变量不服从正态分布.
+\end{note}
 
 \subsubsection{标准正态分布的上 \texorpdfstring{$\alpha$}{} 分位点}
 
@@ -1008,8 +1010,6 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
         \draw (2, 0.02) -- (2.5, 0.2) node[above]{$\alpha$};
     \end{tikzpicture}
 
-    \vspace{-1em}
-
     \caption{标准正态分布的上 $\alpha$ 分位点}
     \label{fig:alpha}
 \end{figure}
@@ -1021,12 +1021,9 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 \end{property}
 
 \begin{proof}
-    \vspace{-1.2em}
     $$
     \varPhi(u_{\alpha}) = P(X \leqslant u_{\alpha}) = 1 - P(X > u_{\alpha}) = 1 - \alpha
     $$
-
-    \vspace{-2em}
 \end{proof}
 
 \begin{property}
@@ -1037,7 +1034,6 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 \end{property}
 
 \begin{proof}
-    \vspace{-1em}
     $$
     \begin{aligned}
         P(X \geqslant -u_{\alpha}) &= 1 - P(X < -u_{\alpha}) \\
@@ -1093,7 +1089,7 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
 \end{property}
 
 \begin{proof}
-    (1)$\Gamma(1) = \displaystyle\int_{0}^{+\infty} e^{-x} \text{d}x = -e^{-x} \Big|_0^{+\infty} = 1$
+    (1) $\Gamma(1) = \displaystyle\int_{0}^{+\infty} e^{-x} \text{d}x = -e^{-x} \Big|_0^{+\infty} = 1$
 
     (2)
     $$
@@ -1142,7 +1138,7 @@ $3\sigma$ 规则表明，正态随机变量 $X$ 以 99.74\% 的概率落在 $(\m
     $$
     \Gamma(1+1) = 1 \times \Gamma(1) = 1 = 1!
     $$
-    假设当 $n = k \, (k>1)$ 时 $\Gamma(k+1) = k!$ 成立，则
+    假设当 $n = k \, (k>1)$ 时 $\Gamma(k+1) = k!$ 成立，则当 $n=k+1$ 时，有
     $$
     \Gamma((k+1)+1) = (k+1) \Gamma(k+1) = (k+1) k! = (k+1)!
     $$
