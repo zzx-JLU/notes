@@ -1,0 +1,63 @@
+% !TeX root = main.tex
+
+\chapter{随机事件及其概率}
+\thispagestyle{plain}
+
+\section{随机事件}
+
+\question 写出下列随机试验的样本空间：
+
+（1）抛一枚硬币，观察正面和反面出现的情况；
+
+（2）抛一枚骰子，观察出现的点数；
+
+（3）在一个箱子中装有10个同型号的某种零件，其中有3个次品和7个合格品，从该箱子中任取3个零件，观察其中次品的个数；
+
+（4）记录某机场在一天内收到咨询电话的次数；
+
+（5）测试电视机的寿命；
+
+（6）抛三枚硬币，观察正面和反面出现的情况；
+
+（7）连续抛一枚硬币，直至出现正面为止;
+
+（8）口袋中有黑、白、红球各一个，从中任取两个球；先从中取出一个，放回后再取出一个；
+
+（9）口袋中有黑、白、红球各一个，从中任取两个球；先从中取出一个，不放回后再取出一个.
+
+\begin{solution}
+    （1）$\varOmega = \{ \omega_1, \omega_2 \}$，其中 $\omega_1$ 表示正面朝上，$\omega_2$ 表示反面朝上.
+
+    （2）$\varOmega = \{ 1,2,3,4,5,6 \}$
+
+    （3）$\varOmega = \{ 0,1,2,3 \}$
+
+    （4）$\varOmega = \{ 0,1,2,3,\cdots \}$
+
+    （5）$\varOmega = [0, +\infty)$
+
+    （6）$\varOmega = \{ (0,0,0), (0,0,1), (0,1,0), (0,1,1), (1,0,0), (1,0,1), (1,1,0), (1,1,1) \}$，其中 $0$ 表示反面，$1$ 表示正面.
+
+    （7）$\varOmega = \{ (1), (0,1), (0,0,1), (0,0,0,1), \cdots \}$
+
+    （8）$\varOmega = \{ \text{黑黑, 黑白, 黑红, 白黑, 白白, 白红, 红黑, 红白, 红红} \}$
+
+    （9）$\varOmega = \{ \text{黑白, 黑红, 白黑, 白红, 红黑, 红白} \}$
+\end{solution}
+
+% \question 设 $A$ 和 $B$ 是同一试验 $E$ 的两个随机事件，证明：$1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB) \leqslant P(A \cup B)$.
+
+% \begin{proof}
+%     因为 $AB \subseteq A \subseteq (A \cup B)$，所以
+%     $$
+%     P(AB) \leqslant P(A \cup B)
+%     $$
+%     由概率的性质 \ref{prop:probability:add}、性质 \ref{prop:probability:converse} 及事件的对偶律，可得
+%     $$
+%     P(\overline{A}) + P(\overline{B}) \geqslant P(\overline{A} \cup \overline{B}) = P(\overline{AB}) = 1 - P(AB)
+%     $$
+%     因此
+%     $$
+%     1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB)
+%     $$
+% \end{proof}

@@ -793,7 +793,8 @@
     arc = 0mm,
     outer arc = 0mm,
     parbox = false,
-    after upper = \qed
+    after upper = \qed,
+    colback = white
 }
 \renewenvironment{proof}{\begin{Proof}}{\end{Proof}}
 
@@ -806,7 +807,8 @@
     breakable,
     arc = 0mm,
     outer arc = 0mm,
-    parbox = false
+    parbox = false,
+    colback = white
 }
 
 % 分析环境
@@ -827,7 +829,7 @@
 \newcommand{\question}{
     \par
     \refstepcounter{questionNB}
-    \thequestionNB\hspace{1em}
+    \textbf{\thequestionNB}\hspace{1em}
 }
 
 % 参考文献
