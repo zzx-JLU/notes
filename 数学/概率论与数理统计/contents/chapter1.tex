@@ -214,7 +214,43 @@ $$
     \end{enumerate}
 \end{property}
 
-对于多个及可列个随机事件，以上的运算性质也成立.
+对偶律的证明如下.
+
+\begin{proof}
+    设样本点 $\omega \in \overline{A \cup B}$，则 $\omega \notin A \cup B$，即 $\omega \notin A$ 和 $\omega \notin B$ 同时成立，所以 $\omega \in \overline{A}$ 和 $\omega \in \overline{B}$ 同时成立，于是有 $\omega \in \overline{A} \cap \overline{B}$，这说明
+    $$
+    \overline{A \cup B} \subseteq \overline{A} \cap \overline{B}
+    $$
+    反之，设 $\omega \in \overline{A} \cap \overline{B}$，即 $\omega \in \overline{A}$ 和 $\omega \in \overline{B}$ 同时成立，从而有 $\omega \notin A$ 和 $\omega \notin B$ 同时成立，这意味着 $\omega$ 不属于 $A$ 与 $B$ 中的任意一个，也就是 $\omega \in \overline{A \cup B}$，这说明
+    $$
+    \overline{A} \cap \overline{B} \subseteq \overline{A \cup B}
+    $$
+    综上可得
+    $$
+    \overline{A \cup B} = \overline{A} \cap \overline{B}
+    $$
+
+    同理，设样本点 $\omega \in \overline{A \cap B}$，则 $\omega \notin A \cap B$，即 $\omega \in A$ 和 $\omega \in B$ 不能同时成立，所以 $\omega \in \overline{A}$ 和 $\omega \in \overline{B}$ 至少有一个成立，于是有 $\omega \in \overline{A} \cup \overline{B}$，这说明
+    $$
+    \overline{A \cap B} \subseteq \overline{A} \cup \overline{B}
+    $$
+    反之，设 $\omega \in \overline{A} \cup \overline{B}$，则 $\omega \in \overline{A}$ 和 $\omega \in \overline{B}$ 至少有一个成立，即 $\omega \in A$ 和 $\omega \in B$ 不能同时成立，所以 $\omega \notin A \cap B$，即 $\omega \in \overline{A \cap B}$，这说明
+    $$
+    \overline{A} \cup \overline{B} \subseteq \overline{A \cap B}
+    $$
+    综上可得
+    $$
+    \overline{A \cap B} = \overline{A} \cup \overline{B}
+    $$
+\end{proof}
+
+对于多个及可列个随机事件，以上的运算性质也成立.例如，在多个及可列个事件的情况下，对偶律可以推广为
+$$
+\begin{aligned}
+    & \overline{\bigcup_{i=1}^n A_i} = \bigcap_{i=1}^n \overline{A_i} \qquad \overline{\bigcup_{i=1}^{+\infty} A_i} = \bigcap_{i=1}^{+\infty} \overline{A_i} \\
+    & \overline{\bigcap_{i=1}^n A_i} = \bigcup_{i=1}^n \overline{A_i} \qquad \overline{\bigcap_{i=1}^{+\infty} A_i} = \bigcup_{i=1}^{+\infty} \overline{A_i} \\
+\end{aligned}
+$$
 
 \subsection{事件域}
 
