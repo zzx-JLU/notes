@@ -3,7 +3,7 @@
 \ProvidesClass{MyBeautybook-CN}[2023-06-22 MyBeautybook Class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
-\LoadClass[twoside]{ctexbook}
+\LoadClass[twoside, openany]{ctexbook}
 \overfullrule=1pt
 
 \usepackage[dvipsnames, svgnames, x11names, table]{xcolor} % 颜色扩展
