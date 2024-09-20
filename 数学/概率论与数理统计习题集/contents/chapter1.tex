@@ -202,3 +202,61 @@
 \begin{note}
     \indent 如果将样本空间写成 $\varOmega' = \{ (\text{正}, \text{正}), (\text{反}, \text{反}), (\text{一正一反}) \}$，这3个样本点不是等可能的，不满足古典概型的条件.
 \end{note}
+
+\question 从 $N$ 个数字 $1,2,\cdots,N$ 中随机抽取 $n$ 个，允许重复，求抽到的最大数字正好为 $k \, (1 \leqslant k \leqslant N)$ 的概率.
+
+\begin{solution}
+    从 $N$ 个数字中可重复地抽取 $n$ 个，共有 $N^n$ 种取法.抽到的数字不大于 $k$ 的取法有 $k^n$ 种，不大于 $k-1$ 的取法有 $(k-1)^n$，因此事件“抽到的最大数字正好为 $k$” 含有的样本点个数为 $k^n - (k-1)^n$.根据古典概型可得所求概率为
+    $$
+    p = \dfrac{k^n - (k-1)^n}{N^n}
+    $$
+\end{solution}
+
+\question 从 $1,2,\cdots,10$ 这10个数字中任取3个，求大小在中间的数字恰好为5的概率.
+
+\begin{solution}
+    从10个数字中任取3个，共有 $\mathrm{C}_{10}^3$ 种取法.如果大小在中间的数字恰好为5，必须有一个小于5、一个等于5、一个大于5，这样的取法有 $\mathrm{C}_4^1 \mathrm{C}_1^1 \mathrm{C}_5^1$ 种.因此所求概率为
+    $$
+    p = \dfrac{\mathrm{C}_4^1 \mathrm{C}_1^1 \mathrm{C}_5^1}{\mathrm{C}_{10}^3} = \dfrac{4 \times 1 \times 5}{120} = \dfrac{1}{6}
+    $$
+\end{solution}
+
+\question 将15名新生(其中有3名优秀生)随机地分配到3个班级去，其中一班4名，二班5名，三班6名.求：
+
+(1)每个班级各分配到一名优秀生的概率；
+
+(2)3名优秀生分配到一个指定班级的概率；
+
+(3)3名优秀生分配到同一个班级的概率.
+
+\begin{solution}
+    将15名新生随机地分配给一班4名、二班5名、三班6名，分法种类数为
+    $$
+    \mathrm{C}_{15}^4 \mathrm{C}_{11}^5 \mathrm{C}_6^6 = \dfrac{15!}{4! \cdot 11!} \dfrac{11!}{5! \cdot 6!} = \dfrac{15!}{4! \cdot 5! \cdot 6!}
+    $$
+
+    (1)将3名优秀生分配到三个班级的分法共有 $\mathrm{A}_3^3 = 3!$ 种，将其余12名新生分配给一班3名、二班4名、三班5名的分法共有 $\mathrm{C}_{12}^3 \mathrm{C}_9^4 \mathrm{C}_5^5 = \dfrac{12!}{3! \cdot 4! \cdot 5!}$ 种，则每个班级各分配到一名优秀生的分法共有 $3! \cdot \dfrac{12!}{3! \cdot 4! \cdot 5!} = \dfrac{12!}{4! \cdot 5!}$ 种.因此所求概率为
+    $$
+    p = \dfrac{\dfrac{12!}{4! \cdot 5!}}{\dfrac{15!}{4! \cdot 5! \cdot 6!}} = \dfrac{24}{91}
+    $$
+
+    (2)如果将3名优秀生分配到一班，则其余12名新生将分配给一班1名、二班5名、三班6名，此时分法共有 $\mathrm{C}_{12}^1 \mathrm{C}_{11}^5 \mathrm{C}_6^6 = \dfrac{12!}{5! \cdot 6!}$ 种，所求概率为
+    $$
+    p_1 = \dfrac{\dfrac{12!}{5! \cdot 6!}}{\dfrac{15!}{4! \cdot 5! \cdot 6!}} = \dfrac{4}{455}
+    $$
+
+    如果将3名优秀生分配到二班，则其余12名新生将分配给一班4名、二班2名、三班6名，此时分法共有 $\mathrm{C}_{12}^4 \mathrm{C}_{8}^2 \mathrm{C}_6^6 = \dfrac{12!}{2! \cdot 4! \cdot 6!}$ 种，所求概率为
+    $$
+    p_2 = \dfrac{\dfrac{12!}{2! \cdot 4! \cdot 6!}}{\dfrac{15!}{4! \cdot 5! \cdot 6!}} = \dfrac{2}{91}
+    $$
+
+    如果将3名优秀生分配到三班，则其余12名新生将分配给一班4名、二班5名、三班3名，此时分法共有 $\mathrm{C}_{12}^4 \mathrm{C}_{8}^5 \mathrm{C}_3^3 = \dfrac{12!}{3! \cdot 4! \cdot 5!}$ 种，所求概率为
+    $$
+    p_3 = \dfrac{\dfrac{12!}{3! \cdot 4! \cdot 5!}}{\dfrac{15!}{4! \cdot 5! \cdot 6!}} = \dfrac{4}{91}
+    $$
+
+    (3)用 $A_i$ 表示“3名优秀生全部分配到 $i$ 班” $(i=1,2,3)$，则事件“3名优秀生分配到同一个班级”可以表示为 $A_1 \cup A_2 \cup A_3$.又因为 $A_i A_j = \text{\O} \, (i \not= j, i,j=1,2,3)$，所以所求概率为
+    $$
+    p = P(A_1 \cup A_2 \cup A_3) = P(A_1) + P(A_2) + P(A_3) = \dfrac{4}{455} + \dfrac{2}{91} + \dfrac{4}{91} = \dfrac{34}{455}
+    $$
+\end{solution}
