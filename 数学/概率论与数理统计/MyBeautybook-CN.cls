@@ -86,7 +86,7 @@
 \pgfdeclarelayer{bottom} % 底部
 \pgfsetlayers{bottom, background, main, foreground, top}
 
-\setmainfont{XITS}
+% \setmainfont{XITS}
 \setCJKfamilyfont{zhkai}{KaiTi}[BoldFont=SimHei] % 楷体字的粗体设置为黑体
 
 \setcounter{tocdepth}{2} % 目录深度
@@ -793,7 +793,8 @@
     arc = 0mm,
     outer arc = 0mm,
     parbox = false,
-    after upper = \qed
+    after upper = \qed,
+    colback = white
 }
 \renewenvironment{proof}{\begin{Proof}}{\end{Proof}}
 
@@ -806,7 +807,8 @@
     breakable,
     arc = 0mm,
     outer arc = 0mm,
-    parbox = false
+    parbox = false,
+    colback = white
 }
 
 % 分析环境

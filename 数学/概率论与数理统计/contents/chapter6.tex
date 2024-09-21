@@ -6,67 +6,67 @@
 
 \subsection{总体}
 
-在数理统计中，所研究对象的全体称为\textbf{总体}，总体中的每个元素称为\textbf{个体}.
+在数理统计中,所研究对象的全体称为\textbf{总体},总体中的每个元素称为\textbf{个体}.
 
-总体中所包含的个体总数叫做\textbf{总体容量}.如果一个总体的容量是有限的，则叫做\textbf{有限总体}，否则叫做\textbf{无限总体}.
+总体中所包含的个体总数叫做\textbf{总体容量}.如果一个总体的容量是有限的,则叫做\textbf{有限总体},否则叫做\textbf{无限总体}.
 
-在具体问题中，人们关心的往往不是总体的一切方面，而是它的某一项数量指标 $X$ 以及它在总体中的分布情况.如果 $X$ 在总体中的分布情况可以用一个概率分布来表示，那么 $X$ 就可以看成是服从这一概率分布的随机变量.将表示总体的这项数量指标的随机变量 $X$ 可能取的值的全体作为总体，称作总体 $X$，而 $X$ 可能取的每一个数值 $x$ 都是一个个体.
+在具体问题中,人们关心的往往不是总体的一切方面,而是它的某一项数量指标 $X$ 以及它在总体中的分布情况.如果 $X$ 在总体中的分布情况可以用一个概率分布来表示,那么 $X$ 就可以看成是服从这一概率分布的随机变量.将表示总体的这项数量指标的随机变量 $X$ 可能取的值的全体作为总体,称作总体 $X$,而 $X$ 可能取的每一个数值 $x$ 都是一个个体.
 
-总体 $X$ 的分布函数 $F(x)$ 叫做\textbf{总体的分布函数}，总体 $X$ 的数字特征叫做\textbf{总体的数字特征}.
+总体 $X$ 的分布函数 $F(x)$ 叫做\textbf{总体的分布函数},总体 $X$ 的数字特征叫做\textbf{总体的数字特征}.
 
-如果 $X$ 是离散型随机变量，则其概率分布叫做\textbf{离散型总体} $X$ \textbf{的概率分布}；如果 $X$ 是连续型随机变量，则其概率密度叫做\textbf{连续型总体} $X$ \textbf{的概率密度}；并将它们和总体 $X$ 的分布函数统称为\textbf{总体的分布}.
+如果 $X$ 是离散型随机变量,则其概率分布叫做\textbf{离散型总体} $X$ \textbf{的概率分布};如果 $X$ 是连续型随机变量,则其概率密度叫做\textbf{连续型总体} $X$ \textbf{的概率密度};并将它们和总体 $X$ 的分布函数统称为\textbf{总体的分布}.
 
 \subsection{简单随机样本}
 
-从总体中抽取若干个个体的过程称为\textbf{抽样}，抽样结果得到总体 $X$ 的一组试验数据（或观测值）称为\textbf{样本}，样本中所含个体的数量称为\textbf{样本容量}.
+从总体中抽取若干个个体的过程称为\textbf{抽样},抽样结果得到总体 $X$ 的一组试验数据(或观测值)称为\textbf{样本},样本中所含个体的数量称为\textbf{样本容量}.
 
-为了使得样本能很好地反映总体的情况，抽样必须满足以下两个条件：
+为了使得样本能很好地反映总体的情况,抽样必须满足以下两个条件:
 \begin{enumerate}
-    \item 随机性：为了使样本具有充分的代表性，抽样必须是随机的，总体的每一个个体都有同等的机会被抽取到.
-    \item 独立性：各次抽取必须是相互独立的，每次抽样的结果既不影响其他各次抽样的结果，也不受其他各次抽样结果的影响.
+    \item 随机性:为了使样本具有充分的代表性,抽样必须是随机的,总体的每一个个体都有同等的机会被抽取到.
+    \item 独立性:各次抽取必须是相互独立的,每次抽样的结果既不影响其他各次抽样的结果,也不受其他各次抽样结果的影响.
 \end{enumerate}
 
-满足随机性和独立性的抽样方法称为\textbf{简单随机抽样}，由此得到的样本称为\textbf{简单随机样本}.
+满足随机性和独立性的抽样方法称为\textbf{简单随机抽样},由此得到的样本称为\textbf{简单随机样本}.
 
 \begin{itemize}
     \item 从总体中进行放回抽样是简单随机抽样.
-    \item 从无限总体中抽取一个个体后不会影响总体的分布，因此从无限总体中进行不放回抽样是简单随机抽样.
-    \item 从有限总体中进行不放回抽样，当总体容量 $N$ 很大而样本容量 $n$ 较小时，可以近似看做放回抽样，即可以近似看做简单随机抽样.
+    \item 从无限总体中抽取一个个体后不会影响总体的分布,因此从无限总体中进行不放回抽样是简单随机抽样.
+    \item 从有限总体中进行不放回抽样,当总体容量 $N$ 很大而样本容量 $n$ 较小时,可以近似看做放回抽样,即可以近似看做简单随机抽样.
 \end{itemize}
 
-从总体中抽取容量为 $n$ 的样本，就是对表示总体的随机变量 $X$ 随机地、独立地进行 $n$ 次试验，第 $i$ 次试验的结果可以看做一个随机变量 $X_i \, (i=1,2,\cdots,n)$，$n$ 次试验的结果就是 $n$ 个随机变量 $X_1,X_2,\cdots,X_n$，这些随机变量相互独立，并且与总体 $X$ 服从相同的分布.
+从总体中抽取容量为 $n$ 的样本,就是对表示总体的随机变量 $X$ 随机地、独立地进行 $n$ 次试验,第 $i$ 次试验的结果可以看做一个随机变量 $X_i \, (i=1,2,\cdots,n)$,$n$ 次试验的结果就是 $n$ 个随机变量 $X_1,X_2,\cdots,X_n$,这些随机变量相互独立,并且与总体 $X$ 服从相同的分布.
 
 \begin{definition}
-    设总体 $X$ 是具有某一概率分布的随机变量，如果随机变量 $X_1,X_2,\cdots,X_n$ 相互独立，且都与 $X$ 具有相同的概率分布，则称 $X_1,X_2,\cdots,X_n$ 为来自总体 $X$ 的\textbf{简单随机样本}，简称为\textbf{样本}，$n$ 称为\textbf{样本容量}.在对总体 $X$ 进行一次具体的抽样并做观测后，得到样本 $X_1,X_2,\cdots,X_n$ 的确切数值 $x_1,x_2,\cdots,x_n$，称为\textbf{样本观察值}（或\textbf{观测值}），简称为\textbf{样本值}.
+    设总体 $X$ 是具有某一概率分布的随机变量,如果随机变量 $X_1,X_2,\cdots,X_n$ 相互独立,且都与 $X$ 具有相同的概率分布,则称 $X_1,X_2,\cdots,X_n$ 为来自总体 $X$ 的\textbf{简单随机样本},简称为\textbf{样本},$n$ 称为\textbf{样本容量}.在对总体 $X$ 进行一次具体的抽样并做观测后,得到样本 $X_1,X_2,\cdots,X_n$ 的确切数值 $x_1,x_2,\cdots,x_n$,称为\textbf{样本观察值}(或\textbf{观测值}),简称为\textbf{样本值}.
 \end{definition}
 
-如果从总体 $X$ 中抽取到样本观测值 $x_1,x_2,\cdots,x_n$，则可以认为是 $n$ 个相互独立的事件 $\{X_1=x_1\}, \{X_2=x_2\}, \cdots, \{X_n=x_n\}$ 同时发生了.
+如果从总体 $X$ 中抽取到样本观测值 $x_1,x_2,\cdots,x_n$,则可以认为是 $n$ 个相互独立的事件 $\{X_1=x_1\}, \{X_2=x_2\}, \cdots, \{X_n=x_n\}$ 同时发生了.
 
-如果把样本容量为 $n$ 的样本看成是 $n$ 维随机变量 $(X_1,X_2,\cdots,X_n)$，则 $(X_1,X_2,\cdots,X_n)$ 所有可能取值的全体是 $n$ 维空间或它的一个子集，样本观测值是其中的一个点 $(x_1,x_2,\cdots,x_n)$.
+如果把样本容量为 $n$ 的样本看成是 $n$ 维随机变量 $(X_1,X_2,\cdots,X_n)$,则 $(X_1,X_2,\cdots,X_n)$ 所有可能取值的全体是 $n$ 维空间或它的一个子集,样本观测值是其中的一个点 $(x_1,x_2,\cdots,x_n)$.
 
-如果总体 $X$ 的分布函数为 $F_X(t)$，则样本 $X_1,X_2,\cdots,X_n$ 的联合分布函数为
+如果总体 $X$ 的分布函数为 $F_X(t)$,则样本 $X_1,X_2,\cdots,X_n$ 的联合分布函数为
 $$
 F(t_1,t_2,\cdots,t_n) = F_X(t_1) \, F_X(t_2) \cdots F_X(t_n) = \prod_{i=1}^{n} F_X(t_i)
 $$
 
-如果总体 $X$ 是离散型随机变量，其概率分布为 $P \{ X=t \} = p_X(t)$，则样本 $X_1,X_2,\cdots,X_n$ 的联合概率分布为
+如果总体 $X$ 是离散型随机变量,其概率分布为 $P \{ X=t \} = p_X(t)$,则样本 $X_1,X_2,\cdots,X_n$ 的联合概率分布为
 $$
 P \{ X_1=t_1, X_2=t_2, \cdots, X_n=t_n \} = p_X(t_1) \, p_X(t_2) \cdots p_X(t_n) = \prod_{i=1}^n p_X(t_i)
 $$
 
-如果总体 $X$ 是连续型随机变量，其概率密度为 $f_X(t)$，则样本 $X_1,X_2,\cdots,X_n$ 的联合概率密度为
+如果总体 $X$ 是连续型随机变量,其概率密度为 $f_X(t)$,则样本 $X_1,X_2,\cdots,X_n$ 的联合概率密度为
 $$
 f(t_1,t_2,\cdots,t_n) = f_X(t_1) \, f_X(t_2) \cdots f_X(t_n) = \prod_{i=1}^n f_X(t_i)
 $$
 
 \section{直方图}
 
-根据总体 $X$ 的样本观测值 $x_1,x_2,\cdots,x_n$ 作直方图的一般步骤为：
+根据总体 $X$ 的样本观测值 $x_1,x_2,\cdots,x_n$ 作直方图的一般步骤为:
 
 \begin{enumerate}
-    \item 找出 $x_1,x_2,\cdots,x_n$ 中的最小值 $x_{(1)}$ 和最大值 $x_{(n)}$，选取略小于 $x_{(1)}$ 的数 $a$ 和略大于 $x_{(n)}$ 的数 $b$；
+    \item 找出 $x_1,x_2,\cdots,x_n$ 中的最小值 $x_{(1)}$ 和最大值 $x_{(n)}$,选取略小于 $x_{(1)}$ 的数 $a$ 和略大于 $x_{(n)}$ 的数 $b$;
 
-    \item 根据样本容量确定组数 $k$；
+    \item 根据样本容量确定组数 $k$;
 
     \item 选取分点
     $$
@@ -80,22 +80,22 @@ $$
     $$
     \Delta t_i = t_i - t_{i-1}, \, i=1,2,\cdots,k
     $$
-    各子区间的长度可以相等，也可以不相等.如果取各子区间的长度相等，则有
+    各子区间的长度可以相等,也可以不相等.如果取各子区间的长度相等,则有
     $$
     \Delta t_i = \dfrac{b-a}{k}, \, i=1,2,\cdots,k
     $$
-    记 $\Delta t = \dfrac{b-a}{k}$，并把 $\Delta t$ 叫做\textbf{组距}.此时分点为
+    记 $\Delta t = \dfrac{b-a}{k}$,并把 $\Delta t$ 叫做\textbf{组距}.此时分点为
     $$
     t_i = a + i \Delta t, \, i=1,2,\cdots,k
     $$
-    为了方便起见，分点 $t_i$ 应比样本观测值 $x_i$ 多取一位有效数字；
+    为了方便起见,分点 $t_i$ 应比样本观测值 $x_i$ 多取一位有效数字;
 
-    \item 数出 $x_1,x_2,\cdots,x_n$ 落在每个子区间 $(t_{i-1}, t_i]$ 内的频数 $n_i$，再算出频率
+    \item 数出 $x_1,x_2,\cdots,x_n$ 落在每个子区间 $(t_{i-1}, t_i]$ 内的频数 $n_i$,再算出频率
     $$
     f_i = \dfrac{n_i}{n}, \, i=1,2,\cdots,k
     $$
 
-    \item 在 $Ox$ 轴上画出各个分点 $t_i(i=0,1,2,\cdots,k)$，并以各子区间 $(t_{i-1}, t_i]$ 为底，以 $y_i = \dfrac{f_i}{\Delta t_i} (i=0,1,2,\cdots,k)$ 为高作小矩形，这样作出的所有小矩形就构成了直方图.
+    \item 在 $Ox$ 轴上画出各个分点 $t_i(i=0,1,2,\cdots,k)$,并以各子区间 $(t_{i-1}, t_i]$ 为底,以 $y_i = \dfrac{f_i}{\Delta t_i} (i=0,1,2,\cdots,k)$ 为高作小矩形,这样作出的所有小矩形就构成了直方图.
 \end{enumerate}
 
 \vspace{0.5em}
@@ -104,17 +104,17 @@ $$
 $$
 \Delta S_i = \Delta t_i \cdot \dfrac{f_i}{\Delta t_i} = f_i
 $$
-即第 $i$ 个小矩形的面积等于样本观测值落在该子区间内的频率，因此有
+即第 $i$ 个小矩形的面积等于样本观测值落在该子区间内的频率,因此有
 $$
 \sum_{i=1}^k \Delta S_i = \sum_{i=1}^k f_i = 1
 $$
 即所有小矩形的面积的和等于 1.
 
-当样本容量 $n$ 充分大时，随机变量 $X$ 落在第 $i$ 个小区间 $(t_{i-1}, t_i]$ 内的频率近似等于其概率，所以直方图大致反映了总体 $X$ 的概率分布.
+当样本容量 $n$ 充分大时,随机变量 $X$ 落在第 $i$ 个小区间 $(t_{i-1}, t_i]$ 内的频率近似等于其概率,所以直方图大致反映了总体 $X$ 的概率分布.
 
 \section{样本分布函数}
 
-设总体 $X$ 的分布函数为 $F(x)$，从总体中抽取容量为 $n$ 的样本，样本观测值为 $x_1,x_2,\cdots,x_n$，其中相同的观测值可能重复出现若干次.假设在 $n$ 个样本观测值 $x_1,x_2,\cdots,x_n$ 中有 $k$ 个不相同的值，按由小到大的顺序依次记为 $x_{(1)} < x_{(2)} < \cdots < x_{(k)} \; (k \leqslant n)$，并假设各个 $x_{(i)}$ 出现的频数为 $n_i$，则各个 $x_{(i)}$ 出现的频率为
+设总体 $X$ 的分布函数为 $F(x)$,从总体中抽取容量为 $n$ 的样本,样本观测值为 $x_1,x_2,\cdots,x_n$,其中相同的观测值可能重复出现若干次.假设在 $n$ 个样本观测值 $x_1,x_2,\cdots,x_n$ 中有 $k$ 个不相同的值,按由小到大的顺序依次记为 $x_{(1)} < x_{(2)} < \cdots < x_{(k)} \; (k \leqslant n)$,并假设各个 $x_{(i)}$ 出现的频数为 $n_i$,则各个 $x_{(i)}$ 出现的频率为
 $$
 f_i = \dfrac{n_i}{n}, \, i=1,2,\cdots,k, \, k \leqslant n
 $$
@@ -167,22 +167,22 @@ $$
     \label{fig:样本分布函数}
 \end{figure}
 
-样本分布函数 $F_n(x)$ 的性质：
+样本分布函数 $F_n(x)$ 的性质:
 
 \begin{enumerate}
     \item $0 \leqslant F_n(x) \leqslant 1$.
     \item $F_n(x)$ 是单调不减函数.
-    \item $F_n(-\infty) = 0$，$F_n(+\infty) = 1$.
-    \item $F_n(x)$ 在每个观测值 $x_{(i)}$ 处是右连续的，点 $x_{(i)}$ 是 $F_n(x)$ 的跳跃间断点，$F_n(x)$ 在该点的跃度就是频率 $f_i \, (i=1,2,\cdots,k)$.
+    \item $F_n(-\infty) = 0$,$F_n(+\infty) = 1$.
+    \item $F_n(x)$ 在每个观测值 $x_{(i)}$ 处是右连续的,点 $x_{(i)}$ 是 $F_n(x)$ 的跳跃间断点,$F_n(x)$ 在该点的跃度就是频率 $f_i \, (i=1,2,\cdots,k)$.
 \end{enumerate}
 
-对于给定的实数 $x$，当给出总体 $X$ 的不同的样本观测值时，相应的样本分布函数 $F_n(x)$ 的值有可能是不同的，因此 $F_n(x)$ 是一个随机变量.当给定样本观测值 $x_1,x_2,\cdots,x_n$ 时，$F_n(x)$ 是在 $n$ 次独立重复试验中事件 $\{ X \leqslant x \}$ 发生的频率.由于总体 $X$ 的分布函数是事件 $\{ X \leqslant x \}$ 发生的概率，根据伯努利定理可知，当 $n \to \infty$ 时，对于任意给定的正数 $\varepsilon$，有
+对于给定的实数 $x$,当给出总体 $X$ 的不同的样本观测值时,相应的样本分布函数 $F_n(x)$ 的值有可能是不同的,因此 $F_n(x)$ 是一个随机变量.当给定样本观测值 $x_1,x_2,\cdots,x_n$ 时,$F_n(x)$ 是在 $n$ 次独立重复试验中事件 $\{ X \leqslant x \}$ 发生的频率.由于总体 $X$ 的分布函数是事件 $\{ X \leqslant x \}$ 发生的概率,根据伯努利定理可知,当 $n \to \infty$ 时,对于任意给定的正数 $\varepsilon$,有
 $$
 \lim_{n \to \infty} P \{ |F_n(x) - F(x)| < \varepsilon \} = 1
 $$
 
 \begin{theorem}[][格利文科定理]
-    当 $n \to \infty$ 时，样本分布函数 $F_n(x)$ 依概率1关于 $x$ 一致收敛于总体分布函数 $F(x)$，即
+    当 $n \to \infty$ 时,样本分布函数 $F_n(x)$ 依概率1关于 $x$ 一致收敛于总体分布函数 $F(x)$,即
     $$
     P \{ \lim_{n \to \infty} \sup_{-\infty < x < +\infty} |F_n(x) - F(x)| = 0 \} = 1
     $$
@@ -191,15 +191,15 @@ $$
 \section{样本函数及其概率分布}
 
 \begin{definition}
-    设 $X_1,X_2,\cdots,X_n$ 是来自总体 $X$ 的样本，$x_1,x_2,\cdots,x_n$ 是样本观测值.如果 $g(t_1,t_2,\cdots,t_n)$ 为已知的 $n$ 元函数，则称 $g(X_1,X_2,\cdots,X_n)$ 为\textbf{样本函数}，它是一个随机变量，称 $g(x_1,x_2,\cdots,x_n)$ 为\textbf{样本函数的观测值}.如果样本函数 $g(X_1,X_2,\cdots,X_n)$ 中不含有未知参数，则称这种样本函数为\textbf{统计量}.
+    设 $X_1,X_2,\cdots,X_n$ 是来自总体 $X$ 的样本,$x_1,x_2,\cdots,x_n$ 是样本观测值.如果 $g(t_1,t_2,\cdots,t_n)$ 为已知的 $n$ 元函数,则称 $g(X_1,X_2,\cdots,X_n)$ 为\textbf{样本函数},它是一个随机变量,称 $g(x_1,x_2,\cdots,x_n)$ 为\textbf{样本函数的观测值}.如果样本函数 $g(X_1,X_2,\cdots,X_n)$ 中不含有未知参数,则称这种样本函数为\textbf{统计量}.
 \end{definition}
 
-常用的统计量：
+常用的统计量:
 
 \begin{enumerate}
-    \item \textbf{样本均值}：$\overline{X} = \dfrac{1}{n} \displaystyle\sum_{i=1}^n X_i$ \\[0.5em]
-    观测值：$\overline{x} = \dfrac{1}{n} \displaystyle\sum_{i=1}^n x_i$\\[0.5em]
-    设总体 $X$ 具有数学期望 $E(X) = \mu$ 和方差 $D(X) = \sigma^2 (\sigma > 0)$，则 $E(X_i) = \mu$，$D(X_i) = \sigma^2 \, (i=1,2,\cdots,n)$，从而有
+    \item \textbf{样本均值}:$\overline{X} = \dfrac{1}{n} \displaystyle\sum_{i=1}^n X_i$ \\[0.5em]
+    观测值:$\overline{x} = \dfrac{1}{n} \displaystyle\sum_{i=1}^n x_i$\\[0.5em]
+    设总体 $X$ 具有数学期望 $E(X) = \mu$ 和方差 $D(X) = \sigma^2 (\sigma > 0)$,则 $E(X_i) = \mu$,$D(X_i) = \sigma^2 \, (i=1,2,\cdots,n)$,从而有
     $$
     \begin{aligned}
         & E(\overline{X}) = E(\dfrac{1}{n} \sum_{i=1}^n X_i) = \dfrac{1}{n} \sum_{i=1}^n E(X_i) = \mu \\
@@ -207,9 +207,9 @@ $$
     \end{aligned}
     $$
 
-    \item \textbf{样本方差}：$S^2 = \dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (X_i - \overline{X})^2 = \dfrac{1}{n-1} \left( \displaystyle\sum_{i=1}^n X_i^2 - n \overline{X}^2 \right)$ \\[0.5em]
-    观测值：$s^2 = \dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (x_i - \overline{x})^2 = \dfrac{1}{n-1} \left( \displaystyle\sum_{i=1}^n x_i^2 - n \overline{x}^2 \right)$ \\[0.5em]
-    设总体 $X$ 具有数学期望 $E(X) = \mu$ 和方差 $D(X) = \sigma^2 (\sigma > 0)$，则
+    \item \textbf{样本方差}:$S^2 = \dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (X_i - \overline{X})^2 = \dfrac{1}{n-1} \left( \displaystyle\sum_{i=1}^n X_i^2 - n \overline{X}^2 \right)$ \\[0.5em]
+    观测值:$s^2 = \dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (x_i - \overline{x})^2 = \dfrac{1}{n-1} \left( \displaystyle\sum_{i=1}^n x_i^2 - n \overline{x}^2 \right)$ \\[0.5em]
+    设总体 $X$ 具有数学期望 $E(X) = \mu$ 和方差 $D(X) = \sigma^2 (\sigma > 0)$,则
     $$
     \begin{aligned}
         E(S^2) &= E \left( \dfrac{1}{n-1} \left( \displaystyle\sum_{i=1}^n X_i^2 - n \overline{X}^2 \right) \right) \\
@@ -220,41 +220,41 @@ $$
     \end{aligned}
     $$
 
-    \item \textbf{样本标准差}：$S = \sqrt{S^2} = \sqrt{\dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (X_i - \overline{X})^2}$ \\[0.5em]
-    观测值：$s = \sqrt{s^2} = \sqrt{\dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (x_i - \overline{x})^2}$
+    \item \textbf{样本标准差}:$S = \sqrt{S^2} = \sqrt{\dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (X_i - \overline{X})^2}$ \\[0.5em]
+    观测值:$s = \sqrt{s^2} = \sqrt{\dfrac{1}{n-1} \displaystyle\sum_{i=1}^n (x_i - \overline{x})^2}$
 
-    \item \textbf{样本} $k$ \textbf{阶原点矩}：$A_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n X_i^k, \; k=1,2,\cdots$ \\[0.5em]
-    观测值：$a_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n x_i^k, \; k=1,2,\cdots$ \\[0.5em]
-    样本一阶原点矩就是样本均值，即
+    \item \textbf{样本} $k$ \textbf{阶原点矩}:$A_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n X_i^k, \; k=1,2,\cdots$ \\[0.5em]
+    观测值:$a_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n x_i^k, \; k=1,2,\cdots$ \\[0.5em]
+    样本一阶原点矩就是样本均值,即
     $$
     A_1 = \overline{X}
     $$
 
-    \item \textbf{样本} $k$ \textbf{阶中心矩}：$B_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n (X_i - \overline{X})^k, k=1,2,\cdots$ \\[0.5em]
-    观测值：$b_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n (x_i - \overline{x})^k, k=1,2,\cdots$ \\[0.5em]
-    样本一阶中心矩等于零，即 $B_1 = 0$. \\
-    样本二阶中心矩 $B_2$ 和样本方差 $S^2$ 有如下关系：$B_2 = \dfrac{n-1}{n} S^2$\\
-    如果总体 $X$ 具有方差 $\sigma^2$，则有
+    \item \textbf{样本} $k$ \textbf{阶中心矩}:$B_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n (X_i - \overline{X})^k, k=1,2,\cdots$ \\[0.5em]
+    观测值:$b_k = \dfrac{1}{n} \displaystyle\sum_{i=1}^n (x_i - \overline{x})^k, k=1,2,\cdots$ \\[0.5em]
+    样本一阶中心矩等于零,即 $B_1 = 0$. \\
+    样本二阶中心矩 $B_2$ 和样本方差 $S^2$ 有如下关系:$B_2 = \dfrac{n-1}{n} S^2$\\
+    如果总体 $X$ 具有方差 $\sigma^2$,则有
     $$
     E(B_2) = E(\dfrac{n-1}{n} S^2) = \dfrac{n-1}{n} E(S^2) = \dfrac{n-1}{n} \sigma^2
     $$
 
     \item 样本最大值和样本最小值 \\
-    设 $X_1, X_2, \cdots, X_n$ 是来自总体 $X$ 的样本，对于每一样本观测值 $x_1, x_2, \cdots, x_n$，取
+    设 $X_1, X_2, \cdots, X_n$ 是来自总体 $X$ 的样本,对于每一样本观测值 $x_1, x_2, \cdots, x_n$,取
     $$
     \begin{aligned}
         & x_{(n)} = \max(x_1, x_2, \cdots, x_n) \\
         & x_{(1)} = \min(x_1, x_2, \cdots, x_n)
     \end{aligned}
     $$
-    分别作为随机变量 $X_{(n)}$ 和 $X_{(1)}$ 的观测值，称 $X_{(n)}$ 和 $X_{(1)}$ 分别为\textbf{样本最大值}和\textbf{样本最小值}，分别记为
+    分别作为随机变量 $X_{(n)}$ 和 $X_{(1)}$ 的观测值,称 $X_{(n)}$ 和 $X_{(1)}$ 分别为\textbf{样本最大值}和\textbf{样本最小值},分别记为
     $$
     \begin{aligned}
         & X_{(n)} = \max(X_1, X_2, \cdots, X_n) \\
         & X_{(1)} = \min(X_1, X_2, \cdots, X_n)
     \end{aligned}
     $$
-    设总体 $X$ 的分布函数为 $F(x)$，记 $X_{(n)}$ 和 $X_{(1)}$ 的分布函数依次为 $F_{\text{max}}(x)$ 和 $F_{\text{min}}(x)$ ，则
+    设总体 $X$ 的分布函数为 $F(x)$,记 $X_{(n)}$ 和 $X_{(1)}$ 的分布函数依次为 $F_{\text{max}}(x)$ 和 $F_{\text{min}}(x)$ ,则
     $$
     \begin{aligned}
         F_{\text{max}}(x) &= P \{ \max(X_1, X_2, \cdots, X_n) \leqslant x \} \\
@@ -271,32 +271,32 @@ $$
 \end{enumerate}
 
 \begin{theorem} \label{theorem:正态总体的样本均值服从正态分布}
-    设 $X \sim N(\mu, \sigma^2)$，$X_1, X_2, \cdots, X_n$ 是来自总体 $X$ 的样本，$\overline{X}$ 为样本均值，则随机变量
+    设 $X \sim N(\mu, \sigma^2)$,$X_1, X_2, \cdots, X_n$ 是来自总体 $X$ 的样本,$\overline{X}$ 为样本均值,则随机变量
     $$
     u = \dfrac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)
     $$
 \end{theorem}
 
 \begin{proof}
-    由于 $X_1, X_2, \cdots, X_n$ 相互独立，$X_i \sim N(\mu, \sigma^2) \, (i=1,2,\cdots,n)$，因此 $\overline{X} = \dfrac{1}{n} \displaystyle\sum_{i=1}^n X_i$ 服从正态分布.而 $E(\overline{X}) = \mu$，$D(\overline{X}) = \dfrac{\sigma^2}{n}$，故
+    由于 $X_1, X_2, \cdots, X_n$ 相互独立,$X_i \sim N(\mu, \sigma^2) \, (i=1,2,\cdots,n)$,因此 $\overline{X} = \dfrac{1}{n} \displaystyle\sum_{i=1}^n X_i$ 服从正态分布.而 $E(\overline{X}) = \mu$,$D(\overline{X}) = \dfrac{\sigma^2}{n}$,故
     $$
     \overline{X} \sim N(\mu, \dfrac{\sigma^2}{n})
     $$
-    将随机变量 $\overline{X}$ 标准化，可得
+    将随机变量 $\overline{X}$ 标准化,可得
     $$
     u = \dfrac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)
     $$
 \end{proof}
 
 \begin{theorem} \label{theorem:两个正太总体的样本均值}
-    设 $X \sim N(\mu_1, \sigma_1^2)$，$Y \sim N(\mu_2, \sigma_2^2)$，分别独立地从总体 $X$ 和总体 $Y$ 中抽取样本 $X_1, X_2, \cdots, X_{n_1}$ 及 $Y_1, Y_2, \cdots, Y_{n_2}$，样本均值分别为 $\overline{X}$ 和 $\overline{Y}$，则随机变量
+    设 $X \sim N(\mu_1, \sigma_1^2)$,$Y \sim N(\mu_2, \sigma_2^2)$,分别独立地从总体 $X$ 和总体 $Y$ 中抽取样本 $X_1, X_2, \cdots, X_{n_1}$ 及 $Y_1, Y_2, \cdots, Y_{n_2}$,样本均值分别为 $\overline{X}$ 和 $\overline{Y}$,则随机变量
     $$
     u = \dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{\sqrt{\dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2}}} \sim N(0,1)
     $$
 \end{theorem}
 
 \begin{proof}
-    样本 $X_1, X_2, \cdots, X_{n_1}$ 和 $Y_1, Y_2, \cdots, Y_{n_2}$ 相互独立，也就是两个多维随机变量 $(X_1, X_2, \cdots, X_{n_1})$ 与 $(Y_1, Y_2, \cdots, Y_{n_2})$ 相互独立，因此 $\overline{X}$ 和 $\overline{Y}$ 相互独立，且
+    样本 $X_1, X_2, \cdots, X_{n_1}$ 和 $Y_1, Y_2, \cdots, Y_{n_2}$ 相互独立,也就是两个多维随机变量 $(X_1, X_2, \cdots, X_{n_1})$ 与 $(Y_1, Y_2, \cdots, Y_{n_2})$ 相互独立,因此 $\overline{X}$ 和 $\overline{Y}$ 相互独立,且
     $$
     \overline{X} \sim N(\mu_1, \dfrac{\sigma_1^2}{n_1}), \quad \overline{Y} \sim N(\mu_2, \dfrac{\sigma_2^2}{n_2})
     $$
@@ -315,14 +315,14 @@ $$
 \subsection{\texorpdfstring{$\chi^2$}{} 分布}
 
 \begin{definition} \label{def:卡方分布}
-    设 $X_1, X_2, \cdots, X_n$ 是来自标准正态总体 $N(0,1)$ 的样本，称统计量
+    设 $X_1, X_2, \cdots, X_n$ 是来自标准正态总体 $N(0,1)$ 的样本,称统计量
     $$
     \chi^2 = X_1^2 + X_2^2 + \cdots + X_n^2
     $$
-    服从自由度为 $n$ 的 $\chi^2$ 分布，记作 $\chi^2 \sim \chi^2(n)$.
+    服从自由度为 $n$ 的 $\chi^2$ 分布,记作 $\chi^2 \sim \chi^2(n)$.
 \end{definition}
 
-若 $\chi^2 \sim \chi^2(n)$，则 $\chi^2$ 的概率密度为
+若 $\chi^2 \sim \chi^2(n)$,则 $\chi^2$ 的概率密度为
 $$
 f(x) = \begin{cases}
     \dfrac{1}{2^{\frac{n}{2}} \Gamma(\frac{n}{2})} x^{\frac{n}{2} - 1} e^{-\frac{x}{2}} & x>0 \\
@@ -331,11 +331,11 @@ f(x) = \begin{cases}
 $$
 
 \begin{property} \label{prop:卡方分布的数学期望和方差}
-    若 $\chi^2 \sim \chi^2(n)$，则 $E(\chi^2) = n$，$D(\chi^2) = 2n$.
+    若 $\chi^2 \sim \chi^2(n)$,则 $E(\chi^2) = n$,$D(\chi^2) = 2n$.
 \end{property}
 
 \begin{proof}
-    $\chi^2 = \displaystyle\sum_{i=1}^n X_i^2$，其中 $X_i \sim N(0,1) \, (i=1,2,\cdots,n)$，$X_1, X_2, \cdots, X_n$ 相互独立，且 $E(X_i) = 0$，$D(X_i) = 1$，从而有
+    $\chi^2 = \displaystyle\sum_{i=1}^n X_i^2$,其中 $X_i \sim N(0,1) \, (i=1,2,\cdots,n)$,$X_1, X_2, \cdots, X_n$ 相互独立,且 $E(X_i) = 0$,$D(X_i) = 1$,从而有
     $$
     E(X_i^2) = E([X_i - E(X_i)]^2) = D(X_i) = 1
     $$
@@ -358,35 +358,35 @@ $$
 \end{proof}
 
 \begin{property}[][可加性]
-    设 $X \sim \chi^2(n_1)$，$Y \sim \chi^2(n_2)$，且 $X$ 与 $Y$ 相互独立，则 $X+Y \sim \chi^2(n_1 + n_2)$.
+    设 $X \sim \chi^2(n_1)$,$Y \sim \chi^2(n_2)$,且 $X$ 与 $Y$ 相互独立,则 $X+Y \sim \chi^2(n_1 + n_2)$.
 \end{property}
 
 \begin{property} \label{prop:卡方分布趋向于正态分布}
-    设 $\chi^2 \sim \chi^2(n)$，则对任意实数 $x$，有
+    设 $\chi^2 \sim \chi^2(n)$,则对任意实数 $x$,有
     $$
     \lim_{n \to \infty} P \left\{ \dfrac{\chi^2 - n}{\sqrt{2n}} \leqslant x \right\} = \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{x} e^{-\frac{t^2}{2}} \text{d}t
     $$
 \end{property}
 
-性质\ref*{prop:卡方分布趋向于正态分布} 说明当 $n$ 很大时，$\dfrac{\chi^2 - n}{\sqrt{2n}}$ 近似服从标准正态分布，也即自由度为 $n$ 的 $\chi^2$ 分布近似于正态分布 $N(n,2n)$.
+性质\ref*{prop:卡方分布趋向于正态分布} 说明当 $n$ 很大时,$\dfrac{\chi^2 - n}{\sqrt{2n}}$ 近似服从标准正态分布,也即自由度为 $n$ 的 $\chi^2$ 分布近似于正态分布 $N(n,2n)$.
 
 \begin{definition}
-    设 $\chi^2 \sim \chi^2(n)$，$f(x)$ 为其概率密度，对于给定的正数 $\alpha \, (0 < \alpha < 1)$，称满足条件
+    设 $\chi^2 \sim \chi^2(n)$,$f(x)$ 为其概率密度,对于给定的正数 $\alpha \, (0 < \alpha < 1)$,称满足条件
     $$
     P \{ \chi^2 > \chi_{\alpha}^2(n) \} = \int_{\chi_{\alpha}^2(n)}^{+\infty} f(x) \, \text{d}x = \alpha
     $$
-    的点 $\chi_{\alpha}^2(n)$ 为 $\chi^2$ 分布的\textbf{上} $\alpha$ \textbf{分位点（数）}.
+    的点 $\chi_{\alpha}^2(n)$ 为 $\chi^2$ 分布的\textbf{上} $\alpha$ \textbf{分位点(数)}.
 \end{definition}
 
-\begin{theorem} \label{theorem:来自正态总体的样本标准化后求和，服从卡方分布}
-    设 $X_1,X_2,\cdots,X_n$ 是来自总体 $N(\mu,\sigma^2)$ 的样本，则随机变量
+\begin{theorem} \label{theorem:来自正态总体的样本标准化后求和,服从卡方分布}
+    设 $X_1,X_2,\cdots,X_n$ 是来自总体 $N(\mu,\sigma^2)$ 的样本,则随机变量
     $$
     \chi^2 = \dfrac{1}{\sigma^2} \sum_{i=1}^n (X_i - \mu)^2 \sim \chi^2(n)
     $$
 \end{theorem}
 
 \begin{proof}
-    随机变量 $X_1,X_2,\cdots,X_n$ 相互独立，且都与总体服从相同的分布 $N(\mu,\sigma^2)$，将 $X_i$ 标准化，得
+    随机变量 $X_1,X_2,\cdots,X_n$ 相互独立,且都与总体服从相同的分布 $N(\mu,\sigma^2)$,将 $X_i$ 标准化,得
     $$
     \dfrac{X_i - \mu}{\sigma} \sim N(0,1), \; i=1,2,\cdots,n
     $$
@@ -397,7 +397,7 @@ $$
 \end{proof}
 
 \begin{theorem} \label{theorem:正态总体的样本均值与样本方差相互独立}
-    设总体 $X$ 服从正态分布 $N(\mu,\sigma^2)$，从总体 $X$ 中抽取样本 $X_1,X_2,\cdots,X_n$，样本均值和样本方差分别为 $\overline{X}$ 和 $S^2$，则
+    设总体 $X$ 服从正态分布 $N(\mu,\sigma^2)$,从总体 $X$ 中抽取样本 $X_1,X_2,\cdots,X_n$,样本均值和样本方差分别为 $\overline{X}$ 和 $S^2$,则
 
     \begin{enumerate}
         \item $\overline{X}$ 与 $S^2$ 相互独立. \vspace{0.5em}
@@ -408,7 +408,7 @@ $$
 \vspace{-1.8em}
 
 \begin{proof}
-    设有 $n$ 维正交矩阵 $\boldsymbol{A}$，且其第一行元素均为 $\dfrac{1}{\sqrt{n}}$.记
+    设有 $n$ 维正交矩阵 $\boldsymbol{A}$,且其第一行元素均为 $\dfrac{1}{\sqrt{n}}$.记
     $$
     (Y_1, Y_2, \cdots, Y_n)^{\text{T}} = \boldsymbol{A} (X_1, X_2, \cdots, X_n)^{\text{T}}
     $$
@@ -443,7 +443,7 @@ $$
         &= \dfrac{1}{n-1} \sum_{i=2}^n Y_i^2
     \end{aligned}
     $$
-    由于 $X_1,X_2,\cdots,X_n$ 独立同分布，则 $n$ 维随机变量 $(X_1, X_2, \cdots, X_n)$ 的联合概率密度为
+    由于 $X_1,X_2,\cdots,X_n$ 独立同分布,则 $n$ 维随机变量 $(X_1, X_2, \cdots, X_n)$ 的联合概率密度为
     $$
     \begin{aligned}
         f(x_1, x_2, \cdots, x_n) &= \prod_{i=1}^n f_{X_i}(x_i) \\
@@ -453,7 +453,7 @@ $$
         &= \dfrac{1}{(\sqrt{2 \pi} \sigma)^n} \exp{ \left[-\frac{1}{2 \sigma^2} \left( \sum_{i=1}^{n} x_i^2 - 2 \mu n \overline{x} + n \mu^2 \right) \right] }
     \end{aligned}
     $$
-    由 $Y_1, Y_2, \cdots, Y_n$ 与 $X_1,X_2,\cdots,X_n$ 之间的代换关系，可得 $(Y_1, Y_2, \cdots, Y_n)$ 的联合概率密度为
+    由 $Y_1, Y_2, \cdots, Y_n$ 与 $X_1,X_2,\cdots,X_n$ 之间的代换关系,可得 $(Y_1, Y_2, \cdots, Y_n)$ 的联合概率密度为
     $$
     \begin{aligned}
         f(y_1, y_2, \cdots, y_n) &= f(g_1(x_1, x_2, \cdots, x_n), g_2(x_1, x_2, \cdots, x_n), \cdots, g_n(x_1, x_2, \cdots, x_n)) |J| \\
@@ -463,20 +463,20 @@ $$
         &= |J| \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{1}{2 \sigma^2} (y_1 - \sqrt{n} \mu)^2} \times \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{1}{2 \sigma^2} y_2^2} \times \cdots \times \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{1}{2 \sigma^2} y_n^2} \\
     \end{aligned}
     $$
-    由于 $\boldsymbol{A}$ 为正交矩阵，可得 $|J|=1$，所以
+    由于 $\boldsymbol{A}$ 为正交矩阵,可得 $|J|=1$,所以
     $$
     f(y_1, y_2, \cdots, y_n) = \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{1}{2 \sigma^2} (y_1 - \sqrt{n} \mu)^2} \times \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{1}{2 \sigma^2} y_2^2} \times \cdots \times \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{1}{2 \sigma^2} y_n^2}
     $$
-    因此 $Y_1, Y_2, \cdots, Y_n$ 相互独立，且 $Y_1 \sim N(\sqrt{n} \mu, \sigma^2)$，$Y_2, Y_3, \cdots, Y_n \sim N(0, \sigma^2)$.由于 $\overline{X} = \dfrac{1}{\sqrt{n}} Y_1$，$S^2 = \dfrac{1}{n-1} \displaystyle\sum_{i=2}^n Y_i^2$，所以 $\overline{X}$ 与 $S^2$ 相互独立.
+    因此 $Y_1, Y_2, \cdots, Y_n$ 相互独立,且 $Y_1 \sim N(\sqrt{n} \mu, \sigma^2)$,$Y_2, Y_3, \cdots, Y_n \sim N(0, \sigma^2)$.由于 $\overline{X} = \dfrac{1}{\sqrt{n}} Y_1$,$S^2 = \dfrac{1}{n-1} \displaystyle\sum_{i=2}^n Y_i^2$,所以 $\overline{X}$ 与 $S^2$ 相互独立.
 
-    因为 $S^2 = \dfrac{1}{n-1} \displaystyle\sum_{i=2}^n Y_i^2$，由定理 \ref{theorem:来自正态总体的样本标准化后求和，服从卡方分布} 可得
+    因为 $S^2 = \dfrac{1}{n-1} \displaystyle\sum_{i=2}^n Y_i^2$,由定理 \ref{theorem:来自正态总体的样本标准化后求和,服从卡方分布} 可得
     $$
     \dfrac{(n-1) S^2}{\sigma^2} = \dfrac{1}{\sigma^2} \sum_{i=2}^n Y_i^2 \sim \chi^2(n-1)
     $$
 \end{proof}
 
 \begin{theorem}
-    设总体 $X \sim N(\mu,\sigma^2)$，从总体 $X$ 中抽取样本容量为 $n$ 的样本，其样本方差为 $S^2$，则
+    设总体 $X \sim N(\mu,\sigma^2)$,从总体 $X$ 中抽取样本容量为 $n$ 的样本,其样本方差为 $S^2$,则
     $$
     D(S^2) = \dfrac{2 \sigma^4}{n-1}
     $$
@@ -504,11 +504,11 @@ $$
 \subsection{\texorpdfstring{$t$}{} 分布}
 
 \begin{definition} \label{def:t分布}
-    设 $X \sim N(0,1)$，$Y \sim \chi^2(n)$，且 $X$ 与 $Y$ 相互独立，称随机变量
+    设 $X \sim N(0,1)$,$Y \sim \chi^2(n)$,且 $X$ 与 $Y$ 相互独立,称随机变量
     $$
     t = \dfrac{X}{\sqrt{Y/n}}
     $$
-    服从\textbf{自由度为} $n$ \textbf{的} $t$ \textbf{分布}，记作 $t \sim t(n)$.
+    服从\textbf{自由度为} $n$ \textbf{的} $t$ \textbf{分布},记作 $t \sim t(n)$.
 \end{definition}
 
 $t(n)$ 分布的概率密度为
@@ -516,20 +516,20 @@ $$
 f(x) = \dfrac{\Gamma(\frac{n+1}{2})}{\sqrt{n \pi} \, \Gamma(\frac{n}{2})} \left( 1 + \dfrac{x^2}{n} \right)^{-\frac{n+1}{2}}, \; -\infty < x < +\infty
 $$
 
-$f(x)$ 是偶函数，其图像关于 $y$ 轴对称.
+$f(x)$ 是偶函数,其图像关于 $y$ 轴对称.
 
-当 $n \to \infty$ 时，$t(n)$ 分布的概率密度趋向于标准正态分布的概率密度，即
+当 $n \to \infty$ 时,$t(n)$ 分布的概率密度趋向于标准正态分布的概率密度,即
 $$
 \lim_{n \to \infty} f(x) = \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}}, \; -\infty < x < +\infty
 $$
-因此，当自由度 $n$ 很大时，$t(n)$ 分布近似于标准正态分布.
+因此,当自由度 $n$ 很大时,$t(n)$ 分布近似于标准正态分布.
 
 \begin{definition}
-    设 $t \sim t(n)$，其概率密度为 $f(x)$，对于给定的正数 $\alpha \, (0 < \alpha < 1)$，称满足条件
+    设 $t \sim t(n)$,其概率密度为 $f(x)$,对于给定的正数 $\alpha \, (0 < \alpha < 1)$,称满足条件
     $$
     P \{ t > t_{\alpha}(n) \} = \int_{t_{\alpha}(n)}^{+\infty} f(x) \, \text{d}x = \alpha
     $$
-    的点 $t_{\alpha}(n)$ 为 $t(n)$ 分布的\textbf{上} $\alpha$ \textbf{分位点（数）}.
+    的点 $t_{\alpha}(n)$ 为 $t(n)$ 分布的\textbf{上} $\alpha$ \textbf{分位点(数)}.
 \end{definition}
 
 根据 $t(n)$ 分布概率密度曲线的对称性可知
@@ -537,10 +537,10 @@ $$
 t_{1 - \alpha}(n) = -t_{\alpha}(n)
 $$
 
-当 $n$ 很大（$n \geqslant 50$）时，$t_{\alpha}(n)$ 近似等于标准正态分布的上 $\alpha$ 分位点 $u_{\alpha}$，即 $t_{\alpha}(n) \approx u_{\alpha}$.
+当 $n$ 很大($n \geqslant 50$)时,$t_{\alpha}(n)$ 近似等于标准正态分布的上 $\alpha$ 分位点 $u_{\alpha}$,即 $t_{\alpha}(n) \approx u_{\alpha}$.
 
 \begin{theorem}
-    设总体 $X$ 服从正态分布 $N(\mu,\sigma^2)$，从总体 $X$ 中抽取样本 $X_1,X_2,\cdots,X_n$，样本均值和样本方差分别为 $\overline{X}$ 和 $S^2$，则随机变量
+    设总体 $X$ 服从正态分布 $N(\mu,\sigma^2)$,从总体 $X$ 中抽取样本 $X_1,X_2,\cdots,X_n$,样本均值和样本方差分别为 $\overline{X}$ 和 $S^2$,则随机变量
     $$
     t = \dfrac{\overline{X} - \mu}{S} \sqrt{n} \sim t(n-1)
     $$
@@ -551,7 +551,7 @@ $$
     $$
     u = \dfrac{\overline{X} - \mu}{\sigma} \sqrt{n} \sim N(0,1)
     $$
-    由定理 \ref{theorem:正态总体的样本均值与样本方差相互独立} 可知 $\overline{X}$ 与 $S^2$ 相互独立，并且
+    由定理 \ref{theorem:正态总体的样本均值与样本方差相互独立} 可知 $\overline{X}$ 与 $S^2$ 相互独立,并且
     $$
     \chi^2 = \dfrac{(n-1) S^2}{\sigma^2} \sim \chi^2(n-1)
     $$
@@ -562,7 +562,7 @@ $$
 \end{proof}
 
 \begin{theorem}
-    若从两个正态总体 $N(\mu_1, \sigma^2)$ 和 $N(\mu_2, \sigma^2)$ 中分别独立地抽取样本，样本容量依次为 $n_1$ 和 $n_2$，样本均值依次为 $\overline{X}$ 和 $\overline{Y}$，样本方差依次为 $S_1^2$ 和 $S_2^2$.记
+    若从两个正态总体 $N(\mu_1, \sigma^2)$ 和 $N(\mu_2, \sigma^2)$ 中分别独立地抽取样本,样本容量依次为 $n_1$ 和 $n_2$,样本均值依次为 $\overline{X}$ 和 $\overline{Y}$,样本方差依次为 $S_1^2$ 和 $S_2^2$.记
     $$
     S_W = \sqrt{\dfrac{(n_1 - 1) S_1^2 + (n_2 - 1) S_2^2}{n_1 + n_2 - 2}}
     $$
@@ -584,18 +584,18 @@ $$
         & \chi_2^2 = \dfrac{(n_2 - 1) S_2^2}{\sigma^2} \sim \chi^2(n_2 - 1)
     \end{aligned}
     $$
-    因为两个样本相互独立，所以 $S_1^2$ 与 $S_2^2$ 相互独立，从而可知 $\chi_1^2$ 与 $\chi_2^2$ 相互独立.由 $\chi^2$ 分布的可加性得
+    因为两个样本相互独立,所以 $S_1^2$ 与 $S_2^2$ 相互独立,从而可知 $\chi_1^2$ 与 $\chi_2^2$ 相互独立.由 $\chi^2$ 分布的可加性得
     $$
     \chi_1^2 + \chi_2^2 = \dfrac{(n_1 - 1) S_1^2 + (n_2 - 1) S_2^2}{\sigma^2} \sim \chi^2(n_1 + n_2 - 2)
     $$
-    根据定理 \ref{theorem:正态总体的样本均值与样本方差相互独立} 可得 $\overline{X}$ 与 $S_1^2$ 相互独立，$\overline{Y}$ 与 $S_2^2$ 相互独立，因此 $u$ 与 $\chi_1^2 + \chi_2^2$ 相互独立.由定义 \ref{def:t分布} 可知
+    根据定理 \ref{theorem:正态总体的样本均值与样本方差相互独立} 可得 $\overline{X}$ 与 $S_1^2$ 相互独立,$\overline{Y}$ 与 $S_2^2$ 相互独立,因此 $u$ 与 $\chi_1^2 + \chi_2^2$ 相互独立.由定义 \ref{def:t分布} 可知
     $$
     t = \dfrac{u}{\sqrt{\dfrac{\chi_1^2 + \chi_2^2}{n_1 + n_2 - 2}}} = \dfrac{\dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{\sigma \sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}}}{\sqrt{\dfrac{(n_1 - 1) S_1^2 + (n_2 - 1) S_2^2}{\sigma^2 (n_1 + n_2 - 2)}}} = \dfrac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{S_W \sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}} \sim t(n_1 + n_2 - 2)
     $$
 \end{proof}
 
 \begin{conclusion}
-    设随机变量 $X$ 与 $Y$ 相互独立，且 $X \sim N(\mu, \sigma^2)$，$\dfrac{Y}{\sigma^2} \sim \chi^2(n)$，则
+    设随机变量 $X$ 与 $Y$ 相互独立,且 $X \sim N(\mu, \sigma^2)$,$\dfrac{Y}{\sigma^2} \sim \chi^2(n)$,则
     $$
     t = \dfrac{X - \mu}{\sqrt{Y / n}} \sim t(n)
     $$
@@ -611,11 +611,11 @@ $$
 \subsection{\texorpdfstring{$F$}{} 分布}
 
 \begin{definition} \label{def:F分布}
-    设 $X \sim \chi^2(n_1)$，$Y \sim \chi^2(n_2)$，且 $X$ 与 $Y$ 相互独立，称随机变量
+    设 $X \sim \chi^2(n_1)$,$Y \sim \chi^2(n_2)$,且 $X$ 与 $Y$ 相互独立,称随机变量
     $$
     F = \dfrac{X / n_1}{Y / n_2}
     $$
-    服从第一自由度为 $n_1$、第二自由度为 $n_2$（或自由度为 $(n_1,n_2)$）的 $F$ \textbf{分布}，记作
+    服从第一自由度为 $n_1$、第二自由度为 $n_2$(或自由度为 $(n_1,n_2)$)的 $F$ \textbf{分布},记作
     $$
     F \sim F(n_1, n_2)
     $$
@@ -629,14 +629,14 @@ f(x) = \begin{cases}
 \end{cases}
 $$
 
-若 $F \sim F(n_1, n_2)$，则 $\dfrac{1}{F} \sim F(n_2, n_1)$.
+若 $F \sim F(n_1, n_2)$,则 $\dfrac{1}{F} \sim F(n_2, n_1)$.
 
 \begin{definition}
-    设 $F \sim F(n_1, n_2)$，其概率密度为 $f(x)$，对于给定的正数 $\alpha \, (0 < \alpha < 1)$，称满足条件
+    设 $F \sim F(n_1, n_2)$,其概率密度为 $f(x)$,对于给定的正数 $\alpha \, (0 < \alpha < 1)$,称满足条件
     $$
     P \{ F > F_{\alpha}(n_1, n_2) \} = \int_{F_{\alpha}(n_1, n_2)}^{+\infty} f(x) \, \text{d}x = \alpha
     $$
-    的点 $F_{\alpha}(n_1, n_2)$ 为 $F(n_1, n_2)$ 分布的\textbf{上} $\alpha$ \textbf{分位点（数）}.
+    的点 $F_{\alpha}(n_1, n_2)$ 为 $F(n_1, n_2)$ 分布的\textbf{上} $\alpha$ \textbf{分位点(数)}.
 \end{definition}
 
 \begin{property}
@@ -644,7 +644,7 @@ $$
 \end{property}
 
 \begin{proof}
-    设 $F \sim F(n_1, n_2)$，则对于 $\alpha \, (0 < \alpha < 1)$，有
+    设 $F \sim F(n_1, n_2)$,则对于 $\alpha \, (0 < \alpha < 1)$,有
     $$
     \begin{aligned}
         1 - \alpha &= P \{ F > F_{1 - \alpha}(n_1, n_2) \} \\
@@ -657,7 +657,7 @@ $$
     $$
     P \left\{ \dfrac{1}{F} > \dfrac{1}{F_{1 - \alpha}(n_1, n_2)} \right\} = \alpha
     $$
-    由于 $\dfrac{1}{F} \sim F(n_2, n_1)$，因此 $\dfrac{1}{F_{1 - \alpha}(n_1, n_2)}$ 就是 $F(n_2, n_1)$ 的上 $\alpha$ 分位点，即
+    由于 $\dfrac{1}{F} \sim F(n_2, n_1)$,因此 $\dfrac{1}{F_{1 - \alpha}(n_1, n_2)}$ 就是 $F(n_2, n_1)$ 的上 $\alpha$ 分位点,即
     $$
     F_{\alpha}(n_2, n_1) = \dfrac{1}{F_{1 - \alpha}(n_1, n_2)}
     $$
@@ -668,28 +668,28 @@ $$
 \end{proof}
 
 \begin{theorem}
-    设 $X_1, X_2, \cdots, X_{n_1}$ 是来自正态总体 $N(\mu_1, \sigma_1^2)$ 的样本，$Y_1, Y_2, \cdots, Y_{n_2}$ 是来自正态总体 $N(\mu_2, \sigma_2^2)$ 的样本，并且这两个样本相互独立，则随机变量
+    设 $X_1, X_2, \cdots, X_{n_1}$ 是来自正态总体 $N(\mu_1, \sigma_1^2)$ 的样本,$Y_1, Y_2, \cdots, Y_{n_2}$ 是来自正态总体 $N(\mu_2, \sigma_2^2)$ 的样本,并且这两个样本相互独立,则随机变量
     $$
     F = \dfrac{n_2}{n_1} \cdot \dfrac{\sigma_2^2}{\sigma_1^2} \cdot \dfrac{\displaystyle\sum_{i=1}^{n_1} (X_i - \mu_1)^2}{\displaystyle\sum_{j=1}^{n_2} (Y_j - \mu_2)^2} \sim F(n_1, n_2)
     $$
 \end{theorem}
 
 \begin{proof}
-    根据定理 \ref{theorem:来自正态总体的样本标准化后求和，服从卡方分布} 可得
+    根据定理 \ref{theorem:来自正态总体的样本标准化后求和,服从卡方分布} 可得
     $$
     \begin{aligned}
         & \chi_1^2 = \dfrac{1}{\sigma^2} \sum_{i=1}^{n_1} (X_i - \mu_1)^2 \sim \chi^2(n_1) \\
         & \chi_2^2 = \dfrac{1}{\sigma^2} \sum_{j=1}^{n_2} (Y_i - \mu_2)^2 \sim \chi^2(n_2)
     \end{aligned}
     $$
-    因为两个样本相互独立，所以 $\chi_1^2$ 与 $\chi_2^2$ 相互独立.由定义 \ref{def:F分布} 可得
+    因为两个样本相互独立,所以 $\chi_1^2$ 与 $\chi_2^2$ 相互独立.由定义 \ref{def:F分布} 可得
     $$
     F = \dfrac{\chi_1^2 / n_1}{\chi_2^2 / n_2} = \dfrac{n_2}{n_1} \cdot \dfrac{\sigma_2^2}{\sigma_1^2} \cdot \dfrac{\displaystyle\sum_{i=1}^{n_1} (X_i - \mu_1)^2}{\displaystyle\sum_{j=1}^{n_2} (Y_j - \mu_2)^2} \sim F(n_1, n_2)
     $$
 \end{proof}
 
 \begin{theorem}
-    若从两个正态总体 $N(\mu_1, \sigma^2)$ 和 $N(\mu_2, \sigma^2)$ 中分别独立地抽取样本，样本容量依次为 $n_1$ 和 $n_2$，样本均值依次为 $\overline{X}$ 和 $\overline{Y}$，样本方差依次为 $S_1^2$ 和 $S_2^2$，则随机变量
+    若从两个正态总体 $N(\mu_1, \sigma^2)$ 和 $N(\mu_2, \sigma^2)$ 中分别独立地抽取样本,样本容量依次为 $n_1$ 和 $n_2$,样本均值依次为 $\overline{X}$ 和 $\overline{Y}$,样本方差依次为 $S_1^2$ 和 $S_2^2$,则随机变量
     $$
     F = \dfrac{\sigma_2^2}{\sigma_1^2} \cdot \dfrac{S_1^2}{S_2^2} \sim F(n_1 - 1, n_2 - 1)
     $$
@@ -703,18 +703,18 @@ $$
         & \chi_2^2 = \dfrac{(n_2 - 1) S_2^2}{\sigma_2^2} \sim \chi^2(n_2 - 1)
     \end{aligned}
     $$
-    因为两个样本相互独立，所以 $S_1^2$ 和 $S_2^2$ 相互独立，从而可知 $\chi_1^2$ 与 $\chi_2^2$ 相互独立.由定义 \ref{def:F分布} 可得
+    因为两个样本相互独立,所以 $S_1^2$ 和 $S_2^2$ 相互独立,从而可知 $\chi_1^2$ 与 $\chi_2^2$ 相互独立.由定义 \ref{def:F分布} 可得
     $$
     F = \dfrac{\chi_1^2 / (n_1 - 1)}{\chi_2^2 / (n_2 - 1)} = \dfrac{\sigma_2^2}{\sigma_1^2} \cdot \dfrac{S_1^2}{S_2^2} \sim F(n_1 - 1, n_2 - 1)
     $$
 \end{proof}
 
 \begin{conclusion}
-    若 $X \sim t(n)$，则 $X^2 \sim F(1,n)$.
+    若 $X \sim t(n)$,则 $X^2 \sim F(1,n)$.
 \end{conclusion}
 
 \begin{proof}
-    根据定义 \ref{def:t分布}，若 $X \sim t(n)$，则存在 $Y \sim N(0,1)$，$Z \sim \chi^2(n)$，$Y$ 与 $Z$ 相互独立，且
+    根据定义 \ref{def:t分布},若 $X \sim t(n)$,则存在 $Y \sim N(0,1)$,$Z \sim \chi^2(n)$,$Y$ 与 $Z$ 相互独立,且
     $$
     X = \dfrac{Y}{\sqrt{Z / n}}
     $$
@@ -722,5 +722,5 @@ $$
     $$
     X^2 = \dfrac{Y^2}{Z / n}
     $$
-    根据定义 \ref{def:卡方分布} 可得 $Y^2 \sim \chi^2(1)$，则由定义 \ref{def:F分布} 可知 $X^2 \sim F(1,n)$.
+    根据定义 \ref{def:卡方分布} 可得 $Y^2 \sim \chi^2(1)$,则由定义 \ref{def:F分布} 可知 $X^2 \sim F(1,n)$.
 \end{proof}
