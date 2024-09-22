@@ -361,7 +361,7 @@ $$
 \subsection{频率}
 
 \begin{definition}
-    \indent 设在相同的条件下进行的 $n$ 次试验中,事件 $A$ 发生了 $n_A$ 次,则称 $n_A$ 为事件 $A$ 发生的\textbf{频数},称比值 $\dfrac{n_A}{n}$ 为事件 $A$ 发生的\textbf{频率},记作 $f_n(A)$,即
+    \indent 设在相同的条件下进行的 $n$ 次试验中,事件 $A$ 发生了 $n_A$ 次,则称 $n_A$ 为事件 $A$ 发生的\textbf{频数}(frequency),称比值 $\dfrac{n_A}{n}$ 为事件 $A$ 发生的\textbf{频率}(relative frequency),记作 $f_n(A)$,即
     $$
     f_n(A)=\dfrac{n_A}{n}
     $$
@@ -387,7 +387,7 @@ $$
 \subsection{概率}
 
 \begin{definition}[][概率的公理化定义][def:probability]
-    \indent 设 $\varOmega$ 为一个样本空间,$\mathcal{F}$ 为 $\varOmega$ 的某些子集组成的事件域.如果对于任一事件 $A \in \mathcal{F}$,定义在 $\mathcal{F}$ 上的一个实值函数 $P(A)$ 满足:
+    \indent 设 $\varOmega$ 为一个样本空间, $\mathcal{F}$ 为 $\varOmega$ 的某些子集组成的事件域.如果对于任一事件 $A \in \mathcal{F}$,定义在 $\mathcal{F}$ 上的一个实值函数 $P(A)$ 满足:
     \begin{enumerate}
         \item \textbf{非负性}:对于任意事件 $A \in \mathcal{F}$,有 $P(A) \geqslant 0$;
         \item \textbf{规范性}:对于必然事件 $\varOmega$,有 $P(\varOmega)=1$;
@@ -607,7 +607,7 @@ $$
 \subsection{概率的连续性}
 
 \begin{definition}
-    \indent 对 $\mathcal{F}$ 中任一单调不减的事件序列 $F_1 \subseteq F_2 \subseteq \cdots \subseteq F_n \subseteq \cdots$,称 $\displaystyle\bigcup_{i=1}^{\infty} F_i$ 为 $\{F_n\}$ 的\textbf{极限事件},记为
+    \indent 对 $\mathcal{F}$ 中任一单调不减的事件序列 $F_1 \subseteq F_2 \subseteq \cdots \subseteq F_n \subseteq \cdots$,称 $\displaystyle\bigcup_{i=1}^{\infty} F_i$ 为 $\{F_n\}$ 的\textbf{极限事件}(limiting event),记为
     $$
     \lim_{n \to \infty} F_n = \bigcup_{i=1}^{\infty} F_i
     $$
@@ -623,11 +623,11 @@ $$
     $$
     \lim_{n \to \infty} P(F_n) = P(\lim_{n \to \infty} F_n)
     $$
-    则称概率 $P$ 是\textbf{下连续}的.若它对 $\mathcal{F}$ 中任一单调不增的事件序列 $\{E_n\}$ 均有
+    则称概率 $P$ 是\textbf{下连续}的(lower continuous).若它对 $\mathcal{F}$ 中任一单调不增的事件序列 $\{E_n\}$ 均有
     $$
     \lim_{n \to \infty} P(E_n) = P(\lim_{n \to \infty} E_n)
     $$
-    则称概率 $P$ 是\textbf{上连续}的.
+    则称概率 $P$ 是\textbf{上连续}的(upper continuous).
 \end{definition}
 
 \begin{property}[][概率的连续性][prop:连续性]
@@ -736,7 +736,7 @@ $$
 P(\{\omega_1\})=P(\{\omega_2\})=\cdots=P(\{\omega_n\})=\dfrac{1}{n}
 $$
 
-如果事件 $A$ 包含 $k$ 个基本事件,$A=\{\omega_{i_1}\} \cup \{\omega_{i_2}\} \cup \cdots \cup \{\omega_{i_k}\}$,其中 $i_1,i_2,\cdots,i_k$ 是 $1,2,\cdots,n$ 中某 $k$ 个不同的数,则有
+如果事件 $A$ 包含 $k$ 个基本事件, $A=\{\omega_{i_1}\} \cup \{\omega_{i_2}\} \cup \cdots \cup \{\omega_{i_k}\}$,其中 $i_1,i_2,\cdots,i_k$ 是 $1,2,\cdots,n$ 中某 $k$ 个不同的数,则有
 $$
 P(A) = P(\{\omega_{i_1}\}) + P(\{\omega_{i_2}\}) + \cdots + P(\{\omega_{i_k}\}) = \dfrac{k}{n}
 $$
@@ -780,14 +780,14 @@ $$
 \end{example}
 
 \begin{solution}
-    每个球都可放到 $N$ 个盒子中的任一个,$n$ 个球的存放方式共有 $N^n$ 种.
+    每个球都可放到 $N$ 个盒子中的任一个, $n$ 个球的存放方式共有 $N^n$ 种.
 
-    (1)因为各有一球的 $n$ 个盒子已经指定,余下的没有球的 $N-n$ 个盒子也同时被指定,所以只需要考虑 $n$ 个球在这指定的 $n$ 个盒子中各放1个的放法数.第1个球有 $n$ 种放法,第2个球有 $n-1$ 种放法,$\cdots$,第 $n$ 个球有1种放法,根据乘法原理,总的放法数为 $n!$,于是其概率为
+    (1)因为各有一球的 $n$ 个盒子已经指定,余下的没有球的 $N-n$ 个盒子也同时被指定,所以只需要考虑 $n$ 个球在这指定的 $n$ 个盒子中各放1个的放法数.第1个球有 $n$ 种放法,第2个球有 $n-1$ 种放法, $\cdots$,第 $n$ 个球有1种放法,根据乘法原理,总的放法数为 $n!$,于是其概率为
     $$
     p_1 = \dfrac{n!}{N^n}
     $$
 
-    (2)第1个球可放在 $N$ 个盒子中的任一个,第2个球可放在余下的 $N-1$ 个盒子中的任一个,$\cdots$,第 $n$ 个球只可放在余下的 $N-n+1$ 个盒子中的任一个,根据乘法原理,总的放法数为 $N (N-1) (N-2) \cdots (N-n+1)$,因此所求概率为
+    (2)第1个球可放在 $N$ 个盒子中的任一个,第2个球可放在余下的 $N-1$ 个盒子中的任一个, $\cdots$,第 $n$ 个球只可放在余下的 $N-n+1$ 个盒子中的任一个,根据乘法原理,总的放法数为 $N (N-1) (N-2) \cdots (N-n+1)$,因此所求概率为
     $$
     p_2 = \dfrac{N (N-1) (N-2) \cdots (N-n+1)}{N^n} = \dfrac{N!}{N^n (N-n)!}
     $$
@@ -809,7 +809,7 @@ $$
 \end{solution}
 
 \begin{note}
-    \indent 直觉上,30 个人的生日各不相同的概率应该是比较大的,至少大于 0.5.然而,根据例题 \ref{example:生日问题} 的结果,$p_{30} \approx 0.2937$,这表明 30 个人的生日各不相同的概率比我们想象中更小.当 $n=23$ 时,$1 - p_{23} \approx 0.5073$,也就是说,23 个人中至少有两个人生日相同的概率就已经超过了 50\%.而当 $n=60$ 时,$1 - p_{60} \approx 0.9941$,说明 60 个人中至少有两个人生日相同的概率超过 99\%.
+    \indent 直觉上, 30 个人的生日各不相同的概率应该是比较大的,至少大于 0.5.然而,根据例题 \ref{example:生日问题} 的结果, $p_{30} \approx 0.2937$,这表明 30 个人的生日各不相同的概率比我们想象中更小.当 $n=23$ 时, $1 - p_{23} \approx 0.5073$,也就是说, 23 个人中至少有两个人生日相同的概率就已经超过了 50\%.而当 $n=60$ 时, $1 - p_{60} \approx 0.9941$,说明 60 个人中至少有两个人生日相同的概率超过 99\%.
 
     生日问题告诉我们,我们的直觉并不一定准确,有些问题的结果与我们的直觉不符.因此,我们不能过度依赖直觉,应该学会用科学理性的思维去思考.
 \end{note}
@@ -819,7 +819,7 @@ $$
 \end{example}
 
 \begin{solution}
-    设事件 $A_i=$ ``第 $i$ 个人抽到自己的礼物",$i=1,2,\cdots,n$,则所求概率为 $P(A_1 \cup A_2 \cup \cdots \cup A_n)$.因为
+    设事件 $A_i=$ ``第 $i$ 个人抽到自己的礼物", $i=1,2,\cdots,n$,则所求概率为 $P(A_1 \cup A_2 \cup \cdots \cup A_n)$.因为
     $$
     \begin{aligned}
         & P(A_1) = P(A_2) = \cdots = P(A_n) = \dfrac{1}{n} \\
@@ -870,7 +870,7 @@ $$
     $$
     A = \{ (x,y) \mid |x-y| \leqslant 20 \}
     $$
-    由图 \ref{fig:会面问题} 可知,$\varOmega$ 的面积为 $60^2$,$A$ 的面积为 $60^2 - 40^2$,因此
+    由图 \ref{fig:会面问题} 可知, $\varOmega$ 的面积为 $60^2$, $A$ 的面积为 $60^2 - 40^2$,因此
     $$
     P(A) = \dfrac{60^2 - 40^2}{60^2} = \dfrac{5}{9}
     $$
@@ -905,7 +905,7 @@ $$
 \end{example}
 
 \begin{solution}
-    针投在该平面上,设 $x$ 为针的中点 $M$ 到最近的一条平行线的距离,$\varphi$ 为针与此直线的夹角,如图 \ref{fig:pufeng:1} 所示,则有
+    针投在该平面上,设 $x$ 为针的中点 $M$ 到最近的一条平行线的距离, $\varphi$ 为针与此直线的夹角,如图 \ref{fig:pufeng:1} 所示,则有
     $$
     0 \leqslant x \leqslant a, \; 0 \leqslant \varphi \leqslant \pi
     $$
@@ -1099,14 +1099,14 @@ $$
 \begin{note}
     \indent 条件概率的本质是样本空间的改变.计算 $P(A)$ 时,样本空间为 $\varOmega$;而在事件 $B$ 发生的条件下,所有可能出现的样本点一定在 $B$ 中,因此条件概率 $P(A \mid B)$ 的样本空间为 $B$.
 
-    在定义 \ref{def:条件概率} 中,$B$ 为样本空间,$AB$ 为事件 $A$ 落在样本空间 $B$ 中的部分,因此 $\dfrac{P(AB)}{P(B)}$ 即为条件概率 $P(A \mid B)$.
+    在定义 \ref{def:条件概率} 中, $B$ 为样本空间, $AB$ 为事件 $A$ 落在样本空间 $B$ 中的部分,因此 $\dfrac{P(AB)}{P(B)}$ 即为条件概率 $P(A \mid B)$.
 \end{note}
 
 \begin{property}
     \indent 若 $P(B) > 0$,则有:
     \begin{enumerate}
-        \item 非负性:$P(A \mid B) \geqslant 0$,$A \in \mathcal{F}$.
-        \item 规范性:$P(\varOmega \mid B) = 1$.
+        \item 非负性: $P(A \mid B) \geqslant 0, A \in \mathcal{F}$.
+        \item 规范性: $P(\varOmega \mid B) = 1$.
         \item 可列可加性:若 $A_1, A_2, \cdots, A_n, \cdots$ 两两互斥,则
         $$
         P \left( \bigcup_{i=1}^{\infty} A_i \mid B \right) = \sum_{i=1}^{\infty} P(A_i \mid B)
@@ -1117,7 +1117,7 @@ $$
 \begin{proof}
     (1) 由定义 \ref{def:条件概率} 得
     $$P(A \mid B) = \dfrac{P(AB)}{P(B)}$$
-    而 $P(AB) \geqslant 0$,$P(B)>0$,因此 $P(A \mid B) \geqslant 0$.
+    而 $P(AB) \geqslant 0, P(B)>0$,因此 $P(A \mid B) \geqslant 0$.
 
     \vspace{0.5em}
 
@@ -1181,7 +1181,8 @@ $$
 \end{example}
 
 \begin{solution}
-    设事件 $A$ 为``连续从罐中取出三个球,其中有两个红球、一个黑球",$B_i$ 为``第 $i$ 次取出的是黑球",$R_j$ 为``第 $j$ 次取出的是红球".所求概率 $P(A)$ 与黑球在第几次被取出有关,下面进行分类讨论.
+    {\linespread{1.18}\selectfont
+    设事件 $A$ 为``连续从罐中取出三个球,其中有两个红球、一个黑球", $B_i$ 为``第 $i$ 次取出的是黑球", $R_j$ 为``第 $j$ 次取出的是红球".所求概率 $P(A)$ 与黑球在第几次被取出有关,下面进行分类讨论.
 
     (1)黑球在第1次被取出:第1次取球时有 $b$ 个黑球、$r$ 个红球,取出的是黑球;第2次取球时有 $b+c$ 个黑球、$r+d$ 个红球,取出的是红球;第3次取球时有 $b+c+d$ 个黑球、$r+d+c$ 个红球,取出的是红球.因此
     $$
@@ -1208,13 +1209,13 @@ $$
         &= P(R_1) \, P(R_2 \mid R_1) \, P(B_3 \mid R_1 R_2) \\
         &= \dfrac{r}{b+r} \cdot \dfrac{r+c}{b+r+c+d} \cdot \dfrac{b+2d}{b+r+2c+2d}
     \end{aligned}
-    $$
+    $$}
 \end{solution}
 
 \begin{note}
     \indent 根据参数 $c,d$ 的不同,波利亚罐子模型可以有各种变化.
 
-    当 $c=-1$,$d=0$ 时,即为\textbf{不放回抽样}.此时前面的抽取结果会影响后面的抽取,但只要抽取的黑球与红球个数确定,则抽出球的顺序不会影响其概率.
+    当 $c=-1, d=0$ 时,即为\textbf{不放回抽样}.此时前面的抽取结果会影响后面的抽取,但只要抽取的黑球与红球个数确定,则抽出球的顺序不会影响其概率.
     $$
     \begin{aligned}
         & P(B_1 R_2 R_3) = \dfrac{b}{b+r} \cdot \dfrac{r}{b+r-1} \cdot \dfrac{r-1}{b+r-2} = \dfrac{br(r-1)}{(b+r)(b+r-1)(b+r-2)} \\
@@ -1223,19 +1224,19 @@ $$
     \end{aligned}
     $$
 
-    当 $c=0$,$d=0$ 时,即为\textbf{放回抽样}.此时前面的抽取结果不会影响后面的抽取.
+    当 $c=0, d=0$ 时,即为\textbf{放回抽样}.此时前面的抽取结果不会影响后面的抽取.
     $$
     P(B_1 R_2 R_3) = P(R_1 B_2 R_3) = P(R_1 R_2 B_3) = \dfrac{br^2}{(b+r)^3}
     $$
 
-    当 $c>0$,$d=0$ 时,称为\textbf{传染病模型}.此时,每次取出球后会增加下一次取到同色球的概率,象征每次发现一个传染病患者都会增加再传染的概率.
+    当 $c>0, d=0$ 时,称为\textbf{传染病模型}.此时,每次取出球后会增加下一次取到同色球的概率,象征每次发现一个传染病患者都会增加再传染的概率.
 
     在波利亚罐子模型中,只要 $d=0$,上述三个概率都相等.即只要抽取的黑球与红球个数确定,则抽出球的顺序不会影响其概率.
     $$
     P(B_1 R_2 R_3) = P(R_1 B_2 R_3) = P(R_1 R_2 B_3) = \dfrac{br(r+c)}{(b+r)(b+r+c)(b+r+2c)}
     $$
 
-    当 $c=0$,$d>0$ 时,称为\textbf{安全模型}.此模型可解释为:每当事故发生了(红球被取出),安全工作就抓紧一些,下次再发生事故的概率就会减少;而当事故没有发生时(黑球被取出),安全工作就放松一些,下次发生事故的概率就会增大.此时,上述三个概率不再相等,它们分别为
+    当 $c=0, d>0$ 时,称为\textbf{安全模型}.此模型可解释为:每当事故发生了(红球被取出),安全工作就抓紧一些,下次再发生事故的概率就会减少;而当事故没有发生时(黑球被取出),安全工作就放松一些,下次发生事故的概率就会增大.此时,上述三个概率不再相等,它们分别为
     $$
     \begin{aligned}
         & P(B_1 R_2 R_3) = \dfrac{b}{b+r} \cdot \dfrac{r+d}{b+r+d} \cdot \dfrac{r+d}{b+r+2d} \\

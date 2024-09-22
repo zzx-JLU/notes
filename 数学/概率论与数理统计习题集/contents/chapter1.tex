@@ -203,15 +203,6 @@
     \indent 如果将样本空间写成 $\varOmega' = \{ (\text{正}, \text{正}), (\text{反}, \text{反}), (\text{一正一反}) \}$,这3个样本点不是等可能的,不满足古典概型的条件.
 \end{note}
 
-\question 从 $N$ 个数字 $1,2,\cdots,N$ 中随机抽取 $n$ 个,允许重复,求抽到的最大数字正好为 $k \, (1 \leqslant k \leqslant N)$ 的概率.
-
-\begin{solution}
-    从 $N$ 个数字中可重复地抽取 $n$ 个,共有 $N^n$ 种取法.抽到的数字不大于 $k$ 的取法有 $k^n$ 种,不大于 $k-1$ 的取法有 $(k-1)^n$,因此事件``抽到的最大数字正好为 $k$"含有的样本点个数为 $k^n - (k-1)^n$.根据古典概型可得所求概率为
-    $$
-    p = \dfrac{k^n - (k-1)^n}{N^n}
-    $$
-\end{solution}
-
 \question 从 $1,2,\cdots,10$ 这10个数字中任取3个,求大小在中间的数字恰好为5的概率.
 
 \begin{solution}
@@ -345,6 +336,27 @@
     $$
 \end{solution}
 
+\question 从 $N$ 个数字 $1,2,\cdots,N$ 中可重复地随机抽取 $n$ 次,求抽到的最大数字正好为 $k \, (1 \leqslant k \leqslant N)$ 的概率.
+
+\begin{solution}
+    从 $N$ 个数字中可重复地抽取 $n$ 次,共有 $N^n$ 种取法.
+
+    记事件 $B_i$ 为``抽到的最大数字小于等于 $i$'' ($i=1,2,\cdots,N$),则 $B_i$ 发生只需每次从 $1,2,\cdots,i$ 中取数即可,共有 $i^n$ 种取法,由古典概型可知
+    $$
+    P(B_i) = \dfrac{i^n}{N^n}
+    $$
+
+    记事件 $A_k$ 为``抽到的最大数字正好为 $k$",则 $A_k = B_k - B_{k-1}$,且 $B_{k-1} \subseteq B_k$,因此
+    $$
+    \begin{aligned}
+        P(A_k) &= P(B_k - B_{k-1}) \\
+        &= P(B_k) - P(B_{k-1}) \\
+        &= \dfrac{k^n}{N^n} - \dfrac{(k-1)^n}{N^n} \\
+        &= \dfrac{k^n - (k-1)^n}{N^n}
+    \end{aligned}
+    $$
+\end{solution}
+
 \question 在长度为 $a$ 的线段内任取两点将其分为三段,求它们可以构成一个三角形的概率.
 
 \begin{solution}
@@ -406,3 +418,7 @@
         \label{fig:example-三角形}
     \end{figure}
 \end{solution}
+
+% \setmainfont{XITS}
+
+% XITS: \showthe\baselineskip
