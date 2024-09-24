@@ -1400,6 +1400,7 @@ $$
 
 \begin{proof}
     \vspace{-1em}
+    {\linespread{1.18}\selectfont
     $$
     \begin{aligned}
         P(A \overline{B}) &= P(A-B) \\
@@ -1410,6 +1411,7 @@ $$
     \end{aligned}
     $$
     因此事件 $A$ 与 $\overline{B}$ 相互独立.
+    }
 
     $$
     \begin{aligned}
@@ -1443,11 +1445,11 @@ $$
         P(BC) = P(B) \, P(C) \\
         P(AC) = P(A) \, P(C)
     \end{gather*}
-    则称三个事件 $A,B,C$ \textbf{两两相互独立}.
+    则称三个事件 $A,B,C$ \textbf{两两相互独立}(pairwise independent).
 \end{definition}
 
 \begin{definition}[][][def:independent-3]
-    \indent 如果三个事件 $A,B,C$ 两两相互独立,并且有 $P(ABC)=P(A)\,P(B)\,P(C)$,则称三个事件 $A,B,C$ \textbf{相互独立}.
+    \indent 如果三个事件 $A,B,C$ 两两相互独立,并且有 $P(ABC)=P(A)\,P(B)\,P(C)$,则称三个事件 $A,B,C$ \textbf{相互独立}(mutually independent).
 \end{definition}
 
 \begin{note}
@@ -1465,7 +1467,7 @@ $$
 \end{note}
 
 \begin{conclusion}
-    \indent 若 $A,B,C$ 相互独立,则 $A \cup B$ 与 $C$ 相互独立,$AB$ 与 $C$ 相互独立,$A-B$ 与 $C$ 相互独立.
+    \indent 若 $A,B,C$ 相互独立,则 $A \cup B$ 与 $C$ 相互独立, $AB$ 与 $C$ 相互独立, $A-B$ 与 $C$ 相互独立.
 \end{conclusion}
 
 \begin{proof}
@@ -1521,16 +1523,16 @@ $$
 \end{definition}
 
 \begin{definition}
-    \indent 如果试验 $E_1$ 的任一结果、试验 $E_2$ 的任一结果、……、试验 $E_n$ 的任一结果都是相互独立的事件,则称试验 $E_1, E_2, \cdots, E_n$ 相互独立.如果这 $n$ 个独立试验是相同的,则称其为 $n$ \textbf{重独立重复试验}.
+    \indent 如果试验 $E_1$ 的任一结果、试验 $E_2$ 的任一结果、……、试验 $E_n$ 的任一结果都是相互独立的事件,则称试验 $E_1, E_2, \cdots, E_n$ 相互独立.如果这 $n$ 个独立试验是相同的,则称其为 $n$ \textbf{重独立重复试验}(repeated indepentent trials).
 \end{definition}
 
 \begin{definition}
-    \indent 如果在 $n$ 重独立重复试验中,每次试验的可能结果只有两个($A$ 或 $\overline{A}$),则称这种试验为 $n$ \textbf{重伯努利试验},简称为 \textbf{伯努利试验}(Bernoulli experiment),也称为 \textbf{伯努利概型}(Bernoulli probability model).
+    \indent 如果在 $n$ 重独立重复试验中,每次试验的可能结果只有两个($A$ 或 $\overline{A}$),则称这种试验为 $n$ \textbf{重伯努利试验},简称为 \textbf{伯努利试验}(Bernoulli trial),也称为 \textbf{伯努利概型}(Bernoulli probability model).
 \end{definition}
 
 $n$ 重伯努利试验的基本事件可记为 $\omega=\omega_1 \omega_2 \cdots \omega_n$,其中 $\omega_i\,(1\leqslant i\leqslant n)$ 为 $A$ 或者为 $\overline{A}$,即 $\omega$ 是从 $A$ 及 $\overline{A}$ 中每次取 1 个,独立地重复取 $n$ 次的一种排列,共有 $2^n$ 个基本事件.
 
-设 $P(A)=p$,$P(\overline{A}) = 1-p$,其中 $0<p<1$.如果 $\omega$ 中有 $k$ 个 $A$,则必有 $n-k$ 个 $\overline{A}$,由独立性可得这一基本事件的概率为 $p^k (1-p)^{n-k}$.
+设 $P(A)=p, P(\overline{A}) = 1-p$,其中 $0<p<1$.如果 $\omega$ 中有 $k$ 个 $A$,则必有 $n-k$ 个 $\overline{A}$,由独立性可得这一基本事件的概率为 $p^k (1-p)^{n-k}$.
 
 由于在 $2^n$ 个基本事件中共有 $\mathrm{C}_n^k$ 个含 $k$ 个 $A$ 及 $n-k$ 个 $\overline{A}$,因此在 $n$ 重伯努利试验中,事件 $A$ 恰好发生 $k$ 次的概率 $P_n(k)$ 为
 \begin{gather} \label{equation:binomial}
@@ -1541,4 +1543,4 @@ $n$ 重伯努利试验的基本事件可记为 $\omega=\omega_1 \omega_2 \cdots 
 $$
 \sum_{k=0}^n P_n(k) = \sum_{k=0}^n \mathrm{C}_n^k p^k (1-p)^{n-k} = [p+(1-p)]^n = 1
 $$
-由此可见,$\mathrm{C}_n^k p^k (1-p)^{n-k}$ 是二项展开式中的一项,因此式 \eqref{equation:binomial} 又称为\textbf{二项概率公式}.
+由此可见, $\mathrm{C}_n^k p^k (1-p)^{n-k}$ 是二项展开式中的一项,因此式 \eqref{equation:binomial} 又称为\textbf{二项概率公式}(binomial distribution formula).
