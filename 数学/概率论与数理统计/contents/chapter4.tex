@@ -8,16 +8,16 @@
 \subsection{数学期望的定义}
 
 \begin{definition}
-    \indent 设离散型随机变量 $X$ 的概率分布为 $P(X=x_k) = p_k, \; k=1,2,\cdots$,如果无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 绝对收敛,即
+    \indent 设离散型随机变量 $X$ 的概率分布为 $P(X=x_k) = p_k, k=1,2,\cdots$,如果无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 绝对收敛,即
     $$
     \sum_{k=1}^{\infty} |x_k| p_k < \infty
     $$
-    则称无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 的和为离散型随机变量 $X$ 的\textbf{数学期望}(mathematic expectation)或\textbf{均值},记作 $E(X)$ 或 $EX$,即
+    则称无穷级数 $\displaystyle\sum_{k=1}^{\infty} x_k p_k$ 的和为离散型随机变量 $X$ 的\textbf{数学期望}(mathematic expectation)或\textbf{均值}(mean),记作 $E(X)$ 或 $EX$,即
     $$
     E(X) = \sum_{k=1}^{\infty} x_k p_k
     $$
 
-    设连续型随机变量 $X$ 的概率密度为 $f(x)$,如果反常积分 $\displaystyle\int_{-\infty}^{+\infty} x f(x) \, \text{d}x$ 绝对收敛,即
+    设连续型随机变量 $X$ 的概率密度函数为 $f(x)$,如果反常积分 $\displaystyle\int_{-\infty}^{+\infty} x f(x) \, \text{d}x$ 绝对收敛,即
     $$
     \int_{-\infty}^{+\infty} |x| f(x) \, \text{d}x < \infty
     $$
@@ -30,7 +30,7 @@
 \begin{note}
     \indent 以上定义中,要求无穷级数绝对收敛的目的在于使数学期望唯一.因为随机变量的取值可正可负,取值次序可先可后,如果此无穷级数绝对收敛,则可保证其和不受次序变动的影响.
 
-    由于有限项的和不受次序变动的影响,因此取有限个可能值的随机变量的数学期望总是存在的.
+    有限项的和不受次序变动的影响,因此取有限个可能值的随机变量的数学期望一定存在.
 \end{note}
 
 数学期望的物理意义是重心.如果把概率 $P(X=x_k) = p_k$ 看做点 $x_k$ 上的质量,概率分布看做质量在 $x$ 轴上的分布,则 $X$ 的数学期望 $E(X)$ 就是该质量分布的重心所在位置.

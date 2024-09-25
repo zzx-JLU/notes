@@ -500,12 +500,12 @@ $$
 
 当 $r=1$ 时,帕斯卡分布即为几何分布.
 
-如果将第一个 $A$ 出现的试验次数记为 $X_1$,第二个 $A$ 出现的试验次数记为 $X_2$ (从第一个 $A$ 出现之后算起),$\cdots$,第 $r$ 个 $A$ 出现的试验次数记为 $X_r$ (从第 $r-1$ 个 $A$ 出现之后算起),则诸 $X_i$ 独立同分布,且 $X_i \sim Ge(p)$.此时有 $X = X_1 + X_2 + \cdots + X_r \sim Nb(r,p)$,即服从帕斯卡分布的随机变量可以分解成 $r$ 个独立同分布的几何分布随机变量之和.
+如果将第一个 $A$ 出现的试验次数记为 $X_1$,第二个 $A$ 出现的试验次数记为 $X_2$ (从第一个 $A$ 出现之后算起), $\cdots$,第 $r$ 个 $A$ 出现的试验次数记为 $X_r$ (从第 $r-1$ 个 $A$ 出现之后算起),则诸 $X_i$ 独立同分布,且 $X_i \sim Ge(p)$.此时有 $X = X_1 + X_2 + \cdots + X_r \sim Nb(r,p)$,即服从帕斯卡分布的随机变量可以分解成 $r$ 个独立同分布的几何分布随机变量之和.
 
 \subsection{均匀分布}
 
 \begin{definition}
-    \indent 如果连续型随机变量 $X$ 的概率密度为
+    \indent 如果连续型随机变量 $X$ 的概率密度函数为
     $$
     f(x)=\begin{cases}
         \dfrac{1}{b-a}, & a<x<b \\[0.5em]
@@ -527,7 +527,7 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \subcaptionbox{均匀分布的概率密度}{
+    \subcaptionbox{均匀分布的概率密度函数}{
         \centering
         \begin{tikzpicture}
             % 坐标轴
@@ -581,7 +581,7 @@ $$
 \subsection{指数分布}
 
 \begin{definition}
-    \indent 如果连续型随机变量 $X$ 的概率密度为
+    \indent 如果连续型随机变量 $X$ 的概率密度函数为
     $$
     f(x)=\begin{cases}
         \lambda e^{-\lambda x}, & x>0 \\
@@ -602,7 +602,7 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \subcaptionbox{指数分布的概率密度}{
+    \subcaptionbox{指数分布的概率密度函数}{
         \centering
         \begin{tikzpicture}
             % 坐标轴
@@ -690,14 +690,14 @@ $$
 \subsubsection{正态分布及其性质}
 
 \begin{definition}
-    \indent 如果连续型随机变量 $X$ 的概率密度为
+    \indent 如果连续型随机变量 $X$ 的概率密度函数为
     $$
     f(x) = \dfrac{1}{\sqrt{2\pi} \sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \; -\infty < x < +\infty
     $$
     其中 $\mu,\sigma \, (\sigma>0)$ 为常数,则称 $X$ 服从参数为 $\mu,\sigma$ 的\textbf{正态分布}(normal distribution),记作 $X \sim N(\mu,\sigma^2)$.
 \end{definition}
 
-概率密度 $f(x)$ 的图像如图 \ref{fig:正态分布的概率密度} 所示,它是一条钟形曲线,关于直线 $x=\mu$ 对称,并在 $x=\mu$ 处取得最大值 $\dfrac{1}{\sqrt{2\pi}\sigma}$,在 $x=\mu\pm\sigma$ 处有拐点,以 $x$ 轴为水平渐近线.
+概率密度函数 $f(x)$ 的图像如图 \ref{fig:正态分布的概率密度} 所示,它是一条钟形曲线,关于直线 $x=\mu$ 对称,并在 $x=\mu$ 处取得最大值 $\dfrac{1}{\sqrt{2\pi}\sigma}$,在 $x=\mu\pm\sigma$ 处有拐点,以 $x$ 轴为水平渐近线.
 
 \vspace{0.5em}
 
@@ -710,7 +710,7 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \subcaptionbox{正态分布的概率密度\label{fig:正态分布的概率密度}}{
+    \subcaptionbox{正态分布的概率密度函数\label{fig:正态分布的概率密度}}{
         \centering
         \begin{tikzpicture}[>=Stealth, yscale=4, xscale=0.8]
             % 定义变量
@@ -751,9 +751,9 @@ $$
     \caption{正态分布}
 \end{figure}
 
-如果固定 $\sigma$,改变 $\mu$ 的值,则概率密度曲线沿着 $x$ 轴平移,但形状不变,如图 \ref{fig:mu} 所示.由此可见,正态密度函数的位置由参数 $\mu$ 确定,因此称 $\mu$ 为\textbf{位置参数}.
+如果固定 $\sigma$,改变 $\mu$ 的值,则概率密度曲线沿着 $x$ 轴平移,但形状不变,如图 \ref{fig:mu} 所示.由此可见,正态密度函数的位置由参数 $\mu$ 确定,因此称 $\mu$ 为\textbf{位置参数}(location parameter).
 
-如果固定 $\mu$,改变 $\sigma$ 的值,则由 $y_{\text{max}}=\dfrac{1}{\sqrt{2\pi}\sigma}$ 可知:$\sigma$ 越小,概率密度曲线在 $x=\mu$ 附近越陡峭,形状高而瘦,分布较为集中,$X$ 落在 $x=\mu$ 附近的概率较大;$\sigma$ 越大,概率密度曲线越平坦,形状矮而胖,分布较为分散.如图 \ref{fig:sigma} 所示.可见正态密度函数的尺度由参数 $\sigma$ 确定,因此称 $\sigma$ 为\textbf{尺度参数}.
+如果固定 $\mu$,改变 $\sigma$ 的值,则由 $y_{\text{max}}=\dfrac{1}{\sqrt{2\pi}\sigma}$ 可知: $\sigma$ 越小,概率密度曲线在 $x=\mu$ 附近越陡峭,形状高而瘦,分布较为集中, $X$ 落在 $x=\mu$ 附近的概率较大; $\sigma$ 越大,概率密度曲线越平坦,形状矮而胖,分布较为分散.如图 \ref{fig:sigma} 所示.可见正态密度函数的尺度由参数 $\sigma$ 确定,因此称 $\sigma$ 为\textbf{尺度参数}(squared scale parameter).
 
 \begin{figure}[htbp]
     \centering
@@ -814,7 +814,7 @@ $$
     \indent 设 $X \sim N(\mu,\sigma^2)$,如果 $\mu=0,\sigma=1$,则称 $X$ 服从\textbf{标准正态分布}(standard normal distribution),记作 $X \sim N(0,1)$.
 \end{definition}
 
-标准正态分布的概率密度记作 $\varphi(x)$,分布函数记作 $\varPhi(x)$,即
+标准正态分布的概率密度函数记作 $\varphi(x)$,分布函数记作 $\varPhi(x)$,即
 $$
 \begin{aligned}
     & \varphi(x) = \dfrac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}, \; -\infty < x < +\infty \\
@@ -825,7 +825,7 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \subcaptionbox{标准正态分布的概率密度}{
+    \subcaptionbox{标准正态分布的概率密度函数}{
         \centering
         \begin{tikzpicture}[>=Stealth, yscale=5, xscale=0.8]
             % 定义变量
@@ -920,7 +920,7 @@ $$
     $$
     F_U(u) = P(U \leqslant u) = P(\dfrac{X - \mu}{\sigma} \leqslant u) = P(X \leqslant \mu + \sigma u) = F_X(\mu + \sigma u)
     $$
-    设 $X$ 与 $U$ 的概率密度分别为 $f_X(x)$ 和 $f_U(u)$,则有
+    设 $X$ 与 $U$ 的概率密度函数分别为 $f_X(x)$ 和 $f_U(u)$,则有
     $$
     f_U(u) = \dfrac{\text{d}}{\text{d}u} F_U(u) = \dfrac{\text{d}}{\text{d}u} F_X(\mu + \sigma u) = f_X(\mu + \sigma u) \cdot \sigma = \sigma \dfrac{1}{\sqrt{2\pi} \sigma} e^{-\frac{(\mu + \sigma u - \mu)^2}{2 \sigma^2}} = \dfrac{1}{\sqrt{2\pi}} e^{-\frac{u^2}{2}}
     $$
@@ -974,7 +974,7 @@ $$
 \end{proof}
 
 \begin{note}
-    \indent $3\sigma$ 规则表明,正态随机变量 $X$ 以 99.74\% 的概率落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间内,而落在该区间以外的概率小于千分之三. 在一次试验中,$X$ 落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间以外这个事件几乎不会发生.
+    \indent $3\sigma$ 规则表明,正态随机变量 $X$ 以 99.74\% 的概率落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间内,而落在该区间以外的概率小于千分之三. 在一次试验中, $X$ 落在 $(\mu - 3\sigma, \mu + 3\sigma)$ 区间以外这个事件几乎不会发生.
 
     如果某随机变量近似满足 $3\sigma$ 规则,则可认为该随机变量近似服从正态分布;反之,如果随机变量与 $3\sigma$ 规则相差较大,则可认为该随机变量不服从正态分布.
 \end{note}
@@ -986,7 +986,7 @@ $$
     $$
     P(X \geqslant u_{\alpha}) = \dfrac{1}{\sqrt{2\pi}} \int_{u_{\alpha}}^{+\infty} e^{-\frac{x^2}{2}} \, \text{d}x = \alpha
     $$
-    则称点 $u_{\alpha}$ 为标准正态分布的\textbf{上} $\alpha$ \textbf{分位点}.
+    则称点 $u_{\alpha}$ 为标准正态分布的\textbf{上} $\alpha$ \textbf{分位点}(quantile).
 \end{definition}
 
 \begin{figure}[htbp]
@@ -1055,7 +1055,7 @@ $$
     \begin{equation} \label{equation:gamma}
         \Gamma(\alpha) = \int_{0}^{+\infty} x^{\alpha - 1} e^{-x} \text{d}x
     \end{equation}
-    称为\textbf{伽马函数},也叫\textbf{欧拉第二积分},其中 $\alpha > 0$.
+    称为\textbf{伽马函数}(gamma function),也叫\textbf{欧拉第二积分}(Euler integral of the second kind),其中 $\alpha > 0$.
 \end{definition}
 
 \begin{figure}[htbp]
@@ -1078,7 +1078,7 @@ $$
     \label{fig:伽马函数}
 \end{figure}
 
-从图 \ref{fig:伽马函数} 可知,伽马函数在 $x>0$ 时是连续的,$0$ 及所有负整数点都是奇点.
+从图 \ref{fig:伽马函数} 可知,伽马函数在 $x>0$ 时是连续的, $0$ 及所有负整数点都是奇点.
 
 \begin{property}[][伽马函数的性质]
     \begin{enumerate}
@@ -1161,14 +1161,14 @@ $$
 这样就得到了伽马分布的定义.
 
 \begin{definition}
-    \indent 若随机变量 $X$ 的概率密度为
+    \indent 若随机变量 $X$ 的概率密度函数为
     $$
     f(x) = \begin{cases}
         \dfrac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha - 1} e^{-\lambda x}, & x \geqslant 0 \\[0.5em]
         0, & x<0
     \end{cases}
     $$
-    则称 $X$ 服从\textbf{伽马分布}(Gamma distribution),记作 $X \sim Ga(\alpha,\lambda)$,其中 $\alpha > 0$ 为\textbf{形状参数}(shape parameter),$\lambda > 0$ 为\textbf{尺度参数}(scale parameter).
+    则称 $X$ 服从\textbf{伽马分布}(gamma distribution),记作 $X \sim Ga(\alpha,\lambda)$,其中 $\alpha > 0$ 为\textbf{形状参数}(shape parameter), $\lambda > 0$ 为\textbf{尺度参数}(scale parameter).
 \end{definition}
 
 \begin{figure}[htbp]
@@ -1231,16 +1231,16 @@ $$
         \end{axis}
     \end{tikzpicture}
 
-    \caption{伽马分布的概率密度}
+    \caption{伽马分布的概率密度函数}
     \label{fig:伽马分布}
 \end{figure}
 
 从图 \ref{fig:伽马分布} 可以看出:
 \begin{itemize}
-    \item 当 $0 < \alpha < 1$ 时,$f(x)$ 是严格单调下降函数,且在 $x=0$ 处有奇点.
-    \item 当 $\alpha = 1$ 时,$f(x)$ 是严格单调下降函数,且 $f(0) = \lambda$.
-    \item 当 $1 < \alpha \leqslant 2$ 时,$f(x)$ 是单峰函数,先上凸、后下凸,在 $x = \dfrac{\alpha - 1}{\lambda}$ 处取得最大值.
-    \item 当 $\alpha > 2$ 时,$f(x)$ 是单峰函数,先下凸、中间上凸、后下凸,在 $x = \dfrac{\alpha - 1}{\lambda}$ 处取得最大值.此时 $\alpha$ 越大,$f(x)$ 越近似于正态分布;$\alpha$ 越小,曲线的偏斜程度越严重.
+    \item 当 $0 < \alpha < 1$ 时, $f(x)$ 是严格单调下降函数,且在 $x=0$ 处有奇点.
+    \item 当 $\alpha = 1$ 时, $f(x)$ 是严格单调下降函数,且 $f(0) = \lambda$.
+    \item 当 $1 < \alpha \leqslant 2$ 时, $f(x)$ 是单峰函数,先上凸、后下凸,在 $x = \dfrac{\alpha - 1}{\lambda}$ 处取得最大值.
+    \item 当 $\alpha > 2$ 时, $f(x)$ 是单峰函数,先下凸、中间上凸、后下凸,在 $x = \dfrac{\alpha - 1}{\lambda}$ 处取得最大值.此时 $\alpha$ 越大, $f(x)$ 越近似于正态分布; $\alpha$ 越小,曲线的偏斜程度越严重.
 \end{itemize}
 
 伽马分布的特例:
@@ -1311,7 +1311,7 @@ $$
     \begin{equation}
         B(a,b) = \int_{0}^{1} x^{a-1} (1-x)^{b-1} \mathrm{d}x
     \end{equation}
-    称为\textbf{贝塔函数},也叫\textbf{欧拉第一积分},其中 $a>0, b>0$.
+    称为\textbf{贝塔函数}(beta function),也叫\textbf{欧拉第一积分}(Euler integral of the first kind),其中 $a>0, b>0$.
 \end{definition}
 
 \begin{property}
@@ -1339,7 +1339,7 @@ $$
     $$
     \Gamma(a) \, \Gamma(b) = \int_{0}^{+\infty} \int_{0}^{+\infty} x^{a-1} y^{b-1} e^{-(x+y)} \mathrm{d}x \mathrm{d}y
     $$
-    令 $x = uv$,$y = u(1-v)$,其雅可比行列式 $J = -u$,则
+    令 $x = uv, y = u(1-v)$,其雅可比行列式 $J = -u$,则
     $$
     \begin{aligned}
         \Gamma(a) \, \Gamma(b) &= \int_{0}^{1} \int_{0}^{+\infty} (uv)^{a-1} [u(1-v)]^{b-1} e^{-u} u \, \mathrm{d}u \mathrm{d}v \\
@@ -1356,14 +1356,14 @@ $$
 \end{proof}
 
 \begin{definition}
-    \indent 若随机变量 $X$ 的概率密度为
+    \indent 若随机变量 $X$ 的概率密度函数为
     \begin{equation}
         f(x) = \begin{cases}
             \dfrac{\Gamma(a+b)}{\Gamma(a) \, \Gamma(b)} x^{a-1} (1-x)^{b-1}, & 0<x<1 \\[0.5em]
             0, & \text{其他}
         \end{cases}
     \end{equation}
-    则称 $X$ 服从\textbf{贝塔分布},记作 $X \sim Be(a,b)$,其中 $a>0, b>0$,$a,b$ 称为形状参数.
+    则称 $X$ 服从\textbf{贝塔分布}(beta distribution),记作 $X \sim Be(a,b)$,其中 $a>0, b>0$, $a,b$ 称为\textbf{形状参数}.
 \end{definition}
 
 \begin{figure}[htbp]
@@ -1390,27 +1390,27 @@ $$
         \end{axis}
     \end{tikzpicture}
 
-    \caption{贝塔分布}
+    \caption{贝塔分布的概率密度函数}
     \label{fig:贝塔分布}
 \end{figure}
 
 从图 \ref{fig:贝塔分布} 可以看出:
 \begin{itemize}
-    \item 当 $a<1, b<1$ 时,贝塔分布的概率密度是下凸的 U 形函数.
-    \item 当 $a>1, b>1$ 时,贝塔分布的概率密度是上凸的单峰函数.
-    \item 当 $a<1, b \geqslant 1$ 时,贝塔分布的概率密度是下凸的单调递减函数.
-    \item 当 $a \geqslant 1, b<1$ 时,贝塔分布的概率密度是下凸的单调递增函数.
+    \item 当 $a<1, b<1$ 时,贝塔分布的概率密度函数是下凸的 U 形函数.
+    \item 当 $a>1, b>1$ 时,贝塔分布的概率密度函数是上凸的单峰函数.
+    \item 当 $a<1, b \geqslant 1$ 时,贝塔分布的概率密度函数是下凸的单调递减函数.
+    \item 当 $a \geqslant 1, b<1$ 时,贝塔分布的概率密度函数是下凸的单调递增函数.
     \item 当 $a=1, b=1$ 时,贝塔分布退化为均匀分布 $U(0,1)$.
 \end{itemize}
 
 \subsection{柯西分布}
 
 \begin{definition}
-    \indent 若随机变量 $X$ 的概率密度为
+    \indent 若随机变量 $X$ 的概率密度函数为
     \begin{equation}
         f(x) = \dfrac{1}{\pi} \dfrac{\gamma}{(x - x_0)^2 + \gamma^2}
     \end{equation}
-    则称随机变量 $X$ 服从\textbf{柯西分布}(Cauchy distribution),也称为\textbf{柯西-洛伦兹分布},记作 $X \sim C(\gamma, x_0)$,其中 $\gamma$ 称为\textbf{尺度参数},$x_0$ 称为\textbf{位置参数}.
+    则称随机变量 $X$ 服从\textbf{柯西分布}(Cauchy distribution),也称为\textbf{柯西-洛伦兹分布}(Cauchy–Lorentz distribution),记作 $X \sim C(\gamma, x_0)$,其中 $\gamma$ 称为\textbf{尺度参数}, $x_0$ 称为\textbf{位置参数}.
 \end{definition}
 
 柯西分布 $C(\gamma, x_0)$ 的分布函数为
@@ -1421,7 +1421,7 @@ $$
 \begin{figure}[htbp]
     \centering
 
-    \subcaptionbox{柯西分布的概率密度}{
+    \subcaptionbox{柯西分布的概率密度函数}{
         \centering
 
         \begin{tikzpicture}[scale=0.9]
@@ -1469,7 +1469,7 @@ $$
     \caption{柯西分布}
 \end{figure}
 
-当 $\gamma = 1, x_0 = 0$ 时,称为\textbf{标准柯西分布},此时概率密度和分布函数为
+当 $\gamma = 1, x_0 = 0$ 时,称为\textbf{标准柯西分布}(standard Cauchy distribution),此时概率密度函数和分布函数为
 $$
 \begin{aligned}
     & f(x) = \dfrac{1}{\pi(x^2 + 1)} \\
