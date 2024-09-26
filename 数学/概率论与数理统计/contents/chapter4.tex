@@ -38,28 +38,28 @@
 \subsection{随机变量函数的数学期望}
 
 \begin{theorem}
-    \indent 设随机变量 $Y$ 是随机变量 $X$ 的函数,$Y=g(X)$,其中 $g$ 是一元连续函数.
+    \indent 设随机变量 $Y$ 是随机变量 $X$ 的函数, $Y=g(X)$,其中 $g$ 是一元连续函数.
 
-    若 $X$ 是离散型随机变量,其概率分布为 $P(X=x_k) = p_k, \; k=1,2,\cdots$,如果无穷级数 $\displaystyle\sum_{k=1}^{\infty} g(x_k) p_k$ 绝对收敛,则随机变量 $Y$ 的数学期望为
+    若 $X$ 是离散型随机变量,其概率分布为 $P(X=x_k) = p_k, k=1,2,\cdots$,如果无穷级数 $\displaystyle\sum_{k=1}^{\infty} g(x_k) p_k$ 绝对收敛,则随机变量 $Y$ 的数学期望为
     $$
     E(Y) = E[g(X)] = \sum_{k=1}^{\infty} g(x_k) \, p_k
     $$
 
-    若 $X$ 是连续型随机变量,其概率密度为 $f(x)$,如果反常积分 $\displaystyle\int_{-\infty}^{+\infty} g(x) f(x) \, \text{d}x$ 绝对收敛,则随机变量 $Y$ 的数学期望为
+    若 $X$ 是连续型随机变量,其概率密度函数为 $f(x)$,如果反常积分 $\displaystyle\int_{-\infty}^{+\infty} g(x) f(x) \, \text{d}x$ 绝对收敛,则随机变量 $Y$ 的数学期望为
     $$
     E(Y) = E[g(X)] = \int_{-\infty}^{+\infty} g(x) f(x) \, \text{d}x
     $$
 \end{theorem}
 
 \begin{theorem}
-    \indent 设随机变量 $Z$ 是随机变量 $X$ 和 $Y$ 的函数,$Z=g(X,Y)$,其中 $g$ 是二元连续函数.
+    \indent 设随机变量 $Z$ 是随机变量 $X$ 和 $Y$ 的函数, $Z=g(X,Y)$,其中 $g$ 是二元连续函数.
 
-    若 $(X,Y)$ 是二维离散型随机变量,其概率分布为 $P(X=x_i,Y=y_j) = p_{ij}, \; i,j=1,2,\cdots$,如果无穷级数 $\displaystyle\sum_{j=1}^{\infty} \displaystyle\sum_{i=1}^{\infty} g(x_i,y_j) \, p_{ij}$ 绝对收敛,则随机变量 $Z$ 的数学期望为
+    若 $(X,Y)$ 是二维离散型随机变量,其概率分布为 $P(X=x_i,Y=y_j) = p_{ij}, i,j=1,2,\cdots$,如果无穷级数 $\displaystyle\sum_{j=1}^{\infty} \displaystyle\sum_{i=1}^{\infty} g(x_i,y_j) \, p_{ij}$ 绝对收敛,则随机变量 $Z$ 的数学期望为
     $$
     E(Z) = E[g(X,Y)] = \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} g(x_i,y_j) \, p_{ij}
     $$
 
-    若 $(X,Y)$ 是二维连续型随机变量,其概率密度为 $f(x,y)$,如果反常积分
+    若 $(X,Y)$ 是二维连续型随机变量,其概率密度函数为 $f(x,y)$,如果反常积分
     $$
     \displaystyle\int_{-\infty}^{+\infty} \displaystyle\int_{-\infty}^{+\infty} g(x,y) f(x,y) \, \text{d}x \text{d}y
     $$
@@ -84,12 +84,12 @@
 \end{property}
 
 \begin{proof}
-    若 $X$ 为离散型随机变量,其概率分布为 $P(X=x_i)=p_i, \; i=1,2,\cdots$,则
+    若 $X$ 为离散型随机变量,其概率分布为 $P(X=x_i)=p_i, i=1,2,\cdots$,则
     $$
     E(CX) = \sum_{i=1}^{\infty} C x_i p_i = C \sum_{i=1}^{\infty} x_i p_i = CE(X)
     $$
 
-    若 $X$ 为连续型随机变量,其概率密度为 $f(x)$,则
+    若 $X$ 为连续型随机变量,其概率密度函数为 $f(x)$,则
     $$
     E(CX) = \int_{-\infty}^{+\infty} Cx f(x) \, \text{d}x = C \int_{-\infty}^{+\infty} x f(x) \, \text{d}x = CE(X)
     $$
@@ -100,7 +100,7 @@
 \end{property}
 
 \begin{proof}
-    设二维离散型随机变量 $(X,Y)$ 的概率分布为 $P(X=x_i,Y=y_j) = p_{ij}, \; i,j=1,2,\cdots$,$(X,Y)$ 关于 $X$ 的边缘概率分布为 $P(X=x_i)=p_{i\cdot}, \; i=1,2,\cdots$,$(X,Y)$ 关于 $Y$ 的边缘概率分布为 $P(Y=y_j)=p_{\cdot j}, \; j=1,2,\cdots$,则有
+    设二维离散型随机变量 $(X,Y)$ 的概率分布为 $P(X=x_i,Y=y_j) = p_{ij}, i,j=1,2,\cdots$, $(X,Y)$ 关于 $X$ 的边缘概率分布为 $P(X=x_i)=p_{i\cdot}, i=1,2,\cdots$, $(X,Y)$ 关于 $Y$ 的边缘概率分布为 $P(Y=y_j)=p_{\cdot j}, j=1,2,\cdots$,则有
     $$
     \begin{aligned}
         E(X+Y) &= \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} (x_i + y_j) \, p_{ij} \\
@@ -111,7 +111,7 @@
     \end{aligned}
     $$
 
-    设二维连续型随机变量 $(X,Y)$ 的概率密度为 $f(x,y)$,$(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘概率密度分别为 $f_X(x)$ 和 $f_Y(y)$,则有
+    设二维连续型随机变量 $(X,Y)$ 的概率密度函数为 $f(x,y)$, $(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘概率密度函数分别为 $f_X(x)$ 和 $f_Y(y)$,则有
     $$
     \begin{aligned}
         E(X+Y) &= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} (x+y) f(x,y) \, \text{d}x \text{d}y \\
@@ -130,7 +130,7 @@ $$
 
 综合性质 \ref{property:E(C)=C}、\ref{property:E(CX)=CE(X)}、\ref{property:E(X+Y)=E(X)+E(Y)},有
 $$
-E(aX+bY+c) = aE(X) + bE(Y) + c \quad (a,b,c \, \text{均为常数})
+E(aX+bY+c) = aE(X) + bE(Y) + c \ (a,b,c \, \text{均为常数})
 $$
 
 \begin{property}[][][prop:E(XY)=E(X)E(Y)]
@@ -138,7 +138,7 @@ $$
 \end{property}
 
 \begin{proof}
-    设二维离散型随机变量 $(X,Y)$ 的概率分布为 $P(X=x_i,Y=y_j) = p_{ij}, \; i,j=1,2,\cdots$,$(X,Y)$ 关于 $X$ 的边缘概率分布为 $P(X=x_i)=p_{i\cdot}, \; i=1,2,\cdots$,$(X,Y)$ 关于 $Y$ 的边缘概率分布为 $P(Y=y_j)=p_{\cdot j}, \; j=1,2,\cdots$. 因为 $X$ 和 $Y$ 相互独立,所以 $p_{ij} = p_{i\cdot} \, p_{\cdot j}$,从而有
+    设二维离散型随机变量 $(X,Y)$ 的概率分布为 $P(X=x_i,Y=y_j) = p_{ij}, i,j=1,2,\cdots$, $(X,Y)$ 关于 $X$ 的边缘概率分布为 $P(X=x_i)=p_{i\cdot}, i=1,2,\cdots$, $(X,Y)$ 关于 $Y$ 的边缘概率分布为 $P(Y=y_j)=p_{\cdot j}, \; j=1,2,\cdots$. 因为 $X$ 和 $Y$ 相互独立,所以 $p_{ij} = p_{i\cdot} \, p_{\cdot j}$,从而有
     $$
     \begin{aligned}
         E(XY) &= \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} x_i y_j p_{ij} \\
@@ -148,7 +148,7 @@ $$
     \end{aligned}
     $$
 
-    设二维连续型随机变量 $(X,Y)$ 的概率密度为 $f(x,y)$,$(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘概率密度分别为 $f_X(x)$ 和 $f_Y(y)$. 因为 $X$ 和 $Y$ 相互独立,所以 $f(x,y) = f_X(x) \, f_Y(y)$,因此
+    设二维连续型随机变量 $(X,Y)$ 的概率密度函数为 $f(x,y)$, $(X,Y)$ 关于 $X$ 和关于 $Y$ 的边缘概率密度函数分别为 $f_X(x)$ 和 $f_Y(y)$. 因为 $X$ 和 $Y$ 相互独立,所以 $f(x,y) = f_X(x) \, f_Y(y)$,因此
     $$
     \begin{aligned}
         E(XY) &= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} xy f(x,y) \, \text{d}x \text{d}y \\
@@ -159,11 +159,11 @@ $$
     $$
 \end{proof}
 
-\begin{property}[][柯西-施瓦茨不等式]
+\begin{property}[][柯西-施瓦茨不等式][prop:柯西-施瓦茨不等式]
     \indent 对于两个随机变量 $X$ 和 $Y$,设 $E(X^2)$ 和 $E(Y^2)$ 都存在,则
-    $$
-    [E(XY)]^2 \leqslant E(X^2) E(Y^2)
-    $$
+    \begin{equation} \label{equation:柯西-施瓦茨不等式}
+        [E(XY)]^2 \leqslant E(X^2) E(Y^2)
+    \end{equation}
 \end{property}
 
 \begin{proof}
@@ -211,10 +211,10 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    $X$ 的概率分布为 $P(X=k) = C_n^k p^k (1-p)^{n-k}, \; k=0,1,2,\cdots,n$,因此
+    $X$ 的概率分布为 $P(X=k) = \mathrm{C}_n^k p^k (1-p)^{n-k}, k=0,1,2,\cdots,n$,因此
     $$
     \begin{aligned}
-        E(X) &= \sum_{k=0}^n k C_n^k p^k (1-p)^{n-k} \\
+        E(X) &= \sum_{k=0}^n k \mathrm{C}_n^k p^k (1-p)^{n-k} \\
         &= \sum_{k=0}^n k \dfrac{n!}{k! (n-k)!} p^k (1-p)^{n-k} \\
         &= \sum_{k=1}^n np \dfrac{(n-1)!}{(k-1)! \, [(n-1)-(k-1)]!} p^{k-1} (1-p)^{(n-1)-(k-1)} \\
         &= np[p+(1-p)]^{n-1} \\
@@ -228,7 +228,7 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    $X$ 的概率分布为 $P(X=k) = \dfrac{\lambda^k e^{-\lambda}}{k!}, \; k=0,1,2,\cdots$,因此
+    $X$ 的概率分布为 $P(X=k) = \dfrac{\lambda^k e^{-\lambda}}{k!}, k=0,1,2,\cdots$,因此
     $$
     \begin{aligned}
         E(X) &= \sum_{k=0}^{\infty} k \dfrac{\lambda^k e^{-\lambda}}{k!} \\
@@ -244,7 +244,7 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    $X$ 的概率分布为 $P(X=k) = (1-p)^{k-1} p, \; k=1,2,\cdots$,令 $q=1-p$,则
+    $X$ 的概率分布为 $P(X=k) = (1-p)^{k-1} p, k=1,2,\cdots$,令 $q=1-p$,则
     $$
     \begin{aligned}
         E(X) &= \sum_{k=1}^{\infty} k (1-p)^{k-1} p \\
@@ -258,126 +258,120 @@ $$
     $$
 \end{proof}
 
+为证明超几何分布的数学期望,首先给出一些重要的引理.
+
+\begin{lemma} \label{lemma:超几何分布1}
+    \indent 对于正整数 $n,m$,如果 $n \geqslant m$,则对任意正整数 $a \leqslant m$,有
+    \begin{equation} \label{equation:超几何分布1}
+        m(m-1) \cdots (m-a+1) \mathrm{C}_n^m = n(n-1) \cdots (n-a+1) \mathrm{C}_{n-a}^{m-a}
+    \end{equation}
+    \begin{equation} \label{equation:超几何分布2}
+        \dfrac{\mathrm{C}_{n-a}^{m-a}}{\mathrm{C}_n^m} = \dfrac{m(m-1) \cdots (m-a+1)}{n(n-1) \cdots (n-a+1)}
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    $$
+    \begin{aligned}
+        m(m-1) \cdots (m-a+1) \mathrm{C}_n^m &= m(m-1) \cdots (m-a+1) \dfrac{n!}{m! (n-m)!} \\
+        &= n(n-1) \cdots (n-a+1) \dfrac{(n-a)!}{(m-a)! [(n-a) - (m-a)]!} \\
+        &= n(n-1) \cdots (n-a+1) \mathrm{C}_{n-a}^{m-a}
+    \end{aligned}
+    $$
+    式 \eqref{equation:超几何分布1} 得证.由式 \eqref{equation:超几何分布1} 整理即得式 \eqref{equation:超几何分布2}.
+\end{proof}
+
+\begin{lemma} \label{lemma:超几何分布2}
+    \indent 对于正整数 $M,N,n$,如果 $N \geqslant n$ 且 $N \geqslant M$,则对任意正整数 $a$,当 $a \leqslant M, a \leqslant n$ 时,有
+    \begin{equation} \label{equation:超几何分布3}
+        \sum_{k=\max\{ a, n+M-N \}}^{\min\{ M,n \}} \mathrm{C}_{M-a}^{k-a} \mathrm{C}_{N-M}^{n-k} = \mathrm{C}_{N-a}^{n-a}
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    构造恒等式
+    $$
+    (1+x)^{M-a} (1+x)^{N-M} = (1+x)^{N-a}
+    $$
+    利用二项式定理将恒等式两侧展开,得
+    $$
+    \left( \sum_{i=0}^{M-a} \mathrm{C}_{M-a}^i x^i \right) \left( \sum_{j=0}^{N-M} \mathrm{C}_{N-M}^j x^j \right) = \sum_{k=0}^{N-a} \mathrm{C}_{N-a}^k x^k
+    $$
+    等号左侧展开式中 $x^{n-a}$ 项的系数具有如下形式:
+    $$
+    \sum_{k=m}^{r} \mathrm{C}_{M-a}^{k-a} \mathrm{C}_{N-M}^{n-k}
+    $$
+    其中
+    $$
+    \begin{cases}
+        0 \leqslant k-a \leqslant M-a \\[-5pt]
+        k-a \leqslant n-a \\[-5pt]
+        0 \leqslant n-k \leqslant N-M \\[-5pt]
+        n-k \leqslant n-a
+    \end{cases}
+    $$
+    即
+    $$
+    \begin{cases}
+        k \leqslant M \\[-5pt]
+        k \leqslant n \\[-5pt]
+        k \geqslant n+M-N \\[-5pt]
+        k \geqslant a
+    \end{cases}
+    $$
+    因此 $\max\{ a, n+M-N \} \leqslant k \leqslant \min\{ M,n \}$,即等号左侧展开式中 $x^{n-a}$ 项的系数为
+    $$
+    \sum_{k=\max\{ a, n+M-N \}}^{\min\{ M,n \}} \mathrm{C}_{M-a}^{k-a} \mathrm{C}_{N-M}^{n-k}
+    $$
+    等号右侧展开式中 $x^{n-a}$ 项的系数为 $\mathrm{C}_{N-a}^{n-a}$,而左右两侧的展开式中 $x^{n-a}$ 项的系数相等,因此
+    $$
+    \sum_{k=\max\{ a, n+M-N \}}^{\min\{ M,n \}} \mathrm{C}_{M-a}^{k-a} \mathrm{C}_{N-M}^{n-k} = \mathrm{C}_{N-a}^{n-a}
+    $$
+
+    \vspace{-2em}
+\end{proof}
+
 \begin{conclusion}
     \indent 若随机变量 $X \sim H(n,N,M)$,则 $E(X) = \dfrac{nM}{N}$.
 \end{conclusion}
 
 \begin{proof}
-    首先给出一些重要的引理.
+    (1)当 $N=M$ 时, $P(X=n)=1$,因此 $E(X) = n = \dfrac{nM}{N}$.
 
-    \vspace{0.5em}
-
-    \begin{lemma} \label{lemma:超几何分布1}
-        \indent 对于正整数 $n,m$,如果 $n \geqslant m$,则对任意正整数 $a \leqslant m$,有
-        \begin{equation} \label{equation:超几何分布1}
-            m(m-1) \cdots (m-a+1) C_n^m = n(n-1) \cdots (n-a+1) C_{n-a}^{m-a}
-        \end{equation}
-        \begin{equation} \label{equation:超几何分布2}
-            \dfrac{C_{n-a}^{m-a}}{C_n^m} = \dfrac{m(m-1) \cdots (m-a+1)}{n(n-1) \cdots (n-a+1)}
-        \end{equation}
-    \end{lemma}
-
-    \vspace{-1em}
-
-    \begin{proof}
-        $$
-        \begin{aligned}
-            m(m-1) \cdots (m-a+1) C_n^m &= m(m-1) \cdots (m-a+1) \dfrac{n!}{m! (n-m)!} \\
-            &= n(n-1) \cdots (n-a+1) \dfrac{(n-a)!}{(m-a)! [(n-a) - (m-a)]!} \\
-            &= n(n-1) \cdots (n-a+1) C_{n-a}^{m-a}
-        \end{aligned}
-        $$
-        式 \eqref{equation:超几何分布1} 得证.由式 \eqref{equation:超几何分布1} 整理即得式 \eqref{equation:超几何分布2}.
-    \end{proof}
-
-    \begin{lemma} \label{lemma:超几何分布2}
-        \indent 对于正整数 $M,N,n$,如果 $N \geqslant n$ 且 $N \geqslant M$,则对任意正整数 $a$,当 $a \leqslant M, a \leqslant n$ 时,有
-        \begin{equation} \label{equation:超几何分布3}
-            \sum_{k=\max\{ a, n+M-N \}}^{\min\{ M,n \}} C_{M-a}^{k-a} C_{N-M}^{n-k} = C_{N-a}^{n-a}
-        \end{equation}
-    \end{lemma}
-
-    \begin{proof}
-        构造恒等式
-        $$
-        (1+x)^{M-a} (1+x)^{N-M} = (1+x)^{N-a}
-        $$
-        利用二项式定理将恒等式两侧展开,得
-        $$
-        \left( \sum_{i=0}^{M-a} C_{M-a}^i x^i \right) \left( \sum_{j=0}^{N-M} C_{N-M}^j x^j \right) = \sum_{k=0}^{N-a} C_{N-a}^k x^k
-        $$
-        等号左侧展开式中 $x^{n-a}$ 项的系数具有如下形式:
-        $$
-        \sum_{k=m}^{r} C_{M-a}^{k-a} C_{N-M}^{n-k}
-        $$
-        其中
-        $$
-        \begin{cases}
-            0 \leqslant k-a \leqslant M-a \\[-5pt]
-            k-a \leqslant n-a \\[-5pt]
-            0 \leqslant n-k \leqslant N-M \\[-5pt]
-            n-k \leqslant n-a
-        \end{cases}
-        $$
-        即
-        $$
-        \begin{cases}
-            k \leqslant M \\[-5pt]
-            k \leqslant n \\[-5pt]
-            k \geqslant n+M-N \\[-5pt]
-            k \geqslant a
-        \end{cases}
-        $$
-        因此 $\max\{ a, n+M-N \} \leqslant k \leqslant \min\{ M,n \}$,即等号左侧展开式中 $x^{n-a}$ 项的系数为
-        $$
-        \sum_{k=\max\{ a, n+M-N \}}^{\min\{ M,n \}} C_{M-a}^{k-a} C_{N-M}^{n-k}
-        $$
-        等号右侧展开式中 $x^{n-a}$ 项的系数为 $C_{N-a}^{n-a}$,而左右两侧的展开式中 $x^{n-a}$ 项的系数相等,因此
-        $$
-        \sum_{k=\max\{ a, n+M-N \}}^{\min\{ M,n \}} C_{M-a}^{k-a} C_{N-M}^{n-k} = C_{N-a}^{n-a}
-        $$
-
-        \vspace{-2em}
-    \end{proof}
-
-    下面证明超几何分布的数学期望.
-
-    (1)当 $N=M$ 时,$P(X=n)=1$,因此 $E(X) = n = \dfrac{nM}{N}$.
-
-    (2)当 $N>M=1$ 时,$X$ 的概率分布为
+    (2)当 $N>M=1$ 时, $X$ 的概率分布为
     $$
     \begin{aligned}
-        & P(X=0) = \dfrac{C_{N-1}^n}{C_N^n} \\
-        & P(X=1) = \dfrac{C_{N-1}^{n-1} C_1^1}{C_N^n} = \dfrac{n}{N}
+        & P(X=0) = \dfrac{\mathrm{C}_{N-1}^n}{\mathrm{C}_N^n} \\
+        & P(X=1) = \dfrac{\mathrm{C}_{N-1}^{n-1} \mathrm{C}_1^1}{\mathrm{C}_N^n} = \dfrac{n}{N}
     \end{aligned}
     $$
     此时
     $$
-    E(X) = 0 \times \dfrac{C_{N-1}^n}{C_N^n} + 1 \times \dfrac{n}{N} = \dfrac{n}{N} = \dfrac{nM}{N}
+    E(X) = 0 \times \dfrac{\mathrm{C}_{N-1}^n}{\mathrm{C}_N^n} + 1 \times \dfrac{n}{N} = \dfrac{n}{N} = \dfrac{nM}{N}
     $$
 
-    (3)当 $N>M \geqslant 2$ 时,$X$ 的概率分布为 $P(X=k) = \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n},\; k = m, m+1, m+2, \cdots, r$,则
+    (3)当 $N>M \geqslant 2$ 时, $X$ 的概率分布为 $P(X=k) = \dfrac{\mathrm{C}_M^k \mathrm{C}_{N-M}^{n-k}}{\mathrm{C}_N^n}, k = m, m+1, m+2, \cdots, r$,则
     $$
-    E(X) = \sum_{k=m}^r k \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n}
+    E(X) = \sum_{k=m}^r k \dfrac{\mathrm{C}_M^k \mathrm{C}_{N-M}^{n-k}}{\mathrm{C}_N^n}
     $$
     由于 $k=0$ 的项恒为 $0$,可以忽略,因此 $k$ 的取值范围可以为 $\max\{ 1, n+M-N \} \leqslant k \leqslant r$,即
     $$
-    E(X) = \sum_{k=\max\{ 1, n+M-N \}}^r k \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n}
+    E(X) = \sum_{k=\max\{ 1, n+M-N \}}^r k \dfrac{\mathrm{C}_M^k \mathrm{C}_{N-M}^{n-k}}{\mathrm{C}_N^n}
     $$
-    由式 \eqref{equation:超几何分布1} 可得 $k C_M^k = M C_{M-1}^{k-1}$,因此
+    由式 \eqref{equation:超几何分布1} 可得 $k \mathrm{C}_M^k = M \mathrm{C}_{M-1}^{k-1}$,因此
     $$
-    E(X) = \sum_{k=\max\{ 1, n+M-N \}}^{r} \dfrac{M C_{M-1}^{k-1} C_{N-M}^{n-k}}{C_N^n} = \dfrac{M}{C_N^n} \sum_{k=\max\{ 1, n+M-N \}}^{r} C_{M-1}^{k-1} C_{N-M}^{n-k}
+    E(X) = \sum_{k=\max\{ 1, n+M-N \}}^{r} \dfrac{M \mathrm{C}_{M-1}^{k-1} \mathrm{C}_{N-M}^{n-k}}{\mathrm{C}_N^n} = \dfrac{M}{\mathrm{C}_N^n} \sum_{k=\max\{ 1, n+M-N \}}^{r} \mathrm{C}_{M-1}^{k-1} \mathrm{C}_{N-M}^{n-k}
     $$
-    由式 \eqref{equation:超几何分布3} 可得 $\displaystyle\sum_{k=\max\{ 1, n+M-N \}}^{r} C_{M-1}^{k-1} C_{N-M}^{n-k} = C_{N-1}^{n-1}$,因此
+    由式 \eqref{equation:超几何分布3} 可得 $\displaystyle\sum_{k=\max\{ 1, n+M-N \}}^{r} \mathrm{C}_{M-1}^{k-1} \mathrm{C}_{N-M}^{n-k} = \mathrm{C}_{N-1}^{n-1}$,因此
     $$
-    E(X) = \dfrac{M}{C_N^n} C_{N-1}^{n-1}
+    E(X) = \dfrac{M}{\mathrm{C}_N^n} \mathrm{C}_{N-1}^{n-1}
     $$
-    由式 \eqref{equation:超几何分布2} 可得 $\dfrac{C_{N-1}^{n-1}}{C_N^n} = \dfrac{n}{N}$,因此
+    由式 \eqref{equation:超几何分布2} 可得 $\dfrac{\mathrm{C}_{N-1}^{n-1}}{\mathrm{C}_N^n} = \dfrac{n}{N}$,因此
     $$
     E(X) = \dfrac{nM}{N}
     $$
 
-    综上,当 $X \sim H(n,N,M)$ 时,$E(X) = \dfrac{nM}{N}$.
+    综上,当 $X \sim H(n,N,M)$ 时, $E(X) = \dfrac{nM}{N}$.
 \end{proof}
 
 \begin{conclusion}
