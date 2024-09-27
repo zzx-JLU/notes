@@ -1,0 +1,27 @@
+% !TeX root = main.tex
+
+\chapter{随机变量的数字特征}
+\thispagestyle{plain}
+
+\section{数学期望}
+
+\section{方差}
+
+\question 设 $g(x)$ 为随机变量 $X$ 取值的集合上的非负不减函数,且 $E(g(X))$ 存在,证明:对任意的 $\varepsilon > 0$,有
+$$
+P(X > \varepsilon) \leqslant \dfrac{E(g(X))}{g(\varepsilon)}
+$$
+
+\begin{proof}
+    因为 $g(x)$ 是非负不减函数,所以当 $x > \varepsilon$ 时有 $g(x) > g(\varepsilon)$,进而有 $\dfrac{g(x)}{g(\varepsilon)} > 1$.
+
+    如果 $X$ 是离散型随机变量,设 $X$ 的概率分布为 $P(X = x_k) = p_k, k=1,2,\cdots$,则
+    $$
+    P(X > \varepsilon) = \sum_{x_k > \varepsilon} p_k \leqslant \sum_{x_k > \varepsilon} \dfrac{g(x_k)}{g(\varepsilon)} p_k \leqslant \dfrac{1}{g(\varepsilon)} \sum_{k=1}^{\infty} g(x_k) p_k = \dfrac{E(g(X))}{g(\varepsilon)}
+    $$
+
+    如果 $X$ 是连续型随机变量,设 $X$ 的概率密度函数为 $f(x)$,则
+    $$
+    P(X > \varepsilon) = \int_{\varepsilon}^{+\infty} f(x)\,\text{d}x \leqslant \int_{\varepsilon}^{+\infty} \dfrac{g(x)}{g(\varepsilon)} f(x)\,\text{d}x \leqslant \dfrac{1}{g(\varepsilon)} \int_{-\infty}^{+\infty} g(x) f(x)\,\text{d}x = \dfrac{E(g(X))}{g(\varepsilon)}
+    $$
+\end{proof}

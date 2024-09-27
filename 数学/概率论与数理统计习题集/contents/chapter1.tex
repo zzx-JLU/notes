@@ -193,6 +193,28 @@
     $$
 \end{proof}
 
+\question 已知 $P(A) = P(B) = P(C) = \dfrac{1}{4}, P(AB) = 0, P(AC) = P(BC) = \dfrac{1}{16}$.则 $A,B,C$ 中至少发生一个的概率是多少? $A,B,C$ 都不发生的概率是多少?
+
+\begin{solution}
+    因为 $P(AB) = 0$,且 $ABC \subseteq AB$,由概率的单调性可知 $P(ABC) = 0$.由概率的加法公式可得 $A,B,C$ 中至少发生一个的概率为
+    $$
+    \begin{aligned}
+        P(A \cup B \cup C) &= P(A) + P(B) + P(C) - P(AB) - P(BC) - P(AC) + P(ABC) \\
+        &= \dfrac{1}{4} + \dfrac{1}{4} + \dfrac{1}{4} - 0 - \dfrac{1}{16} - \dfrac{1}{16} + 0 \\
+        &= \dfrac{5}{8}
+    \end{aligned}
+    $$
+    $A,B,C$ 都不发生的概率为
+    $$
+    \begin{aligned}
+        P(\overline{A} \, \overline{B} \, \overline{C}) &= P(\overline{A \cup B \cup C}) \\
+        &= 1 - P(A \cup B \cup C) \\
+        &= 1 - \dfrac{5}{8} \\
+        &= \dfrac{3}{8}
+    \end{aligned}
+    $$
+\end{solution}
+
 \question 抛两枚硬币,求出现一个正面一个反面的概率.
 
 \begin{solution}
@@ -418,7 +440,3 @@
         \label{fig:example-三角形}
     \end{figure}
 \end{solution}
-
-% \setmainfont{XITS}
-
-% XITS: \showthe\baselineskip

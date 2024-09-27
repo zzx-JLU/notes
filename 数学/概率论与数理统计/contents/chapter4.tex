@@ -379,22 +379,22 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    $X$ 的概率分布为 $P(X=k) = C_{k-1}^{r-1} p^r (1-p)^{k-r},\; k = r, r+1, r+2, \cdots$,因此
+    $X$ 的概率分布为 $P(X=k) = \mathrm{C}_{k-1}^{r-1} p^r (1-p)^{k-r}, k = r, r+1, r+2, \cdots$,因此
     $$
     \begin{aligned}
-        E(X) &= \sum_{k=r}^{\infty} k C_{k-1}^{r-1} p^r (1-p)^{k-r} \\
-        &= \sum_{k=r}^{\infty} k \dfrac{r}{k} C_{k}^{r} p^r (1-p)^{k-r} \\
-        &= \dfrac{r}{p} \sum_{k=r}^{\infty} C_{k}^{r} p^{r+1} (1-p)^{k-r} \\
+        E(X) &= \sum_{k=r}^{\infty} k \mathrm{C}_{k-1}^{r-1} p^r (1-p)^{k-r} \\
+        &= \sum_{k=r}^{\infty} k \dfrac{r}{k} \mathrm{C}_{k}^{r} p^r (1-p)^{k-r} \\
+        &= \dfrac{r}{p} \sum_{k=r}^{\infty} \mathrm{C}_{k}^{r} p^{r+1} (1-p)^{k-r} \\
     \end{aligned}
     $$
 
     设随机变量 $Y \sim Nb(r+1, p)$,则
     $$
-    P(Y=k+1) = C_{k+1-1}^{r+1-1} p^{r+1} (1-p)^{(k+1)-(r+1)} = C_{k}^{r} p^{r+1} (1-p)^{k-r}
+    P(Y=k+1) = \mathrm{C}_{k+1-1}^{r+1-1} p^{r+1} (1-p)^{(k+1)-(r+1)} = \mathrm{C}_{k}^{r} p^{r+1} (1-p)^{k-r}
     $$
     其中 $k+1 = r+1, r+2, r+3, \cdots$,即 $k = r, r+1, r+2, \cdots$,因此
     $$
-    \sum_{k=r}^{\infty} C_{k}^{r} p^{r+1} (1-p)^{k-r} = 1
+    \sum_{k=r}^{\infty} \mathrm{C}_{k}^{r} p^{r+1} (1-p)^{k-r} = 1
     $$
     所以 $E(X) = \dfrac{r}{p}$.
 \end{proof}
@@ -404,7 +404,7 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    $X$ 的概率密度为
+    $X$ 的概率密度函数为
     $$
     f(x) = \begin{cases}
         \dfrac{1}{b-a}, & a \leqslant x \leqslant b \\[0.5em]
@@ -422,7 +422,7 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    $X$ 的概率密度为
+    $X$ 的概率密度函数为
     $$
     f(x) = \begin{cases}
         \lambda e^{-\lambda x}, & x>0 \\
@@ -446,19 +446,23 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    $X$ 的概率密度为
+    $X$ 的概率密度函数为
     $$
     f(x) = \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}, \; -\infty < x < +\infty
     $$
     因此
     $$
+    E(X) = \int_{-\infty}^{+\infty} x \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \text{d}x
+    $$
+    令 $t = \dfrac{x - \mu}{\sigma}$,则
+    $$
     \begin{aligned}
-        E(X) &= \int_{-\infty}^{+\infty} x \dfrac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \text{d}x \\
-        & \xlongequal{t = \frac{x-\mu}{\sigma}} \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} (\sigma t + \mu) e^{-\frac{t^2}{2}} \text{d}t \\
-        &= \dfrac{\sigma}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} te^{-\frac{t^2}{2}} \text{d}t + \mu \int_{-\infty}^{+\infty} \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{t^2}{2}} \text{d}t \\
-        &= \mu
+        E(X) &= \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} (\sigma t + \mu) e^{-\frac{t^2}{2}} \text{d}t \\
+        &= \dfrac{\sigma}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} te^{-\frac{t^2}{2}} \text{d}t + \mu \int_{-\infty}^{+\infty} \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{t^2}{2}} \text{d}t
     \end{aligned}
     $$
+    $te^{-\frac{t^2}{2}}$ 是奇函数,所以 $\displaystyle\int_{-\infty}^{+\infty} te^{-\frac{t^2}{2}} \text{d}t = 0$; $\dfrac{1}{\sqrt{2 \pi}} e^{-\frac{t^2}{2}}$ 是标准正态分布的概率密度函数，所以 $\displaystyle\int_{-\infty}^{+\infty} \dfrac{1}{\sqrt{2 \pi}} e^{-\frac{t^2}{2}} \text{d}t = 1$.因此
+    $$E(X) = \mu$$
 \end{proof}
 
 \begin{conclusion}
@@ -466,10 +470,17 @@ $$
 \end{conclusion}
 
 \begin{proof}
+    $X$ 的概率密度函数为
+    $$
+    f(x) = \begin{cases}
+        \dfrac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha - 1} e^{-\lambda x}, & x \geqslant 0 \\[0.5em]
+        0, & x<0
+    \end{cases}
+    $$
+    因此
     $$
     \begin{aligned}
-        E(X) &= \int_{-\infty}^{+\infty} x f(x) \, \text{d}x \\
-        &= \int_{0}^{+\infty} \dfrac{\lambda^\alpha}{\Gamma(\alpha)} x^\alpha e^{-\lambda x} \text{d}x \\
+        E(X) &= \int_{0}^{+\infty} \dfrac{\lambda^\alpha}{\Gamma(\alpha)} x^\alpha e^{-\lambda x} \text{d}x \\
         &= \dfrac{1}{\Gamma(\alpha)} \dfrac{1}{\lambda} \int_{0}^{+\infty} (\lambda x)^\alpha e^{-\lambda x} \text{d}(\lambda x) \\
         &= \dfrac{\Gamma(\alpha + 1)}{\Gamma(\alpha)} \dfrac{1}{\lambda} \\
         &= \dfrac{\alpha \Gamma(\alpha)}{\Gamma(\alpha)} \dfrac{1}{\lambda} \\
@@ -483,10 +494,17 @@ $$
 \end{conclusion}
 
 \begin{proof}
+    $X$ 的概率密度函数为
+    $$
+    f(x) = \begin{cases}
+        \dfrac{\Gamma(a+b)}{\Gamma(a) \, \Gamma(b)} x^{a-1} (1-x)^{b-1}, & 0<x<1 \\[0.5em]
+        0, & \text{其他}
+    \end{cases}
+    $$
+    因此
     $$
     \begin{aligned}
-        E(X) &= \int_{-\infty}^{+\infty} x f(x) \, \text{d}x \\
-        &= \int_{0}^{1} \dfrac{\Gamma(a+b)}{\Gamma(a) \, \Gamma(b)} x^a (1-x)^{b-1} \, \text{d}x \\
+        E(X) &= \int_{0}^{1} \dfrac{\Gamma(a+b)}{\Gamma(a) \, \Gamma(b)} x^a (1-x)^{b-1} \, \text{d}x \\
         &= \dfrac{\Gamma(a+b)}{\Gamma(a) \, \Gamma(b)} B(a+1,b) \\
         &= \dfrac{\Gamma(a+b)}{\Gamma(a) \, \Gamma(b)} \dfrac{\Gamma(a+1) \, \Gamma(b)}{\Gamma(a+b+1)} \\
         &= \dfrac{\Gamma(a+b)}{(a+b) \, \Gamma(a+b)} \dfrac{a \Gamma(a)}{\Gamma(a)} \\
@@ -500,7 +518,7 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    柯西分布的概率密度为
+    柯西分布的概率密度函数为
     $$
     f(x) = \dfrac{1}{\pi} \dfrac{\gamma}{(x + x_0)^2 + \gamma^2},\; -\infty < x < +\infty
     $$
@@ -540,12 +558,12 @@ $$
 
 随机变量 $X$ 的方差反映了 $X$ 与其数学期望 $E(X)$ 的偏离程度. 如果 $X$ 取值集中在 $E(X)$ 附近,则 $D(X)$ 较小;如果 $X$ 取值比较分散,则 $D(X)$ 较大.
 
-如果 $X$ 是离散型随机变量,概率分布为 $P(X=x_k) = p_k, \; k=1,2,\cdots$,则由定义 \ref{def:variance},有
+如果 $X$ 是离散型随机变量,概率分布为 $P(X=x_k) = p_k, k=1,2,\cdots$,则由定义 \ref{def:variance},有
 $$
 D(X) = E([X-E(X)]^2) = \sum_{k=1}^{\infty} [x_k - E(X)]^2 p_k
 $$
 
-如果 $X$ 是连续型随机变量,其概率密度为 $f(x)$,则由定义 \ref{def:variance},有
+如果 $X$ 是连续型随机变量,其概率密度函数为 $f(x)$,则由定义 \ref{def:variance},有
 $$
 D(X) = E([X-E(X)]^2) = \int_{-\infty}^{+\infty} [x - E(X)]^2 f(x) \, \text{d}x
 $$
@@ -553,7 +571,9 @@ $$
 \subsection{方差的性质}
 
 \begin{property}
-    \indent $D(X) = E(X^2) - [E(X)]^2$
+    \begin{equation}
+        D(X) = E(X^2) - [E(X)]^2
+    \end{equation}
 \end{property}
 
 \begin{proof}
@@ -647,9 +667,7 @@ $$
     $$
     E[(X-C)^2] = E(X^2 - 2CX + C^2) = E(X^2) - 2CE(X) + C^2
     $$
-    将 $E(X^2) - 2CE(X) + C^2$ 看做以 $C$ 为自变量的二次函数,其中 $a=1$,$b=-2E(X)$,$c=E(X^2)$.根据二次函数的性质可知,当且仅当 $C=-\dfrac{b}{2a}=E(X)$ 时函数取得最小值,最小值为 $E(X^2) - [E(X)]^2 = D(X)$.
-    
-    因此 $E[(X-C)^2] \geqslant D(X)$,当且仅当 $C=E(X)$ 时等号成立,此时 $E[(X-C)^2]$ 取得最小值.
+    将 $E(X^2) - 2CE(X) + C^2$ 看做以 $C$ 为自变量的二次函数,其中 $a=1, b=-2E(X), c=E(X^2)$.根据二次函数的性质可知,当且仅当 $C=-\dfrac{b}{2a}=E(X)$ 时函数取得最小值,最小值为 $E(X^2) - [E(X)]^2 = D(X)$.因此 $E[(X-C)^2] \geqslant D(X)$,当且仅当 $C=E(X)$ 时等号成立,此时 $E[(X-C)^2]$ 取得最小值.
 \end{proof}
 
 \begin{conclusion}
@@ -661,7 +679,7 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    (1)如果 $X$ 是离散型随机变量,设 $X$ 的概率分布为 $P(X = x_k) = p_k, \; k=1,2,\cdots$,则
+    (1)如果 $X$ 是离散型随机变量,设 $X$ 的概率分布为 $P(X = x_k) = p_k, k=1,2,\cdots$,则
     $$
     E(X) = \sum_{k=1}^{\infty} x_k p_k
     $$
@@ -670,7 +688,7 @@ $$
     a = \sum_{k=1}^{\infty} a p_k \leqslant E(X) \leqslant \sum_{k=1}^{\infty} b p_k = b
     $$
 
-    如果 $X$ 是连续型随机变量,设 $X$ 的概率密度为 $f(x)$,则
+    如果 $X$ 是连续型随机变量,设 $X$ 的概率密度函数为 $f(x)$,则
     $$
     E(X) = \int_{a}^{b} x f(x)\,\text{d}x
     $$
@@ -679,11 +697,11 @@ $$
     a = \int_{a}^{b} a f(x)\,\text{d}x \leqslant E(X) \leqslant \int_{a}^{b} b f(x)\,\text{d}x = b
     $$
 
-    (2)前面已经证明,对于任意常数 $C$,有 $E[(X-C)^2] \geqslant D(X)$.令 $C = \dfrac{a+b}{2}$,该不等式仍然成立,即
+    (2)前面已经证明,对于任意常数 $C$,有 $E[(X-C)^2] \geqslant D(X)$.令 $C = \dfrac{a+b}{2}$,则有
     $$
     D(X) \leqslant E[(X - \dfrac{a+b}{2})^2 ]
     $$
-    因为 $X$ 的取值范围为 $[a,b]$,所以 $X - \dfrac{a+b}{2}$ 的取值范围为 $\left[ \dfrac{a-b}{2}, \dfrac{b-a}{2} \right]$,$\left( X - \dfrac{a+b}{2} \right)^2$ 的取值范围为 $\left[ 0, \left( \dfrac{b-a}{2} \right)^2 \right]$.根据(1)所得结论,有
+    因为 $X$ 的取值范围为 $[a,b]$,所以 $X - \dfrac{a+b}{2}$ 的取值范围为 $\left[ \dfrac{a-b}{2}, \dfrac{b-a}{2} \right]$, $\left( X - \dfrac{a+b}{2} \right)^2$ 的取值范围为 $\left[ 0, \left( \dfrac{b-a}{2} \right)^2 \right]$.根据(1)所得结论,有
     $$
     D(X) \leqslant E[(X - \dfrac{a+b}{2})^2] \leqslant \left( \dfrac{b-a}{2} \right)^2
     $$
@@ -693,17 +711,17 @@ $$
 
 \begin{theorem}[][切比雪夫不等式]
     \indent 设随机变量 $X$ 具有数学期望 $E(X)=\mu$ 和方差 $D(X) = \sigma^2$,则对于任意给定的正数 $\varepsilon > 0$,有
-    $$
-    P(|X-E(X)| \geqslant \varepsilon) \leqslant \dfrac{D(X)}{\varepsilon^2}
-    $$
+    \begin{equation}
+        P(|X-E(X)| \geqslant \varepsilon) \leqslant \dfrac{D(X)}{\varepsilon^2}
+    \end{equation}
     它的等价形式是
-    $$
-    P(|X-E(X)| < \varepsilon) \geqslant 1 - \dfrac{D(X)}{\varepsilon^2}
-    $$
+    \begin{equation}
+        P(|X-E(X)| < \varepsilon) \geqslant 1 - \dfrac{D(X)}{\varepsilon^2}
+    \end{equation}
 \end{theorem}
 
 \begin{proof}
-    如果 $X$ 是离散型随机变量,设 $X$ 的概率分布为 $P(X = x_k) = p_k, \; k=1,2,\cdots$,根据概率的可加性可得
+    如果 $X$ 是离散型随机变量,设 $X$ 的概率分布为 $P(X = x_k) = p_k, k=1,2,\cdots$,根据概率的可加性可得
     $$
     P(|X-E(X)| \geqslant \varepsilon) = \sum_{|x_k-E(X)| \geqslant \varepsilon} P(X=x_k) = \sum_{|x_k-E(X)| \geqslant \varepsilon} p_k
     $$
@@ -724,7 +742,7 @@ $$
     P(|X-E(X)| \geqslant \varepsilon) \leqslant \dfrac{D(X)}{\varepsilon^2}
     $$
 
-    如果 $X$ 是连续型随机变量,设 $X$ 的概率密度为 $f(x)$,则
+    如果 $X$ 是连续型随机变量,设 $X$ 的概率密度函数为 $f(x)$,则
     $$
     \begin{aligned}
         P(|X-E(X)| \geqslant \varepsilon) &= \underset{|x-E(X)| \geqslant \varepsilon}{\int} f(x) \, \text{d}x \\
@@ -737,7 +755,7 @@ $$
 
 在概率论中,事件 $\{ |X-E(X)| \geqslant \varepsilon \}$ 称为\textbf{大偏差},其概率 $P(|X-E(X)| \geqslant \varepsilon)$ 称为\textbf{大偏差发生概率}.切比雪夫不等式给出大偏差发生概率的上界,这个上界与方差成正比,方差越大上界就越大.这说明随机变量的取值大概率集中在数学期望附近,方差越小,发生大偏差的概率就越小,随机变量的取值就越集中.
 
-切比雪夫不等式给出了在随机变量 $X$ 的分布未知的情况下随机事件 $\{ |X-\mu| < \varepsilon \}$ 的概率的一种估计. 例如,取 $\varepsilon = 3\sigma$,则 $P(|X-\mu| < 3\sigma) \geqslant 0.8889$.
+切比雪夫不等式给出了在随机变量 $X$ 的分布未知的情况下随机事件 $\{ |X-\mu| < \varepsilon \}$ 的概率的一种估计.例如,取 $\varepsilon = 3\sigma$,则 $P(|X-\mu| < 3\sigma) \geqslant 0.8889$.
 
 \begin{theorem}[][][prop:D(X)=0]
     \indent 若随机变量 $X$ 的方差存在,则 $D(X)=0$ 的充分必要条件是 $X$ 以概率 $1$ 取常数 $C$,即 $P(X=C)=1$,其中 $C=E(X)$.
@@ -746,7 +764,7 @@ $$
 \begin{proof}
     先证充分性.当 $P(X=C)=1$ 时,有 $D(X)=D(C)=0$,充分性成立.
 
-    再证必要性.当 $D(X)=0$ 时,$E(X)$ 必定存在.因为
+    再证必要性.当 $D(X)=0$ 时, $E(X)$ 必定存在.因为
     $$
     \{ |X-E(X)|>0 \} = \bigcup_{n=1}^{\infty} \{ |X-E(X)| \geqslant \dfrac{1}{n} \}
     $$
@@ -782,27 +800,6 @@ $$
 
 定理 \ref{prop:D(X)=0} 表明,方差为 $0$ 就意味着随机变量的取值集中在一点.
 
-\begin{example}
-    \indent 设 $g(x)$ 为随机变量 $X$ 取值的集合上的非负不减函数,且 $E(g(X))$ 存在,证明:对任意的 $\varepsilon > 0$,有
-    $$
-    P(X > \varepsilon) \leqslant \dfrac{E(g(X))}{g(\varepsilon)}
-    $$
-\end{example}
-
-\begin{proof}
-    因为 $g(x)$ 是非负不减函数,所以当 $x > \varepsilon$ 时有 $g(x) > g(\varepsilon)$,进而有 $\dfrac{g(x)}{g(\varepsilon)} > 1$.
-
-    如果 $X$ 是离散型随机变量,设 $X$ 的概率分布为 $P(X = x_k) = p_k, \; k=1,2,\cdots$,则
-    $$
-    P(X > \varepsilon) = \sum_{x_k > \varepsilon} p_k \leqslant \sum_{x_k > \varepsilon} \dfrac{g(x_k)}{g(\varepsilon)} p_k \leqslant \dfrac{1}{g(\varepsilon)} \sum_{k=1}^{\infty} g(x_k) p_k = \dfrac{E(g(X))}{g(\varepsilon)}
-    $$
-
-    如果 $X$ 是连续型随机变量,设 $X$ 的概率密度为 $f(x)$,则
-    $$
-    P(X > \varepsilon) = \int_{\varepsilon}^{+\infty} f(x)\,\text{d}x \leqslant \int_{\varepsilon}^{+\infty} \dfrac{g(x)}{g(\varepsilon)} f(x)\,\text{d}x \leqslant \dfrac{1}{g(\varepsilon)} \int_{-\infty}^{+\infty} g(x) f(x)\,\text{d}x = \dfrac{E(g(X))}{g(\varepsilon)}
-    $$
-\end{proof}
-
 \subsection{常见概率分布的方差}
 
 \begin{conclusion}
@@ -827,7 +824,7 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    根据二项分布的意义可知,$p$ 为 $n$ 重伯努利试验中每次试验成功的概率. 引入随机变量
+    根据二项分布的意义可知, $p$ 为 $n$ 重伯努利试验中每次试验成功的概率.引入随机变量
     $$
     X_k = \begin{cases}
         1, & \text{第 $k$ 次试验成功} \\
@@ -838,7 +835,7 @@ $$
     $$
     X = X_1 + X_2 + \cdots + X_n
     $$
-    由于 $X_k$ 只依赖于第 $k$ 次试验,而各次试验相互独立,于是 $X_1, X_2, \cdots, X_n$ 相互独立,且均服从参数为 $p$ 的0-1分布. 由于 $D(X_i) = p(1-p), \, i=1,2,\cdots,n$,所以根据方差的性质 \ref{prop:D(X+Y)=D(X)+D(Y)},有
+    由于 $X_k$ 只依赖于第 $k$ 次试验,而各次试验相互独立,于是 $X_1, X_2, \cdots, X_n$ 相互独立,且均服从参数为 $p$ 的0-1分布.由于 $D(X_i) = p(1-p), i=1,2,\cdots,n$,所以根据性质 \ref{prop:D(X+Y)=D(X)+D(Y)},有
     $$
     D(X) = \sum_{i=1}^n D(X_i) = np(1-p)
     $$
@@ -895,20 +892,20 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    (1)当 $N=M$ 时,$P(X=n)=1$,$D(X)=0$,待证结论成立.
+    (1)当 $N=M$ 时, $P(X=n)=1, D(X)=0$,待证结论成立.
 
-    (2)当 $N>M=1$ 时,$X$ 的概率分布为
+    (2)当 $N>M=1$ 时, $X$ 的概率分布为
     $$
     \begin{aligned}
-        & P(X=0) = \dfrac{C_1^0 C_{N-1}^n}{C_N^n} = \dfrac{C_{N-1}^n}{C_N^n} \\
-        & P(X=1) = \dfrac{C_1^1 C_{N-1}^{n-1}}{C_N^n} = \dfrac{n}{N}
+        & P(X=0) = \dfrac{\mathrm{C}_1^0 \mathrm{C}_{N-1}^n}{\mathrm{C}_N^n} = \dfrac{\mathrm{C}_{N-1}^n}{\mathrm{C}_N^n} \\
+        & P(X=1) = \dfrac{\mathrm{C}_1^1 \mathrm{C}_{N-1}^{n-1}}{\mathrm{C}_N^n} = \dfrac{n}{N}
     \end{aligned}
     $$
     进而有
     $$
     \begin{aligned}
-        & E(X) = 0 \times \dfrac{C_{N-1}^n}{C_N^n} + 1 \times \dfrac{n}{N} = \dfrac{n}{N} \\
-        & E(X^2) = 0^2 \times \dfrac{C_{N-1}^n}{C_N^n} + 1^2 \times \dfrac{n}{N} = \dfrac{n}{N}
+        & E(X) = 0 \times \dfrac{\mathrm{C}_{N-1}^n}{\mathrm{C}_N^n} + 1 \times \dfrac{n}{N} = \dfrac{n}{N} \\
+        & E(X^2) = 0^2 \times \dfrac{\mathrm{C}_{N-1}^n}{\mathrm{C}_N^n} + 1^2 \times \dfrac{n}{N} = \dfrac{n}{N}
     \end{aligned}
     $$
     因此
@@ -920,12 +917,12 @@ $$
     (3)当 $N > M \geqslant 2$ 时,有
     $$
     \begin{aligned}
-        E(X^2) &= \sum_{k=m}^{r} k^2 \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n} \\
-        &= \sum_{k=\max\{ 1, n+M-N \}}^{r} k(k-1+1) \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n} \\
-        &= \sum_{k=\max\{ 1, n+M-N \}}^{r} k(k-1) \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n} + \sum_{k=\max\{ 1, n+M-N \}}^{r} k \dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n} \\
-        &= \dfrac{M}{C_N^n} \sum_{k=\max\{ 2, n+M-N \}}^{r} (k-1) C_{M-1}^{k-1} C_{N-M}^{n-k} + \dfrac{nM}{N} \\
-        &= \dfrac{M(M-1)}{C_N^n} \sum_{k=\max\{ 2, n+M-N \}}^{r} C_{M-2}^{k-2} C_{N-M}^{n-k} + \dfrac{nM}{N} \\
-        &= \dfrac{M(M-1)}{C_N^n} C_{N-2}^{n-2} + \dfrac{nM}{N} \\
+        E(X^2) &= \sum_{k=m}^{r} k^2 \dfrac{\mathrm{C}_M^k \mathrm{C}_{N-M}^{n-k}}{\mathrm{C}_N^n} \\
+        &= \sum_{k=\max\{ 1, n+M-N \}}^{r} k(k-1+1) \dfrac{\mathrm{C}_M^k \mathrm{C}_{N-M}^{n-k}}{\mathrm{C}_N^n} \\
+        &= \sum_{k=\max\{ 1, n+M-N \}}^{r} k(k-1) \dfrac{\mathrm{C}_M^k \mathrm{C}_{N-M}^{n-k}}{\mathrm{C}_N^n} + \sum_{k=\max\{ 1, n+M-N \}}^{r} k \dfrac{\mathrm{C}_M^k \mathrm{C}_{N-M}^{n-k}}{\mathrm{C}_N^n} \\
+        &= \dfrac{M}{\mathrm{C}_N^n} \sum_{k=\max\{ 2, n+M-N \}}^{r} (k-1) \mathrm{C}_{M-1}^{k-1} \mathrm{C}_{N-M}^{n-k} + \dfrac{nM}{N} \\
+        &= \dfrac{M(M-1)}{\mathrm{C}_N^n} \sum_{k=\max\{ 2, n+M-N \}}^{r} \mathrm{C}_{M-2}^{k-2} \mathrm{C}_{N-M}^{n-k} + \dfrac{nM}{N} \\
+        &= \dfrac{M(M-1)}{\mathrm{C}_N^n} \mathrm{C}_{N-2}^{n-2} + \dfrac{nM}{N} \\
         &= M(M-1) \dfrac{n(n-1)}{N(N-1)} + \dfrac{nM}{N}
     \end{aligned}
     $$
@@ -934,7 +931,7 @@ $$
     D(X) = E(X^2) - [E(X)]^2 = M(M-1) \dfrac{n(n-1)}{N(N-1)} + \dfrac{nM}{N} - \left( \dfrac{nM}{N} \right)^2 = \dfrac{nM(N-n)(N-M)}{N^2 (N-1)}
     $$
 
-    综上,当 $X \sim H(n,N,M)$ 时,$D(X) = \dfrac{nM(N-M)(N-n)}{N^2 (N-1)}$.
+    综上,当 $X \sim H(n,N,M)$ 时, $D(X) = \dfrac{nM(N-M)(N-n)}{N^2 (N-1)}$.
 \end{proof}
 
 \begin{conclusion}
@@ -944,23 +941,22 @@ $$
 \begin{proof}
     $$
     \begin{aligned}
-        E(X^2) &= \sum_{k=r}^{\infty} k^2 C_{k-1}^{r-1} p^r (1-p)^{k-r} \\
-        &= \sum_{k=r}^{\infty} k^2 \dfrac{r}{k} C_{k}^{r} p^r (1-p)^{k-r} \\
-        &= \dfrac{r}{p} \sum_{k=r}^{\infty} k C_{k}^{r} p^{r+1} (1-p)^{k-r} \\
-        &= \dfrac{r}{p} \left[ \sum_{k=r}^{\infty} (k+1) C_{k}^{r} p^{r+1} (1-p)^{k-r} - \sum_{k=r}^{\infty} C_{k}^{r} p^{r+1} (1-p)^{k-r} \right] \\
-        &= \dfrac{r}{p} \left[ \sum_{k=r}^{\infty} (k+1) C_{k}^{r} p^{r+1} (1-p)^{k-r} - 1 \right] \\
+        E(X^2) &= \sum_{k=r}^{\infty} k^2 \mathrm{C}_{k-1}^{r-1} p^r (1-p)^{k-r} \\
+        &= \sum_{k=r}^{\infty} k^2 \dfrac{r}{k} \mathrm{C}_{k}^{r} p^r (1-p)^{k-r} \\
+        &= \dfrac{r}{p} \sum_{k=r}^{\infty} k \mathrm{C}_{k}^{r} p^{r+1} (1-p)^{k-r} \\
+        &= \dfrac{r}{p} \left[ \sum_{k=r}^{\infty} (k+1) \mathrm{C}_{k}^{r} p^{r+1} (1-p)^{k-r} - \sum_{k=r}^{\infty} \mathrm{C}_{k}^{r} p^{r+1} (1-p)^{k-r} \right]
     \end{aligned}
     $$
 
     设随机变量 $Y \sim Nb(r+1,p)$,则
     $$
-    P(Y=k+1) = C_{k+1-1}^{r+1-1} p^{r+1} (1-p)^{(k+1)-(r+1)} = C_{k}^{r} p^{r+1} (1-p)^{k-r}
+    P(Y=k+1) = \mathrm{C}_{k+1-1}^{r+1-1} p^{r+1} (1-p)^{(k+1)-(r+1)} = \mathrm{C}_{k}^{r} p^{r+1} (1-p)^{k-r}
     $$
     其中 $k+1 = r+1, r+2, r+3, \cdots$,即 $k = r, r+1, r+2, \cdots$,则
     $$
     \begin{aligned}
-        & \sum_{k=r}^{\infty} (k+1) C_{k}^{r} p^{r+1} (1-p)^{k-r} = E(Y) = \dfrac{r+1}{p} \\
-        & \sum_{k=r}^{\infty} C_{k}^{r} p^{r+1} (1-p)^{k-r} = 1
+        & \sum_{k=r}^{\infty} (k+1) \mathrm{C}_{k}^{r} p^{r+1} (1-p)^{k-r} = E(Y) = \dfrac{r+1}{p} \\
+        & \sum_{k=r}^{\infty} \mathrm{C}_{k}^{r} p^{r+1} (1-p)^{k-r} = 1
     \end{aligned}
     $$
     因此
@@ -978,7 +974,7 @@ $$
 \end{conclusion}
 
 \begin{proof}
-    若随机变量 $X$ 在区间 $[a,b]$ 上服从均匀分布,则
+    若随机变量 $X \sim U(a,b)$,则
     $$
     E(X^2) = \int_{-\infty}^{+\infty} x^2 f(x) \, \text{d}x = \int_a^b x^2 \dfrac{1}{b-a} \text{d}x = \left. \dfrac{x^3}{3(b-a)} \right|_a^b = \dfrac{b^2 + ab + a^2}{3}
     $$
@@ -1073,7 +1069,7 @@ $$
 
 设随机变量 $X$ 具有数学期望 $E(X)=\mu$ 及方差 $D(X) = \sigma^2 > 0$,则称 $X^* = \dfrac{X-\mu}{\sigma}$ 为 $X$ 的\textbf{标准化随机变量}.
 
-随机变量 $X$ 的标准化随机变量 $X^*$ 满足 $E(X^*)=0$,$D(X^*)=1$.
+随机变量 $X$ 的标准化随机变量 $X^*$ 满足 $E(X^*)=0, D(X^*)=1$.
 
 \vspace{0.5em}
 
