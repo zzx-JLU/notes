@@ -110,13 +110,7 @@ $$
     \end{enumerate}
 \end{property}
 
-事件的并可以推广到多个事件的情形:
-$$
-\begin{aligned}
-    & \bigcup_{i=1}^n A_i = \{ \text{事件} A_1,A_2,\cdots,A_n \text{中至少有一个发生} \} \\
-    & \bigcup_{i=1}^\infty A_i = \{ \text{事件} A_1,A_2,\cdots,A_n,\cdots \text{中至少有一个发生} \}
-\end{aligned}
-$$
+事件的并可以推广到多个事件的情形.对于事件 $A_1,A_2,\cdots,A_n,\cdots$, $\displaystyle\bigcup_{i=1}^n A_i$ 称为有限并, $\displaystyle\bigcup_{i=1}^\infty A_i$ 称为可列并.
 
 \subsubsection{事件的交}
 
@@ -140,13 +134,7 @@ $$
     \end{enumerate}
 \end{property}
 
-事件的交可以推广到多个事件的情形:
-$$
-\begin{aligned}
-    & \bigcap_{i=1}^n A_i = \{ \text{事件} A_1,A_2,\cdots,A_n \text{同时发生} \} \\
-    & \bigcap_{i=1}^\infty A_i = \{ \text{事件} A_1,A_2,\cdots,A_n,\cdots \text{同时发生} \}
-\end{aligned}
-$$
+事件的交可以推广到多个事件的情形.对于事件 $A_1,A_2,\cdots,A_n,\cdots$, $\displaystyle\bigcap_{i=1}^n A_i$ 称为有限交, $\displaystyle\bigcap_{i=1}^\infty A_i$ 称为可列交.
 
 \begin{conclusion}
     \indent 事件 $A$ 与 $B$ 对立的充分必要条件是: $A \cap B = \text{\O}$,且 $A \cup B = \varOmega$.
@@ -219,7 +207,7 @@ $$
     $$
     \overline{A \cup B} \subseteq \overline{A} \cap \overline{B}
     $$
-    反之,设 $\omega \in \overline{A} \cap \overline{B}$,即 $\omega \in \overline{A}$ 和 $\omega \in \overline{B}$ 同时成立,从而有 $\omega \notin A$ 和 $\omega \notin B$ 同时成立,这意味着 $\omega$ 不属于 $A$ 与 $B$ 中的任意一个,也就是 $\omega \in \overline{A \cup B}$,这说明
+    反之,设 $\omega \in \overline{A} \cap \overline{B}$,即 $\omega \in \overline{A}$ 和 $\omega \in \overline{B}$ 同时成立,从而有 $\omega \notin A$ 和 $\omega \notin B$ 同时成立,这意味着 $\omega$ 不属于 $A$ 与 $B$ 中的任意一个,即 $\omega \notin A \cup B$,也就是 $\omega \in \overline{A \cup B}$,这说明
     $$
     \overline{A} \cap \overline{B} \subseteq \overline{A \cup B}
     $$
@@ -244,10 +232,7 @@ $$
 
 对于多个及可列个随机事件,以上的运算性质也成立.例如,在多个及可列个事件的情况下,对偶律可以推广为
 $$
-\begin{aligned}
-    & \overline{\bigcup_{i=1}^n A_i} = \bigcap_{i=1}^n \overline{A_i} \qquad \overline{\bigcup_{i=1}^{+\infty} A_i} = \bigcap_{i=1}^{+\infty} \overline{A_i} \\
-    & \overline{\bigcap_{i=1}^n A_i} = \bigcup_{i=1}^n \overline{A_i} \qquad \overline{\bigcap_{i=1}^{+\infty} A_i} = \bigcup_{i=1}^{+\infty} \overline{A_i} \\
-\end{aligned}
+\overline{\bigcup_{i=1}^n A_i} = \bigcap_{i=1}^n \overline{A_i}, \quad \overline{\bigcup_{i=1}^{+\infty} A_i} = \bigcap_{i=1}^{+\infty} \overline{A_i},\quad \overline{\bigcap_{i=1}^n A_i} = \bigcup_{i=1}^n \overline{A_i}, \quad \overline{\bigcap_{i=1}^{+\infty} A_i} = \bigcup_{i=1}^{+\infty} \overline{A_i}
 $$
 
 \subsection{事件域}
@@ -495,6 +480,8 @@ $$
     \[
     P(A) \leqslant P(\varOmega) = 1
     \]
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][概率的减法公式][prop:probability:subtraction]
@@ -509,6 +496,8 @@ $$
     \[
     P(A-B)=P(A-AB)=P(A)-P(AB)
     \]
+
+    \vspace{-2em}
 \end{proof}
 
 \begin{property}[][概率的加法公式][prop:probability:add]
@@ -676,6 +665,10 @@ $$
     另一方面
     $$
     \lim_{n \to \infty} P(\overline{E_n}) = \lim_{n \to \infty} [1 - P(E_n)] = 1 - \lim_{n \to \infty} P(E_n)
+    $$
+    由此可得
+    $$
+    1 - P(\lim_{n \to \infty} E_n) = 1 - \lim_{n \to \infty} P(E_n)
     $$
     所以
     $$
@@ -878,7 +871,7 @@ $$
     \begin{figure}[H]
         \centering
 
-        \begin{tikzpicture}[scale=0.55]
+        \begin{tikzpicture}[scale=0.6]
             % 坐标轴
             \draw[->] (0, 0)--(8, 0) node[below]{$x$};
             \draw[->] (0, 0)--(0, 8) node[left]{$y$};
@@ -907,7 +900,10 @@ $$
 \begin{solution}
     针投在该平面上,设 $x$ 为针的中点 $M$ 到最近的一条平行线的距离, $\varphi$ 为针与此直线的夹角,如图 \ref{fig:pufeng:1} 所示,则有
     $$
-    0 \leqslant x \leqslant a, \; 0 \leqslant \varphi \leqslant \pi
+    \begin{cases}
+        0 \leqslant x \leqslant a \\
+        0 \leqslant \varphi \leqslant \pi
+    \end{cases}
     $$
     因此样本空间为
     $$
@@ -927,7 +923,7 @@ $$
         \begin{minipage}[b]{0.48\linewidth}
             \centering
     
-            \begin{tikzpicture}[scale=0.9]
+            \begin{tikzpicture}
                 \def\xscale{0.5}
                 \def\yscale{0.55}
                 % 两条平行线
@@ -961,7 +957,7 @@ $$
         \begin{minipage}[b]{0.48\linewidth}
             \centering
     
-            \begin{tikzpicture}[xscale=1.08, yscale=0.9]
+            \begin{tikzpicture}[xscale=1.2]
                 % 坐标轴
                 \draw[->] (-0.3, 0)--(4, 0) node[below]{$\varphi$};
                 \draw[->] (0, -0.5)--(0, 3) node[left]{$x$};
@@ -1119,11 +1115,10 @@ $$
     $$P(A \mid B) = \dfrac{P(AB)}{P(B)}$$
     而 $P(AB) \geqslant 0, P(B)>0$,因此 $P(A \mid B) \geqslant 0$.
 
-    \vspace{0.5em}
-
-    (2) $P(\varOmega \mid B) = \dfrac{P(\varOmega B)}{P(B)} = \dfrac{P(B)}{P(B)} = 1$
-
-    \vspace{0.5em}
+    (2)
+    $$
+    P(\varOmega \mid B) = \dfrac{P(\varOmega B)}{P(B)} = \dfrac{P(B)}{P(B)} = 1
+    $$
 
     (3)若 $A_1, A_2, \cdots, A_n, \cdots$ 两两互斥,则 $A_1 B, A_2 B, \cdots, A_n B, \cdots$ 也两两互斥,因此
     $$
