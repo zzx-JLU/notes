@@ -61,6 +61,7 @@
 \usepackage{appendix} % 附录
 \usepackage{rotating}
 \usepackage{bm, color, framed, bookmark, float, wrapfig}
+\usepackage{xparse}
 
 \usepackage[labelformat=simple]{subcaption}
 \renewcommand\thesubfigure{(\alph{subfigure})}
@@ -826,10 +827,18 @@
 % 习题
 \newcounter{questionNB}[section]
 \renewcommand{\thequestionNB}{\thesection.\arabic{questionNB}}
-\newcommand{\question}{
-    \par
+% \newcommand{\question}{
+%     \par
+%     \refstepcounter{questionNB}
+%     \textbf{\thequestionNB}\hspace{1em}
+% }
+
+\NewDocumentCommand{\question}{o}{
     \refstepcounter{questionNB}
-    \textbf{\thequestionNB}\hspace{1em}
+    \par
+    \textbf{\thequestionNB}\ignorespaces % 输出题号
+    \IfValueT{#1}{~(#1)}\ignorespaces % 如果可选参数存在，则输出括号和参数值
+    \hspace{1em}
 }
 
 % 参考文献

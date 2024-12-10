@@ -136,6 +136,28 @@
     命题4不成立.
 \end{solution}
 
+\vspace{1em}
+
+\question 证明下列事件的运算公式:
+
+(1) $A = AB \cup A \overline{B}$;
+
+(2) $A \cup B = A \cup \overline{A} B$.
+
+\begin{proof}
+    (1) $AB \cup A \overline{B} = A(B \cup \overline{B}) = A \varOmega = A$
+
+    (2) 由(1)可得 $B = AB \cup \overline{A} B$,因此
+    $$
+    \begin{aligned}
+        A \cup B &= A \cup (AB \cup \overline{A} B) \\
+        &= (A \cup AB) \cup \overline{A} B \\
+        &= A(\varOmega \cup B) \cup \overline{A} B \\
+        &= A \cup \overline{A} B
+    \end{aligned}
+    $$
+\end{proof}
+
 \section{随机事件的概率}
 
 \question 设 $A,B$ 是同一个试验中的两个事件, $P(A)=0.6, P(A-B)=0.2, P(A \cup B) = 0.9$.求 $P(\overline{AB}), P(B), P((\overline{A} \cup B)(A \cup \overline{B}))$.
@@ -174,6 +196,8 @@
     \end{aligned}
     $$
 \end{solution}
+
+\vspace{1em}
 
 \question 设 $A$ 和 $B$ 是同一试验 $E$ 的两个随机事件,证明: $1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB) \leqslant P(A \cup B)$.
 
@@ -225,12 +249,12 @@
     \indent 如果将样本空间写成 $\varOmega' = \{ (\text{正}, \text{正}), (\text{反}, \text{反}), (\text{一正一反}) \}$,这3个样本点不是等可能的,不满足古典概型的条件.
 \end{note}
 
-\question 从 $1,2,\cdots,10$ 这10个数字中任取3个,求大小在中间的数字恰好为5的概率.
+\question 从 $n$ 个数字 $1,2,\cdots,n$ 中任取3个,求大小在中间的数字恰好为 $k \, (1 < k < n)$ 的概率.
 
 \begin{solution}
-    从10个数字中任取3个,共有 $\mathrm{C}_{10}^3$ 种取法.如果大小在中间的数字恰好为5,必须有一个小于5、一个等于5、一个大于5,这样的取法有 $\mathrm{C}_4^1 \mathrm{C}_1^1 \mathrm{C}_5^1$ 种.因此所求概率为
+    从 $n$ 个数字中任取3个,共有 $\mathrm{C}_{n}^3$ 种取法.如果大小在中间的数字恰好为 $k$,必须有一个小于 $k$、一个等于 $k$、一个大于 $k$,这样的取法有 $\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1$ 种.因此所求概率为
     $$
-    p = \dfrac{\mathrm{C}_4^1 \mathrm{C}_1^1 \mathrm{C}_5^1}{\mathrm{C}_{10}^3} = \dfrac{4 \times 1 \times 5}{120} = \dfrac{1}{6}
+    p = \dfrac{\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1}{\mathrm{C}_{n}^3} = \dfrac{6(k-1)(n-k)}{n(n-1)(n-2)}
     $$
 \end{solution}
 
@@ -410,10 +434,10 @@
     $$
 \end{solution}
 
-\question 把10本书任意地放在书架上,求其中指定的四本书放在一起的概率.
+\question 把10本书任意地放在书架上,求其中指定的4本书放在一起的概率.
 
 \begin{solution}
-    把10本书任意地放在书架上,共有 $\mathrm{A}_{10}^{10}$ 种放法.当其中指定的四本书放在一起时,将这四本书看作一个整体,与其他6本书一起放在书架上,有 $\mathrm{A}_7^7$ 种放法;放在一起的4本书又有不同的顺序,有 $\mathrm{A}_4^4$ 种放法.因此``其中指定的四本书放在一起''共有 $\mathrm{A}_7^7 \mathrm{A}_4^4$ 种放法,所求概率为
+    把10本书任意地放在书架上,共有 $\mathrm{A}_{10}^{10}$ 种放法.当其中指定的4本书放在一起时,将这4本书看作一个整体,与其他6本书一起放在书架上,有 $\mathrm{A}_7^7$ 种放法;放在一起的4本书又有不同的顺序,有 $\mathrm{A}_4^4$ 种放法.因此``其中指定的4本书放在一起''共有 $\mathrm{A}_7^7 \mathrm{A}_4^4$ 种放法,所求概率为
     $$
     p = \dfrac{\mathrm{A}_7^7 \mathrm{A}_4^4}{\mathrm{A}_{10}^{10}} = \dfrac{7! \times 4!}{10!} = \dfrac{1}{30}
     $$
@@ -473,6 +497,108 @@
     (5) $p_5 = \dfrac{\mathrm{C}_5^4 \times 6 \times 5}{6^5} = \dfrac{25}{1296}$
 
     (6) $p_6 = \dfrac{6}{6^5} = \dfrac{1}{1296}$
+\end{solution}
+
+\question[接草成环问题] 把 $2n$ 根草紧握在手中,仅露出它们的头和尾,然后随机地把 $2n$ 个头两两相接, $2n$ 个尾也两两相接.求放开手后 $2n$ 根草恰巧连成一个环的概率.
+
+\begin{solution}
+    先将头两两相接,此时所有接法都是等价的,如图 \ref{fig:例题-接草成环问题} 所示,所以只需考虑尾的接法.
+    
+    $2n$ 个尾两两相接,先任选1个尾,再从剩下的 $2n-1$ 个尾中任选1个尾相接;然后从剩下的 $2n-2$ 个尾中任选1个,与 $2n-3$ 个尾中的任意1个相接;以此类推,将 $2n$ 个尾两两相接共有 $2n (2n-1) (2n-2) (2n-3) \times \cdots \times 2 \times 1 = (2n)!$ 种方法.
+    
+    如果要成环,在从 $2n$ 个尾中任选1个之后,剩下的 $2n-1$ 个尾中有一个不能选择,所以只能从其余 $2n-2$ 个尾中任选1个相接;然后从剩下的 $2n-2$ 个尾中任选1个,与 $2n-4$ 个尾中的任意1个相接;以此类推,成环的方法共有 $2n (2n-2) (2n-2) (2n-4) \times \cdots \times 2 \times 1$ 种.因此所求概率为
+    $$
+    \begin{aligned}
+        p &= \dfrac{2n (2n-2) (2n-2) (2n-4) \times \cdots \times 2 \times 1}{(2n)!} \\
+        &= \dfrac{[2n (2n-2) (2n-4) \times \cdots \times 2] [(2n-2) (2n-4) \times \cdots \times 1]}{(2n)!} \\
+        &= \dfrac{2^n n! \times 2^{n-1} (n-1)!}{(2n)!} \\
+        &= \dfrac{2^{2n-1} n! (n-1)!}{(2n)!}
+    \end{aligned}
+    $$
+
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}
+            \def\xscale{1.5}
+            % 端点
+            \coordinate (A) at (0*\xscale, 0);
+            \coordinate (A') at (0*\xscale, 2);
+            \coordinate (B) at (1*\xscale, 0);
+            \coordinate (B') at (1*\xscale, 2);
+            \coordinate (C) at (2*\xscale, 0);
+            \coordinate (C') at (2*\xscale, 2);
+            \coordinate (D) at (3*\xscale, 0);
+            \coordinate (D') at (3*\xscale, 2);
+            \coordinate (E) at (5*\xscale, 0);
+            \coordinate (E') at (5*\xscale, 2);
+            \coordinate (F) at (6*\xscale, 0);
+            \coordinate (F') at (6*\xscale, 2);
+            \draw[fill] (A) circle (1.5pt);
+            \draw[fill] (B) circle (1.5pt);
+            \draw[fill] (C) circle (1.5pt);
+            \draw[fill] (D) circle (1.5pt);
+            \draw[fill] (E) circle (1.5pt);
+            \draw[fill] (F) circle (1.5pt);
+            \draw plot[mark=square*, mark size=1.5pt, only marks] coordinates {(A') (B') (C') (D') (E') (F')};
+
+            % 草
+            \draw (A) node[below]{1} -- (A') node[above]{$1'$};
+            \draw (B) node[below]{2} -- (B') node[above]{$2'$};
+            \draw (C) node[below]{3} -- (C') node[above]{$3'$};
+            \draw (D) node[below]{4} -- (D') node[above]{$4'$};
+            \draw (E) node[below]{$2n-1$} -- (E') node[above left]{$2n-1'$};
+            \draw (F) node[below]{$2n$} -- (F') node[above right]{$2n'$};
+            \node at (4*\xscale, 1) {$\cdots$};
+
+            % 连接线
+            \draw (A') .. controls (0.25*\xscale, 2.5) and (0.75*\xscale, 2.5) .. (B');
+            \draw (C') .. controls (2.25*\xscale, 2.5) and (2.75*\xscale, 2.5) .. (D');
+            \draw (E') .. controls (5.25*\xscale, 2.5) and (5.75*\xscale, 2.5) .. (F');
+            \draw[dashed] (A) .. controls (0.5*\xscale, -0.5) .. (B);
+            \draw (A) .. controls (0.5*\xscale, -1) and (1.5*\xscale, -1) .. (C);
+            \node[cross out, draw, rotate=30] at (0.75*\xscale, -0.25) {};
+        \end{tikzpicture}
+
+        \caption{}
+        \label{fig:例题-接草成环问题}
+    \end{figure}
+\end{solution}
+
+\question\label{n个0与m个1} 把 $n$ 个``0''与 $m \, (m \leqslant n+1)$ 个``1''随机地排列,求没有两个``1''连在一起的概率.
+
+\begin{solution}
+    总共 $m+n$ 个位置,选择其中 $n$ 个放``0'',其余 $m$ 个位置放``1'',总的排列数为 $\mathrm{C}_{m+n}^n$.如果``没有两个`1'连在一起'',需要将``1''放在 $n$ 个``0''之间的空隙中,共有 $n+1$ 个位置,此时排列数为 $\mathrm{C}_{n+1}^m$.因此所求概率为
+    $$
+    p = \dfrac{\mathrm{C}_{n+1}^m}{\mathrm{C}_{m+n}^n} = \dfrac{n! (n+1)!}{(n-m+1)! (m+n)!}
+    $$
+\end{solution}
+
+\question[插板法] 将 $n$ 个完全相同的球随机地放入 $N$ 个盒子中,求:
+
+(1)某个指定的盒子中恰好有 $k \, (0 \leqslant k \leqslant n)$ 个球的概率;
+
+(2)恰好有 $m \, (N-n \leqslant m \leqslant N-1)$ 个空盒的概率;
+
+(3)某指定的 $m$ 个盒子中恰好有 $j$ 个球的概率.
+
+\begin{solution}
+    将 $n$ 个球排成一行,向其中插入 $N-1$ 块板,分成 $N$ 个区域,每个区域可以看成一个盒子.因此``将 $n$ 个完全相同的球随机地放入 $N$ 个盒子中''就相当于将 $n$ 个球和 $N-1$ 块板随机地排成一行,由 \ref{n个0与m个1} 可知,共有 $\mathrm{C}_{n+N-1}^n$ 种情况.
+
+    (1)某个指定的盒子中有 $k$ 个球,其余 $n-k$ 个球随机放入 $N-1$ 个盒子中,共有 $\mathrm{C}_{n-k+N-2}^{n-k}$ 种情况,因此所求概率为
+    $$
+    p_1 = \dfrac{\mathrm{C}_{n-k+N-2}^{n-k}}{\mathrm{C}_{n+N-1}^n} = \dfrac{(N-1) n! (n-k+N-2)!}{(n-k)! (n+N-1)!}
+    $$
+
+    (2)先从 $N$ 个盒子中选出 $m$ 个作为空盒,有 $\mathrm{C}_N^m$ 种取法.然后将 $n$ 个球放入剩下的 $N-m$ 个盒子,并且不能有空盒,可以先向每个盒子放1个球,再将其余 $n-N+m$ 个球随机放入 $N-m$ 个盒子中,此时有 $\mathrm{C}_{(n-N+m)+(N-m-1)}^{n-N+m} = \mathrm{C}_{n-1}^{n-N+m}$ 种情况.综上,所求概率为
+    $$
+    p_2 = \dfrac{\mathrm{C}_N^m \mathrm{C}_{n-1}^{n-N+m}}{\mathrm{C}_{n+N-1}^n}
+    $$
+
+    (3)将 $j$ 个球放入指定的 $m$ 个盒子中,有 $\mathrm{C}_{m+j-1}^j$ 种放法;另外 $n-j$ 个球放入其余 $N-m$ 个盒子,有 $\mathrm{C}_{n-j+N-m-1}^{n-j}$ 种放法.因此所求概率为
+    $$
+    p_3 = \dfrac{\mathrm{C}_{m+j-1}^j \mathrm{C}_{n-j+N-m-1}^{n-j}}{\mathrm{C}_{n+N-1}^n}
+    $$
 \end{solution}
 
 \question 在长度为 $a$ 的线段内任取两点将其分为三段,求它们可以构成一个三角形的概率.

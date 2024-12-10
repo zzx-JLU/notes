@@ -2,3 +2,36 @@
 
 \chapter{随机变量及其分布}
 \thispagestyle{plain}
+
+\section{随机变量及其分布函数}
+
+\section{离散型随机变量及其概率分布}
+
+\question 将3个球随机地放入4个杯子中,求杯子中球的最大个数 $X$ 的概率分布.
+
+\begin{solution}
+    将3个相同的球随机地放入4个不同的杯子中,共有 $4^3$ 种情况.
+    
+    $X$ 所有可能的取值为1,2,3.当 $X=1$ 时, 3个球被放入不同的杯子中,第一个球放入4个杯子中的任意一个,第二个球放入剩下3个杯子中的任意一个,第三个球放入剩下2个杯子中的任意一个,共有 $4 \times 3 \times 2 = 24$ 种情况.因此
+    $$
+    P(X=1) = \dfrac{24}{4^3} = \dfrac{3}{8}
+    $$
+    当 $X=3$ 时, 3个球被放入同一个杯子中,此时有4种情况,因此
+    $$
+    P(X=3) = \dfrac{4}{4^3} = \dfrac{1}{16}
+    $$
+    由于 $P(X=1) + P(X=2) + P(X=3) = 1$,所以
+    $$
+    P(X=2) = 1 - P(X=1) - P(X=3) = 1 - \dfrac{3}{8} - \dfrac{1}{16} = \dfrac{9}{16}
+    $$
+    综上, $X$ 的概率分布为
+    \begin{center}
+        \begin{tabular}{c | c c c}
+            \hline
+            $X$ & $1$ & $2$ & $3$ \\
+            \hline
+            $P$ \rule{0pt}{20pt} & $\dfrac{3}{8}$ & $\dfrac{9}{16}$ & $\dfrac{1}{16}$ \\[6pt]
+            \hline
+        \end{tabular}
+    \end{center}
+\end{solution}
