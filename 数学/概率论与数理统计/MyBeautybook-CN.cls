@@ -827,12 +827,6 @@
 % 习题
 \newcounter{questionNB}[section]
 \renewcommand{\thequestionNB}{\thesection.\arabic{questionNB}}
-% \newcommand{\question}{
-%     \par
-%     \refstepcounter{questionNB}
-%     \textbf{\thequestionNB}\hspace{1em}
-% }
-
 \NewDocumentCommand{\question}{o}{
     \refstepcounter{questionNB}
     \par

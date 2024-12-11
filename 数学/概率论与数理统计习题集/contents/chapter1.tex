@@ -560,7 +560,7 @@
             \node[cross out, draw, rotate=30] at (0.75*\xscale, -0.25) {};
         \end{tikzpicture}
 
-        \caption{}
+        \caption{接草成环问题}
         \label{fig:例题-接草成环问题}
     \end{figure}
 \end{solution}
@@ -660,5 +660,130 @@
         
         \caption{}
         \label{fig:example-三角形}
+    \end{figure}
+\end{solution}
+
+\question 甲乙两艘轮船驶向一个不能同时停泊两艘轮船的码头,它们在一昼夜  内到达的时间是等可能的.如果甲船的停泊时间是一小时,乙船的停泊时间是两小时,求它们中任何一艘都不需要等候码头空出的概率是多少?
+
+\begin{solution}
+    设甲、乙到达码头的时间分别为 $x,y$,则样本空间为
+    $$
+    \varOmega = \{ (x,y) \mid 0 \leqslant x \leqslant 24, 0 \leqslant y \leqslant 24 \}
+    $$
+    设事件 $A=$ ``甲乙都不需要等候码头空出'',该事件可以分为两种情况.如果甲先到达,则乙的到达时间应至少比甲晚一小时,即 $y \geqslant x+1$;如果乙先到达,则甲至少比乙晚到两小时,即 $x \geqslant y+2$.综合两种情况,事件 $A$ 可以表示为
+    $$
+    A = \{ (x,y) \mid y \geqslant x+1\ \text{或}\ y \leqslant x-2 \}
+    $$
+    如图 \ref{fig:几何概型-轮船停泊} 所示,所求概率为
+    $$
+    P(A) = \dfrac{\dfrac{23^2}{2} + \dfrac{22^2}{2}}{24^2} = \dfrac{1013}{1152}
+    $$
+
+    \begin{figure}[H]
+        \centering
+        \hspace{3em}
+        \begin{tikzpicture}[scale=0.18]
+            % 坐标轴
+            \draw[->] (-2, 0)--(28, 0) node[below]{$x$};
+            \draw[->] (0, -2)--(0, 28) node[left]{$y$};
+            \node at (0, 0) [below left] {$O$};
+            % 定义特殊点
+            \coordinate (O) at (0, 0);
+            \coordinate (A) at (0, 24);
+            \coordinate (B) at (24, 24);
+            \coordinate (C) at (24, 0);
+            \coordinate (D) at (0, 1);
+            \coordinate (E) at (23, 24);
+            \coordinate (F) at (2, 0);
+            \coordinate (G) at (24, 22);
+            % 曲线
+            \draw (A) node[left]{$24$} -- (B) -- (C) node[below]{24};
+            \draw (D) node[left, yshift=4pt]{1} -- (26, 27) node[above left]{$y=x+1$};
+            \draw (F) node[below]{2} -- (27.5, 25.5) node[below right]{$y=x-2$};
+            % 填充
+            \filldraw[fill=lightgray] (D) -- (A) -- (E) -- cycle;
+            \filldraw[fill=lightgray] (F) -- (G) -- (C) -- cycle;
+        \end{tikzpicture}
+
+        \caption{}
+        \label{fig:几何概型-轮船停泊}
+    \end{figure}
+\end{solution}
+
+\question 在平面上画有间隔为 $d$ 的等距平行线,向平面任意投掷一个边长为 $a, b, c$ (均小于 $d$)的三角形,求三角形与平行线相交的概率.
+
+\begin{solution}
+    三角形与平行线相交有三种情况:三角形的一个顶点在平行线上、一条边与平行线重合、两条边与平行线相交.由几何概型可知,前两种情况出现的概率为零,所以只需考虑两条边与平行线相交的概率.记 $P_{ab}, P_{bc}, P_{ac}$ 分别为两条边 $ab, bc, ac$ 与平行线相交的概率,则所求概率为
+    $$
+    p = P_{ab} + P_{bc} + P_{ac}
+    $$
+    设 $P_a, P_b, P_c$ 分别为边 $a,b,c$ 与平行线相交的概率,由蒲丰投针问题可得
+    $$
+    P_a = \dfrac{2a}{\pi d}, P_b = \dfrac{2b}{\pi d}, P_c = \dfrac{2c}{\pi d}
+    $$
+    $a$ 与平行线相交又能分成两种情况: $ab$ 与平行线相交、$ac$ 与平行线相交.因此
+    $$
+    P_a = P_{ab} + P_{ac}
+    $$
+    同理可得
+    $$
+    \begin{aligned}
+        P_b = P_{ab} + P_{bc} \\
+        P_c = P_{ac} + P_{bc}
+    \end{aligned}
+    $$
+    因此,三角形与平行线相交的概率为
+    $$
+    p = P_{ab} + P_{bc} + P_{ac} = \dfrac{1}{2} (P_a + P_b + P_c) = \dfrac{a+b+c}{\pi d}
+    $$
+\end{solution}
+
+\begin{note}
+    \indent 本题是蒲丰投针问题的推广.该问题可以进一步推广到多边形及圆的情形.
+
+    在平面上画有间隔为 $d$ 的等距平行线,向平面任意投掷一个周长为 $S_n$ 的凸多边形,且该凸多边形的直径小于 $d$ (凸多边形的直径是指多边形上任意两点之间的最大距离),则该凸多边形与平行线相交的概率为 $\dfrac{S_n}{\pi d}$.
+
+    在平面上画有间隔为 $d$ 的等距平行线,向平面任意投掷一个半径为 $r \, (2r < d)$ 的圆,则该圆与平行线相交的概率为 $\dfrac{2r}{d}$.
+\end{note}
+
+\question 在半径为 $R$ 的圆内画平行弦,如果这些弦与垂直于弦的直径的交点 在该直径上的位置是等可能的,求任意画弦的长度大于 $R$ 的概率.
+
+\begin{solution}
+    设弦的中点与圆心的距离为 $x$,则样本空间为
+    $$
+    \varOmega = \{ x \mid 0 \leqslant x \leqslant R \}
+    $$
+    弦长为 $2 \sqrt{R^2 - x^2}$,当弦长大于 $R$ 时有 $2 \sqrt{R^2 - x^2} > R$,即 $x < \dfrac{\sqrt{3}}{2} R$.因此所求概率为
+    $$
+    p = \dfrac{\dfrac{\sqrt{3}}{2} R}{R} = \dfrac{\sqrt{3}}{2}
+    $$
+
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}
+            \def\R{2}
+            \def\x{2*\R/3}
+            \pgfmathparse{sqrt(\R * \R - \x * \x)}
+
+            \coordinate (O) at (0, 0); % 圆心
+            \coordinate (M) at (0, \x); % 垂足
+            \coordinate (A) at (\pgfmathresult, \x);
+            \coordinate (B) at (-\pgfmathresult, \x);
+            \coordinate (C) at (0, \R);
+
+            \draw (O) circle (\R); % 圆
+            \draw[fill] (O) circle (1.5pt); % 圆心
+            \draw[dashed] (C) -- (0, -\R); % 直径
+            \draw (A) -- (B); % 弦
+            \draw[dashed] (B) -- (O); % 半径
+            \node[right] at ($(O)!0.5!(M)$) {$x$};
+            \node[below left] at ($(O)!0.5!(B)$) {$R$};
+            
+            % 直角符号
+            \pic[draw=black, -, angle eccentricity=1.6, angle radius=0.2cm] {right angle = C--M--A};
+        \end{tikzpicture}
+
+        \caption{}
     \end{figure}
 \end{solution}
