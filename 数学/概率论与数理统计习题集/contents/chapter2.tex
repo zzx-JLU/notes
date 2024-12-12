@@ -35,3 +35,34 @@
         \end{tabular}
     \end{center}
 \end{solution}
+
+\section{连续型随机变量及其概率密度函数}
+
+\section{常用的概率分布}
+
+\question[巴拿赫问题] 某人有两盒火柴,每盒都有 $n$ 根.每次使用时,任取一盒并从中抽出一根.当此人第一次抽到空盒时,另一盒中恰有 $r$ ($0 \leqslant r \leqslant n$)根火柴的概率是多少?
+
+\begin{solution}
+    设两盒火柴分别为A, B,由对称性知,只需计算事件 $A=$ ``抽到A盒为空,此时B盒中恰有 $r$ 根火柴''的概率,所求概率是此概率的2倍.
+
+    事件 $A$ 的发生可以分成两个阶段:前 $2n-r$ 次中A盒抽到 $n$ 次、B盒抽到 $n-r$ 次,第 $2n-r+1$ 次抽到A盒.由于每次抽到A盒或B盒的概率都是 $\dfrac{1}{2}$,所以
+    $$
+    P(A) = \mathrm{C}_{2n-r}^n \left( \dfrac{1}{2} \right)^n \left( \dfrac{1}{2} \right)^{n-r} \cdot \dfrac{1}{2} = \dfrac{\mathrm{C}_{2n-r}^n}{2^{2n-r+1}}
+    $$
+    进而可得所求概率为
+    $$
+    p = 2P(A) = \dfrac{\mathrm{C}_{2n-r}^n}{2^{2n-r}}
+    $$
+\end{solution}
+
+\begin{note}
+    \indent 巴拿赫问题的本质是:当第 $n+1$ 次抽到某盒火柴时,求总的抽取次数为 $2n-r+1$ 的概率.设随机变量 $X$ 为第 $n+1$ 次抽到A盒时的总抽取次数,则 $X$ 服从帕斯卡分布 $Nb(n+1, \dfrac{1}{2})$,因此有
+    $$
+    P(A) = P(X = 2n-r+1) = \mathrm{C}_{2n-r+1-1}^{n+1-1} \left( \dfrac{1}{2} \right)^{n+1} \left( \dfrac{1}{2} \right)^{2n-r+1-(n+1)} = \dfrac{\mathrm{C}_{2n-r}^n}{2^{2n-r+1}}
+    $$
+
+    通过巴拿赫问题可以得到下列等式:
+    $$
+    \sum_{r=0}^n \dfrac{\mathrm{C}_{2n-r}^n}{2^{2n-r}} = 1
+    $$
+\end{note}

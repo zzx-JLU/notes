@@ -160,6 +160,8 @@
 
 \section{随机事件的概率}
 
+%===================== 概率的定义和性质 =====================
+
 \question 设 $A,B$ 是同一个试验中的两个事件, $P(A)=0.6, P(A-B)=0.2, P(A \cup B) = 0.9$.求 $P(\overline{AB}), P(B), P((\overline{A} \cup B)(A \cup \overline{B}))$.
 
 \begin{solution}
@@ -239,6 +241,8 @@
     $$
 \end{solution}
 
+%===================== 古典概型 =====================
+
 \question 抛两枚硬币,求出现一个正面一个反面的概率.
 
 \begin{solution}
@@ -249,15 +253,6 @@
     \indent 如果将样本空间写成 $\varOmega' = \{ (\text{正}, \text{正}), (\text{反}, \text{反}), (\text{一正一反}) \}$,这3个样本点不是等可能的,不满足古典概型的条件.
 \end{note}
 
-\question 从 $n$ 个数字 $1,2,\cdots,n$ 中任取3个,求大小在中间的数字恰好为 $k \, (1 < k < n)$ 的概率.
-
-\begin{solution}
-    从 $n$ 个数字中任取3个,共有 $\mathrm{C}_{n}^3$ 种取法.如果大小在中间的数字恰好为 $k$,必须有一个小于 $k$、一个等于 $k$、一个大于 $k$,这样的取法有 $\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1$ 种.因此所求概率为
-    $$
-    p = \dfrac{\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1}{\mathrm{C}_{n}^3} = \dfrac{6(k-1)(n-k)}{n(n-1)(n-2)}
-    $$
-\end{solution}
-
 \question 任取两个正整数,求它们的和为偶数的概率.
 
 \begin{solution}
@@ -266,6 +261,15 @@
     \varOmega = \{ (0,0), (0,1), (1,0), (1,1) \}
     $$
     令事件 $A$ 表示``取出的两个正整数之和为偶数",则 $A = \{ (0,0), (1,1) \}$,从而所求概率为 $$P(A) = \dfrac{1}{2}$$
+\end{solution}
+
+\question 从 $n$ 个数字 $1,2,\cdots,n$ 中任取3个,求大小在中间的数字恰好为 $k \, (1 < k < n)$ 的概率.
+
+\begin{solution}
+    从 $n$ 个数字中任取3个,共有 $\mathrm{C}_{n}^3$ 种取法.如果大小在中间的数字恰好为 $k$,必须有一个小于 $k$、一个等于 $k$、一个大于 $k$,这样的取法有 $\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1$ 种.因此所求概率为
+    $$
+    p = \dfrac{\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1}{\mathrm{C}_{n}^3} = \dfrac{6(k-1)(n-k)}{n(n-1)(n-2)}
+    $$
 \end{solution}
 
 \question 将15名新生(其中有3名优秀生)随机地分配到3个班级去,其中一班4名,二班5名,三班6名.求:
@@ -601,6 +605,166 @@
     $$
 \end{solution}
 
+\question[配对问题] 一个晚会有 $n$ 个人参加,每个人带了一件礼物,且各人带的礼物都不相同.每人从放在一起的 $n$ 件礼物中随机抽取一件,求至少有一个人抽到自己礼物的概率.
+
+\begin{solution}
+    设事件 $A_i=$ ``第 $i$ 个人抽到自己的礼物", $i=1,2,\cdots,n$,则所求概率为 $P(A_1 \cup A_2 \cup \cdots \cup A_n)$.因为
+    $$
+    \begin{aligned}
+        & P(A_1) = P(A_2) = \cdots = P(A_n) = \dfrac{1}{n} \\
+        & P(A_1 A_2) = P(A_1 A_3) = \cdots = P(A_{n-1} A_n) = \dfrac{1}{n(n-1)} \\
+        & P(A_1 A_2 A_3) = P(A_1 A_2 A_4) = \cdots = P(A_{n-2} A_{n-1} A_n) = \dfrac{1}{n(n-1)(n-2)} \\
+        & \cdots \\
+        & P(A_1 A_2 \cdots A_n) = \dfrac{1}{n!}
+    \end{aligned}
+    $$
+    所以由概率的加法公式得
+    $$
+    \begin{aligned}
+        & P(A_1 \cup A_2 \cup \cdots \cup A_n) \\
+        =\ & n \cdot \dfrac{1}{n} - \mathrm{C}_n^2 \dfrac{1}{n(n-1)} + \mathrm{C}_n^3 \dfrac{1}{n(n-1)(n-2)} + \cdots + (-1)^{n-1} \dfrac{1}{n!} \\
+        =\ & 1 - \dfrac{n!}{2! (n-2)!} \dfrac{1}{n(n-1)} + \dfrac{n!}{3! (n-3)!} \dfrac{1}{n(n-1)(n-2)} + \cdots + (-1)^{n-1} \dfrac{1}{n!} \\
+        =\ & 1 - \dfrac{1}{2!} + \dfrac{1}{3!} + \cdots + (-1)^{n-1} \dfrac{1}{n!} \\
+    \end{aligned}
+    $$
+\end{solution}
+
+\begin{note}
+    \indent 当 $n \to \infty$ 时,此概率的极限为 $1 - e^{-1} \approx 0.6321$.这表明,即使人数很多,事件``至少有一个人抽到自己礼物"也不是必然事件.
+\end{note}
+
+\question 一个质点从平面上某点开始,等可能地向上、下、左、右四个方向随机游动,每次游动的距离为1.求经过 $2n$ 次游动后,质点回到出发点的概率.
+
+\begin{solution}
+    因为每次游动都等可能地向4个方向随机游动,所以经过 $2n$ 次游动后的终点有 $4^{2n}$ 种可能.
+
+    如果质点回到出发点,则上下游动次数相等、左右游动次数相等.设上、下游动各 $k$ 次,左、右游动各 $n-k$ 次,当 $k$ 固定时有 $\mathrm{C}_{2n}^k \mathrm{C}_{2n-k}^k \mathrm{C}_{2n-2k}^{n-k}$ 种可能性,因此事件``质点回到出发点''的样本点个数为
+    $$
+    \begin{aligned}
+        \sum_{k=0}^{n} \mathrm{C}_{2n}^k \mathrm{C}_{2n-k}^k \mathrm{C}_{2n-2k}^{n-k} &= \sum_{k=0}^{n} \dfrac{(2n)!}{k! (2n-k)!} \dfrac{(2n-k)!}{k! (2n-2k)!} \dfrac{(2n-2k)!}{(n-k)! (n-k)!} \\
+        &= \sum_{k=0}^{n} \dfrac{(2n)!}{(k!)^2 [(n-k)!]^2} \\
+        &= \dfrac{(2n)!}{n! n!} \sum_{k=0}^{n} \left[ \dfrac{n!}{k! (n-k)!} \right]^2 \\
+        &= \mathrm{C}_{2n}^n \sum_{k=0}^{n} (\mathrm{C}_n^k)^2
+    \end{aligned}
+    $$
+
+    为了计算 $\displaystyle\sum_{k=0}^{n} (\mathrm{C}_n^k)^2$,考虑等式
+    $$
+    (1+x)^n (1+x)^n = (1+x)^{2n}
+    $$
+    将两端用二项式定理展开,得
+    $$
+    \left[ \sum_{i=0}^{n} \mathrm{C}_n^i x^i \right] \left[ \sum_{j=0}^{n} \mathrm{C}_n^j x^j \right] = \sum_{k=0}^{2n} \mathrm{C}_{2n}^k x^k
+    $$
+    比较两端 $x^n$ 项的系数可得
+    $$
+    \sum_{i=0}^{n} \mathrm{C}_n^i \mathrm{C}_n^{n-i} = \mathrm{C}_{2n}^n
+    $$
+    又因为 $\mathrm{C}_n^i = \mathrm{C}_n^{n-i}$,所以有
+    $$
+    \sum_{i=0}^{n} (\mathrm{C}_n^i)^2 = \mathrm{C}_{2n}^n
+    $$
+    
+    因此,事件``质点回到出发点''的样本点个数为
+    $$
+    \mathrm{C}_{2n}^n \sum_{k=0}^{n} (\mathrm{C}_n^k)^2 = (\mathrm{C}_{2n}^n)^2
+    $$
+    所求概率为
+    $$
+    p = \dfrac{(\mathrm{C}_{2n}^n)^2}{4^{2n}}
+    $$
+\end{solution}
+
+%===================== 几何概型 =====================
+
+\question[会面问题] 甲乙两人约定在下午6时到7时之间在某处会面,并约定先到者应等候另一个人20分钟,过时即可离去.求两人能会面的概率.
+
+\begin{solution}
+    设 $x$ 和 $y$ 分别表示甲、乙两人到达约会地点的时间,则样本空间为
+    $$
+    \varOmega = \{ (x,y) \mid 0 \leqslant x \leqslant 60, 0 \leqslant y \leqslant 60 \}
+    $$
+    设事件 $A=$ ``甲乙两人能够会面",则
+    $$
+    A = \{ (x,y) \mid |x-y| \leqslant 20 \}
+    $$
+    由图 \ref{fig:会面问题} 可知, $\varOmega$ 的面积为 $60^2$, $A$ 的面积为 $60^2 - 40^2$,因此
+    $$
+    P(A) = \dfrac{60^2 - 40^2}{60^2} = \dfrac{5}{9}
+    $$
+
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}[scale=0.6]
+            % 坐标轴
+            \draw[->] (0, 0)--(7.5, 0) node[below]{$x$};
+            \draw[->] (0, 0)--(0, 7.5) node[left]{$y$};
+            \node at (0, 0) [below left] {$O$};
+            % 样本空间
+            \draw (0,0) rectangle (6,6);
+            \node at (6,0) [below] {60};
+            \node at (0,6) [left] {60};
+            \node at (1, 5) {$\varOmega$};
+            % A
+            \filldraw[fill=lightgray] (0,0) -- (0,2) -- (4,6) -- (6,6) -- (6,4) -- (2,0) -- cycle;
+            \node at (3,3) {$A$};
+            \node at (0,2) [left] {20};
+            \node at (2,0) [below] {20};
+        \end{tikzpicture}
+
+        \caption{}
+        \label{fig:会面问题}
+    \end{figure}
+\end{solution}
+
+\question 甲乙两艘轮船驶向一个不能同时停泊两艘轮船的码头,它们在一昼夜  内到达的时间是等可能的.如果甲船的停泊时间是一小时,乙船的停泊时间是两小时,求它们中任何一艘都不需要等候码头空出的概率是多少?
+
+\begin{solution}
+    设甲、乙到达码头的时间分别为 $x,y$,则样本空间为
+    $$
+    \varOmega = \{ (x,y) \mid 0 \leqslant x \leqslant 24, 0 \leqslant y \leqslant 24 \}
+    $$
+    设事件 $A=$ ``甲乙都不需要等候码头空出'',该事件可以分为两种情况.如果甲先到达,则乙的到达时间应至少比甲晚一小时,即 $y \geqslant x+1$;如果乙先到达,则甲至少比乙晚到两小时,即 $x \geqslant y+2$.综合两种情况,事件 $A$ 可以表示为
+    $$
+    A = \{ (x,y) \mid y \geqslant x+1\ \text{或}\ y \leqslant x-2 \}
+    $$
+    如图 \ref{fig:几何概型-轮船停泊} 所示,所求概率为
+    $$
+    P(A) = \dfrac{\dfrac{23^2}{2} + \dfrac{22^2}{2}}{24^2} = \dfrac{1013}{1152}
+    $$
+
+    \begin{figure}[H]
+        \centering
+        \hspace{3em}
+        \begin{tikzpicture}[scale=0.18]
+            % 坐标轴
+            \draw[->] (-2, 0)--(28, 0) node[below]{$x$};
+            \draw[->] (0, -2)--(0, 28) node[left]{$y$};
+            \node at (0, 0) [below left] {$O$};
+            % 定义特殊点
+            \coordinate (O) at (0, 0);
+            \coordinate (A) at (0, 24);
+            \coordinate (B) at (24, 24);
+            \coordinate (C) at (24, 0);
+            \coordinate (D) at (0, 1);
+            \coordinate (E) at (23, 24);
+            \coordinate (F) at (2, 0);
+            \coordinate (G) at (24, 22);
+            % 曲线
+            \draw (A) node[left]{$24$} -- (B) -- (C) node[below]{24};
+            \draw (D) node[left, yshift=4pt]{1} -- (26, 27) node[above left]{$y=x+1$};
+            \draw (F) node[below]{2} -- (27.5, 25.5) node[below right]{$y=x-2$};
+            % 填充
+            \filldraw[fill=lightgray] (D) -- (A) -- (E) -- cycle;
+            \filldraw[fill=lightgray] (F) -- (G) -- (C) -- cycle;
+        \end{tikzpicture}
+
+        \caption{}
+        \label{fig:几何概型-轮船停泊}
+    \end{figure}
+\end{solution}
+
 \question 在长度为 $a$ 的线段内任取两点将其分为三段,求它们可以构成一个三角形的概率.
 
 \begin{solution}
@@ -660,53 +824,6 @@
         
         \caption{}
         \label{fig:example-三角形}
-    \end{figure}
-\end{solution}
-
-\question 甲乙两艘轮船驶向一个不能同时停泊两艘轮船的码头,它们在一昼夜  内到达的时间是等可能的.如果甲船的停泊时间是一小时,乙船的停泊时间是两小时,求它们中任何一艘都不需要等候码头空出的概率是多少?
-
-\begin{solution}
-    设甲、乙到达码头的时间分别为 $x,y$,则样本空间为
-    $$
-    \varOmega = \{ (x,y) \mid 0 \leqslant x \leqslant 24, 0 \leqslant y \leqslant 24 \}
-    $$
-    设事件 $A=$ ``甲乙都不需要等候码头空出'',该事件可以分为两种情况.如果甲先到达,则乙的到达时间应至少比甲晚一小时,即 $y \geqslant x+1$;如果乙先到达,则甲至少比乙晚到两小时,即 $x \geqslant y+2$.综合两种情况,事件 $A$ 可以表示为
-    $$
-    A = \{ (x,y) \mid y \geqslant x+1\ \text{或}\ y \leqslant x-2 \}
-    $$
-    如图 \ref{fig:几何概型-轮船停泊} 所示,所求概率为
-    $$
-    P(A) = \dfrac{\dfrac{23^2}{2} + \dfrac{22^2}{2}}{24^2} = \dfrac{1013}{1152}
-    $$
-
-    \begin{figure}[H]
-        \centering
-        \hspace{3em}
-        \begin{tikzpicture}[scale=0.18]
-            % 坐标轴
-            \draw[->] (-2, 0)--(28, 0) node[below]{$x$};
-            \draw[->] (0, -2)--(0, 28) node[left]{$y$};
-            \node at (0, 0) [below left] {$O$};
-            % 定义特殊点
-            \coordinate (O) at (0, 0);
-            \coordinate (A) at (0, 24);
-            \coordinate (B) at (24, 24);
-            \coordinate (C) at (24, 0);
-            \coordinate (D) at (0, 1);
-            \coordinate (E) at (23, 24);
-            \coordinate (F) at (2, 0);
-            \coordinate (G) at (24, 22);
-            % 曲线
-            \draw (A) node[left]{$24$} -- (B) -- (C) node[below]{24};
-            \draw (D) node[left, yshift=4pt]{1} -- (26, 27) node[above left]{$y=x+1$};
-            \draw (F) node[below]{2} -- (27.5, 25.5) node[below right]{$y=x-2$};
-            % 填充
-            \filldraw[fill=lightgray] (D) -- (A) -- (E) -- cycle;
-            \filldraw[fill=lightgray] (F) -- (G) -- (C) -- cycle;
-        \end{tikzpicture}
-
-        \caption{}
-        \label{fig:几何概型-轮船停泊}
     \end{figure}
 \end{solution}
 
