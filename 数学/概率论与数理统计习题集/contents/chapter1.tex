@@ -241,6 +241,80 @@
     $$
 \end{solution}
 
+\question 设事件 $A$ 和 $B$ 互不相容,且 $P(A)=0.3, P(B)=0.5$,求以下事件的概率:
+
+(1) $A$ 与 $B$ 中至少有一个发生;
+
+(2) $A$ 和 $B$ 都发生;
+
+(3) $A$ 发生但 $B$ 不发生.
+
+\begin{solution}
+    因为 $A$ 和 $B$ 互不相容,所以 $AB = \text{\O}, P(AB)=0$.
+
+    (1) $P(A \cup B) = P(A) + P(B) = 0.3+0.5 = 0.8$
+
+    (2) $P(AB) = 0$
+
+    (3) $P(A-B) = P(A) - P(AB) = P(A) = 0.3$
+\end{solution}
+
+\question 某城市中共发行3种报纸A, B, C.在这城市的居民中有45\%订阅A报、35\%订阅B报、30\%订阅C报, 10\%同时订阅A报B报、8\%同时订阅A报C报、5\%同时订阅B报C报、3\%同时订阅A, B, C报.求以下事件的概率:
+
+(1)只订阅A报的;
+
+(2)只订阅一种报纸的;
+
+(3)至少订阅一种报纸的;
+
+(4)不订阅任何一种报纸的.
+
+\begin{solution}
+    设事件 $A,B,C$ 分别表示订阅A, B, C报,根据条件可得 $P(A)=0.45, P(B)=0.35, P(C)=0.3, P(AB)=0.1, P(AC)=0.08, P(BC)=0.05, P(ABC)=0.03$.
+
+    (1)
+    $$
+    \begin{aligned}
+        P(\text{只订阅A报}) &= P(A \, \overline{B} \, \overline{C}) \\
+        &= P(A (\overline{B \cup C})) \\
+        &= P(A - (B \cup C)) \\
+        &= P(A) - P(A(B \cup C)) \\
+        &= P(A) - P(AB \cup AC) \\
+        &= P(A) - [P(AB) + P(AC) - P(ABC)] \\
+        &= 0.45 - (0.1+0.08-0.03) \\
+        &= 0.3
+    \end{aligned}
+    $$
+
+    (2)
+    $$
+    P(\text{只订阅一种报纸}) = P(A \, \overline{B} \, \overline{C}) + P(\overline{A} B \overline{C}) + P(\overline{A} \, \overline{B} \, C)
+    $$
+    其中
+    $$
+    \begin{aligned}
+        & P(\overline{A} \, B \, \overline{C}) = P(B) - P(AB) - P(BC) + P(ABC) = 0.35-0.1-0.05+0.03 = 0.23 \\
+        & P(\overline{A} \, \overline{B} \, C) = P(C) - P(AC) - P(BC) + P(ABC) = 0.3-0.08-0.05+0.03 = 0.2
+    \end{aligned}
+    $$
+    因此
+    $$
+    P(\text{只订阅一种报纸}) = 0.3 + 0.23 + 0.2 = 0.73
+    $$
+
+    (3)
+    $$
+    \begin{aligned}
+        P(\text{至少订阅一种报纸}) &= P(A \cup B \cup C) \\
+        &= P(A) + P(B) + P(C) - P(AB) - P(BC) - P(AC) + P(ABC) \\
+        &= 0.45 + 0.35 + 0.3 - 0.1 - 0.05 - 0.08 + 0.03 \\
+        &=0.9
+    \end{aligned}
+    $$
+
+    (4) $P(\text{不订阅任何一种报纸}) = P(\overline{A \cup B \cup C}) = 1 - P(A \cup B \cup C) = 1-0.9 = 0.1$
+\end{solution}
+
 %===================== 古典概型 =====================
 
 \question 抛两枚硬币,求出现一个正面一个反面的概率.
@@ -269,6 +343,40 @@
     从 $n$ 个数字中任取3个,共有 $\mathrm{C}_{n}^3$ 种取法.如果大小在中间的数字恰好为 $k$,必须有一个小于 $k$、一个等于 $k$、一个大于 $k$,这样的取法有 $\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1$ 种.因此所求概率为
     $$
     p = \dfrac{\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1}{\mathrm{C}_{n}^3} = \dfrac{6(k-1)(n-k)}{n(n-1)(n-2)}
+    $$
+\end{solution}
+
+\question 从 $0, 1, 2, \cdots, 9$ 十个数字中任意选出三个不同的数字,求下列事件的概率:
+
+(1) $A_1=$ ``三个数字中不含0和5'';
+
+(2) $A_2=$ ``三个数字中不含0或5'';
+
+(3) $A_3=$ ``三个数字中含0但不含5''.
+
+\begin{solution}
+    从十个数字中任意选出三个不同的数字,共有 $\mathrm{C}_{10}^3$ 种取法.
+
+    (1)要使事件 $A_1$ 发生,可以从0和5之外的八个数字中选出三个数字,有 $\mathrm{C}_8^3$ 种取法.因此
+    $$
+    P(A_1) = \dfrac{\mathrm{C}_8^3}{\mathrm{C}_{10}^3} = \dfrac{7}{15}
+    $$
+
+    (2)设事件 $A=$ ``三个数字中不含0'', $B=$ ``三个数字中不含5'',则
+    $$
+    \begin{aligned}
+        & P(A) = P(B) = \dfrac{\mathrm{C}_9^3}{\mathrm{C}_{10}^3} = \dfrac{7}{10} \\
+        & P(AB) = P(A_1) = \dfrac{7}{15}
+    \end{aligned}
+    $$
+    进而有
+    $$
+    P(A_2) = P(A \cup B) = P(A) + P(B) - P(AB) = \dfrac{7}{10} + \dfrac{7}{10} - \dfrac{7}{15} = \dfrac{14}{15}
+    $$
+
+    (3)要使事件 $A_3$ 发生,可以先选出0,再从0和5之外的八个数字中选出两个数字,有 $\mathrm{C}_8^2$ 种取法.因此
+    $$
+    P(A_3) = \dfrac{\mathrm{C}_8^2}{\mathrm{C}_{10}^3} = \dfrac{7}{30}
     $$
 \end{solution}
 
@@ -672,6 +780,40 @@
     所求概率为
     $$
     p = \dfrac{(\mathrm{C}_{2n}^n)^2}{4^{2n}}
+    $$
+\end{solution}
+
+\question 箱子里有 $n$ 双不同尺码的鞋子.从中任取 $2r$ ($2r \leqslant n$)只,求下列事件的概率.
+
+(1) $A_0=$ ``没有一双成对的鞋'';
+
+(2) $A_1=$ ``只有一对鞋子'';
+
+(3) $A_2=$ ``恰有两对鞋子'';
+
+(4) $A_r=$ ``有 $r$ 对鞋子''.
+
+\begin{solution}
+    从 $2n$ 只鞋子中任取 $2r$ 只,共有 $\mathrm{C}_{2n}^{2r}$ 种可能.
+
+    (1)要使 $A_0$ 发生,可以先从 $n$ 双鞋子中任取 $2r$ 双,再从每双鞋中各取一只,共有 $\mathrm{C}_n^{2r} \cdot 2^{2r}$ 种可能.因此
+    $$
+    P(A_0) = \dfrac{2^{2r} \mathrm{C}_n^{2r}}{\mathrm{C}_{2n}^{2r}}
+    $$
+
+    (2)要使 $A_1$ 发生,可以先从 $n$ 双鞋子中任取1双,再从剩下的 $n-1$ 双鞋中任取 $2r-2$ 双,最后从选出的 $2r-2$ 双中各取一只,共有 $\mathrm{C}_n^1 \mathrm{C}_{n-1}^{2r-2} \cdot 2^{2r-2}$ 种可能.因此
+    $$
+    P(A_1) = \dfrac{2^{2r-2} \mathrm{C}_n^1 \mathrm{C}_{n-1}^{2r-2}}{\mathrm{C}_{2n}^{2r}} = \dfrac{2^{2r-2} n \mathrm{C}_{n-1}^{2r-2}}{\mathrm{C}_{2n}^{2r}}
+    $$
+
+    (3)要使 $A_2$ 发生,可以先从 $n$ 双鞋子中任取2双,再从剩下的 $n-2$ 双鞋中任取 $2r-4$ 双,最后从选出的 $2r-4$ 双中各取一只,共有 $\mathrm{C}_n^2 \mathrm{C}_{n-2}^{2r-4} \cdot 2^{2r-4}$ 种可能.因此
+    $$
+    P(A_2) = \dfrac{2^{2r-4} \mathrm{C}_n^2 \mathrm{C}_{n-2}^{2r-4}}{\mathrm{C}_{2n}^{2r}} = \dfrac{2^{2r-5} n(n-1) \mathrm{C}_{n-2}^{2r-4}}{\mathrm{C}_{2n}^{2r}}
+    $$
+
+    (4)从 $n$ 双鞋子中任取 $r$ 双,共有 $\mathrm{C}_n^r$ 种可能,因此
+    $$
+    P(A_r) = \dfrac{\mathrm{C}_n^r}{\mathrm{C}_{2n}^{2r}}
     $$
 \end{solution}
 

@@ -1295,6 +1295,7 @@ $$
 \dfrac{P(AB)}{P(B)} = P(A)
 $$
 进一步有
+
 \begin{equation} \label{equation:相互独立}
     P(AB) = P(A) \, P(B)
 \end{equation}
@@ -1382,7 +1383,18 @@ $$
     $$
     可得事件 $A,B,C$ 两两相互独立,但这三个事件不相互独立.
 
-    当 $P(ABC)=P(A)\,P(B)\,P(C)$ 成立时,不能推出 $A,B,C$ 两两相互独立.
+    当 $P(ABC)=P(A)\,P(B)\,P(C)$ 成立时,不能推出 $A,B,C$ 两两相互独立.例如:设 $\varOmega = \{ \omega_1, \omega_2, \omega_3, \omega_4, \omega_5 \}, P(\{ \omega_1 \}) = \dfrac{1}{64}, P(\{ \omega_2 \}) = P(\{ \omega_3 \}) = P(\{ \omega_4 \}) = \dfrac{15}{64}, P(\{ \omega_5 \}) = \dfrac{18}{64}$,事件 $A = \{ \omega_1, \omega_2 \}, B = \{ \omega_1, \omega_3 \}, C = \{ \omega_1, \omega_4 \}$,则
+
+    $$
+    \begin{aligned}
+        & P(A) = P(\{ \omega_1 \}) + P(\{ \omega_2 \}) = \dfrac{1}{64} + \dfrac{15}{64} = \dfrac{1}{4} \\
+        & P(B) = P(\{ \omega_1 \}) + P(\{ \omega_3 \}) = \dfrac{1}{64} + \dfrac{15}{64} = \dfrac{1}{4} \\
+        & P(C) = P(\{ \omega_1 \}) + P(\{ \omega_4 \}) = \dfrac{1}{64} + \dfrac{15}{64} = \dfrac{1}{4} \\
+        & P(AB) = P(\{ \omega_1 \}) = \dfrac{1}{64} \\
+        & P(ABC) = P(\{ \omega_1 \}) = \dfrac{1}{64} \\
+    \end{aligned}
+    $$
+    此时有 $P(ABC)=P(A)\,P(B)\,P(C)$,但 $P(AB) \not= P(A)\,P(B)$, $A,B,C$ 不两两相互独立.
 \end{note}
 
 \begin{conclusion}
@@ -1446,7 +1458,7 @@ $$
 \end{definition}
 
 \begin{definition}
-    \indent 如果在 $n$ 重独立重复试验中,每次试验的可能结果只有两个($A$ 或 $\overline{A}$),则称这种试验为 $n$ \textbf{重伯努利试验},简称为 \textbf{伯努利试验}(Bernoulli trial),也称为 \textbf{伯努利概型}(Bernoulli probability model).
+    \indent 如果在 $n$ 重独立重复试验中,每次试验的可能结果只有两个($A$ 或 $\overline{A}$),则称这种试验为 $n$ \textbf{重伯努利试验},简称为\textbf{伯努利试验}(Bernoulli trial),也称为\textbf{伯努利概型}(Bernoulli probability model).
 \end{definition}
 
 $n$ 重伯努利试验的基本事件可记为 $\omega=\omega_1 \omega_2 \cdots \omega_n$,其中 $\omega_i\,(1\leqslant i\leqslant n)$ 为 $A$ 或者为 $\overline{A}$,即 $\omega$ 是从 $A$ 及 $\overline{A}$ 中每次取 1 个,独立地重复取 $n$ 次的一种排列,共有 $2^n$ 个基本事件.
