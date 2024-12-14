@@ -337,86 +337,6 @@
     令事件 $A$ 表示``取出的两个正整数之和为偶数",则 $A = \{ (0,0), (1,1) \}$,从而所求概率为 $$P(A) = \dfrac{1}{2}$$
 \end{solution}
 
-\question 从 $n$ 个数字 $1,2,\cdots,n$ 中任取3个,求大小在中间的数字恰好为 $k \, (1 < k < n)$ 的概率.
-
-\begin{solution}
-    从 $n$ 个数字中任取3个,共有 $\mathrm{C}_{n}^3$ 种取法.如果大小在中间的数字恰好为 $k$,必须有一个小于 $k$、一个等于 $k$、一个大于 $k$,这样的取法有 $\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1$ 种.因此所求概率为
-    $$
-    p = \dfrac{\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1}{\mathrm{C}_{n}^3} = \dfrac{6(k-1)(n-k)}{n(n-1)(n-2)}
-    $$
-\end{solution}
-
-\question 从 $0, 1, 2, \cdots, 9$ 十个数字中任意选出三个不同的数字,求下列事件的概率:
-
-(1) $A_1=$ ``三个数字中不含0和5'';
-
-(2) $A_2=$ ``三个数字中不含0或5'';
-
-(3) $A_3=$ ``三个数字中含0但不含5''.
-
-\begin{solution}
-    从十个数字中任意选出三个不同的数字,共有 $\mathrm{C}_{10}^3$ 种取法.
-
-    (1)要使事件 $A_1$ 发生,可以从0和5之外的八个数字中选出三个数字,有 $\mathrm{C}_8^3$ 种取法.因此
-    $$
-    P(A_1) = \dfrac{\mathrm{C}_8^3}{\mathrm{C}_{10}^3} = \dfrac{7}{15}
-    $$
-
-    (2)设事件 $A=$ ``三个数字中不含0'', $B=$ ``三个数字中不含5'',则
-    $$
-    \begin{aligned}
-        & P(A) = P(B) = \dfrac{\mathrm{C}_9^3}{\mathrm{C}_{10}^3} = \dfrac{7}{10} \\
-        & P(AB) = P(A_1) = \dfrac{7}{15}
-    \end{aligned}
-    $$
-    进而有
-    $$
-    P(A_2) = P(A \cup B) = P(A) + P(B) - P(AB) = \dfrac{7}{10} + \dfrac{7}{10} - \dfrac{7}{15} = \dfrac{14}{15}
-    $$
-
-    (3)要使事件 $A_3$ 发生,可以先选出0,再从0和5之外的八个数字中选出两个数字,有 $\mathrm{C}_8^2$ 种取法.因此
-    $$
-    P(A_3) = \dfrac{\mathrm{C}_8^2}{\mathrm{C}_{10}^3} = \dfrac{7}{30}
-    $$
-\end{solution}
-
-\question 将15名新生(其中有3名优秀生)随机地分配到3个班级去,其中一班4名,二班5名,三班6名.求:
-
-(1)每个班级各分配到一名优秀生的概率;
-
-(2) 3名优秀生分配到一个指定班级的概率;
-
-(3) 3名优秀生分配到同一个班级的概率.
-
-\begin{solution}
-    将15名新生随机地分配给一班4名、二班5名、三班6名,共有 $\mathrm{C}_{15}^4 \mathrm{C}_{11}^5 \mathrm{C}_6^6$ 种分法.
-
-    (1)将3名优秀生分配到三个班级的分法共有 $\mathrm{A}_3^3$ 种,将其余12名新生分配给一班3名、二班4名、三班5名的分法共有 $\mathrm{C}_{12}^3 \mathrm{C}_9^4 \mathrm{C}_5^5$ 种,则每个班级各分配到一名优秀生的分法共有 $\mathrm{A}_3^3 \mathrm{C}_{12}^3 \mathrm{C}_9^4 \mathrm{C}_5^5$ 种.因此所求概率为
-    $$
-    p = \dfrac{\mathrm{A}_3^3 \mathrm{C}_{12}^3 \mathrm{C}_9^4 \mathrm{C}_5^5}{\mathrm{C}_{15}^4 \mathrm{C}_{11}^5 \mathrm{C}_6^6} = \dfrac{24}{91}
-    $$
-
-    (2)如果将3名优秀生分配到一班,则其余12名新生将分配给一班1名、二班5名、三班6名,此时分法共有 $\mathrm{C}_{12}^1 \mathrm{C}_{11}^5 \mathrm{C}_6^6$ 种,所求概率为
-    $$
-    p_1 = \dfrac{\mathrm{C}_{12}^1 \mathrm{C}_{11}^5 \mathrm{C}_6^6}{\mathrm{C}_{15}^4 \mathrm{C}_{11}^5 \mathrm{C}_6^6} = \dfrac{4}{455}
-    $$
-
-    如果将3名优秀生分配到二班,则其余12名新生将分配给一班4名、二班2名、三班6名,此时分法共有 $\mathrm{C}_{12}^4 \mathrm{C}_{8}^2 \mathrm{C}_6^6$ 种,所求概率为
-    $$
-    p_2 = \dfrac{\mathrm{C}_{12}^4 \mathrm{C}_{8}^2 \mathrm{C}_6^6}{\mathrm{C}_{15}^4 \mathrm{C}_{11}^5 \mathrm{C}_6^6} = \dfrac{2}{91}
-    $$
-
-    如果将3名优秀生分配到三班,则其余12名新生将分配给一班4名、二班5名、三班3名,此时分法共有 $\mathrm{C}_{12}^4 \mathrm{C}_{8}^5 \mathrm{C}_3^3$ 种,所求概率为
-    $$
-    p_3 = \dfrac{\mathrm{C}_{12}^4 \mathrm{C}_{8}^5 \mathrm{C}_3^3}{\mathrm{C}_{15}^4 \mathrm{C}_{11}^5 \mathrm{C}_6^6} = \dfrac{4}{91}
-    $$
-
-    (3)用 $A_i$ 表示``3名优秀生全部分配到 $i$ 班" $(i=1,2,3)$,则事件``3名优秀生分配到同一个班级"可以表示为 $A_1 \cup A_2 \cup A_3$.又因为 $A_i A_j = \text{\O} \, (i \not= j, i,j=1,2,3)$,所以所求概率为
-    $$
-    p = P(A_1 \cup A_2 \cup A_3) = P(A_1) + P(A_2) + P(A_3) = \dfrac{4}{455} + \dfrac{2}{91} + \dfrac{4}{91} = \dfrac{34}{455}
-    $$
-\end{solution}
-
 \question 抛两颗骰子,求下列事件的概率:
 
 (1)点数之和为6;
@@ -491,7 +411,72 @@
     $$
 \end{solution}
 
-\question 从 $N$ 个数字 $1,2,\cdots,N$ 中可重复地随机抽取 $n$ 次,求抽到的最大数字正好为 $k \, (1 \leqslant k \leqslant N)$ 的概率.
+\question 从 $n$ 个数字 $1,2,\cdots,n$ 中任取3个,求大小在中间的数字恰好为 $k \, (1 < k < n)$ 的概率.
+
+\begin{solution}
+    从 $n$ 个数字中任取3个,共有 $\mathrm{C}_{n}^3$ 种取法.如果大小在中间的数字恰好为 $k$,必须有一个小于 $k$、一个等于 $k$、一个大于 $k$,这样的取法有 $\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1$ 种.因此所求概率为
+    $$
+    p = \dfrac{\mathrm{C}_{k-1}^1 \mathrm{C}_1^1 \mathrm{C}_{n-k}^1}{\mathrm{C}_{n}^3} = \dfrac{6(k-1)(n-k)}{n(n-1)(n-2)}
+    $$
+\end{solution}
+
+\question 从 $0, 1, 2, \cdots, 9$ 十个数字中任意选出三个不同的数字,求下列事件的概率:
+
+(1) $A_1=$ ``三个数字中不含0和5'';
+
+(2) $A_2=$ ``三个数字中不含0或5'';
+
+(3) $A_3=$ ``三个数字中含0但不含5''.
+
+\begin{solution}
+    从十个数字中任意选出三个不同的数字,共有 $\mathrm{C}_{10}^3$ 种取法.
+
+    (1)要使事件 $A_1$ 发生,可以从0和5之外的八个数字中选出三个数字,有 $\mathrm{C}_8^3$ 种取法.因此
+    $$
+    P(A_1) = \dfrac{\mathrm{C}_8^3}{\mathrm{C}_{10}^3} = \dfrac{7}{15}
+    $$
+
+    (2)设事件 $A=$ ``三个数字中不含0'', $B=$ ``三个数字中不含5'',则
+    $$
+    \begin{aligned}
+        & P(A) = P(B) = \dfrac{\mathrm{C}_9^3}{\mathrm{C}_{10}^3} = \dfrac{7}{10} \\
+        & P(AB) = P(A_1) = \dfrac{7}{15}
+    \end{aligned}
+    $$
+    进而有
+    $$
+    P(A_2) = P(A \cup B) = P(A) + P(B) - P(AB) = \dfrac{7}{10} + \dfrac{7}{10} - \dfrac{7}{15} = \dfrac{14}{15}
+    $$
+
+    (3)要使事件 $A_3$ 发生,可以先选出0,再从0和5之外的八个数字中选出两个数字,有 $\mathrm{C}_8^2$ 种取法.因此
+    $$
+    P(A_3) = \dfrac{\mathrm{C}_8^2}{\mathrm{C}_{10}^3} = \dfrac{7}{30}
+    $$
+\end{solution}
+
+\question 从数字 $1, 2, \cdots, 9$ 中可重复地任取 $n$ 次,求几次所取数字的乘积能被 10 整除的概率.
+
+\begin{solution}
+    从9个数字中可重复地任取 $n$ 次,共有 $9^n$ 种取法.要使事件``几次所取数字的乘积能被 10 整除''发生,需要至少取到一次5且至少取到一次偶数.设事件 $A=$ ``至少取到一次5'', $B=$ ``至少取到一次偶数'',易得
+    $$
+    \begin{aligned}
+        & P(\overline{A}) = \dfrac{8^n}{9^n} \\
+        & P(\overline{B}) = \dfrac{5^n}{9^n} \\
+        & P(\overline{A} \, \overline{B}) = \dfrac{4^n}{9^n}
+    \end{aligned}
+    $$
+    所求概率为
+    $$
+    \begin{aligned}
+        P(AB) &= P(\overline{\overline{A} \cup \overline{B}}) \\
+        &= 1 - P(\overline{A} \cup \overline{B}) \\
+        &= 1 - [P(\overline{A}) + P(\overline{B}) - P(\overline{A} \, \overline{B})] \\
+        &= 1 - \dfrac{8^n + 5^n - 4^n}{9^n}
+    \end{aligned}
+    $$
+\end{solution}
+
+\question 从 $N$ 个数字 $1,2,\cdots,N$ 中可重复地任取 $n$ 次,求抽到的最大数字正好为 $k \, (1 \leqslant k \leqslant N)$ 的概率.
 
 \begin{solution}
     从 $N$ 个数字中可重复地抽取 $n$ 次,共有 $N^n$ 种取法.
@@ -509,6 +494,43 @@
         &= \dfrac{k^n}{N^n} - \dfrac{(k-1)^n}{N^n} \\
         &= \dfrac{k^n - (k-1)^n}{N^n}
     \end{aligned}
+    $$
+\end{solution}
+
+\question 将15名新生(其中有3名优秀生)随机地分配到3个班级去,其中一班4名,二班5名,三班6名.求:
+
+(1)每个班级各分配到一名优秀生的概率;
+
+(2) 3名优秀生分配到一个指定班级的概率;
+
+(3) 3名优秀生分配到同一个班级的概率.
+
+\begin{solution}
+    将15名新生随机地分配给一班4名、二班5名、三班6名,共有 $\mathrm{C}_{15}^4 \mathrm{C}_{11}^5 \mathrm{C}_6^6$ 种分法.
+
+    (1)将3名优秀生分配到三个班级的分法共有 $\mathrm{A}_3^3$ 种,将其余12名新生分配给一班3名、二班4名、三班5名的分法共有 $\mathrm{C}_{12}^3 \mathrm{C}_9^4 \mathrm{C}_5^5$ 种,则每个班级各分配到一名优秀生的分法共有 $\mathrm{A}_3^3 \mathrm{C}_{12}^3 \mathrm{C}_9^4 \mathrm{C}_5^5$ 种.因此所求概率为
+    $$
+    p = \dfrac{\mathrm{A}_3^3 \mathrm{C}_{12}^3 \mathrm{C}_9^4 \mathrm{C}_5^5}{\mathrm{C}_{15}^4 \mathrm{C}_{11}^5 \mathrm{C}_6^6} = \dfrac{24}{91}
+    $$
+
+    (2)如果将3名优秀生分配到一班,则其余12名新生将分配给一班1名、二班5名、三班6名,此时分法共有 $\mathrm{C}_{12}^1 \mathrm{C}_{11}^5 \mathrm{C}_6^6$ 种,所求概率为
+    $$
+    p_1 = \dfrac{\mathrm{C}_{12}^1 \mathrm{C}_{11}^5 \mathrm{C}_6^6}{\mathrm{C}_{15}^4 \mathrm{C}_{11}^5 \mathrm{C}_6^6} = \dfrac{4}{455}
+    $$
+
+    如果将3名优秀生分配到二班,则其余12名新生将分配给一班4名、二班2名、三班6名,此时分法共有 $\mathrm{C}_{12}^4 \mathrm{C}_{8}^2 \mathrm{C}_6^6$ 种,所求概率为
+    $$
+    p_2 = \dfrac{\mathrm{C}_{12}^4 \mathrm{C}_{8}^2 \mathrm{C}_6^6}{\mathrm{C}_{15}^4 \mathrm{C}_{11}^5 \mathrm{C}_6^6} = \dfrac{2}{91}
+    $$
+
+    如果将3名优秀生分配到三班,则其余12名新生将分配给一班4名、二班5名、三班3名,此时分法共有 $\mathrm{C}_{12}^4 \mathrm{C}_{8}^5 \mathrm{C}_3^3$ 种,所求概率为
+    $$
+    p_3 = \dfrac{\mathrm{C}_{12}^4 \mathrm{C}_{8}^5 \mathrm{C}_3^3}{\mathrm{C}_{15}^4 \mathrm{C}_{11}^5 \mathrm{C}_6^6} = \dfrac{4}{91}
+    $$
+
+    (3)用 $A_i$ 表示``3名优秀生全部分配到 $i$ 班" $(i=1,2,3)$,则事件``3名优秀生分配到同一个班级"可以表示为 $A_1 \cup A_2 \cup A_3$.又因为 $A_i A_j = \text{\O} \, (i \not= j, i,j=1,2,3)$,所以所求概率为
+    $$
+    p = P(A_1 \cup A_2 \cup A_3) = P(A_1) + P(A_2) + P(A_3) = \dfrac{4}{455} + \dfrac{2}{91} + \dfrac{4}{91} = \dfrac{34}{455}
     $$
 \end{solution}
 
@@ -611,6 +633,40 @@
     (6) $p_6 = \dfrac{6}{6^5} = \dfrac{1}{1296}$
 \end{solution}
 
+\question 箱子里有 $n$ 双不同尺码的鞋子.从中任取 $2r$ ($2r \leqslant n$)只,求下列事件的概率.
+
+(1) $A_0=$ ``没有一双成对的鞋'';
+
+(2) $A_1=$ ``只有一对鞋子'';
+
+(3) $A_2=$ ``恰有两对鞋子'';
+
+(4) $A_r=$ ``有 $r$ 对鞋子''.
+
+\begin{solution}
+    从 $2n$ 只鞋子中任取 $2r$ 只,共有 $\mathrm{C}_{2n}^{2r}$ 种可能.
+
+    (1)要使 $A_0$ 发生,可以先从 $n$ 双鞋子中任取 $2r$ 双,再从每双鞋中各取一只,共有 $\mathrm{C}_n^{2r} \cdot 2^{2r}$ 种可能.因此
+    $$
+    P(A_0) = \dfrac{2^{2r} \mathrm{C}_n^{2r}}{\mathrm{C}_{2n}^{2r}}
+    $$
+
+    (2)要使 $A_1$ 发生,可以先从 $n$ 双鞋子中任取1双,再从剩下的 $n-1$ 双鞋中任取 $2r-2$ 双,最后从选出的 $2r-2$ 双中各取一只,共有 $\mathrm{C}_n^1 \mathrm{C}_{n-1}^{2r-2} \cdot 2^{2r-2}$ 种可能.因此
+    $$
+    P(A_1) = \dfrac{2^{2r-2} \mathrm{C}_n^1 \mathrm{C}_{n-1}^{2r-2}}{\mathrm{C}_{2n}^{2r}} = \dfrac{2^{2r-2} n \mathrm{C}_{n-1}^{2r-2}}{\mathrm{C}_{2n}^{2r}}
+    $$
+
+    (3)要使 $A_2$ 发生,可以先从 $n$ 双鞋子中任取2双,再从剩下的 $n-2$ 双鞋中任取 $2r-4$ 双,最后从选出的 $2r-4$ 双中各取一只,共有 $\mathrm{C}_n^2 \mathrm{C}_{n-2}^{2r-4} \cdot 2^{2r-4}$ 种可能.因此
+    $$
+    P(A_2) = \dfrac{2^{2r-4} \mathrm{C}_n^2 \mathrm{C}_{n-2}^{2r-4}}{\mathrm{C}_{2n}^{2r}} = \dfrac{2^{2r-5} n(n-1) \mathrm{C}_{n-2}^{2r-4}}{\mathrm{C}_{2n}^{2r}}
+    $$
+
+    (4)从 $n$ 双鞋子中任取 $r$ 双,共有 $\mathrm{C}_n^r$ 种可能,因此
+    $$
+    P(A_r) = \dfrac{\mathrm{C}_n^r}{\mathrm{C}_{2n}^{2r}}
+    $$
+\end{solution}
+
 \question[接草成环问题] 把 $2n$ 根草紧握在手中,仅露出它们的头和尾,然后随机地把 $2n$ 个头两两相接, $2n$ 个尾也两两相接.求放开手后 $2n$ 根草恰巧连成一个环的概率.
 
 \begin{solution}
@@ -680,7 +736,7 @@
 \question\label{n个0与m个1} 把 $n$ 个``0''与 $m \, (m \leqslant n+1)$ 个``1''随机地排列,求没有两个``1''连在一起的概率.
 
 \begin{solution}
-    总共 $m+n$ 个位置,选择其中 $n$ 个放``0'',其余 $m$ 个位置放``1'',总的排列数为 $\mathrm{C}_{m+n}^n$.如果``没有两个`1'连在一起'',需要将``1''放在 $n$ 个``0''之间的空隙中,共有 $n+1$ 个位置,此时排列数为 $\mathrm{C}_{n+1}^m$.因此所求概率为
+    总共 $m+n$ 个位置,选择其中 $n$ 个放``0'',其余 $m$ 个位置放``1'',总的排列数为 $\mathrm{C}_{m+n}^n$.要使事件``没有两个`1'连在一起''发生,需要将``1''放在 $n$ 个``0''之间的空隙中,共有 $n+1$ 个位置,此时排列数为 $\mathrm{C}_{n+1}^m$.因此所求概率为
     $$
     p = \dfrac{\mathrm{C}_{n+1}^m}{\mathrm{C}_{m+n}^n} = \dfrac{n! (n+1)!}{(n-m+1)! (m+n)!}
     $$
@@ -783,37 +839,18 @@
     $$
 \end{solution}
 
-\question 箱子里有 $n$ 双不同尺码的鞋子.从中任取 $2r$ ($2r \leqslant n$)只,求下列事件的概率.
-
-(1) $A_0=$ ``没有一双成对的鞋'';
-
-(2) $A_1=$ ``只有一对鞋子'';
-
-(3) $A_2=$ ``恰有两对鞋子'';
-
-(4) $A_r=$ ``有 $r$ 对鞋子''.
+\question 口袋中有 $n-1$ 个黑球和1个白球,每次从口袋中随机地摸出一球,并换入一个黑球.问第 $k$ 次摸球时,摸到黑球的概率是多少?
 
 \begin{solution}
-    从 $2n$ 只鞋子中任取 $2r$ 只,共有 $\mathrm{C}_{2n}^{2r}$ 种可能.
-
-    (1)要使 $A_0$ 发生,可以先从 $n$ 双鞋子中任取 $2r$ 双,再从每双鞋中各取一只,共有 $\mathrm{C}_n^{2r} \cdot 2^{2r}$ 种可能.因此
+    设事件 $A_k=$ ``第 $k$ 次摸球时摸到黑球''.直接计算 $P(A_k)$ 很困难,可以先算 $P(\overline{A_k})$.
+    
+    由于只有1个白球,且不会放入白球,所以如果第 $k$ 次摸球时摸到白球,前 $k-1$ 次就不能摸到白球,即前 $k-1$ 次摸到的全是黑球,因此
     $$
-    P(A_0) = \dfrac{2^{2r} \mathrm{C}_n^{2r}}{\mathrm{C}_{2n}^{2r}}
+    P(\overline{A_k}) = \left( \dfrac{n-1}{n} \right)^{k-1} \dfrac{1}{n} = \dfrac{(n-1)^{k-1}}{n^k}
     $$
-
-    (2)要使 $A_1$ 发生,可以先从 $n$ 双鞋子中任取1双,再从剩下的 $n-1$ 双鞋中任取 $2r-2$ 双,最后从选出的 $2r-2$ 双中各取一只,共有 $\mathrm{C}_n^1 \mathrm{C}_{n-1}^{2r-2} \cdot 2^{2r-2}$ 种可能.因此
+    所求概率为
     $$
-    P(A_1) = \dfrac{2^{2r-2} \mathrm{C}_n^1 \mathrm{C}_{n-1}^{2r-2}}{\mathrm{C}_{2n}^{2r}} = \dfrac{2^{2r-2} n \mathrm{C}_{n-1}^{2r-2}}{\mathrm{C}_{2n}^{2r}}
-    $$
-
-    (3)要使 $A_2$ 发生,可以先从 $n$ 双鞋子中任取2双,再从剩下的 $n-2$ 双鞋中任取 $2r-4$ 双,最后从选出的 $2r-4$ 双中各取一只,共有 $\mathrm{C}_n^2 \mathrm{C}_{n-2}^{2r-4} \cdot 2^{2r-4}$ 种可能.因此
-    $$
-    P(A_2) = \dfrac{2^{2r-4} \mathrm{C}_n^2 \mathrm{C}_{n-2}^{2r-4}}{\mathrm{C}_{2n}^{2r}} = \dfrac{2^{2r-5} n(n-1) \mathrm{C}_{n-2}^{2r-4}}{\mathrm{C}_{2n}^{2r}}
-    $$
-
-    (4)从 $n$ 双鞋子中任取 $r$ 双,共有 $\mathrm{C}_n^r$ 种可能,因此
-    $$
-    P(A_r) = \dfrac{\mathrm{C}_n^r}{\mathrm{C}_{2n}^{2r}}
+    P(A_k) = 1 - P(\overline{A_k}) = 1 - \dfrac{(n-1)^{k-1}}{n^k}
     $$
 \end{solution}
 
