@@ -1306,11 +1306,39 @@ $$
 \end{definition}
 
 \begin{note}
-    \indent 当事件 $A$ 与 $B$ 互斥,且 $P(A) \not= 0, \, P(B) \not= 0$ 时,事件 $A$ 与 $B$ 一定不相互独立,因为此时 $P(AB) = 0$,而 $P(A) \, P(B) \not= 0$.反之,当事件 $A$ 与 $B$ 相互独立,且 $P(A) \not= 0, \, P(B) \not= 0$ 时,事件 $A$ 与 $B$ 一定不互斥,因为此时 $P(AB) = P(A) \, P(B) \not= 0$.总之,当两个事件的概率都不为0时,互斥一定不相互独立,相互独立一定不互斥.
+    \indent 当事件 $A$ 与 $B$ 互斥,且 $P(A) \not= 0, P(B) \not= 0$ 时,事件 $A$ 与 $B$ 一定不相互独立,因为此时 $P(AB) = 0$,而 $P(A) \, P(B) \not= 0$.反之,当事件 $A$ 与 $B$ 相互独立,且 $P(A) \not= 0, P(B) \not= 0$ 时,事件 $A$ 与 $B$ 一定不互斥,因为此时 $P(AB) = P(A) \, P(B) \not= 0$.总之,当两个事件的概率都不为0时,互斥一定不相互独立,相互独立一定不互斥.
+\end{note}
 
-    不可能事件 $\text{\O}$ 与任意事件 $A$ 相互独立,因为 $P(\text{\O} A) = P(\text{\O}) \, P(A) = 0$.同理,概率为0的事件与任意事件相互独立.
+\begin{conclusion}
+    \indent 若 $P(A)=0$,则事件 $A$ 与任意事件 $B$ 相互独立.
+\end{conclusion}
 
-    必然事件 $\varOmega$ 与任意事件 $A$ 相互独立,因为 $P(\varOmega A) = P(A) = P(\varOmega) \, P(A)$.同理,概率为1的事件与任意事件相互独立.
+\begin{proof}
+    因为 $AB \subseteq A$,由概率的单调性可得 $P(AB) \leqslant P(A) = 0$,又因为 $P(AB) \geqslant 0$,所以 $P(AB) = 0$.进而有
+    $$
+    P(AB) = P(A) \, P(B) = 0
+    $$
+    所以 $A$ 与 $B$ 相互独立.
+\end{proof}
+
+\begin{conclusion}
+    \indent 若 $P(A)=1$,则事件 $A$ 与任意事件 $B$ 相互独立.
+\end{conclusion}
+
+\begin{proof}
+    因为 $A \subseteq A \cup B$,由概率的单调性可得 $P(A) \leqslant P(A \cup B)$,又因为 $P(A)=1, P(A \cup B) \leqslant 1$,所以 $P(A \cup B) = 1$.用加法公式展开可得
+    $$
+    P(A \cup B) = P(A) + P(B) - P(AB) = 1 + P(B) - P(AB) = 1
+    $$
+    整理得
+    $$
+    P(AB) = P(B) = P(A) \, P(B)
+    $$
+    所以 $A$ 与 $B$ 相互独立.
+\end{proof}
+
+\begin{note}
+    \indent 上述结论说明,概率为0的事件与任意事件相互独立,概率为1的事件与任意事件相互独立.同理,不可能事件 $\text{\O}$ 与任意事件相互独立,必然事件 $\varOmega$ 与任意事件相互独立.
 \end{note}
 
 \begin{conclusion}
@@ -1322,6 +1350,7 @@ $$
 \end{conclusion}
 
 \begin{proof}
+    \vspace{-1em}
     $$
     \begin{aligned}
         P(A \overline{B}) &= P(A-B) \\
