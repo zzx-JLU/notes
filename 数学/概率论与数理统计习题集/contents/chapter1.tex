@@ -162,10 +162,16 @@
 
 %===================== 概率的定义和性质 =====================
 
-\question 设 $A,B$ 是同一个试验中的两个事件, $P(A)=0.6, P(A-B)=0.2, P(A \cup B) = 0.9$.求 $P(\overline{AB}), P(B), P((\overline{A} \cup B)(A \cup \overline{B}))$.
+\question 已知 $P(A)=0.6, P(A-B)=0.2, P(A \cup B) = 0.9$.求下列概率:
+
+(1) $P(\overline{AB})$;
+
+(2) $P(B)$;
+
+(3) $P((\overline{A} \cup B)(A \cup \overline{B}))$.
 
 \begin{solution}
-    由于 $P(A-B) = P(A) - P(AB)$,所以
+    (1)由于 $P(A-B) = P(A) - P(AB)$,所以
     $$
     P(AB) = P(A) - P(A-B) = 0.6 - 0.2 = 0.4
     $$
@@ -174,12 +180,12 @@
     P(\overline{AB}) = 1 - P(AB) = 1 - 0.4 = 0.6
     $$
 
-    由于 $P(A \cup B) = P(A) + P(B) - P(AB)$,所以
+    (2)由于 $P(A \cup B) = P(A) + P(B) - P(AB)$,所以
     $$
     P(B) = P(A \cup B) - P(A) + P(AB) = 0.9 - 0.6 + 0.4 = 0.7
     $$
 
-    由随机事件的运算性质可得
+    (3)由随机事件的运算性质可得
     $$
     \begin{aligned}
         (\overline{A} \cup B)(A \cup \overline{B}) &= [(\overline{A} \cup B) A] \cup [(\overline{A} \cup B) \overline{B}] \\
@@ -198,26 +204,6 @@
     \end{aligned}
     $$
 \end{solution}
-
-\vspace{1em}
-
-\question 设 $A$ 和 $B$ 是同一试验 $E$ 的两个随机事件,证明: $1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB) \leqslant P(A \cup B)$.
-
-\begin{proof}
-    因为 $AB \subseteq A \subseteq (A \cup B)$,所以
-    $$
-    P(AB) \leqslant P(A \cup B)
-    $$
-
-    因为
-    $$
-    1 - P(AB) = P(\overline{AB}) = P(\overline{A} \cup \overline{B}) \leqslant P(\overline{A}) + P(\overline{B})
-    $$
-    所以
-    $$
-    1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB)
-    $$
-\end{proof}
 
 \question 已知 $P(A) = P(B) = P(C) = \dfrac{1}{4}, P(AB) = 0, P(AC) = P(BC) = \dfrac{1}{16}$.则 $A,B,C$ 中至少发生一个的概率是多少? $A,B,C$ 都不发生的概率是多少?
 
@@ -314,6 +300,108 @@
 
     (4) $P(\text{不订阅任何一种报纸}) = P(\overline{A \cup B \cup C}) = 1 - P(A \cup B \cup C) = 1-0.9 = 0.1$
 \end{solution}
+
+\question 设 $A,B$ 是两个随机事件,且 $P(A)=0.6, P(B)=0.8$,问:
+
+(1)在什么条件下 $P(AB)$ 取得最大值,最大值是多少?
+
+(2)在什么条件下 $P(AB)$ 取得最小值,最小值是多少?
+
+\begin{solution}
+    (1)由概率的单调性可知 $P(AB) \leqslant P(A) = 0.6, P(AB) \leqslant P(B) = 0.8$.当 $P(AB) = P(A)$ 时 $P(AB)$ 取得最大值,最大值是0.6.
+
+    (2)因为
+    $$
+    P(A \cup B) = P(A) + P(B) - P(AB) \leqslant 1
+    $$
+    所以
+    $$
+    P(AB) \geqslant P(A) + P(B) - 1 = 0.6 + 0.8 - 1 = 0.4
+    $$
+    当 $P(A \cup B) = 1$ 时, $P(AB)$ 取得最小值,最小值是0.4.
+\end{solution}
+
+\question 对于任意两个随机事件 $A,B$,证明: $1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB) \leqslant P(A \cup B)$.
+
+\begin{proof}
+    因为 $AB \subseteq A \subseteq (A \cup B)$,所以
+    $$
+    P(AB) \leqslant P(A \cup B)
+    $$
+
+    因为
+    $$
+    1 - P(AB) = P(\overline{AB}) = P(\overline{A} \cup \overline{B}) \leqslant P(\overline{A}) + P(\overline{B})
+    $$
+    所以
+    $$
+    1 - P(\overline{A}) - P(\overline{B}) \leqslant P(AB)
+    $$
+\end{proof}
+
+\question 对于任意随机事件 $A,B$,证明: $P(A) + P(B) = 1$ 的充分必要条件是 $P(AB) = P(\overline{A} \, \overline{B})$.
+
+\begin{proof}
+    先证充分性.当 $P(AB) = P(\overline{A} \, \overline{B})$ 时,有
+    $$
+    \begin{aligned}
+        P(AB) &= P(\overline{A} \, \overline{B}) \\
+        &= P(\overline{A \cup B}) \\
+        &= 1 - P(A \cup B) \\
+        &= 1 - [P(A) + P(B) - P(AB)] \\
+        &= 1 - P(A) - P(B) + P(AB)
+    \end{aligned}
+    $$
+    整理得 $P(A) + P(B) = 1$.
+
+    再证必要性.当 $P(A) + P(B) = 1$ 时,有
+    $$
+    P(A \cup B) = P(A) + P(B) - P(AB) = 1 - P(AB)
+    $$
+    因此
+    $$
+    P(AB) = 1 - P(A \cup B) = P(\overline{A \cup B}) = P(\overline{A} \, \overline{B})
+    $$
+\end{proof}
+
+\question 对于任意随机事件 $A,B,C$,证明:
+
+(1) $P(AB) + P(AC) - P(BC) \leqslant P(A)$;
+
+(2) $P(AB) + P(AC) + P(BC) \geqslant P(A) + P(B) + P(C) - 1$.
+
+\begin{proof}
+    (1)由概率的单调性可知
+    $$
+    P(A) \geqslant P(A(B \cup C)) = P(AB \cup AC) = P(AB) + P(AC) - P(ABC)
+    $$
+    又因为 $P(ABC) \leqslant P(BC)$,所以
+    $$
+    P(A) \geqslant P(AB) + P(AC) - P(ABC) \geqslant P(AB) + P(AC) - P(BC)
+    $$
+
+    (2)由概率的加法公式可得
+    $$
+    P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(AB) - P(AC) - P(BC) + P(ABC) \leqslant 1
+    $$
+    整理得
+    $$
+    \begin{aligned}
+        P(AB) + P(AC) + P(BC) &\geqslant P(A) + P(B) + P(C) + P(ABC) - 1 \\
+        & \geqslant P(A) + P(B) + P(C) - 1
+    \end{aligned}
+    $$
+\end{proof}
+
+\question 设 $A,B,C$ 为三个事件,且 $P(A) = a, P(B) = 2a, P(C) = 3a, P(AB) = P(AC) = P(BC) = b$. 证明: $a \leqslant \dfrac{1}{4}, b \leqslant \dfrac{1}{4}$.
+
+\begin{proof}
+    因为 $AB \subseteq A$,由概率的单调性可知 $P(AB) \leqslant P(A)$,即 $b \leqslant a$.由概率的加法公式可得
+    $$
+    1 \geqslant P(B \cup C) = P(B) + P(C) - P(BC) = 5a-b \geqslant 4a
+    $$
+    所以 $a \leqslant \dfrac{1}{4}$.进一步由 $b \leqslant a$ 得 $b \leqslant \dfrac{1}{4}$.
+\end{proof}
 
 %===================== 古典概型 =====================
 
