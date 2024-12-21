@@ -403,6 +403,37 @@
     所以 $a \leqslant \dfrac{1}{4}$.进一步由 $b \leqslant a$ 得 $b \leqslant \dfrac{1}{4}$.
 \end{proof}
 
+\question 证明:
+
+(1) $P(AB) \geqslant P(A) + P(B) - 1$;
+
+(2) $P(A_1 A_2 \cdots A_n) \geqslant P(A_1) + P(A_2) + \cdots + P(A_n) - (n-1)$.
+
+\begin{proof}
+    (1)由概率的加法公式可得
+    $$
+    1 \geqslant P(A \cup B) = P(A) + P(B) - P(AB)
+    $$
+    整理得
+    $$
+    P(AB) \geqslant P(A) + P(B) - 1
+    $$
+
+    (2)对 $n$ 用数学归纳法,当 $n=2$ 时,由(1)知结论成立.设 $n-1$ 时结论成立,即
+    $$
+    P(A_1 A_2 \cdots A_{n-1}) \geqslant P(A_1) + P(A_2) + \cdots + P(A_{n-1}) - (n-2)
+    $$
+    则由(1)可得
+    $$
+    \begin{aligned}
+        P(A_1 A_2 \cdots A_n) &= P((A_1 A_2 \cdots A_{n-1}) A_n) \\
+        & \geqslant P(A_1 A_2 \cdots A_{n-1}) + P(A_n) - 1 \\
+        & \geqslant P(A_1) + P(A_2) + \cdots + P(A_{n-1}) - (n-2) + P(A_n) - 1 \\
+        &= P(A_1) + P(A_2) + \cdots + P(A_n) - (n-1)
+    \end{aligned}
+    $$
+\end{proof}
+
 %===================== 古典概型 =====================
 
 \question 抛两枚硬币,求出现一个正面一个反面的概率.
